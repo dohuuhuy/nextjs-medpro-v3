@@ -1,3 +1,8 @@
-# Medpro Web SSR
+This is a TypeScript Next.js project using Ant Design, Less, and Storybook.
 
-Medpro v3 dành cho server side rendering
+## Getting Started
+
+```bash
+npm install
+npm run storybook
+```
