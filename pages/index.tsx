@@ -1,9 +1,9 @@
-import { Button } from 'antd';
+import HomeDetail from 'src/components/page/home';
 
 export default function Index() {
   return (
     <div>
-      <Button type='primary'>Button</Button>;
+      <HomeDetail />
     </div>
   );
 }

@@ -13,6 +13,7 @@
   "dependencies": {
     "@feathersjs/feathers": "^4.5.9",
     "@feathersjs/rest-client": "^4.5.9",
+    "@medpro/booking-libs": "0.0.18",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/lodash": "^4.14.165",
     "@zeit/next-css": "^1.0.1",
@@ -23,8 +24,9 @@
     "final-form": "^4.20.1",
     "less": "^3.12.2",
     "lodash": "^4.17.20",
-    "next": "latest",
+    "next": "^9.5.5",
     "next-redux-wrapper": "^6.0.2",
+    "next-seo": "4.26.0",
     "normalizr": "^3.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -49,7 +51,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
+    "@babel/core": "7.14.6",
+    "@babel/preset-env": "7.14.7",
     "@storybook/addon-actions": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
