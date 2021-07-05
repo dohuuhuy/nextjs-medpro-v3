@@ -17,7 +17,7 @@
               "@styles": "./public/assets/styles",
               "@template": "template",
               "@public": "public/",
-              "@medpro": ["/node_modules/@medpro/"]
+              "@node_modules": ["node_modules/*"]
             }
           }
         ]

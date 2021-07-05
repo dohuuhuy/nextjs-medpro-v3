@@ -14,7 +14,7 @@
     "@feathersjs/feathers": "^4.5.9",
     "@feathersjs/rest-client": "^4.5.9",
     "@reduxjs/toolkit": "^1.4.0",
-    "@tntran496/ts-ant-demo": "0.0.11",
+    "@tntran496/ts-ant-demo": "0.0.19",
     "@types/lodash": "^4.14.165",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",

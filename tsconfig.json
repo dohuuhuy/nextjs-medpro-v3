@@ -24,7 +24,7 @@
       "@store/*": ["./src/store/*"],
       "@template/*": ["template/*"],
       "@public": ["public/*"],
-      "@medpro": ["./node_modules/@medpro/*"]
+      "@node_modules": ["node_modules/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
