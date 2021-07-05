@@ -1,11 +1,9 @@
-import { Button } from 'antd';
-import { Header } from '@medpro/booking-libs';
+import HomeDetail from 'src/components/page/home';
 
 export default function Index() {
   return (
     <div>
-      <Header />
-      <Button type='primary'>Button</Button>;
+      <HomeDetail />
     </div>
   );
 }
