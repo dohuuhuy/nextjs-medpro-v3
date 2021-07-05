@@ -3,8 +3,8 @@ import React from 'react'
 import styles from './style.module.less'
 import css from './style.module.css'
 import { ExampleComponent } from '@tntran496/ts-ant-demo'
-// import './../../../../node_modules/@tntran496/ts-ant-demo/libs/index.css'
-import '@tntran496/ts-ant-demo/libs/index.css'
+import './../../../../node_modules/@tntran496/ts-ant-demo/libs/index.css'
+// import '@tntran496/ts-ant-demo/libs/index.css'
 
 const HomeDetail = () => {
   return (
