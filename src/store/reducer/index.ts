@@ -1,4 +1,4 @@
-import { AppState, Action, actionTypes } from './../interfaces'
+import { AppState, Action, actionTypes } from '../interfaces'
 
 import { HYDRATE } from 'next-redux-wrapper'
 
