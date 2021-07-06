@@ -1,30 +1,35 @@
-const withLess = require("next-with-less");
-const withPlugins = require("next-compose-plugins");
-const withImages = require("next-images");
+const fs = require('fs')
+const path = require('path')
+const lessToJS = require('less-vars-to-js')
+const withLess = require('next-with-less')
+const withImages = require('next-images')
+
+const withPlugins = require('next-compose-plugins')
+
+// cấu hình varible antd
+const themeVariables = lessToJS(
+  fs.readFileSync(
+    path.resolve(__dirname, 'public/assets/styles/variable.less'),
+    'utf8',
+  ),
+)
+
+const lessConfig = {
+  lessLoaderOptions: {
+    lessOptions: {
+      modifyVars: themeVariables,
+    },
+  },
+}
 
 const nextConfig = {
   images: {
-    domains: ["mdbootstrap.com"],
+    domains: ['mdbootstrap.com'],
   },
-};
 
-module.exports = withPlugins(
-  [
-    [withImages],
-    [
-      withLess,
-      {
-        lessLoaderOptions: {
-          additionalData: (content) => `${content}\n@border-radius-base: 10px;`,
+  ...lessConfig,
+}
 
-          lessOptions: {
-            modifyVars: {
-              "primary-color": "#9900FF",
-            },
-          },
-        },
-      },
-    ],
-  ],
-  nextConfig
-);
+const plugins = [[withImages], [withLess]]
+
+module.exports = withPlugins(plugins, nextConfig)
