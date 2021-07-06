@@ -8,10 +8,7 @@
           {
             "root": ["./"],
             "alias": {
-              "@components": "./components",
-              "@styles": "./public/assets/styles",
-              "@template": "./templates",
-              "@public": "./public"
+              "@components": "./src/components"
             }
           }
         ]
@@ -25,9 +22,7 @@
           {
             "root": ["./"],
             "alias": {
-              "@components": "./src/components",
-              "@styles": "./public/assets/styles",
-              "@template": "./src/template"
+              "@components": "./src/components"
             }
           }
         ]

@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import Footer from "../components/organisms/Footer";
-import Header from "../components/organisms/Header";
+import React, { ReactNode } from 'react'
+import Footer from '../src/components/organisms/Footer'
+import Header from '../src/components/organisms/Header'
 type Props = {
-  children?: ReactNode;
-};
+  children?: ReactNode
+}
 
 const defaultLayout = ({ children }: Props) => {
   return (
@@ -12,13 +12,13 @@ const defaultLayout = ({ children }: Props) => {
         <Header />
       </header>
 
-      <main style={{ minHeight: "900px" }}>{children}</main>
+      <main style={{ minHeight: '900px' }}>{children}</main>
 
       <footer>
         <Footer />
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default defaultLayout;
+export default defaultLayout

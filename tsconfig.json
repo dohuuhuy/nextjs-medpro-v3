@@ -19,10 +19,7 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "lib": ["dom", "es2017"],
     "paths": {
-      "@components/*": ["./components/*"],
-      "@store/*": ["./src/store/*"],
-      "@template/*": ["./src/template/*"],
-      "@public": ["./public/*"]
+      "@components/*": ["./src/components/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
