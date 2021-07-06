@@ -19,9 +19,7 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "lib": ["dom", "es2017"],
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@containers/*": ["./src/containers/*"],
-      "@common/*": ["./src/common/*"],
+      "@components/*": ["./components/*"],
       "@store/*": ["./src/store/*"],
       "@template/*": ["./src/template/*"],
       "@public": ["./public/*"]
