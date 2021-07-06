@@ -1,34 +1,16 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import stylesLess from "../styles/Home.module.less";
-import { Button, Tooltip } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
-import { ExampleComponent } from '@tntran496/ts-ant-demo'
-import '@tntran496/ts-ant-demo/libs/index.css'
+import "@tntran496/ts-ant-demo/libs/index.css";
 
+import React from "react";
+import Demo from "../components/demo";
+import HomeLayout from "../templates/home";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Next.js + Less CSS</title>
-      </Head>
-      <ExampleComponent text={'helo monday'} />
-      <h1 className={stylesLess.title}>Next.js + Less CSS</h1>
-
-      <div>
-        <p>Support for CSS: <span className="css-supported"></span></p>
-        <p>Support for CSS images: <span className="css-image-supported"></span></p>
-        
-        <p>Support for LESS: <span className="less-supported"></span></p>
-        <p>Support for LESS images: <span className="less-image-supported"></span></p>
-      </div>
-
-      <Tooltip title="Example AntD Tooltip">
-        <Button type="primary" icon={<SearchOutlined />}>
-          Example AntD button
-        </Button>
-      </Tooltip>
-    </div>
+    <>
+      <Demo />
+    </>
   );
-}
+};
+
+HomePage.Layout = HomeLayout;
+export default HomePage;

@@ -1,11 +1,12 @@
-import "antd/dist/antd.less";
+import React from "react";
+import "/public/assets/styles/app.less";
 
-import "../styles/globals.css";
-import "../styles/globals.less";
-
-import type { AppProps } from 'next/app'
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
-export default MyApp
+const MyApp = ({ Component, pageProps }: any) => {
+  const LayoutWrapper = Component.Layout ? Component.Layout : React.Fragment;
+  return (
+    <LayoutWrapper>
+      <Component {...pageProps} />
+    </LayoutWrapper>
+  );
+};
+export default MyApp;
