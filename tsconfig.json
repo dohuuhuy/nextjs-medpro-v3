@@ -20,7 +20,7 @@
     "lib": ["dom", "es2017"],
     "paths": {
       "@components/*": ["./src/components/*"],
-      "public/*": ["/public/*"]
+      "@store/*": ["./src/store/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

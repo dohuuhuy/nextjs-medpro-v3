@@ -9,7 +9,7 @@
             "root": ["./"],
             "alias": {
               "@components": "./src/components",
-              "public": "./public/"
+              "@store": "./src/store"
             }
           }
         ]
@@ -23,7 +23,8 @@
           {
             "root": ["./"],
             "alias": {
-              "@components": "./src/components"
+              "@components": "./src/components",
+              "@store": "./src/store"
             }
           }
         ]
