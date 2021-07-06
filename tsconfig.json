@@ -19,7 +19,8 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "lib": ["dom", "es2017"],
     "paths": {
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "public/*": ["/public/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

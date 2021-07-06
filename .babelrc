@@ -8,7 +8,8 @@
           {
             "root": ["./"],
             "alias": {
-              "@components": "./src/components"
+              "@components": "./src/components",
+              "public": "./public/"
             }
           }
         ]
