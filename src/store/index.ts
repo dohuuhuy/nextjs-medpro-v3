@@ -1,10 +1,8 @@
-import { applyMiddleware, createStore, Middleware, StoreEnhancer } from 'redux'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
+import { applyMiddleware, createStore, Middleware, StoreEnhancer } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-
 import rootReducer from './reducer'
 import rootSaga from './saga'
-import { AppState } from './interfaces'
 
 const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   if (process.env.NODE_ENV !== 'production') {
@@ -14,7 +12,7 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   return applyMiddleware(...middleware)
 }
 
-export const makeStore: MakeStore<AppState> = () => {
+export const makeStore: MakeStore<any> = () => {
   const sagaMiddleware = createSagaMiddleware()
 
   const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
@@ -24,4 +22,4 @@ export const makeStore: MakeStore<AppState> = () => {
   return store
 }
 
-export const wrapper = createWrapper<AppState>(makeStore, { debug: true })
+export const wrapper = createWrapper<any>(makeStore, { debug: true })
