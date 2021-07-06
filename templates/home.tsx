@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import Footer from "../components/organisms/Footer";
-import Header from "../components/organisms/Header";
+import React, { ReactNode } from 'react'
+import Footer from '../components/organisms/Footer'
+import Header from '../components/organisms/Header'
 type Props = {
-  children?: ReactNode;
-};
+  children?: ReactNode
+}
 
 const HomeLayout = ({ children }: Props) => {
   return (
@@ -18,7 +18,7 @@ const HomeLayout = ({ children }: Props) => {
         <Footer />
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default HomeLayout;
+export default HomeLayout
