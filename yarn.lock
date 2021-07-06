@@ -2251,6 +2251,11 @@ next-images@1.8.1:
     file-loader "^6.2.0"
     url-loader "^4.1.0"
 
+next-seo@4.26.0:
+  version "4.26.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.26.0.tgz#4218cfae5651fdc2e330dcdf1cc1b34ce199d41c"
+  integrity sha512-5TqywQ3XAwqdmEU1AyNZjR7WdDKFTkDD8aBtgQelPvzBUEy8i0mTjtiw+09jhiHFNik6FqS8uPKCaYcY6jRgSQ==
+
 next-with-less@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-with-less/-/next-with-less-1.0.0.tgz#65adf5ec2f582142064d6e82d508b8057f190963"
