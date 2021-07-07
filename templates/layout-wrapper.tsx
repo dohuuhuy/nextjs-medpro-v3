@@ -1,6 +1,6 @@
 import React from 'react'
-import DefaultLayout from './default'
-import HomeLayout from './home'
+import DefaultLayout from './Default/default'
+import HomeLayout from './Home/home'
 
 const layouts: any = {
   default: DefaultLayout,
