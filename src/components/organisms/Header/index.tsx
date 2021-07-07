@@ -1,8 +1,12 @@
+/* eslint-disable react/display-name */
+import dynamic from 'next/dynamic'
 import Container from '@components/atoms/Container'
-import { Menu } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
 import React from 'react'
-import BreadcrumbLayout from '../Breadcrumb'
+const BreadcrumbLayout = dynamic(() => import('../Breadcrumb'))
+// // const MenuLayout = dynamic(() => import('../Menu'), {
+//   loading: () => <p>...</p>,
+// })
 import styles from './styles.module.less'
 
 const HeaderLayout = () => {
@@ -10,12 +14,8 @@ const HeaderLayout = () => {
     <Container fluid>
       <Header className={styles.header}>
         <Container>
-          <div className="logo">logo </div>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
+          <div>logo</div>
+          {/* <MenuLayout /> */}
           <BreadcrumbLayout />
         </Container>
       </Header>

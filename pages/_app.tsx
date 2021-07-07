@@ -6,7 +6,7 @@ import { wrapper } from './../src/store/rootStore'
 import '@tntran496/ts-ant-demo/libs/index.css'
 
 const MyApp = ({ Component, pageProps }: any) => {
-  const LayoutWrapper = Component.Layout ? Component.Layout : React.Fragment
+  const LayoutWrapper = Component.Layout || React.Fragment
   return (
     <>
       <DefaultSeo {...SEO} />
