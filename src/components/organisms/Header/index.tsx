@@ -7,10 +7,10 @@ import styles from './styles.module.less'
 
 const HeaderLayout = () => {
   return (
-    <Container fixed fluid>
+    <Container fluid>
       <Header className={styles.header}>
-        {/* <div className="logo" /> */}
         <Container>
+          <div className="logo">logo </div>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">nav 1</Menu.Item>
             <Menu.Item key="2">nav 2</Menu.Item>

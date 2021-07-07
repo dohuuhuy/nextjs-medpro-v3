@@ -1,7 +1,7 @@
-import HomeDetail from '@components/page/HomeDetail'
-
+import dynamic from 'next/dynamic'
 import React from 'react'
-import HomeLayout from 'templates/Home/home'
+const HomeLayout = dynamic(() => import('templates/Home/home'))
+const HomeDetail = dynamic(() => import('@components/page/HomeDetail'))
 
 const HomePage = () => {
   return <HomeDetail />
