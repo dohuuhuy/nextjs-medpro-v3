@@ -1,3 +1,5 @@
+import { VERSION } from './../../config/version'
+
 import { createWrapper } from 'next-redux-wrapper'
 import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -6,6 +8,7 @@ import rootReducer from '../rootReducer'
 import rootSaga from '../rootSaga'
 import { Persistor, persistReducer, persistStore } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+
 export interface SagaStore extends Store {
   sagaTask?: Task
 }
@@ -39,7 +42,6 @@ const makeStore = ({ isServer }: any) => {
   if (isServer) {
     return createStore(rootReducer, bindMiddleware([sagaMiddleware]))
   } else {
-    // const storage = require('redux-persist/lib/storage').default
     const storage =
       typeof window !== 'undefined'
         ? createWebStorage('local')
@@ -47,8 +49,8 @@ const makeStore = ({ isServer }: any) => {
 
     const persistConfig = {
       key: 'nextjs',
-      version: 9,
-      whitelist: ['counter'],
+      version: VERSION,
+      whitelist: [],
       storage,
     }
 
