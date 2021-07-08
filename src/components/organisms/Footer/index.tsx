@@ -5,11 +5,11 @@ import styles from './styles.module.less'
 
 const FooterLayout = () => {
   return (
-    <Footer className={styles.footer}>
+    <footer className={styles.footer}>
       <Container>
         <p>Ant Design ©2018 Created by Ant UED</p>
       </Container>
-    </Footer>
+    </footer>
   )
 }
 
