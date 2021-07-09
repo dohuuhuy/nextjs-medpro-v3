@@ -8,9 +8,9 @@
           {
             "root": ["./"],
             "alias": {
-              "@config": "src/config/",
-              "@components": "src/components",
-              "@store": "src/store"
+              "@config": "./src/config/",
+              "@components": "./src/components",
+              "@store": "./src/store"
             }
           }
         ]
@@ -24,7 +24,6 @@
           {
             "root": ["./"],
             "alias": {
-              "@src": "./src",
               "@config": "./src/config/",
               "@components": "./src/components",
               "@store": "./src/store"

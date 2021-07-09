@@ -2,7 +2,7 @@ import React from 'react'
 import 'public/assets/styles/app.less'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
-import { wrapper } from './../src/store/rootStore'
+// import { wrapper } from './../src/store/rootStore'
 import '@tntran496/ts-ant-demo/libs/index.css'
 
 const MyApp = ({ Component, pageProps }: any) => {
@@ -16,4 +16,7 @@ const MyApp = ({ Component, pageProps }: any) => {
     </>
   )
 }
-export default wrapper.withRedux(MyApp)
+// export default wrapper.withRedux(MyApp)
+export default MyApp
+
+// nếu có sử dụng saga thì mở dòng cmt

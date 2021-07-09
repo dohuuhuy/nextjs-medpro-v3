@@ -1,5 +1,6 @@
-/* eslint-disable react/display-name */
+
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import Container from '@components/atoms/Container'
 import { Header } from 'antd/lib/layout/layout'
 import React from 'react'
@@ -16,6 +17,18 @@ const HeaderLayout = () => {
         <Container>
           <div>logo</div>
           {/* <MenuLayout /> */}
+          <ul>
+            <li>
+              <Link href="/a" as="/a">
+                <a>a</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/b" as="/b">
+                <a>b</a>
+              </Link>
+            </li>
+          </ul>
           <BreadcrumbLayout />
         </Container>
       </Header>
