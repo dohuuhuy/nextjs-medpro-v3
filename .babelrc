@@ -8,7 +8,6 @@
           {
             "root": ["./"],
             "alias": {
-              "@": "src/",
               "@config": "src/config/",
               "@components": "src/components",
               "@store": "src/store"

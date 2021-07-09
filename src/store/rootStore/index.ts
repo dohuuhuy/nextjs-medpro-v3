@@ -1,13 +1,12 @@
-import { VERSION } from './../../config/version'
-
 import { createWrapper } from 'next-redux-wrapper'
 import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { Persistor, persistReducer, persistStore } from 'redux-persist'
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 import createSagaMiddleware, { Task } from 'redux-saga'
 import rootReducer from '../rootReducer'
 import rootSaga from '../rootSaga'
-import { Persistor, persistReducer, persistStore } from 'redux-persist'
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+import { VERSION } from './../../config/version'
 
 export interface SagaStore extends Store {
   sagaTask?: Task
