@@ -1,7 +1,12 @@
 {
+    "verbose": true,
     "watch": [
         "server"
     ],
     "exec": "ts-node --project tsconfig.server.json server/index.ts",
-    "ext": "js ts"
+    "ext": "js ts",
+    "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "./"
+    }
 }

@@ -13,11 +13,12 @@ app.prepare().then(() => {
     })
     .listen(port)
 
-  server.get('/huy/bi/a', (req: any, res: any) => {
+  server.get('/huy/bi', (req: any, res: any) => {
     return app.render(req, res, '/a', req.query)
   })
 
   // tslint:disable-next-line:no-console
+  console.log(`process.env.NODE_ENV`, process.env.NODE_ENV)
   console.log(
     `> Server listening at http://localhost:${port} as ${
       dev ? 'development' : process.env.NODE_ENV
