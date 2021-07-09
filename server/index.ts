@@ -1,17 +1,21 @@
-import { createServer } from 'http'
-import { parse } from 'url'
 import next from 'next'
-
+const express = require('express')
+const server = express()
 const port = parseInt(process.env.PORT || '3000', 10)
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true)
-    handle(req, res, parsedUrl)
-  }).listen(port)
+  server
+    .all('*', (req: any, res: any) => {
+      handle(req, res)
+    })
+    .listen(port)
+
+  server.get('/huy/bi/a', (req: any, res: any) => {
+    return app.render(req, res, '/a', req.query)
+  })
 
   // tslint:disable-next-line:no-console
   console.log(
