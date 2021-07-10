@@ -1,6 +1,7 @@
 import Container from '@components/atoms/Container'
 import { getDemo } from '@componentStore/demo/demo.action'
-import { DemoState } from '@componentStore/demo/demo.interface'
+import { DemoState } from '@componentStore/demo/demo.types/demo.interface'
+import { getDemo_Params } from '@componentStore/demo/demo.types/demo.params'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +9,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const HomeDetail = () => {
   const dispatch = useDispatch()
-  const getDemos = (name: any) => dispatch(getDemo(name))
+  const getDemos = ({ nameColor }: getDemo_Params) =>
+    dispatch(getDemo({ nameColor } as getDemo_Params))
+
   const DemoReducer: DemoState = useSelector(
     (state: { DemoReducer: DemoState }) => state.DemoReducer,
   )
@@ -22,7 +25,10 @@ const HomeDetail = () => {
         textAlign: 'center',
       }}
     >
-      <Button type={nameColor || 'primary'} onClick={() => getDemos('ghost')}>
+      <Button
+        type={nameColor || 'primary'}
+        onClick={() => getDemos({ nameColor: 'ghost' })}
+      >
         Button của antd
       </Button>
       <p>

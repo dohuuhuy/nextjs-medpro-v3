@@ -1,5 +1,6 @@
 import { all, fork, put, takeLatest } from 'redux-saga/effects'
-import { demoActionTypes, getDemo_Params } from './demo.types'
+import { demoActionTypes } from './demo.types/demo.action.types'
+import { getDemo_Params } from './demo.types/demo.params'
 
 function* demoSaga({ nameColor }: getDemo_Params) {
   try {
