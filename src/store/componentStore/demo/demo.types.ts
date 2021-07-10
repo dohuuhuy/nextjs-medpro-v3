@@ -34,5 +34,3 @@ export interface demo_failure {
 // enum thì không thể merge lại
 // sử dụng enum để truy suất phần tử con bên trong ví dụ như : enum.Color
 // interface sử dụng cho những trường hợp pulic như api ...
-
-export const GET_DEMO = 'GET_DEMO'
