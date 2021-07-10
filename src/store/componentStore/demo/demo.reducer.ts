@@ -13,9 +13,6 @@ export default function DemoReducer(
   action: demoAction | { type: typeof HYDRATE; payload: DemoState },
 ) {
   switch (action.type) {
-    case demoActionTypes.GET_DEMO:
-      return { ...state }
-
     case demoActionTypes.DEMO_SUCCESS:
       return { ...state, nameColor: action.nameColor }
 

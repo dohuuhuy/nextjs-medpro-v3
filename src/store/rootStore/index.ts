@@ -1,4 +1,4 @@
-import { createWrapper } from 'next-redux-wrapper'
+import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Persistor, persistReducer, persistStore } from 'redux-persist'
@@ -37,7 +37,7 @@ const createNoopStorage = () => {
 
 export let persistor: Persistor
 
-const makeStore = ({ isServer }: any) => {
+const makeStore: MakeStore<any> = ({ isServer }: any) => {
   if (isServer) {
     return createStore(rootReducer, bindMiddleware([sagaMiddleware]))
   } else {
@@ -67,4 +67,4 @@ const makeStore = ({ isServer }: any) => {
   }
 }
 
-export const wrapper = createWrapper(makeStore)
+export const wrapper = createWrapper<any>(makeStore)

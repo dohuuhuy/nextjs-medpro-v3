@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects'
-import { watchDemo } from './componentStore/demo/demo.saga'
+import DemoSagas from './componentStore/demo/demo.saga'
 
 export default function* rootSaga(): Generator {
-  yield all([watchDemo])
+  console.log(`5`, 5)
+  yield all([DemoSagas()])
 }

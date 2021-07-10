@@ -1,4 +1,3 @@
-// import { ExampleComponent } from '@tntran496/ts-ant-demo'
 import Container from '@components/atoms/Container'
 import { getDemo } from '@componentStore/demo/demo.action'
 import { DemoState } from '@componentStore/demo/demo.interface'
@@ -10,9 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 const HomeDetail = () => {
   const dispatch = useDispatch()
   const getDemos = (name: any) => dispatch(getDemo(name))
-  const { DemoReducer }: any = useSelector(
+  const DemoReducer: DemoState = useSelector(
     (state: { DemoReducer: DemoState }) => state.DemoReducer,
   )
+
+  const { nameColor }: any = DemoReducer
 
   return (
     <Container
@@ -21,14 +22,13 @@ const HomeDetail = () => {
         textAlign: 'center',
       }}
     >
-      <Button type={DemoReducer || 'primary'} onClick={() => getDemos('ghost')}>
+      <Button type={nameColor || 'primary'} onClick={() => getDemos('ghost')}>
         Button của antd
       </Button>
       <p>
         cấu hình file env nằm ngoài <br />
         {process.env.API}
       </p>
-      {/* <ExampleComponent text="@tntran496/ts-ant-demo" /> */}
     </Container>
   )
 }
