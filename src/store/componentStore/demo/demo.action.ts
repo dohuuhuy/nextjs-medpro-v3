@@ -10,3 +10,9 @@ export const getDemo = ({
     nameColor,
   }
 }
+
+export const deleteColor = (): demoAction.deleteColor => {
+  return {
+    type: demoActionTypes.DELETE_COLOR,
+  }
+}

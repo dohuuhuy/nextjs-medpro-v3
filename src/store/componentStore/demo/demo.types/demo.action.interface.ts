@@ -1,11 +1,15 @@
 import { demoActionTypes } from './demo.action.types'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
-export type demoAction = get_Demo | demo_success | demo_failure
+export type demoAction = get_Demo | demo_success | demo_failure | deleteColor
 
 export interface get_Demo {
   type: demoActionTypes.GET_DEMO
   nameColor: string
+}
+
+export interface deleteColor {
+  type: demoActionTypes.DELETE_COLOR
 }
 
 export interface demo_success {

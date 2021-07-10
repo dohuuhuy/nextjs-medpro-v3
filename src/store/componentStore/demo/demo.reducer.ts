@@ -4,7 +4,7 @@ import { DemoState } from './demo.types/demo.interface'
 import { demoActionTypes } from './demo.types/demo.action.types'
 
 const DemoInitialState: DemoState = {
-  nameColor: '',
+  nameColor: 'primary',
 }
 
 export default function DemoReducer(
@@ -14,6 +14,12 @@ export default function DemoReducer(
   switch (action.type) {
     case demoActionTypes.DEMO_SUCCESS:
       return { ...state, nameColor: action.nameColor }
+
+    case demoActionTypes.DELETE_COLOR:
+      if (state.nameColor === 'primary') {
+        alert('đã xóa rồi')
+      }
+      return { ...DemoInitialState }
 
     default:
       return state
