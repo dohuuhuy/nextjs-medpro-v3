@@ -1,11 +1,11 @@
-import ThacMacDetail from '@components/page/ThacMacDetail'
 import React from 'react'
-import DefaultLayout from 'templates/Default/default'
+import dynamic from 'next/dynamic'
+const DefaultLayout = dynamic(() => import('templates/Default/default'))
+const ThacMacDetail = dynamic(() => import('@components/page/ThacMacDetail'))
 
 const ThacMacPage = () => {
   return <ThacMacDetail />
 }
 
 ThacMacPage.Layout = DefaultLayout
-
 export default ThacMacPage

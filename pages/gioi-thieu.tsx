@@ -1,10 +1,13 @@
-import GioiThieuDetail from '@components/page/GioiThieuDetail'
 import React from 'react'
-import DefaultLayout from 'templates/Default/default'
+import dynamic from 'next/dynamic'
+const DefaultLayout = dynamic(() => import('templates/Default/default'))
+const GioiThieuDetail = dynamic(
+  () => import('@components/page/GioiThieuDetail'),
+)
 
 const GioiThieuPage = () => {
   return <GioiThieuDetail />
 }
-GioiThieuPage.Layout = DefaultLayout
 
+GioiThieuPage.Layout = DefaultLayout
 export default GioiThieuPage
