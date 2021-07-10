@@ -21,6 +21,7 @@
     "paths": {
       "@config/*": ["./src/config/*"],
       "@components/*": ["./src/components/*"],
+      "@componentStore/*": ["./src/store/componentStore/*"],
       "@store/*": ["./src/store/*"]
     },
     "forceConsistentCasingInFileNames": true,

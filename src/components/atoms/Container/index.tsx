@@ -6,6 +6,7 @@ type Props = {
   fluid?: boolean
   fixed?: boolean
   className?: any
+  style?: any
 }
 
 const Container = ({
@@ -13,9 +14,11 @@ const Container = ({
   fluid,
   fixed,
   className: classStyles,
+  style,
 }: Props) => {
   return (
     <div
+      style={style}
       className={cx(styles.container, classStyles, {
         [styles.container_fluid]: fluid,
         [styles.container_fixed]: fixed,

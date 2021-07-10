@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 
-const reducers = {}
+import DemoReducer from './componentStore/demo/demo.reducer'
+
+const reducers = { DemoReducer }
 
 const rootReducer = combineReducers(reducers)
 
