@@ -1,4 +1,5 @@
 import Container from '@components/atoms/Container'
+import { GET_ENV } from '@config/envs/env'
 import React from 'react'
 
 const GioiThieuDetail = () => {
@@ -13,6 +14,7 @@ const GioiThieuDetail = () => {
       >
         GioiThieuDetail
       </p>
+      <p>Lấy api từ môi trường: {GET_ENV.API_X}</p>
     </Container>
   )
 }

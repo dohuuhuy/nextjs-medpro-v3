@@ -49,7 +49,7 @@ const makeStore: MakeStore<any> = ({ isServer }: any) => {
     const persistConfig = {
       key: 'nextjs',
       version: VERSION,
-      whitelist: [],
+      whitelist: ['demo'],
       storage,
     }
 
