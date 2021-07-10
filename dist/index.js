@@ -12,11 +12,6 @@ const dev = NODE_ENV !== 'production';
 const app = next_1.default({ dev });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
-    server
-        .all('*', (req, res) => {
-        handle(req, res);
-    })
-        .listen(port);
     server.get('/gioi-thieu', (req, res) => {
         return app.render(req, res, '/gioi-thieu', req.query);
     });
@@ -29,6 +24,11 @@ app.prepare().then(() => {
     server.get('/lien-he', (req, res) => {
         return app.render(req, res, '/lien-he', req.query);
     });
+    server
+        .all('*', (req, res) => {
+        handle(req, res);
+    })
+        .listen(port);
     console.log(`> Server listening at http://localhost:${port} as ${NODE_ENV}`);
 });
 //# sourceMappingURL=index.js.map
