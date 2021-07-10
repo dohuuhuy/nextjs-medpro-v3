@@ -1,4 +1,4 @@
-export default {
+const SEO_DEFAULT = {
   title: 'default seo',
   description: 'default',
   canonical: 'https://huyi.tk',
@@ -19,3 +19,5 @@ export default {
     site_name: 'Home',
   },
 }
+
+export default SEO_DEFAULT
