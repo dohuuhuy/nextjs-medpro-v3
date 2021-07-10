@@ -1,3 +1,5 @@
+import { NODE_ENV } from '@config/envs/env'
+import { VERSION } from '@config/version'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -6,7 +8,6 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 import createSagaMiddleware, { Task } from 'redux-saga'
 import rootReducer from '../rootReducer'
 import rootSaga from '../rootSaga'
-import { VERSION } from './../../config/version'
 
 export interface SagaStore extends Store {
   sagaTask?: Task
@@ -15,7 +16,7 @@ export interface SagaStore extends Store {
 const sagaMiddleware = createSagaMiddleware()
 
 const bindMiddleware = (middleware: any[]) => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (NODE_ENV !== 'production') {
     return composeWithDevTools(applyMiddleware(...middleware))
   }
   return applyMiddleware(...middleware)
@@ -49,7 +50,7 @@ const makeStore: MakeStore<any> = ({ isServer }: any) => {
     const persistConfig = {
       key: 'nextjs',
       version: VERSION,
-      whitelist: ['demo'],
+      whitelist: ['DemoReducer'],
       storage,
     }
 
