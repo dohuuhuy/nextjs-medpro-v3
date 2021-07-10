@@ -1,25 +1,24 @@
 import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
+import { Layout } from 'antd'
+import { Content } from 'antd/lib/layout/layout'
 import React, { ReactNode } from 'react'
+import styles from './styles.module.less'
 
 type Props = {
   children?: ReactNode
 }
 
-const defaultLayout = ({ children }: Props) => {
+const DefaultLayout = ({ children }: Props) => {
   return (
-    <>
-      <header>
-        <Header />
-      </header>
+    <Layout className={styles.layout}>
+      <Header />
 
-      <main style={{ minHeight: '900px' }}>{children}</main>
+      <Content className={styles.content}>{children}</Content>
 
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      <Footer />
+    </Layout>
   )
 }
 
-export default defaultLayout
+export default DefaultLayout

@@ -1,8 +1,22 @@
 @import '/public/assets/styles/variable.less';
 
 .header {
-  max-width: 1920px;
   width: 100%;
   height: auto;
   background-color: @bg_default;
+  line-height: unset;
+  .logo {
+    background-color: gold;
+    padding: 20px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    li {
+      background-color: aqua;
+      padding: 10px 15px;
+    }
+  }
 }

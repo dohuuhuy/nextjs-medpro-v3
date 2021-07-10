@@ -15,9 +15,7 @@ const HomeLayout = ({ children }: Props) => {
     <Layout className={styles.layout}>
       <Header />
 
-      <Content className={styles.content}>
-        <div className={styles.siteLayout}>{children}</div>
-      </Content>
+      <Content className={styles.content}>{children}</Content>
 
       <Footer />
     </Layout>

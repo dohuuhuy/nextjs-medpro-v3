@@ -1,4 +1,3 @@
-
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Container from '@components/atoms/Container'
@@ -10,29 +9,49 @@ const BreadcrumbLayout = dynamic(() => import('../Breadcrumb'))
 // })
 import styles from './styles.module.less'
 
+const menu = [
+  {
+    label: 'Trang chủ',
+    slug: '/',
+  },
+  {
+    label: 'Giới thiệu',
+    slug: '/gioi-thieu',
+  },
+  {
+    label: 'Quy trình',
+    slug: '/quy-trinh',
+  },
+  {
+    label: 'Thắc mác',
+    slug: '/thac-mac',
+  },
+  {
+    label: 'Liên hệ',
+    slug: '/lien-he',
+  },
+]
+
 const HeaderLayout = () => {
   return (
-    <Container fluid>
-      <Header className={styles.header}>
-        <Container>
-          <div>logo</div>
-          {/* <MenuLayout /> */}
-          <ul>
-            <li>
-              <Link href="/a" as="/a">
-                <a>a</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/b" as="/b">
-                <a>b</a>
-              </Link>
-            </li>
-          </ul>
-          <BreadcrumbLayout />
-        </Container>
-      </Header>
-    </Container>
+    <Header className={styles.header}>
+      <Container>
+        <div className={styles.logo}>logo</div>
+        {/* <MenuLayout /> */}
+        <ul className={styles.menu}>
+          {menu.map(({ label, slug }, i: any) => {
+            return (
+              <li key={i}>
+                <Link href={slug} as={slug}>
+                  <a>{label}</a>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+        <BreadcrumbLayout />
+      </Container>
+    </Header>
   )
 }
 

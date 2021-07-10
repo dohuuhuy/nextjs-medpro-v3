@@ -6,16 +6,14 @@ import React from 'react'
 
 const HomeDetail = () => {
   return (
-    <>
-      <Container>
-        <Button type="primary">Button của antd</Button>
-        <p>
-          cấu hình file env nằm ngoài <br />
-          {process.env.API}
-        </p>
-        {/* <ExampleComponent text="@tntran496/ts-ant-demo" /> */}
-      </Container>
-    </>
+    <Container>
+      <Button type="primary">Button của antd</Button>
+      <p>
+        cấu hình file env nằm ngoài <br />
+        {process.env.API}
+      </p>
+      {/* <ExampleComponent text="@tntran496/ts-ant-demo" /> */}
+    </Container>
   )
 }
 
