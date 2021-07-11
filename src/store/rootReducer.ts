@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import DemoReducer from './componentStore/demo/demo.reducer'
+import DemoReducer from '@componentStore/demo/demo.reducer'
 
 const reducers = { DemoReducer }
 

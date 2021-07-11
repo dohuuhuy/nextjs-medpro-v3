@@ -1,43 +1,26 @@
-import { VERSION } from '@config/version'
+import rootReducer from '@store/rootReducer'
+import rootSaga from '@store/rootSaga'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { createStore } from 'redux'
-import { Persistor, persistReducer, persistStore } from 'redux-persist'
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
-import rootReducer from '../rootReducer'
-import rootSaga from '../rootSaga'
-import {
-  bindMiddleware,
-  createNoopStorage,
-  sagaMiddleware,
-  SagaStore,
-} from './handlerStore'
-import { listPersists } from './persistConfig'
+import { Persistor, persistStore } from 'redux-persist'
 
+import { bindMiddleware, sagaMiddleware } from './handlerStore'
+import { persistedReducer } from './persistConfig'
 export let persistor: Persistor
 
 const makeStore: MakeStore<any> = ({ isServer }: any) => {
   if (isServer) {
-    return createStore(rootReducer, bindMiddleware([sagaMiddleware]))
+    const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
+    return store
   } else {
-    const storage =
-      typeof window !== 'undefined'
-        ? createWebStorage('local')
-        : createNoopStorage()
-
-    const persistConfig = {
-      key: 'nextjs',
-      version: VERSION,
-      whitelist: listPersists,
-      storage,
-    }
-
-    const persistedReducer = persistReducer(persistConfig, rootReducer)
     const store = createStore(
-      persistedReducer,
+      persistedReducer(),
       bindMiddleware([sagaMiddleware]),
     )
+
     persistor = persistStore(store)
-    ;(store as SagaStore).sagaTask = sagaMiddleware.run(rootSaga)
+
+    sagaMiddleware.run(rootSaga)
 
     return store
   }

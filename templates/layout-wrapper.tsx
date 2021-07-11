@@ -1,6 +1,7 @@
 import React from 'react'
-import DefaultLayout from './Default/default'
-import HomeLayout from './Home/home'
+import dynamic from 'next/dynamic'
+const DefaultLayout = dynamic(() => import('@templates/Default/default'))
+const HomeLayout = dynamic(() => import('@templates/Home/home'))
 
 const layouts: any = {
   default: DefaultLayout,
@@ -9,6 +10,9 @@ const layouts: any = {
 
 const LayoutWrapper = (props: any) => {
   const Layout: any = layouts[props.children.type.layout]
+
+  const favicon: any = document.getElementById('favicon')
+  favicon.href = `./favicon/${'115'}.png`
 
   if (Layout !== null) {
     return <Layout {...props}>{props.children}</Layout>

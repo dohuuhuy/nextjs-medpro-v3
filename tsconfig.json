@@ -22,7 +22,8 @@
       "@config/*": ["./src/config/*"],
       "@components/*": ["./src/components/*"],
       "@componentStore/*": ["./src/store/componentStore/*"],
-      "@store/*": ["./src/store/*"]
+      "@store/*": ["./src/store/*"],
+      "@templates/*": ["./templates/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

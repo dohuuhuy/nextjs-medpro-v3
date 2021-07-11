@@ -2,6 +2,7 @@ import Container from '@components/atoms/Container'
 import { deleteColor, getDemo } from '@componentStore/demo/demo.action'
 import { DemoState } from '@componentStore/demo/demo.types/demo.interface'
 import { getDemo_Params } from '@componentStore/demo/demo.types/demo.params'
+import { AppState } from '@store/interface'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,11 +15,15 @@ const HomeDetail = () => {
 
   const deleteColors = () => dispatch(deleteColor())
 
-  const DemoReducer: DemoState = useSelector(
-    (state: { DemoReducer: DemoState }) => state.DemoReducer,
+  // const DemoReducer = useSelector<AppState, object>(
+  //   (state: { DemoReducer: DemoState }) => state.DemoReducer,
+  // )
+
+  const nameColor = useSelector<AppState, string | any>(
+    (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor,
   )
 
-  const { nameColor }: any = DemoReducer
+  // const { nameColor }: any = DemoReducer
 
   return (
     <Container

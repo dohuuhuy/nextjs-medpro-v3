@@ -1,5 +1,5 @@
 const SEO_DEFAULT = {
-  title: 'default seo',
+  title: 'Trang chủ | Đặt Khám Medpro',
   description: 'default',
   canonical: 'https://huyi.tk',
   noindex: true,
