@@ -1,10 +1,9 @@
+import '@assets/styles/app.less'
 import { get_PartnerId } from '@componentStore/totalData/totalData.action'
-import '@medpro/booking-libs/libs/index.css'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
-import '@assets/styles/app.less'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
