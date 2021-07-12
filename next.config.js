@@ -15,7 +15,7 @@ const withPlugins = require('next-compose-plugins')
 // cấu hình varible antd
 const themeVariables = lessToJS(
   fs.readFileSync(
-    path.resolve(__dirname, 'public/assets/styles/variable.less'),
+    path.resolve(__dirname, 'assets/styles/variable.less'),
     'utf8',
   ),
 )

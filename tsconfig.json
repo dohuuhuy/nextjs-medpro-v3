@@ -23,9 +23,8 @@
       "@components/*": ["./src/components/*"],
       "@componentStore/*": ["./src/store/componentStore/*"],
       "@store/*": ["./src/store/*"],
-      "@templates/*": ["./templates/*"]
-      // "@medpro": ["/node_modules/@medpro/*"]
-      // "@booking-libs/*": ["/node_modules/@medpro/booking-libs"]
+      "@templates/*": ["./templates/*"],
+      "@assets/*": ["./assets/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

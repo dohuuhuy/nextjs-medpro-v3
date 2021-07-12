@@ -8,12 +8,12 @@
           {
             "root": ["./"],
             "alias": {
-              "@config": "./src/config/",
+              "@config": "./src/config",
               "@components": "./src/components",
               "@componentStore": "./src/store/componentStore",
               "@store": "./src/store",
-              "@templates/*": "/templates/*"
-              // "@medpro": "/node_modules/@medpro/*"
+              "@templates": "./templates",
+              "@assets": "./assets"
             }
           }
         ]
@@ -27,11 +27,12 @@
           {
             "root": ["./"],
             "alias": {
-              "@config": "./src/config/",
+              "@config": "./src/config",
               "@components": "./src/components",
               "@componentStore": "./src/store/componentStore",
               "@store": "./src/store",
-              "@templates/*": "/templates/*"
+              "@templates": "./templates",
+              "@assets": "./assets"
             }
           }
         ]
