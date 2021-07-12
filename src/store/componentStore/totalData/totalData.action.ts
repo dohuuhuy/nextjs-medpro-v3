@@ -1,8 +1,8 @@
-import { partnerId_Request } from './totalData.types/totalData.action'
-import { PartnerId_Action_Types } from './totalData.types/totalData.action.types'
+import { partnerId_Action, PartnerId_Action_Types } from '@store/interface'
 
-export const get_PartnerId = (): partnerId_Request => {
+export const get_PartnerId = (): partnerId_Action => {
   return {
     type: PartnerId_Action_Types.PartnerId_REQUEST,
+    id: 1,
   }
 }

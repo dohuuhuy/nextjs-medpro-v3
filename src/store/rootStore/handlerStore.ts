@@ -8,19 +8,7 @@ import createSagaMiddleware, { Task } from 'redux-saga'
 
 export const sagaMiddleware = createSagaMiddleware()
 
-export const createNoopStorage = () => {
-  return {
-    getItem(_key: string) {
-      return Promise.resolve(null)
-    },
-    setItem(_key: string, value: any) {
-      return Promise.resolve(value)
-    },
-    removeItem(_key: string) {
-      return Promise.resolve()
-    },
-  }
-}
+
 
 export const bindMiddleware = (middleware: any[]) => {
   if (NODE_ENV !== 'production') {

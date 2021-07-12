@@ -1,6 +1,6 @@
+import { PartnerId_Action_Types } from '@store/interface'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
-import { PartnerId_Action_Types } from './totalData.types/totalData.action.types'
 
 const getData = async (url: any) => {
   const res = await axios.get(url)

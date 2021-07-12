@@ -2,8 +2,9 @@ import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
-const Footer = dynamic(() => import('@components/organisms/Footer'))
+
 const Header = dynamic(() => import('@components/organisms/Header'))
+const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode

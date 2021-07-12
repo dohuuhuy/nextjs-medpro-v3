@@ -1,14 +1,17 @@
-import { HYDRATE } from 'next-redux-wrapper'
-import { PartnerId_Action_Types } from './totalData.types/totalData.action.types'
+import {
+  partnerId_Action,
+  PartnerId_Action_Types,
+  totalData_State,
+} from '@store/interface'
 
-const totalData_InitialState: any = {
-  parnerId: '',
+const totalData_InitialState: totalData_State = {
+  partnerId: '',
   list_partners: [],
 }
 
 export default function totalData_Reducer(
   state = totalData_InitialState,
-  action: any | { type: typeof HYDRATE; payload: any },
+  action: partnerId_Action,
 ) {
   switch (action.type) {
     case PartnerId_Action_Types.PartnerId_REQUEST_SUCCESS:
