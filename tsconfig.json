@@ -21,15 +21,16 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@components/*": ["./src/components/*"],
+      "@componentStore/*": ["./src/store/componentStore/*"],
+      "@store/*": ["./src/store/*"],
+      "@templates/*": ["./templates/*"],
+      "@assets/*": ["./assets/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".next",
-    "out",
-    "next.config.js",
-    "customPath.json"
-  ]
+  "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
 }

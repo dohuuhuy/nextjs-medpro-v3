@@ -1,17 +1,13 @@
-import * as demoAction from './demo.types/demo.action.interface'
-import * as demoParams from './demo.types/demo.params'
-import { demoActionTypes } from './demo.types/demo.action.types'
+import { demoAction, demoActionTypes, demoParams } from '@store/interface'
 
-export const getDemo = ({
-  nameColor,
-}: demoParams.getDemo_Params): demoAction.get_Demo => {
+export const getDemo = ({ nameColor }: demoParams.): demoAction => {
   return {
     type: demoActionTypes.GET_DEMO,
     nameColor,
   }
 }
 
-export const deleteColor = (): demoAction.deleteColor => {
+export const deleteColor = (): demoAction => {
   return {
     type: demoActionTypes.DELETE_COLOR,
   }

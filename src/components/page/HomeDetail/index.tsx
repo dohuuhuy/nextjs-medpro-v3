@@ -1,6 +1,6 @@
 import Container from '@components/atoms/Container'
 import { deleteColor, getDemo } from '@componentStore/demo/demo.action'
-import { DemoState } from '@componentStore/demo/demo.types/demo.interface'
+import { DemoState } from '@componentStore/demo/demo.types/demo.initialState'
 import { getDemo_Params } from '@componentStore/demo/demo.types/demo.params'
 import { Button } from 'antd'
 import React from 'react'

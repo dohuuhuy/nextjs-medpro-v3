@@ -1,6 +1,6 @@
-import { demoAction } from './demo.types/demo.action.interface'
+import { demoAction } from './demo.types/demo.action'
 import { HYDRATE } from 'next-redux-wrapper'
-import { DemoState } from './demo.types/demo.interface'
+import { DemoState } from './demo.types/demo.initialState'
 import { demoActionTypes } from './demo.types/demo.action.types'
 
 const DemoInitialState: DemoState = {
