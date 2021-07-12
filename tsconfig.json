@@ -24,6 +24,8 @@
       "@componentStore/*": ["./src/store/componentStore/*"],
       "@store/*": ["./src/store/*"],
       "@templates/*": ["./templates/*"]
+      // "@medpro": ["/node_modules/@medpro/*"]
+      // "@booking-libs/*": ["/node_modules/@medpro/booking-libs"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

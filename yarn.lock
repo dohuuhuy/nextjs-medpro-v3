@@ -174,10 +174,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@medpro/booking-libs@0.0.21":
-  version "0.0.21"
-  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.21.tgz#30ef8bde85ae883546ab402db0c66a4fefa16d95"
-  integrity sha1-MO+L3oWuiDVGq0AtsMZqT++hbZU=
+"@medpro/booking-libs@0.0.26":
+  version "0.0.26"
+  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.26.tgz#00ed4be9f267c91ed8b1b29c9975e384cd40af51"
+  integrity sha1-AO1L6fJnyR7YsbKcmXXjhM1Ar1E=
   dependencies:
     "@craco/craco" "6.2.0"
     antd "4.16.6"
@@ -186,6 +186,8 @@
     craco-antd "1.19.0"
     craco-less "1.18.0"
     css-loader "5.2.6"
+    lodash "^4.17.21"
+    moment "^2.29.1"
     postcss-loader "6.1.1"
     style-loader "3.0.0"
 
@@ -3554,7 +3556,7 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-moment@^2.24.0, moment@^2.25.3:
+moment@^2.24.0, moment@^2.25.3, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==

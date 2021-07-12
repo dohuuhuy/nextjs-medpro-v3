@@ -1,12 +1,8 @@
-import * as demoAction from './totalData.types/totalData.action.interface'
-import * as demoParams from './totalData.types/totalData.params'
-import { demoActionTypes } from './totalData.types/totalData.action.types'
+import { partnerId_Request } from './totalData.types/totalData.action'
+import { PartnerId_Action_Types } from './totalData.types/totalData.action.types'
 
-export const getDemo = ({
-  nameColor,
-}: demoParams.getDemo_Params): demoAction.get_Demo => {
+export const get_PartnerId = (): partnerId_Request => {
   return {
-    type: demoActionTypes.GET_DEMO,
-    nameColor,
+    type: PartnerId_Action_Types.PartnerId_REQUEST,
   }
 }

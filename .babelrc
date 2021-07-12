@@ -13,6 +13,7 @@
               "@componentStore": "./src/store/componentStore",
               "@store": "./src/store",
               "@templates/*": "/templates/*"
+              // "@medpro": "/node_modules/@medpro/*"
             }
           }
         ]

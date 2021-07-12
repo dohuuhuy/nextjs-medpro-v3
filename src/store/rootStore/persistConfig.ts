@@ -4,7 +4,7 @@ import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 import { createNoopStorage } from './handlerStore'
 
-export const listPersists = ['DemoReducer']
+export const listPersists = ['DemoReducer', 'totalData_Reducer']
 
 export const persistedReducer = () => {
   const storage =

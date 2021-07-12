@@ -1,6 +1,13 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
-export enum demoActionTypes {
-  GET_DEMO = 'GET_DEMO',
-  DEMO_SUCCESS = 'DEMO_SUCCESS',
-  DEMO_FAILURE = 'DEMO_FAILURE',
+export enum PartnerId_Action_Types {
+  PartnerId_REQUEST = 'REQUEST',
+  PartnerId_REQUEST_SUCCESS = 'PartnerId_REQUEST_SUCCESS',
+  PartnerId_REQUEST_FAILURE = ' PartnerId_REQUEST_FAILURE',
+  PartnerId_UPDATE = 'PartnerId_UPDATE',
+  PartnerId_DELETE = 'PartnerId_DELETE',
 }
+
+// Cách đăt tên:
+// Exp: <Danh từ>_<tính năng>_<trạng thái>
+// Tính năng: request, update, delete
+// Trạng thái: success, failure, ...
