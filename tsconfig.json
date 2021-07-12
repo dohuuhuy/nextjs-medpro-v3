@@ -18,19 +18,18 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./types"],
     "lib": ["dom", "es2017"],
-    "paths": {
-      "@config/*": ["./src/config/*"],
-      "@components/*": ["./src/components/*"],
-      "@componentStore/*": ["./src/store/componentStore/*"],
-      "@store/*": ["./src/store/*"],
-      "@templates/*": ["./templates/*"],
-      "@assets/*": ["./assets/*"]
-    },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "out",
+    "next.config.js",
+    "customPath.json"
+  ]
 }
