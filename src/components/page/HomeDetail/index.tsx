@@ -1,7 +1,6 @@
+import { deleteColor, getDemo } from '@actionStore/rootAction'
 import Container from '@components/atoms/Container'
-import { deleteColor, getDemo } from '@componentStore/demo/demo.action'
-import { DemoState } from '@componentStore/demo/demo.types/demo.initialState'
-import { getDemo_Params } from '@componentStore/demo/demo.types/demo.params'
+import { DemoState } from '@store/interface'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,10 +8,6 @@ import styles from './styles.module.less'
 
 const HomeDetail = () => {
   const dispatch = useDispatch()
-  const getDemos = ({ nameColor }: getDemo_Params) =>
-    dispatch(getDemo({ nameColor } as getDemo_Params))
-
-  const deleteColors = () => dispatch(deleteColor())
 
   const nameColor: any = useSelector(
     (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor,
@@ -21,14 +16,14 @@ const HomeDetail = () => {
   return (
     <Container
       style={{
-        paddingTop: '2rem',
+        paddingTop: '160px',
         textAlign: 'center',
       }}
     >
       <Button
         disabled={nameColor === 'ghost'}
         type={nameColor}
-        onClick={() => getDemos({ nameColor: 'ghost' })}
+        onClick={() => dispatch(getDemo({ nameColor: 'ghost' }))}
       >
         Button của antd
       </Button>
@@ -39,7 +34,7 @@ const HomeDetail = () => {
       <button
         disabled={nameColor === 'primary'}
         className={styles.BtnDel}
-        onClick={() => deleteColors()}
+        onClick={() => dispatch(deleteColor())}
       >
         xóa color
       </button>

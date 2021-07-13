@@ -1,5 +1,6 @@
-import { get_PartnerId } from '@actionStore/index'
+import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
+import '@medpro/booking-libs/libs/index.css'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
