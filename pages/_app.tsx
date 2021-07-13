@@ -1,5 +1,5 @@
+import { get_PartnerId } from '@actionStore/index'
 import '@assets/styles/app.less'
-import { get_PartnerId } from '@componentStore/totalData/totalData.action'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'

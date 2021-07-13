@@ -26,6 +26,7 @@
       "@config/*": ["./src/config/*"],
       "@components/*": ["./src/components/*"],
       "@componentStore/*": ["./src/store/componentStore/*"],
+      "@actionStore/*": ["./src/store/actionStore/*"],
       "@store/*": ["./src/store/*"],
       "@templates/*": ["./templates/*"],
       "@assets/*": ["./assets/*"]
