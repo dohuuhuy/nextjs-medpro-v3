@@ -1,8 +1,9 @@
 import { set_partnerId_local } from '@actionStore/rootAction'
+import { totalData_State } from '@store/interface'
 import { Button, Modal } from 'antd'
 import Search from 'antd/lib/input/Search'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
 
 const RunLocal = () => {
@@ -14,8 +15,15 @@ const RunLocal = () => {
     setIsModalVisible(!isModalVisible)
   }
 
-  const onSearch = (value: string) =>
+  const onSearch = (value: string) => {
+    const partnerId: any = window.localStorage.setItem('partnerId', value)
+
+    if (partnerId !== value) {
+      window.localStorage.setItem('partnerId', value)
+    }
+
     dispatch(set_partnerId_local({ partnerId: value, local: true }))
+  }
 
   const handleOk = () => {
     setIsModalVisible(false)
@@ -25,15 +33,22 @@ const RunLocal = () => {
     setIsModalVisible(false)
   }
 
+  const localhost = useSelector(
+    (state: { totalData_Reducer: totalData_State }) =>
+      state.totalData_Reducer.localhost,
+  )
+
   return (
     <>
-      <Button
-        type="primary"
-        onClick={showModal}
-        className={styles.Btn_local_hospital}
-      >
-        Test bệnh viện
-      </Button>
+      {localhost ? (
+        <Button
+          type="primary"
+          onClick={showModal}
+          className={styles.Btn_local_hospital}
+        >
+          Test bệnh viện
+        </Button>
+      ) : null}
 
       <Modal
         footer={false}

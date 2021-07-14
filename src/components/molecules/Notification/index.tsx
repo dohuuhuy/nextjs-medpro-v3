@@ -1,15 +1,12 @@
 import { notification } from 'antd'
+import { ArgsProps } from 'antd/lib/notification'
 // import styles from './styles.module.less'
 
-export type Noti = {
-  type: type
-  message: string
-  description?: string
-}
-
-type type = 'success' | 'info' | 'warning' | 'error'
-
-export const Notification = ({ type, message, description }: Noti) => {
+export const Notification = ({
+  type = 'success',
+  message,
+  description,
+}: ArgsProps) => {
   notification[type]({
     message,
     description,

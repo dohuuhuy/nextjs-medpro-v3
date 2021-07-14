@@ -2,12 +2,13 @@ import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import RunLocal from '@components/molecules/RunLocal'
 import '@medpro/booking-libs/libs/index.css'
+import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const test_bệnh_viện_trên_local = {
   partnerId: 'bvtest',
@@ -28,6 +29,18 @@ const MyApp = ({ Component, pageProps }: any) => {
     checkVersion(persistor)
   })
 
+  const err = useSelector<AppState>(
+    (state: any) => state.totalData_Reducer.list_error.ListPartners_ERROR,
+  )
+
+  if (err) {
+    return (
+      <div>
+        null
+        <RunLocal />
+      </div>
+    )
+  }
   return (
     <LayoutWrapper>
       <DefaultSeo {...SEO} />
