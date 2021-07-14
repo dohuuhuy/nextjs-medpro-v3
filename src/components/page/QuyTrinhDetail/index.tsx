@@ -1,14 +1,7 @@
 import Container from '@components/atoms/Container'
-import React, { useState, useEffect } from 'react'
-import Editor from './Editor'
+import React from 'react'
 
 const QuyTrinhDetail = () => {
-  const [editorLoaded, setEditorLoaded] = useState(false)
-  const [data, setData] = useState('')
-
-  useEffect(() => {
-    setEditorLoaded(true)
-  }, [])
   return (
     <Container>
       <p
@@ -20,16 +13,6 @@ const QuyTrinhDetail = () => {
       >
         QuyTrinhDetail
       </p>
-
-      <Editor
-        name="description"
-        onChange={(data: any) => {
-          setData(data)
-        }}
-        editorLoaded={editorLoaded}
-      />
-
-      {JSON.stringify(data)}
     </Container>
   )
 }
