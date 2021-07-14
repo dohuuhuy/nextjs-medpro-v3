@@ -29,7 +29,8 @@
       "@actionStore/*": ["./src/store/actionStore/*"],
       "@store/*": ["./src/store/*"],
       "@templates/*": ["./templates/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

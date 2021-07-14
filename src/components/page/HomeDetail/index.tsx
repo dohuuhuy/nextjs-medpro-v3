@@ -1,4 +1,8 @@
-import { deleteColor, getDemo } from '@actionStore/rootAction'
+import {
+  deleteColor,
+  getDemo,
+  set_partnerId_local,
+} from '@actionStore/rootAction'
 import Container from '@components/atoms/Container'
 import { DemoState } from '@store/interface'
 import { Button } from 'antd'
@@ -39,6 +43,22 @@ const HomeDetail = () => {
         onClick={() => dispatch(deleteColor())}
       >
         xóa color
+      </button>
+      <button
+        className={styles.BtnDel}
+        onClick={() =>
+          dispatch(set_partnerId_local({ partnerId: 'bvtest', local: true }))
+        }
+      >
+        bệnh viện test
+      </button>
+      <button
+        className={styles.BtnDel}
+        onClick={() =>
+          dispatch(set_partnerId_local({ partnerId: 'dalieu', local: true }))
+        }
+      >
+        bệnh viện da liễu
       </button>
     </Container>
   )

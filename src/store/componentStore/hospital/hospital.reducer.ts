@@ -1,6 +1,6 @@
 import {
   Hospital_Action,
-  Hospital_Action_Types,
+  Hospital_Details_Action_Types,
   hospital_State,
 } from '@store/interface'
 
@@ -13,11 +13,18 @@ export default function hospital_Reducer(
   action: Hospital_Action,
 ) {
   switch (action.type) {
-    case Hospital_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS:
+    case Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS:
       return {
         ...state,
         hospital_details: action.hospital_details,
       }
+
+    case Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS: {
+      return {
+        ...state,
+        hospital_details: hospital_InitialState.hospital_details,
+      }
+    }
     default:
       return state
   }

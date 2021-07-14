@@ -1,8 +1,7 @@
-import { list_partners, list_partners_item } from '@store/interface'
-
 export interface run_local_hospital {
-  partnerId: string
-  listPartners: list_partners
+  listPartners: any
+  partnerId?: string
+  local?: boolean
 }
 
 export const handlerDoamain = () => {
@@ -15,17 +14,29 @@ export const handlerDoamain = () => {
 export const run_local_hospital = ({
   partnerId,
   listPartners,
+  local,
 }: run_local_hospital) => {
-  const localhost = {
-    domain: ['localhost', '192.168.1.10'],
-    partnerId,
+  if (local) {
+    const localhost = {
+      domain: ['localhost', '192.168.1.10'],
+      partnerId,
+    }
+    listPartners.push(localhost)
   }
 
-  listPartners.push(localhost)
-
-  const res: list_partners_item | undefined = listPartners.find((i) =>
+  const res: any = listPartners.find((i: any) =>
     i.domain.includes(handlerDoamain()),
   )
 
   return res?.partnerId
+}
+
+export const check_list_partners = () => {
+  const list_partners = window.localStorage.getItem('list_partners')
+
+  if (list_partners !== null) {
+    return JSON.parse(list_partners)
+  } else {
+    window.location.reload()
+  }
 }

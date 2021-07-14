@@ -7,7 +7,6 @@ export enum ListPartners_Action_Types {
   ListPartners_DELETE = 'ListPartners_DELETE',
 }
 
-// Cách đăt tên:
-// Exp: <Danh từ>_<tính năng>_<trạng thái>
-// Tính năng: request, update, delete
-// Trạng thái: success, failure, ...
+export enum partnerId_Local_Action_Types {
+  partnerId_Local_REQUEST = 'partnerId_Local_REQUEST',
+}

@@ -8,3 +8,4 @@ export interface list_partners_item {
   domain: Array<String>
   partnerId: string
 }
+
