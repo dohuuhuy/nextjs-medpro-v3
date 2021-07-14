@@ -1,6 +1,6 @@
 import {
-  partnerId_Action,
-  PartnerId_Action_Types,
+  ListPartners_Action_Types,
+  totalData,
   totalData_State,
 } from '@store/interface'
 
@@ -11,10 +11,10 @@ const totalData_InitialState: totalData_State = {
 
 export default function totalData_Reducer(
   state = totalData_InitialState,
-  action: partnerId_Action,
+  action: totalData,
 ) {
   switch (action.type) {
-    case PartnerId_Action_Types.PartnerId_REQUEST_SUCCESS:
+    case ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS:
       return {
         ...state,
         list_partners: action.list_partners,

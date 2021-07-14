@@ -1,10 +1,10 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
-export enum PartnerId_Action_Types {
-  PartnerId_REQUEST = 'REQUEST',
-  PartnerId_REQUEST_SUCCESS = 'PartnerId_REQUEST_SUCCESS',
-  PartnerId_REQUEST_FAILURE = ' PartnerId_REQUEST_FAILURE',
-  PartnerId_UPDATE = 'PartnerId_UPDATE',
-  PartnerId_DELETE = 'PartnerId_DELETE',
+export enum ListPartners_Action_Types {
+  ListPartners_REQUEST = 'ListPartners_REQUEST',
+  ListPartners_REQUEST_SUCCESS = 'ListPartners_REQUEST_SUCCESS',
+  ListPartners_REQUEST_FAILURE = ' ListPartners_REQUEST_FAILURE',
+  ListPartners_UPDATE = 'ListPartners_UPDATE',
+  ListPartners_DELETE = 'ListPartners_DELETE',
 }
 
 // Cách đăt tên:

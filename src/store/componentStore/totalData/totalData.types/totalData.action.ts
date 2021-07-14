@@ -1,19 +1,24 @@
-import { PartnerId_Action_Types } from '@store/interface'
+import { ListPartners_Action_Types } from '@store/interface'
 
-// Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
-export type partnerId_Action = partnerId_Request | partnerId_Request_Success
+export type totalData = listPartners_Action | demo
 
-export interface partnerId_Request {
-  type: PartnerId_Action_Types.PartnerId_REQUEST
+export type listPartners_Action =
+  | listPartners_Request
+  | listPartners_Request_Success
+
+export type demo = demo_get
+
+export interface demo_get {
+  type: 'from_cache'
+  id: string
+}
+
+export interface listPartners_Request {
+  type: ListPartners_Action_Types.ListPartners_REQUEST
   id: number
 }
 
-export interface partnerId_Request_Success {
-  type: PartnerId_Action_Types.PartnerId_REQUEST_SUCCESS
+export interface listPartners_Request_Success {
+  type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS
   list_partners: Array<any>
 }
-
-// Cách đăt tên:
-// Exp: <Danh từ>_<tính năng>_<trạng thái>
-// Tính năng: request, update, delete
-// Trạng thái: success, failure, ...

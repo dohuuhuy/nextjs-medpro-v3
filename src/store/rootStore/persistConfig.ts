@@ -4,7 +4,11 @@ import rootReducer from '@store/rootReducer'
 import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
-export const listPersists = ['DemoReducer', 'totalData_Reducer']
+export const listPersists = [
+  'DemoReducer',
+  'totalData_Reducer',
+  'hospital_Reducer',
+]
 
 export const createNoopStorage = () => {
   return {
