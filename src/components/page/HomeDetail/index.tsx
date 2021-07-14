@@ -1,15 +1,11 @@
-import {
-  deleteColor,
-  getDemo,
-  set_partnerId_local,
-} from '@actionStore/rootAction'
+import { deleteColor, getDemo } from '@actionStore/rootAction'
 import Container from '@components/atoms/Container'
+import { Demo } from '@medpro/booking-libs'
 import { DemoState } from '@store/interface'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
-import { Demo } from '@medpro/booking-libs'
 
 const HomeDetail = () => {
   const dispatch = useDispatch()
@@ -33,33 +29,14 @@ const HomeDetail = () => {
       >
         Button của antd
       </Button>
-      <p>
-        cấu hình file env nằm ngoài <br />
-        {process.env.API}
-      </p>
-      <button
+
+      <Button
         disabled={nameColor === 'primary'}
         className={styles.BtnDel}
         onClick={() => dispatch(deleteColor())}
       >
         xóa color
-      </button>
-      <button
-        className={styles.BtnDel}
-        onClick={() =>
-          dispatch(set_partnerId_local({ partnerId: 'bvtest', local: true }))
-        }
-      >
-        bệnh viện test
-      </button>
-      <button
-        className={styles.BtnDel}
-        onClick={() =>
-          dispatch(set_partnerId_local({ partnerId: 'dalieu', local: true }))
-        }
-      >
-        bệnh viện da liễu
-      </button>
+      </Button>
     </Container>
   )
 }

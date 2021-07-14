@@ -5,6 +5,7 @@ import {
   partnerId_Local_Action_Types,
   totalData_Params,
 } from '@store/interface'
+import { openToast } from '@utils/Notification'
 import { handlerDoamain, run_local_hospital } from '@utils/run_local_hospitals'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
@@ -86,6 +87,12 @@ function* get_list_partners() {
       yield put({
         type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
         partnerId: getPartnerId,
+      })
+    } else {
+      openToast({
+        message:
+          'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
+        type: 'error',
       })
     }
   } catch (error) {}

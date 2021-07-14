@@ -1,5 +1,6 @@
 import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
+import RunLocal from '@components/molecules/RunLocal'
 import '@medpro/booking-libs/libs/index.css'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
@@ -31,6 +32,7 @@ const MyApp = ({ Component, pageProps }: any) => {
     <LayoutWrapper>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
+      <RunLocal />
     </LayoutWrapper>
   )
 }
