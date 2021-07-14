@@ -3,7 +3,6 @@ import rootSaga from '@store/rootSaga'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { createStore } from 'redux'
 import { Persistor, persistStore } from 'redux-persist'
-
 import { bindMiddleware, sagaMiddleware } from './handlerStore'
 import { persistedReducer } from './persistConfig'
 export let persistor: Persistor
