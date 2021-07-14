@@ -13,11 +13,9 @@ export const get_PartnerId = (): totalData_Action => {
 
 export const set_partnerId_local = ({
   partnerId,
-  local,
 }: totalData_Params.partnerLocal): totalData_Action => {
   return {
     type: partnerId_Local_Action_Types.partnerId_Local_REQUEST,
     partnerId,
-    local,
   }
 }

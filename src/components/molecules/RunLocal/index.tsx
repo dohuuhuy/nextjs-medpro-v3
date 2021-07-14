@@ -16,7 +16,7 @@ const RunLocal = () => {
   }
 
   const onSearch = (value: string) => {
-    dispatch(set_partnerId_local({ partnerId: value, local: true }))
+    dispatch(set_partnerId_local({ partnerId: value }))
   }
 
   const handleOk = () => {

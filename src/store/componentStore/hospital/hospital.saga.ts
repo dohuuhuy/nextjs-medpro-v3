@@ -6,6 +6,7 @@ import {
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
+import { get } from 'lodash'
 
 const getData = async (url: any) => {
   const res = await axios.get(url)
@@ -28,12 +29,16 @@ function* hospital_get_details({ partnerId }: any) {
       partnerId,
     })
   } catch (error) {
+    const { statusCode, message } = get(error, 'response.data', '')
+
+    console.log(' statusCode, message :>> ', statusCode, message)
+
     yield put({
       type: ListPartners_Action_Types.SET_PartnerId,
       partnerId: '',
     })
     openToast({
-      message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
+      message,
       type: 'error',
       duration: 2,
     })

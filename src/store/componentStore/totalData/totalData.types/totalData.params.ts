@@ -6,6 +6,5 @@ export namespace totalData_Params {
 
   export interface partnerLocal {
     partnerId: string
-    local: boolean
   }
 }

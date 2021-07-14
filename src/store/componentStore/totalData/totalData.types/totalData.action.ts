@@ -45,6 +45,5 @@ export type partnerId_local_Action = set_partnerId_local
 
 export interface set_partnerId_local {
   type: partnerId_Local_Action_Types.partnerId_Local_REQUEST
-  partnerId: String
-  local: boolean
+  partnerId: string
 }

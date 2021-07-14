@@ -4,9 +4,10 @@ import {
   list_partners_item,
   partnerId_Local_Action_Types,
   totalData_Params,
+  totalData_State,
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
-import { handlerDoamain, get_PartnerId } from '@utils/run_local_hospitals'
+import { get_PartnerId, handlerDoamain } from '@utils/run_local_hospitals'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -20,63 +21,47 @@ const is_localhost = (listPartners: any) => {
   const res: any = listPartners.find((i: any) =>
     i.domain.includes(handlerDoamain()),
   )
-
   if (!res) return true
-
   if (res.domain === 'localhost' || res.domain.includes('testing')) {
     return true
   }
-
   return false
 }
 
-function* set_partnerId_local({
-  partnerId,
-  local = false,
-}: totalData_Params.partnerLocal) {
-  if (local) {
-    const listPartners: Array<list_partners_item> = yield select(
-      (state) => state.totalData_Reducer.list_partners,
-    )
+function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
+  const totalData_Reducer: totalData_State = yield select(
+    (state) => state.totalData_Reducer,
+  )
 
-    const localhost: boolean = yield select(
-      (state) => state.totalData_Reducer.localhost,
-    )
+  const { list_partners, localhost } = totalData_Reducer
 
-    if (localhost) {
-      listPartners.pop()
-    }
+  if (localhost) {
+    list_partners.pop()
+  }
 
+  const runObject: get_PartnerId = {
+    listPartners: list_partners,
+    partnerId,
+    local: true,
+  }
+
+  const getPartnerId = get_PartnerId(runObject)
+
+  console.log('getPartnerId :>> ', getPartnerId)
+
+  if (getPartnerId) {
     yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
 
-    const runObject: get_PartnerId = {
-      listPartners: listPartners,
-      partnerId,
-      local,
-    }
-
-    const getPartnerId = get_PartnerId(runObject)
-
-    if (getPartnerId) {
-      yield put({
-        type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-        partnerId: getPartnerId,
-      })
-    } else {
-      openToast({
-        message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
-        type: 'error',
-        duration: 3,
-      })
-
-      yield put({
-        type: ListPartners_Action_Types.ListPartners_ERROR,
-      })
-
-      yield put({
-        type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS,
-      })
-    }
+    yield put({
+      type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
+      partnerId: getPartnerId,
+    })
+  } else {
+    openToast({
+      message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
+      type: 'error',
+      duration: 3,
+    })
   }
 }
 
