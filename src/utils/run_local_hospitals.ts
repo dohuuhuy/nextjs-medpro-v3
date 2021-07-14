@@ -1,4 +1,4 @@
-export interface run_local_hospital {
+export interface get_PartnerId {
   listPartners: any
   partnerId?: string
   local?: boolean
@@ -11,11 +11,11 @@ export const handlerDoamain = () => {
   return domain
 }
 
-export const run_local_hospital = ({
+export const get_PartnerId = ({
   partnerId,
   listPartners,
   local,
-}: run_local_hospital) => {
+}: get_PartnerId) => {
   if (local) {
     const localhost = {
       domain: ['localhost', '192.168.1.10'],

@@ -12,6 +12,7 @@ export type listPartners_Action =
   | listPartners_Request_Success
   | check_localhost
   | ListPartners_ERROR
+  | set_parnerId
 
 export interface demo_get {
   type: 'from_cache'
@@ -28,6 +29,11 @@ export interface listPartners_Request_Success {
 
 export interface check_localhost {
   type: ListPartners_Action_Types.CHECK_LOCALHOST
+}
+
+export interface set_parnerId {
+  type: ListPartners_Action_Types.SET_PartnerId
+  partnerId: any
 }
 
 export interface ListPartners_ERROR {

@@ -22,8 +22,16 @@ export default function totalData_Reducer(
     case ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS:
       return {
         ...state,
+
         list_partners: action.list_partners,
       }
+
+    case ListPartners_Action_Types.SET_PartnerId: {
+      return {
+        ...state,
+        partnerId: action.partnerId,
+      }
+    }
     case ListPartners_Action_Types.CHECK_LOCALHOST:
       return {
         ...state,
@@ -31,7 +39,6 @@ export default function totalData_Reducer(
       }
 
     case ListPartners_Action_Types.ListPartners_ERROR:
-      console.log('action.err :>> ', action.err)
       if (action.err === false) {
         return {
           ...state,

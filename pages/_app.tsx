@@ -29,11 +29,11 @@ const MyApp = ({ Component, pageProps }: any) => {
     checkVersion(persistor)
   })
 
-  const err = useSelector<AppState>(
-    (state: any) => state.totalData_Reducer.list_error.ListPartners_ERROR,
+  const partnerId = useSelector<AppState>(
+    (state: any) => state.totalData_Reducer.partnerId,
   )
 
-  if (err) {
+  if (!partnerId) {
     return (
       <div>
         null

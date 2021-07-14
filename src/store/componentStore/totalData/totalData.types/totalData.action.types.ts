@@ -7,6 +7,7 @@ export enum ListPartners_Action_Types {
   ListPartners_DELETE = 'ListPartners_DELETE',
   CHECK_LOCALHOST = 'CHECK_LOCALHOST',
   ListPartners_ERROR = 'ListPartners_ERROR',
+  SET_PartnerId = 'SET_PartnerId',
 }
 
 export enum partnerId_Local_Action_Types {

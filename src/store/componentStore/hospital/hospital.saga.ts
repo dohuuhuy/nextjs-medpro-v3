@@ -24,17 +24,18 @@ function* hospital_get_details({ partnerId }: any) {
     })
 
     yield put({
-      type: ListPartners_Action_Types.ListPartners_ERROR,
-      err: false,
+      type: ListPartners_Action_Types.SET_PartnerId,
+      partnerId,
     })
   } catch (error) {
     yield put({
-      type: ListPartners_Action_Types.ListPartners_ERROR,
+      type: ListPartners_Action_Types.SET_PartnerId,
+      partnerId: '',
     })
     openToast({
       message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
       type: 'error',
-      duration: 1000,
+      duration: 2,
     })
   }
 }

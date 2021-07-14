@@ -6,7 +6,7 @@ import {
   totalData_Params,
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
-import { handlerDoamain, run_local_hospital } from '@utils/run_local_hospitals'
+import { handlerDoamain, get_PartnerId } from '@utils/run_local_hospitals'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -16,14 +16,14 @@ const getData = async (url: any) => {
   return data
 }
 
-const check_localhost = (listPartners: any) => {
+const is_localhost = (listPartners: any) => {
   const res: any = listPartners.find((i: any) =>
     i.domain.includes(handlerDoamain()),
   )
 
   if (!res) return true
 
-  if (res.domain === 'localhost') {
+  if (res.domain === 'localhost' || res.domain.includes('testing')) {
     return true
   }
 
@@ -43,19 +43,19 @@ function* set_partnerId_local({
       (state) => state.totalData_Reducer.localhost,
     )
 
-    yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
-
     if (localhost) {
       listPartners.pop()
     }
 
-    const runObject: run_local_hospital = {
+    yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
+
+    const runObject: get_PartnerId = {
       listPartners: listPartners,
       partnerId,
       local,
     }
 
-    const getPartnerId = run_local_hospital(runObject)
+    const getPartnerId = get_PartnerId(runObject)
 
     if (getPartnerId) {
       yield put({
@@ -101,41 +101,38 @@ function* get_list_partners() {
       list_partners: listPartners,
     })
 
-    if (check_localhost(listPartners)) {
+    if (is_localhost(listPartners)) {
       yield put({
         type: ListPartners_Action_Types.CHECK_LOCALHOST,
       })
-    }
-
-    const runObject: run_local_hospital = {
-      listPartners,
-    }
-
-    const getPartnerId = run_local_hospital(runObject)
-
-    if (getPartnerId) {
-      yield put({
-        type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-        partnerId: getPartnerId,
-      })
     } else {
-      yield put({
-        type: ListPartners_Action_Types.ListPartners_ERROR,
-      })
+      const getPartnerId = get_PartnerId({ listPartners })
+      if (getPartnerId) {
+        yield put({
+          type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
+          partnerId: getPartnerId,
+        })
+      } else {
+        yield put({
+          type: ListPartners_Action_Types.ListPartners_ERROR,
+        })
 
-      openToast({
-        message:
-          'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
-        type: 'error',
-        duration: 1000,
-      })
+        openToast({
+          message:
+            'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
+          type: 'error',
+          duration: 1000,
+        })
 
-      yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
+        yield put({
+          type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS,
+        })
+      }
     }
   } catch (error) {
-    yield put({
-      type: ListPartners_Action_Types.ListPartners_ERROR,
-    })
+    // yield put({
+    //   type: ListPartners_Action_Types.ListPartners_ERROR,
+    // })
   }
 }
 

@@ -16,12 +16,6 @@ const RunLocal = () => {
   }
 
   const onSearch = (value: string) => {
-    const partnerId: any = window.localStorage.setItem('partnerId', value)
-
-    if (partnerId !== value) {
-      window.localStorage.setItem('partnerId', value)
-    }
-
     dispatch(set_partnerId_local({ partnerId: value, local: true }))
   }
 
@@ -46,7 +40,7 @@ const RunLocal = () => {
           onClick={showModal}
           className={styles.Btn_local_hospital}
         >
-          Test bệnh viện
+          Chọn bệnh viện
         </Button>
       ) : null}
 
