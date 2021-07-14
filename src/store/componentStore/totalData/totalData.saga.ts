@@ -33,11 +33,7 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
     (state) => state.totalData_Reducer,
   )
 
-  const { list_partners, localhost } = totalData_Reducer
-
-  if (localhost) {
-    list_partners.pop()
-  }
+  const { list_partners } = totalData_Reducer
 
   const runObject: get_PartnerId = {
     listPartners: list_partners,
@@ -46,8 +42,6 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
   }
 
   const getPartnerId = get_PartnerId(runObject)
-
-  console.log('getPartnerId :>> ', getPartnerId)
 
   if (getPartnerId) {
     yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
@@ -74,11 +68,13 @@ function* watch_partnerId_local() {
 
 function* get_list_partners() {
   try {
-    const url_list_partner =
-      'https://medpro-api-v3-testing.medpro.com.vn/st/listPartner.json'
+    // const url_list_partner =
+    //   'https://medpro-api-v3-testing.medpro.com.vn/st/listPartner.json'
+    const url =
+      'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
       getData,
-      url_list_partner,
+      url,
     )
 
     yield put({

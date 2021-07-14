@@ -40,7 +40,7 @@ function* hospital_get_details({ partnerId }: any) {
     openToast({
       message,
       type: 'error',
-      duration: 2,
+      duration: 4.5,
     })
   }
 }

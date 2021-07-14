@@ -17,10 +17,20 @@ export const get_PartnerId = ({
   local,
 }: get_PartnerId) => {
   if (local) {
-    const res: any = listPartners.find((i: any) => i.partnerId === partnerId)
+    const is_partnerId: any = listPartners.find(
+      (i: any) => i.partnerId === partnerId,
+    )
 
-    if (!res) {
+    if (!is_partnerId) {
       return null
+    }
+
+    const is_domain: any = listPartners.find((i: any) =>
+      i.domain.includes('localhost'),
+    )
+
+    if (is_domain) {
+      listPartners.pop()
     }
 
     const localhost = {

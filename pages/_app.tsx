@@ -1,6 +1,7 @@
 import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import RunLocal from '@components/molecules/RunLocal'
+import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import '@medpro/booking-libs/libs/index.css'
 import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
@@ -33,19 +34,18 @@ const MyApp = ({ Component, pageProps }: any) => {
     (state: any) => state.totalData_Reducer.partnerId,
   )
 
-  if (!partnerId) {
-    return (
-      <div>
-        null
-        <RunLocal />
-      </div>
-    )
+  const hospital_details: any = useSelector<AppState>(
+    (state: any) => state.hospital_Reducer.hospital_details,
+  )
+
+  if (!partnerId || Object.keys(hospital_details).length < 1) {
+    return <RunLocal />
   }
   return (
     <LayoutWrapper>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
-      <RunLocal />
+      <SelectedHospital />
     </LayoutWrapper>
   )
 }
