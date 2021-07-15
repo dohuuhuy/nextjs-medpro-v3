@@ -33,6 +33,6 @@
       "@utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "assets/js/wechat.js"],
   "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
 }

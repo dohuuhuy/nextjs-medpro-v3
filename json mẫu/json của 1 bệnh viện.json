@@ -1,0 +1,378 @@
+{
+  "partnerId": "medpro",
+  "header": {
+    "logoHeader": "",
+    "menu": [
+      {
+        "id": "",
+        "key": "trang-chu",
+        "link": "/",
+        "url": "/",
+        "name": "Trang chủ",
+        "content": "",
+        "sortOrder": 1,
+        "icon": "fal fa-home"
+      },
+      {
+        "id": "",
+        "key": "gioi-thieu",
+        "link": "/gioi-thieu",
+        "url": "/gioi-thieu",
+        "name": "Giới thiệu",
+        "content": "",
+        "sortOrder": 2,
+        "icon": "fal fa-home"
+      },
+      {
+        "id": "",
+        "key": "quy-trinh",
+        "link": "/quy-trinh",
+        "url": "/quy-trinh",
+        "name": "Quy trình",
+        "content": "",
+        "sortOrder": 3,
+        "icon": "fal fa-home"
+      },
+      {
+        "id": "",
+        "key": "huong-dan",
+        "link": "/huong-dan",
+        "url": "/huong-dan",
+        "name": "Hướng dẫn",
+        "content": "",
+        "sortOrder": 4,
+        "icon": "fal fa-home"
+      },
+      {
+        "id": "",
+        "key": "thac-mac",
+        "link": "/thac-mac",
+        "url": "/thac-mac",
+        "name": "Thắc mắc",
+        "content": "",
+        "sortOrder": 5,
+        "icon": "fal fa-home"
+      },
+      {
+        "id": "",
+        "key": "lien-he",
+        "link": "/lien-he",
+        "url": "/lien-he",
+        "name": "Liên hệ",
+        "content": "",
+        "sortOrder": 6,
+        "icon": "fal fa-home"
+      }
+    ],
+    "support": {
+      "textSuport": "bạn cần hỗ trợ?",
+      "icon": "",
+      "phone": "1900-2267"
+    }
+  },
+  "bannerHome": [
+    {
+      "id": "",
+      "linkImage": "",
+      "alt": ""
+    },
+    {
+      "id": "",
+      "linkImage": "",
+      "alt": ""
+    }
+  ],
+  "bannerContact": [
+    [
+      {
+        "id": "",
+        "title": "Hỏi đáp nhanh",
+        "subtiltle": "Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh",
+        "img": [
+          {
+            "url": "https://medpro.com.vn/static/media/message.dfcf8708.svg"
+          }
+        ],
+        "textBottom": "<p>Tham khảo</p>",
+        "link": "https://medpro.com.vn/thac-mac",
+        "icon": true
+      },
+      {
+        "id": "",
+        "title": "Các kênh hỗ trợ",
+        "subtiltle": "Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau",
+        "img": [
+          {
+            "url": "https://medpro.com.vn/static/media/zalo.c572a0da.svg"
+          },
+          {
+            "url": "https://medpro.com.vn/static/media/facebook.36f35f09.svg"
+          }
+        ],
+        "textBottom": "<b style=color:blue>1900-2115</b>",
+        "link": "tel:19002115"
+      },
+      {
+        "id": "",
+        "title": "Thời gian làm việc",
+        "subtiltle": "Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30",
+        "img": [
+          {
+            "url": "https://medpro.com.vn/static/media/time.3a877423.svg"
+          }
+        ],
+        "textBottom": "<p>test</p>"
+      }
+    ]
+  ],
+  "deployHospital": [
+    {
+      "id": "",
+      "nameHospital": "Bênh viện nhi đồng 1 ",
+      "imgLink": ""
+    },
+    {
+      "id": "",
+      "nameHospital": "Bênh viện nhi đồng 1 ",
+      "imgLink": ""
+    },
+    {
+      "id": "",
+      "nameHospital": "Bênh viện nhi đồng 1 ",
+      "imgLink": ""
+    },
+    {
+      "id": "",
+      "nameHospital": "Bênh viện nhi đồng 1 ",
+      "imgLink": ""
+    }
+  ],
+  "introducHospital": {
+    "contentIntro": {
+      "title": "Giới thiệu",
+      "subTitle": "MEDPRO - Giải pháp tiếp cận y tế thông minh",
+      "description": "Medpro là giải pháp nhằm kết nối bệnh viện với người dùng có nhu cầu đăng ký khám bệnh có thể thực hiện việc đăng ký khám bệnh hoàn toàn trực tuyến ở mọi lúc mọi nơi, mà không cần phải đến bệnh viện đề xếp hàng và chờ đợi. Giúp bệnh nhân có kế hoạch khám chữa bệnh chủ động, rút ngắn thời gian chờ đợi, góp phần nâng cao sức khoẻ bệnh nhân."
+    },
+    "cardIntro": [
+      {
+        "title": "Đặt khám nhanh chóng",
+        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
+        "imgCard": "",
+        "link": "",
+        "button": {
+          "status": true,
+          "nameBtn": "Tra cứu"
+        }
+      },
+      {
+        "title": "Thanh toán dễ dàng",
+        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
+        "imgCard": "",
+        "link": "",
+        "button": {
+          "status": false,
+          "nameBtn": "Tra cứu"
+        }
+      },
+      {
+        "title": "Nhận phiếu trực tuyến",
+        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
+        "imgCard": "",
+        "link": "",
+        "button": {
+          "status": false,
+          "nameBtn": "Tra cứu"
+        }
+      }
+    ]
+  },
+  "downloadApp": {
+    "nameHospital": "Bênh viện nhi đồng 1 ",
+    "myApp": [
+      {
+        "key": "android",
+        "linkApp": ""
+      },
+      {
+        "key": "ios",
+        "linkApp": ""
+      }
+    ],
+    "imgMobile": "",
+    "listBenefit": [
+      {
+        "id": "",
+        "imgBenefit": "",
+        "title": "",
+        "label": "Chủ động đặt lịch khám trong vòng 1 phút",
+        "position": "left"
+      },
+      {
+        "id": "",
+        "title": "",
+        "imgBenefit": "Thay đổi & cập nhật lịch khám bệnh",
+        "label": "",
+        "position": "left"
+      },
+      {
+        "id": "",
+        "title": "",
+        "imgBenefit": "Đặt lịch nhắc nhở uống thuốc",
+        "label": "",
+        "position": "left"
+      },
+      {
+        "id": "",
+        "imgBenefit": "",
+        "title": "",
+        "label": "Giao diện thân thiện dễ sử dụng",
+        "position": "right"
+      },
+      {
+        "id": "",
+        "imgBenefit": "",
+        "title": "",
+        "label": "Thanh toán nhanh chóng và tiện lợi",
+        "position": "right"
+      },
+      {
+        "id": "",
+        "imgBenefit": "",
+        "title": "",
+        "label": "Lưu trữ và theo dõi hồ sơ sức khỏe của chính bạn",
+        "position": "right"
+      }
+    ]
+  },
+  "contentPage": [
+    {
+      "id": "",
+      "key": "trang-chu",
+      "content": ""
+    },
+    {
+      "id": "",
+      "key": "gioi-thieu",
+      "content": ""
+    },
+    {
+      "id": "",
+      "key": "quy-trinh",
+      "content": ""
+    },
+    {
+      "id": "",
+      "key": "huong-dan",
+      "content": ""
+    },
+    {
+      "id": "",
+      "key": "thac-mac",
+      "content": ""
+    },
+    {
+      "id": "",
+      "key": "lien-he",
+      "detailsContact": [
+        {
+          "id": "",
+          "icon": "",
+          "text": "",
+          "subText": ""
+        },
+        {
+          "id": "",
+          "icon": "",
+          "text": "",
+          "subText": ""
+        }
+      ],
+      "linkMaps": "",
+      "content": ""
+    }
+  ],
+  "supportMethods": [
+    {
+      "nameMedthod": "Hỗ trợ đặt khám",
+      "imgCard": "",
+      "description": "",
+      "link": ""
+    },
+    {
+      "nameMedthod": "Hỗ trợ đặt khám",
+      "imgCard": "",
+      "description": "",
+      "link": ""
+    },
+    {
+      "nameMedthod": "Hỗ trợ ZALO",
+      "imgCard": "",
+      "description": "",
+      "link": ""
+    },
+    {
+      "nameMedthod": "Chat Facebook",
+      "imgCard": "",
+      "description": "",
+      "link": ""
+    }
+  ],
+  "footer": {
+    "logoFooter": "https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg",
+    "infoContact": [
+      { "id": "", "label": "", "value": "CÔNG TY CỔ PHẦN ỨNG DỤNG PKH" },
+      {
+        "id": "",
+        "label": "Địa chỉ:",
+        "value": "97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh."
+      },
+      { "id": "", "label": "Website:", "value": " https://pkh.vn" },
+      { "label": "Email", "value": "contact@pkh.vn" },
+      { "label": "Điện thoại:", "value": "(028) 710 78098" }
+    ],
+    "linkSupport": [
+      { "id": "", "label": "Liên hệ", "link": "https://medpro.com.vn/lien-he" },
+      {
+        "id": "",
+        "label": "Điều khoản dịch vụ",
+        "link": "https://medpro.com.vn/dieu-khoan-dich-vu"
+      },
+      {
+        "id": "",
+        "label": "Chính sách bảo mật",
+        "link": "https://medpro.com.vn/chinh-sach-bao-mat"
+      },
+      {
+        "id": "",
+        "label": "Quy định sử dụng",
+        "link": "https://medpro.com.vn/quy-dinh-su-dung"
+      }
+    ],
+    "logoChecked": [
+      {
+        "id": "",
+        "key": "bocongthuong1",
+        "imgLogo": "https://medpro.com.vn/static/media/bocongthuong1.4e58f890.svg",
+        "link": "http://online.gov.vn/Home/WebDetails/44668"
+      },
+      {
+        "id": "",
+        "key": "bocongthuong2",
+        "imgLogo": "https://medpro.com.vn/static/media/bocongthuong2.28581f75.svg",
+        "link": "http://online.gov.vn/Home/WebDetails/44209"
+      },
+      {
+        "id": "",
+        "key": "android",
+        "imgLogo": "https://medpro.com.vn/static/media/googleplay.e6fe412f.svg",
+        "link": "https://play.google.com/store/apps/details?id=vn.com.medpro"
+      },
+      {
+        "id": "",
+        "key": "ios",
+        "imgLogo": "https://medpro.com.vn/static/media/appstore.3a164d38.svg",
+        "link": "https://apps.apple.com/us/app/id1481561748"
+      }
+    ]
+  }
+}

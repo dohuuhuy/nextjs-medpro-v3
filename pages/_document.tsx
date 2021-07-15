@@ -35,6 +35,23 @@ class CustomDocument extends Document<{
       <Html lang="vi">
         <Head>
           <FavIcon image={this.props.image} />
+
+          <script
+            src="https://resource-testing.medpro.com.vn/static/js/wechat.js"
+            async
+          />
+
+          <script
+            src="https://www.googletagmanager.com/gtag/js?id=UA-148064018-1"
+            async
+          />
+
+          <script
+            src="https://resource-testing.medpro.com.vn/static/js/gtag.js"
+            async
+          />
+
+          <script src="https://zjs.zdn.vn/zalo/sdk.js" async></script>
         </Head>
         <body>
           <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
