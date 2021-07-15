@@ -21,6 +21,8 @@ export const get_PartnerId = ({
       (i: any) => i.partnerId === partnerId,
     )
 
+    // const is_partnerId: any = find(listPartners, partnerId)
+
     if (!is_partnerId) {
       return null
     }
