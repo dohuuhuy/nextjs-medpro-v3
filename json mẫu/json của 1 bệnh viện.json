@@ -1,378 +1,492 @@
 {
-  "partnerId": "medpro",
-  "header": {
-    "logoHeader": "",
-    "menu": [
+  partnerId: "medpro",
+  header: {
+    logoHeader: "https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg",
+    logoHeaderMobile: "https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg",
+    menuHeader: [
       {
-        "id": "",
-        "key": "trang-chu",
-        "link": "/",
-        "url": "/",
-        "name": "Trang chủ",
-        "content": "",
-        "sortOrder": 1,
-        "icon": "fal fa-home"
+        id: "",
+        key: "trang-chu",
+        link: "/",
+        url: "/",
+        label: "Trang chủ",
+        group: "menuHeader",
+        sortOrder: 1,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "key": "gioi-thieu",
-        "link": "/gioi-thieu",
-        "url": "/gioi-thieu",
-        "name": "Giới thiệu",
-        "content": "",
-        "sortOrder": 2,
-        "icon": "fal fa-home"
+        id: "",
+        key: "gioi-thieu",
+        link: "/gioi-thieu",
+        url: "/gioi-thieu",
+        label: "Giới thiệu",
+        group: "menuHeader",
+        sortOrder: 2,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "key": "quy-trinh",
-        "link": "/quy-trinh",
-        "url": "/quy-trinh",
-        "name": "Quy trình",
-        "content": "",
-        "sortOrder": 3,
-        "icon": "fal fa-home"
+        id: "",
+        key: "quy-trinh",
+        link: "/quy-trinh",
+        url: "/quy-trinh",
+        label: "Quy trình",
+        group: "menuHeader",
+        sortOrder: 3,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "key": "huong-dan",
-        "link": "/huong-dan",
-        "url": "/huong-dan",
-        "name": "Hướng dẫn",
-        "content": "",
-        "sortOrder": 4,
-        "icon": "fal fa-home"
+        id: "",
+        key: "huong-dan",
+        link: "/huong-dan",
+        url: "/huong-dan",
+        label: "Hướng dẫn",
+        group: "menuHeader",
+        sortOrder: 4,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "key": "thac-mac",
-        "link": "/thac-mac",
-        "url": "/thac-mac",
-        "name": "Thắc mắc",
-        "content": "",
-        "sortOrder": 5,
-        "icon": "fal fa-home"
+        id: "",
+        key: "thac-mac",
+        link: "/thac-mac",
+        url: "/thac-mac",
+        label: "Thắc mắc",
+        group: "menuHeader",
+        sortOrder: 5,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "key": "lien-he",
-        "link": "/lien-he",
-        "url": "/lien-he",
-        "name": "Liên hệ",
-        "content": "",
-        "sortOrder": 6,
-        "icon": "fal fa-home"
-      }
+        id: "",
+        key: "lien-he",
+        link: "/lien-he",
+        url: "/lien-he",
+        label: "Liên hệ",
+        group: "menuHeader",
+        sortOrder: 6,
+        icon: "fal fa-home",
+      },
+      {
+        id: "",
+        key: "chon-benh-vien",
+        link: "/chon-benh-vien",
+        url: "/chon-benh-vien",
+        label: "Chọn bệnh viện",
+        group: "insideLink",
+        sortOrder: 5,
+        icon: "fal fa-home",
+      },
+      {
+        id: "",
+        key: "xac-nhan-thong-tin",
+        link: "/xac-nhan-thong-tin",
+        url: "/xac-nhan-thong-tin",
+        label: "Xác nhận thông tin",
+        group: "insideLink",
+        sortOrder: 6,
+        icon: "fal fa-home",
+      },
+      {
+        id: "",
+        key: "login",
+        link: "/login",
+        url: "/login",
+        label: "Đăng nhập",
+        group: "insideLink",
+        sortOrder: 6,
+        icon: "fal fa-sign-in-alt",
+      },
     ],
-    "support": {
-      "textSuport": "bạn cần hỗ trợ?",
-      "icon": "",
-      "phone": "1900-2267"
-    }
-  },
-  "bannerHome": [
-    {
-      "id": "",
-      "linkImage": "",
-      "alt": ""
-    },
-    {
-      "id": "",
-      "linkImage": "",
-      "alt": ""
-    }
-  ],
-  "bannerContact": [
-    [
+    menuMobile: [
       {
-        "id": "",
-        "title": "Hỏi đáp nhanh",
-        "subtiltle": "Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh",
-        "img": [
-          {
-            "url": "https://medpro.com.vn/static/media/message.dfcf8708.svg"
-          }
-        ],
-        "textBottom": "<p>Tham khảo</p>",
-        "link": "https://medpro.com.vn/thac-mac",
-        "icon": true
+        id: "",
+        key: "trang-chu",
+        link: "/",
+        url: "/",
+        label: "Trang chủ",
+        group: "menuMobile",
+        sortOrder: 1,
+        icon: "fal fa-home",
       },
       {
-        "id": "",
-        "title": "Các kênh hỗ trợ",
-        "subtiltle": "Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau",
-        "img": [
-          {
-            "url": "https://medpro.com.vn/static/media/zalo.c572a0da.svg"
-          },
-          {
-            "url": "https://medpro.com.vn/static/media/facebook.36f35f09.svg"
-          }
-        ],
-        "textBottom": "<b style=color:blue>1900-2115</b>",
-        "link": "tel:19002115"
+        id: "",
+        key: "huong-dan",
+        link: "/huong-dan",
+        url: "/huong-dan",
+        label: "Hướng dẫn",
+        group: "menuMobile",
+        sortOrder: 4,
+        icon: "fal fa-list-alt",
       },
       {
-        "id": "",
-        "title": "Thời gian làm việc",
-        "subtiltle": "Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30",
-        "img": [
-          {
-            "url": "https://medpro.com.vn/static/media/time.3a877423.svg"
-          }
-        ],
-        "textBottom": "<p>test</p>"
-      }
-    ]
-  ],
-  "deployHospital": [
-    {
-      "id": "",
-      "nameHospital": "Bênh viện nhi đồng 1 ",
-      "imgLink": ""
-    },
-    {
-      "id": "",
-      "nameHospital": "Bênh viện nhi đồng 1 ",
-      "imgLink": ""
-    },
-    {
-      "id": "",
-      "nameHospital": "Bênh viện nhi đồng 1 ",
-      "imgLink": ""
-    },
-    {
-      "id": "",
-      "nameHospital": "Bênh viện nhi đồng 1 ",
-      "imgLink": ""
-    }
-  ],
-  "introducHospital": {
-    "contentIntro": {
-      "title": "Giới thiệu",
-      "subTitle": "MEDPRO - Giải pháp tiếp cận y tế thông minh",
-      "description": "Medpro là giải pháp nhằm kết nối bệnh viện với người dùng có nhu cầu đăng ký khám bệnh có thể thực hiện việc đăng ký khám bệnh hoàn toàn trực tuyến ở mọi lúc mọi nơi, mà không cần phải đến bệnh viện đề xếp hàng và chờ đợi. Giúp bệnh nhân có kế hoạch khám chữa bệnh chủ động, rút ngắn thời gian chờ đợi, góp phần nâng cao sức khoẻ bệnh nhân."
-    },
-    "cardIntro": [
-      {
-        "title": "Đặt khám nhanh chóng",
-        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
-        "imgCard": "",
-        "link": "",
-        "button": {
-          "status": true,
-          "nameBtn": "Tra cứu"
-        }
+        id: "",
+        key: "thong-bao",
+        link: "/user",
+        url: "/user",
+        label: "Thông báo",
+        group: "menuMobile",
+        sortOrder: 5,
+        icon: "fal fa-bell",
       },
       {
-        "title": "Thanh toán dễ dàng",
-        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
-        "imgCard": "",
-        "link": "",
-        "button": {
-          "status": false,
-          "nameBtn": "Tra cứu"
-        }
+        id: "",
+        key: "ho-so",
+        link: "/user",
+        url: "/user",
+        label: "Hồ sơ",
+        group: "menuMobile",
+        sortOrder: 6,
+        icon: "fal fa-user",
       },
       {
-        "title": "Nhận phiếu trực tuyến",
-        "subTitle": "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
-        "imgCard": "",
-        "link": "",
-        "button": {
-          "status": false,
-          "nameBtn": "Tra cứu"
-        }
-      }
-    ]
-  },
-  "downloadApp": {
-    "nameHospital": "Bênh viện nhi đồng 1 ",
-    "myApp": [
-      {
-        "key": "android",
-        "linkApp": ""
+        id: "",
+        key: "login",
+        link: "/login",
+        url: "/login",
+        label: "Đăng nhập",
+        group: "insideLink",
+        sortOrder: 6,
+        icon: "fal fa-sign-in-alt",
       },
-      {
-        "key": "ios",
-        "linkApp": ""
-      }
     ],
-    "imgMobile": "",
-    "listBenefit": [
-      {
-        "id": "",
-        "imgBenefit": "",
-        "title": "",
-        "label": "Chủ động đặt lịch khám trong vòng 1 phút",
-        "position": "left"
-      },
-      {
-        "id": "",
-        "title": "",
-        "imgBenefit": "Thay đổi & cập nhật lịch khám bệnh",
-        "label": "",
-        "position": "left"
-      },
-      {
-        "id": "",
-        "title": "",
-        "imgBenefit": "Đặt lịch nhắc nhở uống thuốc",
-        "label": "",
-        "position": "left"
-      },
-      {
-        "id": "",
-        "imgBenefit": "",
-        "title": "",
-        "label": "Giao diện thân thiện dễ sử dụng",
-        "position": "right"
-      },
-      {
-        "id": "",
-        "imgBenefit": "",
-        "title": "",
-        "label": "Thanh toán nhanh chóng và tiện lợi",
-        "position": "right"
-      },
-      {
-        "id": "",
-        "imgBenefit": "",
-        "title": "",
-        "label": "Lưu trữ và theo dõi hồ sơ sức khỏe của chính bạn",
-        "position": "right"
-      }
-    ]
-  },
-  "contentPage": [
-    {
-      "id": "",
-      "key": "trang-chu",
-      "content": ""
+    support: {
+      textSuport: "Bạn cần hỗ trợ ?",
+      icon: "",
+      phone: "1900-2267",
     },
-    {
-      "id": "",
-      "key": "gioi-thieu",
-      "content": ""
-    },
-    {
-      "id": "",
-      "key": "quy-trinh",
-      "content": ""
-    },
-    {
-      "id": "",
-      "key": "huong-dan",
-      "content": ""
-    },
-    {
-      "id": "",
-      "key": "thac-mac",
-      "content": ""
-    },
-    {
-      "id": "",
-      "key": "lien-he",
-      "detailsContact": [
+    listSupport: {
+      guideGroup: [
         {
-          "id": "",
-          "icon": "",
-          "text": "",
-          "subText": ""
+          icon: "?",
+          label: "Giải đáp các câu hỏi nhanh",
         },
         {
-          "id": "",
-          "icon": "",
-          "text": "",
-          "subText": ""
-        }
+          icon: "book",
+          label: "Hướng dẫn",
+        },
       ],
-      "linkMaps": "",
-      "content": ""
-    }
-  ],
-  "supportMethods": [
-    {
-      "nameMedthod": "Hỗ trợ đặt khám",
-      "imgCard": "",
-      "description": "",
-      "link": ""
     },
-    {
-      "nameMedthod": "Hỗ trợ đặt khám",
-      "imgCard": "",
-      "description": "",
-      "link": ""
-    },
-    {
-      "nameMedthod": "Hỗ trợ ZALO",
-      "imgCard": "",
-      "description": "",
-      "link": ""
-    },
-    {
-      "nameMedthod": "Chat Facebook",
-      "imgCard": "",
-      "description": "",
-      "link": ""
-    }
-  ],
-  "footer": {
-    "logoFooter": "https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg",
-    "infoContact": [
-      { "id": "", "label": "", "value": "CÔNG TY CỔ PHẦN ỨNG DỤNG PKH" },
+    supportGroup: [
       {
-        "id": "",
-        "label": "Địa chỉ:",
-        "value": "97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh."
+        icon: "zalo",
+        label: "Hỗ trợ Zalo",
+        link: "#",
       },
-      { "id": "", "label": "Website:", "value": " https://pkh.vn" },
-      { "label": "Email", "value": "contact@pkh.vn" },
-      { "label": "Điện thoại:", "value": "(028) 710 78098" }
+      {
+        icon: "fb",
+        label: "Hỗ trợ Facebook",
+        link: "#",
+      },
+      {
+        icon: "Sys",
+        label: "Hỗ trợ Kỹ thuật: 1900-2115",
+        link: "#",
+      },
+      {
+        icon: "Email",
+        label: "Email: support@medpro.com.vn",
+        link: "#",
+      },
     ],
-    "linkSupport": [
-      { "id": "", "label": "Liên hệ", "link": "https://medpro.com.vn/lien-he" },
+  },
+k0
+  bannerHome: [
+    {
+      id: "",
+      linkImage: "https://resource.medpro.com.vn/static/images/medpro/web/banner_desktop.png",
+      alt: "",
+    },
+  ],
+  bannerContact: [
+    {
+      id: "",
+      title: "Hỏi đáp nhanh",
+      subtiltle: "Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh",
+      img: [
+        {
+          url: "https://medpro.com.vn/static/media/message.dfcf8708.svg",
+        },
+      ],
+      textBottom: "<p>Tham khảo</p>",
+      link: "https://medpro.com.vn/thac-mac",
+      icon: true,
+    },
+    {
+      id: "",
+      title: "Các kênh hỗ trợ",
+      subtiltle: "Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau",
+      img: [
+        {
+          url: "https://medpro.com.vn/static/media/zalo.c572a0da.svg",
+        },
+        {
+          url: "https://medpro.com.vn/static/media/facebook.36f35f09.svg",
+        },
+      ],
+      textBottom: "<b style=color:blue>1900-2115</b>",
+      link: "tel:19002115",
+    },
+    {
+      id: "",
+      title: "Thời gian làm việc",
+      subtiltle: "Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30",
+      img: [
+        {
+          url: "https://medpro.com.vn/static/media/time.3a877423.svg",
+        },
+      ],
+      textBottom: "<p>Server xử lý trả về trạng thái hoạt động của bệnh viện ví dụ : Đang trong giờ hành chính </p>",
+    },
+  ],
+  deployHospital: [
+    {
+      id: "",
+      nameHospital: "bệnh viện đa khoa an phước",
+      image: "https://cms.medpro.com.vn/uploads/small_anphuoc_3f1882b9e8.jpg?1431191.8649999998",
+      imgLink: "https://anphuochospital.medpro.com.vn",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viện đại học y dược",
+      image: "https://cms.medpro.com.vn/uploads/small_umc_65b2859915.jpg?1431193.2100000004",
+      imgLink: "https://umc.medpro.com.vn/",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viện đa khoa đồng nai",
+      image: "https://cms.medpro.com.vn/uploads/small_dongnai_0fe06d735d.jpg?1431219.7100000002",
+      imgLink: "https://bvdongnai.medpro.com.vn/",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viện trưng vương",
+      image: "https://cms.medpro.com.vn/uploads/small_trungvuong_2c48b8893a.jpg?1431194.42",
+      imgLink: "https://trungvuonghcm.medpro.com.vn/",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viện bình thạnh",
+      image: "https://cms.medpro.com.vn/uploads/small_binhthanh_e7308d3174.jpg?1431224.91",
+      imgLink: "https://bvbinhthanh.medpro.com.vn/",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viện nhi đồng 1",
+      image: "https://cms.medpro.com.vn/uploads/small_nhidong1_0f7279b8fb.jpg?1431198.0000000002",
+      imgLink: "https://nhidong1.medpro.com.vn/",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viên lê lợi",
+      image: "https://cms.medpro.com.vn/uploads/small_leloi_b6a4c841b0.jpg?1431220.7399999998",
+      imgLink: "leloi.medpro.com.vn",
+    },
+    {
+      id: "",
+      nameHospital: "bệnh viên thủ đức",
+      image: "https://cms.medpro.com.vn/uploads/small_thuduc_234b425728.jpg?1431221.8800000001",
+      imgLink: "https://thuduc.medpro.com.vn/",
+    },
+  ],
+  introducHospital: {
+    contentIntro: {
+      title: "Giới thiệu",
+      subTitle: "MEDPRO - Giải pháp tiếp cận y tế thông minh",
+      description: "Medpro là giải pháp nhằm kết nối bệnh viện với người dùng có nhu cầu đăng ký khám bệnh có thể thực hiện việc đăng ký khám bệnh hoàn toàn trực tuyến ở mọi lúc mọi nơi, mà không cần phải đến bệnh viện đề xếp hàng và chờ đợi. Giúp bệnh nhân có kế hoạch khám chữa bệnh chủ động, rút ngắn thời gian chờ đợi, góp phần nâng cao sức khoẻ bệnh nhân.",
+    },
+    cardIntro: [
       {
-        "id": "",
-        "label": "Điều khoản dịch vụ",
-        "link": "https://medpro.com.vn/dieu-khoan-dich-vu"
+        title: "Đặt khám nhanh chóng",
+        subTitle: "Bệnh nhân chủ động chọn thông tin đặt khám (ngày khám và giờ khám)",
+        imgCard: "https://medpro.vn/static/media/new1.bb081b99.jpg",
+        link: "",
+        button: {
+          status: true,
+          nameBtn: "Tra cứu",
+        },
       },
       {
-        "id": "",
-        "label": "Chính sách bảo mật",
-        "link": "https://medpro.com.vn/chinh-sach-bao-mat"
+        title: "Thanh toán dễ dàng",
+        subTitle: "Người dùng chọn và thực hiện thanh toán trên phần mềm",
+        imgCard: "https://medpro.vn/static/media/new2.6ba3e73f.jpg",
+        link: "",
+        button: {
+          status: false,
+          nameBtn: "Tra cứu",
+        },
       },
       {
-        "id": "",
-        "label": "Quy định sử dụng",
-        "link": "https://medpro.com.vn/quy-dinh-su-dung"
-      }
+        title: "Nhận phiếu trực tuyến",
+        subTitle: "Bệnh nhân sẽ nhận phiếu khám trực tuyến ngay trên phần mềm",
+        imgCard: "https://medpro.vn/static/media/new3.428dc3ad.jpg",
+        link: "",
+        button: {
+          status: false,
+          nameBtn: "Tra cứu",
+        },
+      },
     ],
-    "logoChecked": [
+  },
+  downloadApp: {
+    appId: "medpro",
+    nameHospital: "Bênh viện nhi đồng 1 ",
+    myApp: [
       {
-        "id": "",
-        "key": "bocongthuong1",
-        "imgLogo": "https://medpro.com.vn/static/media/bocongthuong1.4e58f890.svg",
-        "link": "http://online.gov.vn/Home/WebDetails/44668"
+        key: "android",
+        linkApp: "https://play.google.com/store/apps/details?id=vn.com.medpro",
       },
       {
-        "id": "",
-        "key": "bocongthuong2",
-        "imgLogo": "https://medpro.com.vn/static/media/bocongthuong2.28581f75.svg",
-        "link": "http://online.gov.vn/Home/WebDetails/44209"
+        key: "ios",
+        linkApp: "https://apps.apple.com/us/app/id1481561748",
+      },
+    ],
+    imgMobile: "https://resource.medpro.com.vn/static/images/medpro/web/slide.png",
+    listBenefit: [
+      {
+        id: "",
+        title: "ĐĂNG KÝ KHÁM BỆNH",
+        label: "Đăng ký khám bệnh theo ngày <br/> Đăng ký khám bệnh theo bác sĩ  <br/>  Tái khám theo lịch hẹn",
+        imgBenefit: "https://medpro.vn/static/media/register.38d59ff0.svg",
+        position: "left",
       },
       {
-        "id": "",
-        "key": "android",
-        "imgLogo": "https://medpro.com.vn/static/media/googleplay.e6fe412f.svg",
-        "link": "https://play.google.com/store/apps/details?id=vn.com.medpro"
+        id: "",
+        title: "TƯ VẤN SỨC KHOẺ TRỰC TUYẾN",
+        description: "Tư vấn sức khỏe trực tuyến với các  <br/>  bác sĩ đầu ngành & chuyên gia",
+        imgBenefit: "https://medpro.vn/static/media/chat.6c5774f2.svg",
+        position: "left",
       },
       {
-        "id": "",
-        "key": "ios",
-        "imgLogo": "https://medpro.com.vn/static/media/appstore.3a164d38.svg",
-        "link": "https://apps.apple.com/us/app/id1481561748"
-      }
-    ]
-  }
-}
+        id: "",
+        title: "KẾT QUẢ CẬN LÂM SÀNG",
+        description: "Kết quả Cận Lâm Sàng sẽ được cập nhật  <br/>  trực tiếp trên phần mềm",
+        imgBenefit: "https://medpro.vn/static/media/result.d078c4e7.svg",
+        position: "left",
+      },
+      {
+        id: "",
+        imgBenefit: "https://medpro.vn/static/media/payment.09fb7592.svg",
+        title: "THANH TOÁN VIỆN PHÍ",
+        description: "Đăng ký khám bệnh theo ngày  <br/>  Đăng ký khám bệnh theo bác sĩ  <br/>  Tái khám theo lịch hẹn",
+        position: "right",
+      },
+      {
+        id: "",
+        imgBenefit: "https://medpro.vn/static/media/new.fa578d26.svg",
+        title: "TIN TỨC TỪ CÁC BỆNH VIỆN",
+        description: "Tin tức về sức khỏe, cập nhật kiến thức <br/> chăm sóc sức khỏe từ các chuyên gia",
+        position: "right",
+      },
+      {
+        id: "",
+        imgBenefit: "https://medpro.vn/static/media/hoadon.a6d5f456.svg",
+        title: "HOÁ ĐƠN ĐIỆN TỬ",
+        description: "Tra cứu hóa đơn điện tử chính xác và nhanh chóng",
+        position: "right",
+      },
+    ],
+  },
+
+  supportMethods: [
+    {
+      nameMedthod: "Hỗ trợ đặt khám",
+      imgCard: "https://medpro.vn/static/media/support.8cccd18a.svg",
+      description: "1900-2115",
+      link: "tel:19002115",
+    },
+    {
+      nameMedthod: "Fanpage Facebook",
+      imgCard: "https://medpro.vn/static/media/facebook.c9e1625b.svg",
+      description: "Bấm vào đây",
+      link: "https://www.facebook.com/datkham.medpro.com.vn/",
+    },
+    {
+      nameMedthod: "Hỗ trợ ZALO",
+      imgCard: "https://medpro.vn/static/media/qrmed.f0bb2880.jpg",
+      description: "Bấm vào đây",
+      link: "",
+    },
+    {
+      nameMedthod: "Chat Facebook",
+      imgCard: "data:image/png;base64,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",
+      description: "Bấm vào đây",
+      link: "https://m.me/medpro.com.vn",
+    },
+  ],
+  footer: {
+    logoFooter: "https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg",
+    infoContact: [
+      {
+        id: "",
+        label: "",
+        value: "CÔNG TY CỔ PHẦN ỨNG DỤNG PKH",
+      },
+      {
+        id: "",
+        label: "Địa chỉ:",
+        value: "97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh.",
+      },
+      {
+        id: "",
+        label: "Website:",
+        value: " https://pkh.vn",
+      },
+      {
+        label: "Email",
+        value: "contact@pkh.vn",
+      },
+      {
+        label: "Điện thoại:",
+        value: "(028) 710 78098",
+      },
+    ],
+    linkSupport: [
+      {
+        id: "",
+        label: "Liên hệ",
+        link: "/lien-he",
+      },
+      {
+        id: "",
+        label: "Điều khoản dịch vụ",
+        link: "/dieu-khoan-dich-vu",
+      },
+      {
+        id: "",
+        label: "Chính sách bảo mật",
+        link: "/chinh-sach-bao-mat",
+      },
+      {
+        id: "",
+        label: "Quy định sử dụng",
+        link: "/quy-dinh-su-dung",
+      },
+    ],
+    logoChecked: [
+      {
+        id: "",
+        key: "bocongthuong1",
+        imgLogo: "https://medpro.com.vn/static/media/bocongthuong1.4e58f890.svg",
+        link: "http://online.gov.vn/Home/WebDetails/44668",
+      },
+      {
+        id: "",
+        key: "bocongthuong2",
+        imgLogo: "https://medpro.com.vn/static/media/bocongthuong2.28581f75.svg",
+        link: "http://online.gov.vn/Home/WebDetails/44209",
+      },
+      {
+        id: "",
+        key: "android",
+        imgLogo: "https://medpro.com.vn/static/media/googleplay.e6fe412f.svg",
+        link: "https://play.google.com/store/apps/details?id=vn.com.medpro",
+      },
+      {
+        id: "",
+        key: "ios",
+        imgLogo: "https://medpro.com.vn/static/media/appstore.3a164d38.svg",
+        link: "https://apps.apple.com/us/app/id1481561748",
+      },
+    ],
+  },
+};
+
+
