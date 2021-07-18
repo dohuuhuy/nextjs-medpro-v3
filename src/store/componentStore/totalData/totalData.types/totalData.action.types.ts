@@ -1,13 +1,15 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
-export enum PartnerId_Action_Types {
-  PartnerId_REQUEST = 'REQUEST',
-  PartnerId_REQUEST_SUCCESS = 'PartnerId_REQUEST_SUCCESS',
-  PartnerId_REQUEST_FAILURE = ' PartnerId_REQUEST_FAILURE',
-  PartnerId_UPDATE = 'PartnerId_UPDATE',
-  PartnerId_DELETE = 'PartnerId_DELETE',
+export enum ListPartners_Action_Types {
+  ListPartners_REQUEST = 'ListPartners_REQUEST',
+  ListPartners_REQUEST_SUCCESS = 'ListPartners_REQUEST_SUCCESS',
+  ListPartners_REQUEST_FAILURE = ' ListPartners_REQUEST_FAILURE',
+  ListPartners_UPDATE = 'ListPartners_UPDATE',
+  ListPartners_DELETE = 'ListPartners_DELETE',
+  CHECK_LOCALHOST = 'CHECK_LOCALHOST',
+  ListPartners_ERROR = 'ListPartners_ERROR',
+  SET_PartnerId = 'SET_PartnerId',
 }
 
-// Cách đăt tên:
-// Exp: <Danh từ>_<tính năng>_<trạng thái>
-// Tính năng: request, update, delete
-// Trạng thái: success, failure, ...
+export enum partnerId_Local_Action_Types {
+  partnerId_Local_REQUEST = 'partnerId_Local_REQUEST',
+}

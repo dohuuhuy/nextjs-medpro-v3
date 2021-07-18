@@ -5,12 +5,11 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js"
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "export": " next build && next export"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@ckeditor/ckeditor5-build-classic": "29.0.0",
-    "@ckeditor/ckeditor5-react": "3.0.2",
     "@medpro/booking-libs": "0.0.39",
     "antd": "^4.16.5",
     "axios": "0.21.1",
@@ -28,6 +27,7 @@
     "ts-node": "10.0.0"
   },
   "devDependencies": {
+    "@types/lodash": "4.14.171",
     "@types/node": "16.3.0",
     "@types/react": "17.0.13",
     "babel-plugin-module-resolver": "4.1.0",

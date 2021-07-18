@@ -11,10 +11,11 @@
               "@config": "./src/config",
               "@components": "./src/components",
               "@componentStore": "./src/store/componentStore",
-              // "@actionStore": "./src/store/actionStore",
+              "@utils": "./src/utils",
               "@store": "./src/store",
               "@templates": "./templates",
-              "@assets": "./assets"
+              "@assets": "./assets",
+              "@public": "./public"
             }
           }
         ]
@@ -31,10 +32,11 @@
               "@config": "./src/config",
               "@components": "./src/components",
               "@componentStore": "./src/store/componentStore",
-              // "@actionStore": "./src/store/actionStore",
+              "@utils": "./src/utils",
               "@store": "./src/store",
               "@templates": "./templates",
-              "@assets": "./assets"
+              "@assets": "./assets",
+              "@public": "./public"
             }
           }
         ]
