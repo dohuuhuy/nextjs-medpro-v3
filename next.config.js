@@ -3,6 +3,9 @@ const path = require('path')
 const lessToJS = require('less-vars-to-js')
 const withLess = require('next-with-less')
 const withImages = require('next-images')
+
+const webpack = require('webpack')
+
 const withPlugins = require('next-compose-plugins')
 
 // cấu hình varible antd
@@ -28,6 +31,11 @@ const nextConfig = {
   },
 
   ...lessConfig,
+
+  webpack(config) {
+    config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    return config
+  },
 }
 
 const plugins = [[withImages], [withLess]]
