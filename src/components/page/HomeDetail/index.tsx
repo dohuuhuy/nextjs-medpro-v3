@@ -15,6 +15,8 @@ const HomeDetail = () => {
     (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor,
   )
 
+  console.log('process.env.ENV :>> ', process.env.ENV)
+  console.log('process.env :>> ', process.env)
   return (
     <Container
       style={{

@@ -7,11 +7,11 @@
     "dev:testing": "cross-env NODE_ENV=development ENV=testing PORT=3007 nodemon",
     "dev:staging": "cross-env NODE_ENV=development ENV=staging PORT=3008 nodemon",
     "dev:production": "cross-env NODE_ENV=development ENV=production PORT=3009 nodemon",
-    "build": "next build ",
+    "build": "cross-env NODE_ENV=production ENV=testing next build && tsc --project tsconfig.server.json",
     "start:development": "cross-env NODE_ENV=production ENV=development PORT=3006 node dist/index.js",
-    "start:testing": "NODE_ENV=production ENV=testing node PORT=3007 dist/index.js",
-    "start:staging": "NODE_ENV=production ENV=staging node PORT=3008 dist/index.js",
-    "start:production": "NODE_ENV=production ENV=production PORT=3009 node dist/index.js",
+    "start:testing": "cross-env NODE_ENV=production ENV=testing PORT=3007 node dist/index.js",
+    "start:staging": "cross-env NODE_ENV=production ENV=staging PORT=3008 node dist/index.js",
+    "start:production": "cross-env NODE_ENV=production ENV=production PORT=3009 node dist/index.js",
     "export": " next build && next export"
   },
   "dependencies": {

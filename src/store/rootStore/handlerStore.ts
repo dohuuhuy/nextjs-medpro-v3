@@ -1,4 +1,5 @@
 import { NODE_ENV } from '@config/envs/env'
+
 import { VERSION } from '@config/version'
 import { Store } from 'antd/lib/form/interface'
 import { applyMiddleware } from 'redux'
@@ -7,8 +8,6 @@ import { Persistor } from 'redux-persist'
 import createSagaMiddleware, { Task } from 'redux-saga'
 
 export const sagaMiddleware = createSagaMiddleware()
-
-
 
 export const bindMiddleware = (middleware: any[]) => {
   if (NODE_ENV !== 'production') {
