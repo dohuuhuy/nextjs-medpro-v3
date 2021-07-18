@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dev": "cross-env NODE_ENV=development ENV=development PORT=3006 nodemon",
+    "dev:testing": "cross-env NODE_ENV=development ENV=testing PORT=3007 nodemon",
+    "dev:staging": "cross-env NODE_ENV=development ENV=staging PORT=3008 nodemon",
+    "dev:production": "cross-env NODE_ENV=development ENV=production PORT=3009 nodemon",
+    "build": "next build ",
+    "start:development": "cross-env NODE_ENV=production ENV=development PORT=3006 node dist/index.js",
+    "start:testing": "NODE_ENV=production ENV=testing node PORT=3007 dist/index.js",
+    "start:staging": "NODE_ENV=production ENV=staging node PORT=3008 dist/index.js",
+    "start:production": "NODE_ENV=production ENV=production PORT=3009 node dist/index.js",
     "export": " next build && next export"
   },
   "dependencies": {
