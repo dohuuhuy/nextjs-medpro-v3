@@ -21,10 +21,15 @@ const is_localhost = (listPartners: any) => {
   const res: any = listPartners.find((i: any) =>
     i.domain.includes(handlerDoamain()),
   )
+  // Không tìm thấy localhost trong listPartners thì true
   if (!res) return true
-  if (res.domain === 'localhost' || res.domain.includes('testing')) {
-    return true
-  }
+
+  // const testing = res.domain.find((i: string | string[]) => {
+  //   return i.includes('testing')
+  // })
+
+  // if (testing) return true
+
   return false
 }
 
@@ -68,16 +73,12 @@ function* watch_partnerId_local() {
 
 function* get_list_partners() {
   try {
-    // const url_list_partner =
-    //   'https://medpro-api-v3-testing.medpro.com.vn/st/listPartner.json'
     const url =
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
       getData,
       url,
     )
-
-    console.log('listPartners :>> ', listPartners)
 
     yield put({
       type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS,

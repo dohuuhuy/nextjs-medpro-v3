@@ -1,15 +1,13 @@
 import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
-import RunLocal from '@components/molecules/RunLocal'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import '@medpro/booking-libs/libs/index.css'
-import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const MyApp = ({ Component, pageProps }: any) => {
   const LayoutWrapper = Component.Layout || React.Fragment
@@ -24,18 +22,6 @@ const MyApp = ({ Component, pageProps }: any) => {
     setVersion()
     checkVersion(persistor)
   })
-
-  const partnerId = useSelector<AppState>(
-    (state: any) => state.totalData_Reducer.partnerId,
-  )
-
-  const hospital_details: any = useSelector<AppState>(
-    (state: any) => state.hospital_Reducer.hospital_details,
-  )
-
-  if (!partnerId || Object.keys(hospital_details).length < 1) {
-    return <RunLocal />
-  }
 
   return (
     <LayoutWrapper>
