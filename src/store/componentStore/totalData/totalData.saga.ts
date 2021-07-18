@@ -77,6 +77,8 @@ function* get_list_partners() {
       url,
     )
 
+    console.log('listPartners :>> ', listPartners)
+
     yield put({
       type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS,
       list_partners: listPartners,

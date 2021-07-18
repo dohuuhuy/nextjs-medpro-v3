@@ -23,6 +23,7 @@ const HomeDetail = () => {
       }}
     >
       <Demo text={'viết bằng typescript function và có sử dụng module.less'} />
+
       <Button
         disabled={nameColor === 'ghost'}
         type={nameColor}

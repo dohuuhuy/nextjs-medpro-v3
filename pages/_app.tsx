@@ -11,11 +11,6 @@ import SEO from 'next-seo.config'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-export const test_bệnh_viện_trên_local = {
-  partnerId: 'bvtest',
-  local: true,
-}
-
 const MyApp = ({ Component, pageProps }: any) => {
   const LayoutWrapper = Component.Layout || React.Fragment
 
@@ -41,6 +36,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   if (!partnerId || Object.keys(hospital_details).length < 1) {
     return <RunLocal />
   }
+
   return (
     <LayoutWrapper>
       <DefaultSeo {...SEO} />

@@ -14,7 +14,8 @@
               "@utils": "./src/utils",
               "@store": "./src/store",
               "@templates": "./templates",
-              "@assets": "./assets"
+              "@assets": "./assets",
+              "@public": "./public"
             }
           }
         ]
@@ -34,7 +35,8 @@
               "@utils": "./src/utils",
               "@store": "./src/store",
               "@templates": "./templates",
-              "@assets": "./assets"
+              "@assets": "./assets",
+              "@public": "./public"
             }
           }
         ]

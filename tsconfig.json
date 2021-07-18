@@ -30,6 +30,7 @@
       "@store/*": ["./src/store/*"],
       "@templates/*": ["./templates/*"],
       "@assets/*": ["./assets/*"],
+      "@public/*": ["./public/*"],
       "@utils/*": ["./src/utils/*"]
     }
   },
