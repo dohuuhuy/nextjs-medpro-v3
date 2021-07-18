@@ -1,20 +1,17 @@
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
-import React, { ReactNode } from 'react'
+import React from 'react'
 import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
+const Download = dynamic(() => import('@components/organisms/DownloadApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
-type Props = {
-  children?: ReactNode
-}
-
-const HomeLayout = ({ children }: Props) => {
+const HomeLayout = () => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      <>{children}</>
+      <Download />
       <Footer />
     </Layout>
   )
