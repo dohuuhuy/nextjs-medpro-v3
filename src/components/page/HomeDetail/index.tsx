@@ -52,7 +52,7 @@ const HomeDetail = () => {
       </div>
       <a href="tel:1900-2115">1900-2115</a>
 
-      {process.env.ENV}
+      <div> {process.env.ENV + '   helo'} </div>
     </Container>
   )
 }
