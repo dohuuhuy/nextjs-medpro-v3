@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col } from 'antd'
 import React from 'react'
 import { ImageFooter } from './ImageFooter'

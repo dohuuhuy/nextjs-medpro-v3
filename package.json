@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@medpro/booking-libs": "0.0.56",
+    "@medpro/booking-libs": "0.0.58",
     "antd": "^4.16.5",
     "axios": "0.21.1",
     "dotenv": "10.0.0",
@@ -51,7 +51,6 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",

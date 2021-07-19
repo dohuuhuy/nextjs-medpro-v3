@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import { chunk } from 'lodash'
 import React from 'react'
@@ -25,7 +26,11 @@ export const ImageFooter = ({ logoChecked }: Props) => {
               ) => (
                 <Col key={i}>
                   <a href={itemChunk.link}>
-                    <img src={itemChunk.imgLogo} className={style.img} />
+                    <img
+                      src={itemChunk.imgLogo}
+                      className={style.img}
+                      alt='imgLogo'
+                    />
                   </a>
                 </Col>
               )

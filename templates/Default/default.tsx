@@ -14,8 +14,8 @@ type Props = {
 const DefaultLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-      <Header />
-      <Banner />
+      {/* <Header /> */}
+      {/* <Banner /> */}
       <>{children}</>
       <Footer />
     </Layout>

@@ -8,7 +8,7 @@ const LienHeDetail = () => {
         style={{
           color: 'red',
           marginTop: '2rem',
-          textAlign: 'center',
+          textAlign: 'center'
         }}
       >
         LienHeDetail
