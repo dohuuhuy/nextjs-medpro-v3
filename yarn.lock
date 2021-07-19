@@ -174,10 +174,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@medpro/booking-libs@0.0.45":
-  version "0.0.45"
-  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.45.tgz#9ddf6bb57340d4ec57312cbec2bdf5d0d58af24d"
-  integrity sha1-nd9rtXNA1OxXMSy+wr310NWK8k0=
+"@medpro/booking-libs@0.0.39":
+  version "0.0.39"
+  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.39.tgz#21ca830aeac3dea997903d864ed7a29227047761"
+  integrity sha1-IcqDCurD3qmXkD2GTteikicEd2E=
   dependencies:
     "@craco/craco" "6.2.0"
     antd "4.16.6"
@@ -593,9 +593,9 @@ antd@4.16.6:
     warning "^4.0.3"
 
 antd@^4.16.5:
-  version "4.16.7"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.7.tgz#c51fb143288adb8b008a786efe8d5df13320ac4c"
-  integrity sha512-9XQnTpQ21zqnXWAvFvt1mm0j5+r4E7N/eK0kSEBqxuoTCzTrrn5iwhXFEZ2htJx9QJFlihST/T1Wd8JzRf9J3Q==
+  version "4.16.8"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.8.tgz#0a81f846eb6b356159839d18247b713d04b526d6"
+  integrity sha512-xM1zheIYvS/0x05sM3Yj5cwBu6TjzS7RdwQug1bgbtDAk94dacuFvdLa4PjsvEiG6kz0uNzaaIaDBis7LRH5hA==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.6.2"

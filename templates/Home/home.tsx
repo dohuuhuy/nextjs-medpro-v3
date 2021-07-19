@@ -14,10 +14,10 @@ type Props = {
 const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-      {/* <Header /> */}
+      <Header />
       <DownloadApp />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </Layout>
   )
 }
