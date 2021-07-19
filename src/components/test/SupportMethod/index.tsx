@@ -1,18 +1,14 @@
+import { Col, Layout } from 'antd'
 import React from 'react'
 import style from './style.module.less'
-import { Layout, Col } from 'antd'
-import {
-  SupportMedthodApp,
-  SupportMethodItem,
-} from '@components/organisms/SupportMethodApp'
 
 const { Content } = Layout
 
 interface SupportMethod {
-  dataSupportMethod: SupportMedthodApp
+  dataSupportMethod: any
 }
 
-export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
+export const SupportMedthodCustom = ({ dataSupportMethod }: SupportMethod) => {
   return (
     <React.Fragment>
       <Content className={style.viewContent}>
@@ -24,13 +20,11 @@ export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
 
           <div className={style.viewSupport}>
             {dataSupportMethod.map(
-              ({
-                nameMedthod,
-                imgCard,
-                description,
-                link,
-              }: SupportMethodItem) => (
-                <div>
+              (
+                { nameMedthod, imgCard, description, link }: any,
+                index: number
+              ) => (
+                <div key={index}>
                   <Col className={style.colSupport}>
                     <Col className={style.cardSupport}>
                       <img src={imgCard} className={style.img} />
@@ -41,7 +35,7 @@ export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
                     </Col>
                   </Col>
                 </div>
-              ),
+              )
             )}
           </div>
         </Content>
