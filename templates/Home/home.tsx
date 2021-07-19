@@ -4,8 +4,7 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 // const Header = dynamic(() => import('@components/organisms/Header'))
-// const Download = dynamic(() => import('@components/organisms/DownloadApp'))
-// const Intro = dynamic(() => import('@components/organisms/BannerHomeApp'))
+
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
