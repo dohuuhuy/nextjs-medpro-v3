@@ -13,15 +13,20 @@ interface Content {
 export const Content = ({ listBenefit, imgMobile }: Content) => {
   return (
     <React.Fragment>
-      <Row className={Styles.con_content}>
-        <Col span={2} className={Styles.null} />
-        <Benefit_left listBenefit={listBenefit} />
-        <Col span={6} className={Styles.img_big}>
-          <img src={imgMobile} />
-        </Col>
-        <Benefit_right listBenefit={listBenefit} />
-        <Col span={2} className={Styles.null} />
-      </Row>
+      <div className={Styles.content}>
+        <div className={Styles.div_background}>
+          <div className={Styles.background} />
+        </div>
+        <Row className={Styles.con_content}>
+          <Col span={2} className={Styles.null} />
+          <Benefit_left listBenefit={listBenefit} />
+          <Col span={6} className={Styles.img_big}>
+            <img src={imgMobile} />
+          </Col>
+          <Benefit_right listBenefit={listBenefit} />
+          <Col span={2} className={Styles.null} />
+        </Row>
+      </div>
     </React.Fragment>
   )
 }

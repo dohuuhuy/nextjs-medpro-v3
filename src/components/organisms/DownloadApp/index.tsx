@@ -13,13 +13,9 @@ const DownloadLayout = () => {
 
 //Vậy giờ test y chang anh luôn hả anh, dúng v , theo cách a làm
 export default DownloadLayout
-//em hiểu rồi
+
 const downloadApp: downloadApp = {
   appId: 'medpro',
-  // vậy là có mấy case, hay ph
-  //  hiện tại có 2 cái 1 là có appId = medpro ,thi chạy giao diện giống medpro,
-  // 2 là k có appid chay case default : gioonbgs bệnh viên testing vừa thấy.
-  // dạ oki anh
   nameHospital: 'Bênh viện nhi đồng 1 ',
   myApp: [
     {
@@ -39,8 +35,8 @@ const downloadApp: downloadApp = {
     {
       id: '',
       title: 'ĐĂNG KÝ KHÁM BỆNH',
-      label:
-        'Đăng ký khám bệnh theo ngày <br/> Đăng ký khám bệnh theo bác sĩ  <br/>  Tái khám theo lịch hẹn',
+      description:
+        'Đăng ký khám bệnh theo ngày <br /> Đăng ký khám bệnh theo bác sĩ <br /> Tái khám theo lịch hẹn',
       imgBenefit: 'https://medpro.vn/static/media/register.38d59ff0.svg',
       position: 'left',
     },
@@ -48,7 +44,7 @@ const downloadApp: downloadApp = {
       id: '',
       title: 'TƯ VẤN SỨC KHOẺ TRỰC TUYẾN',
       description:
-        'Tư vấn sức khỏe trực tuyến với các  <br/>  bác sĩ đầu ngành & chuyên gia',
+        'Tư vấn sức khỏe trực tuyến với các<br />bác sĩ đầu ngành & chuyên gia',
       imgBenefit: 'https://medpro.vn/static/media/chat.6c5774f2.svg',
       position: 'left',
     },
@@ -56,7 +52,7 @@ const downloadApp: downloadApp = {
       id: '',
       title: 'KẾT QUẢ CẬN LÂM SÀNG',
       description:
-        'Kết quả Cận Lâm Sàng sẽ được cập nhật  <br/>  trực tiếp trên phần mềm',
+        'Kết quả Cận Lâm Sàng sẽ được cập nhật <br />trực tiếp trên phần mềm',
       imgBenefit: 'https://medpro.vn/static/media/result.d078c4e7.svg',
       position: 'left',
     },
@@ -65,7 +61,7 @@ const downloadApp: downloadApp = {
       imgBenefit: 'https://medpro.vn/static/media/payment.09fb7592.svg',
       title: 'THANH TOÁN VIỆN PHÍ',
       description:
-        'Đăng ký khám bệnh theo ngày  <br/>  Đăng ký khám bệnh theo bác sĩ  <br/>  Tái khám theo lịch hẹn',
+        'Đăng ký khám bệnh theo ngày<br />Đăng ký khám bệnh theo bác sĩ<br />Tái khám theo lịch hẹn',
       position: 'right',
     },
     {
@@ -73,14 +69,14 @@ const downloadApp: downloadApp = {
       imgBenefit: 'https://medpro.vn/static/media/new.fa578d26.svg',
       title: 'TIN TỨC TỪ CÁC BỆNH VIỆN',
       description:
-        'Tin tức về sức khỏe, cập nhật kiến thức <br/> chăm sóc sức khỏe từ các chuyên gia',
+        'Tin tức về sức khỏe, cập nhật kiến thức <br /> chăm sóc sức khỏe từ các chuyên gia',
       position: 'right',
     },
     {
       id: '',
       imgBenefit: 'https://medpro.vn/static/media/hoadon.a6d5f456.svg',
       title: 'HOÁ ĐƠN ĐIỆN TỬ',
-      description: 'Tra cứu hóa đơn điện tử chính xác và nhanh chóng',
+      description: 'Tra cứu hóa đơn điện tử chính xác và<br /> nhanh chóng',
       position: 'right',
     },
   ],
@@ -93,22 +89,3 @@ export interface downloadApp {
   imgMobile: string
   listBenefit: any[]
 }
-
-// còn phần intro nữa .,
-// dữ liệu test intro đâu
-// em đang làm cái download nè
-// ,
-
-// intro cung gióng download .
-
-// vậy là chỉ có intro va down mới có swicth
-// tin tức và sử kiện ,hệ thống bệnh viện triển khai , hiện tại chỉ kích hoạt cho medpro, dạ em hiểu gòi
-// a suy nghi truyền dữ liệu s đã ,
-// mai tính tiếp
-///cảm ơn anh nha
-/// để em convert hết cái
-//  chỉ cho viết TSS
-
-// kkk , viết tiếp đi
-// anh có extension hả,
-//  hk koa

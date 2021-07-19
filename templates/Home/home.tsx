@@ -5,12 +5,13 @@ import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
+// const Intro =
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 const HomeLayout = () => {
   return (
     <Layout className={styles.layout}>
-      <Header />
+      {/* <Header /> */}
       <Download />
       <Footer />
     </Layout>
