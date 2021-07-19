@@ -15,7 +15,7 @@ const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
         </p>
         <div>
           <a href="" className={Styles.boxService}>
-            <img src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'} />
+            <img src={dataBannerHome.linkImage} />
             <span>Đặt khám</span>
           </a>
         </div>

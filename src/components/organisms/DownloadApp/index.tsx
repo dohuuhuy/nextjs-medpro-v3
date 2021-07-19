@@ -4,14 +4,6 @@ import React from 'react'
 const DownloadLayout = () => {
   return <DownloadCustom dataDownload={downloadApp} />
 }
-
-// nhận dữ liệu vào thì đặt tên data + danh từ
-
-// nhận hàm , method thì đặt tên func + danh từ
-
-// quy tắc đặt tên interface , tên interface giông tên constant trc  đó ,
-
-//Vậy giờ test y chang anh luôn hả anh, dúng v , theo cách a làm
 export default DownloadLayout
 
 const downloadApp: downloadApp = {

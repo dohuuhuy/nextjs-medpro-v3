@@ -15,9 +15,8 @@ const bannerHome: bannerHome = [
   },
 ]
 
-export interface bannerHome extends Array<bannerHomeItem> {}
-export interface bannerHomeItem {
-  id: string
-  linkImage: string
-  alt: string
-}
+export interface bannerHome
+  extends Array<{ id: string; linkImage: string; alt: string }> {}
+// export interface bannerHomeItem {
+
+// }
