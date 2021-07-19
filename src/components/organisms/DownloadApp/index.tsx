@@ -6,4 +6,3 @@ const DownloadLayout = () => {
 }
 
 export default DownloadLayout
-

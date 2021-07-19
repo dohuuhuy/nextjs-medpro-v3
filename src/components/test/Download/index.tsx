@@ -9,13 +9,16 @@ interface DownloadCustom {
   dataDownload: downloadApp
 }
 
-// chổ nào có 2 trường hợp ,
-// v phải xử lýlyswitch case
-// cass appId = 'medpro'
-
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
   return (
     <div className={Styles.container}>
+<<<<<<< HEAD
+      <MyApp arrApp={dataDownload.myApp} />
+      <Content
+        listBenefit={dataDownload.listBenefit}
+        imgMobile={dataDownload.imgMobile}
+      />
+=======
       <div className={Styles.header}>
         <div className={Styles.download}>DOWNLOAD</div>
         <div className={Styles.header_title}>
@@ -32,6 +35,7 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
           imgMobile={dataDownload.imgMobile}
         />
       </div>
+>>>>>>> 57605be4a97a35a3bda2ad8c729e4fc3bbc5ceb8
     </div>
   )
 }

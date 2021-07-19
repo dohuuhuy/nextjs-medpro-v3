@@ -1,6 +1,12 @@
 import React from 'react'
 import Styles from './style.module.less'
-const HomePage: React.FC = () => {
+import { bannerHome } from '@components/organisms/BannerHomeApp'
+
+interface bannerHomeCustom {
+  dataBannerHome: bannerHome
+}
+const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
+  console.log('dataBannerHome :>> ', dataBannerHome)
   return (
     <div className={Styles.container}>
       <div className={Styles.content}>
@@ -9,7 +15,7 @@ const HomePage: React.FC = () => {
         </p>
         <div>
           <a href="" className={Styles.boxService}>
-            <img src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'} />
+            <img src={dataBannerHome.linkImage} />
             <span>Đặt khám</span>
           </a>
         </div>
@@ -17,7 +23,7 @@ const HomePage: React.FC = () => {
     </div>
   )
 }
-export default HomePage
+export default BannerHomeCustom
 
 // import React, { Component } from "react"
 // import Styles from './style.module.less'

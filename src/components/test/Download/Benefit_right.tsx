@@ -9,7 +9,7 @@ interface Benefit_right {
 interface Item {
   id: any
   title: string
-  label: string
+  description: string
   imgBenefit: string
   position: any
 }
@@ -18,22 +18,26 @@ export const Benefit_right = ({ listBenefit }: Benefit_right) => {
   return (
     <React.Fragment>
       <Col span={7} className={Styles.list}>
-        {listBenefit.map(({ id, title, label, imgBenefit, position }: Item) => {
-          position === 'right' ? (
-            <Row
-              key={id}
-              className={[Styles.list_item, Styles.right].join(' ')}
-            >
-              <div className={Styles.img_small}>
-                <img src={imgBenefit} />
-              </div>
-              <div className={Styles.list_content}>
-                <p className={Styles.list_title}>{title}</p>
-                <p>{label}</p>
-              </div>
-            </Row>
-          ) : undefined
-        })}
+        {listBenefit.map(
+          ({ id, title, description, imgBenefit, position }: Item) => (
+            <div>
+              {position === 'right' ? (
+                <Row
+                  key={id}
+                  className={[Styles.list_item, Styles.right].join(' ')}
+                >
+                  <div className={Styles.img_small}>
+                    <img src={imgBenefit} />
+                  </div>
+                  <div className={Styles.list_content}>
+                    <p className={Styles.list_title}>{title}</p>
+                    <p dangerouslySetInnerHTML={{ __html: description }} />
+                  </div>
+                </Row>
+              ) : undefined}
+            </div>
+          ),
+        )}
       </Col>
     </React.Fragment>
   )
