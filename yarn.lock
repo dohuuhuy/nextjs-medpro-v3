@@ -242,12 +242,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@medpro/booking-libs@0.0.39":
-  version "0.0.39"
-  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.39.tgz#21ca830aeac3dea997903d864ed7a29227047761"
-  integrity sha1-IcqDCurD3qmXkD2GTteikicEd2E=
+"@medpro/booking-libs@0.0.52":
+  version "0.0.52"
+  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.52.tgz#bc9fe62fa7eee423b89818d8a9828e27430f378b"
+  integrity sha1-vJ/mL6fu5CO4mBjYqYKOJ0MPN4s=
   dependencies:
     "@craco/craco" "6.2.0"
+    "@types/lodash" "4.14.171"
     antd "4.16.6"
     autoprefixer "10.2.6"
     babel-loader "8.2.2"
