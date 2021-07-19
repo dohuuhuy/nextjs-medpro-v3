@@ -71,25 +71,25 @@
 @media (max-width: 599px) {
   .viewContent {
     .viewSupport {
-      flex-direction: column;
-      align-items: center;
+      flex-direction: column !important;
+      align-items: center !important;
       justify-content: center;
       .colSupport {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
       .cardSupport {
-        margin: 0;
+        margin: 0 !important;
       }
     }
     .content {
       .subTitle {
         p {
-          font-size: 16px;
+          font-size: 16px !important;
         }
         h1 {
-          font-size: 22px;
+          font-size: 22px !important;
         }
       }
     }
@@ -97,10 +97,10 @@
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .viewContent .viewSupport {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    justify-content: center;
-    width: @width2;
+    display: grid !important;
+    grid-template-columns: auto auto !important;
+    grid-template-rows: auto auto !important;
+    justify-content: center !important;
+    width: @width2 !important;
   }
 }

@@ -3,7 +3,7 @@ import style from './style.module.less'
 import { Layout, Col } from 'antd'
 import {
   SupportMedthodApp,
-  SupportMethodItem,
+  SupportMethodItem
 } from '@components/organisms/SupportMethodApp'
 
 const { Content } = Layout
@@ -13,6 +13,9 @@ interface SupportMethod {
 }
 
 export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
+  if (!dataSupportMethod) {
+    return <em>Lỗi không nhận được dataSupportMethod đầu vào</em>
+  }
   return (
     <React.Fragment>
       <Content className={style.viewContent}>
@@ -28,7 +31,7 @@ export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
                 nameMedthod,
                 imgCard,
                 description,
-                link,
+                link
               }: SupportMethodItem) => (
                 <div>
                   <Col className={style.colSupport}>
@@ -41,7 +44,7 @@ export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
                     </Col>
                   </Col>
                 </div>
-              ),
+              )
             )}
           </div>
         </Content>

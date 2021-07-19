@@ -1,0 +1,189 @@
+@color0: #3978d7;
+@color1: #ffffff;
+
+@width1: 100%;
+@width2: 80%;
+
+@height6: 50%;
+
+.solutionBox {
+  height: 32.8125rem;
+  position: relative;
+  .con_Para {
+    background-size: cover;
+    background: url(https://medpro.com.vn/static/media/bg_new.9578e7c5.jpg)
+      no-repeat top;
+    min-height: 18.75rem;
+    padding: 3.75rem 0 100px 0;
+    .intro {
+      height: @height6;
+      width: @width1;
+      span {
+        color: #74cece;
+        font-size: 0.625rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      h3 {
+        color: aliceblue;
+        font-size: 1.9rem;
+        font-weight: 500;
+        line-height: 37px;
+      }
+    }
+    .Paragraph {
+      color: @color1;
+      font-size: 1.0625rem;
+      height: @height6;
+      text-align: justify;
+    }
+  }
+  .card {
+    align-items: center;
+    display: flex;
+    height: 17.5625rem;
+    justify-content: center;
+    position: absolute;
+    top: 14.25rem;
+    width: @width1;
+    .boxCard {
+      display: flex;
+      height: auto;
+      width: @width2;
+      .footerCard {
+        display: block;
+        position: relative;
+        width: 50%;
+        img {
+          border-radius: 10px;
+          height: 207px;
+          width: 90%;
+        }
+        .footerCard_Text {
+          background-color: @color1;
+          box-shadow: 5px 5px 8px lightgray;
+          cursor: pointer;
+          height: auto;
+          margin-left: 5%;
+          margin-top: -50px;
+          text-align: center;
+          transform: translateY(0);
+          transition: 1s;
+          width: @width2;
+          .title {
+            padding: 10px;
+            span {
+              color: #12263f;
+              font-size: 1.1rem;
+              font-weight: 500;
+              text-transform: uppercase;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+          &:hover {
+            box-shadow: 5px 5px 8px whitesmoke;
+            transform: translateY(-10px);
+            transition: 1s;
+            span {
+              color: @color0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 599px) {
+  .solutionBox {
+    background-color: @color0 !important;
+    height: 468px !important;
+    position: unset !important;
+    .con_Para {
+      height: auto !important;
+      background-color: @color0 !important;
+      .null {
+        display: none !important;
+      }
+      .intro {
+        min-width: @width1 !important;
+        padding: 10px 10px 0 10px !important;
+      }
+      .Paragraph {
+        min-width: @width1 !important;
+        padding: 10px !important;
+        text-align: justify !important;
+      }
+    }
+    .card {
+      height: fit-content !important;
+      position: unset !important;
+      top: 123px !important;
+      .boxCard {
+        width: @width1 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      .footerCard {
+        width: @width1 !important;
+        margin-bottom: 30px !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 20px 0 20px !important;
+        img {
+          width: @width1 !important;
+          height: auto !important;
+          border-radius: 5px !important;
+        }
+        .footerCard_Text {
+          position: unset !important;
+          top: 0 !important;
+          height: auto !important;
+          width: 80% !important;
+          margin: -50px 10% 0 10% !important;
+          .title {
+            span {
+              font-size: 14px !important;
+            }
+            p {
+              font-size: 13px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .solutionBox .card {
+    width: @width1 !important;
+    height: auto !important;
+    position: relative !important;
+    top: 50px !important;
+    .boxCard {
+      width: 95% !important;
+      flex-wrap: wrap !important;
+      justify-content: space-around !important;
+      .footerCard {
+        width: 250px !important;
+        flex-direction: column !important;
+        margin-top: 20px !important;
+        img {
+          width: @width1 !important;
+          height: auto !important;
+        }
+        .footerCard_Text {
+          position: unset !important;
+          height: auto !important;
+          width: @width2 !important;
+          margin: 0 10% 0 10% !important;
+          margin-top: -50px !important;
+          padding: 5px !important;
+        }
+      }
+    }
+  }
+}
