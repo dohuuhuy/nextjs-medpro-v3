@@ -1,4 +1,4 @@
-export type SupportMedthodApp = Array<SupportMethodItem>
+export type SupportMedthod = Array<SupportMethodItem>
 
 export interface SupportMethodItem {
   nameMedthod: string

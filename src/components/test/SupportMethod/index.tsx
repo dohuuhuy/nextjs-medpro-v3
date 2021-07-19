@@ -1,3 +1,4 @@
+import { SupportMedthod } from './SupportMethod.interface'
 import { Col, Layout } from 'antd'
 import React from 'react'
 import style from './style.module.less'
@@ -5,10 +6,14 @@ import style from './style.module.less'
 const { Content } = Layout
 
 interface SupportMethod {
-  dataSupportMethod: any
+  dataSupportMethod: SupportMedthod
 }
 
 export const SupportMedthodCustom = ({ dataSupportMethod }: SupportMethod) => {
+  if (!dataSupportMethod) {
+    return null
+  }
+
   return (
     <React.Fragment>
       <Content className={style.viewContent}>
