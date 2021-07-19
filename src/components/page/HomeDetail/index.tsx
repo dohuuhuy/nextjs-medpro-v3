@@ -16,7 +16,7 @@ const HomeDetail = () => {
   )
 
   console.log('process.env.ENV :>> ', process.env.ENV)
-  console.log('process.env :>> ', process.env)
+  // console.log('process.env :>> ', process.env)
   return (
     <Container
       style={{

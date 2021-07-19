@@ -1,3 +1,4 @@
+import { _PRODUCTION } from '@config/envs/env'
 import {
   Hospital_Details_Action_Types,
   ListPartners_Action_Types,
@@ -7,7 +8,7 @@ import {
   totalData_State,
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
-import { get_PartnerId, handlerDoamain } from '@utils/run_local_hospitals'
+import { get_PartnerId } from '@utils/run_local_hospitals'
 import axios, { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -15,22 +16,6 @@ const getData = async (url: any) => {
   const res = await axios.get(url)
   const { data } = res
   return data
-}
-
-const is_localhost = (listPartners: any) => {
-  const res: any = listPartners.find((i: any) =>
-    i.domain.includes(handlerDoamain()),
-  )
-  // Không tìm thấy localhost trong listPartners thì true
-  if (!res) return true
-
-  // const testing = res.domain.find((i: string | string[]) => {
-  //   return i.includes('testing')
-  // })
-
-  // if (testing) return true
-
-  return false
 }
 
 function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
@@ -85,11 +70,7 @@ function* get_list_partners() {
       list_partners: listPartners,
     })
 
-    if (is_localhost(listPartners)) {
-      yield put({
-        type: ListPartners_Action_Types.CHECK_LOCALHOST,
-      })
-    } else {
+    if (_PRODUCTION) {
       const getPartnerId = get_PartnerId({ listPartners })
       if (getPartnerId) {
         yield put({
