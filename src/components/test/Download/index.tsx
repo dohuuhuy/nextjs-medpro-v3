@@ -18,7 +18,6 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
     <div className={Styles.container}>
       <div className={Styles.header}>
         <div className={Styles.download}>DOWNLOAD</div>
-        //
         <div className={Styles.header_title}>
           TẢI ỨNG DỤNG <span>MEDPRO</span>
         </div>
