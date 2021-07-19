@@ -6,7 +6,7 @@ const BannerhomeLayout = () => {
 }
 export default BannerhomeLayout
 
-const bannerHome: bannerHome = [
+const bannerHome: BannerHome = [
   {
     id: '',
     linkImage:
@@ -15,8 +15,10 @@ const bannerHome: bannerHome = [
   },
 ]
 
-export interface bannerHome
-  extends Array<{ id: string; linkImage: string; alt: string }> {}
-// export interface bannerHomeItem {
+export interface BannerHome extends Array<BannerHomeItem> {}
 
-// }
+export interface BannerHomeItem {
+  id: string
+  linkImage: string
+  alt: string
+}
