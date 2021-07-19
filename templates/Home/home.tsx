@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
+const DownloadApp = dynamic(() => import('@components/organisms/DownloadApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
@@ -13,9 +14,10 @@ type Props = {
 const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-      <Header />
+      {/* <Header /> */}
+      <DownloadApp />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </Layout>
   )
 }
