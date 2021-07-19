@@ -24,11 +24,13 @@ const MyApp = ({ Component, pageProps }: any) => {
   })
 
   return (
-    <LayoutWrapper>
-      <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
+    <>
+      <LayoutWrapper>
+        <DefaultSeo {...SEO} />
+        <Component {...pageProps} />
+      </LayoutWrapper>
       <SelectedHospital />
-    </LayoutWrapper>
+    </>
   )
 }
 export default wrapper.withRedux(MyApp)

@@ -4,9 +4,7 @@ const lessToJS = require('less-vars-to-js')
 const withLess = require('next-with-less')
 const withImages = require('next-images')
 
-require('dotenv').config({
-  path: '.env',
-})
+require('dotenv').config()
 
 const webpack = require('webpack')
 

@@ -8,6 +8,7 @@ const express = require('express');
 const server = express();
 const port = parseInt(process.env.PORT || '3006', 10);
 const NODE_ENV = process.env.NODE_ENV;
+const ENV = process.env.ENV;
 const dev = NODE_ENV !== 'production';
 const app = next_1.default({ dev });
 const handle = app.getRequestHandler();
@@ -29,6 +30,6 @@ app.prepare().then(() => {
         handle(req, res);
     })
         .listen(port);
-    console.log(`> Server listening at http://localhost:${port} as ${NODE_ENV}`);
+    console.log(`> Server listening at http://localhost:${port} as ${NODE_ENV} as ${ENV}`);
 });
 //# sourceMappingURL=index.js.map

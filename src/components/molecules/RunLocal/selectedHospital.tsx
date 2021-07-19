@@ -1,5 +1,6 @@
 import { set_partnerId_local } from '@actionStore/rootAction'
-import { AppState, totalData_State } from '@store/interface'
+import { _DEVELOPMENT } from '@config/envs/env'
+import { AppState } from '@store/interface'
 import { Button, Modal, Select } from 'antd'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,11 +24,6 @@ const SelectedHospital = () => {
     setIsModalVisible(false)
   }
 
-  const localhost = useSelector(
-    (state: { totalData_Reducer: totalData_State }) =>
-      state.totalData_Reducer.localhost,
-  )
-
   function onChange(value: any) {
     dispatch(set_partnerId_local({ partnerId: value }))
   }
@@ -38,7 +34,7 @@ const SelectedHospital = () => {
 
   return (
     <div>
-      {localhost ? (
+      {_DEVELOPMENT ? (
         <Button
           type="primary"
           onClick={showModal}

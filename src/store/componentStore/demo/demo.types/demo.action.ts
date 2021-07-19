@@ -1,4 +1,4 @@
-import { demoActionTypes } from './demo.action.types'
+import { demoActionTypes } from '@store/interface'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 export type demoAction = get_Demo | demo_success | demo_failure | deleteColor

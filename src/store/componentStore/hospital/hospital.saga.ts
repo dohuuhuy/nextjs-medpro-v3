@@ -5,8 +5,9 @@ import {
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { get } from 'lodash'
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
+import { _DEVELOPMENT } from './../../../config/envs/env'
 
 const getData = async (url: any) => {
   const res = await axios.get(url)
@@ -16,7 +17,8 @@ const getData = async (url: any) => {
 
 function* hospital_get_details({ partnerId }: any) {
   try {
-    const url = 'http://103.48.193.51:10016/hospital/full-details/' + partnerId
+    const url =
+      'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
     const res: AxiosResponse<hospital_details> = yield call(getData, url)
 
     yield put({
@@ -28,6 +30,14 @@ function* hospital_get_details({ partnerId }: any) {
       type: ListPartners_Action_Types.SET_PartnerId,
       partnerId,
     })
+
+    if (_DEVELOPMENT) {
+      openToast({
+        message: 'Chọn bệnh viện thành công!',
+        type: 'success',
+        duration: 4.5,
+      })
+    }
   } catch (error) {
     const { statusCode, message } = get(error, 'response.data', '')
 
