@@ -1,7 +1,5 @@
-import { demoAction } from './demo.types/demo.action'
+import { demoAction, demoActionTypes, DemoState } from '@store/interface'
 import { HYDRATE } from 'next-redux-wrapper'
-import { DemoState } from './demo.types/demo.initialState'
-import { demoActionTypes } from './demo.types/demo.action.types'
 
 const DemoInitialState: DemoState = {
   nameColor: 'primary',

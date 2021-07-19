@@ -15,6 +15,8 @@ const HomeDetail = () => {
     (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor,
   )
 
+  console.log('process.env.ENV :>> ', process.env.ENV)
+  // console.log('process.env :>> ', process.env)
   return (
     <Container
       style={{
@@ -51,6 +53,8 @@ const HomeDetail = () => {
         </Button>
       </div>
       <a href="tel:1900-2115">1900-2115</a>
+
+      <div> {process.env.ENV + '   helo'} </div>
     </Container>
   )
 }

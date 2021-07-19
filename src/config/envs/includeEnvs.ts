@@ -1,15 +1,9 @@
-import * as production from './production'
 import * as development from './development'
-import * as test from './testing'
+import * as production from './production'
+import * as testing from './testing'
 
-interface Envs {
-  test?: any
-  production?: any
-  development?: any
-}
-
-const exportedObject: Envs = {
-  test,
+const exportedObject: any = {
+  testing,
   development,
   production,
 }
