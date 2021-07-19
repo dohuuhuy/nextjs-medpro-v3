@@ -14,22 +14,22 @@ const withPlugins = require('next-compose-plugins')
 const themeVariables = lessToJS(
   fs.readFileSync(
     path.resolve(__dirname, 'assets/styles/variable.less'),
-    'utf8',
-  ),
+    'utf8'
+  )
 )
 
 const lessConfig = {
   lessLoaderOptions: {
     lessOptions: {
-      modifyVars: themeVariables,
-    },
-  },
+      modifyVars: themeVariables
+    }
+  }
 }
 
 const nextConfig = {
   images: {
     // cấu hình domain cho hình ảnh
-    domains: ['mdbootstrap.com'],
+    domains: ['mdbootstrap.com', 'medpro.vn']
   },
 
   ...lessConfig,
@@ -37,7 +37,7 @@ const nextConfig = {
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
     return config
-  },
+  }
 }
 
 const plugins = [[withImages], [withLess]]

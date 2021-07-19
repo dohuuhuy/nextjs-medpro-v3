@@ -1,3 +1,7 @@
+export interface SupportMethodCustom {
+  dataSupportMethod: SupportMedthod
+}
+
 export type SupportMedthod = Array<SupportMethodItem>
 
 export interface SupportMethodItem {

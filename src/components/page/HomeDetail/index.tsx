@@ -12,16 +12,14 @@ const HomeDetail = () => {
   const dispatch = useDispatch()
 
   const nameColor: any = useSelector(
-    (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor,
+    (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor
   )
 
-  console.log('process.env.ENV :>> ', process.env.ENV)
-  // console.log('process.env :>> ', process.env)
   return (
     <Container
       style={{
         paddingTop: '160px',
-        textAlign: 'center',
+        textAlign: 'center'
       }}
     >
       <Demo text={'viết bằng typescript function và có sử dụng module.less'} />
@@ -52,7 +50,7 @@ const HomeDetail = () => {
           Đăng nhập
         </Button>
       </div>
-      <a href="tel:1900-2115">1900-2115</a>
+      <a href='tel:1900-2115'>1900-2115</a>
 
       <div> {process.env.ENV + '   helo'} </div>
     </Container>

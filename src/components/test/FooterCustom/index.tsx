@@ -7,7 +7,7 @@ import { FooterContent } from './FooterContent'
 const { Footer } = Layout
 
 export const FooterCustom = ({ dataFooter }: PropsFooter) => {
-  if (!dataFooter) {
+  if (!dataFooter || dataFooter.length < 1) {
     return <em>Lỗi không có dataFooter ...</em>
   }
 

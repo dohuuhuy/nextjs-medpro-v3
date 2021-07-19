@@ -1,17 +1,17 @@
-import { SupportMedthod } from './SupportMethod.interface'
+/* eslint-disable @next/next/no-img-element */
 import { Col, Layout } from 'antd'
+import Link from 'next/link'
 import React from 'react'
 import style from './style.module.less'
+import { SupportMethodCustom } from './SupportMethod.interface'
 
 const { Content } = Layout
 
-interface SupportMethod {
-  dataSupportMethod: SupportMedthod
-}
-
-export const SupportMedthodCustom = ({ dataSupportMethod }: SupportMethod) => {
-  if (!dataSupportMethod) {
-    return null
+export const SupportMedthodCustom = ({
+  dataSupportMethod
+}: SupportMethodCustom) => {
+  if (!dataSupportMethod || dataSupportMethod.length < 1) {
+    return <em>Không có dataSupportMethod ...</em>
   }
 
   return (
@@ -22,24 +22,23 @@ export const SupportMedthodCustom = ({ dataSupportMethod }: SupportMethod) => {
             <p>Hỗ trợ</p>
             <h1>Các hình thức hỗ trợ</h1>
           </div>
-
           <div className={style.viewSupport}>
-            {dataSupportMethod.map(
+            {dataSupportMethod?.map(
               (
                 { nameMedthod, imgCard, description, link }: any,
                 index: number
               ) => (
-                <div key={index}>
-                  <Col className={style.colSupport}>
-                    <Col className={style.cardSupport}>
-                      <img src={imgCard} className={style.img} />
-                      <p className={style.titleCard}>{nameMedthod}</p>
-                      <a href={link}>
+                <Col className={style.colSupport} key={index}>
+                  <Col className={style.cardSupport}>
+                    <img src={imgCard} className={style.img} alt='imgCard' />
+                    <p className={style.titleCard}>{nameMedthod}</p>
+                    <Link href={link}>
+                      <a>
                         <p className={style.selectSupport}>{description}</p>
                       </a>
-                    </Col>
+                    </Link>
                   </Col>
-                </div>
+                </Col>
               )
             )}
           </div>

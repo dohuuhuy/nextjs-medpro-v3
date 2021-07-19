@@ -15,16 +15,14 @@ export const InfoFooter = ({ infoContact }: Props) => {
           {item.label === 'Website' ? (
             <a key={item.id} href={item.value} className={style.aLink}>
               <p className={style.infocompany}>
-                {item.label}: {item.value}
+                {item.label} + {''} + {item.value}
               </p>
             </a>
           ) : (
             <p
               className={item.label ? style.infocompany : style.nameCompany}
               dangerouslySetInnerHTML={{
-                __html: item.label
-                  ? item.label + ':\t' + item.value
-                  : item.value
+                __html: item.label ? item.label + '\t' + item.value : item.value
               }}
             />
           )}
