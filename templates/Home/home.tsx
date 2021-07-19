@@ -7,7 +7,7 @@ const Header = dynamic(() => import('@components/organisms/Header'))
 // const Download = dynamic(() => import('@components/organisms/DownloadApp'))
 // const Intro = dynamic(() => import('@components/organisms/BannerHomeApp'))
 const SupportMethod = dynamic(
-  () => import('@components/organisms/SupportMethodApp'),
+  () => import('@components/organisms/SupportMethodApp')
 )
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
@@ -21,7 +21,7 @@ const HomeLayout = ({ children }: Props) => {
       {/* <Download /> */}
       <SupportMethod />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </Layout>
   )
 }
