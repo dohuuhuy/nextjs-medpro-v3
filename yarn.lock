@@ -263,10 +263,10 @@
     postcss-loader "6.1.1"
     style-loader "3.0.0"
 
-"@n17dccn172/booking-libs@0.0.67":
-  version "0.0.67"
-  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.67.tgz#992adb1db1685331893d0b6532e979cb50d90232"
-  integrity sha1-mSrbHbFoUzGJPQtlMul5y1DZAjI=
+"@n17dccn172/booking-libs@0.0.68":
+  version "0.0.68"
+  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.68.tgz#bdc62a8bcb0bdb27c47918eff1bc93d25b4dbf4b"
+  integrity sha1-vcYqi8sL2yfEeRjv8byT0ltNv0s=
   dependencies:
     "@craco/craco" "6.2.0"
     "@types/lodash" "4.14.171"

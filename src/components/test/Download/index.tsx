@@ -1,6 +1,7 @@
-import { DownloadApp } from './DownloadApp.interface'
 import React from 'react'
-import { Content } from './content'
+import Container from '../Container'
+import { DownloadApp } from './DownloadApp.interface'
+import { ListBenefit } from './ListBenefit'
 import { MyApp } from './myApp'
 import Styles from './style.module.less'
 
@@ -13,12 +14,12 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
     return <em> Không có dataDownload</em>
   }
   return (
-    <div className={Styles.container}>
+    <Container className={Styles.DownloadCustom}>
       <MyApp arrApp={dataDownload.myApp} />
-      <Content
+      <ListBenefit
         listBenefit={dataDownload.listBenefit}
         imgMobile={dataDownload.imgMobile}
       />
-    </div>
+    </Container>
   )
 }

@@ -7,7 +7,7 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 // const Header = dynamic(() => import('@components/organisms/Header'))
-// const Download = dynamic(() => import('@components/organisms/DownloadApp'))
+const Download = dynamic(() => import('@components/organisms/DownloadApp'))
 // const BannerHome = dynamic(() => import('@components/organisms/BannerHomeApp'))
 // const SliderHospital = dynamic(
 //   () => import('@components/organisms/SilderHospital')
@@ -40,7 +40,7 @@ const HomeLayout = ({}: Props) => {
       />
 
       {/* <Introduce /> */}
-      {/* <Download /> */}
+      <Download />
 
       {/* {children} */}
       <SupportMethod />

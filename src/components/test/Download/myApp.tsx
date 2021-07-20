@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+import { Col, Row } from 'antd'
 import React from 'react'
-import Styles from './style.module.less'
+import style from './style.module.less'
 
 interface myApp {
   arrApp: Item[]
@@ -12,20 +14,24 @@ interface Item {
 
 export const MyApp = ({ arrApp }: myApp) => {
   return (
-    <React.Fragment>
-      <div className={Styles.header}>
-        <div className={Styles.download}>DOWNLOAD</div>
-        <div className={Styles.header_title}>
-          TẢI ỨNG DỤNG <span>MEDPRO</span>
-        </div>
-        <div className={Styles.ios_android}>
-          {arrApp.map(({ key, imgApp, linkApp }: Item) => (
-            <a key={key} href={linkApp} target='_blank'>
-              <img src={imgApp} className={Styles.mid_logo} alt='' />
-            </a>
+    <Row className={style.MyApp}>
+      <Col xl={24}>
+        <span className={style.download}> DOWNLOAD</span>
+      </Col>
+      <Col className={style.header_title} xl={24}>
+        TẢI ỨNG DỤNG <span>MEDPRO</span>
+      </Col>
+      <Col xl={24}>
+        <ul className={style.listDownload}>
+          {arrApp.map(({ imgApp, linkApp }: Item, index: number) => (
+            <li key={index}>
+              <a href={linkApp} target='_blank' rel='noreferrer'>
+                <img src={imgApp} className={style.mid_logo} alt='' />
+              </a>
+            </li>
           ))}
-        </div>
-      </div>
-    </React.Fragment>
+        </ul>
+      </Col>
+    </Row>
   )
 }
