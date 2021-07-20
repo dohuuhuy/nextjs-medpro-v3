@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   text-align: left;
+  width: 100%;
 }
 
 .imgLogo {
@@ -68,29 +69,41 @@
         }
       }
     }
-    .rightListBenefit {
-      .ListCustom();
-      li {
-        margin-bottom: 10% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        .img_small {
-          .imgLogo();
+
+    .colBenefitRight {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .rightListBenefit {
+        .ListCustom();
+        li {
+          margin-bottom: 10% !important;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          .img_small {
+            .imgLogo();
+          }
         }
       }
     }
-    .leftListBenefit {
-      .ListCustom();
-      li {
-        margin-bottom: 10% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        text-align: right;
-        .img_small {
-          .imgLogo();
+    .colBenefitLeft {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .leftListBenefit {
+        .ListCustom();
+        li {
+          margin-bottom: 10% !important;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+          .img_small {
+            .imgLogo();
+          }
         }
       }
     }
