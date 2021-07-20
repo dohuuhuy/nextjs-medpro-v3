@@ -459,8 +459,11 @@ export const templateNewBv = {
     }
   ],
   footer: {
-    logoFooter:
-      'https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg',
+    logoFooter: {
+      linkImage: 'Medpro.vn',
+      logoImage:
+        'https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg'
+    },
     infoContact: [
       {
         id: '',

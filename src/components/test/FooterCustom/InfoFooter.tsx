@@ -1,4 +1,3 @@
-import { Col } from 'antd'
 import React from 'react'
 import { ItemContact } from './interface.footer'
 import style from './styles.module.less'
@@ -9,9 +8,9 @@ interface Props {
 
 export const InfoFooter = ({ infoContact }: Props) => {
   return (
-    <React.Fragment>
+    <ul className={style.listInfoContact}>
       {infoContact?.map((item, index: number) => (
-        <Col key={index}>
+        <li key={index}>
           {item.label === 'Website' ? (
             <a key={item.id} href={item.value} className={style.aLink}>
               <p className={style.infocompany}>
@@ -26,8 +25,8 @@ export const InfoFooter = ({ infoContact }: Props) => {
               }}
             />
           )}
-        </Col>
+        </li>
       ))}
-    </React.Fragment>
+    </ul>
   )
 }

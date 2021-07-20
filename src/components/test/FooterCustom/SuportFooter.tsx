@@ -1,4 +1,3 @@
-import { Col } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import { ItemSupport } from './interface.footer'
@@ -10,16 +9,16 @@ interface Props {
 
 export const SuportFooter = ({ linkSupport }: Props) => {
   return (
-    <React.Fragment>
+    <ul className={style.listLinkSupport}>
       {linkSupport?.map((item: any, index: number) => (
-        <Col key={index}>
+        <li key={index}>
           <Link href={item.link}>
             <a className={style.aLink}>
               <p className={style.infocompany}>{item.label}</p>
             </a>
           </Link>
-        </Col>
+        </li>
       ))}
-    </React.Fragment>
+    </ul>
   )
 }
