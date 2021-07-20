@@ -1,106 +1,79 @@
-@width2: 100%;
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
 
-.viewContent {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 100px 0 100px 0;
-  .content {
-    align-items: center;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    width: @width2;
+//  css supportMedthod
+.supportMedthod {
+  margin: 60px 0;
+  .rowSupport {
+    justify-content: center;
+    text-align: center;
+    .title {
+      border-radius: 3px;
+      border: 1px solid #e3e6f0;
+      padding: 6px 24px;
+      color: #627792;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      letter-spacing: 4px;
+    }
     .subTitle {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      height: auto;
-      padding: 5px;
-      width: @width2;
-      p {
-        border: 1px solid #e3e6f0;
-        font-size: 16px;
-        height: fit-content;
-        padding: 5px 10px 5px 10px;
-        text-align: center;
-        text-transform: uppercase;
-        width: fit-content;
-      }
-      h1 {
-        font-weight: 400;
-        margin-top: 20px;
-        text-transform: uppercase;
-      }
+      text-transform: uppercase;
+      color: #12263f;
+      font-size: 1.625rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
     }
   }
-  .viewSupport {
+  .listSupportRow {
+    .ListCustom();
     display: flex;
-    .colSupport {
-      display: flex;
-      padding: 20px 0 20px 0;
-    }
-    .cardSupport {
-      align-items: center;
-      background-color: #ffffff;
-      border: 1px solid #dfe3eb;
-      display: flex;
-      flex-direction: column;
-      height: 250px;
-      justify-content: center;
-      margin-left: 25px;
-      width: 250px;
-      .img {
-        height: 80px;
-      }
-      .titleCard {
-        font-size: 16px;
-        margin-top: 10px;
-      }
-      .selectSupport {
-        font-size: 16px;
-        margin-top: 5px;
-      }
-      &:hover {
-        box-shadow: 5px 10px 18px #eeeeee;
-        transform: scale(1.1);
-      }
-    }
-  }
-}
-@media (max-width: 599px) {
-  .viewContent {
-    .viewSupport {
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center;
-      .colSupport {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
+    flex-wrap: wrap;
+
+    .itemSupportCol {
+      padding: 0 15px;
+      margin: 0;
+      width: 25%;
+      text-align: center;
       .cardSupport {
-        margin: 0 !important;
+        margin-bottom: 15px;
+        padding: 40px 0;
+        transition: all 0.3s ease-in-out;
+        box-shadow: unset;
+        border: 1px solid #dfe3eb;
+        img {
+          width: 80px;
+          height: 80px;
+        }
+        .cardContent {
+          height: 108px;
+          padding: 1.25rem;
+          .titleCard {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+        }
+        &:hover {
+          box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 9%);
+          -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
+        }
       }
     }
-    .content {
-      .subTitle {
-        p {
-          font-size: 16px !important;
-        }
-        h1 {
-          font-size: 22px !important;
-        }
+    // css reponsive footer
+    @media only screen and (max-width: 425px) {
+      .itemSupportCol {
+        width: 50%;
       }
     }
-  }
-}
-@media (min-width: 600px) and (max-width: 1024px) {
-  .viewContent .viewSupport {
-    display: grid !important;
-    grid-template-columns: auto auto !important;
-    grid-template-rows: auto auto !important;
-    justify-content: center !important;
-    width: @width2 !important;
   }
 }

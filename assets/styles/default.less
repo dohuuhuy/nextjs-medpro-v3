@@ -1,15 +1,20 @@
 @import './variable.less';
 
 body {
-  font-family: @font1;
+  font-family: @font3 !important;
   font-size: @14;
   text-rendering: optimizeLegibility;
-  color: #12263f;
+  color: #12263f !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
   color: #12263f;
   width: 100%;
+  &:hover {
+    color: #007bff;
+  }
 }
 
 div {
@@ -20,4 +25,17 @@ div {
 p {
   width: 100%;
   display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #12263f;
 }

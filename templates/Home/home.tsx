@@ -12,16 +12,16 @@ import styles from './styles.module.less'
 // const SliderHospital = dynamic(
 //   () => import('@components/organisms/SilderHospital')
 // )
-// const SupportMethod = dynamic(
-//   () => import('@components/organisms/SupportMethod')
-// )
+const SupportMethod = dynamic(
+  () => import('@components/organisms/SupportMethod')
+)
 // const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
 }
-const HomeLayout = ({ children }: Props) => {
+const HomeLayout = ({}: Props) => {
   const handerFuncTest = (name: string) => {
     alert(name)
   }
@@ -41,8 +41,9 @@ const HomeLayout = ({ children }: Props) => {
 
       {/* <Introduce /> */}
       {/* <Download /> */}
-      {/* <SupportMethod /> */}
+
       {/* {children} */}
+      <SupportMethod />
       <Footer />
     </Layout>
   )
