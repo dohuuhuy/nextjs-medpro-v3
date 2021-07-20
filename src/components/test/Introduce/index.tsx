@@ -3,6 +3,7 @@ import Styles from './style.module.less'
 import { IntroducHospital } from './Introduce.interface'
 import { BannerIntro } from './BannerIntro'
 import { CardIntro } from './CardIntro'
+import Container from '../Container'
 interface IntroduceCustom {
   dataIntroduce: IntroducHospital
 }
@@ -10,9 +11,9 @@ interface IntroduceCustom {
 export const IntroduceCustom = ({ dataIntroduce }: IntroduceCustom) => {
   if (!dataIntroduce) return <em>Lỗi data input</em>
   return (
-    <div className={Styles.solutionBox}>
+    <Container className={Styles.solutionBox}>
       <BannerIntro dataContentIntro={dataIntroduce.contentIntro} />
       <CardIntro dataCardIntro={dataIntroduce.cardIntro} />
-    </div>
+    </Container>
   )
 }
