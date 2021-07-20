@@ -1,82 +1,102 @@
-@color1: #dfe3eb;
-@color2: #f8fafd;
-@color3: #687ad0;
-
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+// css footer
 .footer {
   padding: 0 !important;
+  width: 100%;
   .viewFooter {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    border-width: 1px;
-    border-style: solid;
-    border-color: @color1;
-    background-color: @color2 !important;
-    justify-content: center;
-    .viewCol {
-      display: flex;
-      flex-direction: column;
-      margin: 20px 20px 10px 20px;
-      .aLink {
-        color: black;
-        &:hover {
-          color: @color3;
-        }
-      }
-      .nameCompany {
-        font-size: 16px;
-        font-weight: bold;
-        color: #0453cc;
-      }
-      .logo {
-        width: 160px;
-        height: 65px;
-      }
-      .img {
-        width: 108px;
-        height: 40px;
-        margin: 5px;
-      }
-    }
-    .viewImg {
-      display: flex;
-      flex-direction: column;
-    }
+    background-color: #f8fafd;
+    padding: 2rem 0;
+    border-top: 1px solid #dfe3eb;
     .colFooter {
-      display: flex;
       justify-content: center;
-    }
-
-    @media only screen and (max-width: 1168px) {
-      .colFooter {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
       .viewCol {
+        padding: 0 15px;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0px;
-      }
-      .infocompany {
-        text-align: center;
+        .logoFooter {
+          img {
+            max-width: 160px;
+          }
+        }
+
+        .listInfoContact {
+          .ListCustom();
+          .nameCompany {
+            font-size: 14px;
+            font-weight: bolder;
+            color: #0352cc;
+          }
+        }
+
+        .listLinkSupport {
+          .ListCustom();
+        }
+
+        .listLogoChecked {
+          .ListCustom();
+          text-align: center;
+          li {
+            float: left;
+            width: 50%;
+            a {
+              img {
+                width: 107px;
+                height: 42px;
+              }
+            }
+          }
+        }
       }
     }
   }
   .copyRight {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: @color3;
     background-image: linear-gradient(to right, #687ad0, #04a3bd);
     .textCopyRight {
       color: white;
       margin: 10px;
       text-align: center;
+    }
+  }
+}
+.hidden {
+  display: none;
+}
+// css reponsive footer
+@media only screen and (max-width: 768px) {
+  .footer {
+    .viewFooter {
+      .colFooter {
+        .viewCol {
+          text-align: center;
+          .listLogoChecked {
+            max-width: 400px;
+            margin: 0 auto;
+            li {
+              a {
+                img {
+                  width: 138px;
+                  height: 52px;
+                }
+              }
+            }
+          }
+          .listInfoContact {
+            text-align: center;
+          }
+        }
+        .linkSupport {
+          display: none;
+        }
+      }
+    }
+    .copyRight {
+      display: none;
     }
   }
 }
