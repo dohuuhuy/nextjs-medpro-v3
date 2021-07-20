@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Styles from './style.module.less'
 import { BannerHome } from './BannerHome.interface'
@@ -6,7 +7,12 @@ interface bannerHomeCustom {
   dataBannerHome: BannerHome
 }
 const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
-  if (!dataBannerHome) return <em>Lỗi data input</em>
+  console.log(dataBannerHome)
+
+  if (!dataBannerHome) {
+    return <em> Không có dataBannerHome</em>
+  }
+
   return (
     <div
       className={Styles.container}
@@ -22,7 +28,7 @@ const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
           <a href='' className={Styles.boxService}>
             <img
               src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'}
-              alt=''
+              alt='boxService'
             />
             <span>Đặt khám</span>
           </a>
