@@ -1,12 +1,11 @@
-import { downloadApp } from '@components/organisms/DownloadApp'
-import 'antd/dist/antd.css'
+import { DownloadApp } from './DownloadApp.interface'
 import React from 'react'
 import { Content } from './content'
 import { MyApp } from './myApp'
 import Styles from './style.module.less'
 
 interface DownloadCustom {
-  dataDownload: downloadApp
+  dataDownload: DownloadApp
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {

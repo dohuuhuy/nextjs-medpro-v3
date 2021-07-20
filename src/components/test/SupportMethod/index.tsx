@@ -1,21 +1,21 @@
+import { SupportMethod } from './SupportMethod.interface'
+import { Col, Layout } from 'antd'
 import React from 'react'
 import style from './style.module.less'
-import { Layout, Col } from 'antd'
-import {
-  SupportMedthodApp,
-  SupportMethodItem
-} from '@components/organisms/SupportMethodApp'
 
 const { Content } = Layout
 
-interface SupportMethod {
-  dataSupportMethod: SupportMedthodApp
+interface SupportMedthodCustom {
+  dataSupportMethod: SupportMethod
 }
 
-export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
+export const SupportMedthodCustom = ({
+  dataSupportMethod
+}: SupportMedthodCustom) => {
   if (!dataSupportMethod) {
-    return <em>Lỗi không nhận được dataSupportMethod đầu vào</em>
+    return <em>lỗi data input</em>
   }
+
   return (
     <React.Fragment>
       <Content className={style.viewContent}>
@@ -24,16 +24,13 @@ export const SupportMethod = ({ dataSupportMethod }: SupportMethod) => {
             <p>Hỗ trợ</p>
             <h1>Các hình thức hỗ trợ</h1>
           </div>
-
           <div className={style.viewSupport}>
             {dataSupportMethod.map(
-              ({
-                nameMedthod,
-                imgCard,
-                description,
-                link
-              }: SupportMethodItem) => (
-                <div>
+              (
+                { nameMedthod, imgCard, description, link }: any,
+                index: number
+              ) => (
+                <div key={index}>
                   <Col className={style.colSupport}>
                     <Col className={style.cardSupport}>
                       <img src={imgCard} className={style.img} />

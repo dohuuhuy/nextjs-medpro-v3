@@ -1,5 +1,6 @@
 @color0: #3978d7;
 @color1: #ffffff;
+@color2: #011b92;
 
 @width1: 100%;
 @width2: 80%;
@@ -7,13 +8,12 @@
 @height6: 50%;
 
 .solutionBox {
-  height: 32.8125rem;
+  height: 100%;
   position: relative;
   .con_Para {
     background-size: cover;
     background: url(https://medpro.com.vn/static/media/bg_new.9578e7c5.jpg)
       no-repeat top;
-    min-height: 18.75rem;
     padding: 3.75rem 0 100px 0;
     .intro {
       height: @height6;
@@ -44,8 +44,7 @@
     display: flex;
     height: 17.5625rem;
     justify-content: center;
-    position: absolute;
-    top: 14.25rem;
+    margin-top: -65px;
     width: @width1;
     .boxCard {
       display: flex;
@@ -64,7 +63,6 @@
           background-color: @color1;
           box-shadow: 5px 5px 8px lightgray;
           cursor: pointer;
-          height: auto;
           margin-left: 5%;
           margin-top: -50px;
           text-align: center;
@@ -81,6 +79,7 @@
             }
             p {
               font-size: 15px;
+              color: black;
             }
           }
           &:hover {
@@ -98,12 +97,11 @@
 }
 @media (max-width: 599px) {
   .solutionBox {
-    background-color: @color0 !important;
-    height: 468px !important;
+    height: auto !important;
     position: unset !important;
     .con_Para {
-      height: auto !important;
-      background-color: @color0 !important;
+      height: 100% !important;
+      background-color: @color2 !important;
       .null {
         display: none !important;
       }
@@ -118,9 +116,8 @@
       }
     }
     .card {
-      height: fit-content !important;
-      position: unset !important;
-      top: 123px !important;
+      position: relative !important;
+      height: auto !important;
       .boxCard {
         width: @width1 !important;
         flex-direction: column !important;
@@ -157,7 +154,7 @@
     }
   }
 }
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1023px) {
   .solutionBox .card {
     width: @width1 !important;
     height: auto !important;

@@ -1,4 +1,4 @@
-export interface interface_downloadApp {
+export interface DownloadApp {
   appId: string
   nameHospital: string
   myApp: any[]

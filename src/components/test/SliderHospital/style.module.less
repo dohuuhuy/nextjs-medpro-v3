@@ -1,0 +1,99 @@
+// Color variables (appears count calculates by raw css)
+@color0: #000000; // Appears 3 times
+
+// Width variables (appears count calculates by raw css)
+@width0: 100%; // Appears 4 times
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 25rem;
+  justify-content: center;
+  position: relative;
+  width: @width0;
+  .title {
+    p {
+      color: #12263f;
+      display: flex;
+      font-size: 1.625rem;
+      font-weight: 400;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  .boxSlider {
+    height: 18.75rem;
+    width: @width0;
+    .iconLeft {
+      color: @color0;
+      cursor: pointer;
+      font-size: 2rem;
+      left: 32px;
+      position: absolute;
+      top: 50%;
+      user-select: none;
+      z-index: 10;
+    }
+    .iconRight {
+      color: @color0;
+      cursor: pointer;
+      font-size: 2rem;
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      user-select: none;
+      z-index: 10;
+    }
+    .Carousel {
+      margin: auto;
+      width: 30%;
+      .dots {
+        li {
+          display: none !important;
+          button {
+            border-radius: 3px;
+            height: 8px;
+            width: 8px;
+          }
+        }
+      }
+      .listCard {
+        display: flex;
+        justify-content: space-between;
+        .card {
+          width: @width0;
+          img {
+            border-radius: 10px;
+            height: 13.1875rem;
+            width: @width0;
+          }
+          .text {
+            align-items: center;
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            margin-top: 10px;
+            a {
+              color: @color0;
+              font-size: 0.9rem;
+              font-weight: 400;
+              text-transform: uppercase;
+              &:hover {
+                background-color: transparent;
+                color: cornflowerblue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .boxSlider .Carousel .dots li {
+    width: 15px;
+  }
+}

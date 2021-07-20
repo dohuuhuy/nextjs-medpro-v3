@@ -1,16 +1,17 @@
 import React from 'react'
 import Styles from './style.module.less'
-import { BannerHome } from '@components/organisms/BannerHomeApp'
+import { BannerHome } from './BannerHome.interface'
 
 interface bannerHomeCustom {
   dataBannerHome: BannerHome
 }
 const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
+  console.log(dataBannerHome)
   return (
     <div
       className={Styles.container}
       style={{
-        backgroundImage: `url(${dataBannerHome[0].linkImage})`,
+        backgroundImage: `url(${dataBannerHome[0].linkImage})`
       }}
     >
       <div className={Styles.content}>
@@ -18,7 +19,7 @@ const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
           <strong>CHỌN DỊCH VỤ</strong>
         </p>
         <div>
-          <a href="" className={Styles.boxService}>
+          <a href='' className={Styles.boxService}>
             <img src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'} />
             <span>Đặt khám</span>
           </a>
