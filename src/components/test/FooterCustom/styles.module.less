@@ -1,0 +1,81 @@
+@color1: #dfe3eb;
+@color2: #f8fafd;
+@color3: #687ad0;
+
+@media only screen and (max-width: 1168px) {
+  .colFooter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .viewCol {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+  }
+  .infocompany {
+    text-align: center;
+  }
+}
+.footer {
+  padding: 0;
+  .viewFooter {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @color1;
+    background-color: @color2;
+    justify-content: center;
+    .viewCol {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 20px 10px 20px;
+      .aLink {
+        color: black;
+        &:hover {
+          color: @color3;
+        }
+      }
+      .nameCompany {
+        font-size: 16px;
+        font-weight: bold;
+        color: #0453cc;
+      }
+      .logo {
+        width: 160px;
+        height: 65px;
+      }
+      .img {
+        width: 108px;
+        height: 40px;
+        margin: 5px;
+      }
+    }
+    .viewImg {
+      display: flex;
+      flex-direction: column;
+    }
+    .colFooter {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .copyRight {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: @color3;
+    background-image: linear-gradient(to right, #687ad0, #04a3bd);
+    .textCopyRight {
+      color: white;
+      margin: 10px;
+      text-align: center;
+    }
+  }
+}

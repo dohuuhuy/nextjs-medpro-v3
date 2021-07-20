@@ -1,5 +1,6 @@
 import { SupportMethod } from './SupportMethod.interface'
 import { Col, Layout } from 'antd'
+import Link from 'next/link'
 import React from 'react'
 import style from './style.module.less'
 
@@ -25,22 +26,22 @@ export const SupportMedthodCustom = ({
             <h1>Các hình thức hỗ trợ</h1>
           </div>
           <div className={style.viewSupport}>
-            {dataSupportMethod.map(
+            {dataSupportMethod?.map(
               (
                 { nameMedthod, imgCard, description, link }: any,
                 index: number
               ) => (
-                <div key={index}>
-                  <Col className={style.colSupport}>
-                    <Col className={style.cardSupport}>
-                      <img src={imgCard} className={style.img} />
-                      <p className={style.titleCard}>{nameMedthod}</p>
-                      <a href={link}>
+                <Col className={style.colSupport} key={index}>
+                  <Col className={style.cardSupport}>
+                    <img src={imgCard} className={style.img} alt='imgCard' />
+                    <p className={style.titleCard}>{nameMedthod}</p>
+                    <Link href={link}>
+                      <a>
                         <p className={style.selectSupport}>{description}</p>
                       </a>
-                    </Col>
+                    </Link>
                   </Col>
-                </div>
+                </Col>
               )
             )}
           </div>
