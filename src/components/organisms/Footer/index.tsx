@@ -1,5 +1,5 @@
-// import { FooterCustom } from '@medpro/booking-libs'
-import { FooterCustom } from '@components/test/FooterCustom'
+import { FooterCustom } from '@medpro/booking-libs'
+// import { FooterCustom } from '@components/test/FooterCustom'
 import React from 'react'
 import { useSelector } from 'react-redux'
 // import styles from './styles.module.less'

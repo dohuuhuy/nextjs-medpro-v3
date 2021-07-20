@@ -1,7 +1,8 @@
 import { deleteColor, getDemo } from '@actionStore/rootAction'
 import Container from '@components/atoms/Container'
 import { openInNewTab } from '@components/atoms/openInNewTab'
-import { Demo } from '@medpro/booking-libs'
+import { Demo } from '@components/test/Demo'
+// import { Demo } from '@medpro/booking-libs'
 import { DemoState } from '@store/interface'
 import { Button } from 'antd'
 import React from 'react'
@@ -15,6 +16,11 @@ const HomeDetail = () => {
     (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor
   )
 
+  const handerFuncTest = () => {
+    console.log('object :>> ', nameColor)
+    // alert('helos')
+  }
+
   return (
     <Container
       style={{
@@ -22,7 +28,10 @@ const HomeDetail = () => {
         textAlign: 'center'
       }}
     >
-      <Demo text={'viết bằng typescript function và có sử dụng module.less'} />
+      <Demo
+        text={'viết bằng typescript function và có sử dụng module.less'}
+        funcTest={handerFuncTest()}
+      />
 
       <Button
         disabled={nameColor === 'ghost'}

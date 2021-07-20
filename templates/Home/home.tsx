@@ -19,7 +19,7 @@ const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       {/* <Header /> */}
-      <BannerHome />
+      {/* <BannerHome /> */}
       <Introduce />
       <Download />
       <SupportMethod />
