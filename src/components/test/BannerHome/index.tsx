@@ -6,7 +6,7 @@ interface bannerHomeCustom {
   dataBannerHome: BannerHome
 }
 const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
-  console.log(dataBannerHome)
+  if (!dataBannerHome) return <em>Lỗi data input</em>
   return (
     <div
       className={Styles.container}
@@ -20,7 +20,10 @@ const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
         </p>
         <div>
           <a href='' className={Styles.boxService}>
-            <img src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'} />
+            <img
+              src={'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'}
+              alt=''
+            />
             <span>Đặt khám</span>
           </a>
         </div>

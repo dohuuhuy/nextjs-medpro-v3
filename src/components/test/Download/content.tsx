@@ -21,7 +21,7 @@ export const Content = ({ listBenefit, imgMobile }: Content) => {
           <Col span={2} className={Styles.null} />
           <Benefit_left listBenefit={listBenefit} />
           <Col span={6} className={Styles.img_big}>
-            <img src={imgMobile} />
+            <img src={imgMobile} alt='' />
           </Col>
           <Benefit_right listBenefit={listBenefit} />
           <Col span={2} className={Styles.null} />

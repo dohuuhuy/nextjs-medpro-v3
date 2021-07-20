@@ -3,7 +3,6 @@ import { Col, Layout } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import style from './style.module.less'
-
 const { Content } = Layout
 
 interface SupportMedthodCustom {

@@ -9,6 +9,7 @@ interface DownloadCustom {
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
+  if (!dataDownload) return <em>Lỗi data input</em>
   return (
     <div className={Styles.container}>
       <MyApp arrApp={dataDownload.myApp} />
