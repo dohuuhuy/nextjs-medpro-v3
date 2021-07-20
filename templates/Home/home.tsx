@@ -1,6 +1,6 @@
 import { openInNewTab } from '@components/atoms/openInNewTab'
-// import { Demo } from '@medpro/booking-libs'
-import { Demo } from '@components/test/Demo'
+import { Demo } from '@n17dccn172/booking-libs'
+// import { Demo } from '@components/test/Demo'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'

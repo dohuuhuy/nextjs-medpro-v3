@@ -263,6 +263,28 @@
     postcss-loader "6.1.1"
     style-loader "3.0.0"
 
+"@n17dccn172/booking-libs@0.0.65":
+  version "0.0.65"
+  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.65.tgz#18654c23be12b2f2311f9b1b1628bbbcd3b1fc15"
+  integrity sha1-GGVMI74SsvIxH5sbFii7vNOx/BU=
+  dependencies:
+    "@craco/craco" "6.2.0"
+    "@types/lodash" "4.14.171"
+    antd "4.16.6"
+    autoprefixer "10.2.6"
+    babel-loader "8.2.2"
+    classnames "2.3.1"
+    craco-antd "1.19.0"
+    craco-less "1.18.0"
+    css-loader "5.2.6"
+    lodash "^4.17.21"
+    moment "^2.29.1"
+    next latest
+    next-compose-plugins "2.2.1"
+    next-with-less "^1.0.0"
+    postcss-loader "6.1.1"
+    style-loader "3.0.0"
+
 "@next/env@11.0.1":
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-11.0.1.tgz#6dc96ac76f1663ab747340e907e8933f190cc8fd"
