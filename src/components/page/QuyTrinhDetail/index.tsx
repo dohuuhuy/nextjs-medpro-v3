@@ -1,4 +1,4 @@
-import Container from '@components/atoms/Container'
+import Container from '@components/test/Container'
 import React from 'react'
 
 const QuyTrinhDetail = () => {
@@ -8,7 +8,7 @@ const QuyTrinhDetail = () => {
         style={{
           color: 'red',
           marginTop: '2rem',
-          textAlign: 'center',
+          textAlign: 'center'
         }}
       >
         QuyTrinhDetail
