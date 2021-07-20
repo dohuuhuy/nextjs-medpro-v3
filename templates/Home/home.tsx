@@ -15,8 +15,9 @@ const Download = dynamic(() => import('@components/organisms/DownloadApp'))
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
-// const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
+const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
+// const FooterCustom = dynamic(() => import('@components/test/FooterCustom'))
 
 type Props = {
   children?: ReactNode
@@ -29,9 +30,11 @@ const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
       {/* <Header /> */}
-      {/* <BannerHome /> */}
+      {/* <BannerHome />
+      <SliderHospital /> */}
+      <Introduce />
 
-      <Demo
+      {/* <Demo
         text={'viết bằng typescript function và có sử dụng module.less'}
         funcTest={() => handerFuncTest('huyi')}
         funcLogin={() =>

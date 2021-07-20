@@ -1,17 +1,13 @@
 // Color variables (appears count calculates by raw css)
 @color0: #ffffff;
-@color1: #eeeeee;
+@color1: #f8fafd;
 @color2: #1da1f2;
 @width2: 100%;
 @height3: 45px;
 @media (max-width: 600px) {
-  .container {
-    height: 13.75rem !important;
-    background-position: top !important;
-  }
   .content {
     width: @width2 !important;
-    margin: 15rem 0 10% 0 !important;
+    margin: 50% 0 5% 0 !important;
     background-color: @color1 !important;
     p {
       height: @height3 !important;
@@ -37,14 +33,11 @@
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
-  .container {
-    height: 23rem !important;
-    background-position: top !important;
-  }
   .content {
     width: @width2 !important;
-    margin: 25.25rem 0 0 0 !important;
+    margin: 50% 0 0 0 !important;
     background-color: @color1 !important;
+
     p {
       height: @height3 !important;
       font-size: 25px !important;
@@ -72,46 +65,54 @@
   }
 }
 .container {
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 720px;
-  margin-bottom: 10% 0 10px 0;
-  max-width: 1919px;
-}
-
-.content {
-  background-color: @color0;
-  box-shadow: 5px 5px 8px lightgray;
-  float: right;
-  margin: 40px 120px 10% 0;
-  padding: 0 20px 20px 20px;
-  width: 25%;
-  p {
-    align-items: center;
-    display: flex;
-    font-size: 20px;
-    font-weight: 350;
-    height: 90px;
-    justify-content: center;
-    text-transform: uppercase;
+  background-size: contain;
+  margin: auto;
+  min-width: 1920px;
+  margin-bottom: 5%;
+  @media (max-width: 599px) {
+    min-width: 100% !important;
   }
-  .boxService {
-    margin-bottom: 25px;
-    padding-left: 23px;
-    img {
-      height: 55px;
-      width: 55px;
+  @media (max-width: 1023px) {
+    min-width: 100% !important;
+  }
+  @media (max-width: 1919px) {
+    min-width: 100% !important;
+  }
+  .content {
+    background-color: @color1;
+    box-shadow: 5px 5px 8px lightgray;
+    float: right;
+    margin: 40px 120px 10% 0;
+    padding: 0 20px 20px 20px;
+    width: 25%;
+    p {
+      align-items: center;
+      display: flex;
+      font-size: 20px;
+      font-weight: 350;
+      height: 90px;
+      justify-content: center;
+      text-transform: uppercase;
     }
-    span {
-      color: black;
-      display: block;
-      font-weight: 500;
-      max-width: 106px;
-      text-align: center;
-    }
-    &:hover {
-      color: #0352cc;
+    .boxService {
+      margin-bottom: 25px;
+      padding-left: 23px;
+      img {
+        height: 55px;
+        width: 55px;
+      }
+      span {
+        color: black;
+        display: block;
+        font-weight: 500;
+        max-width: 106px;
+        text-align: center;
+      }
+      &:hover {
+        color: #0352cc;
+      }
     }
   }
 }

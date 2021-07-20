@@ -2,6 +2,7 @@
 import React from 'react'
 import Styles from './style.module.less'
 import { BannerHome } from './BannerHome.interface'
+import Container from '../Container'
 
 interface bannerHomeCustom {
   dataBannerHome: BannerHome
