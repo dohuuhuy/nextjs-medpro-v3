@@ -1,4 +1,5 @@
 import { openInNewTab } from '@components/atoms/openInNewTab'
+// import { Demo } from '@medpro/booking-libs'
 import { Demo } from '@components/test/Demo'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
@@ -16,6 +17,7 @@ const SupportMethod = dynamic(
 )
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
+// const FooterCustom = dynamic(() => import('@components/test/FooterCustom'))
 
 type Props = {
   children?: ReactNode

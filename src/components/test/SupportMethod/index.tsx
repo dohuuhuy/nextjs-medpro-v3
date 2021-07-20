@@ -34,11 +34,9 @@ export const SupportMedthodCustom = ({
                   <Col className={style.cardSupport}>
                     <img src={imgCard} className={style.img} alt='imgCard' />
                     <p className={style.titleCard}>{nameMedthod}</p>
-                    <Link href={link}>
-                      <a>
-                        <p className={style.selectSupport}>{description}</p>
-                      </a>
-                    </Link>
+                    <a href={link} className={style.selectSupport}>
+                      {description}
+                    </a>
                   </Col>
                 </Col>
               )
