@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Styles from './style.module.less'
 
@@ -20,9 +21,9 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
         <div className={Styles.boxCard}>
           {dataCardIntro.map(
             ({ title, subTitle, imgCard, link }: CardIntroItem) => (
-              <div className={Styles.footerCard}>
+              <div className={Styles.footerCard} key={title}>
                 <div>
-                  <img src={imgCard} className={Styles.img} />
+                  <img src={imgCard} className={Styles.img} alt={title} />
                 </div>
                 <a href={link}>
                   <div className={Styles.footerCard_Text}>

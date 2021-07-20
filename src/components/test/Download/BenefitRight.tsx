@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import cx from 'classnames'
 import React from 'react'
 import style from './style.module.less'
 
@@ -17,8 +16,8 @@ export const BenefitRight = ({ rightListBenefit }: BenefitRight) => {
   return (
     <ul className={style.rightListBenefit}>
       {rightListBenefit.map(
-        ({ id, title, description, imgBenefit }: BenefitRightItem) => (
-          <li key={id}>
+        ({ title, description, imgBenefit }: BenefitRightItem) => (
+          <li key={title}>
             <div className={style.img_small}>
               <img src={imgBenefit} alt='' />
             </div>

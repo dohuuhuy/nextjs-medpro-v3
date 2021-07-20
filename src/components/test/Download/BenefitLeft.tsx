@@ -16,8 +16,8 @@ export const BenefitLeft = ({ leftListBenefit }: BenefitLeft) => {
   return (
     <ul className={style.leftListBenefit}>
       {leftListBenefit.map(
-        ({ id, title, description, imgBenefit }: BenefitLeftItem) => (
-          <li key={id}>
+        ({ title, description, imgBenefit }: BenefitLeftItem) => (
+          <li key={title}>
             <figure className={style.img_small}>
               <img src={imgBenefit} alt='' />
             </figure>

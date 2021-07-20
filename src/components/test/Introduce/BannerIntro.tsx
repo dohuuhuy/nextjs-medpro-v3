@@ -12,7 +12,6 @@ interface contentIntroItem {
 }
 
 export const BannerIntro = ({ dataContentIntro }: contentIntro) => {
-  console.log('truyền ', dataContentIntro)
   return (
     <Row className={Styles.con_Para}>
       <Col span={2} className={Styles.null} />
