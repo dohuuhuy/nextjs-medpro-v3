@@ -13,7 +13,6 @@ interface BenefitLeftItem {
   imgBenefit: string
   position: string
 }
-// var classLeft = [Styles.list_item, Styles.left]
 export const Benefit_left = ({ listBenefit }: BenefitLeft) => {
   const listBenefitLeft = listBenefit.filter(
     ({ position }: BenefitLeftItem) => position === 'left'

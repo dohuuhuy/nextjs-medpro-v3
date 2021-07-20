@@ -21,18 +21,12 @@ type Props = {
 const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-<<<<<<< HEAD
       {/* <Header />
       <BannerHome />
       <SliderHospital />
       <Introduce /> */}
-=======
-      {/* <Header /> */}
-      {/* <BannerHome /> */}
-      <Introduce />
->>>>>>> 72b97516e0543563b6462eb27a90a7c2aa3e2714
       <Download />
-      {/* <SupportMethod /> */}
+      <SupportMethod />
       {children}
       <Footer />
     </Layout>
