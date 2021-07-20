@@ -1,4 +1,4 @@
-import { SupportMedthodCustom } from '@components/test/SupportMethod'
+import { DeloyHospitalCustom } from '@components/test/SliderHospital'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -7,7 +7,7 @@ const DeployHospital = () => {
     (state: any) => state.hospital_Reducer.hospital_details.deployHospital
   )
 
-  return <SupportMedthodCustom dataSupportMethod={deployHospital} />
+  return <DeloyHospitalCustom dataDeloyHospital={deployHospital} />
 }
 
 export default DeployHospital

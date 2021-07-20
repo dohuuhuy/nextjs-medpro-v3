@@ -20,8 +20,8 @@ export const MyApp = ({ arrApp }: myApp) => {
         </div>
         <div className={Styles.ios_android}>
           {arrApp.map(({ key, imgApp, linkApp }: Item) => (
-            <a key={key} href={linkApp} target="_blank">
-              <img src={imgApp} className={Styles.mid_logo} />
+            <a key={key} href={linkApp} target='_blank'>
+              <img src={imgApp} className={Styles.mid_logo} alt='' />
             </a>
           ))}
         </div>
