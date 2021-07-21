@@ -13,8 +13,7 @@ export const JSON_EXP = {
         url: '/',
         label: 'Trang chủ',
         group: 'menuHeader',
-        sortOrder: 1,
-        icon: 'fal fa-home'
+        sortOrder: 1
       },
       {
         id: '',
@@ -23,8 +22,7 @@ export const JSON_EXP = {
         url: '/gioi-thieu',
         label: 'Giới thiệu',
         group: 'menuHeader',
-        sortOrder: 2,
-        icon: 'fal fa-home'
+        sortOrder: 2
       },
       {
         id: '',
@@ -33,8 +31,7 @@ export const JSON_EXP = {
         url: '/quy-trinh',
         label: 'Quy trình',
         group: 'menuHeader',
-        sortOrder: 3,
-        icon: 'fal fa-home'
+        sortOrder: 3
       },
       {
         id: '',
@@ -43,8 +40,7 @@ export const JSON_EXP = {
         url: '/huong-dan',
         label: 'Hướng dẫn',
         group: 'menuHeader',
-        sortOrder: 4,
-        icon: 'fal fa-home'
+        sortOrder: 4
       },
       {
         id: '',
@@ -53,8 +49,7 @@ export const JSON_EXP = {
         url: '/thac-mac',
         label: 'Thắc mắc',
         group: 'menuHeader',
-        sortOrder: 5,
-        icon: 'fal fa-home'
+        sortOrder: 5
       },
       {
         id: '',
@@ -63,8 +58,7 @@ export const JSON_EXP = {
         url: '/lien-he',
         label: 'Liên hệ',
         group: 'menuHeader',
-        sortOrder: 6,
-        icon: 'fal fa-home'
+        sortOrder: 6
       }
     ],
     insideLink: [
@@ -108,7 +102,7 @@ export const JSON_EXP = {
         label: 'Trang chủ',
         group: 'menuMobile',
         sortOrder: 1,
-        icon: 'fal fa-home'
+        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/home.svg'
       },
       {
         id: '',
@@ -118,7 +112,7 @@ export const JSON_EXP = {
         label: 'Hướng dẫn',
         group: 'menuMobile',
         sortOrder: 4,
-        icon: 'fal fa-list-alt'
+        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/guide.svg'
       },
       {
         id: '',
@@ -128,7 +122,7 @@ export const JSON_EXP = {
         label: 'Thông báo',
         group: 'menuMobile',
         sortOrder: 5,
-        icon: 'fal fa-bell'
+        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/bell.svg'
       },
       {
         id: '',
@@ -138,7 +132,7 @@ export const JSON_EXP = {
         label: 'Hồ sơ',
         group: 'menuMobile',
         sortOrder: 6,
-        icon: 'fal fa-user'
+        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg'
       }
     ],
     support: {
