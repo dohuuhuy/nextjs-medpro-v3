@@ -9,24 +9,29 @@ interface Props {
 export const InfoFooter = ({ infoContact }: Props) => {
   return (
     <ul className={style.listInfoContact}>
-      {infoContact?.map((item, index: number) => (
-        <li key={index}>
-          {item.label === 'Website' ? (
-            <a key={item.id} href={item.value} className={style.aLink}>
-              <p className={style.infocompany}>
-                {item.label} + {''} + {item.value}
-              </p>
-            </a>
-          ) : (
-            <p
-              className={item.label ? style.infocompany : style.nameCompany}
-              dangerouslySetInnerHTML={{
-                __html: item.label ? item.label + '\t' + item.value : item.value
-              }}
-            />
-          )}
-        </li>
-      ))}
+      {infoContact?.map((item, index: number) => {
+        if (item.key === 'nameHospital') {
+          return (
+            <li key={index}>
+              <p className={style.nameCompany}>{item.value}</p>
+            </li>
+          )
+        }
+        return (
+          <li key={index}>
+            <p className={style.infocompany}>
+              {item.label}:{' '}
+              {item.link ? (
+                <a href={item.link} target='_blank' rel='noreferrer'>
+                  {item.value}
+                </a>
+              ) : (
+                <span>{item.value}</span>
+              )}
+            </p>
+          </li>
+        )
+      })}
     </ul>
   )
 }
