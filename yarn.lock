@@ -208,6 +208,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fortawesome/fontawesome-free@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
@@ -241,27 +246,6 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
-
-"@medpro/booking-libs@0.0.63":
-  version "0.0.63"
-  resolved "https://gitlab.com/api/v4/projects/26696867/packages/npm/@medpro/booking-libs/-/@medpro/booking-libs-0.0.63.tgz#8bc3c2aa01e84bf48492ec34e999ca865e35f185"
-  integrity sha1-i8PCqgHoS/SEkuw06ZnKhl418YU=
-  dependencies:
-    "@craco/craco" "6.2.0"
-    "@types/lodash" "4.14.171"
-    antd "4.16.6"
-    autoprefixer "10.2.6"
-    babel-loader "8.2.2"
-    craco-antd "1.19.0"
-    craco-less "1.18.0"
-    css-loader "5.2.6"
-    lodash "^4.17.21"
-    moment "^2.29.1"
-    next latest
-    next-compose-plugins "2.2.1"
-    next-with-less "^1.0.0"
-    postcss-loader "6.1.1"
-    style-loader "3.0.0"
 
 "@n17dccn172/booking-libs@0.0.68":
   version "0.0.68"

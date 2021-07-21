@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Styles from './style.module.less'
 import { Carousel } from 'antd'
 import { LeftCircleFilled, RightCircleFilled } from '@ant-design/icons'
@@ -27,14 +28,14 @@ export const DeloyHospitalCustom = ({
         >
           {dataDeloyHospital.map(
             ({ id, nameHospital, image, imgLink }: DeloyHospitalItem) => (
-              <div>
+              <div key={nameHospital}>
                 <div className={Styles.listCard}>
                   <div key={id} className={Styles.card}>
                     <span>
-                      <img src={image} />
+                      <img src={image} alt={image} />
                     </span>
                     <div className={Styles.text}>
-                      <a href={imgLink} target='_blank'>
+                      <a href={imgLink} target='_blank' rel='noreferrer'>
                         {nameHospital}
                       </a>
                     </div>

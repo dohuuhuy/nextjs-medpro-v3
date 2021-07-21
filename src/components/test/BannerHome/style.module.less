@@ -1,118 +1,117 @@
-// Color variables (appears count calculates by raw css)
-@color0: #ffffff;
-@color1: #f8fafd;
-@color2: #1da1f2;
-@width2: 100%;
-@height3: 45px;
-@media (max-width: 600px) {
-  .content {
-    width: @width2 !important;
-    margin: 50% 0 5% 0 !important;
-    background-color: @color1 !important;
-    p {
-      height: @height3 !important;
-      font-size: 20px !important;
-    }
+.BannerHome {
+  margin-top: 130px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  .backgroundImage {
+    height: 720px;
+  }
+  .contentBannerHome {
+    width: 100%;
+    padding: 0 15px;
+    position: absolute;
+    bottom: 30px;
+    top: 50px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     .boxService {
-      height: @height3 !important;
-      background-color: @color2 !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      span {
-        font-size: 15px !important;
-        color: @color0 !important;
+      width: 30%;
+      float: right;
+      padding: 0 15px;
+      color: #12263f;
+      background-color: hsla(0, 0%, 100%, 0.9);
+      .ColTitle {
+        h1 {
+          text-align: center;
+          margin: 30px 0 45px;
+          font-size: 20px;
+          font-weight: 500;
+          color: #12263f;
+        }
       }
-      img {
-        display: none;
-      }
-      & :hover {
-        color: @color0;
+      .listBoxService {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          text-align: center;
+          background: transparent;
+          width: 50%;
+          justify-content: center;
+          margin: 0 0 8% !important;
+          img {
+            width: 55px;
+            height: 55px;
+          }
+        }
       }
     }
   }
 }
-@media (min-width: 600px) and (max-width: 1024px) {
-  .content {
-    width: @width2 !important;
-    margin: 50% 0 0 0 !important;
-    background-color: @color1 !important;
-
-    p {
-      height: @height3 !important;
-      font-size: 25px !important;
+@media only screen and (max-width: 768px) {
+  .BannerHome {
+    .backgroundImage {
+      height: 180px;
     }
-    .boxService {
-      height: @height3 !important;
-      background-color: @color2 !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-
-      border-radius: 5px !important;
-      margin: 20px !important;
-      span {
-        font-size: 20px !important;
-        color: @color0 !important;
-      }
-      img {
-        display: none !important;
-      }
-      & :hover {
-        color: @color0 !important;
+    .contentBannerHome {
+      position: unset;
+      .boxService {
+        margin: 2.5rem 0;
+        width: 100%;
+        background-color: #f8fafd !important;
+        .listBoxService {
+          li {
+            width: 100%;
+            img {
+              display: none;
+            }
+            a {
+              font-weight: 400;
+              display: flex;
+              text-align: center;
+              background-color: #1da1f2;
+              color: #fff;
+              text-transform: uppercase;
+              max-width: 300px;
+              margin: 0 auto;
+              font-size: 0.81rem;
+              height: 42px;
+              justify-content: center;
+              padding: 12px 15px;
+              white-space: nowrap;
+            }
+          }
+        }
       }
     }
   }
 }
-.container {
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin: auto;
-  min-width: 1920px;
-  margin-bottom: 5%;
-  @media (max-width: 599px) {
-    min-width: 100% !important;
-  }
-  @media (max-width: 1023px) {
-    min-width: 100% !important;
-  }
-  @media (max-width: 1919px) {
-    min-width: 1920px !important;
-  }
-  .content {
-    background-color: @color1;
-    box-shadow: 5px 5px 8px lightgray;
-    float: right;
-    margin: 40px 120px 10% 0;
-    padding: 0 20px 20px 20px;
-    width: 25%;
-    p {
-      align-items: center;
-      display: flex;
-      font-size: 20px;
-      font-weight: 350;
-      height: 90px;
-      justify-content: center;
-      text-transform: uppercase;
+
+@media (min-width: 768px) {
+  .BannerHome {
+    .backgroundImage {
+      height: 500px;
+      background-size: 100% 100% contain !important;
     }
-    .boxService {
-      margin-bottom: 25px;
-      padding-left: 23px;
-      img {
-        height: 55px;
-        width: 55px;
-      }
-      span {
-        color: black;
-        display: block;
-        font-weight: 500;
-        max-width: 106px;
-        text-align: center;
-      }
-      &:hover {
-        color: #0352cc;
-      }
+  }
+}
+@media (min-width: 1024px) {
+  .BannerHome {
+    .backgroundImage {
+      height: 500px;
+      background-size: 100% 100% contain !important;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .BannerHome {
+    .backgroundImage {
+      height: 720px;
+      background-size: 100% 100% contain !important;
     }
   }
 }

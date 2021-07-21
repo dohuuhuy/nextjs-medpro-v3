@@ -15,7 +15,6 @@ export interface CardIntroItem {
 }
 
 export const CardIntro = ({ dataCardIntro }: CardIntro) => {
-  console.log(dataCardIntro)
   return (
     <Container>
       <div className={Styles.card}>

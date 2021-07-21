@@ -397,7 +397,7 @@ export const JSON_EXP = {
         description:
           'Kết quả Cận Lâm Sàng sẽ được cập nhật  <br/>  trực tiếp trên phần mềm',
         imgBenefit:
-          'https://resource-testing.medpro.com.vn/static/media/downloadApp/KetQuaCanLamSang',
+          'https://resource-testing.medpro.com.vn/static/media/downloadApp/KetQuaCanLamSang.svg',
         position: 'left'
       },
       {
