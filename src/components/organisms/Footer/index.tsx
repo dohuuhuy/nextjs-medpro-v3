@@ -1,6 +1,7 @@
-import FooterCustom  from '../../test/FooterCustom'
+
+import FooterCustom from '@components/test/FooterCustom';
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 const footer  = {
   "logoFooter": "https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg",

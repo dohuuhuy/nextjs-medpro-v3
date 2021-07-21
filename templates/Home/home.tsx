@@ -1,5 +1,3 @@
-import { openInNewTab } from '@components/atoms/openInNewTab'
-import { Demo } from '@n17dccn172/booking-libs'
 // import { Demo } from '@components/test/Demo'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
@@ -8,10 +6,11 @@ import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
-// const BannerHome = dynamic(() => import('@components/organisms/BannerHomeApp'))
-// const SliderHospital = dynamic(
-//   () => import('@components/organisms/SilderHospital')
-// )
+const BannerHome = dynamic(() => import('@components/organisms/BannerHome'))
+
+const SliderHospital = dynamic(
+  () => import('@components/organisms/SilderHospital')
+)
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
@@ -34,19 +33,7 @@ const HomeLayout = ({}: Props) => {
       {/* <BannerHome />
       <SliderHospital /> */}
       <Introduce />
-
-      {/* <Demo
-        text={'viết bằng typescript function và có sử dụng module.less'}
-        funcTest={() => handerFuncTest('huyi')}
-        funcLogin={() =>
-          openInNewTab('https://id-v121.medpro.com.vn/check-phone')
-        }
-      />
-
-      {/* <Introduce /> */}
       <Download />
-
-      {/* {children} */}
       <SupportMethod />
       <Footer />
     </Layout>

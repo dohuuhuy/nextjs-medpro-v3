@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { ItemSupport } from './interface.footer'
+import { ItemSupport } from './footer.interface'
 import style from './styles.module.less'
 
 interface Props {

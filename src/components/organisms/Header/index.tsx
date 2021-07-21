@@ -1,5 +1,6 @@
-import HeaderCustom from '../../test/HeaderCustom'
+import HeaderCustom from '@components/test/HeaderCustom'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const header = {
   "logoHeader": "https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/header_logo.svg",
