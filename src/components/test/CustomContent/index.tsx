@@ -12,7 +12,12 @@ const CustomContent = ({ dataContent }: PropsContent) => {
     return (
         <Content className={style.viewContent}>
             <div className={style.formContent}>
-                <div key={key} className={style.viewItemContent} dangerouslySetInnerHTML={{ __html: content }} />
+                <div 
+                    key={key} 
+                    className={style.viewItemContent} 
+                    dangerouslySetInnerHTML={{ 
+                        __html: content 
+                }}/>
             </div>
         </Content>
     )

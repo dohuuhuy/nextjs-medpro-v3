@@ -1,0 +1,94 @@
+@media only screen and (max-width: 1168px) {
+	.viewBanner {
+		display: none !important;
+		visibility: hidden;
+	}
+}
+.viewBanner {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	background-size: cover;
+	background-image: linear-gradient(to right, #687AD0, #04A3BD);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	justify-content: center;
+	align-items: center;
+	margin-top: 160px;
+	min-height: 120px;
+	.viewOptions {
+		display: flex;
+		flex-direction: row;
+		margin: 50px 0 100px 0;
+		justify-content: center;
+		.optionContacts {
+			display: flex;
+			flex-direction: column;
+			max-width: 420px;
+			height: 300px;
+			margin: 0 20px 0 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 20px;
+			.titleContact {
+				text-align: center;
+				font-weight: 500;
+				font-size: 25px;
+			}
+			.subTitleContact {
+				text-align: center;
+				font-size: 18px;
+			}
+			.viewImgContact {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.Img {
+					margin: 5px 0 10px 0;
+				}
+			}
+			.viewTxtBottom {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				margin-top: 10px;
+				a{
+					width: auto;
+				}
+				.txtBottom {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					text-align: center;
+					width: auto;
+					font-size: 18px;
+					font-weight: 400;
+					color: #000;
+					.marginIcon {
+						margin: 5px 0 0 5px;
+					}
+				}
+			}
+		}
+	}
+	.title {
+		color: white;
+		text-decoration: underline;
+		text-decoration-color: #55DD77;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: center;
+		margin-top: 50px;
+		.textTitle {
+			font-size: 2.2rem;
+		}
+	}
+	.subTitle {
+		color: white;
+		text-align: center;
+		text-transform: none;
+		font-weight: 500;
+		font-size: 1.0rem;
+	}
+}

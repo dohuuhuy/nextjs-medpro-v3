@@ -1,3 +1,4 @@
+import Produce from '@components/organisms/Produce'
 import Container from '@components/test/Container'
 import React from 'react'
 
@@ -11,7 +12,7 @@ const QuyTrinhDetail = () => {
           textAlign: 'center'
         }}
       >
-        QuyTrinhDetail
+        <Produce />
       </p>
     </Container>
   )
