@@ -19,7 +19,7 @@ export const MenuDrawer = ({
   Authencartion
 }: Props) => {
   const { funcGroup, guideGroup, supportGroup }: any = listSupport
-  const { isAuthen }: any = Authencartion
+  const { isAuthen, nameUser }: any = Authencartion
   return (
     <div className={style.drawerMenu}>
       <NavbarHeaderMobile
@@ -28,6 +28,18 @@ export const MenuDrawer = ({
         togleDrawer={() => setDrawer()}
       />
       <Container className={style.containerDrawerMenu}>
+        <Row className={style.rowView}>
+          <div className={style.itemSingle}>
+            <img
+              src={
+                'https://resource-testing.medpro.com.vn/static/media/icon/avatar.svg'
+              }
+              alt={''}
+            />{' '}
+            Xin chào <b>{nameUser}</b>
+          </div>
+        </Row>
+
         <Row className={style.rowView}>
           {isAuthen ? (
             <HandlerList element={funcGroup} />
@@ -45,7 +57,18 @@ export const MenuDrawer = ({
         </Row>
 
         <Row className={style.rowView}>
-          <p>Phiên bản 1.1.2</p>
+          <div className={style.itemSingle}>
+            <img
+              src={
+                'https://resource-testing.medpro.com.vn/static/media/icon/log-out.svg'
+              }
+              alt={''}
+            />
+            Đăng xuất
+          </div>
+          <p>
+            <em>Phiên bản 1.1.2</em>
+          </p>
         </Row>
       </Container>
     </div>

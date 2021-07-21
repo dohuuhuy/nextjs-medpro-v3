@@ -143,22 +143,22 @@ export const JSON_EXP = {
     listSupport: {
       funcGroup: [
         {
-          icon: 'fal fa-user',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg',
           label: 'Hồ sơ bệnh nhân'
         },
         {
-          icon: 'fal fa-file-invoice',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/bill.svg',
           label: 'Phiếu khám bệnh'
         }
       ],
       guideGroup: [
         {
-          icon: 'fal fa-question-circle',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/question.svg',
           label:
             'Giải đáp các câu hỏi nhanh giúp quý khách hiểu rõ hơn về sản phẩm, dịch vụ của chúng tôi.'
         },
         {
-          icon: 'fal fa-book',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/guide.svg',
           label: 'Hướng dẫn'
         }
       ],
@@ -174,12 +174,12 @@ export const JSON_EXP = {
           link: '#'
         },
         {
-          icon: 'far fa-life-ring',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/setting.svg',
           label: 'Hỗ trợ Kỹ thuật: 1900-2115',
           link: '#'
         },
         {
-          icon: 'fal fa-envelope',
+          icon: 'https://resource-testing.medpro.com.vn/static/media/icon/envelope.svg',
           label: 'Email: support@medpro.com.vn',
           link: '#'
         }

@@ -1,21 +1,31 @@
+.CustomItem {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+  text-align: left;
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+}
+
+// -----------------
 .HandlerList {
   width: 100%;
   list-style-type: none;
   padding: 0;
   margin: 0;
   li {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    margin-bottom: 10px;
-    text-align: left;
-    img {
-      width: 16px;
-      height: 16px;
-      margin-right: 10px;
-    }
+    .CustomItem();
   }
 }
+
+.itemSingle {
+  .CustomItem();
+}
+
 .btnLogin {
   border: none;
   width: 100%;
