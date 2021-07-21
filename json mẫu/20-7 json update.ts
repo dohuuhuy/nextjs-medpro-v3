@@ -354,7 +354,6 @@ export const templateNewBv = {
   downloadApp: {
     appId: 'medpro',
     nameHospital: 'Bênh viện nhi đồng 1 ',
-    //dong
     myApp: [
       {
         id: '',
@@ -366,7 +365,8 @@ export const templateNewBv = {
       {
         id: '',
         key: 'ios',
-        imgLogo: 'https://resource-testing.medpro.com.vn/static/media/ios.sv',
+        imgLogo:
+          'https://resource-testing.medpro.com.vn/static/media/iconApp/ios.svg',
         link: 'https://apps.apple.com/us/app/id1481561748'
       }
     ],
