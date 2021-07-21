@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@medpro/booking-libs": "0.0.63",
     "@n17dccn172/booking-libs": "0.0.68",
     "antd": "^4.16.5",
     "axios": "0.21.1",
@@ -40,6 +39,7 @@
     "@types/lodash": "4.14.171",
     "@types/node": "16.3.0",
     "@types/react": "17.0.13",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
