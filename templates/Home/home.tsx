@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
+const BannerHome = dynamic(() => import('@components/organisms/BannerHome'))
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
 const SupportMethod = dynamic(
@@ -17,6 +18,7 @@ type Props = {
 const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
+      <BannerHome />
       <Introduce />
       <Download />
       <SupportMethod />

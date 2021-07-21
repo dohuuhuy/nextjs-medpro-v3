@@ -1,4 +1,4 @@
-import { DownloadCustom } from '@components/test/Download'
+import { DownloadCustom } from '@components/test/DownloadApp'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
