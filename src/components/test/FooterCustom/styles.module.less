@@ -17,7 +17,7 @@
     .colFooter {
       justify-content: center;
       .viewCol {
-        margin: 0;
+        margin:5px 0 10px;
         padding: 0 15px;
         width: 100%;
         .logoFooter {
@@ -28,8 +28,8 @@
 
         .listInfoContact {
           .ListCustom();
-          .nameCompany {
-            font-size: 14px;
+          .nameHospital {
+            font-size: 16px;
             font-weight: bolder;
             color: #0352cc;
           }
@@ -38,20 +38,16 @@
         .listLinkSupport {
           .ListCustom();
         }
-
-        .listLogoChecked {
-          .ListCustom();
-          text-align: center;
-          li {
-            float: left;
-            width: 50%;
-            a {
-              img {
-                width: 107px;
-                height: 42px;
-              }
-            }
-          }
+        .rowImg{
+          display: flex;
+          flex-direction:row;
+          min-width: 240px;
+          justify-content: center;
+        }
+        .img {
+          width: 108px;
+          height: 40px;
+          margin: 5px;
         }
       }
     }
@@ -71,6 +67,7 @@
 // css reponsive footer
 @media only screen and (max-width: 768px) {
   .footer {
+    padding-bottom: 70px !important;
     .viewFooter {
       .colFooter {
         .viewCol {
@@ -93,6 +90,9 @@
         }
         .linkSupport {
           display: none;
+        }
+        .infoHospital{
+          text-align: center;
         }
       }
     }

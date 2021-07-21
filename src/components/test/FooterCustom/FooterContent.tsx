@@ -27,8 +27,7 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
           <Col
             xl={4}
             md={4}
-            className={cx(style.viewCol, CheckValue(logoFooter))}
-          >
+            className={cx(style.viewCol, CheckValue(logoFooter))}>
             <a href={'https://medpro.com.vn/'} className={style.logoFooter}>
               <img src={logoFooter} className={style.logo} alt='logoFooter' />
             </a>
@@ -37,8 +36,7 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
           <Col
             xl={10}
             md={10}
-            className={cx(style.viewCol, CheckValue(infoContact))}
-          >
+            className={cx(style.viewCol, CheckValue(infoContact))}>
             <InfoFooter infoContact={infoContact} />
           </Col>
 
@@ -49,16 +47,14 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
               style.viewCol,
               style.linkSupport,
               CheckValue(linkSupport)
-            )}
-          >
+            )}>
             <SuportFooter linkSupport={linkSupport} />
           </Col>
 
           <Col
             xl={6}
             md={6}
-            className={cx(style.viewCol, CheckValue(logoChecked))}
-          >
+            className={cx(style.viewCol, CheckValue(logoChecked))}>
             <ImageFooter logoChecked={logoChecked} />
           </Col>
         </Row>

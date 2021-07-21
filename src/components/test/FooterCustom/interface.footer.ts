@@ -1,18 +1,20 @@
+
 export interface PropsFooter {
-  dataFooter: Array<ItemFooter>
+  dataFooter: Array<ItemFooter> | any;
 }
 
 export interface ItemFooter {
-  logoFooter: string | undefined | null
-  infoContact: Array<ItemContact>
-  linkSupport: Array<ItemSupport>
-  logoChecked: Array<ItemChecked>
+  logoFooter: string | undefined | null;
+  infoContact: Array<ItemContact>;
+  linkSupport: Array<ItemSupport>;
+  logoChecked: Array<ItemChecked>;
 }
 
 export interface ItemContact {
-  id?: string
-  label?: string
-  value: string
+  id?: string;
+  label?: string;
+  key: string;
+  value: string;
 }
 
 export interface ItemSupport {

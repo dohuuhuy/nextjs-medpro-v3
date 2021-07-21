@@ -11,17 +11,17 @@ export const InfoFooter = ({ infoContact }: Props) => {
     <ul className={style.listInfoContact}>
       {infoContact?.map((item, index: number) => (
         <li key={index}>
-          {item.label === 'Website' ? (
+          {item.key === 'website' ? (
             <a key={item.id} href={item.value} className={style.aLink}>
-              <p className={style.infocompany}>
-                {item.label} + {''} + {item.value}
+              <p className={style.infoHospital}>
+                {item.label} {item.value}
               </p>
             </a>
           ) : (
             <p
-              className={item.label ? style.infocompany : style.nameCompany}
+              className={item.label ? style.infoHospital : style.nameHospital}
               dangerouslySetInnerHTML={{
-                __html: item.label ? item.label + '\t' + item.value : item.value
+                __html: item.label ? item.label + ':\t' + item.value : item.value
               }}
             />
           )}
