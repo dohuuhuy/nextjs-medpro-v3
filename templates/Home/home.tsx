@@ -36,7 +36,7 @@ const HomeLayout = ({}: Props) => {
           "key": "trang-chu",
           "link": "/",
           "url": "/",
-          "name": "Trang chủ",
+          "name": "Trang chu",
           "content": "",
           "sortOrder": 1,
           "icon": "fal fa-home",
