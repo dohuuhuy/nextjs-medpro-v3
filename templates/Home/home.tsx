@@ -18,11 +18,12 @@ type Props = {
   children?: ReactNode
 }
 
-const HomeLayout = ({}: Props) => {
+const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
+      {children}
       <BannerHome />
-      {/* <Introduce /> */}
+      <Introduce />
       <Download />
       <SupportMethod />
       <Footer />

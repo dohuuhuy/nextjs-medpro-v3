@@ -26,6 +26,8 @@ const HomeDetail = () => {
         textAlign: 'center'
       }}
     >
+      <h1>helo</h1>
+
       <Demo
         text={'viết bằng typescript function và có sử dụng module.less'}
         funcTest={() => handerFuncTest('huyi')}
