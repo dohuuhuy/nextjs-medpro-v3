@@ -1,9 +1,6 @@
-// import { FooterCustom } from '@medpro/booking-libs'
-import { FooterCustom } from '@n17dccn172/booking-libs'
-// import { FooterCustom } from '@components/test/FooterCustom'
+import { FooterCustom } from '@components/test/FooterCustom'
 import React from 'react'
 import { useSelector } from 'react-redux'
-// import styles from './styles.module.less'
 
 const FooterLayout = () => {
   const footer = useSelector(

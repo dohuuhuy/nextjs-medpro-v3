@@ -20,6 +20,8 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
     if (!el) return style.hidden
   }
 
+  console.log('logoFooter.logoImage :>> ', logoFooter.logoImage)
+
   return (
     <div className={style.viewFooter}>
       <Container>
@@ -29,8 +31,17 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
             md={4}
             className={cx(style.viewCol, CheckValue(logoFooter))}
           >
-            <a href={'https://medpro.com.vn/'} className={style.logoFooter}>
-              <img src={logoFooter} className={style.logo} alt='logoFooter' />
+            <a
+              href={logoFooter.linkImage}
+              className={style.logoFooter}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img
+                src={logoFooter.logoImage}
+                className={style.logo}
+                alt='logoFooter'
+              />
             </a>
           </Col>
 

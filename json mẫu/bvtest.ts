@@ -460,7 +460,7 @@ export const JSON_EXP = {
   ],
   footer: {
     logoFooter: {
-      linkImage: 'Medpro.vn',
+      linkImage: 'https://medpro.vn',
       logoImage:
         'https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg'
     },
@@ -475,25 +475,29 @@ export const JSON_EXP = {
         id: '',
         key: 'address',
         label: 'Địa chỉ',
-        value: '97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh.'
+        value: '97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh.',
+        link: ''
       },
       {
         id: '',
         key: 'website',
         label: 'Website',
-        value: ' https://pkh.vn'
+        value: 'https://pkh.vn',
+        link: 'https://pkh.vn'
       },
       {
         id: '',
         key: 'email',
         label: 'Email',
-        value: 'contact@pkh.vn'
+        value: 'contact@pkh.vn',
+        link: ''
       },
       {
         id: '',
         key: 'phone',
         label: 'Điện thoại',
-        value: '(028) 710 78098'
+        value: '(028) 710 78098',
+        link: 'tel:028 710 78098'
       }
     ],
     linkSupport: [
