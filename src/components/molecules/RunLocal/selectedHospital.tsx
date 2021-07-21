@@ -26,17 +26,18 @@ const SelectedHospital = () => {
 
   function onChange(value: any) {
     dispatch(set_partnerId_local({ partnerId: value }))
+    setIsModalVisible(false)
   }
 
   const list_partners: any = useSelector<AppState>(
-    (state: any) => state.totalData_Reducer.list_partners,
+    (state: any) => state.totalData_Reducer.list_partners
   )
 
   return (
     <div>
       {_DEVELOPMENT ? (
         <Button
-          type="primary"
+          type='primary'
           onClick={showModal}
           className={styles.Btn_local_hospital}
         >
@@ -47,16 +48,16 @@ const SelectedHospital = () => {
         footer={false}
         onOk={handleOk}
         onCancel={handleCancel}
-        title=" Nhập partnerId bệnh viện để hiển thị trên localhost"
+        title=' Nhập partnerId bệnh viện để hiển thị trên localhost'
         visible={isModalVisible}
         closable={isModalVisible}
       >
         <Select
           showSearch
-          defaultValue="Bệnh viện Test"
+          defaultValue='Bệnh viện Test'
           style={{ width: '100%' }}
-          placeholder="Chọn bệnh viện"
-          optionFilterProp="children"
+          placeholder='Chọn bệnh viện'
+          optionFilterProp='children'
           onChange={onChange}
           filterOption={(input, option) => {
             if (option?.children) {
@@ -74,7 +75,7 @@ const SelectedHospital = () => {
                   {nameHospital}
                 </Option>
               )
-            },
+            }
           )}
         </Select>
       </Modal>
@@ -87,6 +88,6 @@ export default SelectedHospital
 export const listHospital = [
   {
     name: 'bệnh viện trưng vương',
-    partnerId: 'trungvuong',
-  },
+    partnerId: 'trungvuong'
+  }
 ]

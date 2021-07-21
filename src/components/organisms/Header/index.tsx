@@ -1,8 +1,17 @@
-import { CustomHeader } from '@medpro/booking-libs'
+import { HeaderCustom } from '@components/test/HeaderCustom'
 import React from 'react'
+import { useSelector } from 'react-redux'
+
+const authen = {
+  isAuthen: true,
+  nameUser: 'Huyi'
+}
 
 const HeaderLayout = () => {
-  return <CustomHeader />
+  const header = useSelector(
+    (state: any) => state.hospital_Reducer.hospital_details.header
+  )
+  return <HeaderCustom dataHeader={header} Authencartion={authen} />
 }
 
 export default HeaderLayout

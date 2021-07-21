@@ -1,4 +1,4 @@
-import Container from '@components/atoms/Container'
+import Container from '@components/test/Container'
 import React from 'react'
 
 const LienHeDetail = () => {

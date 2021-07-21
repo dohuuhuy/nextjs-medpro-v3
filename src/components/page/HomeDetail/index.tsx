@@ -1,12 +1,12 @@
 import { deleteColor, getDemo } from '@actionStore/rootAction'
-import Container from '@components/atoms/Container'
+import Container from '@components/test/Container'
 import { openInNewTab } from '@components/atoms/openInNewTab'
-import { Demo } from '@medpro/booking-libs'
 import { DemoState } from '@store/interface'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
+import { Demo } from '@n17dccn172/booking-libs'
 
 const HomeDetail = () => {
   const dispatch = useDispatch()
@@ -15,6 +15,10 @@ const HomeDetail = () => {
     (state: { DemoReducer: DemoState }) => state.DemoReducer.nameColor
   )
 
+  const handerFuncTest = (name: string) => {
+    alert(name)
+  }
+
   return (
     <Container
       style={{
@@ -22,7 +26,15 @@ const HomeDetail = () => {
         textAlign: 'center'
       }}
     >
-      <Demo text={'viết bằng typescript function và có sử dụng module.less'} />
+      <h1>helo</h1>
+
+      <Demo
+        text={'viết bằng typescript function và có sử dụng module.less'}
+        funcTest={() => handerFuncTest('huyi')}
+        funcLogin={() =>
+          openInNewTab('https://id-v121.medpro.com.vn/check-phone')
+        }
+      />
 
       <Button
         disabled={nameColor === 'ghost'}

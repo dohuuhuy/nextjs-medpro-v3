@@ -19,10 +19,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@medpro/booking-libs": "0.0.62",
+    "@n17dccn172/booking-libs": "0.0.68",
     "antd": "^4.16.5",
     "axios": "0.21.1",
     "dotenv": "10.0.0",
+    "install": "0.13.0",
     "lodash": "4.17.21",
     "next": "latest",
     "next-compose-plugins": "2.2.1",
@@ -36,6 +37,7 @@
     "ts-node": "10.0.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@types/lodash": "4.14.171",
     "@types/node": "16.3.0",
     "@types/react": "17.0.13",

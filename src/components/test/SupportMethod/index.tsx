@@ -1,49 +1,54 @@
 /* eslint-disable @next/next/no-img-element */
-import { Col, Layout } from 'antd'
+import { Col, Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'
+import Container from '../Container'
 import style from './style.module.less'
-import { SupportMethodCustom } from './SupportMethod.interface'
+import { SupportMethod } from './SupportMethod.interface'
 
-const { Content } = Layout
+interface SupportMedthodCustom {
+  dataSupportMethod: SupportMethod
+}
 
 export const SupportMedthodCustom = ({
   dataSupportMethod
-}: SupportMethodCustom) => {
+}: SupportMedthodCustom) => {
   if (!dataSupportMethod || dataSupportMethod.length < 1) {
-    return <em>Không có dataSupportMethod ...</em>
+    return <em>Lỗi dataSupportMethod</em>
   }
 
   return (
-    <React.Fragment>
-      <Content className={style.viewContent}>
-        <Content className={style.content}>
-          <div className={style.subTitle}>
-            <p>Hỗ trợ</p>
-            <h1>Các hình thức hỗ trợ</h1>
-          </div>
-          <div className={style.viewSupport}>
-            {dataSupportMethod?.map(
-              (
-                { nameMedthod, imgCard, description, link }: any,
-                index: number
-              ) => (
-                <Col className={style.colSupport} key={index}>
-                  <Col className={style.cardSupport}>
-                    <img src={imgCard} className={style.img} alt='imgCard' />
-                    <p className={style.titleCard}>{nameMedthod}</p>
-                    <Link href={link}>
-                      <a>
-                        <p className={style.selectSupport}>{description}</p>
-                      </a>
-                    </Link>
-                  </Col>
-                </Col>
-              )
-            )}
-          </div>
-        </Content>
-      </Content>
-    </React.Fragment>
+    <Container className={style.supportMedthod}>
+      <Row className={style.rowSupport}>
+        <span className={style.title}>Hỗ trợ</span>
+        <h3 className={style.subTitle}>Các hình thức hỗ trợ</h3>
+      </Row>
+      <Row className={style.listSupportRow}>
+        {dataSupportMethod?.map(
+          (
+            { nameMedthod, imgCard, description, link = '#' }: any,
+            index: number
+          ) => (
+            <Col
+              key={index}
+              xl={6}
+              md={6}
+              sm={24}
+              className={style.itemSupportCol}
+            >
+              <div className={style.cardSupport}>
+                <img src={imgCard} className={style.img} alt='imgCard' />
+                <div className={style.cardContent}>
+                  <h4 className={style.titleCard}>{nameMedthod}</h4>
+                  <Link href={link} passHref>
+                    <a className={style.descriptionCard}>{description}</a>
+                  </Link>
+                </div>
+              </div>
+            </Col>
+          )
+        )}
+      </Row>
+    </Container>
   )
 }

@@ -1,10 +1,11 @@
 import {
   hospital_details,
   Hospital_Details_Action_Types,
-  ListPartners_Action_Types,
+  ListPartners_Action_Types
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
+import { JSON_EXP } from 'json mẫu/bvtest'
 import { get } from 'lodash'
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { _DEVELOPMENT } from './../../../config/envs/env'
@@ -19,23 +20,25 @@ function* hospital_get_details({ partnerId }: any) {
   try {
     const url =
       'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
+
     const res: AxiosResponse<hospital_details> = yield call(getData, url)
+    console.error(res)
 
     yield put({
       type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS,
-      hospital_details: res,
+      hospital_details: JSON_EXP
     })
 
     yield put({
       type: ListPartners_Action_Types.SET_PartnerId,
-      partnerId,
+      partnerId
     })
 
     if (_DEVELOPMENT) {
       openToast({
         message: 'Chọn bệnh viện thành công!',
         type: 'success',
-        duration: 4.5,
+        duration: 4.5
       })
     }
   } catch (error) {
@@ -45,12 +48,12 @@ function* hospital_get_details({ partnerId }: any) {
 
     yield put({
       type: ListPartners_Action_Types.SET_PartnerId,
-      partnerId: '',
+      partnerId: ''
     })
     openToast({
       message,
       type: 'error',
-      duration: 4.5,
+      duration: 4.5
     })
   }
 }
@@ -58,7 +61,7 @@ function* hospital_get_details({ partnerId }: any) {
 function* watch_hospital_get_details() {
   yield takeEvery(
     Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS as any,
-    hospital_get_details,
+    hospital_get_details
   )
 }
 

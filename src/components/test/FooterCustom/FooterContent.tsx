@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { Col } from 'antd'
+import { Col, Row } from 'antd'
+import cx from 'classnames'
 import React from 'react'
+import Container from '../Container'
 import { ImageFooter } from './ImageFooter'
 import { InfoFooter } from './InfoFooter'
 import { PropsFooter } from './interface.footer'
@@ -14,35 +16,62 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
 
   const { logoFooter, infoContact, linkSupport, logoChecked }: any = dataFooter
 
+  const CheckValue = (el: any) => {
+    if (!el) return style.hidden
+  }
+
   return (
-    <React.Fragment>
-      <Col className={style.colFooter}>
-        {logoFooter ? (
-          <Col className={style.viewCol}>
-            <a href={'https://medpro.com.vn/'}>
-              <img src={logoFooter} className={style.logo} alt='logoFooter' />
+    <div className={style.viewFooter}>
+      <Container>
+        <Row className={style.colFooter}>
+          <Col
+            xl={4}
+            md={4}
+            className={cx(style.viewCol, CheckValue(logoFooter))}
+          >
+            <a
+              href={logoFooter.linkImage}
+              className={style.logoFooter}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img
+                src={logoFooter.logoImage}
+                className={style.logo}
+                alt='logoFooter'
+              />
             </a>
           </Col>
-        ) : null}
 
-        {infoContact ? (
-          <Col className={style.viewCol}>
+          <Col
+            xl={10}
+            md={10}
+            className={cx(style.viewCol, CheckValue(infoContact))}
+          >
             <InfoFooter infoContact={infoContact} />
           </Col>
-        ) : null}
 
-        {linkSupport ? (
-          <Col className={style.viewCol}>
+          <Col
+            xl={4}
+            md={4}
+            className={cx(
+              style.viewCol,
+              style.linkSupport,
+              CheckValue(linkSupport)
+            )}
+          >
             <SuportFooter linkSupport={linkSupport} />
           </Col>
-        ) : null}
 
-        {logoChecked ? (
-          <Col className={style.viewCol}>
+          <Col
+            xl={6}
+            md={6}
+            className={cx(style.viewCol, CheckValue(logoChecked))}
+          >
             <ImageFooter logoChecked={logoChecked} />
           </Col>
-        ) : null}
-      </Col>
-    </React.Fragment>
+        </Row>
+      </Container>
+    </div>
   )
 }

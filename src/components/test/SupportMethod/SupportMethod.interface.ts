@@ -1,8 +1,4 @@
-export interface SupportMethodCustom {
-  dataSupportMethod: SupportMedthod
-}
-
-export type SupportMedthod = Array<SupportMethodItem>
+export type SupportMethod = Array<SupportMethodItem>
 
 export interface SupportMethodItem {
   nameMedthod: string

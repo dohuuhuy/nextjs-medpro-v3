@@ -11,8 +11,10 @@ export interface ItemFooter {
 
 export interface ItemContact {
   id?: string
+  key?: string
   label?: string
   value: string
+  link: string
 }
 
 export interface ItemSupport {
