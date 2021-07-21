@@ -1,13 +1,3 @@
-export interface PropsHeader {
-  dataHeader: Array<Item> | any
-  Authencartion: Array<Info> | any
-}
-
-export interface Info {
-  isAuthen: boolean
-  nameUser?: string
-}
-
 export interface Item {
   logoHeader: string
   logoMobile: string

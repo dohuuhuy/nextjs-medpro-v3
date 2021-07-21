@@ -1,4 +1,4 @@
-import HeaderCustom from '@components/test/HeaderCustom'
+import { HeaderCustom } from '@components/test/HeaderCustom'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

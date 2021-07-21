@@ -1,0 +1,89 @@
+.ListMenuInfo {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  li {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+    &:first-child {
+      margin-right: 15px;
+      .bell {
+        a {
+          padding: 10px !important;
+          border-radius: 50%;
+          svg {
+            color: #627792;
+          }
+        }
+        sup {
+          user-select: none;
+          right: 40% !important;
+          top: -40% !important;
+          transform: translate(100%, 0%) !important;
+        }
+        &:hover a,
+        .activeBell {
+          background-color: #e9f4fe !important;
+        }
+
+        &:hover svg,
+        &:hover svg {
+          animation: ring 1.5s ease;
+          transition: all 0.3s ease;
+          color: #0352cc;
+        }
+        .activeBell {
+          color: #0352cc;
+        }
+      }
+    }
+    a {
+      .icons {
+        font-size: 16px;
+      }
+      &.downloadApp {
+        border-color: #0352cc;
+        font-size: 14px;
+        position: relative;
+        color: #0352cc !important;
+        white-space: nowrap;
+        background: transparent !important;
+        border-radius: 3px;
+        &:hover:after {
+          transform: scaleY(1);
+          transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+          position: absolute;
+          background: #0352cc;
+          z-index: -1;
+        }
+        &:hover {
+          color: #fff !important;
+          z-index: 2;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: -2px;
+          bottom: 0;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          transition: transform 0.3s ease-out;
+          width: 100%;
+        }
+      }
+      &.login {
+        background-image: linear-gradient(90deg, #0352cc 0%, #0b7df1 100%);
+        color: #ffffff;
+        border-radius: 3px;
+        font-size: 14px;
+        margin-left: 15px;
+        position: relative;
+        min-width: 127.27px;
+      }
+    }
+  }
+}
