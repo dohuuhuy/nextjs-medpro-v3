@@ -1,4 +1,4 @@
-export const templateNewBv = {
+export const data = {
   partnerId: 'medpro',
   header: {
     logoHeader:
