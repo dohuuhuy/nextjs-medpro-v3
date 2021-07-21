@@ -1,4 +1,3 @@
-// import { Demo } from '@components/test/Demo'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -16,17 +15,17 @@ const SupportMethod = dynamic(
 )
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
+// const FooterCustom = dynamic(() => import('@components/test/FooterCustom'))
 
 type Props = {
   children?: ReactNode
 }
-
-const HomeLayout = ({ children }: Props) => {
+const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
-      {children}
-      {/* <Header /> */}
+      <Header />
       <BannerHome />
+      <SliderHospital />
       <Introduce />
       <Download />
       <SupportMethod />
