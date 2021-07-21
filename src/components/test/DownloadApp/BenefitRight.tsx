@@ -22,7 +22,9 @@ export const BenefitRight = ({ rightListBenefit }: BenefitRight) => {
               <img src={imgBenefit} alt='' />
             </div>
             <div className={style.list_content}>
-              <p className={style.list_title}>{title}</p>
+              <p className={style.list_title}>
+                <strong>{title}</strong>
+              </p>
               <p dangerouslySetInnerHTML={{ __html: description }} />
             </div>
           </li>

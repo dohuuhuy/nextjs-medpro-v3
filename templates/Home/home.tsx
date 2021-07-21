@@ -39,7 +39,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Trang chủ",
           "content": "",
           "sortOrder": 1,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": true
         },
         {
           "id": "a2",
@@ -49,7 +50,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Giới thiệu",
           "content": "",
           "sortOrder": 2,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": false
         },
         {
           "id": "a3",
@@ -59,7 +61,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Quy trình",
           "content": "",
           "sortOrder": 3,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": false
         },
         {
           "id": "a4",
@@ -69,7 +72,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Hướng dẫn",
           "content": "",
           "sortOrder": 4,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": false
         },
         {
           "id": "a5",
@@ -79,7 +83,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Thắc mắc",
           "content": "",
           "sortOrder": 5,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": false
         },
         {
           "id": "a6",
@@ -89,7 +94,8 @@ const HomeLayout = ({}: Props) => {
           "name": "Liên hệ",
           "content": "",
           "sortOrder": 6,
-          "icon": "fal fa-home"
+          "icon": "fal fa-home",
+          "active": false
         }
       ],
       menuMobile: [

@@ -20,6 +20,8 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
     if (!el) return style.hidden
   }
 
+  console.log('logoFooter.logoImage :>> ', logoFooter.logoImage)
+
   return (
     <div className={style.viewFooter}>
       <Container>

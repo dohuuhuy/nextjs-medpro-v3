@@ -2,31 +2,38 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import style from './style.module.less'
+import cx from 'classnames'
 
 interface myApp {
   arrApp: Item[]
 }
 interface Item {
+  id: string
   key: string
-  imgApp: string
-  linkApp: string
+  imgLogo: string
+  link: string
 }
 
 export const MyApp = ({ arrApp }: myApp) => {
   return (
     <Row className={style.MyApp}>
-      <Col xl={24}>
+      <Col xl={24} md={24} sm={24} className={style.ColMyApp}>
         <span className={style.download}> DOWNLOAD</span>
       </Col>
-      <Col className={style.header_title} xl={24}>
+      <Col
+        className={cx(style.header_title, style.ColMyApp)}
+        xl={24}
+        md={24}
+        sm={24}
+      >
         TẢI ỨNG DỤNG <span>MEDPRO</span>
       </Col>
-      <Col xl={24}>
+      <Col xl={24} md={24} sm={24} className={style.ColMyApp}>
         <ul className={style.listDownload}>
-          {arrApp.map(({ imgApp, linkApp }: Item, index: number) => (
+          {arrApp.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
-              <a href={linkApp} target='_blank' rel='noreferrer'>
-                <img src={imgApp} className={style.mid_logo} alt='' />
+              <a href={link} target='_blank' rel='noreferrer'>
+                <img src={imgLogo} className={style.mid_logo} alt='' />
               </a>
             </li>
           ))}
