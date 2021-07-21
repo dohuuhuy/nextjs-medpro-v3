@@ -25,7 +25,7 @@ const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       {children}
-      <Header />
+      {/* <Header /> */}
       <BannerHome />
       <Introduce />
       <Download />

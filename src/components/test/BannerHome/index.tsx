@@ -10,8 +10,6 @@ interface bannerHomeCustom {
   dataBannerHome: BannerHome
 }
 const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
-  console.log(dataBannerHome)
-
   if (!dataBannerHome) {
     return <em> Không có dataBannerHome</em>
   }
