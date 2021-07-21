@@ -34,8 +34,8 @@ export const MenuDrawer = ({
               src={
                 'https://resource-testing.medpro.com.vn/static/media/icon/avatar.svg'
               }
-              alt={''}
-            />{' '}
+              alt={'avatar'}
+            />
             Xin chào <b>{nameUser}</b>
           </div>
         </Row>
@@ -62,7 +62,7 @@ export const MenuDrawer = ({
               src={
                 'https://resource-testing.medpro.com.vn/static/media/icon/log-out.svg'
               }
-              alt={''}
+              alt={'log-out'}
             />
             Đăng xuất
           </div>
