@@ -2,9 +2,9 @@ import React from 'react'
 import { Menu } from 'antd'
 import { ClockCircleOutlined } from '@ant-design/icons'
 import Link from 'next/link'
-import style from './../styles.module.less'
+import style from './styles.module.less'
 
-const DropdownNotification = () => {
+export const DropdownNoti = () => {
   return (
     <div className={style.dropdownNotification}>
       <div className={style.header_dropdown}>
@@ -33,5 +33,3 @@ const DropdownNotification = () => {
     </div>
   )
 }
-
-export default DropdownNotification

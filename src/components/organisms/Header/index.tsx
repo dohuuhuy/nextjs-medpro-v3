@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const authen = {
   isAuthen: true,
-  nameUser: 'Tấn Đạt'
+  nameUser: 'Huyi'
 }
 
 const HeaderLayout = () => {

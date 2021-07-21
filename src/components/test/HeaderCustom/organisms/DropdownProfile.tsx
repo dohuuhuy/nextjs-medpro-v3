@@ -15,6 +15,7 @@ interface Props {
 }
 
 const DropdownProfile = ({ nameUser }: Props) => {
+  console.log('nameUser :>> ', nameUser)
   return (
     <Menu className={style.dropdownProfile}>
       <Item className={style.item_user}>
