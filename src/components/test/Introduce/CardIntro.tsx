@@ -23,17 +23,15 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
           {dataCardIntro.map(
             ({ title, subTitle, imgCard, link }: CardIntroItem) => (
               <div className={Styles.footerCard} key={title}>
-                <div>
-                  <img src={imgCard} className={Styles.img} alt={title} />
-                </div>
-                <a href={link}>
-                  <div className={Styles.footerCard_Text}>
+                <img src={imgCard} alt={title} />
+                <div className={Styles.footerCard_Text}>
+                  <a href={link}>
                     <div className={Styles.title}>
                       <span>{title}</span>
                       <p>{subTitle}</p>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
             )
           )}

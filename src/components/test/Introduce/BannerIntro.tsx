@@ -16,15 +16,15 @@ export const BannerIntro = ({ dataContentIntro }: contentIntro) => {
   return (
     <Row className={Styles.con_Para}>
       <Container className={Styles.Para}>
-        <Row>
+        <Row className={Styles.boxPara}>
           <Col span={9} className={Styles.intro}>
             <div>
               <span>{dataContentIntro.title}</span>
             </div>
             <h3>{dataContentIntro.subTitle}</h3>
           </Col>
-          <Col span={1} className={Styles.null} />
-          <Col span={13} className={Styles.Paragraph}>
+          <Col span={1} />
+          <Col span={14} className={Styles.Paragraph}>
             <p
               dangerouslySetInnerHTML={{ __html: dataContentIntro.description }}
             />

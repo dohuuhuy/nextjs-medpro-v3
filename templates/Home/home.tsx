@@ -6,8 +6,10 @@ import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
+const BannerHome = dynamic(() => import('@components/organisms/BannerHomeApp'))
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
+const Slider = dynamic(() => import('@components/organisms/SilderHospital'))
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
@@ -20,9 +22,11 @@ type Props = {
 const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
+      <BannerHome />
+      {/* <Slider /> */}
       <Introduce />
       <Download />
-      <SupportMethod />
+      {/* <SupportMethod /> */}
       <Footer />
     </Layout>
   )
