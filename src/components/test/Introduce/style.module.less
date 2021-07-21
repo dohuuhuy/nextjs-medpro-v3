@@ -10,32 +10,35 @@
   margin-bottom: 5%;
   background-color: #f7f9fc;
   .con_Para {
+    min-width: 1920px;
     background-size: cover;
     background: url(https://medpro.com.vn/static/media/bg_new.9578e7c5.jpg)
       no-repeat top;
     padding: 3.75rem 0 100px 0;
-    .intro {
-      height: @height6;
-      width: @width1;
-      span {
-        color: #74cece;
-        font-size: 0.625rem;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
+    .Para {
+      .intro {
+        height: @height6;
+        width: @width1;
+        span {
+          color: #74cece;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+        }
+        h3 {
+          color: aliceblue;
+          font-size: 2.1rem;
+          font-weight: 500;
+          line-height: 37px;
+        }
       }
-      h3 {
-        color: aliceblue;
-        font-size: 1.9rem;
-        font-weight: 500;
-        line-height: 37px;
+      .Paragraph {
+        color: @color1;
+        font-size: 1.0625rem;
+        height: @height6;
+        text-align: justify;
       }
-    }
-    .Paragraph {
-      color: @color1;
-      font-size: 1.0625rem;
-      height: @height6;
-      text-align: justify;
     }
   }
   .card {
@@ -48,7 +51,7 @@
     .boxCard {
       display: flex;
       height: auto;
-      width: @width2;
+      width: @width1;
       .footerCard {
         display: block;
         position: relative;
@@ -113,6 +116,7 @@
     height: auto !important;
     position: unset !important;
     .con_Para {
+      min-width: 0;
       height: 100% !important;
       background-color: @color2 !important;
       .null {
@@ -168,32 +172,46 @@
   }
 }
 @media (min-width: 600px) and (max-width: 1023px) {
-  .solutionBox .card {
-    width: @width1 !important;
-    height: auto !important;
-    position: relative !important;
-    top: 50px !important;
-    .boxCard {
-      width: 95% !important;
-      flex-wrap: wrap !important;
-      justify-content: space-around !important;
-      .footerCard {
-        width: 250px !important;
-        flex-direction: column !important;
-        margin-top: 20px !important;
-        img {
-          width: @width1 !important;
-          height: auto !important;
-        }
-        .footerCard_Text {
-          position: unset !important;
-          height: auto !important;
-          width: @width2 !important;
-          margin: 0 10% 0 10% !important;
-          margin-top: -50px !important;
-          padding: 5px !important;
+  .solutionBox {
+    .con_Para {
+      min-width: 0;
+    }
+    .card {
+      width: @width1 !important;
+      height: auto !important;
+      position: relative !important;
+      top: 50px !important;
+
+      .boxCard {
+        width: 95% !important;
+        flex-wrap: wrap !important;
+        justify-content: space-around !important;
+        .footerCard {
+          width: 250px !important;
+          flex-direction: column !important;
+          margin-top: 20px !important;
+          img {
+            width: @width1 !important;
+            height: auto !important;
+          }
+          .footerCard_Text {
+            position: unset !important;
+            height: auto !important;
+            width: @width2 !important;
+            margin: 0 10% 0 10% !important;
+            margin-top: -50px !important;
+            padding: 5px !important;
+          }
         }
       }
+    }
+  }
+}
+@media (min-width: 1024px) and (max-width: 1919px) {
+  .solutionBox {
+    .con_Para {
+      max-width: 1850px;
+      min-width: 1530px;
     }
   }
 }

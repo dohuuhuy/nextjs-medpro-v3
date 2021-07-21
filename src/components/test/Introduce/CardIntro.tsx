@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Styles from './style.module.less'
+import Container from '../Container'
 
 interface CardIntro {
   dataCardIntro: CardIntroItem[]
@@ -16,7 +17,7 @@ export interface CardIntroItem {
 export const CardIntro = ({ dataCardIntro }: CardIntro) => {
   console.log(dataCardIntro)
   return (
-    <React.Fragment>
+    <Container>
       <div className={Styles.card}>
         <div className={Styles.boxCard}>
           {dataCardIntro.map(
@@ -38,6 +39,6 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
           )}
         </div>
       </div>
-    </React.Fragment>
+    </Container>
   )
 }
