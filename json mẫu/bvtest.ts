@@ -161,30 +161,30 @@ export const JSON_EXP = {
           icon: 'fal fa-book',
           label: 'Hướng dẫn'
         }
+      ],
+      supportGroup: [
+        {
+          icon: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconZalo.svg',
+          label: 'Hỗ trợ Zalo',
+          link: '#'
+        },
+        {
+          icon: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconFacebook.svg',
+          label: 'Hỗ trợ Facebook',
+          link: '#'
+        },
+        {
+          icon: 'far fa-life-ring',
+          label: 'Hỗ trợ Kỹ thuật: 1900-2115',
+          link: '#'
+        },
+        {
+          icon: 'fal fa-envelope',
+          label: 'Email: support@medpro.com.vn',
+          link: '#'
+        }
       ]
-    },
-    supportGroup: [
-      {
-        icon: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconZalo.svg',
-        label: 'Hỗ trợ Zalo',
-        link: '#'
-      },
-      {
-        icon: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconFacebook.svg',
-        label: 'Hỗ trợ Facebook',
-        link: '#'
-      },
-      {
-        icon: 'far fa-life-ring',
-        label: 'Hỗ trợ Kỹ thuật: 1900-2115',
-        link: '#'
-      },
-      {
-        icon: 'fal fa-envelope',
-        label: 'Email: support@medpro.com.vn',
-        link: '#'
-      }
-    ]
+    }
   },
   bannerHome: [
     {

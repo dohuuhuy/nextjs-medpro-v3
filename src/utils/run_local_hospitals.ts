@@ -14,11 +14,11 @@ export const handlerDoamain = () => {
 export const get_PartnerId = ({
   partnerId,
   listPartners,
-  local,
+  local
 }: get_PartnerId) => {
   if (local) {
     const is_partnerId: any = listPartners.find(
-      (i: any) => i.partnerId === partnerId,
+      (i: any) => i.partnerId === partnerId
     )
 
     // const is_partnerId: any = find(listPartners, partnerId)
@@ -28,7 +28,7 @@ export const get_PartnerId = ({
     }
 
     const is_domain: any = listPartners.find((i: any) =>
-      i.domain.includes('localhost'),
+      i.domain.includes('localhost')
     )
 
     if (is_domain) {
@@ -36,14 +36,14 @@ export const get_PartnerId = ({
     }
 
     const localhost = {
-      domain: ['localhost', '192.168.1.10'],
-      partnerId,
+      domain: ['localhost', '192.168.1.85'],
+      partnerId
     }
     listPartners.push(localhost)
   }
 
   const res: any = listPartners.find((i: any) =>
-    i.domain.includes(handlerDoamain()),
+    i.domain.includes(handlerDoamain())
   )
   if (!res) return null
   return res?.partnerId

@@ -1,8 +1,7 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import Container from '../Container'
-import { DrawerMenu } from './organisms/DrawerMenu'
-
+import { DrawerMenuHeader } from './organisms/DrawerMenuHeader'
 import { GroupMenuHeader } from './organisms/GroupMenuHeader'
 import { LogoHeader } from './organisms/LogoHeader'
 import { NavBottom } from './organisms/NavBottom'
@@ -44,7 +43,7 @@ export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
         </Row>
       </Container>
 
-      <DrawerMenu dataHeader={dataHeader} Authencartion={Authencartion} />
+      <DrawerMenuHeader dataHeader={dataHeader} Authencartion={Authencartion} />
 
       <NavBottom Menu={menuMobile} Authencartion={Authencartion} />
     </div>

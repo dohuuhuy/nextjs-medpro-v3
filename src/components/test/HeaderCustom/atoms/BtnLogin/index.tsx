@@ -8,7 +8,6 @@ export const BtnLogin = ({ nameUser, isAuthen }: any) => {
   ) : (
     <LoginOutlined className={style.icons} />
   )
-  console.log('iconHandler :>> ', iconHandler)
   return (
     <Button
       className={isAuthen ? style.user : style.login}
