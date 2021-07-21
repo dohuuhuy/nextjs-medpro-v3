@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Container from '@components/test/Container'
-import { Button, Col, Drawer, Row } from 'antd'
+import { Drawer } from 'antd'
 import React, { useState } from 'react'
-import { NavbarHeaderMobile } from '../../atoms/NavbarHeaderMobile'
 import { MenuDrawer } from '../../molecules/MenuDrawer'
-import style from './styles.module.less'
+import { NavbarHeaderMobile } from '../../molecules/NavbarHeaderMobile'
 
 interface Props {
   dataHeader: Array<any>

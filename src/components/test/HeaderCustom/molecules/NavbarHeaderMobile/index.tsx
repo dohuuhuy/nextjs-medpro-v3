@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Container from '@components/test/Container'
+
+import Container from './../../../Container'
 import { Col, Row } from 'antd'
 import React from 'react'
 import style from './styles.module.less'

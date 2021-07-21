@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Row, Col, Space } from 'antd'
-import style from './../styles.module.less'
+import style from './styles.module.less'
 import {
   BellOutlined,
   FileAddOutlined,
@@ -14,8 +14,7 @@ interface Props {
   nameUser?: string
 }
 
-const DropdownProfile = ({ nameUser }: Props) => {
-  console.log('nameUser :>> ', nameUser)
+export const DropdownProfile = ({ nameUser }: Props) => {
   return (
     <Menu className={style.dropdownProfile}>
       <Item className={style.item_user}>
@@ -70,5 +69,3 @@ const DropdownProfile = ({ nameUser }: Props) => {
     </Menu>
   )
 }
-
-export default DropdownProfile
