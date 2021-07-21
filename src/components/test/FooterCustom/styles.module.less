@@ -33,10 +33,16 @@
             font-weight: bolder;
             color: #0352cc;
           }
+          @media only screen and (max-width: 768px) {
+            text-align: center;
+          }
         }
 
         .listLinkSupport {
           .ListCustom();
+          @media only screen and (max-width: 768px) {
+            display: none;
+          }
         }
 
         .listLogoChecked {
@@ -54,6 +60,11 @@
           }
         }
       }
+      .linkSupport {
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
     }
   }
   .copyRight {
@@ -63,14 +74,19 @@
       margin: 10px;
       text-align: center;
     }
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
 }
 .hidden {
   display: none;
 }
+
 // css reponsive footer
 @media only screen and (max-width: 768px) {
   .footer {
+    margin-bottom: 82px;
     .viewFooter {
       .colFooter {
         .viewCol {
@@ -78,6 +94,8 @@
           .listLogoChecked {
             max-width: 400px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
             li {
               a {
                 img {
@@ -87,17 +105,35 @@
               }
             }
           }
-          .listInfoContact {
-            text-align: center;
-          }
-        }
-        .linkSupport {
-          display: none;
         }
       }
     }
-    .copyRight {
-      display: none;
+  }
+}
+
+// css reponsive footer
+@media only screen and (max-width: 425px) {
+  .footer {
+    margin-bottom: 82px;
+    .viewFooter {
+      .colFooter {
+        .viewCol {
+          text-align: center;
+          .listLogoChecked {
+            max-width: 400px;
+            margin: 0 auto;
+            display: unset;
+            li {
+              a {
+                img {
+                  width: 138px;
+                  height: 52px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

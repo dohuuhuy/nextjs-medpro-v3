@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import React from 'react'
 import style from './styles.module.less'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 
 interface Props {
   Menu: Array<any>
@@ -17,7 +18,7 @@ export const NavBottom = ({ Menu, Authencartion }: Props) => {
       {Menu.map((item, index: number) => (
         <li key={index} className={style.colBtn}>
           <a className={style.btn}>
-            <i className={item.icon}></i>
+            <img src={item.icon} alt='icon' />
             <span>{item.label}</span>
           </a>
         </li>
