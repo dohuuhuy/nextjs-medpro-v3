@@ -39,7 +39,7 @@
     "**/*.ts",
     "**/*.tsx",
     "assets/js/wechat.js",
-    "json mẫu/bvtest.js"
+    "json mẫu/bvtest.ts"
   ],
   "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
 }
