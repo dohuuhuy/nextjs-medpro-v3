@@ -22,7 +22,7 @@ const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
       <BannerHome />
-      <Introduce />
+      {/* <Introduce /> */}
       <Download />
       <SupportMethod />
       <Footer />
