@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react'
-import style from './styles.module.less'
-import { Drawer, Row, Col } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
+import { Col, Drawer, Row } from 'antd'
+import React, { useState } from 'react'
+import GroupButton from './GroupButton'
+import { PropsHeader } from './header.interface'
 import MenuDrawer from './MenuDrawer'
 import MenuHeader from './MenuHeader'
-import GroupButton from './GroupButton'
 import NavBottom from './NavBottom'
-import { PropsHeader } from './header.interface'
+import style from './styles.module.less'
 
 const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
   const [drawer, setDrawer] = useState<boolean>(false)
@@ -19,7 +19,7 @@ const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
   const {
     logoHeader,
     logoMobile,
-    menu,
+    menuHeader,
     menuMobile,
     listSupport,
     support
@@ -57,7 +57,7 @@ const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
           <GroupButton Authencartion={Authencartion} />
         </div>
         <div className={style.nav_menu}>
-          <MenuHeader Menu={menu} />
+          <MenuHeader Menu={menuHeader} />
         </div>
       </Col>
 
@@ -65,14 +65,13 @@ const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
         <div className={style.hotline_img}>
           <img src={imgSupport} alt='Logo support' />
         </div>
-        {support.map((item: any, index: number) => (
-          <div key={index} className={style.hotline_desc}>
-            {item.textSuport}
-            <a href={'tel:' + item.phone} className={style.hotline_phone}>
-              <p>{item.phone}</p>
-            </a>
-          </div>
-        ))}
+
+        <div className={style.hotline_desc}>
+          {support.textSuport}
+          <a href={'tel:' + support.phone} className={style.hotline_phone}>
+            <p>{support.phone}</p>
+          </a>
+        </div>
       </Col>
 
       <Col className={style.viewMenu}>
