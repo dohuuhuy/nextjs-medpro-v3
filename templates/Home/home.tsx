@@ -29,14 +29,14 @@ type Props = {
 const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
-      <Header />
+      {/* <Header /> */}
       {/* <BannerContact /> */}
-      <BannerHome />
-      <SliderHospital />
-      <Introduce />
-      <Download />
+      {/* <BannerHome /> */}
+      {/* <SliderHospital /> */}
+      {/* <Introduce /> */}
+      {/* <Download /> */}
       <SupportMethod />
-      <Produce />
+      {/* <Produce /> */}
       <Footer />
     </Layout>
   )
