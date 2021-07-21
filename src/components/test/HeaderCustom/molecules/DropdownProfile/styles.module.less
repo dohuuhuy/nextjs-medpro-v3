@@ -1,0 +1,70 @@
+.dropdownProfile {
+  width: 350px;
+  padding: 10px !important;
+  border: 1px solid #dfe3eb !important;
+  top: 8px !important;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(34, 34, 34, 0.2);
+  .item_user {
+    display: flex;
+    height: 100px;
+    padding: 10px 10px 10px 0;
+    .view_user {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      align-items: center;
+      .colAvt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+      }
+      .info_name {
+        font-size: 16px;
+      }
+      .colHello {
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+      }
+    }
+    i {
+      font-size: 50px;
+      color: #b0bcda;
+    }
+    &:hover {
+      color: #000 !important;
+    }
+  }
+  .item_information {
+    padding: 10px 12px !important;
+    span {
+      &:first-child {
+        font-size: 16px !important;
+      }
+    }
+    &:hover {
+      background-color: unset !important;
+      color: #0352cc !important;
+      transition: all 0.3s ease-in-out !important;
+      a {
+        background-color: unset !important;
+        color: #0352cc !important;
+        transition: all 0.3s ease-in-out !important;
+      }
+    }
+    a {
+      color: #12263f !important;
+    }
+  }
+  li {
+    &:last-child {
+      border-top: 1px solid #dfe3eb !important;
+      padding-top: 10px;
+      color: #ddd;
+    }
+  }
+}

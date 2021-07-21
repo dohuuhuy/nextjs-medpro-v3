@@ -2,7 +2,7 @@
 import Container from '@components/test/Container'
 import { Row } from 'antd'
 import React from 'react'
-import { NavbarHeaderMobile } from '../../atoms/NavbarHeaderMobile'
+import { NavbarHeaderMobile } from '../NavbarHeaderMobile'
 import style from './styles.module.less'
 
 interface Props {
