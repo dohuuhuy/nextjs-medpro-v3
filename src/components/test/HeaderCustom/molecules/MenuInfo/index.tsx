@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { BellOutlined, LoginOutlined, MobileFilled } from '@ant-design/icons'
+import { BellOutlined, MobileFilled } from '@ant-design/icons'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { Badge, Button, Dropdown } from 'antd'
 import React, { useState } from 'react'
@@ -60,7 +60,7 @@ export const MenuInfo = ({ Authencartion }: Props) => {
       ) : null}
       <li>
         <Button
-          href='/'
+          href='/tai-ung-dung'
           className={style.downloadApp}
           type='default'
           size='large'
@@ -91,11 +91,6 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
       )
 
     default:
-      return (
-        <BtnLogin
-          className={style.login}
-          icon={<LoginOutlined className={style.icons} />}
-        />
-      )
+      return <BtnLogin />
   }
 }

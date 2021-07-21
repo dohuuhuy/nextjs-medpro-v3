@@ -14,7 +14,7 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
     return <em> Không có dataDownload</em>
   }
   return (
-    <Container className={Styles.DownloadCustom}>
+    <Container className={Styles.DownloadCustom} id='tai-ung-dung'>
       <MyApp arrApp={dataDownload.myApp} />
       <ListBenefit
         listBenefit={dataDownload.listBenefit}

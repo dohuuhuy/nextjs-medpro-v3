@@ -11,6 +11,7 @@ type Props = {
   xl?: boolean
   md?: boolean
   sm?: boolean
+  id?: string
 }
 
 const Container = ({
@@ -21,10 +22,12 @@ const Container = ({
   style,
   xl,
   md,
-  sm
+  sm,
+  id
 }: Props) => {
   return (
     <div
+      id={id}
       style={style}
       className={cx(styles.container, classStyles, {
         [styles.container_fluid]: fluid,

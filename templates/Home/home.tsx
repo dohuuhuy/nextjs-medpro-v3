@@ -28,7 +28,7 @@ const HomeLayout = ({}: Props) => {
       <SliderHospital />
       <Introduce />
       <Download />
-      {/* <SupportMethod /> */}
+      <SupportMethod />
       <Footer />
     </Layout>
   )
