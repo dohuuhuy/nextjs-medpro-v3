@@ -34,6 +34,12 @@
       "@utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "assets/js/wechat.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "assets/js/wechat.js",
+    "json mẫu/bvtest.js"
+  ],
   "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
 }
