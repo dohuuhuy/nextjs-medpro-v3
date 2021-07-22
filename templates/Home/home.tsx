@@ -1,5 +1,3 @@
-// import { Demo } from '@components/test/Demo'
-
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -36,7 +34,7 @@ const HomeLayout = ({}: Props) => {
       <Introduce />
       <Download />
       <SupportMethod />
-      <Produce />
+      {/* <Produce /> */}
       <Footer />
     </Layout>
   )
