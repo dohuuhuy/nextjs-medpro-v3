@@ -186,59 +186,101 @@ export const JSON_EXP = {
       ]
     }
   },
-  bannerHome: [
+  banners: [
     {
       id: '',
-      linkImage:
+      key: '/',
+      title: '',
+      subTitle: '',
+      imageBackground:
         'https://resource.medpro.com.vn/static/images/medpro/web/banner_desktop.png',
-      alt: ''
-    }
-  ],
-
-  bannerContact: [
-    {
-      id: '',
-      title: 'Hỏi đáp nhanh',
-      subtiltle:
-        'Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh',
-      img: [
-        {
-          url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconChat.svg'
-        }
-      ],
-      textBottom: '<p>Tham khảo</p>',
-      link: 'https://medpro.com.vn/thac-mac',
-      icon: true
+      alt: 'trang chu',
+      details: ''
     },
     {
       id: '',
-      title: 'Các kênh hỗ trợ',
-      subtiltle: 'Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau',
-      img: [
+      key: '/gioi-thieu',
+      title: 'GIỚI THIỆU',
+      subTitle: '',
+      imageBackground:
+        'https://medpro.com.vn/static/media/blur-01.1465d0ac.jpg',
+      alt: 'quy trinh',
+      details: ''
+    },
+    {
+      id: '',
+      key: '/quy-trinh',
+      title: 'Quy trình đăng ký khám bệnh',
+      subTitle: '',
+      imageBackground:
+        'https://medpro.com.vn/static/media/blur-02.1465d0ac.jpg',
+      alt: 'quy trinh',
+      details: ''
+    },
+    {
+      id: '',
+      key: '/thac-mac',
+      title: 'THẮC MẮC',
+      subTitle:
+        'Giải đáp các câu hỏi nhanh giúp quý khách hiểu rõ hơn về sản phẩm, dịch vụ của chúng tôi.',
+      imageBackground: '',
+      alt: 'quy trinh',
+      details: ''
+    },
+    {
+      id: '',
+      key: '/lien-he',
+      title: 'LIÊN HỆ VỚI CHÚNG TÔI',
+      subTitle:
+        'Bạn đang quan tâm đến các dịch vụ của chúng tôi hoặc cần tư vấn! <br/> Chúng tôi luôn sẵn sàng giúp đỡ bạn',
+      imageBackground:
+        'https://medpro.com.vn/static/media/blur-02.1465d0ac.jpg',
+      alt: 'quy trinh',
+      details: [
         {
-          url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconZalo.svg'
+          id: '',
+          title: 'Hỏi đáp nhanh',
+          subtiltle:
+            'Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh',
+          img: [
+            {
+              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconChat.svg'
+            }
+          ],
+          textBottom: '<p>Tham khảo</p>',
+          link: 'https://medpro.com.vn/thac-mac'
         },
         {
-          url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconFacebook.svg'
-        }
-      ],
-      textBottom: '<b style=color:blue>1900-2115</b>',
-      link: 'tel:19002115'
-    },
-    {
-      id: '',
-      title: 'Thời gian làm việc',
-      subtiltle: 'Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30',
-      img: [
+          id: '',
+          title: 'Các kênh hỗ trợ',
+          subtiltle: 'Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau',
+          img: [
+            {
+              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconZalo.svg'
+            },
+            {
+              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconFacebook.svg'
+            }
+          ],
+          textBottom: '<b style=color:blue>1900-2115</b>',
+          link: 'tel:19002115'
+        },
         {
-          url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconTime.svg'
+          id: '',
+          title: 'Thời gian làm việc',
+          subtiltle: 'Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30',
+          img: [
+            {
+              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconTime.svg'
+            }
+          ],
+          textBottom:
+            '<p>Server xử lý trả về trạng thái hoạt động của bệnh viện ví dụ : Đang trong giờ hành chính </p>',
+          link: ''
         }
-      ],
-      textBottom:
-        '<p>Server xử lý trả về trạng thái hoạt động của bệnh viện ví dụ : Đang trong giờ hành chính </p>'
+      ]
     }
   ],
-
   deployHospital: [
     {
       id: '',
