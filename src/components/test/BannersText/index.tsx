@@ -12,15 +12,10 @@ export const BannersText = ({ getBanner }: any) => {
     case '/':
       return <BannerHome getBanner={getBanner} />
 
-    case '/gioi-thieu':
-    case '/thac-mac':
-    case '/quy-trinh':
-      return <BannerDefault getBanner={getBanner} />
-
     case '/lien-he':
       return <BannerContact getBanner={getBanner} />
 
     default:
-      return null
+      return <BannerDefault getBanner={getBanner} />
   }
 }

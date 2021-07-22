@@ -1,6 +1,5 @@
 import React from 'react'
-import Container from '../Container'
-import { GioiThieuContent } from './organisms/GioiThieu'
+import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 
 interface ContentPageCustom {
@@ -17,17 +16,10 @@ export const ContentPageCustom: React.FC<ContentPageCustom> = ({
   const { key, content } = getContent
 
   switch (key) {
-    case 'gioi-thieu':
-      return <GioiThieuContent content={content} />
-
     case 'quy-trinh':
       return <QuyTrinhContent content={content} />
 
     default:
-      return (
-        <Container>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-        </Container>
-      )
+      return <DefaultContent content={content} />
   }
 }

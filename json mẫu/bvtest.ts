@@ -194,7 +194,6 @@ export const JSON_EXP = {
       subTitle: '',
       imageBackground:
         'https://resource.medpro.com.vn/static/images/medpro/web/banner_desktop.png',
-      alt: 'trang chu',
       details: ''
     },
     {
@@ -203,7 +202,31 @@ export const JSON_EXP = {
       title: 'GIỚI THIỆU',
       subTitle: '',
       imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
-      alt: 'quy trinh',
+      details: ''
+    },
+    {
+      id: '',
+      key: '/quy-dinh-su-dung',
+      title: 'QUY ĐỊNH SỬ DỤNG',
+      subTitle: '',
+      imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
+      details: ''
+    },
+
+    {
+      id: '',
+      key: '/dieu-khoan-dich-vu',
+      title: 'ĐIỀU KHOẢN DỊCH VỤ',
+      subTitle: '',
+      imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
+      details: ''
+    },
+    {
+      id: '',
+      key: '/chinh-sach-bao-mat',
+      title: 'CHÍNH SÁCH BẢO MẬT',
+      subTitle: '',
+      imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
       details: ''
     },
     {
@@ -213,7 +236,6 @@ export const JSON_EXP = {
       subTitle: '',
       imageBackground:
         'https://medpro.com.vn/static/media/blur-02.1465d0ac.jpg',
-      alt: 'quy trinh',
       details: ''
     },
     {
@@ -223,7 +245,6 @@ export const JSON_EXP = {
       subTitle:
         'Giải đáp các câu hỏi nhanh giúp quý khách hiểu rõ hơn về sản phẩm, dịch vụ của chúng tôi.',
       imageBackground: '',
-      alt: 'quy trinh',
       details: ''
     },
     {
@@ -234,7 +255,6 @@ export const JSON_EXP = {
         'Bạn đang quan tâm đến các dịch vụ của chúng tôi hoặc cần tư vấn! <br/> Chúng tôi luôn sẵn sàng giúp đỡ bạn',
       imageBackground:
         'https://medpro.com.vn/static/media/blur-02.1465d0ac.jpg',
-      alt: 'quy trinh',
       details: [
         {
           id: '',

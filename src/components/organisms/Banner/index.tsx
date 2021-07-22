@@ -13,7 +13,6 @@ const BannerLayout = () => {
   const { pathname } = router
 
   const getBanner = find(banners, { key: pathname })
-  console.log('getBanner :>> ', getBanner)
 
   return <BannersText getBanner={getBanner} />
 }

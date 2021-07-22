@@ -4,11 +4,7 @@ const HomeLayout = dynamic(() => import('@templates/Home'))
 const HomeDetail = dynamic(() => import('@components/page/HomeDetail'))
 
 const HomePage = () => {
-  return (
-    <>
-      <HomeDetail />
-    </>
-  )
+  return <HomeDetail />
 }
 
 HomePage.Layout = HomeLayout
