@@ -1,15 +1,12 @@
 import { Row } from 'antd'
 import React from 'react'
-import Container from '../Container'
-import { ItemProduce, PropsProduce } from './produce.interface'
+import Container from '../../../Container'
 import style from './styles.module.less'
 
-const Produce = ({ dataProduce }: PropsProduce) => {
-  if (!dataProduce || Object.keys(dataProduce).length < 1) {
-    return <em>Lỗi không có dataProduce ...</em>
+export const QuyTrinhContent = ({ content }: PropsProduce) => {
+  if (!content || Object.keys(content).length < 1) {
+    return <em>Lỗi không có content ...</em>
   }
-
-  const { content }: any = dataProduce
 
   return (
     <Container className={style.viewProduce}>
@@ -36,4 +33,24 @@ const Produce = ({ dataProduce }: PropsProduce) => {
   )
 }
 
-export default Produce
+export interface PropsProduce {
+  content?: Array<Item> | any
+}
+
+export interface Item {
+  key: string
+  link: string
+  url: string
+  name: string
+  sortOrder: number
+  icon: string
+  content: Array<ItemProduce>
+}
+
+export interface ItemProduce {
+  id: string
+  stepName: string
+  name: string
+  content: string
+  sortOrder: number
+}
