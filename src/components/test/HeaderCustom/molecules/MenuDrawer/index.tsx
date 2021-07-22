@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Container from '@components/test/Container'
+import Container from './../../../Container'
 import { Row } from 'antd'
 import React from 'react'
 import { NavbarHeaderMobile } from '../NavbarHeaderMobile'

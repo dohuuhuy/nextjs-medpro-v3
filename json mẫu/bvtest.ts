@@ -206,6 +206,14 @@ export const JSON_EXP = {
     },
     {
       id: '',
+      key: '/huong-dan',
+      title: 'HƯỚNG DÃN',
+      subTitle: '',
+      imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
+      details: ''
+    },
+    {
+      id: '',
       key: '/quy-dinh-su-dung',
       title: 'QUY ĐỊNH SỬ DỤNG',
       subTitle: '',

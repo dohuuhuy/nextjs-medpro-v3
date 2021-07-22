@@ -11,13 +11,13 @@ const CardContact = ({ cardContact }: ItemBanner) => {
       {cardContact.map(
         ({ key, title, subtiltle, link, img, textBottom }: ItemCard) => {
           return (
-            <li key={title}>
+            <li key={key}>
               <div className={style.card}>
                 <h2>{title}</h2>
                 <p>{subtiltle}</p>
                 <figure>
                   {img?.map(({ url }) => {
-                    return <img src={url} alt={url} />
+                    return <img key={url} src={url} alt={url} />
                   })}
                 </figure>
                 <a
