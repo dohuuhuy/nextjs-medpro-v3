@@ -1,11 +1,11 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-const DefaultLayout = dynamic(() => import('@templates/Default/default'))
+const ContactLayout = dynamic(() => import('@templates/Contact'))
 const LienHeDetail = dynamic(() => import('@components/page/LienHeDetail'))
 
 const LienHePage = () => {
   return <LienHeDetail />
 }
 
-LienHePage.Layout = DefaultLayout
+LienHePage.Layout = ContactLayout
 export default LienHePage

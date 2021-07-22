@@ -1,9 +1,9 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-const DefaultLayout = dynamic(() => import('@templates/Default/default'))
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const GioiThieuDetail = dynamic(
-  () => import('@components/page/GioiThieuDetail'),
+  () => import('@components/page/GioiThieuDetail')
 )
 
 const GioiThieuPage = () => {

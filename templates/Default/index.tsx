@@ -29,8 +29,7 @@ const DefaultLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      <BannerContact />
-      <Produce />
+      {children}
       <Footer />
     </Layout>
   )

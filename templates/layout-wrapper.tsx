@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic'
 import React from 'react'
-const DefaultLayout = dynamic(() => import('@templates/Default/default'))
-const HomeLayout = dynamic(() => import('@templates/Home/home'))
+const ContactLayout = dynamic(() => import('./Contact'))
+const DefaultLayout = dynamic(() => import('@templates/Default'))
+const HomeLayout = dynamic(() => import('@templates/Home'))
 
 const layouts: any = {
   default: DefaultLayout,
   home: HomeLayout,
+  contact: ContactLayout
 }
 
 const LayoutWrapper = (props: any) => {
