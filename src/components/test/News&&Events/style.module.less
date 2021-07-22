@@ -17,21 +17,17 @@
   height: @hieght;
 }
 .viewMobile {
-  padding: 0 !important;
-  min-width: 100% !important;
   .col {
     display: flex !important;
+    max-width: 100% !important;
     .img {
-      max-width: 50% !important;
+      min-width: 40% !important;
       img {
-        .size(162px, 98px) !important;
-        @media (max-width: 424px) {
-          .size(136px, 82px) !important;
-        }
+        .size(100%, 100px) !important;
       }
     }
     .con_content {
-      padding-left: 16px !important;
+      width: 60% !important;
       .title {
         .align_text(4) !important;
         a {
@@ -63,10 +59,9 @@
   }
   .con_Row {
     .margin_col_big {
-      padding-right: 30px;
       .img {
         img {
-          .size(435px, 270px);
+          .size(100%, 270px);
         }
       }
       .content {
@@ -75,29 +70,30 @@
       }
     }
     .margin_col_small {
-      padding-right: 30px;
+      padding-left: 30px;
       .img {
         img {
-          .size(300px, 180px);
+          .size(100%, 180px);
         }
       }
     }
-    .title {
-      .align_text(2);
-      background-color: red;
-      a {
-        .size_text(0.875rem,700, #24292e);
-        text-transform: uppercase;
+    .con_content {
+      .title {
+        .align_text(2);
+        a {
+          .size_text(0.875rem,700, #24292e);
+          text-transform: uppercase;
+        }
+        & :hover {
+          color: #0056b3;
+        }
       }
-      & :hover {
-        color: #0056b3;
+      .time {
+        .size_text(0.75rem, 0, #777);
       }
-    }
-    .time {
-      .size_text(0.75rem, 0, #777);
-    }
-    .author {
-      .size_text(0.815rem, 600, #777);
+      .author {
+        .size_text(0.815rem, 600, #777);
+      }
     }
   }
   .div_btn {
@@ -107,7 +103,6 @@
     a {
       color: #24292e;
       box-shadow: 2px 2px 2px #d8d8d8;
-      border: 2px solid #1da1f2;
       padding: 15px 30px 15px 30px;
       transition: 1s;
       &:hover {
@@ -119,16 +114,98 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 424px) {
   .container {
-    background-color: burlywood;
     .con_Row {
       display: block;
       .margin_col_big {
+        .col {
+          .img {
+            max-width: 30% !important;
+          }
+        }
         .viewMobile();
       }
       .margin_col_small {
+        flex-direction: column !important;
         .viewMobile();
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .con_Row {
+    flex-direction: column !important;
+    .margin_col_big {
+      min-width: 100% !important;
+      .col {
+        display: flex !important;
+        .img {
+          min-width: 45% !important;
+          padding-right: 20px !important;
+          img {
+            .size(100%,auto ) !important;
+          }
+        }
+      }
+    }
+    .margin_col_small {
+      flex-direction: row !important;
+      min-width: 100% !important;
+      padding: 0 !important;
+      .col {
+        max-width: 100% !important;
+        .img {
+          max-width: 30% !important;
+          padding-right: 20px !important;
+          img {
+            .size(100%,100px) !important;
+          }
+        }
+        .con_content {
+          max-width: 70% !important;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .con_Row {
+    flex-direction: column !important;
+    .margin_col_big {
+      min-width: 100% !important;
+      .col {
+        display: flex !important;
+        .img {
+          max-width: 40% !important;
+          img {
+            height: 200px !important;
+          }
+        }
+        .con_content {
+          max-width: 60% !important;
+          padding-left: 15px !important;
+        }
+      }
+    }
+    .margin_col_small {
+      max-width: 100% !important;
+      display: flex !important;
+      padding: 0 !important;
+      .col {
+        max-width: 50% !important;
+        display: flex !important;
+        height: 105px !important;
+        .img {
+          max-width: 40% !important;
+          img {
+            height: 100px !important;
+          }
+        }
+        .con_content {
+          max-width: 60% !important;
+          padding-left: 15px !important;
+        }
       }
     }
   }
