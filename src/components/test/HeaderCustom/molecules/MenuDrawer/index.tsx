@@ -36,7 +36,7 @@ export const MenuDrawer = ({
               }
               alt={'avatar'}
             />
-            Xin chào <b>{nameUser}</b>
+            Xin chào&nbsp;<b>{nameUser}</b>
           </div>
         </Row>
 
