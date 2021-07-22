@@ -22,21 +22,22 @@ const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
 const Footer = dynamic(() => import('@components/organisms/Footer'))
-
+const News = dynamic(() => import('@components/organisms/NewsCustom'))
 type Props = {
   children?: ReactNode
 }
 const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
-      {/* <Header /> */}
-      {/* <BannerContact /> */}
-      {/* <BannerHome /> */}
-      {/* <SliderHospital /> */}
-      {/* <Introduce /> */}
-      {/* <Download /> */}
+      {/* <Header />
+      <BannerContact />
+      <BannerHome />
+      <SliderHospital />
+      <Introduce />
+      <Download />
       <SupportMethod />
-      {/* <Produce /> */}
+      <Produce /> */}
+      <News />
       <Footer />
     </Layout>
   )

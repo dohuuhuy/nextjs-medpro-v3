@@ -1,0 +1,114 @@
+.imgbig {
+  width: 435px;
+  height: 270px;
+}
+.imgsmall {
+  width: 300px;
+  height: 180px;
+}
+
+.align_text(@number) {
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @number;
+  -webkit-box-orient: vertical;
+}
+
+.container {
+  .title_event {
+    p {
+      text-transform: uppercase;
+      color: #12263f;
+      font-size: 1.625rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+  }
+  .con_Row {
+    // height: 573px;
+    .margin_col_big {
+      padding-right: 30px;
+      .col_big {
+        .img_big {
+          img {
+            .imgbig();
+          }
+        }
+        .content {
+          font-size: 0.875rem;
+          color: black;
+          background-color: red;
+
+          .align_text(8);
+        }
+      }
+    }
+    .margin_col {
+      padding-right: 30px;
+      .col_small {
+        .img_small {
+          img {
+            .imgsmall();
+          }
+        }
+      }
+    }
+    .con_content {
+      margin-top: 10px;
+      line-height: 1, 5;
+    }
+    .title {
+      .align_text(2);
+      & :hover {
+        color: #0056b3;
+      }
+      & a {
+        font-size: 0.875rem;
+        font-weight: 700;
+
+        color: #24292e;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+    }
+    .time {
+      margin-top: -5px;
+      margin-bottom: 5px;
+      font-size: 0.75rem;
+      color: #777;
+    }
+    .author {
+      margin-bottom: 5px;
+      font-size: 0.8125rem;
+      color: #777;
+      font-weight: 600;
+    }
+  }
+  .div_btn {
+    display: flex;
+    justify-content: center;
+
+    height: 43px;
+    width: 100%;
+
+    .btn {
+      box-shadow: 2px 2px 2px #d8d8d8;
+      border-color: #1da1f2;
+      transition: 1s;
+      color: #24292e;
+      height: 100%;
+      width: 272px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        box-shadow: 10px 10px 8px #d8d8d8;
+        transition: 1s;
+        color: #24292e;
+      }
+    }
+  }
+}
