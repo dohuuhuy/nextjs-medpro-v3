@@ -11,6 +11,8 @@ interface Props {
 export const NavBottom = ({ Menu, Authencartion }: Props) => {
   const { isAuthen }: any = Authencartion
 
+  console.log('isAuthen :>> ', isAuthen)
+
   return (
     <ul className={style.nav_bottom}>
       {Menu.map((item, index: number) => (
