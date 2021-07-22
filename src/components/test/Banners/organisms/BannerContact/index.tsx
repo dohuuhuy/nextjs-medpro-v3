@@ -1,4 +1,4 @@
-import Container from './../../../Container'
+import Container from '../../../Container'
 import { Layout, Row } from 'antd'
 import React from 'react'
 import CardContact from './CardContact'

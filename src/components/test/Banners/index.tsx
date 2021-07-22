@@ -3,7 +3,7 @@ import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
 
-export const BannersText = ({ getBanner }: any) => {
+export const BannersCustom = ({ getBanner }: any) => {
   if (!getBanner) {
     return null
   }

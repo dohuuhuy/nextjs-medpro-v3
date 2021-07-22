@@ -1,4 +1,4 @@
-import { BannersText } from '@components/test/BannersText'
+import { BannersCustom } from '@components/test/Banners'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -14,7 +14,7 @@ const BannerLayout = () => {
 
   const getBanner = find(banners, { key: pathname })
 
-  return <BannersText getBanner={getBanner} />
+  return <BannersCustom getBanner={getBanner} />
 }
 
 export default BannerLayout
