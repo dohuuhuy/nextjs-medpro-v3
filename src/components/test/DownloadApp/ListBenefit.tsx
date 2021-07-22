@@ -18,15 +18,15 @@ export const ListBenefit = ({ listBenefit, imgMobile }: Content) => {
 
   return (
     <Row className={style.ListBenefit}>
-      <Col xl={6} md={6} className={style.colBenefitLeft}>
+      <Col xl={7} md={6} className={style.colBenefitLeft}>
         <BenefitLeft leftListBenefit={left_listBenefit} />
       </Col>
-      <Col xl={12} md={12} className={style.slideMobileCol}>
+      <Col xl={10} md={12} className={style.slideMobileCol}>
         <figure className={style.slideMobile}>
           <img src={imgMobile} alt='' />
         </figure>
       </Col>
-      <Col xl={6} md={6} className={style.colBenefitRight}>
+      <Col xl={7} md={6} className={style.colBenefitRight}>
         <BenefitRight rightListBenefit={right_listBenefit} />
       </Col>
     </Row>

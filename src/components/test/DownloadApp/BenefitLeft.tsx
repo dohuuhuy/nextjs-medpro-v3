@@ -22,9 +22,7 @@ export const BenefitLeft = ({ leftListBenefit }: BenefitLeft) => {
               <img src={imgBenefit} alt='' />
             </figure>
             <div className={style.list_content}>
-              <h4 className={style.list_title}>
-                <strong>{title}</strong>
-              </h4>
+              <h4 className={style.list_title}>{title}</h4>
               <p dangerouslySetInnerHTML={{ __html: description }} />
             </div>
           </li>
