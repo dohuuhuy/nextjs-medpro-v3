@@ -16,7 +16,7 @@ export const SupportHeader = ({ support }: SupportHeader) => {
       <div className={style.descSupport}>
         <p> {support.textSuport} </p>
         <a href={'tel:' + support.phone} className={style.phoneSupport}>
-          <p>{support.phone}</p>
+          {support.phone}
         </a>
       </div>
     </div>

@@ -27,7 +27,7 @@ export const openInNewTab = (url: any, w = 1200, h = 700) => {
       width=${w / systemZoom}, 
       height=${h / systemZoom}, 
       top=${top}, 
-      left=${left}`,
+      left=${left}`
   )
   newWindow?.focus()
 }

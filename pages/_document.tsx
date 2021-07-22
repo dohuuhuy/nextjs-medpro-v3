@@ -4,7 +4,7 @@ import Document, {
   Head,
   Html,
   Main,
-  NextScript,
+  NextScript
 } from 'next/document'
 import React from 'react'
 const sprite = require('svg-sprite-loader/runtime/sprite.build')
@@ -19,28 +19,35 @@ class CustomDocument extends Document<{
 
     return {
       spriteContent,
-      ...initialProps,
+      ...initialProps
     }
   }
 
   public render() {
     return (
-      <Html lang="vi">
+      <Html lang='vi'>
         <Head>
           <FavIcon image={this.props.image} />
           <script
-            src="https://resource-testing.medpro.com.vn/static/js/wechat.js"
+            src='https://resource-testing.medpro.com.vn/static/js/wechat.js'
             async
           />
           <script
-            src="https://www.googletagmanager.com/gtag/js?id=UA-148064018-1"
+            src='https://www.googletagmanager.com/gtag/js?id=UA-148064018-1'
             async
           />
           <script
-            src="https://resource-testing.medpro.com.vn/static/js/gtag.js"
+            src='https://resource-testing.medpro.com.vn/static/js/gtag.js'
             async
           />
-          <script src="https://zjs.zdn.vn/zalo/sdk.js" async></script>
+          <script src='https://zjs.zdn.vn/zalo/sdk.js' async></script>
+          <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+          <link rel='preconnect' href='https://fonts.gstatic.com'></link>
+
+          <link
+            href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
+            rel='stylesheet'
+          ></link>
         </Head>
         <body>
           <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />

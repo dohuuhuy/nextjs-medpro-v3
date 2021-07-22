@@ -1,0 +1,106 @@
+@media only screen and (max-width: 425px) {
+  .step {
+    display: flex;
+    flex: 1;
+    flex-direction: column !important;
+    width: 90% !important;
+  }
+  .rowStep {
+    display: flex;
+    flex-direction: column !important;
+  }
+  .dot {
+    width: 0;
+    height: 0;
+  }
+  .colContent {
+    border-left: 0 !important;
+    border-bottom: 5px !important;
+    padding: 8px !important;
+  }
+}
+
+.viewProduce {
+  .rowProduce {
+    margin: 2.5rem 0;
+    @media only screen and (max-width: 768px) {
+      margin-top: 60px;
+    }
+    .step {
+      padding: 0;
+      @media only screen and (min-width: 768px) {
+        padding: 30px;
+      }
+      margin: 0;
+      .rowStep {
+        flex: 1;
+        display: flex;
+        .coltitle {
+          width: 100px;
+          display: flex;
+          padding-top: 22px;
+          border-width: 1;
+          border-style: solid;
+          border-color: white;
+          justify-content: flex-start;
+          .titleStep {
+            font-size: 1rem;
+            text-align: left;
+            text-transform: uppercase;
+            color: #337de7;
+          }
+        }
+        .dot {
+          display: flex;
+          flex: 1;
+          max-width: 15px;
+          max-height: 15px;
+          background-color: #317ce7;
+          border-radius: 100%;
+          margin-top: 30px;
+          margin-right: -8px;
+          z-index: 1;
+        }
+        .colContent {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          border-width: 0;
+          border-left: 3px;
+          border-bottom: 1px;
+          border-style: solid;
+          border-color: #e9ecf2;
+          padding: 22px 25px;
+          .titleStep {
+            font-size: 1.2rem;
+            text-align: left;
+            text-transform: uppercase;
+            color: #337de7;
+            margin-bottom: 1.2rem;
+          }
+          .view_content {
+            min-height: 50px;
+            ul {
+              list-style: none;
+              padding: 0;
+              li {
+                display: block;
+                text-align: left;
+                font-size: 1rem;
+                line-height: 30px;
+                &:before {
+                  content: '>';
+                  display: inline-block;
+                  width: 1.3em;
+                }
+                &:hover {
+                  color: #337de7;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -23,7 +23,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
             <i className='fas fa-user-circle'></i>
           </Col>
           <Col className={style.colHello}>
-            <span>Xin chào!</span>
+            <span>Xin chào! </span>
             <strong className={style.info_name}>{nameUser}</strong>
           </Col>
         </Row>

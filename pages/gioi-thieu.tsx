@@ -1,13 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-const DefaultLayout = dynamic(() => import('@templates/Default/default'))
-
-const GioiThieuDetail = dynamic(
-  () => import('@components/page/GioiThieuDetail'),
-)
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const GioiThieuPage = () => {
-  return <GioiThieuDetail />
+  return <HandlerGetContentPage />
 }
 
 GioiThieuPage.Layout = DefaultLayout

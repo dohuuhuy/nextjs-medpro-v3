@@ -1,10 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-const DefaultLayout = dynamic(() => import('@templates/Default/default'))
-const ThacMacDetail = dynamic(() => import('@components/page/ThacMacDetail'))
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ThacMacPage = () => {
-  return <ThacMacDetail />
+  return <HandlerGetContentPage />
 }
 
 ThacMacPage.Layout = DefaultLayout

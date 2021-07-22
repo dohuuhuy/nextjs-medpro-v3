@@ -1,14 +1,8 @@
 import dynamic from 'next/dynamic'
-import React from 'react'
-const HomeLayout = dynamic(() => import('@templates/Home/home'))
-const HomeDetail = dynamic(() => import('@components/page/HomeDetail'))
+const HomeLayout = dynamic(() => import('@templates/Home'))
 
 const HomePage = () => {
-  return (
-    <>
-      <HomeDetail />
-    </>
-  )
+  return null
 }
 
 HomePage.Layout = HomeLayout

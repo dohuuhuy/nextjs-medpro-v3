@@ -11,7 +11,8 @@
   li {
     text-align: center;
     position: relative;
-    font-size: 1rem;
+    font-size: 0.875rem;
+
     &:before {
       border-color: #0352cc !important;
       content: '';
@@ -37,9 +38,19 @@
       padding: 0.8rem !important;
       transition: all 0.3s ease-in-out;
       outline: none;
-      font-weight: 400;
+      font-weight: 500;
       white-space: nowrsap;
       transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+    }
+  }
+  li.active {
+    a {
+      color: #0352cc !important;
+      font-weight: 500;
+    }
+    &:before {
+      width: 100%;
+      left: 0;
     }
   }
 }
