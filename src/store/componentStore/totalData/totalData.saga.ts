@@ -5,8 +5,9 @@ import {
   list_partners_item,
   partnerId_Local_Action_Types,
   totalData_Params,
-  totalData_State,
+  totalData_State
 } from '@store/interface'
+import { persistor } from '@store/rootStore'
 import { openToast } from '@utils/Notification'
 import { get_PartnerId } from '@utils/run_local_hospitals'
 import axios, { AxiosResponse } from 'axios'
@@ -20,7 +21,7 @@ const getData = async (url: any) => {
 
 function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
   const totalData_Reducer: totalData_State = yield select(
-    (state) => state.totalData_Reducer,
+    (state) => state.totalData_Reducer
   )
 
   const { list_partners } = totalData_Reducer
@@ -28,7 +29,7 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
   const runObject: get_PartnerId = {
     listPartners: list_partners,
     partnerId,
-    local: true,
+    local: true
   }
 
   const getPartnerId = get_PartnerId(runObject)
@@ -36,15 +37,17 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
   if (getPartnerId) {
     yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
 
+    persistor.purge()
+
     yield put({
       type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-      partnerId: getPartnerId,
+      partnerId: getPartnerId
     })
   } else {
     openToast({
       message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
       type: 'error',
-      duration: 3,
+      duration: 3
     })
   }
 }
@@ -52,7 +55,7 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
 function* watch_partnerId_local() {
   yield takeLatest(
     partnerId_Local_Action_Types.partnerId_Local_REQUEST as any,
-    set_partnerId_local,
+    set_partnerId_local
   )
 }
 
@@ -62,12 +65,12 @@ function* get_list_partners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
       getData,
-      url,
+      url
     )
 
     yield put({
       type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS,
-      list_partners: listPartners,
+      list_partners: listPartners
     })
 
     if (_PRODUCTION) {
@@ -75,22 +78,22 @@ function* get_list_partners() {
       if (getPartnerId) {
         yield put({
           type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-          partnerId: getPartnerId,
+          partnerId: getPartnerId
         })
       } else {
         yield put({
-          type: ListPartners_Action_Types.ListPartners_ERROR,
+          type: ListPartners_Action_Types.ListPartners_ERROR
         })
 
         openToast({
           message:
             'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
           type: 'error',
-          duration: 1000,
+          duration: 1000
         })
 
         yield put({
-          type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS,
+          type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS
         })
       }
     }
@@ -104,7 +107,7 @@ function* get_list_partners() {
 function* watch_list_partners() {
   yield takeLatest(
     ListPartners_Action_Types.ListPartners_REQUEST as any,
-    get_list_partners,
+    get_list_partners
   )
 }
 

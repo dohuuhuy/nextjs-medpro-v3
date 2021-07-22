@@ -1,14 +1,21 @@
-import Banner from '@components/test/Banner'
+import { BannersText } from '@components/test/BannersText'
+import { find } from 'lodash'
+import { useRouter } from 'next/router'
 import React from 'react'
-
-const banner = {
-    "title":"Quy trình đăng ký khám bệnh",
-    "subTitle":"",
-    "imageBackground":"https://medpro.com.vn/static/media/blur-02.1465d0ac.jpg"
-}
+import { useSelector } from 'react-redux'
 
 const BannerLayout = () => {
-  return <Banner dataBanner={banner} />
+  const banners = useSelector(
+    (state: any) => state.hospital_Reducer.hospital_details.banners
+  )
+  const router = useRouter()
+
+  const { pathname } = router
+
+  const getBanner = find(banners, { key: pathname })
+  console.log('getBanner :>> ', getBanner)
+
+  return <BannersText getBanner={getBanner} />
 }
 
 export default BannerLayout

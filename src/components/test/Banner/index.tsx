@@ -16,19 +16,18 @@ const Banner = ({ dataBanner }: PropsBanner) => {
           : undefined
       }}
     >
-      <Container>
-        {title ? (
-          <h1 className={style.title}>
-            <span className={style.textTitle}>{title}</span>
-          </h1>
-        ) : undefined}
-        {subTitle ? (
-          <b
-            className={style.subTitle}
-            dangerouslySetInnerHTML={{ __html: subTitle }}
-          />
-        ) : undefined}
-      </Container>
+      <Container></Container>
+      {title ? (
+        <h1 className={style.title}>
+          <span className={style.textTitle}>{title}</span>
+        </h1>
+      ) : undefined}
+      {subTitle ? (
+        <b
+          className={style.subTitle}
+          dangerouslySetInnerHTML={{ __html: subTitle }}
+        />
+      ) : undefined}
     </div>
   )
 }

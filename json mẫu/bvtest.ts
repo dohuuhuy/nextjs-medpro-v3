@@ -202,8 +202,7 @@ export const JSON_EXP = {
       key: '/gioi-thieu',
       title: 'GIỚI THIỆU',
       subTitle: '',
-      imageBackground:
-        'https://medpro.com.vn/static/media/blur-01.1465d0ac.jpg',
+      imageBackground: 'https://medpro.vn/static/media/blur-04.4f6865d2.jpg',
       alt: 'quy trinh',
       details: ''
     },
