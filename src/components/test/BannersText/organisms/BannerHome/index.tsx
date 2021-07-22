@@ -1,25 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import style from './style.module.less'
-import { BannerHome } from './BannerHome.interface'
-import Container from '../Container'
-import Link from 'next/link'
 import { Col, Row } from 'antd'
+import Link from 'next/link'
+import React from 'react'
+import Container from '../../../Container'
+import style from './style.module.less'
 
-interface bannerHomeCustom {
-  dataBannerHome: BannerHome
-}
-const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
-  if (!dataBannerHome) {
+export const BannerHome = ({ getBanner }: any) => {
+  if (!getBanner) {
     return <em> Không có dataBannerHome</em>
   }
+  const { imageBackground } = getBanner
 
   return (
     <div className={style.BannerHome}>
       <div
         className={style.backgroundImage}
         style={{
-          backgroundImage: `url(${dataBannerHome[0].linkImage})`,
+          backgroundImage: imageBackground && `url(${imageBackground})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           backgroundSize: '100% 100%'
@@ -78,4 +75,3 @@ const BannerHomeCustom = ({ dataBannerHome }: bannerHomeCustom) => {
     </div>
   )
 }
-export default BannerHomeCustom

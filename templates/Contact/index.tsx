@@ -4,9 +4,7 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
-const BannerContact = dynamic(
-  () => import('@components/organisms/BannerContact')
-)
+const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
@@ -18,7 +16,7 @@ const ContactLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      <BannerContact />
+      <BannerPage />
       {children}
       <Footer />
     </Layout>

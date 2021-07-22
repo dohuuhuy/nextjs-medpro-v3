@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
-const QuyTrinhDetail = dynamic(() => import('@components/page/QuyTrinhDetail'))
 
 const QuyTrinhPage = () => {
   useEffect(() => {}, [])
 
-  return <QuyTrinhDetail />
+  return <HandlerGetContentPage />
 }
 
 QuyTrinhPage.Layout = DefaultLayout

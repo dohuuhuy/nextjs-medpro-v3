@@ -1,9 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const LienHePage = () => {
-  return <p>Dieud khoan dịc vu</p>
+  return <HandlerGetContentPage />
 }
 
 LienHePage.Layout = DefaultLayout

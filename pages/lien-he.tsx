@@ -1,10 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 const ContactLayout = dynamic(() => import('@templates/Contact'))
-const LienHeDetail = dynamic(() => import('@components/page/LienHeDetail'))
 
 const LienHePage = () => {
-  return <LienHeDetail />
+  return <HandlerGetContentPage />
 }
 
 LienHePage.Layout = ContactLayout

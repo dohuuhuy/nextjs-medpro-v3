@@ -1,4 +1,4 @@
-import BannerHomeCustom from '@components/test/BannerHome'
+import BannerHomeCustom from '@components/test/BannersText/organisms/BannerHome'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

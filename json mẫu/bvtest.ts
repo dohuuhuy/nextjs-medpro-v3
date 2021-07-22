@@ -238,6 +238,7 @@ export const JSON_EXP = {
       details: [
         {
           id: '',
+          key: 'question',
           title: 'Hỏi đáp nhanh',
           subtiltle:
             'Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh',
@@ -251,14 +252,15 @@ export const JSON_EXP = {
         },
         {
           id: '',
+          key: 'channels',
           title: 'Các kênh hỗ trợ',
           subtiltle: 'Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau',
           img: [
             {
-              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconZalo.svg'
+              url: 'https://resource-testing.medpro.com.vn/static/media/icon/contactZalo.svg'
             },
             {
-              url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconFacebook.svg'
+              url: 'https://resource-testing.medpro.com.vn/static/media/icon/contactFacebook.svg'
             }
           ],
           textBottom: '<b style=color:blue>1900-2115</b>',
@@ -266,6 +268,7 @@ export const JSON_EXP = {
         },
         {
           id: '',
+          key: 'time',
           title: 'Thời gian làm việc',
           subtiltle: 'Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30',
           img: [
@@ -273,8 +276,7 @@ export const JSON_EXP = {
               url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconTime.svg'
             }
           ],
-          textBottom:
-            '<p>Server xử lý trả về trạng thái hoạt động của bệnh viện ví dụ : Đang trong giờ hành chính </p>',
+          textBottom: '',
           link: ''
         }
       ]
