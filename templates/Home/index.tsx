@@ -5,12 +5,6 @@ import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
 const BannerHome = dynamic(() => import('@components/organisms/BannerHome'))
-const Banner = dynamic(() => import('@components/organisms/Banner'))
-const BannerContact = dynamic(
-  () => import('@components/organisms/BannerContact')
-)
-const Produce = dynamic(() => import('@components/organisms/Produce'))
-
 const SliderHospital = dynamic(
   () => import('@components/organisms/SilderHospital')
 )
@@ -28,13 +22,11 @@ const HomeLayout = ({}: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      {/* <BannerContact /> */}
       <BannerHome />
       <SliderHospital />
       <Introduce />
       <Download />
       <SupportMethod />
-      {/* <Produce /> */}
       <Footer />
     </Layout>
   )
