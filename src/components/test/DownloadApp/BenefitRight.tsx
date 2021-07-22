@@ -18,13 +18,13 @@ export const BenefitRight = ({ rightListBenefit }: BenefitRight) => {
       {rightListBenefit.map(
         ({ title, description, imgBenefit }: BenefitRightItem) => (
           <li key={title}>
-            <div className={style.img_small}>
+            <figure className={style.img_small}>
               <img src={imgBenefit} alt='' />
-            </div>
+            </figure>
             <div className={style.list_content}>
-              <p className={style.list_title}>
+              <h4 className={style.list_title}>
                 <strong>{title}</strong>
-              </p>
+              </h4>
               <p dangerouslySetInnerHTML={{ __html: description }} />
             </div>
           </li>

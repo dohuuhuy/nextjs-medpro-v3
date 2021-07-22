@@ -5,7 +5,6 @@ import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
 const Banner = dynamic(() => import('@components/organisms/Banner'))
-const Produce = dynamic(() => import('@components/organisms/Produce'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
@@ -18,7 +17,6 @@ const DefaultLayout = ({ children }: Props) => {
       <Header />
       <Banner />
       {children}
-      <Produce />
       <Footer />
     </Layout>
   )

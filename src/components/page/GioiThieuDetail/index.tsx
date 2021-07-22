@@ -1,15 +1,10 @@
-import Container from '@components/test/Container'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
 const Content = dynamic(() => import('@components/organisms/Content'))
 
 const GioiThieuDetail = () => {
-  return (
-    <Container>
-      <Content data={listInfo} />
-    </Container>
-  )
+  return <Content data={listInfo} />
 }
 
 export default GioiThieuDetail
