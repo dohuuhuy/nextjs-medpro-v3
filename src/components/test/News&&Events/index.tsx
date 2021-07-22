@@ -17,8 +17,8 @@ export const NewsCustom = () => {
         <div>
           <Row className={styles.con_Row}>
             <Col span={10} className={styles.margin_col_big}>
-              <div className={styles.col_big}>
-                <figure className={styles.img_big}>
+              <div className={styles.col}>
+                <figure className={styles.img}>
                   <img
                     src={
                       'https://cms.medpro.com.vn/uploads/cover_5c0dba1473.png'
@@ -47,9 +47,9 @@ export const NewsCustom = () => {
                 </div>
               </div>
             </Col>
-            <Col span={7} className={styles.margin_col}>
-              <Row className={styles.col_small}>
-                <figure className={styles.img_small}>
+            <Col span={7} className={styles.margin_col_small}>
+              <Row className={styles.col}>
+                <figure className={styles.img}>
                   <img
                     src={
                       'https://cms.medpro.com.vn/uploads/670x402_nhan_ngay_ket_qua_1e684ff781.png'
@@ -67,8 +67,8 @@ export const NewsCustom = () => {
                   <p className={styles.time}>25/06/2021, 03:39</p>
                 </div>
               </Row>
-              <Row className={styles.col_small}>
-                <figure className={styles.img_small}>
+              <Row className={styles.col}>
+                <figure className={styles.img}>
                   <img
                     src={
                       'https://cms.medpro.com.vn/uploads/670x402_BENH_THAN_TRONG_COVID_2_436238b39c.jpg'
@@ -86,9 +86,9 @@ export const NewsCustom = () => {
                 </div>
               </Row>
             </Col>
-            <Col span={7} className={styles.margin_col}>
-              <Row className={styles.col_small}>
-                <figure className={styles.img_small}>
+            <Col span={7} className={styles.margin_col_small}>
+              <Row className={styles.col}>
+                <figure className={styles.img}>
                   <img
                     src={
                       'https://cms.medpro.com.vn/uploads/670x402_CHI_SO_NHIP_TIM_9bbd57a2d1.jpg'
@@ -106,8 +106,8 @@ export const NewsCustom = () => {
                   <p className={styles.time}>24/06/2021, 01:11</p>
                 </div>
               </Row>
-              <Row className={styles.col_small}>
-                <figure className={styles.img_small}>
+              <Row className={styles.col}>
+                <figure className={styles.img}>
                   <img
                     src={
                       'https://cms.medpro.com.vn/uploads/670x402_HEN_SUYEN_COVID_633a3e22c7.jpg'
@@ -128,9 +128,7 @@ export const NewsCustom = () => {
           </Row>
         </div>
         <div className={styles.div_btn}>
-          <Button size={'middle'} className={styles.btn} href=''>
-            Xem Thêm Các Bài Viết Khác {'>>'}
-          </Button>
+          <a href=''>Xem Thêm Các Bài Viết Khác {'>>'}</a>
         </div>
       </div>
     </Container>
