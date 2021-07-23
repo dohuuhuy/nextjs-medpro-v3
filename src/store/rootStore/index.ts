@@ -14,11 +14,9 @@ const makeStore: MakeStore<any> = ({ isServer }: any) => {
   } else {
     const store = createStore(
       persistedReducer(),
-      bindMiddleware([sagaMiddleware]),
+      bindMiddleware([sagaMiddleware])
     )
-
     persistor = persistStore(store)
-
     sagaMiddleware.run(rootSaga)
 
     return store

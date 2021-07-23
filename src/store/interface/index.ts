@@ -14,6 +14,11 @@ export * from '@componentStore/totalData/totalData.types/totalData.action.types'
 export * from '@componentStore/totalData/totalData.types/totalData.initialState'
 export * from '@componentStore/totalData/totalData.types/totalData.params'
 
+// news
+export * from '@componentStore/news/news.types/news.action'
+export * from '@componentStore/news/news.types/news.action.types'
+export * from '@componentStore/news/news.types/news.initialState'
+// export * from '@componentStore/news/news.types/news.params'
 //
 import { totalData_State, hospital_State } from '@store/interface'
 

@@ -1,4 +1,4 @@
-import { get_PartnerId } from '@actionStore/rootAction'
+import { getListNewsAtHome, get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import '@n17dccn172/booking-libs/libs/index.css'
@@ -22,6 +22,8 @@ const MyApp = ({ Component, pageProps }: any) => {
     setVersion()
     checkVersion(persistor)
   })
+
+  dispatch(getListNewsAtHome())
 
   return (
     <>

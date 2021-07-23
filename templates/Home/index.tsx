@@ -10,28 +10,29 @@ const SliderHospital = dynamic(
 )
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
+const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
 const Footer = dynamic(() => import('@components/organisms/Footer'))
-const NewsPage = dynamic(() => import('@components/organisms/NewsPage'))
-const News = dynamic(() => import('@components/organisms/NewsCustom'))
+// const NewsPage = dynamic(() => import('@components/organisms/NewsPage'))
 type Props = {
   children?: ReactNode
 }
-const HomeLayout = ({}: Props) => {
+const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-      {/* <Header />
-      <BannerContact />
-      <BannerHome />
+      <NewsAndEvent />
+      {/* <Header /> */}
+      <BannerPage />
       <SliderHospital />
       <Introduce />
       <Download />
       <SupportMethod />
-      <Produce /> */}
       {/* <NewsPage /> */}
-      <News />
+
+      <Footer />
+      {children}
     </Layout>
   )
 }
