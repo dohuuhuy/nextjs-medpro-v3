@@ -14,6 +14,7 @@ const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
 const Footer = dynamic(() => import('@components/organisms/Footer'))
+const NewsPage = dynamic(() => import('@components/organisms/NewsPage'))
 const News = dynamic(() => import('@components/organisms/NewsCustom'))
 type Props = {
   children?: ReactNode
@@ -29,6 +30,7 @@ const HomeLayout = ({}: Props) => {
       <Download />
       <SupportMethod />
       <Produce /> */}
+      {/* <NewsPage /> */}
       <News />
     </Layout>
   )

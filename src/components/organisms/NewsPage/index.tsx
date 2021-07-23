@@ -1,14 +1,15 @@
-import { NewsCustom } from '@components/test/News&&Events'
+import { NewsPageCustom } from '@components/test/NewsPage'
 import React from 'react'
 // import { useSelector } from 'react-redux'
 
-const NewsLayout = () => {
-  // const deployHospital = useSelector(
-  //   (state: any) => state.hospital_Reducer.hospital_details.deployHospital
+const NewsPageLayout = () => {
+  // const Introduce = useSelector(
+  //   (state: any) => state.hospital_Reducer.hospital_details.introducHospital
   // )
 
-  return <NewsCustom dataNewsCustom={dataNews} />
+  return <NewsPageCustom dataNewsPage={dataNews} />
 }
+
 const dataNews: NewsPage = [
   {
     id: 'tt_1',
@@ -102,4 +103,4 @@ export interface NewsPageItem {
   link: string
   content: string
 }
-export default NewsLayout
+export default NewsPageLayout
