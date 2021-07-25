@@ -15,7 +15,9 @@ export const LienHeContent = ({ content }: PropsProduce) => {
       <Row className={style.Contact}>
         <div>
           <p>Thông tin chi tiết</p>
+          <div></div>
         </div>
+
         <div>
           {content?.detailsContact?.map(
             ({ id, icon, subText, text }: ItemContact) => (
