@@ -2,6 +2,7 @@ import React from 'react'
 import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 import { ThacMacContent } from './organisms/ThacMac'
+import { LienHeContent } from './organisms/LienHe'
 
 interface ContentPageCustom {
   getContent: any
@@ -22,6 +23,9 @@ export const ContentPageCustom: React.FC<ContentPageCustom> = ({
 
     case 'quy-trinh':
       return <QuyTrinhContent content={content} />
+
+    case 'lien-he':
+      return <LienHeContent content={content} />
 
     default:
       return <DefaultContent content={content} />

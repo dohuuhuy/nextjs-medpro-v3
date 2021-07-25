@@ -19,6 +19,7 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 type Props = {
   children?: ReactNode
 }
+<<<<<<< HEAD
 const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
@@ -33,6 +34,20 @@ const HomeLayout = ({ children }: Props) => {
 
       <Footer />
       {children}
+=======
+const HomeLayout = ({ }: Props) => {
+  return (
+    <Layout className={styles.layout}>
+      <Header />
+      {/* <BannerContact />
+      <BannerHome />
+      <SliderHospital />
+      <Introduce />
+      <Download />
+      <SupportMethod /> */}
+      {/* <NewsPage /> */}
+      {/* <News /> */}
+>>>>>>> fbca0b1 (commit)
     </Layout>
   )
 }
