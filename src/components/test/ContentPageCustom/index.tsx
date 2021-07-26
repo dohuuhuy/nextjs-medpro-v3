@@ -10,7 +10,7 @@ interface ContentPageCustom {
 
 export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
   if (!getContent) {
-    return null
+    return <em>getContent không tồn tại</em>
   }
 
   const { key, content } = getContent
@@ -22,8 +22,8 @@ export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
     case 'quy-trinh':
       return <QuyTrinhContent content={content} />
 
-    case 'lien-he':
-      return <LienHeContent content={content} />
+    // case 'lien-he':
+    //   return <LienHeContent content={content} />
 
     default:
       return <DefaultContent content={content} />

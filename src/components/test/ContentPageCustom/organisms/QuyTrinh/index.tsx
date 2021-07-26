@@ -4,7 +4,6 @@ import Container from '../../../Container'
 import style from './styles.module.less'
 
 export const QuyTrinhContent = ({ content }: PropsProduce) => {
-  console.log('qui trình ', content)
   if (!content || Object.keys(content).length < 1) {
     return <em>Lỗi không có content ...</em>
   }

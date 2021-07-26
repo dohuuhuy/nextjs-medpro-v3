@@ -17,19 +17,17 @@ export const LienHeContent = ({ content }: PropsProduce) => {
           <p>Thông tin chi tiết</p>
         </div>
         <div>
-          {content?.detailsContact?.map(
-            ({ id, subText, text }: ItemContact) => (
-              <ul key={id}>
-                <li>
-                  <HomeOutlined />
-                </li>
-                <li>
-                  <li>{subText}</li>
-                  <li>{text}</li>
-                </li>
-              </ul>
-            )
-          )}
+          {content?.detailsContact?.map(({ subText, text }: ItemContact) => (
+            <ul key={text}>
+              <li>
+                <HomeOutlined />
+              </li>
+              <li>
+                <li>{subText}</li>
+                <li>{text}</li>
+              </li>
+            </ul>
+          ))}
         </div>
       </Row>
       <Row className={style.BoxFill}>
