@@ -15,8 +15,6 @@ function* getListNewsAtHome() {
 
     newsAndEvent = newsPin.concat(news)
 
-    console.log('newsAndEvent :>> ', newsAndEvent)
-
     yield put({
       type: NewsAtHome_Action_Types.ListNewsAtHome_REQUEST_SUCCESS,
       newsAndEvent: newsAndEvent
