@@ -15,6 +15,9 @@
   border: 1px solid #ddd;
   font-size: 15px;
   display: flex;
+  @media (max-width: 768px - 1px) {
+    flex-direction: column;
+  }
 }
 
 .containerError {
@@ -31,64 +34,138 @@
 }
 
 .Contact {
-  width: 30%;
-  height: auto;
-  background-color: red;
-}
-.BoxFill {
-  width: 70%;
-  height: auto;
-  padding-left: 20px;
-  .Item_BoxFill {
-    list-style: none;
-    min-width: 50%;
-    margin-bottom: 30px;
+  width: 35%;
+  height: fit-content;
+  padding: 0 38px 0 12px;
+  @media (max-width: 768px - 1px) {
+    min-width: 100%;
     padding: 0;
-    line-height: 2.2;
-    padding-right: 15px;
-    &:last-child {
+  }
+  .title{
+    .Text(18px, 600, none);
+    text-transform: uppercase;
+  }
+  .Info {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    @media (max-width: 768px - 1px) {
       min-width: 100%;
-      padding-bottom: 20px;
+    }
+    .Icon{
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      padding-right: 15px;
+    }
+    .Text {
+      .Text(13px, 700, none)
+    }
+    .subText {
+      .Text(13px, none, none)
+    }
+  }
+}
+
+.BoxFill {
+  width: 65%;
+  padding-bottom: 53px;
+  @media (max-width: 768px - 1px) {
+    min-width: 100%;
+  }
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background-color: #1DA1F2;
+      .Text(14px,500,#FFF);
+      text-transform: uppercase;
+      width: 208px;
+      @media (max-width: 768px - 1px) {
+        min-width: 100%;
+      }
+      height: 39px;
+      border-radius: 5px;
+    }
+  }
+    .end{
+      min-width: 100%;
       .Item_input {
         height: 120px;
       }
     }
-    .Item_title {
-      .Text(1rem, 700, #12263f);
-      sup {
-        color: red;
+    ul {
+      @media (max-width: 768px - 1px) {
+        min-width: 100%;
+        padding: 0;
       }
-    }
-    .Item_input {
-      border-radius: 0.25rem;
-      line-height: 1.5;
-      height: 45px;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      color: red;
-      &:hover {
-        border-color: none !important;
+      list-style: none;
+      min-width: 50%;
+      margin-bottom: 30px;
+      padding: 0;
+      line-height: 2.2;
+      padding-right: 15px;
+      .Item_title {
+        .Text(1rem, 700, #12263f);
+        sup {
+          color: red;
+        }
       }
-      &:focus {
-        background-color: #fff;
-        border-color: #0352cc;
-        outline: 0;
-        box-shadow: none !important;
-        color: #032a5f !important;
-      }
-    }
-    .Item_select {
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 0.875rem !important;
-      width: 100%;
-      div {
+      .Item_input {
         border-radius: 0.25rem;
-        display: flex;
-        align-items: center;
+        line-height: 1.5;
         height: 45px;
-        // padding: 0;
-        margin: 0;
-        color: #bfbfbf;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        color: #032A5F;
+        min-width: 100% !important;
+        &:hover {
+          border-color: #BFBFBF  !important;
+        }
+        &:focus {
+          background-color: #fff;
+          border-color: #0352cc !important;
+          outline: 0;
+          box-shadow: none !important;
+          color: #032a5f !important;
+        }
+      }
+      .Item_select {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 0.875rem !important;
+        min-width: 100% !important;
+        border-radius: 0.25rem;
+        div {
+          display: flex;
+          align-items: center;
+          min-height: 45px;
+          margin: 0;
+          color: #032A5F;
+          &:hover {
+            border-color: #BFBFBF ;
+          }
+          &:focus {
+            border-color: #0352cc !important;
+            outline: 0;
+            box-shadow: none !important;
+            color: #032a5f !important;
+          }
+          
+        }
       }
     }
+  
+}
+
+.map {
+  border-top: 1px solid #E5E5E5;
+  padding-top: 20px;
+  iframe {
+      width: 100%;
+      height: 500px;
+      @media (max-width : 425px){
+        height: 250px;
+      }
   }
 }

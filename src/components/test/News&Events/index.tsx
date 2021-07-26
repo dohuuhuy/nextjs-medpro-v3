@@ -8,7 +8,6 @@ import Container from '../Container'
 import styles from './style.module.less'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
-  console.log('dataNewsAndEvent :>> ', dataNewsAndEvent)
 
   if (!dataNewsAndEvent || dataNewsAndEvent.length < 1) {
     return <em>Không có dataNewsEventCustom </em>
