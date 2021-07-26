@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import React from 'react'
 import style from './styles.module.less'
 
@@ -8,11 +7,7 @@ interface Props {
   Authencartion: Array<any>
 }
 
-export const NavBottom = ({ Menu, Authencartion }: Props) => {
-  const { isAuthen }: any = Authencartion
-
-  console.log('isAuthen :>> ', isAuthen)
-
+export const NavBottom = ({ Menu }: Props) => {
   return (
     <ul className={style.nav_bottom}>
       {Menu.map((item, index: number) => (

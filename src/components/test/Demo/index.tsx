@@ -9,7 +9,7 @@ interface Props {
   funcLogin: () => void
 }
 
-export const Demo: React.FC<Props> = ({ text, funcTest, funcLogin }) => {
+export const Demo = ({ text, funcTest, funcLogin }: Props) => {
   return (
     <Container className={styles.demo}>
       {text}

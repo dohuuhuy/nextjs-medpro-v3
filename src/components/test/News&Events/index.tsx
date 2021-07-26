@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import { GET_ENV } from '@config/envs/env'
 import { Button, Col, Row } from 'antd'
 import moment from 'moment'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
 import styles from './style.module.less'
+
+export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
   if (!dataNewsAndEvent || dataNewsAndEvent.length < 1) {
@@ -35,7 +36,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                     <li key={id}>
                       <div className={styles.cardNews}>
                         <figure className={styles.img}>
-                          <img src={GET_ENV.API_NEWS + image?.[0].url} alt='' />
+                          <img src={API_NEWS + image?.[0].url} alt='' />
                         </figure>
                         <div className={styles.cardBody}>
                           <p className={styles.title}>{title}</p>
@@ -67,7 +68,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                   <li key={id}>
                     <div className={styles.cardNews}>
                       <figure className={styles.img}>
-                        <img src={GET_ENV.API_NEWS + image?.[0].url} alt='' />
+                        <img src={API_NEWS + image?.[0].url} alt='' />
                       </figure>
                       <div className={styles.cardBody}>
                         <p className={styles.title}>{title}</p>

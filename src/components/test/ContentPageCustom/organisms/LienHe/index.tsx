@@ -1,11 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+import { HomeOutlined } from '@ant-design/icons'
+import { Input, Row, Select } from 'antd'
+import React from 'react'
 import Container from './../../../Container'
 import style from './styles.module.less'
-import { Row, Input, Select, Button } from 'antd'
-import { HomeOutlined } from '@ant-design/icons'
 
 export const LienHeContent = ({ content }: PropsProduce) => {
-  console.log('Lien hệ ', content.detailsContact)
-
   if (!content) {
     return <Container className={style.containerError}>gelo</Container>
   }
@@ -18,7 +18,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
         </div>
         <div>
           {content?.detailsContact?.map(
-            ({ id, icon, subText, text }: ItemContact) => (
+            ({ id, subText, text }: ItemContact) => (
               <ul key={id}>
                 <li>
                   <HomeOutlined />
@@ -79,6 +79,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
               className={style.Item_select}
               defaultValue='1'
               suffixIcon={
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={
                     "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E"

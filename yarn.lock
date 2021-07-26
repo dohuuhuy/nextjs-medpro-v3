@@ -247,13 +247,14 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@n17dccn172/booking-libs@0.0.68":
-  version "0.0.68"
-  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.68.tgz"
-  integrity sha1-vcYqi8sL2yfEeRjv8byT0ltNv0s=
+"@n17dccn172/booking-libs@0.0.74":
+  version "0.0.74"
+  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.74.tgz#df806b8e48da3fa997afc1e2aae8b852b4dc4b1a"
+  integrity sha1-34BrjkjaP6mXr8Hiqui4UrTcSxo=
   dependencies:
     "@craco/craco" "6.2.0"
     "@types/lodash" "4.14.171"
+    "@types/react-slick" "0.23.5"
     antd "4.16.6"
     autoprefixer "10.2.6"
     babel-loader "8.2.2"
@@ -267,6 +268,7 @@
     next-compose-plugins "2.2.1"
     next-with-less "^1.0.0"
     postcss-loader "6.1.1"
+    react-slick "0.28.1"
     style-loader "3.0.0"
 
 "@next/env@11.0.1":
