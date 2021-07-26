@@ -15,39 +15,21 @@ const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
 const Footer = dynamic(() => import('@components/organisms/Footer'))
-// const NewsPage = dynamic(() => import('@components/organisms/NewsPage'))
 type Props = {
   children?: ReactNode
 }
-<<<<<<< HEAD
 const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
-      <NewsAndEvent />
-      {/* <Header /> */}
+      <Header />
       <BannerPage />
       <SliderHospital />
       <Introduce />
       <Download />
+      <NewsAndEvent />
       <SupportMethod />
-      {/* <NewsPage /> */}
-
       <Footer />
       {children}
-=======
-const HomeLayout = ({ }: Props) => {
-  return (
-    <Layout className={styles.layout}>
-      <Header />
-      {/* <BannerContact />
-      <BannerHome />
-      <SliderHospital />
-      <Introduce />
-      <Download />
-      <SupportMethod /> */}
-      {/* <NewsPage /> */}
-      {/* <News /> */}
->>>>>>> fbca0b1 (commit)
     </Layout>
   )
 }
