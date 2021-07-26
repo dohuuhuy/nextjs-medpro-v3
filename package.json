@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@n17dccn172/booking-libs": "0.0.68",
+    "@n17dccn172/booking-libs": "0.0.71",
     "@types/react-slick": "0.23.5",
     "antd": "^4.16.5",
     "axios": "0.21.1",
