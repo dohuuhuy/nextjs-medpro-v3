@@ -1,6 +1,7 @@
 import { MobileFilled } from '@ant-design/icons'
 import { Button } from 'antd'
 import cx from 'classnames'
+import Link from 'next/link'
 import React from 'react'
 import { HandlerBtnUser } from '../HandlerBtnUser'
 import { NoitiBell } from '../NotiBell'
@@ -26,15 +27,16 @@ export const MenuInfo = ({ Authencartion }: Props) => {
       </li>
 
       <li>
-        <Button
-          href='/tai-ung-dung'
-          className={style.downloadApp}
-          type='default'
-          size='large'
-          icon={<MobileFilled className={style.icons} />}
-        >
-          Tải ứng dụng
-        </Button>
+        <Link href='/#tai-ung-dung' as='/#tai-ung-dung' passHref>
+          <Button
+            className={style.downloadApp}
+            type='default'
+            size='large'
+            icon={<MobileFilled className={style.icons} />}
+          >
+            Tải ứng dụng
+          </Button>
+        </Link>
       </li>
 
       <li>
