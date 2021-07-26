@@ -1,0 +1,47 @@
+.user {
+  font-weight: 500;
+  border-color: #0352cc;
+  font-size: 14px;
+  position: relative;
+  color: #0352cc;
+  white-space: nowrap;
+  background: transparent;
+  border-radius: 3px;
+  &:hover:after {
+    transform: scaleY(1);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    position: absolute;
+    background: #0352cc;
+    color: #0352cc;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #fff;
+    border-color: #0352cc;
+    z-index: 2;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -2px;
+    bottom: 0;
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform 0.3s ease-out;
+    width: 100%;
+  }
+}
+
+.login {
+  font-weight: 500;
+  color: #fff;
+  border-color: #0352cc;
+  font-size: 14px;
+  position: relative;
+  background-image: linear-gradient(90deg, #0352cc, #0b7df1);
+  white-space: nowrap;
+  border-radius: 3px;
+}

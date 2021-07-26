@@ -1,0 +1,56 @@
+.ListMenuHeader {
+  width: 100%;
+  padding: 0;
+  margin: 0 10px;
+  border-top: 1px solid #dfe3eb;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  li {
+    text-align: center;
+    position: relative;
+    font-size: 0.875rem;
+
+    &:before {
+      border-color: #0352cc !important;
+      content: '';
+      height: 0;
+      position: absolute;
+      width: 0;
+      right: 0;
+      top: -2px;
+      border-bottom: 3px solid;
+      transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+        left: 0;
+      }
+      a {
+        color: #0352cc;
+      }
+    }
+    a {
+      display: block;
+      padding: 0.8rem !important;
+      transition: all 0.3s ease-in-out;
+      outline: none;
+      font-weight: 500;
+      white-space: nowrsap;
+      transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+    }
+  }
+  li.active {
+    a {
+      color: #0352cc !important;
+      font-weight: 500;
+    }
+    &:before {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

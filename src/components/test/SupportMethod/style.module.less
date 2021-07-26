@@ -1,0 +1,79 @@
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+//  css supportMedthod
+.supportMedthod {
+  margin-bottom: 60px;
+  .rowSupport {
+    justify-content: center;
+    text-align: center;
+    .title {
+      border-radius: 3px;
+      border: 1px solid #e3e6f0;
+      padding: 6px 24px;
+      color: #627792;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      letter-spacing: 4px;
+    }
+    .subTitle {
+      text-transform: uppercase;
+      color: #12263f;
+      font-size: 1.625rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+  }
+  .listSupportRow {
+    .ListCustom();
+    display: flex;
+    flex-wrap: wrap;
+
+    .itemSupportCol {
+      padding: 0 15px;
+      margin: 0;
+      width: 25%;
+      text-align: center;
+      .cardSupport {
+        margin-bottom: 15px;
+        padding: 40px 0;
+        transition: all 0.3s ease-in-out;
+        box-shadow: unset;
+        border: 1px solid #dfe3eb;
+        img {
+          width: 80px;
+          height: 80px;
+        }
+        .cardContent {
+          height: 108px;
+          padding: 1.25rem;
+          .titleCard {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+        }
+        &:hover {
+          box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 9%);
+          -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
+        }
+      }
+    }
+    // css reponsive footer
+    @media only screen and (max-width: 425px) {
+      .itemSupportCol {
+        width: 50%;
+      }
+    }
+  }
+}

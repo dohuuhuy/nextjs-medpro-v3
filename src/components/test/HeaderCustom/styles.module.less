@@ -1,0 +1,32 @@
+.HeaderCustom {
+  background-color: white;
+  width: 100%;
+  max-width: 1920px;
+  padding: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  border: 1px solid #dfe3eb;
+  .rowHeaderCustom {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .HeaderCustom {
+    .rowHeaderCustom {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .HeaderCustom {
+    .rowHeaderCustom {
+      .Col_SupportHeader {
+        display: none;
+      }
+    }
+  }
+}

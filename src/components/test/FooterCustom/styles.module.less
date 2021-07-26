@@ -1,0 +1,108 @@
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+// css footer
+.footer {
+  padding: 0 !important;
+  width: 100%;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 82px;
+  }
+  .viewFooter {
+    background-color: #f8fafd;
+    padding: 2rem 0;
+    border-top: 1px solid #dfe3eb;
+    .colFooter {
+      justify-content: center;
+      .viewCol {
+        margin: 0;
+        padding: 0 15px;
+        width: 100%;
+        @media only screen and (max-width: 768px) {
+          text-align: center;
+        }
+        .logoFooter {
+          img {
+            max-width: 160px;
+          }
+        }
+
+        .listInfoContact {
+          .ListCustom();
+          .nameCompany {
+            font-size: 14px;
+            font-weight: bolder;
+            color: #0352cc;
+          }
+          @media only screen and (max-width: 768px) {
+            text-align: center;
+          }
+        }
+
+        .listLinkSupport {
+          .ListCustom();
+          @media only screen and (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        .listLogoChecked {
+          .ListCustom();
+          text-align: center;
+          @media only screen and (max-width: 425px) {
+            max-width: 400px;
+            margin: 0 auto;
+            display: unset !important;
+          }
+          @media only screen and (max-width: 768px) {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+          }
+          li {
+            float: left;
+            width: 50%;
+            a {
+              img {
+                width: 107px;
+                height: 42px;
+                @media only screen and (max-width: 768px) {
+                  width: 138px;
+                  height: 52px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .linkSupport {
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+  }
+  .copyRight {
+    background-image: linear-gradient(to right, #687ad0, #04a3bd);
+    .textCopyRight {
+      color: white;
+      margin: 10px;
+      text-align: center;
+    }
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+// -------------------
+.hidden {
+  display: none;
+}
