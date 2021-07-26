@@ -247,10 +247,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@n17dccn172/booking-libs@0.0.74":
-  version "0.0.74"
-  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.74.tgz#df806b8e48da3fa997afc1e2aae8b852b4dc4b1a"
-  integrity sha1-34BrjkjaP6mXr8Hiqui4UrTcSxo=
+"@n17dccn172/booking-libs@0.0.75":
+  version "0.0.75"
+  resolved "https://gitlab.com/api/v4/projects/28265676/packages/npm/@n17dccn172/booking-libs/-/@n17dccn172/booking-libs-0.0.75.tgz#c3085de13c3359c8a0e69c1faad23ac2d07aae36"
+  integrity sha1-wwhd4TwzWcig5pwfqtI6wtB6rjY=
   dependencies:
     "@craco/craco" "6.2.0"
     "@types/lodash" "4.14.171"
