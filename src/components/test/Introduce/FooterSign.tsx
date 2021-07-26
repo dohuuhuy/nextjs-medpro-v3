@@ -1,12 +1,17 @@
+import { Row } from 'antd'
+import Link from 'next/link'
 import React from 'react'
 import styles from './style.module.less'
 
 export const FooterSign = () => {
   return (
-    <div className={styles.footer}>
+    <Row className={styles.footer}>
       <p>
-        Tìm hiểu thêm về quy trình <a href={''}>đăng ký khám bệnh</a>
+        Tìm hiểu thêm về quy trình &nbsp;
+        <Link href={'#'}>
+          <a className={styles.dot}>đăng ký khám bệnh</a>
+        </Link>
       </p>
-    </div>
+    </Row>
   )
 }
