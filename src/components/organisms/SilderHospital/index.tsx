@@ -1,4 +1,4 @@
-import { DeloyHospitalCustom } from '@components/test/SliderHospital'
+import { DeloyHospitalCustom } from '@n17dccn172/booking-libs'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

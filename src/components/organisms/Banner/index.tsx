@@ -1,4 +1,4 @@
-import { BannersCustom } from '@components/test/Banners'
+import { BannersCustom } from '@n17dccn172/booking-libs'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
