@@ -2,8 +2,8 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import Container from './../../../Container'
+import { ContactDetail } from './ContactDetail'
 import style from './styles.module.less'
-import { ContactDetail } from './ContactDetail/ContactDetail'
 
 export const LienHeContent = ({ content }: PropsProduce) => {
   if (!content) {
@@ -15,7 +15,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
   return (
     <Container className={style.containerContact}>
       <Row className={style.rowDetails}>
-        <Col xl={8} className={style.colDetails}>
+        <Col xl={8} lg={8} md={24} sm={24} className={style.colDetails}>
           <h2 className={style.title}>Thông tin chi tiết</h2>
           <ul className={style.listInfo}>
             {detailsContact?.map(
@@ -32,7 +32,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
           </ul>
         </Col>
 
-        <Col xl={16} className={style.colFormContact}>
+        <Col xl={16} lg={16} md={24} sm={24} className={style.colFormContact}>
           <ContactDetail dataContactDetail={content.detailsContact} />
         </Col>
       </Row>

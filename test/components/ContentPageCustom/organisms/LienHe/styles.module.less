@@ -5,6 +5,16 @@
 }
 
 .containerContact {
+  @media only screen and (max-width: 768px) {
+    margin-top: 80px;
+  }
+  @media only screen and (max-width: 425px) {
+    padding: 0 15px;
+    .colFormContact,
+    .colDetails {
+      padding: 0px !important;
+    }
+  }
   position: relative;
   background: #fff;
   margin: -50px auto 120px;
@@ -15,7 +25,11 @@
   border: none;
   font-size: 15px;
   .rowDetails {
+    .colFormContact {
+      padding: 0 15px;
+    }
     .colDetails {
+      padding: 0 15px;
       .title {
         .Text(18px, 600, none);
         text-transform: uppercase;
@@ -25,6 +39,7 @@
         list-style: none;
         padding: 0;
         li {
+          padding: 0 15px;
           display: flex;
           align-items: center;
           margin-bottom: 30px;

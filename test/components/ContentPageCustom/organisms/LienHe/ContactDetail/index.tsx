@@ -13,7 +13,7 @@ interface ItemContact {
   subText?: string
   text?: string
 }
-export const c = ({ dataContactDetail }: ContactDetail) => {
+export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
   if (!dataContactDetail) {
     return <Container className={style.containerError}>gelo</Container>
   }
