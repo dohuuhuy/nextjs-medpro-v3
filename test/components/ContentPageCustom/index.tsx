@@ -9,15 +9,16 @@ interface ContentPageCustom {
 }
 
 export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
-  if (!getContent) {
-    return <em>getContent không tồn tại</em>
+  const { checkDataInput, DataFailure } = require('./../DataFailure')
+  if (checkDataInput(getContent)) {
+    return <DataFailure description={'Lỗi không có data nội dung trang'} />
   }
 
   const { key, content } = getContent
 
   switch (key) {
     case 'thac-mac':
-      return <ThacMacContent content={[]} />
+      return <ThacMacContent content={content} />
 
     case 'quy-trinh':
       return <QuyTrinhContent content={content} />

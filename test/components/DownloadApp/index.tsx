@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash'
 import React from 'react'
 import Container from '../Container'
 import { ListBenefit } from './ListBenefit'
@@ -10,8 +9,9 @@ interface DownloadCustom {
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
-  if (!dataDownload || isEmpty(dataDownload)) {
-    return <em> Không có dataDownload</em>
+  const { checkDataInput, DataFailure } = require('./../DataFailure')
+  if (checkDataInput(dataDownload)) {
+    return <DataFailure description={'Lỗi không có data tải ứng dụng'} />
   }
   return (
     <Container className={Styles.DownloadCustom} id='tai-ung-dung'>

@@ -1,7 +1,7 @@
-import React from 'react'
-import { FooterCustom } from '@n17dccn172/booking-libs'
 import { useSelector } from 'react-redux'
 import { AppState } from '@store/interface'
+import React from 'react'
+import { FooterCustom } from '@componentsTest/FooterCustom'
 
 const FooterLayout = () => {
   const footer = useSelector(

@@ -7,15 +7,15 @@ import { LogoHeader } from './organisms/LogoHeader'
 import { NavBottom } from './organisms/NavBottom'
 import { SupportHeader } from './organisms/SupportHeader'
 import style from './styles.module.less'
-
+import { checkDataInput, DataFailure } from './../DataFailure'
 export interface PropsHeader {
   dataHeader: any[] | any
   Authencartion: any[] | any
 }
 
 export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
-  if (!dataHeader || Object.keys(dataHeader).length < 1) {
-    return <em>Lỗi không có dataHeader ...</em>
+  if (checkDataInput(dataHeader)) {
+    return <DataFailure description={'Lỗi không có data header'} />
   }
 
   const { logoHeader, logoHeaderMobile, menuHeader, menuMobile, support }: any =

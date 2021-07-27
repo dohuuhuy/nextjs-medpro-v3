@@ -2,32 +2,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { CaretRightOutlined } from '@ant-design/icons'
-import { Col, Collapse, Empty, Row, Space } from 'antd'
-import { find, isArray, isEmpty, isNull, isUndefined } from 'lodash'
+import { Col, Collapse, Row, Space } from 'antd'
+import { find, isArray } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import Container from '../../../Container'
 import style from './styles.module.less'
 const { Panel } = Collapse
 
-const checkDataInput = (element: any) => {
-  if (
-    !element ||
-    isEmpty(element) ||
-    isNull(element) ||
-    isUndefined(element) ||
-    element.length < 1
-  ) {
-    return true
-  }
-}
-
 export const ThacMacContent = ({ content }: any) => {
+  const { checkDataInput, DataFailure } = require('./../../../DataFailure')
   if (checkDataInput(content)) {
-    return (
-      <Container className={style.ThacMacContent}>
-        <Empty description={'Lỗi không có data thắc mắc'} />
-      </Container>
-    )
+    return <DataFailure description={'Lỗi không có data thắc mắc'} />
   }
 
   const [Faq, setFaq] = useState([])

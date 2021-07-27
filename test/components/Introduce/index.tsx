@@ -3,12 +3,16 @@ import { BannerIntro } from './BannerIntro'
 import { CardIntro } from './CardIntro'
 import { IntroducHospital } from './Introduce.interface'
 import styles from './style.module.less'
+// import { checkDataInput, DataFailure } from './../DataFailure'
 interface IntroduceCustom {
   dataIntroduce: IntroducHospital
 }
 
 export const IntroduceCustom = ({ dataIntroduce }: IntroduceCustom) => {
-  if (!dataIntroduce) return <em>Lỗi data input</em>
+  const { checkDataInput, DataFailure } = require('./../DataFailure')
+  if (checkDataInput(dataIntroduce)) {
+    return <DataFailure description={'Lỗi không có data giới thiệu'} />
+  }
 
   const { contentIntro, cardIntro } = dataIntroduce
 

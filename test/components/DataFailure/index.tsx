@@ -16,12 +16,10 @@ export const checkDataInput = (element: any) => {
   }
 }
 
-export const DataFailure = ({ content }: any) => {
-  if (checkDataInput(content)) {
-    return (
-      <Container className={style.ThacMacContent}>
-        <Empty description={'Lỗi không có data thắc mắc'} />
-      </Container>
-    )
-  }
+export const DataFailure = ({ description }: any) => {
+  return (
+    <Container className={style.ContainerEmpty}>
+      <Empty description={description} />
+    </Container>
+  )
 }

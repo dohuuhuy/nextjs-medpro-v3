@@ -8,8 +8,9 @@ import style from './styles.module.less'
 const { Footer } = Layout
 
 export const FooterCustom = ({ dataFooter }: PropsFooter) => {
-  if (!dataFooter || Object.keys(dataFooter).length < 1) {
-    return <em>Lỗi không có dataFooter ...</em>
+  const { checkDataInput, DataFailure } = require('./../DataFailure')
+  if (checkDataInput(dataFooter)) {
+    return <DataFailure description={'Lỗi không có data footer'} />
   }
 
   return (

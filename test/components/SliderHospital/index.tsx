@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
-import { isEmpty } from 'lodash'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
-
 import Container from '../Container'
+import { checkDataInput, DataFailure } from './../DataFailure'
 import { DeloyHospital } from './SliderHospital.interface'
 import styles from './style.module.less'
 
@@ -15,8 +14,9 @@ interface DeloyHospitalCustom {
 export const DeloyHospitalCustom = ({
   dataDeloyHospital
 }: DeloyHospitalCustom) => {
-  if (!dataDeloyHospital || isEmpty(dataDeloyHospital))
-    return <em>Lỗi dataDeloyHospital</em>
+  if (checkDataInput(dataDeloyHospital)) {
+    return <DataFailure description={'Lỗi không có data dataDeloyHospital'} />
+  }
 
   const settings: Settings = {
     speed: 500,
