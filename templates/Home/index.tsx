@@ -22,12 +22,12 @@ const HomeLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      {/* <BannerPage />
+      <BannerPage />
       <SliderHospital />
       <Introduce />
       <Download />
       <NewsAndEvent />
-      <SupportMethod /> */}
+      <SupportMethod />
       <Footer />
       {children}
     </Layout>
