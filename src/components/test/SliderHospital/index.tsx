@@ -16,8 +16,6 @@ export const DeloyHospitalCustom = ({
 }: DeloyHospitalCustom) => {
   if (!dataDeloyHospital) return <em>Lỗi dataDeloyHospital</em>
 
-  console.log('dataDeloyHospital :>> ', dataDeloyHospital)
-
   const settings: Settings = {
     speed: 500,
     slidesToShow: 3,

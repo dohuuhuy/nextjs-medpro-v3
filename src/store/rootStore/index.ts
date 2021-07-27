@@ -8,6 +8,8 @@ import { persistedReducer } from './persistConfig'
 export let persistor: Persistor
 
 const makeStore: MakeStore<any> = ({ isServer }: any) => {
+  console.log('isServer :>> ', isServer)
+
   if (isServer) {
     const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
     return store
