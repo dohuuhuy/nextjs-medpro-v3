@@ -20,7 +20,7 @@ const MyApp = ({ Component, pageProps }: any) => {
 
   const dispatch = useDispatch()
 
-  const list_partners: any = useSelector(
+  const list_partners = useSelector(
     (state: AppState) => state.totalData_Reducer.list_partners
   )
 

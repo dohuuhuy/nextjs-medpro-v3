@@ -51,9 +51,7 @@ function* hospital_get_details({ partnerId }: any) {
       })
     }
   } catch (error) {
-    const { statusCode, message } = get(error, 'response.data', '')
-
-    console.log(' statusCode, message :>> ', statusCode, message)
+    const { message } = get(error, 'response.data', '')
 
     yield put({
       type: totalData_Types.ListPartners.SET_PartnerId,

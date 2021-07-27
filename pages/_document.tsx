@@ -40,9 +40,9 @@ class CustomDocument extends Document<{
             src='https://resource-testing.medpro.com.vn/static/js/gtag.js'
             async={true}
           />
-          <script src='https://zjs.zdn.vn/zalo/sdk.js' async={true}/>
-          <link rel='preconnect' href='https://fonts.googleapis.com'/>
-          <link rel='preconnect' href='https://fonts.gstatic.com'/>
+          <script src='https://zjs.zdn.vn/zalo/sdk.js' async={true} />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
 
           <link
             href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'

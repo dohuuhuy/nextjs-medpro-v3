@@ -13,12 +13,9 @@ export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
   const [end, setEnd] = useState(7)
   const numberItem = 8
   const onChange = (value: number) => {
-    console.log(value)
     setStart((value - 1) * numberItem)
     setEnd(value * numberItem)
-    console.log(start, end)
   }
-  console.log('cehck ', dataNewsPage)
   return (
     <div className={styles.container}>
       <p className={styles.titlePage}>Tin tức và sự kiện</p>

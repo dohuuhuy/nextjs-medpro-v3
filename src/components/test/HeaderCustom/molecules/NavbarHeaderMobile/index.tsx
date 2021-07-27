@@ -40,7 +40,7 @@ export const NavbarHeaderMobile = ({
                 <span>Menu</span>
               </div>
             )}
-            <i className={style.bars}/>
+            <i className={style.bars} />
           </button>
         </Col>
       </Row>
