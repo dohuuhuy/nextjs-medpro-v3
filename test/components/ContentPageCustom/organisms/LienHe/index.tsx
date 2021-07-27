@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import React from 'react'
-import Container from '../../../Container'
+import Container from './../../../Container'
 import style from './styles.module.less'
+import { ContactDetail } from './ContactDetail/ContactDetail'
 
 export const LienHeContent = ({ content }: PropsProduce) => {
   if (!content) {
@@ -14,16 +15,16 @@ export const LienHeContent = ({ content }: PropsProduce) => {
   return (
     <Container className={style.containerContact}>
       <Row className={style.rowDetails}>
-        <Col xl={9} className={style.colDetails}>
-          <span className={style.title}>Thông tin chi tiết</span>
+        <Col xl={8} className={style.colDetails}>
+          <h2 className={style.title}>Thông tin chi tiết</h2>
           <ul className={style.listInfo}>
             {detailsContact?.map(
               ({ subText, text, icon }: ItemContact, i: number) => (
                 <li key={i}>
                   <img src={icon} alt='icon' />
                   <div className={style.textInfo}>
-                    <span>{text}</span>
-                    <p>{subText}</p>
+                    <p className={style.text}>{text}</p>
+                    <p className={style.subText}>{subText}</p>
                   </div>
                 </li>
               )
@@ -31,8 +32,8 @@ export const LienHeContent = ({ content }: PropsProduce) => {
           </ul>
         </Col>
 
-        <Col xl={15} className={style.colFormContact}>
-          chua form
+        <Col xl={16} className={style.colFormContact}>
+          <ContactDetail dataContactDetail={content.detailsContact} />
         </Col>
       </Row>
 
