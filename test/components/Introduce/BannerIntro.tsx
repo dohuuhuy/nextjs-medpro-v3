@@ -13,6 +13,9 @@ interface contentIntroItem {
 }
 
 export const BannerIntro = ({ dataContentIntro }: contentIntro) => {
+  if (!dataContentIntro) {
+    return null
+  }
   const { title, subTitle, description } = dataContentIntro
 
   return (

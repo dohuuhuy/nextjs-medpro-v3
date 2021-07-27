@@ -22,7 +22,7 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
     <Container className={styles.containerGroudCard}>
       <Row>
         <ul className={styles.groudCard}>
-          {dataCardIntro.map(
+          {dataCardIntro?.map(
             ({ title, subTitle, imgCard, link }: CardIntroItem) => (
               <li key={title}>
                 <div className={styles.card}>
