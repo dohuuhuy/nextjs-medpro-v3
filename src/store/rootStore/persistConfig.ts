@@ -5,9 +5,9 @@ import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 export const listPersists = [
-  'DemoReducer',
   'totalData_Reducer',
   'hospital_Reducer',
+  'news_Reducer'
 ]
 
 export const createNoopStorage = () => {
@@ -20,7 +20,7 @@ export const createNoopStorage = () => {
     },
     removeItem(_key: string) {
       return Promise.resolve()
-    },
+    }
   }
 }
 
@@ -35,7 +35,7 @@ export const persistedReducer = () => {
     version: VERSION,
     storage,
     stateReconciler: autoMergeLevel2,
-    whitelist: listPersists,
+    whitelist: listPersists
   }
 
   const persistedReducer = persistReducer(persistConfig, rootReducer as any)
