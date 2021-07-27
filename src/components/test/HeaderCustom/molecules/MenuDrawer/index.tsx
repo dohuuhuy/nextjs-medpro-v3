@@ -7,9 +7,9 @@ import style from './styles.module.less'
 
 interface Props {
   setDrawer: any
-  listSupport: Array<any>
+  listSupport: any[]
   logo: string
-  Authencartion: Array<any>
+  Authencartion: any[]
 }
 
 export const MenuDrawer = ({

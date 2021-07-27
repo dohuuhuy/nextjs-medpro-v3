@@ -4,7 +4,7 @@ import { ItemSupport } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
-  linkSupport: Array<ItemSupport>
+  linkSupport: ItemSupport[]
 }
 
 export const SuportFooter = ({ linkSupport }: Props) => {

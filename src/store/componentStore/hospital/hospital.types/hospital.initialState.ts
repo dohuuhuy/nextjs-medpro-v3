@@ -1,18 +1,18 @@
 export interface hospital_State {
   information: information
-  feature_list: Array<feature_Item>
+  feature_list: feature_Item[]
 }
 
 export interface information {
   partnerId: string
   header: any
-  banners: Array<any>
-  deployHospital: Array<any>
+  banners: any[]
+  deployHospital: any[]
   introducHospital: any
   downloadApp: any
-  supportMethods: Array<any>
+  supportMethods: any[]
   footer: any
-  contentPage: Array<any>
+  contentPage: any[]
 }
 
 export interface feature_Item {

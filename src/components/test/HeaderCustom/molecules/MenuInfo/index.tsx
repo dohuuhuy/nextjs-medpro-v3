@@ -8,7 +8,7 @@ import { NoitiBell } from '../NotiBell'
 import style from './styles.module.less'
 
 interface Props {
-  Authencartion: Array<Info> | any
+  Authencartion: Info[] | any
 }
 
 export interface Info {
@@ -27,7 +27,7 @@ export const MenuInfo = ({ Authencartion }: Props) => {
       </li>
 
       <li>
-        <Link href='/#tai-ung-dung' as='/#tai-ung-dung' passHref>
+        <Link href='/#tai-ung-dung' as='/#tai-ung-dung' passHref={true}>
           <Button
             className={style.downloadApp}
             type='default'

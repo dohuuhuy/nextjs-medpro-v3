@@ -5,8 +5,8 @@ import { MenuDrawer } from '../../molecules/MenuDrawer'
 import { NavbarHeaderMobile } from '../../molecules/NavbarHeaderMobile'
 
 interface Props {
-  dataHeader: Array<any>
-  Authencartion: Array<any>
+  dataHeader: any[]
+  Authencartion: any[]
 }
 
 export const DrawerMenuHeader = ({ dataHeader, Authencartion }: Props) => {

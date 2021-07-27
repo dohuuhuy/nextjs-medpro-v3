@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+import { Button, Form, Input, Row, Select } from 'antd'
 import React from 'react'
-import style from './styles.module.less'
-import { Row, Input, Select, Button, Form } from 'antd'
-import { HomeOutlined } from '@ant-design/icons'
 import Container from './../../../Container'
+import style from './styles.module.less'
 
 interface ContactDetail {
   dataContactDetail: ItemContact[]

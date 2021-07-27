@@ -5,7 +5,17 @@ import {
 } from '@store/interface'
 
 const hospital_InitialState: hospital_State = {
-  information: {},
+  information: {
+    partnerId: 'string',
+    header: {},
+    banners: [],
+    deployHospital: [],
+    introducHospital: {},
+    downloadApp: {},
+    supportMethods: [],
+    footer: {},
+    contentPage: []
+  },
   feature_list: []
 }
 

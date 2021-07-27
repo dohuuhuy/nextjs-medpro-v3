@@ -5,7 +5,7 @@ import * as testing from './testing'
 const exportedObject: any = {
   testing,
   development,
-  production,
+  production
 }
 
 export default exportedObject

@@ -14,7 +14,7 @@ export const NoitiBell = ({ notification }: any) => {
     >
       <Badge
         count={notification.totalNew || null}
-        showZero
+        showZero={true}
         size='small'
         className={style.bell}
       >

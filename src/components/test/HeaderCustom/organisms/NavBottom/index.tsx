@@ -3,8 +3,8 @@ import React from 'react'
 import style from './styles.module.less'
 
 interface Props {
-  Menu: Array<any>
-  Authencartion: Array<any>
+  Menu: any[]
+  Authencartion: any[]
 }
 
 export const NavBottom = ({ Menu }: Props) => {

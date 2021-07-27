@@ -1,12 +1,12 @@
 export interface PropsFooter {
-  dataFooter: Array<ItemFooter>
+  dataFooter: ItemFooter[]
 }
 
 export interface ItemFooter {
   logoFooter: string | undefined | null
-  infoContact: Array<ItemContact>
-  linkSupport: Array<ItemSupport>
-  logoChecked: Array<ItemChecked>
+  infoContact: ItemContact[]
+  linkSupport: ItemSupport[]
+  logoChecked: ItemChecked[]
 }
 
 export interface ItemContact {

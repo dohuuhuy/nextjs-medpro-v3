@@ -5,7 +5,7 @@ export const openToast = ({
   type,
   message,
   description,
-  duration,
+  duration
 }: ArgsProps) => {
   const setDuration = () => {
     if (duration) {
@@ -23,6 +23,6 @@ export const openToast = ({
     message,
     description,
     type,
-    duration: Number(setDuration()),
+    duration: Number(setDuration())
   })
 }

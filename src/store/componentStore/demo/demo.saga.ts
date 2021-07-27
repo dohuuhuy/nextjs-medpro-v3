@@ -5,7 +5,7 @@ function* demoSaga({ nameColor }: demoParams.getDemo_Params) {
   try {
     yield put({
       type: demoActionTypes.DEMO_SUCCESS,
-      nameColor,
+      nameColor
     })
   } catch (error) {}
 }

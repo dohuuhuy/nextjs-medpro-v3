@@ -5,10 +5,10 @@ import { ArgsProps } from 'antd/lib/notification'
 export const Notification = ({
   type = 'success',
   message,
-  description,
+  description
 }: ArgsProps) => {
   notification[type]({
     message,
-    description,
+    description
   })
 }

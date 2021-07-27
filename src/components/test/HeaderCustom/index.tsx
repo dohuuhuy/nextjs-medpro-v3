@@ -9,8 +9,8 @@ import { SupportHeader } from './organisms/SupportHeader'
 import style from './styles.module.less'
 
 export interface PropsHeader {
-  dataHeader: Array<any> | any
-  Authencartion: Array<any> | any
+  dataHeader: any[] | any
+  Authencartion: any[] | any
 }
 
 export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {

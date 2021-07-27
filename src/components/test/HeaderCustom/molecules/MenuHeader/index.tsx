@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import style from './styles.module.less'
 
 interface Props {
-  menuHeader: Array<ItemMenu>
+  menuHeader: ItemMenu[]
 }
 
 const MenuHeader = ({ menuHeader }: Props) => {

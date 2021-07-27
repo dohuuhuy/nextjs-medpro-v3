@@ -1,4 +1,4 @@
-export interface get_PartnerId {
+export interface Get_PartnerId {
   listPartners: any
   partnerId?: string
   local?: boolean
@@ -15,7 +15,7 @@ export const get_PartnerId = ({
   partnerId,
   listPartners,
   local
-}: get_PartnerId) => {
+}: Get_PartnerId) => {
   if (local) {
     const is_partnerId: any = listPartners.find(
       (i: any) => i.partnerId === partnerId

@@ -23,7 +23,7 @@ const CardContact = ({ cardContact }: ItemBanner) => {
                 <a
                   href={link}
                   dangerouslySetInnerHTML={{ __html: textBottom }}
-                ></a>
+                />
               </div>
             </li>
           )

@@ -32,6 +32,6 @@ app.prepare().then(() => {
     .listen(port)
 
   console.log(
-    `> Server listening at http://localhost:${port} as ${NODE_ENV} as ${ENV}`,
+    `> Server listening at http://localhost:${port} as ${NODE_ENV} as ${ENV}`
   )
 })

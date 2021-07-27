@@ -4,7 +4,7 @@ import { ItemChecked } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
-  logoChecked?: Array<ItemChecked>
+  logoChecked?: ItemChecked[]
 }
 
 export const ImageFooter = ({ logoChecked }: Props) => {

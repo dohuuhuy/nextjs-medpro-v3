@@ -3,7 +3,7 @@ import { ItemContact } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
-  infoContact: Array<ItemContact>
+  infoContact: ItemContact[]
 }
 
 export const InfoFooter = ({ infoContact }: Props) => {

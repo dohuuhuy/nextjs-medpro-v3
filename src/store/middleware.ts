@@ -1,3 +1,3 @@
-const middleware: any[] = [];
+const middleware: any[] = []
 
-export default middleware;
+export default middleware

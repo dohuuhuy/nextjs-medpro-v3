@@ -20,7 +20,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
       <Item className={style.item_user}>
         <Row className={style.view_user}>
           <Col className={style.colAvt}>
-            <i className='fas fa-user-circle'></i>
+            <i className='fas fa-user-circle'/>
           </Col>
           <Col className={style.colHello}>
             <span>Xin chào! </span>

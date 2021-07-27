@@ -45,7 +45,7 @@ const SelectedHospital = () => {
         closable={isModalVisible}
       >
         <Select
-          showSearch
+          showSearch={true}
           defaultValue='Bệnh viện Test'
           style={{ width: '100%' }}
           placeholder='Chọn bệnh viện'

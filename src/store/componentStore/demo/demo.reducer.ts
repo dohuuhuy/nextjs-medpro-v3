@@ -2,12 +2,12 @@ import { demoAction, demoActionTypes, DemoState } from '@store/interface'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const DemoInitialState: DemoState = {
-  nameColor: 'primary',
+  nameColor: 'primary'
 }
 
 export default function DemoReducer(
   state = DemoInitialState,
-  action: demoAction | { type: typeof HYDRATE; payload: DemoState },
+  action: demoAction | { type: typeof HYDRATE; payload: DemoState }
 ) {
   switch (action.type) {
     case demoActionTypes.DEMO_SUCCESS:

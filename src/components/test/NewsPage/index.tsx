@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import { Col, Pagination, Row } from 'antd'
 import React, { useState } from 'react'
 import styles from './style.module.less'
-import { Row, Col, Pagination } from 'antd'
-import { NewsPage, NewsPageItem } from '@components/organisms/NewsPage'
 
 interface NewsPageCustom {
-  dataNewsPage: NewsPage
+  dataNewsPage: any
 }
 
 export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
@@ -89,7 +88,7 @@ export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
             </Row>
 
             {dataNewsPage.map(
-              ({ id, img, title, time, content }: NewsPageItem, index: any) => {
+              ({ id, img, title, time, content }: any, index: any) => {
                 if (index >= start && index < end) {
                   return (
                     <Row key={id} className={styles.listCard}>

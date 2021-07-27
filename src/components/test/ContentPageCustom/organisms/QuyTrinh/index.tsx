@@ -34,7 +34,7 @@ export const QuyTrinhContent = ({ content }: PropsProduce) => {
 }
 
 export interface PropsProduce {
-  content?: Array<Item> | any
+  content?: Item[] | any
 }
 
 export interface Item {
@@ -44,7 +44,7 @@ export interface Item {
   name: string
   sortOrder: number
   icon: string
-  content: Array<ItemProduce>
+  content: ItemProduce[]
 }
 
 export interface ItemProduce {

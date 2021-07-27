@@ -40,7 +40,7 @@ export const SupportMedthodCustom = ({
                 <img src={imgCard} className={style.img} alt='imgCard' />
                 <div className={style.cardContent}>
                   <h4 className={style.titleCard}>{nameMedthod}</h4>
-                  <Link href={link} passHref>
+                  <Link href={link} passHref={true}>
                     <a className={style.descriptionCard}>{description}</a>
                   </Link>
                 </div>

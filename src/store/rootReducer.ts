@@ -6,10 +6,10 @@ import hospital_Reducer from '@componentStore/hospital/hospital.reducer'
 import news_Reducer from '@componentStore/news/news.reducer'
 
 const reducers = {
-  DemoReducer: DemoReducer,
-  totalData_Reducer: totalData_Reducer,
-  hospital_Reducer: hospital_Reducer,
-  news_Reducer: news_Reducer
+  DemoReducer,
+  totalData_Reducer,
+  hospital_Reducer,
+  news_Reducer
 }
 
 const rootReducer = combineReducers(reducers)

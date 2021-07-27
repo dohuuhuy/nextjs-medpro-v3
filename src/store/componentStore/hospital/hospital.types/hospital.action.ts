@@ -35,5 +35,5 @@ export interface FeatureByPartner_REQUEST {
 
 export interface FeatureByPartner_REQUEST_Success {
   type: Hosptail_Types.Feature.FeatureByPartner_REQUEST_SUCCESS
-  feature_list: Array<any>
+  feature_list: any[]
 }

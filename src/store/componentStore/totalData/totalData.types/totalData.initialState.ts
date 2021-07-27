@@ -6,7 +6,7 @@ export interface totalData_State {
 
 export interface list_partners extends Array<list_partners_item> {}
 export interface list_partners_item {
-  domain: Array<string>
+  domain: string[]
   partnerId: string
   nameHospital: string
 }

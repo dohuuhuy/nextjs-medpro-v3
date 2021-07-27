@@ -1,9 +1,9 @@
 export interface PropsContent {
-    dataContent: Array<ItemContent> | any;
+  dataContent: ItemContent[] | any
 }
 
 export interface ItemContent {
-    id: string;
-    key: string;
-    content: string;
+  id: string
+  key: string
+  content: string
 }

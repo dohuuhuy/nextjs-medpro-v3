@@ -1,10 +1,10 @@
 export interface Item {
   logoHeader: string
   logoMobile: string
-  menu: Array<ItemMenu>
-  menuMobile: Array<ItemMenuMobile>
-  listSupport: Array<ItemDrawer>
-  support: Array<ItemSupport>
+  menu: ItemMenu[]
+  menuMobile: ItemMenuMobile[]
+  listSupport: ItemDrawer[]
+  support: ItemSupport[]
 }
 
 export interface ItemMenu {
@@ -38,9 +38,9 @@ export interface ItemSupport {
 }
 
 export interface ItemDrawer {
-  funcGroup: Array<ItemButton>
-  guideGroup: Array<ItemButton>
-  supportGroup: Array<ItemButton>
+  funcGroup: ItemButton[]
+  guideGroup: ItemButton[]
+  supportGroup: ItemButton[]
 }
 
 export interface ItemButton {
