@@ -5,7 +5,7 @@ import React from 'react'
 import Container from '../../../Container'
 import style from './style.module.less'
 
-export const BannerHome = ({ getBanner }: any) => {
+export const BannerHome = ({ getBanner, listFeature }: any) => {
   if (!getBanner) {
     return <em> Không có dataBannerHome</em>
   }
@@ -29,45 +29,22 @@ export const BannerHome = ({ getBanner }: any) => {
           </Col>
           <Col span={24} sm={24} xl={24} md={24} className={style.ColBoxServic}>
             <ul className={style.listBoxService}>
-              <li>
-                <Link href='/'>
-                  <a>
-                    <img
-                      src={
-                        'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'
-                      }
-                      alt='boxService'
-                    />
-                    <p>Đặt khám</p>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/'>
-                  <a>
-                    <img
-                      src={
-                        'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'
-                      }
-                      alt='boxService'
-                    />
-                    <p>Đặt khám</p>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/'>
-                  <a>
-                    <img
-                      src={
-                        'https://api-v2.medpro.com.vn:5000/st/feature/dv1.svg'
-                      }
-                      alt='boxService'
-                    />
-                    <p>Đặt khám</p>
-                  </a>
-                </Link>
-              </li>
+              {listFeature.map(({ name, image, status }: any, i: number) => {
+                if (status) {
+                  return (
+                    <li key={i}>
+                      <Link href='/'>
+                        <a>
+                          <img src={image} alt='dịch vụ' />
+                          <p>{name}</p>
+                        </a>
+                      </Link>
+                    </li>
+                  )
+                } else {
+                  return null
+                }
+              })}
             </ul>
           </Col>
         </Row>

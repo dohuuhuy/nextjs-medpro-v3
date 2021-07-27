@@ -3,14 +3,16 @@ import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
 
-export const BannersCustom = ({ getBanner }: any) => {
+export const BannersCustom = (props: any) => {
+  const { getBanner } = props
+
   if (!getBanner) {
     return null
   }
 
   switch (getBanner.key) {
     case '/':
-      return <BannerHome getBanner={getBanner} />
+      return <BannerHome {...props} />
 
     case '/lien-he':
       return <BannerContact getBanner={getBanner} />

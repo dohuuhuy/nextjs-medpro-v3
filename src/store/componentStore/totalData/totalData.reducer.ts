@@ -1,7 +1,7 @@
 import {
-  ListPartners_ActionTypes,
   totalData_Action,
-  totalData_State
+  totalData_State,
+  totalData_Types
 } from '@store/interface'
 
 const totalData_InitialState: totalData_State = {
@@ -19,36 +19,20 @@ export default function totalData_Reducer(
   action: totalData_Action
 ) {
   switch (action.type) {
-    case ListPartners_ActionTypes.ListPartners_REQUEST_SUCCESS:
+    case totalData_Types.ListPartners.ListPartners_REQUEST_SUCCESS:
       return {
         ...state,
 
         list_partners: action.list_partners
       }
 
-    case ListPartners_ActionTypes.SET_PartnerId: {
+    case totalData_Types.ListPartners.SET_PartnerId: {
       return {
         ...state,
         partnerId: action.partnerId
       }
     }
-    case ListPartners_ActionTypes.CHECK_LOCALHOST:
-      return {
-        ...state,
-        localhost: true
-      }
 
-    case ListPartners_ActionTypes.ListPartners_ERROR:
-      if (action.err === false) {
-        return {
-          ...state,
-          list_error: { ListPartners_ERROR: action.err }
-        }
-      }
-      return {
-        ...state,
-        list_error: { ListPartners_ERROR: true }
-      }
     default:
       return state
   }

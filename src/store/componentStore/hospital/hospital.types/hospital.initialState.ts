@@ -1,5 +1,6 @@
 export interface hospital_State {
   hospital_details: hospital_details | {}
+  feature_list: Array<any>
 }
 
 export interface hospital_details {

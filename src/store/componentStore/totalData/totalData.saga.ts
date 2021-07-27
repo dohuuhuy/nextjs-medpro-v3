@@ -1,10 +1,8 @@
 import { _PRODUCTION } from '@config/envs/env'
-import { client } from '@config/medproSDK'
 import {
-  Hospital_Details_ActionTypes,
-  ListPartners_ActionTypes,
+  Hosptail_Types,
   list_partners_item,
-  partnerId_Local_ActionTypes,
+  totalData_Types,
   totalData_Params,
   totalData_State
 } from '@store/interface'
@@ -36,12 +34,14 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
   const getPartnerId = get_PartnerId(runObject)
 
   if (getPartnerId) {
-    yield put({ type: Hospital_Details_ActionTypes.Hospital_CLEAR_DETAILS })
+    yield put({
+      type: Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS
+    })
 
     persistor.purge()
 
     yield put({
-      type: Hospital_Details_ActionTypes.Hospital_REQUEST_DETAILS,
+      type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST,
       partnerId: getPartnerId
     })
   } else {
@@ -55,19 +55,13 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
 
 function* watch_partnerId_local() {
   yield takeLatest(
-    partnerId_Local_ActionTypes.partnerId_Local_REQUEST as any,
+    totalData_Types.LocalPartnerId.partnerId_Local_REQUEST as any,
     set_partnerId_local
   )
 }
 
 function* get_list_partners() {
   try {
-    const x: AxiosResponse = yield client.getFeatureByPartner({
-      partnerid: 'dkanphuoc'
-    })
-
-    console.log('x :>> ', x)
-
     const url =
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
@@ -76,7 +70,7 @@ function* get_list_partners() {
     )
 
     yield put({
-      type: ListPartners_ActionTypes.ListPartners_REQUEST_SUCCESS,
+      type: totalData_Types.ListPartners.ListPartners_REQUEST_SUCCESS,
       list_partners: listPartners
     })
 
@@ -84,12 +78,12 @@ function* get_list_partners() {
       const getPartnerId = get_PartnerId({ listPartners })
       if (getPartnerId) {
         yield put({
-          type: Hospital_Details_ActionTypes.Hospital_REQUEST_DETAILS,
+          type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST,
           partnerId: getPartnerId
         })
       } else {
         yield put({
-          type: ListPartners_ActionTypes.ListPartners_ERROR
+          type: totalData_Types.ListPartners.ListPartners_ERROR
         })
 
         openToast({
@@ -100,20 +94,16 @@ function* get_list_partners() {
         })
 
         yield put({
-          type: Hospital_Details_ActionTypes.Hospital_CLEAR_DETAILS
+          type: Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS
         })
       }
     }
-  } catch (error) {
-    // yield put({
-    //   type: ListPartners_ActionTypes.ListPartners_ERROR,
-    // })
-  }
+  } catch (error) {}
 }
 
 function* watch_list_partners() {
   yield takeLatest(
-    ListPartners_ActionTypes.ListPartners_REQUEST as any,
+    totalData_Types.ListPartners.ListPartners_REQUEST as any,
     get_list_partners
   )
 }
