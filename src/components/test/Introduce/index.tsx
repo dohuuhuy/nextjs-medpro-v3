@@ -9,10 +9,13 @@ interface IntroduceCustom {
 
 export const IntroduceCustom = ({ dataIntroduce }: IntroduceCustom) => {
   if (!dataIntroduce) return <em>Lỗi data input</em>
+
+  const { contentIntro, cardIntro } = dataIntroduce
+
   return (
     <div className={styles.solutionBox}>
-      <BannerIntro dataContentIntro={dataIntroduce.contentIntro} />
-      <CardIntro dataCardIntro={dataIntroduce.cardIntro} />
+      <BannerIntro dataContentIntro={contentIntro} />
+      <CardIntro dataCardIntro={cardIntro} />
     </div>
   )
 }

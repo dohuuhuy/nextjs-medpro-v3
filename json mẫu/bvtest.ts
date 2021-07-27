@@ -369,7 +369,6 @@ export const JSON_EXP = {
     }
   ],
   introducHospital: {
-    // cung
     contentIntro: {
       title: 'Giới thiệu',
       subTitle: 'MEDPRO - Giải pháp tiếp cận y tế thông minh',
