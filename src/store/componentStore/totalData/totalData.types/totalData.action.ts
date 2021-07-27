@@ -1,6 +1,6 @@
 import {
-  ListPartners_Action_Types,
-  partnerId_Local_Action_Types,
+  ListPartners_ActionTypes,
+  partnerId_Local_ActionTypes
 } from '@store/interface'
 
 export type totalData_Action = listPartners_Action | partnerId_local_Action
@@ -19,31 +19,31 @@ export interface demo_get {
 }
 
 export interface listPartners_Request {
-  type: ListPartners_Action_Types.ListPartners_REQUEST
+  type: ListPartners_ActionTypes.ListPartners_REQUEST
 }
 
 export interface listPartners_Request_Success {
-  type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS
+  type: ListPartners_ActionTypes.ListPartners_REQUEST_SUCCESS
   list_partners: Array<any>
 }
 
 export interface check_localhost {
-  type: ListPartners_Action_Types.CHECK_LOCALHOST
+  type: ListPartners_ActionTypes.CHECK_LOCALHOST
 }
 
 export interface set_parnerId {
-  type: ListPartners_Action_Types.SET_PartnerId
+  type: ListPartners_ActionTypes.SET_PartnerId
   partnerId: any
 }
 
 export interface ListPartners_ERROR {
-  type: ListPartners_Action_Types.ListPartners_ERROR
+  type: ListPartners_ActionTypes.ListPartners_ERROR
   err: boolean
 }
 // ----------------------------------------------------------------------------------------------
 export type partnerId_local_Action = set_partnerId_local
 
 export interface set_partnerId_local {
-  type: partnerId_Local_Action_Types.partnerId_Local_REQUEST
+  type: partnerId_Local_ActionTypes.partnerId_Local_REQUEST
   partnerId: string
 }

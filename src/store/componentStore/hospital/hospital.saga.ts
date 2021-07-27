@@ -1,7 +1,7 @@
 import {
   hospital_details,
-  Hospital_Details_Action_Types,
-  ListPartners_Action_Types
+  Hospital_Details_ActionTypes,
+  ListPartners_ActionTypes
 } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
@@ -25,12 +25,12 @@ function* hospital_get_details({ partnerId }: any) {
     console.error(res)
 
     yield put({
-      type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS,
+      type: Hospital_Details_ActionTypes.Hospital_REQUEST_DETAILS_SUCCESS,
       hospital_details: JSON_EXP
     })
 
     yield put({
-      type: ListPartners_Action_Types.SET_PartnerId,
+      type: ListPartners_ActionTypes.SET_PartnerId,
       partnerId
     })
 
@@ -47,7 +47,7 @@ function* hospital_get_details({ partnerId }: any) {
     console.log(' statusCode, message :>> ', statusCode, message)
 
     yield put({
-      type: ListPartners_Action_Types.SET_PartnerId,
+      type: ListPartners_ActionTypes.SET_PartnerId,
       partnerId: ''
     })
     openToast({
@@ -60,7 +60,7 @@ function* hospital_get_details({ partnerId }: any) {
 
 function* watch_hospital_get_details() {
   yield takeEvery(
-    Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS as any,
+    Hospital_Details_ActionTypes.Hospital_REQUEST_DETAILS as any,
     hospital_get_details
   )
 }

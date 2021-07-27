@@ -1,21 +1,21 @@
 import {
-  ListPartners_Action_Types,
-  partnerId_Local_Action_Types,
+  ListPartners_ActionTypes,
+  partnerId_Local_ActionTypes,
   totalData_Action,
-  totalData_Params,
+  totalData_Params
 } from '@store/interface'
 
 export const get_PartnerId = (): totalData_Action => {
   return {
-    type: ListPartners_Action_Types.ListPartners_REQUEST,
+    type: ListPartners_ActionTypes.ListPartners_REQUEST
   }
 }
 
 export const set_partnerId_local = ({
-  partnerId,
+  partnerId
 }: totalData_Params.partnerLocal): totalData_Action => {
   return {
-    type: partnerId_Local_Action_Types.partnerId_Local_REQUEST,
-    partnerId,
+    type: partnerId_Local_ActionTypes.partnerId_Local_REQUEST,
+    partnerId
   }
 }
