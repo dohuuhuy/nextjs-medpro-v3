@@ -30,7 +30,7 @@ export const MyApp = ({ arrApp }: myApp) => {
       </Col>
       <Col xl={24} md={24} sm={24} className={style.ColMyApp}>
         <ul className={style.listDownload}>
-          {arrApp.map(({ imgLogo, link }: Item, index: number) => (
+          {arrApp?.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
               <a href={link} target='_blank' rel='noreferrer'>
                 <img src={imgLogo} className={style.mid_logo} alt='' />

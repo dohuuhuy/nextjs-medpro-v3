@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
+import { isEmpty } from 'lodash'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 
@@ -14,7 +15,8 @@ interface DeloyHospitalCustom {
 export const DeloyHospitalCustom = ({
   dataDeloyHospital
 }: DeloyHospitalCustom) => {
-  if (!dataDeloyHospital) return <em>Lỗi dataDeloyHospital</em>
+  if (!dataDeloyHospital || isEmpty(dataDeloyHospital))
+    return <em>Lỗi dataDeloyHospital</em>
 
   const settings: Settings = {
     speed: 500,

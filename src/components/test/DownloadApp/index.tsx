@@ -1,6 +1,6 @@
+import { isEmpty } from 'lodash'
 import React from 'react'
 import Container from '../Container'
-import { DownloadApp } from './DownloadApp.interface'
 import { ListBenefit } from './ListBenefit'
 import { MyApp } from './myApp'
 import Styles from './style.module.less'
@@ -10,7 +10,7 @@ interface DownloadCustom {
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
-  if (!dataDownload) {
+  if (!dataDownload || isEmpty(dataDownload)) {
     return <em> Không có dataDownload</em>
   }
   return (
@@ -22,4 +22,12 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
       />
     </Container>
   )
+}
+
+export interface DownloadApp {
+  appId: string
+  nameHospital: string
+  myApp: any[]
+  imgMobile: string
+  listBenefit: any[]
 }
