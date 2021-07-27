@@ -10,6 +10,7 @@
             "alias": {
               "@config": "./src/config",
               "@components": "./src/components",
+              "@componentsTest": "./test/components",
               "@componentStore": "./src/store/componentStore",
               "@utils": "./src/utils",
               "@store": "./src/store",

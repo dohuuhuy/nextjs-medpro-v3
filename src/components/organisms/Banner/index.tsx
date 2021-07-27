@@ -1,5 +1,6 @@
 // import { BannersCustom } from '@n17dccn172/booking-libs'
-import { BannersCustom } from '@components/test/Banners'
+
+import { BannersCustom } from '@componentsTest/Banners'
 import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'

@@ -1,5 +1,6 @@
 // import { ContentPageCustom } from '@n17dccn172/booking-libs'
-import { ContentPageCustom } from '@components/test/ContentPageCustom'
+
+import { ContentPageCustom } from '@componentsTest/ContentPageCustom'
 import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'

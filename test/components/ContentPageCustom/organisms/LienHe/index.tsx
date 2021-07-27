@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import React from 'react'
-import Container from './../../../Container'
+import Container from '../../../Container'
 import style from './styles.module.less'
 
 export const LienHeContent = ({ content }: PropsProduce) => {

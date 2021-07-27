@@ -1,7 +1,8 @@
 import { set_partnerId_local } from '@actionStore/rootAction'
+import { ArrowUpOutlined } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
-import { Button, Modal, Select } from 'antd'
+import { BackTop, Button, Modal, Select } from 'antd'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
@@ -27,6 +28,23 @@ const SelectedHospital = () => {
 
   return (
     <div>
+      <BackTop>
+        <div
+          style={{
+            height: 40,
+            width: 40,
+            lineHeight: '40px',
+            borderRadius: 4,
+            backgroundColor: '#1088e9',
+            color: '#fff',
+            textAlign: 'center',
+            fontSize: 14
+          }}
+        >
+          <ArrowUpOutlined />
+        </div>
+      </BackTop>
+
       {_DEVELOPMENT || _TESTING ? (
         <Button
           type='primary'

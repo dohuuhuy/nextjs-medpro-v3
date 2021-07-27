@@ -17,7 +17,7 @@ export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
 
   switch (key) {
     case 'thac-mac':
-      return <ThacMacContent content={content} />
+      return <ThacMacContent content={[]} />
 
     case 'quy-trinh':
       return <QuyTrinhContent content={content} />

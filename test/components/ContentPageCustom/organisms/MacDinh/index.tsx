@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from './../../../Container'
+import Container from '../../../Container'
 import style from './styles.module.less'
 
 export const DefaultContent = ({ content }: any) => {

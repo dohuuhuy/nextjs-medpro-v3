@@ -1,4 +1,4 @@
-import Container from './../../../Container'
+import Container from '../../../Container'
 import { Row } from 'antd'
 import React from 'react'
 import MenuHeader from '../../molecules/MenuHeader'

@@ -1,5 +1,6 @@
 // import { DeloyHospitalCustom } from '@n17dccn172/booking-libs'
-import { DeloyHospitalCustom } from '@components/test/SliderHospital'
+
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
 import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'

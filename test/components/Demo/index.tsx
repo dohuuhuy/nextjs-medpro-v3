@@ -1,4 +1,4 @@
-import Container from './../Container'
+import Container from '../Container'
 import { Button } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
