@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const DownloadLayout = () => {
   const downloadApp = useSelector(
-    (state: any) => state.hospital_Reducer.hospital_details.downloadApp
+    (state: any) => state.hospital_Reducer.information.downloadApp
   )
 
   return <DownloadCustom dataDownload={downloadApp} />

@@ -9,8 +9,9 @@ const authen = {
 
 const HeaderLayout = () => {
   const header = useSelector(
-    (state: any) => state.hospital_Reducer.hospital_details.header
+    (state: any) => state.hospital_Reducer.information.header
   )
+
   return <HeaderCustom dataHeader={header} Authencartion={authen} />
 }
 

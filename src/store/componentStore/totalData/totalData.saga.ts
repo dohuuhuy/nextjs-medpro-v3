@@ -35,13 +35,13 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
 
   if (getPartnerId) {
     yield put({
-      type: Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS
+      type: Hosptail_Types.Information.Hospital_CLEAR_DETAILS
     })
 
     persistor.purge()
 
     yield put({
-      type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST,
+      type: Hosptail_Types.Information.Information_REQUEST,
       partnerId: getPartnerId
     })
   } else {
@@ -78,7 +78,7 @@ function* get_list_partners() {
       const getPartnerId = get_PartnerId({ listPartners })
       if (getPartnerId) {
         yield put({
-          type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST,
+          type: Hosptail_Types.Information.Information_REQUEST,
           partnerId: getPartnerId
         })
       } else {
@@ -94,7 +94,7 @@ function* get_list_partners() {
         })
 
         yield put({
-          type: Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS
+          type: Hosptail_Types.Information.Hospital_CLEAR_DETAILS
         })
       }
     }

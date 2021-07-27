@@ -7,11 +7,7 @@ import {
 const totalData_InitialState: totalData_State = {
   partnerId: '',
   list_partners: [],
-  localhost: false,
-  loading: false,
-  list_error: {
-    ListPartners_ERROR: false
-  }
+  loading: false
 }
 
 export default function totalData_Reducer(

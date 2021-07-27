@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const FooterLayout = () => {
   const footer = useSelector(
-    (state: any) => state.hospital_Reducer.hospital_details.footer
+    (state: any) => state.hospital_Reducer.information.footer
   )
 
   return <FooterCustom dataFooter={footer} />

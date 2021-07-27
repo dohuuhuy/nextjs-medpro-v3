@@ -1,10 +1,6 @@
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
-import {
-  hospital_details,
-  Hosptail_Types,
-  totalData_Types
-} from '@store/interface'
+import { Information, Hosptail_Types, totalData_Types } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -30,12 +26,12 @@ function* hospital_get_details({ partnerId }: any) {
     const url =
       'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
 
-    const res: AxiosResponse<hospital_details> = yield call(getData, url)
+    const res: AxiosResponse<Information> = yield call(getData, url)
     console.error(res)
 
     yield put({
-      type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST_SUCCESS,
-      hospital_details: JSON_EXP
+      type: Hosptail_Types.Information.Information_REQUEST_SUCCESS,
+      information: JSON_EXP
     })
 
     yield put({
@@ -44,7 +40,7 @@ function* hospital_get_details({ partnerId }: any) {
     })
 
     yield put({
-      type: Hosptail_Types.Feature.FEATURE_BY_PARTNER
+      type: Hosptail_Types.Feature.FeatureByPartner_REQUEST
     })
 
     if (_DEVELOPMENT) {
@@ -73,12 +69,12 @@ function* hospital_get_details({ partnerId }: any) {
 
 function* watch_hospital_get_details() {
   yield takeEvery(
-    Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST as any,
+    Hosptail_Types.Information.Information_REQUEST as any,
     hospital_get_details
   )
 }
 
-function* feature_by_partner() {
+function* FeatureByPartner_REQUEST() {
   try {
     const partnerid: string = yield select(
       (state: { totalData_Reducer: { partnerId: any } }) =>
@@ -92,20 +88,23 @@ function* feature_by_partner() {
     const { data } = respone
 
     yield put({
-      type: Hosptail_Types.Feature.FEATURE_BY_PARTNER_SUCCESS,
+      type: Hosptail_Types.Feature.FeatureByPartner_REQUEST_SUCCESS,
       feature_list: data
     })
   } catch (error) {}
 }
 
-function* watch_feature_by_partner() {
+function* watch_FeatureByPartner_REQUEST() {
   yield takeLatest(
-    Hosptail_Types.Feature.FEATURE_BY_PARTNER as any,
-    feature_by_partner
+    Hosptail_Types.Feature.FeatureByPartner_REQUEST as any,
+    FeatureByPartner_REQUEST
   )
 }
 
 const hospital_Sagas = function* root() {
-  yield all([fork(watch_hospital_get_details), fork(watch_feature_by_partner)])
+  yield all([
+    fork(watch_hospital_get_details),
+    fork(watch_FeatureByPartner_REQUEST)
+  ])
 }
 export default hospital_Sagas

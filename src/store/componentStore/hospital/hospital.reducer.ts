@@ -5,7 +5,7 @@ import {
 } from '@store/interface'
 
 const hospital_InitialState: hospital_State = {
-  hospital_details: {},
+  information: {},
   feature_list: []
 }
 
@@ -14,20 +14,20 @@ export default function hospital_Reducer(
   action: Hospital_Action
 ) {
   switch (action.type) {
-    case Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST_SUCCESS:
+    case Hosptail_Types.Information.Information_REQUEST_SUCCESS:
       return {
         ...state,
-        hospital_details: action.hospital_details
+        information: action.information
       }
 
-    case Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS: {
+    case Hosptail_Types.Information.Hospital_CLEAR_DETAILS: {
       return {
         ...state,
-        hospital_details: hospital_InitialState.hospital_details
+        information: hospital_InitialState.information
       }
     }
 
-    case Hosptail_Types.Feature.FEATURE_BY_PARTNER_SUCCESS:
+    case Hosptail_Types.Feature.FeatureByPartner_REQUEST_SUCCESS:
       return {
         ...state,
         feature_list: action.feature_list

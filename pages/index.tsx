@@ -1,4 +1,4 @@
-import { getListNewsAtHome } from '@actionStore/rootAction'
+import { getNewsAndEvent } from '@actionStore/rootAction'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,7 +13,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (newsAndEvent.length < 1) {
-      dispatch(getListNewsAtHome())
+      dispatch(getNewsAndEvent())
     }
   })
 

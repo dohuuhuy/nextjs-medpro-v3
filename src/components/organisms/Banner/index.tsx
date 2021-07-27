@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 const BannerLayout = () => {
   const banners = useSelector(
-    (state: any) => state.hospital_Reducer.hospital_details.banners
+    (state: any) => state.hospital_Reducer.information.banners
   )
   const feature_list = useSelector(
     (state: any) => state.hospital_Reducer.feature_list

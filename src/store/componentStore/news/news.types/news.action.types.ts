@@ -1,6 +1,9 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
-export enum NewsAtHome_Action_Types {
-  ListNewsAtHome_REQUEST = 'ListNewsAtHome_REQUEST',
-  ListNewsAtHome_REQUEST_SUCCESS = 'ListNewsAtHome_REQUEST_SUCCESS',
-  ListNewsAtHome_REQUEST_FAILS = 'ListNewsAtHome_REQUEST_FAILS'
+
+export namespace news_Types {
+  export enum NewsAndEvent {
+    NewsAndEvent_REQUEST = 'NewsAndEvent_REQUEST',
+    NewsAndEvent_REQUEST_SUCCESS = 'NewsAndEvent_REQUEST_SUCCESS',
+    NewsAndEvent_REQUEST_FAILS = 'NewsAndEvent_REQUEST_FAILS'
+  }
 }

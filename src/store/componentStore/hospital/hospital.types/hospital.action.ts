@@ -1,37 +1,39 @@
 import { Hosptail_Types } from '@store/interface'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
-export type Hospital_Action = Hospital_Details_Action | Feature_Action
+export type Hospital_Action = Infomation_Action | Feature_Action
 // --------------------------------------------------------------
 
-export type Hospital_Details_Action =
-  | Hospital_DETAILS_REQUEST
-  | Hospital_DETAILS_REQUEST_Success
+export type Infomation_Action =
+  | Information_REQUEST
+  | Information_REQUEST_Success
   | Hospital_Clear_Details
 
-export interface Hospital_DETAILS_REQUEST {
-  type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST
+export interface Information_REQUEST {
+  type: Hosptail_Types.Information.Information_REQUEST
   partnerId: String
 }
 
-export interface Hospital_DETAILS_REQUEST_Success {
-  type: Hosptail_Types.Hospital_Details.Hospital_DETAILS_REQUEST_SUCCESS
-  hospital_details: Object
+export interface Information_REQUEST_Success {
+  type: Hosptail_Types.Information.Information_REQUEST_SUCCESS
+  information: Object
 }
 
 export interface Hospital_Clear_Details {
-  type: Hosptail_Types.Hospital_Details.Hospital_CLEAR_DETAILS
+  type: Hosptail_Types.Information.Hospital_CLEAR_DETAILS
 }
 
 // --------------------------------------------------------------------------
 
-export type Feature_Action = Feature_By_Partner | Feature_By_Partner_Success
+export type Feature_Action =
+  | FeatureByPartner_REQUEST
+  | FeatureByPartner_REQUEST_Success
 
-export interface Feature_By_Partner {
-  type: Hosptail_Types.Feature.FEATURE_BY_PARTNER
+export interface FeatureByPartner_REQUEST {
+  type: Hosptail_Types.Feature.FeatureByPartner_REQUEST
 }
 
-export interface Feature_By_Partner_Success {
-  type: Hosptail_Types.Feature.FEATURE_BY_PARTNER_SUCCESS
+export interface FeatureByPartner_REQUEST_Success {
+  type: Hosptail_Types.Feature.FeatureByPartner_REQUEST_SUCCESS
   feature_list: Array<any>
 }
