@@ -12,5 +12,6 @@ export interface NewAtHome_Request {
 
 export interface NewAtHome_Request_Success {
   type: NewsAtHome_Action_Types.ListNewsAtHome_REQUEST_SUCCESS
-  newsAndEvent: Array<any>
+  newsPin: Array<any>
+  news: Array<any>
 }

@@ -1,5 +1,5 @@
-import { FooterCustom } from '@n17dccn172/booking-libs'
 import React from 'react'
+import { FooterCustom } from '@n17dccn172/booking-libs'
 import { useSelector } from 'react-redux'
 
 const FooterLayout = () => {

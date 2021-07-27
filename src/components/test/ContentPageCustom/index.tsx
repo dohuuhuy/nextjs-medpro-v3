@@ -10,7 +10,7 @@ interface ContentPageCustom {
 
 export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
   if (!getContent) {
-    return null
+    return <em>getContent không tồn tại</em>
   }
 
   const { key, content } = getContent

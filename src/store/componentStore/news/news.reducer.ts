@@ -16,7 +16,7 @@ export default function news_Reducer(
     case NewsAtHome_Action_Types.ListNewsAtHome_REQUEST_SUCCESS:
       return {
         ...state,
-        newsAndEvent: action.newsAndEvent
+        newsAndEvent: action.newsPin.concat(action.news)
       }
 
     default:

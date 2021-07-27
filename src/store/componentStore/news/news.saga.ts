@@ -5,19 +5,16 @@ import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 
 function* getListNewsAtHome() {
   try {
-    let newsAndEvent
-
     const url_pin = `https://cms.medpro.com.vn/posts?pin_in=true&categories.slug=tin-tuc&_limit=1&_sort=updated_at:desc`
     const newsPin: AxiosResponse<Array<any>> = yield call(getData, url_pin)
 
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc&_limit=5&_sort=updated_at:desc`
     const news: AxiosResponse<Array<any>> = yield call(getData, url)
 
-    newsAndEvent = newsPin.concat(news)
-
     yield put({
       type: NewsAtHome_Action_Types.ListNewsAtHome_REQUEST_SUCCESS,
-      newsAndEvent: newsAndEvent
+      newsPin,
+      news
     })
   } catch (error) {}
 }
