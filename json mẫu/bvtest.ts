@@ -268,8 +268,8 @@ export const JSON_EXP = {
           id: '',
           key: 'question',
           title: 'Hỏi đáp nhanh',
-          subtiltle:
-            'Danh sách các câu hỏi đã được hệ thống hóa, bạn có thể tham khảo nhanh',
+          subTitle:
+            'Danh sách các câu hỏi đã được hệ thống hóa, <br/> bạn có thể tham khảo nhanh',
           img: [
             {
               url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconChat.svg'
@@ -282,7 +282,8 @@ export const JSON_EXP = {
           id: '',
           key: 'channels',
           title: 'Các kênh hỗ trợ',
-          subtiltle: 'Liên hệ trực tiếp với chúng tôi qua các kênh hỗ trợ sau',
+          subTitle:
+            'Liên hệ trực tiếp với chúng tôi qua các <br/> kênh hỗ trợ sau',
           img: [
             {
               url: 'https://resource-testing.medpro.com.vn/static/media/icon/contactZalo.svg'
@@ -298,7 +299,7 @@ export const JSON_EXP = {
           id: '',
           key: 'time',
           title: 'Thời gian làm việc',
-          subtiltle: 'Thời gian làm việc từ thứ 2 đến thứ 7 7:30 - 16:30',
+          subTitle: 'Thời gian làm việc từ thứ 2 đến thứ 7 <br/> 7:30 - 16:30',
           img: [
             {
               url: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconTime.svg'

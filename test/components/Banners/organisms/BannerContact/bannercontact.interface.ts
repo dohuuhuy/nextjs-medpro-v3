@@ -12,8 +12,8 @@ export interface ItemBanner {
 export interface ItemCard {
   id?: string
   key: string
-  title?: string
-  subtiltle?: string
+  title: string
+  subTitle: string
   img?: images[]
   link?: string
   textBottom: string
