@@ -1,5 +1,5 @@
 import { set_partnerId_local } from '@actionStore/rootAction'
-import { _DEVELOPMENT } from '@config/envs/env'
+import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
 import { Button, Modal, Select } from 'antd'
 import React, { useState } from 'react'
@@ -35,7 +35,7 @@ const SelectedHospital = () => {
 
   return (
     <div>
-      {_DEVELOPMENT ? (
+      {_DEVELOPMENT || _TESTING ? (
         <Button
           type='primary'
           onClick={showModal}

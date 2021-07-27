@@ -1,4 +1,5 @@
 import { _PRODUCTION } from '@config/envs/env'
+import { client } from '@config/medproSDK'
 import {
   Hospital_Details_Action_Types,
   ListPartners_Action_Types,
@@ -61,6 +62,12 @@ function* watch_partnerId_local() {
 
 function* get_list_partners() {
   try {
+    const x: AxiosResponse = yield client.getFeatureByPartner({
+      partnerid: 'dkanphuoc'
+    })
+
+    console.log('x :>> ', x)
+
     const url =
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(

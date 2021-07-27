@@ -2,6 +2,9 @@ import includeEnvs from './includeEnvs'
 
 export const NODE_ENV = process.env.NODE_ENV || 'development'
 export const ENV = process.env.ENV || 'development'
+
+console.log('ENV :>> ', ENV)
+
 export const currentEnv = includeEnvs[ENV]
 
 export const _TESTING = ENV === 'testing'
