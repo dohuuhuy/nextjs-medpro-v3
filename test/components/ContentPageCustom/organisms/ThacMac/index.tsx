@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { CaretRightOutlined } from '@ant-design/icons'
+import { CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
 import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
 import React, { useEffect, useState } from 'react'
@@ -15,7 +15,10 @@ export const ThacMacContent = ({ content }: any) => {
     return <DataFailure description={'Lỗi không có data thắc mắc'} />
   }
 
-  const [Faq, setFaq] = useState([])
+  const [Faq, setFaq] = useState({
+    id: 1,
+    faq: []
+  })
 
   useEffect(() => {
     isArray(content) && handlerSetFaqbyTab(1)
@@ -23,7 +26,7 @@ export const ThacMacContent = ({ content }: any) => {
 
   const handlerSetFaqbyTab = (id = 1) => {
     const item = find(content, { id })
-    setFaq(item?.faq)
+    setFaq(item)
   }
 
   return (
@@ -35,8 +38,17 @@ export const ThacMacContent = ({ content }: any) => {
             {isArray(content) &&
               content?.map(({ id, name }: any) => {
                 return (
-                  <li key={id} onClick={() => handlerSetFaqbyTab(id)}>
-                    <CaretRightOutlined /> {name}
+                  <li
+                    key={id}
+                    onClick={() => handlerSetFaqbyTab(id)}
+                    className={Faq.id === id ? style.active : ''}
+                  >
+                    {Faq.id === id ? (
+                      <CaretDownOutlined />
+                    ) : (
+                      <CaretRightOutlined />
+                    )}
+                    {name}
                   </li>
                 )
               })}
@@ -44,7 +56,7 @@ export const ThacMacContent = ({ content }: any) => {
         </Col>
         <Col xl={17} className={style.colContentMenu}>
           <Space direction='vertical' style={{ width: '100%' }}>
-            {Faq?.map(({ id, question, answer }) => {
+            {Faq.faq?.map(({ id, question, answer }: any) => {
               return (
                 <Collapse key={id}>
                   <Panel header={question} key='1'>
