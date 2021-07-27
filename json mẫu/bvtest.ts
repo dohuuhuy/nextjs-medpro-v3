@@ -1757,16 +1757,18 @@ export const JSON_EXP = {
       key: 'lien-he',
       linkMaps: '',
       content: {
+        mapsContact:
+          'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2723090642025!2d106.6757408141166!3d10.790443661887062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528d5352152d1%3A0xf4c41192e0bee7af!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24g4buobmcgROG7pW5nIFBLSA!5e0!3m2!1svi!2s!4v1592201096115!5m2!1svi!2s',
         detailsContact: [
           {
             id: '',
-            icon: 'fal fa-hospital',
+            icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hospital.svg',
             text: 'Công Ty Cổ Phần Ứng Dụng PKH®',
             subText: '97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh.'
           },
           {
             id: '',
-            icon: 'fal fa-cog',
+            icon: 'https://resource-testing.medpro.com.vn/static/media/icon/setting-line.svg',
             text: 'HỖ TRỢ KỸ THUẬT',
             subText: '1900.2115'
           }
