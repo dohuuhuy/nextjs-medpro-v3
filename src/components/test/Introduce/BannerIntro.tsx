@@ -1,5 +1,5 @@
 import React from 'react'
-import Styles from './style.module.less'
+import styles from './style.module.less'
 import { Row, Col } from 'antd'
 import Container from '../Container'
 
@@ -14,23 +14,21 @@ interface contentIntroItem {
 
 export const BannerIntro = ({ dataContentIntro }: contentIntro) => {
   return (
-    <Row className={Styles.con_Para}>
-      <Container className={Styles.Para}>
-        <Row className={Styles.boxPara}>
-          <Col span={9} className={Styles.intro}>
-            <div>
-              <span>{dataContentIntro.title}</span>
-            </div>
+    <div className={styles.wapperIntro}>
+      <Container className={styles.Para}>
+        <Row className={styles.boxPara}>
+          <Col xl={9} md={9} sm={24} className={styles.intro}>
+            <span>{dataContentIntro.title}</span>
             <h3>{dataContentIntro.subTitle}</h3>
           </Col>
-          <Col span={1} />
-          <Col span={14} className={Styles.Paragraph}>
+
+          <Col xl={15} md={15} sm={24} className={styles.Paragraph}>
             <p
               dangerouslySetInnerHTML={{ __html: dataContentIntro.description }}
             />
           </Col>
         </Row>
       </Container>
-    </Row>
+    </div>
   )
 }

@@ -1,16 +1,8 @@
-@color0: #3978d7;
-@color1: #ffffff;
-@color2: #011b92;
-
-@width1: 100%;
-@width2: 80%;
-@height6: 50%;
-
 .solutionBox {
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 60px;
   background-color: #f7f9fc;
-  .con_Para {
+  .wapperIntro {
     background-size: cover;
     background: url(https://medpro.com.vn/static/media/bg_new.9578e7c5.jpg)
       no-repeat top;
@@ -20,144 +12,119 @@
     }
     .Para {
       .boxPara {
-        height: @height6;
         .intro {
           span {
             color: #74cece;
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
           }
           h3 {
             color: aliceblue;
-            font-size: 2.1rem;
-            font-weight: 500;
+            font-size: 30px;
+            font-weight: 600;
             line-height: 37px;
           }
         }
         .Paragraph {
-          color: @color1;
-          font-size: 1.0625rem;
+          color: white;
+          font-size: 14px;
           text-align: justify;
+          padding-left: 30px;
+          @media only screen and (max-width: 425px) {
+            padding-left: 0px;
+          }
         }
       }
     }
   }
-  .card {
-    margin-top: -65px;
-    .boxCard {
-      display: flex;
-
-      .footerCard {
-        width: 90%;
+  .containerGroudCard {
+    margin-bottom: 30px;
+    @media only screen and (max-width: 425px) {
+      .groudCard {
         flex-direction: column;
-        display: flex;
-        align-items: center;
-        img {
-          border-radius: 10px;
-          height: 90%;
-          width: 90%;
+        li {
+          width: 100% !important;
         }
-        .footerCard_Text {
-          width: @width2;
-          background-color: @color1;
-          box-shadow: 5px 5px 8px lightgray;
-          margin-top: -50px;
-          padding: 5%;
-
-          transform: translateY(0);
-          transition: 1s;
-
-          .title {
-            text-align: center;
-            span {
-              color: #12263f;
-              font-size: 1.1rem;
-              font-weight: 500;
-              text-transform: uppercase;
-            }
-            p {
-              font-size: 15px;
-              color: black;
+      }
+    }
+    @media only screen and (max-width: 768px) {
+      .groudCard {
+        flex-wrap: wrap;
+        li {
+          width: 50%;
+        }
+      }
+    }
+    @media only screen and (max-width: 1024px) {
+      .groudCard {
+        li {
+          width: unset;
+          .card {
+            .view {
+              img {
+                width: 310px !important;
+              }
             }
           }
-          &:hover {
-            box-shadow: 5px 5px 8px whitesmoke;
-            transform: translateY(-10px);
-            transition: 1s;
-            span {
-              color: @color0;
+        }
+      }
+    }
+    .groudCard {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+      margin-top: -90px;
+      li {
+        text-align: center;
+        padding: 15px;
+        .card {
+          .view {
+            img {
+              width: 340px;
+              border-radius: 5px;
+            }
+          }
+          .cardBody {
+            margin: -45px 8% 0;
+            background: #fff;
+            padding: 15px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+            .title {
+              text-align: center;
+              font-size: 15px;
+              font-weight: 600;
+              color: #12263f;
+            }
+            .subTitle {
+              font-size: 13px;
             }
           }
         }
       }
     }
   }
+
   .footer {
-    margin: 40px 0 60px 0;
+    margin-top: 1rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 13px;
     color: #536275;
     @media (max-width: 380px) {
       font-size: 0.75rem;
     }
-    a {
-      border-bottom: 1px dashed #12263f;
-      padding: 0 1px 5px 0;
-      color: #536275;
+    .dot {
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+      color: #12263f;
       &:hover {
         color: #4e85db;
-      }
-    }
-  }
-}
-@media (max-width: 768px) {
-  .solutionBox {
-    .con_Para {
-      min-width: 0;
-      background-color: @color2 !important;
-      .boxPara {
-        padding: 10px 10px 0 10px !important;
-        .intro {
-          min-width: @width1 !important;
-        }
-        .Paragraph {
-          min-width: @width1 !important;
-        }
-      }
-    }
-    .card {
-      .boxCard {
-        flex-direction: column !important;
-        align-items: center;
-      }
-      .footerCard {
-        margin-bottom: 30px !important;
-        min-width: 100%;
-        @media (min-width: 600px) and (max-width: 768px) {
-          min-width: 70%;
-        }
-        img {
-          min-width: 100% !important;
-          border-radius: 5px !important;
-        }
-        .footerCard_Text {
-          .title {
-            span {
-              font-size: 15px !important;
-              @media (min-width: 600px) and (max-width: 768px) {
-                font-size: 18px !important;
-              }
-            }
-            p {
-              font-size: 14px !important;
-              @media (min-width: 600px) and (max-width: 768px) {
-                font-size: 16px !important;
-              }
-            }
-          }
-        }
       }
     }
   }

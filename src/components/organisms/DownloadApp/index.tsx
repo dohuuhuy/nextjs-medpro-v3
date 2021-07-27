@@ -1,4 +1,4 @@
-import { DownloadCustom } from '@components/test/DownloadApp'
+import { DownloadCustom } from '@n17dccn172/booking-libs'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

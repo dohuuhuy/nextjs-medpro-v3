@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './styles.module.less'
-import { Row, Input, Select, Button } from 'antd'
+import { Row, Input, Select, Button, Form } from 'antd'
 import { HomeOutlined } from '@ant-design/icons'
 import Container from './../../../Container'
 
@@ -18,6 +18,9 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
     return <Container className={style.containerError}>gelo</Container>
   }
   const icon = "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E"
+  const onFinish = (values: any) => {
+    console.log('Received values of form: ', values);
+  }
   return (
     <Row>
       <Row className={style.Contact}>
@@ -40,8 +43,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           )}
         </div>
       </Row>
-      <Row className={style.BoxFill}>
-        <ul>
+      <Form className={style.BoxFill} onFinish={onFinish}>
+        <Form.Item name="username" rules={[{ required: true }]} className={style.BoxItem}>
           <li className={style.Item_title}>
             <label>Họ và tên</label>
             <sup>*</sup>
@@ -52,8 +55,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
               placeholder='Vui lòng nhập họ và tên (có dấu)...'
             />
           </li>
-        </ul>
-        <ul>
+        </Form.Item>
+        <Form.Item name="email" rules={[{ required: true }]} className={style.BoxItem}>
           <li className={style.Item_title}>
             <label>Địa chỉ Email</label>
           </li>
@@ -63,8 +66,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
               placeholder='Vui lòng nhập email...'
             />
           </li>
-        </ul>
-        <ul>
+        </Form.Item>
+        <Form.Item name="phone" rules={[{ required: true }]} className={style.BoxItem}>
           <li className={style.Item_title}>
             <label>Số điện thoại</label>
             <sup>*</sup>
@@ -75,8 +78,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
               placeholder='Vui lòng nhập số điện thoại...'
             />
           </li>
-        </ul>
-        <ul>
+        </Form.Item>
+        <Form.Item name="problem" rules={[{ required: true }]} className={style.BoxItem}>
           <li className={style.Item_title}>
             <label>Vấn đề của bạn</label>
             <sup>*</sup>
@@ -93,8 +96,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
               <Select.Option value='4'>Vấn đề khác</Select.Option>
             </Select>
           </li>
-        </ul>
-        <ul className={style.end}>
+        </Form.Item>
+        <Form.Item name="support" rules={[{ required: true }]} className={style.end}>
           <li className={style.Item_title}>
             <label>Nhập nội dung cần trợ giúp</label>
             <sup>*</sup>
@@ -106,11 +109,11 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
               maxLength={100}
             />
           </li>
-        </ul>
+        </Form.Item>
         <div className={style.button}>
           <Button>gửi hỗ trợ </Button>
         </div>
-      </Row>
+      </Form>
     </Row>
   )
 }

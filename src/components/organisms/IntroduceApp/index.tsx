@@ -1,4 +1,4 @@
-import { IntroduceCustom } from '@components/test/Introduce'
+import { IntroduceCustom } from '@n17dccn172/booking-libs'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

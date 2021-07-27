@@ -37,6 +37,7 @@
   width: 35%;
   height: fit-content;
   padding: 0 38px 0 12px;
+  flex-direction: column;
   @media (max-width: 768px - 1px) {
     min-width: 100%;
     padding: 0;
@@ -67,7 +68,6 @@
     }
   }
 }
-
 .BoxFill {
   width: 65%;
   padding-bottom: 53px;
@@ -96,14 +96,13 @@
         height: 120px;
       }
     }
-    ul {
+    .BoxItem {
       @media (max-width: 768px - 1px) {
         min-width: 100%;
-        padding: 0;
       }
       list-style: none;
-      min-width: 50%;
       margin-bottom: 30px;
+      min-width: 50%;
       padding: 0;
       line-height: 2.2;
       padding-right: 15px;

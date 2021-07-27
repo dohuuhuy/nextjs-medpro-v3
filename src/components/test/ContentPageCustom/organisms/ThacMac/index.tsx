@@ -8,8 +8,6 @@ export const ThacMacContent = ({ content }: any) => {
     return <em>Lỗi không có content ...</em>
   }
 
-  console.log('content :>> ', content)
-
   return (
     <Container className={style.ThacMacContent}>
       <Row className={style.rowThacMac}>

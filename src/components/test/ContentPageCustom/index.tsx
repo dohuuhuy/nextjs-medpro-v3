@@ -8,9 +8,7 @@ interface ContentPageCustom {
   getContent: any
 }
 
-export const ContentPageCustom: React.FC<ContentPageCustom> = ({
-  getContent
-}) => {
+export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
   if (!getContent) {
     return null
   }

@@ -1,5 +1,4 @@
-import { SupportMedthodCustom } from '@components/test/SupportMethod'
-// import { SupportMedthodCustom } from '@n17dccn172/booking-libs'
+import { SupportMedthodCustom } from '@n17dccn172/booking-libs'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
