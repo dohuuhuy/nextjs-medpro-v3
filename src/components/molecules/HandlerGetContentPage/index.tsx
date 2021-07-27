@@ -1,5 +1,6 @@
 // import { ContentPageCustom } from '@n17dccn172/booking-libs'
 import { ContentPageCustom } from '@components/test/ContentPageCustom'
+import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -7,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 const HandlerGetContentPage = () => {
   const contentPage = useSelector(
-    (state: any) => state.hospital_Reducer.information.contentPage
+    (state: AppState) => state.hospital_Reducer.information.contentPage
   )
 
   const router = useRouter()

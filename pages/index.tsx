@@ -1,4 +1,5 @@
 import { getNewsAndEvent } from '@actionStore/rootAction'
+import { AppState } from '@store/interface'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +9,7 @@ const HomePage = () => {
   const dispatch = useDispatch()
 
   const newsAndEvent = useSelector(
-    (state: any) => state.news_Reducer.newsAndEvent
+    (state: AppState) => state.news_Reducer.newsAndEvent
   )
 
   useEffect(() => {

@@ -1,10 +1,11 @@
 import { DownloadCustom } from '@n17dccn172/booking-libs'
+import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
 const DownloadLayout = () => {
   const downloadApp = useSelector(
-    (state: any) => state.hospital_Reducer.information.downloadApp
+    (state: AppState) => state.hospital_Reducer.information.downloadApp
   )
 
   return <DownloadCustom dataDownload={downloadApp} />

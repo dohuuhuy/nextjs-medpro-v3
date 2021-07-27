@@ -2,6 +2,7 @@ import { get_PartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import '@n17dccn172/booking-libs/libs/index.css'
+import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
@@ -20,7 +21,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   const dispatch = useDispatch()
 
   const list_partners: any = useSelector(
-    (state: any) => state.totalData_Reducer.list_partners
+    (state: AppState) => state.totalData_Reducer.list_partners
   )
 
   useEffect(() => {

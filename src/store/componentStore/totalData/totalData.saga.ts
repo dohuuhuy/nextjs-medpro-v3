@@ -1,29 +1,22 @@
 import { _PRODUCTION } from '@config/envs/env'
+import { getData } from '@store/api'
 import {
+  AppState,
   Hosptail_Types,
-  list_partners_item,
-  totalData_Types,
   totalData_Params,
-  totalData_State
+  totalData_State,
+  totalData_Types
 } from '@store/interface'
 import { persistor } from '@store/rootStore'
 import { openToast } from '@utils/Notification'
 import { get_PartnerId } from '@utils/run_local_hospitals'
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-const getData = async (url: any) => {
-  const res = await axios.get(url)
-  const { data } = res
-  return data
-}
-
 function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
-  const totalData_Reducer: totalData_State = yield select(
-    (state) => state.totalData_Reducer
+  const list_partners: totalData_State = yield select(
+    (state: AppState) => state.totalData_Reducer.list_partners
   )
-
-  const { list_partners } = totalData_Reducer
 
   const runObject: get_PartnerId = {
     listPartners: list_partners,
@@ -64,10 +57,7 @@ function* get_list_partners() {
   try {
     const url =
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-    const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
-      getData,
-      url
-    )
+    const listPartners: AxiosResponse = yield call(getData, url)
 
     yield put({
       type: totalData_Types.ListPartners.ListPartners_REQUEST_SUCCESS,

@@ -1,6 +1,6 @@
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
-import { Information, Hosptail_Types, totalData_Types } from '@store/interface'
+import { AppState, Hosptail_Types, totalData_Types } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import axios, { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -26,7 +26,7 @@ function* hospital_get_details({ partnerId }: any) {
     const url =
       'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
 
-    const res: AxiosResponse<Information> = yield call(getData, url)
+    const res: AxiosResponse = yield call(getData, url)
     console.error(res)
 
     yield put({
@@ -77,8 +77,7 @@ function* watch_hospital_get_details() {
 function* FeatureByPartner_REQUEST() {
   try {
     const partnerid: string = yield select(
-      (state: { totalData_Reducer: { partnerId: any } }) =>
-        state.totalData_Reducer.partnerId
+      (state: AppState) => state.totalData_Reducer.partnerId
     )
 
     const respone: AxiosResponse = yield client.getFeatureByPartner({

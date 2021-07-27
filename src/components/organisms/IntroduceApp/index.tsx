@@ -1,10 +1,11 @@
 import { IntroduceCustom } from '@n17dccn172/booking-libs'
+import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
 const IntroduceLayout = () => {
   const Introduce = useSelector(
-    (state: any) => state.hospital_Reducer.information.introducHospital
+    (state: AppState) => state.hospital_Reducer.information.introducHospital
   )
 
   return <IntroduceCustom dataIntroduce={Introduce} />

@@ -12,16 +12,8 @@ const SelectedHospital = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const showModal = () => {
+  const toggle = () => {
     setIsModalVisible(!isModalVisible)
-  }
-
-  const handleOk = () => {
-    setIsModalVisible(false)
-  }
-
-  const handleCancel = () => {
-    setIsModalVisible(false)
   }
 
   function onChange(value: any) {
@@ -29,8 +21,8 @@ const SelectedHospital = () => {
     setIsModalVisible(false)
   }
 
-  const list_partners: any = useSelector<AppState>(
-    (state: any) => state.totalData_Reducer.list_partners
+  const list_partners = useSelector(
+    (state: AppState) => state.totalData_Reducer.list_partners
   )
 
   return (
@@ -38,7 +30,7 @@ const SelectedHospital = () => {
       {_DEVELOPMENT || _TESTING ? (
         <Button
           type='primary'
-          onClick={showModal}
+          onClick={toggle}
           className={styles.Btn_local_hospital}
         >
           Chọn bệnh viện trên localhost
@@ -46,8 +38,8 @@ const SelectedHospital = () => {
       ) : null}
       <Modal
         footer={false}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        onOk={toggle}
+        onCancel={toggle}
         title=' Nhập partnerId bệnh viện để hiển thị trên localhost'
         visible={isModalVisible}
         closable={isModalVisible}
@@ -68,15 +60,13 @@ const SelectedHospital = () => {
             return option?.children
           }}
         >
-          {list_partners?.map(
-            ({ partnerId, nameHospital }: any, index: number) => {
-              return (
-                <Option key={index} value={partnerId}>
-                  {nameHospital}
-                </Option>
-              )
-            }
-          )}
+          {list_partners?.map(({ partnerId, nameHospital }, index: number) => {
+            return (
+              <Option key={index} value={partnerId}>
+                {nameHospital}
+              </Option>
+            )
+          })}
         </Select>
       </Modal>
     </div>
@@ -84,10 +74,3 @@ const SelectedHospital = () => {
 }
 
 export default SelectedHospital
-
-export const listHospital = [
-  {
-    name: 'bệnh viện trưng vương',
-    partnerId: 'trungvuong'
-  }
-]
