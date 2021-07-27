@@ -69,7 +69,7 @@ function* hospital_get_details({ partnerId }: any) {
 
 function* watch_hospital_get_details() {
   yield takeEvery(
-    Hosptail_Types.Information.Information_REQUEST as any,
+    Hosptail_Types.Information.Information_REQUEST,
     hospital_get_details
   )
 }
@@ -95,7 +95,7 @@ function* FeatureByPartner_REQUEST() {
 
 function* watch_FeatureByPartner_REQUEST() {
   yield takeLatest(
-    Hosptail_Types.Feature.FeatureByPartner_REQUEST as any,
+    Hosptail_Types.Feature.FeatureByPartner_REQUEST,
     FeatureByPartner_REQUEST
   )
 }

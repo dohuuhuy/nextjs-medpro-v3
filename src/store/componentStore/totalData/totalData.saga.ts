@@ -18,7 +18,7 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
     (state: AppState) => state.totalData_Reducer.list_partners
   )
 
-  const runObject: get_PartnerId = {
+  const runObject = {
     listPartners: list_partners,
     partnerId,
     local: true
@@ -72,10 +72,6 @@ function* get_list_partners() {
           partnerId: getPartnerId
         })
       } else {
-        yield put({
-          type: totalData_Types.ListPartners.ListPartners_ERROR
-        })
-
         openToast({
           message:
             'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
@@ -93,7 +89,7 @@ function* get_list_partners() {
 
 function* watch_list_partners() {
   yield takeLatest(
-    totalData_Types.ListPartners.ListPartners_REQUEST as any,
+    totalData_Types.ListPartners.ListPartners_REQUEST,
     get_list_partners
   )
 }

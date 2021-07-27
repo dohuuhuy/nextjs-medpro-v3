@@ -21,8 +21,6 @@ export const get_PartnerId = ({
       (i: any) => i.partnerId === partnerId
     )
 
-    // const is_partnerId: any = find(listPartners, partnerId)
-
     if (!is_partnerId) {
       return null
     }
@@ -47,14 +45,4 @@ export const get_PartnerId = ({
   )
   if (!res) return null
   return res?.partnerId
-}
-
-export const check_list_partners = () => {
-  const list_partners = window.localStorage.getItem('list_partners')
-
-  if (list_partners !== null) {
-    return JSON.parse(list_partners)
-  } else {
-    window.location.reload()
-  }
 }
