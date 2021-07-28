@@ -1,10 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+import NewsPageDetails from '@components/organisms/NewsPage'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const TinTucPage = () => {
-  return <HandlerGetContentPage />
+  return <NewsPageDetails />
 }
 
 TinTucPage.Layout = DefaultLayout

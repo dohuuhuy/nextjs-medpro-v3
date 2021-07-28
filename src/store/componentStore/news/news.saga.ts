@@ -26,7 +26,25 @@ function* watch_getNewsAndEvent() {
   )
 }
 
+function* getListNewsBanner() {
+  try {
+    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
+    const response: AxiosResponse = yield call(getData, url)
+    yield put({
+      type: news_Types.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS,
+      listNewsBanner: response
+    })
+  } catch (error) {}
+}
+
+function* watch_getListNewsBanner() {
+  yield takeLatest(
+    news_Types.ListNewsBanner.ListNewsBanner_REQUEST,
+    getListNewsBanner
+  )
+}
+
 const news_Sagas = function* root() {
-  yield all([fork(watch_getNewsAndEvent)])
+  yield all([fork(watch_getNewsAndEvent), fork(watch_getListNewsBanner)])
 }
 export default news_Sagas

@@ -1,13 +1,27 @@
+import { getListNewsBanner } from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { check } from '@utils/checkValue'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-const NewsEventLayout = () => {
+const NewsPageDetails = () => {
   const newsAndEvent = useSelector(
     (state: AppState) => state.news_Reducer.newsAndEvent
   )
 
+  const listNewsBanner = useSelector(
+    (state: AppState) => state.news_Reducer.listNewsBanner
+  )
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (check(listNewsBanner)) {
+      dispatch(getListNewsBanner())
+    }
+  })
+
   return <NewsPageCustom dataNewsPage={newsAndEvent} />
 }
-export default NewsEventLayout
+export default NewsPageDetails

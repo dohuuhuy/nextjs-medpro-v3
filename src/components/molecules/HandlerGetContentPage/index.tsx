@@ -7,13 +7,9 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { NewsPageCustom } from '../../../../test/components/NewsPage'
 const HandlerGetContentPage = () => {
   const contentPage = useSelector(
     (state: AppState) => state.hospital_Reducer.information.contentPage
-  )
-  const newsAndEvent = useSelector(
-    (state: AppState) => state.news_Reducer.newsAndEvent
   )
 
   const router = useRouter()
@@ -24,9 +20,7 @@ const HandlerGetContentPage = () => {
 
   const getContent = find(contentPage, { key: _pathname })
 
-
-  // return <ContentPageCustom getContent={getContent} />
-  return <NewsPageCustom dataNewsPage={newsAndEvent} />
+  return <ContentPageCustom getContent={getContent} />
 }
 
 export default HandlerGetContentPage

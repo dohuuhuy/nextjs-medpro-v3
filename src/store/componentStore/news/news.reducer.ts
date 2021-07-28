@@ -1,7 +1,8 @@
 import { news_Action, news_State, news_Types } from '@store/interface'
 
 const totalData_InitialState: news_State = {
-  newsAndEvent: []
+  newsAndEvent: [],
+  listNewsBanner: []
 }
 
 export default function news_Reducer(
@@ -13,6 +14,12 @@ export default function news_Reducer(
       return {
         ...state,
         newsAndEvent: action.newsPin.concat(action.news)
+      }
+
+    case news_Types.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listNewsBanner: action.listNewsBanner
       }
 
     default:
