@@ -1,12 +1,12 @@
 import { news_Action, news_State, news_Types } from '@store/interface'
 
-const totalData_InitialState: news_State = {
+const news_InitialState: news_State = {
   newsAndEvent: [],
   listNewsBanner: []
 }
 
 export default function news_Reducer(
-  state = totalData_InitialState,
+  state = news_InitialState,
   action: news_Action
 ) {
   switch (action.type) {
