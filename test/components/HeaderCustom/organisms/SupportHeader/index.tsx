@@ -7,10 +7,19 @@ interface SupportHeader {
 }
 
 export const SupportHeader = ({ support }: SupportHeader) => {
+  const imageErrorSrc = '/images/error.svg'
+  const urlImage = support.icon || imageErrorSrc
+
   return (
     <div className={style.SupportHeader}>
       <div className={style.imgSupport}>
-        <img src={support.icon} alt='Logo support' />
+        <img
+          src={urlImage}
+          alt='icon'
+          onError={(e: any) => {
+            e.target.src = imageErrorSrc
+          }}
+        />
       </div>
 
       <div className={style.descSupport}>

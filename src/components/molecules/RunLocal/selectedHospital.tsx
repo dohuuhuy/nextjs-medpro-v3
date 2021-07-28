@@ -26,6 +26,14 @@ const SelectedHospital = () => {
     (state: AppState) => state.totalData_Reducer.list_partners
   )
 
+  if (list_partners.length < 1) {
+    list_partners.push({
+      nameHospital: 'Bệnh viện Test',
+      domain: ['bvtest-testing.medpro.com.vn'],
+      partnerId: 'bvtest'
+    })
+  }
+
   return (
     <div>
       <BackTop>

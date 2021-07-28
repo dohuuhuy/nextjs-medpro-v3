@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-key */
 import React from 'react'
 import { ItemBanner, ItemCard } from './bannercontact.interface'
 import style from './styles.module.less'
@@ -22,7 +20,18 @@ const CardContact = ({ cardContact }: ItemBanner) => {
 
                 <figure>
                   {img?.map(({ url }) => {
-                    return <img key={url} src={url} alt={url} />
+                    const imageErrorSrc = '/images/error.svg'
+                    const urlImage = url || imageErrorSrc
+                    return (
+                      <img
+                        key={url}
+                        src={urlImage}
+                        alt={'icon'}
+                        onError={(e: any) => {
+                          e.target.src = imageErrorSrc
+                        }}
+                      />
+                    )
                   })}
                 </figure>
                 <a

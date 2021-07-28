@@ -30,12 +30,21 @@ export const BannerHome = ({ getBanner, listFeature }: any) => {
           <Col span={24} sm={24} xl={24} md={24} className={style.ColBoxServic}>
             <ul className={style.listBoxService}>
               {listFeature.map(({ name, image, status }: any, i: number) => {
+                const imageErrorSrc = '/images/error.svg'
+                const urlImage = image || imageErrorSrc
+
                 if (status) {
                   return (
                     <li key={i}>
                       <Link href='/'>
                         <a>
-                          <img src={image} alt='dịch vụ' />
+                          <img
+                            src={urlImage}
+                            onError={(e: any) => {
+                              e.target.src = imageErrorSrc
+                            }}
+                            alt='dịch vụ'
+                          />
                           <p>{name}</p>
                         </a>
                       </Link>
