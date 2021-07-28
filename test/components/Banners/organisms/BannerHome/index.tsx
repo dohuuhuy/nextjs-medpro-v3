@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { getListHospital } from '@actionStore/rootAction'
 import { check } from '@utils/checkValue'
 import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import Container from '../../../Container'
 import style from './style.module.less'
 
@@ -12,20 +10,19 @@ export const BannerHome = ({
   getBanner,
   listFeature,
   partnerId,
-  appId
+  appId,
+  dispatchListHospital
 }: any) => {
   const router = useRouter()
-
-  const dispatch = useDispatch()
 
   if (!getBanner) {
     return <em> Không có dataBannerHome</em>
   }
   const { imageBackground } = getBanner
 
-  const selectFeature = (type: any) => {
+  const SelectFeature = (type: string) => {
     if (appId === 'medpro' && check(type)) {
-      dispatch(getListHospital())
+      dispatchListHospital()
       router.push('/chon-benh-vien')
     }
   }
@@ -55,12 +52,7 @@ export const BannerHome = ({
 
                   if (status) {
                     return (
-                      <li
-                        key={i}
-                        onClick={() => {
-                          selectFeature(type)
-                        }}
-                      >
+                      <li key={i} onClick={() => SelectFeature(type)}>
                         <img
                           src={urlImage}
                           onError={(e: any) => {

@@ -100,8 +100,11 @@ function* getListHospital() {
     const response: AxiosResponse = yield client.getHospitalListByAppId({
       appid
     })
-
-    console.log('response :>> ', response)
+    const { data } = response
+    yield put({
+      type: Hosptail_Types.ListHospital.ListHospital_REQUEST_SUCCESS,
+      listHospital: data
+    })
   } catch (error) {}
 }
 

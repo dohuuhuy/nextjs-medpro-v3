@@ -44,6 +44,12 @@ export default function hospital_Reducer(
         feature_list: action.feature_list
       }
 
+    case Hosptail_Types.ListHospital.ListHospital_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listHospital: action.listHospital
+      }
+
     default:
       return state
   }

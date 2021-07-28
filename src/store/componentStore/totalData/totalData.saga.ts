@@ -59,8 +59,6 @@ function* get_list_partners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse = yield call(getData, url)
 
-    console.log('listPartners :>> ', listPartners)
-
     yield put({
       type: totalData_Types.ListPartners.ListPartners_REQUEST_SUCCESS,
       list_partners: listPartners
