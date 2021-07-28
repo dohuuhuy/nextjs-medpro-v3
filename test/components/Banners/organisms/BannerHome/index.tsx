@@ -48,18 +48,14 @@ export const BannerHome = ({
                 ({ name, image, status, type }: any, i: number) => {
                   const imageErrorSrc = '/images/error.svg'
                   const urlImage = image || imageErrorSrc
-
+                  const onError = (e: any) => {
+                    e.target.src = imageErrorSrc
+                  }
                   if (status) {
                     return (
                       <li key={i} onClick={() => SelectFeature(type)}>
                         <a>
-                          <img
-                            src={urlImage}
-                            onError={(e: any) => {
-                              e.target.src = imageErrorSrc
-                            }}
-                            alt='dịch vụ'
-                          />
+                          <img src={urlImage} onError={onError} />
                           <p>{name}</p>
                         </a>
                       </li>

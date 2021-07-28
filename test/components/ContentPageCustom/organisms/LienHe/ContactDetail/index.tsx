@@ -36,7 +36,7 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
             ]}
           >
             <Input
-              autoFocus
+              autoFocus={true}
               className={style.input}
               placeholder='Vui lòng nhập họ và tên (có dấu)...'
             />

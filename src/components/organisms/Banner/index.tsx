@@ -26,7 +26,7 @@ const BannerLayout = () => {
   const dispatch = useDispatch()
   return (
     <BannersCustom
-      dispatchListHospital={() => dispatch(getListHospital())}
+      dispatchListHospital={dispatch(getListHospital())}
       getBanner={getBanner}
       listFeature={listFeature}
       partnerId={partnerId}

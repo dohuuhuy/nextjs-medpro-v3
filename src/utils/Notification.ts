@@ -11,10 +11,10 @@ export const openToast = ({
     if (duration) {
       return duration
     } else {
-      if ((type = 'error')) return 7
-      if ((type = 'warning')) return 4
-      if ((type = 'info')) return 9
-      if ((type = 'success')) return 6
+      if (type === 'error') return 7
+      if (type === 'warning') return 4
+      if (type === 'info') return 9
+      if (type === 'success') return 6
       return 3
     }
   }

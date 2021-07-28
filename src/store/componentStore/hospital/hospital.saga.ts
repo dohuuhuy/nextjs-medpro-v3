@@ -82,7 +82,7 @@ function* getFeatureByPartner() {
       listFeature: data
     })
   } catch (error) {
-    error
+    console.error(error)
   }
 }
 

@@ -19,7 +19,7 @@ function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
   )
 
   const runObject = {
-    listPartners: listPartners,
+    listPartners,
     partnerId,
     local: true
   }
@@ -36,12 +36,6 @@ function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
     yield put({
       type: HosptailTypes.Information.INFORMATION_REQUEST,
       partnerId: getPartner
-    })
-  } else {
-    openToast({
-      message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
-      type: 'error',
-      duration: 3
     })
   }
 }

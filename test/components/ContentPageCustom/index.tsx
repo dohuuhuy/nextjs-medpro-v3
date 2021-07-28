@@ -15,7 +15,6 @@ export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
   }
   const { key, content } = getContent
 
-
   switch (key) {
     case 'thac-mac':
       return <ThacMacContent content={content} />

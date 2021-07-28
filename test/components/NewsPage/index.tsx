@@ -54,7 +54,7 @@ export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
           </li>
         </ul>
       </Row>
-      <Row className={styles.rowContent}></Row>
+      <Row className={styles.rowContent} />
     </Container>
   )
 }

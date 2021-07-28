@@ -1,33 +1,33 @@
 import { TotalDataTypes } from '@store/interface'
 
-export type TotalDataActions = listPartners_Action | partnerId_local_Action
+export type TotalDataActions = ListPartnersAction | PartnerIdlocalAction
 
 // ----------------------------------------------------------------------------------------------
 
-export type listPartners_Action =
-  | LIST_PARTNERS_REQUEST
-  | LIST_PARTNERS_REQUEST_Success
-  | set_parnerId
+export type ListPartnersAction =
+  | ListPartnersReques
+  | ListPartnersRequestSuccess
+  | SetParnerId
 
-export interface LIST_PARTNERS_REQUEST {
+export interface ListPartnersReques {
   type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST
 }
 
-export interface LIST_PARTNERS_REQUEST_Success {
+export interface ListPartnersRequestSuccess {
   [x: string]: any
   type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS
   list_partners: any[]
 }
 
-export interface set_parnerId {
+export interface SetParnerId {
   type: TotalDataTypes.ListPartners.SET_PARTNERID
   partnerId: any
 }
 
 // ----------------------------------------------------------------------------------------------
-export type partnerId_local_Action = setPartnerIdLocal
+export type PartnerIdlocalAction = SetPartnerIdLocal
 
-export interface setPartnerIdLocal {
+export interface SetPartnerIdLocal {
   type: TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST
   partnerId: string
 }

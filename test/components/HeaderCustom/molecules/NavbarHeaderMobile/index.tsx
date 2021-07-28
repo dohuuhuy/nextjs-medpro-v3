@@ -5,7 +5,7 @@ import style from './styles.module.less'
 
 interface Props {
   logo: string
-  togleDrawer: any
+  togleDrawer?: any
   drawer: boolean
 }
 
@@ -24,7 +24,7 @@ export const NavbarHeaderMobile = ({
         </Col>
         <Col span={4} className={style.colButtonHeaderMobile}>
           <button
-            onClick={() => togleDrawer()}
+            onClick={togleDrawer}
             className={drawer ? style.btnClose : style.btnMenu}
           >
             {drawer ? (

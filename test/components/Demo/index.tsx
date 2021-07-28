@@ -10,21 +10,16 @@ interface Props {
 }
 
 export const Demo = ({ text, funcTest, funcLogin }: Props) => {
+  const funcTests = () => funcTest()
+  const funcLogins = () => funcLogin()
   return (
     <Container className={styles.demo}>
       {text}
       <div>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
-        <button onClick={() => funcTest()}>thử nghiệm truyền func</button>
+        <button onClick={funcTests}>thử nghiệm truyền func</button>
       </div>
       <div>
-        <Button className={styles.BtnDel} onClick={() => funcLogin()}>
+        <Button className={styles.BtnDel} onClick={funcLogins}>
           Đăng nhập
         </Button>
       </div>

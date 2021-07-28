@@ -5,6 +5,7 @@ import '@n17dccn172/booking-libs/libs/index.css'
 import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
+import { check } from '@utils/checkValue'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppContext } from 'next/app'
@@ -26,7 +27,7 @@ const MyApp: FC<any> = ({ Component, pageProps }) => {
   )
 
   useEffect(() => {
-    if (listPartners.length < 1) {
+    if (check(listPartners)) {
       dispatch(getPartnerId())
     }
   })

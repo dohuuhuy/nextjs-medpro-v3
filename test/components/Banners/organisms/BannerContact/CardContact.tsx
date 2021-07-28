@@ -21,14 +21,16 @@ const CardContact = ({ cardContact }: ItemBanner) => {
                   {img?.map(({ url }) => {
                     const imageErrorSrc = '/images/error.svg'
                     const urlImage = url || imageErrorSrc
+
+                    const onError = (e: any) => {
+                      e.target.src = imageErrorSrc
+                    }
                     return (
                       <img
                         key={url}
                         src={urlImage}
                         alt={'icon'}
-                        onError={(e: any) => {
-                          e.target.src = imageErrorSrc
-                        }}
+                        onError={onError}
                       />
                     )
                   })}

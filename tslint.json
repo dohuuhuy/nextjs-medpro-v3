@@ -6,15 +6,12 @@
     "tslint-config-prettier"
   ],
   "rules": {
-    "curly": [
-      true,
-      "ignore-same-line"
-    ],
-    "ordered-imports": false,
+    "jsx-no-lambda": false,
+    "curly": [true, "ignore-same-line"],
+    "no-console": ["error", false],
+    "no-namespace": false,
     "no-submodule-imports": false,
     "no-implicit-dependencies": false,
-    "no-var-requires": false,
-    "interface-name": false,
-    "object-literal-sort-keys": false
+    "no-var-requires": false
   }
 }

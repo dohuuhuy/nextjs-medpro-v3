@@ -22,7 +22,7 @@ export const DrawerMenuHeader = ({ dataHeader, Authencartion }: Props) => {
       <NavbarHeaderMobile
         drawer={drawer}
         logo={logoHeaderMobile}
-        togleDrawer={() => visibleDrawer()}
+        togleDrawer={visibleDrawer}
       />
       <Drawer
         placement='right'
@@ -38,7 +38,7 @@ export const DrawerMenuHeader = ({ dataHeader, Authencartion }: Props) => {
           listSupport={listSupport}
           Authencartion={Authencartion}
           logo={logoHeaderMobile}
-          setDrawer={() => visibleDrawer()}
+          setDrawer={visibleDrawer}
         />
       </Drawer>
     </React.Fragment>

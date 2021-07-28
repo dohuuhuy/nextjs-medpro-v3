@@ -2,6 +2,7 @@ import { setPartnerIdLocal } from '@actionStore/rootAction'
 import { ArrowUpOutlined } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
+import { check } from '@utils/checkValue'
 import { BackTop, Button, Modal, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,8 +14,14 @@ const SelectedHospital = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
+  const { listPartners, partnerId } = useSelector(
+    (state: AppState) => state.totalDataReducer
+  )
+
   useEffect(() => {
-    dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
+    if (check(partnerId)) {
+      dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
+    }
   })
 
   const toggle = () => {
@@ -26,9 +33,12 @@ const SelectedHospital = () => {
     setIsModalVisible(false)
   }
 
-  const listPartners = useSelector(
-    (state: AppState) => state.totalDataReducer.listPartners
-  )
+  const filterOption = (input: string, option: any) => {
+    if (option?.children) {
+      return option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
+    return option?.children
+  }
 
   return (
     <div>
@@ -73,22 +83,17 @@ const SelectedHospital = () => {
           placeholder='Chọn bệnh viện'
           optionFilterProp='children'
           onChange={onChange}
-          filterOption={(input, option) => {
-            if (option?.children) {
+          filterOption={filterOption}
+        >
+          {listPartners?.map(
+            ({ partnerId: partnerIdItem, nameHospital }, index: number) => {
               return (
-                option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                <Option key={index} value={partnerIdItem}>
+                  {nameHospital}
+                </Option>
               )
             }
-            return option?.children
-          }}
-        >
-          {listPartners?.map(({ partnerId, nameHospital }, index: number) => {
-            return (
-              <Option key={index} value={partnerId}>
-                {nameHospital}
-              </Option>
-            )
-          })}
+          )}
         </Select>
       </Modal>
     </div>

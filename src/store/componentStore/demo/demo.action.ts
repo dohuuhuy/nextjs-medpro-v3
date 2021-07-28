@@ -2,7 +2,7 @@ import { demoAction, demoActionTypes, demoParams } from '@store/interface'
 
 export const getDemo = ({
   nameColor
-}: demoParams.getDemo_Params): demoAction => {
+}: demoParams.GetDemoParams): demoAction => {
   return {
     type: demoActionTypes.GET_DEMO,
     nameColor

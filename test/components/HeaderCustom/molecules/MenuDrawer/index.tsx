@@ -1,6 +1,6 @@
-import Container from '../../../Container'
 import { Row } from 'antd'
 import React from 'react'
+import Container from '../../../Container'
 import { NavbarHeaderMobile } from '../NavbarHeaderMobile'
 import style from './styles.module.less'
 
@@ -11,21 +11,12 @@ interface Props {
   Authencartion: any[]
 }
 
-export const MenuDrawer = ({
-  setDrawer,
-  logo,
-  listSupport,
-  Authencartion
-}: Props) => {
+export const MenuDrawer = ({ logo, listSupport, Authencartion }: Props) => {
   const { funcGroup, guideGroup, supportGroup }: any = listSupport
   const { isAuthen, nameUser }: any = Authencartion
   return (
     <div className={style.drawerMenu}>
-      <NavbarHeaderMobile
-        drawer={true}
-        logo={logo}
-        togleDrawer={() => setDrawer()}
-      />
+      <NavbarHeaderMobile drawer={true} logo={logo} />
       <Container className={style.containerDrawerMenu}>
         <Row className={style.rowView}>
           <div className={style.itemSingle}>

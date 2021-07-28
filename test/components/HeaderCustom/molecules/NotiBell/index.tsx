@@ -6,6 +6,9 @@ import style from './styles.module.less'
 
 export const NoitiBell = ({ notification }: any) => {
   const [bell, setBell] = useState(false)
+
+  const onClick = () => setBell(!bell)
+
   return (
     <Dropdown
       overlay={<DropdownNoti />}
@@ -20,7 +23,7 @@ export const NoitiBell = ({ notification }: any) => {
       >
         <a
           className={bell ? style.activeBell : 'ant-dropdown-link'}
-          onClick={() => setBell(!bell)}
+          onClick={onClick}
         >
           <BellOutlined style={{ fontSize: '20px', color: '#08c' }} />
         </a>

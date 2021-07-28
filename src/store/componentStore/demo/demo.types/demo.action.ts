@@ -1,22 +1,22 @@
 import { demoActionTypes } from '@store/interface'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
-export type demoAction = get_Demo | demo_success | demo_failure | deleteColor
+export type demoAction = GetDemo | DemoSuccess | DemoFailure | DeleteColor
 
-export interface get_Demo {
+export interface GetDemo {
   type: demoActionTypes.GET_DEMO
   nameColor: string
 }
 
-export interface deleteColor {
+export interface DeleteColor {
   type: demoActionTypes.DELETE_COLOR
 }
 
-export interface demo_success {
+export interface DemoSuccess {
   type: demoActionTypes.DEMO_SUCCESS
   nameColor: string
 }
 
-export interface demo_failure {
+export interface DemoFailure {
   type: demoActionTypes.DEMO_FAILURE
 }

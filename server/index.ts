@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import next from 'next'
 const express = require('express')
 const server = express()

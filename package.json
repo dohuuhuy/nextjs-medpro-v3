@@ -15,9 +15,9 @@
     "start:testing": "cross-env NODE_ENV=production ENV=testing PORT=3007 node dist/index.js",
     "start:staging": "cross-env NODE_ENV=production ENV=staging PORT=3008 node dist/index.js",
     "start:production": "cross-env NODE_ENV=production ENV=production PORT=3009 node dist/index.js",
-    "export": " next build && next export",
+    "export": "next build && next export",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
-    "lint:ts": "npm run prettier && tslint -c tslint.json -t stylish --fix {pages,src,server}/**/*.{ts,tsx}",
+    "lint:ts": "tslint -c tslint.json -t stylish --fix {pages,src,test,server}/**/*.{ts,tsx}",
     "lint:less": "stylelint src/**/*.less",
     "lint:types": "tsc -p . --noEmit"
   },

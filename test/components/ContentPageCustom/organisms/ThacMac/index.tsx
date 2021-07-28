@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import { CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
 import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
@@ -10,7 +7,6 @@ import style from './styles.module.less'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
-  console.log("Thắc mắc", content)
   const { checkDataInput, DataFailure } = require('./../../../DataFailure')
   if (checkDataInput(content)) {
     return <DataFailure description={'Lỗi không có data thắc mắc'} />
@@ -22,13 +18,17 @@ export const ThacMacContent = ({ content }: any) => {
   })
 
   useEffect(() => {
-    isArray(content) && handlerSetFaqbyTab(1)
+    if (isArray(content)) {
+      handlerSetFaqbyTab(1)
+    }
   }, [])
 
   const handlerSetFaqbyTab = (id: any) => {
     const item = find(content, { id })
     setFaq(item)
   }
+
+  const x = (id: any) => handlerSetFaqbyTab(id)
 
   return (
     <Container className={style.ThacMacContent}>
@@ -41,7 +41,7 @@ export const ThacMacContent = ({ content }: any) => {
                 return (
                   <li
                     key={id}
-                    onClick={() => handlerSetFaqbyTab(id)}
+                    onClick={() => x(id)}
                     className={Faq.id === id ? style.active : ''}
                   >
                     {Faq.id === id ? (

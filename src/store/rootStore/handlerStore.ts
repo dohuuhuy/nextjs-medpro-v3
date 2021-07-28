@@ -21,11 +21,9 @@ export const checkVersion = (persistor: Persistor) => {
   if (localVersion) {
     if (localVersion !== VERSION) {
       window.localStorage.removeItem('jwt')
-      console.log('Xóa persistor :>> ', localVersion, VERSION)
       persistor.purge()
     }
   } else {
-    console.log('Xóa persistor :>> ', localVersion, VERSION)
     persistor.purge()
   }
 }

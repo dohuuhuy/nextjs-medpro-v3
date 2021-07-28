@@ -1,4 +1,6 @@
-export interface getPartnerId {
+import { find } from 'lodash'
+
+export interface GetPartnerId {
   listPartners: any
   partnerId?: string
   local?: boolean
@@ -15,21 +17,19 @@ export const findPartnerId = ({
   partnerId,
   listPartners,
   local
-}: getPartnerId) => {
+}: GetPartnerId) => {
   if (local) {
-    const is_partnerId: any = listPartners.find(
-      (i: any) => i.partnerId === partnerId
-    )
+    const isPartnerId: any = find(listPartners, { partnerId })
 
-    if (!is_partnerId) {
+    if (!isPartnerId) {
       return null
     }
 
-    const is_domain: any = listPartners.find((i: any) =>
+    const isDomain: any = listPartners.find((i: any) =>
       i.domain.includes('localhost')
     )
 
-    if (is_domain) {
+    if (isDomain) {
       listPartners.pop()
     }
 
