@@ -1,5 +1,6 @@
 import { getNewsAndEvent } from '@actionStore/rootAction'
 import { AppState } from '@store/interface'
+import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,7 +14,7 @@ const HomePage = () => {
   )
 
   useEffect(() => {
-    if (newsAndEvent.length < 1) {
+    if (check(newsAndEvent)) {
       dispatch(getNewsAndEvent())
     }
   })
