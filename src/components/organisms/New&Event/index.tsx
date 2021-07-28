@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const NewsEventLayout = () => {
   const newsAndEvent = useSelector(
-    (state: AppState) => state.news_Reducer.newsAndEvent
+    (state: AppState) => state.newsReducer.newsAndEvent
   )
 
   return <NewsEventCustom dataNewsAndEvent={newsAndEvent} />

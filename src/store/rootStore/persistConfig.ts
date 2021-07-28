@@ -7,7 +7,7 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 export const listPersists = [
   'totalDataReducer',
   'hospitalReducer',
-  'news_Reducer'
+  'newsReducer'
 ]
 
 export const createNoopStorage = () => {

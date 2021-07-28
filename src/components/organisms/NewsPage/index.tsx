@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const NewsPageDetails = () => {
   const newsAndEvent = useSelector(
-    (state: AppState) => state.news_Reducer.newsAndEvent
+    (state: AppState) => state.newsReducer.newsAndEvent
   )
 
   const listNewsBanner = useSelector(
-    (state: AppState) => state.news_Reducer.listNewsBanner
+    (state: AppState) => state.newsReducer.listNewsBanner
   )
 
   const dispatch = useDispatch()

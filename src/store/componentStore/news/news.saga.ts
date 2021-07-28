@@ -1,5 +1,5 @@
 import { getData } from '@store/api'
-import { news_Types } from '@store/interface'
+import { NewsTypes } from '@store/interface'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 
@@ -12,18 +12,15 @@ function* getNewsAndEvent() {
     const news: AxiosResponse = yield call(getData, url)
 
     yield put({
-      type: news_Types.NewsAndEvent.NewsAndEvent_REQUEST_SUCCESS,
+      type: NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST_SUCCESS,
       newsPin,
       news
     })
   } catch (error) {}
 }
 
-function* watch_getNewsAndEvent() {
-  yield takeLatest(
-    news_Types.NewsAndEvent.NewsAndEvent_REQUEST,
-    getNewsAndEvent
-  )
+function* WatchGetNewsAndEvent() {
+  yield takeLatest(NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST, getNewsAndEvent)
 }
 
 function* getListNewsBanner() {
@@ -31,20 +28,20 @@ function* getListNewsBanner() {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
     const response: AxiosResponse = yield call(getData, url)
     yield put({
-      type: news_Types.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS,
+      type: NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS,
       listNewsBanner: response
     })
   } catch (error) {}
 }
 
-function* watch_getListNewsBanner() {
+function* WatchGetListNewsBanner() {
   yield takeLatest(
-    news_Types.ListNewsBanner.ListNewsBanner_REQUEST,
+    NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST,
     getListNewsBanner
   )
 }
 
-const news_Sagas = function* root() {
-  yield all([fork(watch_getNewsAndEvent), fork(watch_getListNewsBanner)])
+const newsSagas = function* root() {
+  yield all([fork(WatchGetNewsAndEvent), fork(WatchGetListNewsBanner)])
 }
-export default news_Sagas
+export default newsSagas

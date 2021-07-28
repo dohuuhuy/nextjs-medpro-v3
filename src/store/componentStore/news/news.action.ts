@@ -1,13 +1,13 @@
-import { news_Action, news_Types } from '@store/interface'
+import { NewsActions, NewsTypes } from '@store/interface'
 
-export const getNewsAndEvent = (): news_Action => {
+export const getNewsAndEvent = (): NewsActions => {
   return {
-    type: news_Types.NewsAndEvent.NewsAndEvent_REQUEST
+    type: NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST
   }
 }
 
-export const getListNewsBanner = (): news_Action => {
+export const getListNewsBanner = (): NewsActions => {
   return {
-    type: news_Types.ListNewsBanner.ListNewsBanner_REQUEST
+    type: NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST
   }
 }

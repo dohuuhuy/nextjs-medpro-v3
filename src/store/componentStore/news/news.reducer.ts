@@ -1,22 +1,22 @@
-import { news_Action, news_State, news_Types } from '@store/interface'
+import { NewsActions, NewsState, NewsTypes } from '@store/interface'
 
-const news_InitialState: news_State = {
+const news_InitialState: NewsState = {
   newsAndEvent: [],
   listNewsBanner: []
 }
 
-export default function news_Reducer(
+export default function newsReducer(
   state = news_InitialState,
-  action: news_Action
+  action: NewsActions
 ) {
   switch (action.type) {
-    case news_Types.NewsAndEvent.NewsAndEvent_REQUEST_SUCCESS:
+    case NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST_SUCCESS:
       return {
         ...state,
         newsAndEvent: action.newsPin.concat(action.news)
       }
 
-    case news_Types.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS:
+    case NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS:
       return {
         ...state,
         listNewsBanner: action.listNewsBanner

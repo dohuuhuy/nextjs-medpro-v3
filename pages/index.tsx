@@ -9,7 +9,7 @@ const HomePage = () => {
   const dispatch = useDispatch()
 
   const newsAndEvent = useSelector(
-    (state: AppState) => state.news_Reducer.newsAndEvent
+    (state: AppState) => state.newsReducer.newsAndEvent
   )
 
   useEffect(() => {

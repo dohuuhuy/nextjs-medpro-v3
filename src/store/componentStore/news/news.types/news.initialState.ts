@@ -1,4 +1,4 @@
-export interface news_State {
+export interface NewsState {
   newsAndEvent: any[]
   listNewsBanner: any[]
 }

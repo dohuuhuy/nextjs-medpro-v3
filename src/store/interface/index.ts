@@ -19,10 +19,10 @@ export * from '@componentStore/totalData/totalData.types/totalData.action.types'
 export * from '@componentStore/totalData/totalData.types/totalData.initialState'
 export * from '@componentStore/totalData/totalData.types/totalData.params'
 
-import { HospitalState, news_State, TotalDataState } from '@store/interface'
+import { HospitalState, NewsState, TotalDataState } from '@store/interface'
 
 export type AppState = {
   totalDataReducer: TotalDataState
   hospitalReducer: HospitalState
-  news_Reducer: news_State
+  newsReducer: NewsState
 }
