@@ -1,6 +1,6 @@
 import { NewsTypes } from '@store/interface'
 
-export type NewsActions = NewsAndEventAction | ListNewsBannerAction
+export type NewsActions = NewsAndEventAction | ListNewsBannerAction | ListNewsContentAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -29,4 +29,17 @@ export interface ListNewsBannerRequest {
 export interface ListNewsBannerRequestSuccess {
   type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST_SUCCESS
   listNewsBanner: any[]
+}
+
+export type ListNewsContentAction =
+  | ListNewsContentRequest
+  | ListNewsContentRequestSuccess
+
+export interface ListNewsContentRequest {
+  type: NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST
+}
+
+export interface ListNewsContentRequestSuccess {
+  type: NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST_SUCCESS
+  listNewsContent: any[]
 }

@@ -4,13 +4,17 @@ import Container from '../Container'
 import styles from './style.module.less'
 
 interface NewsPageCustom {
-  dataNewsPage: any
+  dataNewsPageBanner: any
+  dataNewsPageContent: any
 }
 
-export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
+export const NewsPageCustom = ({ dataNewsPageBanner, dataNewsPageContent }: NewsPageCustom) => {
   const { DataFailure } = require('../DataFailure')
-  if (!dataNewsPage || dataNewsPage.length < 1) {
-    return <DataFailure description={'Lỗi không có data tin tức'} />
+  if (!dataNewsPageBanner || dataNewsPageBanner.length < 1) {
+    return <DataFailure description={'Lỗi không có data tin tức banner'} />
+  }
+  if (!dataNewsPageContent || dataNewsPageContent.length < 1) {
+    return <DataFailure description={'Lỗi không có data tin tức content'} />
   }
 
   return (

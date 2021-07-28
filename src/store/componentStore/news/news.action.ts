@@ -11,3 +11,9 @@ export const getListNewsBanner = (): NewsActions => {
     type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST
   }
 }
+
+export const getListNewsContent = (): NewsActions => {
+  return {
+    type: NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST
+  }
+}
