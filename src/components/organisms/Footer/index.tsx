@@ -5,7 +5,7 @@ import { FooterCustom } from '@componentsTest/FooterCustom'
 
 const FooterLayout = () => {
   const footer = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.footer
+    (state: AppState) => state.hospitalReducer.information.footer
   )
 
   return <FooterCustom dataFooter={footer} />

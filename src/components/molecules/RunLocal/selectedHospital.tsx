@@ -1,4 +1,4 @@
-import { set_partnerId_local } from '@actionStore/rootAction'
+import { setPartnerIdLocal } from '@actionStore/rootAction'
 import { ArrowUpOutlined } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
@@ -14,7 +14,7 @@ const SelectedHospital = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   useEffect(() => {
-    dispatch(set_partnerId_local({ partnerId: 'medpro' }))
+    dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
   })
 
   const toggle = () => {
@@ -22,12 +22,12 @@ const SelectedHospital = () => {
   }
 
   function onChange(value: any) {
-    dispatch(set_partnerId_local({ partnerId: value }))
+    dispatch(setPartnerIdLocal({ partnerId: value }))
     setIsModalVisible(false)
   }
 
   const list_partners = useSelector(
-    (state: AppState) => state.totalData_Reducer.list_partners
+    (state: AppState) => state.totalDataReducer.listPartners
   )
 
   return (

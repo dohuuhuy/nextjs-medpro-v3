@@ -10,13 +10,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const BannerLayout = () => {
   const banners = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.banners
+    (state: AppState) => state.hospitalReducer.information.banners
   )
-  const feature_list = useSelector(
-    (state: AppState) => state.hospital_Reducer.feature_list
+  const listFeature = useSelector(
+    (state: AppState) => state.hospitalReducer.listFeature
   )
   const { partnerId, appId } = useSelector(
-    (state: AppState) => state.totalData_Reducer
+    (state: AppState) => state.totalDataReducer
   )
   const router = useRouter()
 
@@ -28,7 +28,7 @@ const BannerLayout = () => {
     <BannersCustom
       dispatchListHospital={() => dispatch(getListHospital())}
       getBanner={getBanner}
-      listFeature={feature_list}
+      listFeature={listFeature}
       partnerId={partnerId}
       appId={appId}
     />

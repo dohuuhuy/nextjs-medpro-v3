@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const SupportMedthod = () => {
   const supportMethods = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.supportMethods
+    (state: AppState) => state.hospitalReducer.information.supportMethods
   )
 
   return <SupportMedthodCustom dataSupportMethod={supportMethods} />

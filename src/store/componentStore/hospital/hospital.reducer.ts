@@ -1,10 +1,6 @@
-import {
-  Hospital_Action,
-  hospital_State,
-  Hosptail_Types
-} from '@store/interface'
+import { HospitalActions, HospitalState, HosptailTypes } from '@store/interface'
 
-const hospital_InitialState: hospital_State = {
+const init: HospitalState = {
   information: {
     partnerId: 'string',
     header: {},
@@ -16,35 +12,32 @@ const hospital_InitialState: hospital_State = {
     footer: {},
     contentPage: []
   },
-  feature_list: [],
+  listFeature: [],
   listHospital: []
 }
 
-export default function hospital_Reducer(
-  state = hospital_InitialState,
-  action: Hospital_Action
-) {
+export default function hospitalReducer(state = init, action: HospitalActions) {
   switch (action.type) {
-    case Hosptail_Types.Information.Information_REQUEST_SUCCESS:
+    case HosptailTypes.Information.Information_REQUEST_SUCCESS:
       return {
         ...state,
         information: action.information
       }
 
-    case Hosptail_Types.Information.Hospital_CLEAR_DETAILS: {
+    case HosptailTypes.Information.Hospital_CLEAR_DETAILS: {
       return {
         ...state,
-        information: hospital_InitialState.information
+        information: state.information
       }
     }
 
-    case Hosptail_Types.Feature.FeatureByPartner_REQUEST_SUCCESS:
+    case HosptailTypes.Feature.FeatureByPartner_REQUEST_SUCCESS:
       return {
         ...state,
-        feature_list: action.feature_list
+        listFeature: action.listFeature
       }
 
-    case Hosptail_Types.ListHospital.ListHospital_REQUEST_SUCCESS:
+    case HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS:
       return {
         ...state,
         listHospital: action.listHospital

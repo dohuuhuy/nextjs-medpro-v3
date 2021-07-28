@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 const DeployHospital = () => {
   const deployHospital = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.deployHospital
+    (state: AppState) => state.hospitalReducer.information.deployHospital
   )
 
   return <DeloyHospitalCustom dataDeloyHospital={deployHospital} />

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 const IntroduceLayout = () => {
   const Introduce = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.introducHospital
+    (state: AppState) => state.hospitalReducer.information.introducHospital
   )
   return <IntroduceCustom dataIntroduce={Introduce} />
 }

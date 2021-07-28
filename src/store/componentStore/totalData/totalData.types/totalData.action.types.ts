@@ -1,6 +1,6 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
 
-export namespace totalData_Types {
+export namespace TotalDataTypes {
   export enum ListPartners {
     ListPartners_REQUEST = 'ListPartners_REQUEST',
     ListPartners_REQUEST_SUCCESS = 'ListPartners_REQUEST_SUCCESS',

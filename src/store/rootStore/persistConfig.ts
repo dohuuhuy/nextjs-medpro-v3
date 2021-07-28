@@ -5,8 +5,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 export const listPersists = [
-  'totalData_Reducer',
-  'hospital_Reducer',
+  'totalDataReducer',
+  'hospitalReducer',
   'news_Reducer'
 ]
 

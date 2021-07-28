@@ -1,6 +1,6 @@
-export interface hospital_State {
+export interface HospitalState {
   information: information
-  feature_list: feature_Item[]
+  listFeature: ItemFeature[]
   listHospital: any
 }
 
@@ -16,7 +16,7 @@ export interface information {
   contentPage: any[]
 }
 
-export interface feature_Item {
+export interface ItemFeature {
   type: string
   _id: string
   parentId: string

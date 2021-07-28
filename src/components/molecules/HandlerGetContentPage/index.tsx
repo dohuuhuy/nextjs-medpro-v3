@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const HandlerGetContentPage = () => {
   const contentPage = useSelector(
-    (state: AppState) => state.hospital_Reducer.information.contentPage
+    (state: AppState) => state.hospitalReducer.information.contentPage
   )
 
   const router = useRouter()

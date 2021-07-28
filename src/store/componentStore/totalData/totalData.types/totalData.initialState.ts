@@ -1,12 +1,11 @@
-export interface totalData_State {
+export interface TotalDataState {
   partnerId: string
   appId: string
-  list_partners: list_partners
+  listPartners: Array<ItemlistPartners>
   loading: boolean
 }
 
-export interface list_partners extends Array<list_partners_item> {}
-export interface list_partners_item {
+export interface ItemlistPartners {
   domain: string[]
   partnerId: string
   nameHospital: string

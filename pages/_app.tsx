@@ -22,7 +22,7 @@ const MyApp: FC<any> = ({ Component, pageProps }) => {
   const dispatch = useDispatch()
 
   const list_partners = useSelector(
-    (state: AppState) => state.totalData_Reducer.list_partners
+    (state: AppState) => state.totalDataReducer.listPartners
   )
 
   useEffect(() => {

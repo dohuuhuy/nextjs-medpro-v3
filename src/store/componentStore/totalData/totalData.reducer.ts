@@ -1,29 +1,28 @@
 import {
-  totalData_Action,
-  totalData_State,
-  totalData_Types
+  TotalDataActions,
+  TotalDataState,
+  TotalDataTypes
 } from '@store/interface'
 
-const totalData_InitialState: totalData_State = {
+const initState: TotalDataState = {
   partnerId: '',
   appId: '',
-  list_partners: [],
+  listPartners: [],
   loading: false
 }
 
-export default function totalData_Reducer(
-  state = totalData_InitialState,
-  action: totalData_Action
+export default function totalDataReducer(
+  state = initState,
+  action: TotalDataActions
 ) {
   switch (action.type) {
-    case totalData_Types.ListPartners.ListPartners_REQUEST_SUCCESS:
+    case TotalDataTypes.ListPartners.ListPartners_REQUEST_SUCCESS:
       return {
         ...state,
-
-        list_partners: action.list_partners
+        listPartners: action.listPartners
       }
 
-    case totalData_Types.ListPartners.SET_PartnerId: {
+    case TotalDataTypes.ListPartners.SET_PartnerId: {
       return {
         ...state,
         partnerId: action.partnerId,
