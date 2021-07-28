@@ -11,6 +11,12 @@ interface NewsPageCustom {
 export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(7)
+  console.log("Data new", dataNewsPage)
+  const { checkDataInput, DataFailure } = require('../DataFailure')
+  if (!dataNewsPage || dataNewsPage.length < 1) {
+    return <DataFailure description={'Lỗi không có data tin tức'} />
+  }
+
   const numberItem = 8
   const onChange = (value: number) => {
     setStart((value - 1) * numberItem)

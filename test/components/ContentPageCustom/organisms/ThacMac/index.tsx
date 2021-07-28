@@ -10,6 +10,7 @@ import style from './styles.module.less'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
+  console.log("Thắc mắc", content)
   const { checkDataInput, DataFailure } = require('./../../../DataFailure')
   if (checkDataInput(content)) {
     return <DataFailure description={'Lỗi không có data thắc mắc'} />
@@ -24,7 +25,7 @@ export const ThacMacContent = ({ content }: any) => {
     isArray(content) && handlerSetFaqbyTab(1)
   }, [])
 
-  const handlerSetFaqbyTab = (id = 1) => {
+  const handlerSetFaqbyTab = (id: any) => {
     const item = find(content, { id })
     setFaq(item)
   }
