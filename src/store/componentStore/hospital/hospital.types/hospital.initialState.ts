@@ -1,6 +1,7 @@
 export interface hospital_State {
   information: information
   feature_list: feature_Item[]
+  listHospital: any
 }
 
 export interface information {

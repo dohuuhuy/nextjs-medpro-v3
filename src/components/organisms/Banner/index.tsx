@@ -1,11 +1,12 @@
 // import { BannersCustom } from '@n17dccn172/booking-libs'
 
+import { getListHospital } from '@actionStore/rootAction'
 import { BannersCustom } from '@componentsTest/Banners'
 import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BannerLayout = () => {
   const banners = useSelector(
@@ -14,13 +15,24 @@ const BannerLayout = () => {
   const feature_list = useSelector(
     (state: AppState) => state.hospital_Reducer.feature_list
   )
+  const { partnerId, appId } = useSelector(
+    (state: AppState) => state.totalData_Reducer
+  )
   const router = useRouter()
 
   const { pathname } = router
 
   const getBanner = find(banners, { key: pathname })
-
-  return <BannersCustom getBanner={getBanner} listFeature={feature_list} />
+  const dispatch = useDispatch()
+  return (
+    <BannersCustom
+      dispatchListHospital={() => dispatch(getListHospital())}
+      getBanner={getBanner}
+      listFeature={feature_list}
+      partnerId={partnerId}
+      appId={appId}
+    />
+  )
 }
 
 export default BannerLayout

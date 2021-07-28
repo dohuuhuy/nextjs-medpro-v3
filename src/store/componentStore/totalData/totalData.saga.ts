@@ -9,7 +9,7 @@ import {
 } from '@store/interface'
 import { persistor } from '@store/rootStore'
 import { openToast } from '@utils/Notification'
-import { get_PartnerId } from '@utils/run_local_hospitals'
+import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -24,9 +24,9 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
     local: true
   }
 
-  const getPartnerId = get_PartnerId(runObject)
+  const getPartner = findPartnerId(runObject)
 
-  if (getPartnerId) {
+  if (getPartner) {
     yield put({
       type: Hosptail_Types.Information.Hospital_CLEAR_DETAILS
     })
@@ -35,7 +35,7 @@ function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
 
     yield put({
       type: Hosptail_Types.Information.Information_REQUEST,
-      partnerId: getPartnerId
+      partnerId: getPartner
     })
   } else {
     openToast({
@@ -65,11 +65,11 @@ function* get_list_partners() {
     })
 
     if (_PRODUCTION) {
-      const getPartnerId = get_PartnerId({ listPartners })
-      if (getPartnerId) {
+      const getPartner = findPartnerId({ listPartners })
+      if (getPartner) {
         yield put({
           type: Hosptail_Types.Information.Information_REQUEST,
-          partnerId: getPartnerId
+          partnerId: getPartner
         })
       } else {
         openToast({
