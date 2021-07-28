@@ -6,6 +6,7 @@ import {
 
 const totalData_InitialState: totalData_State = {
   partnerId: '',
+  appId: '',
   list_partners: [],
   loading: false
 }
@@ -25,7 +26,8 @@ export default function totalData_Reducer(
     case totalData_Types.ListPartners.SET_PartnerId: {
       return {
         ...state,
-        partnerId: action.partnerId
+        partnerId: action.partnerId,
+        appId: action.partnerId === 'medpro' ? action.partnerId : ''
       }
     }
 

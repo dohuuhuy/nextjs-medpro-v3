@@ -14,13 +14,23 @@ const BannerLayout = () => {
   const feature_list = useSelector(
     (state: AppState) => state.hospital_Reducer.feature_list
   )
+  const { partnerId, appId } = useSelector(
+    (state: AppState) => state.totalData_Reducer
+  )
   const router = useRouter()
 
   const { pathname } = router
 
   const getBanner = find(banners, { key: pathname })
 
-  return <BannersCustom getBanner={getBanner} listFeature={feature_list} />
+  return (
+    <BannersCustom
+      getBanner={getBanner}
+      listFeature={feature_list}
+      partnerId={partnerId}
+      appId={appId}
+    />
+  )
 }
 
 export default BannerLayout

@@ -1,5 +1,6 @@
 export interface totalData_State {
   partnerId: string
+  appId: string
   list_partners: list_partners
   loading: boolean
 }
