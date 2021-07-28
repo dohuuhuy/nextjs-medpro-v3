@@ -54,14 +54,16 @@ export const BannerHome = ({
                   if (status) {
                     return (
                       <li key={i} onClick={() => SelectFeature(type)}>
-                        <img
-                          src={urlImage}
-                          onError={(e: any) => {
-                            e.target.src = imageErrorSrc
-                          }}
-                          alt='dịch vụ'
-                        />
-                        <p>{name}</p>
+                        <a>
+                          <img
+                            src={urlImage}
+                            onError={(e: any) => {
+                              e.target.src = imageErrorSrc
+                            }}
+                            alt='dịch vụ'
+                          />
+                          <p>{name}</p>
+                        </a>
                       </li>
                     )
                   } else {
