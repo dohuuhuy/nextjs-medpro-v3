@@ -1,4 +1,4 @@
-export interface Get_PartnerId {
+export interface getPartnerId {
   listPartners: any
   partnerId?: string
   local?: boolean
@@ -11,11 +11,11 @@ export const handlerDoamain = () => {
   return domain
 }
 
-export const get_PartnerId = ({
+export const findPartnerId = ({
   partnerId,
   listPartners,
   local
-}: Get_PartnerId) => {
+}: getPartnerId) => {
   if (local) {
     const is_partnerId: any = listPartners.find(
       (i: any) => i.partnerId === partnerId

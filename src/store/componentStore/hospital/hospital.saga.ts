@@ -14,7 +14,7 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
-function* hospital_get_details({ partnerId }: any) {
+function* getHospitalDetails({ partnerId }: any) {
   try {
     // const url =
     //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
@@ -58,10 +58,10 @@ function* hospital_get_details({ partnerId }: any) {
   }
 }
 
-function* watch_hospital_get_details() {
+function* watch_getHospitalDetails() {
   yield takeEvery(
     Hosptail_Types.Information.Information_REQUEST,
-    hospital_get_details
+    getHospitalDetails
   )
 }
 
@@ -84,17 +84,39 @@ function* FeatureByPartner_REQUEST() {
   } catch (error) {}
 }
 
-function* watch_FeatureByPartner_REQUEST() {
+function* watch_getFeatureByPartner() {
   yield takeLatest(
     Hosptail_Types.Feature.FeatureByPartner_REQUEST,
     FeatureByPartner_REQUEST
   )
 }
 
+function* getListHospital() {
+  try {
+    const appid: string = yield select(
+      (state: AppState) => state.totalData_Reducer.appId
+    )
+
+    const response: AxiosResponse = yield client.getHospitalListByAppId({
+      appid
+    })
+
+    console.log('response :>> ', response)
+  } catch (error) {}
+}
+
+function* watch_getListHospital() {
+  yield takeLatest(
+    Hosptail_Types.ListHospital.ListHospital_REQUEST,
+    getListHospital
+  )
+}
+
 const hospital_Sagas = function* root() {
   yield all([
-    fork(watch_hospital_get_details),
-    fork(watch_FeatureByPartner_REQUEST)
+    fork(watch_getHospitalDetails),
+    fork(watch_getFeatureByPartner),
+    fork(watch_getListHospital)
   ])
 }
 export default hospital_Sagas

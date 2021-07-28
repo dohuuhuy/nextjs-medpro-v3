@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import { getListHospital } from '@actionStore/rootAction'
 import { check } from '@utils/checkValue'
 import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import Container from '../../../Container'
 import style from './style.module.less'
 
@@ -13,6 +15,9 @@ export const BannerHome = ({
   appId
 }: any) => {
   const router = useRouter()
+
+  const dispatch = useDispatch()
+
   if (!getBanner) {
     return <em> Không có dataBannerHome</em>
   }
@@ -20,6 +25,7 @@ export const BannerHome = ({
 
   const selectFeature = (type: any) => {
     if (appId === 'medpro' && check(type)) {
+      dispatch(getListHospital())
       router.push('/chon-benh-vien')
     }
   }

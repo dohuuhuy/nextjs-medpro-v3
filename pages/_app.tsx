@@ -1,4 +1,4 @@
-import { get_PartnerId } from '@actionStore/rootAction'
+import { getPartnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import '@n17dccn172/booking-libs/libs/index.css'
@@ -26,7 +26,7 @@ const MyApp = ({ Component, pageProps }: any) => {
 
   useEffect(() => {
     if (list_partners.length < 1) {
-      dispatch(get_PartnerId())
+      dispatch(getPartnerId())
     }
   })
 

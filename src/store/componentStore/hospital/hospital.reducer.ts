@@ -16,7 +16,8 @@ const hospital_InitialState: hospital_State = {
     footer: {},
     contentPage: []
   },
-  feature_list: []
+  feature_list: [],
+  listHospital: []
 }
 
 export default function hospital_Reducer(
