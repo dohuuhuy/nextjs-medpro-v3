@@ -16,7 +16,7 @@ export const SupportHeader = ({ support }: SupportHeader) => {
         <img
           src={urlImage}
           alt='icon'
-          onError={(e) => {
+          onError={(e: any) => {
             e.target.src = imageErrorSrc
           }}
         />

@@ -27,7 +27,7 @@ const CardContact = ({ cardContact }: ItemBanner) => {
                         key={url}
                         src={urlImage}
                         alt={'icon'}
-                        onError={(e) => {
+                        onError={(e: any) => {
                           e.target.src = imageErrorSrc
                         }}
                       />
