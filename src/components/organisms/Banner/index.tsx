@@ -1,5 +1,3 @@
-// import { BannersCustom } from '@n17dccn172/booking-libs'
-
 import { getListHospital } from '@actionStore/rootAction'
 import { BannersCustom } from '@componentsTest/Banners'
 import { AppState } from '@store/interface'
@@ -9,12 +7,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const BannerLayout = () => {
-  const banners = useSelector(
-    (state: AppState) => state.hospitalReducer.information.banners
-  )
-  const listFeature = useSelector(
-    (state: AppState) => state.hospitalReducer.listFeature
-  )
+  const {
+    listFeature,
+    information: { banners }
+  } = useSelector((state: AppState) => state.hospitalReducer)
   const { partnerId, appId } = useSelector(
     (state: AppState) => state.totalDataReducer
   )
@@ -26,7 +22,7 @@ const BannerLayout = () => {
   const dispatch = useDispatch()
   return (
     <BannersCustom
-      dispatchListHospital={dispatch(getListHospital())}
+      dispatchListHospital={() => dispatch(getListHospital())}
       getBanner={getBanner}
       listFeature={listFeature}
       partnerId={partnerId}
