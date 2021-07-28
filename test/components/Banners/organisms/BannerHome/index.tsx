@@ -9,7 +9,7 @@ import style from './style.module.less'
 export const BannerHome = ({
   getBanner,
   listFeature,
-  partnerId,
+  // partnerId,
   appId,
   dispatchListHospital
 }: any) => {
