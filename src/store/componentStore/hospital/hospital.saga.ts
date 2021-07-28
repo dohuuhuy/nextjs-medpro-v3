@@ -2,12 +2,11 @@ import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
 import { AppState, Hosptail_Types, totalData_Types } from '@store/interface'
 import { openToast } from '@utils/Notification'
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
 import { get } from 'lodash'
 import {
   all,
-  call,
   fork,
   put,
   select,
@@ -15,19 +14,13 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
-const getData = async (url: any) => {
-  const res = await axios.get(url)
-  const { data } = res
-  return data
-}
-
 function* hospital_get_details({ partnerId }: any) {
   try {
-    const url =
-      'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
+    // const url =
+    //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
 
-    const res: AxiosResponse = yield call(getData, url)
-    console.error(res)
+    // const res: AxiosResponse = yield call(getData, url)
+    // console.error(res)
 
     yield put({
       type: Hosptail_Types.Information.Information_REQUEST_SUCCESS,
