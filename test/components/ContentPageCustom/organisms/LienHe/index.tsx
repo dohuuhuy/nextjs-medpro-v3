@@ -40,7 +40,9 @@ export const LienHeContent = ({ content }: PropsProduce) => {
       <hr />
 
       <Row className={style.rowMaps}>
-        <iframe title='' src={mapsContact} />
+        <Col xl={24} className={style.colMaps}>
+          <iframe title='' src={mapsContact} />
+        </Col>
       </Row>
     </Container>
   )
