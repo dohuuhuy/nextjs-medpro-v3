@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { ItemChecked } from './interface.footer'
 import style from './styles.module.less'

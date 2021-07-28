@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Button, Col, Row } from 'antd'
 import moment from 'moment'
 import Link from 'next/link'

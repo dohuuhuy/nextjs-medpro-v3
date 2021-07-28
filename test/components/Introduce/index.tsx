@@ -3,7 +3,6 @@ import { BannerIntro } from './BannerIntro'
 import { CardIntro } from './CardIntro'
 import { IntroducHospital } from './Introduce.interface'
 import styles from './style.module.less'
-// import { checkDataInput, DataFailure } from './../DataFailure'
 interface IntroduceCustom {
   dataIntroduce: IntroducHospital
 }

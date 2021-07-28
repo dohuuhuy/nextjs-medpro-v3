@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Drawer } from 'antd'
 import React, { useState } from 'react'
 import { MenuDrawer } from '../../molecules/MenuDrawer'

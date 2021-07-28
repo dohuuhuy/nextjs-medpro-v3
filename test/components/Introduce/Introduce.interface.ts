@@ -1,15 +1,15 @@
 export interface IntroducHospital {
-  contentIntro: contentIntroItem
-  cardIntro: cardIntroItem[]
+  contentIntro: ContentIntroItem
+  cardIntro: CardIntroItem[]
 }
-export interface cardIntroItem {
+export interface CardIntroItem {
   title: string
   subTitle: string
   imgCard: string
   link: string
   button: any
 }
-export interface contentIntroItem {
+export interface ContentIntroItem {
   title: string
   subTitle: string
   description: string

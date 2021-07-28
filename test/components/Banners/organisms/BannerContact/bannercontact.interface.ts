@@ -14,12 +14,12 @@ export interface ItemCard {
   key: string
   title: string
   subTitle: string
-  img?: images[]
+  img?: Images[]
   link?: string
   textBottom: string
   icon?: boolean
 }
 
-export interface images {
+export interface Images {
   url: string
 }

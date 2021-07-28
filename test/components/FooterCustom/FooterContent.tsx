@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import cx from 'classnames'
 import React from 'react'

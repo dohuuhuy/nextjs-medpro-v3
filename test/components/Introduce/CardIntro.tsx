@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'

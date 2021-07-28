@@ -1,46 +1,56 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-import { Col, Pagination, Row } from 'antd'
-import React, { useState } from 'react'
-import styles from './style.module.less'
+import { Row } from 'antd'
+import React from 'react'
 import Container from '../Container'
+import styles from './style.module.less'
 
 interface NewsPageCustom {
   dataNewsPage: any
 }
 
 export const NewsPageCustom = ({ dataNewsPage }: NewsPageCustom) => {
-  const [start, setStart] = useState(0)
-  const [end, setEnd] = useState(7)
-  console.log("Data new", dataNewsPage)
-  const { checkDataInput, DataFailure } = require('../DataFailure')
+  const { DataFailure } = require('../DataFailure')
   if (!dataNewsPage || dataNewsPage.length < 1) {
     return <DataFailure description={'Lỗi không có data tin tức'} />
   }
 
-  const numberItem = 8
-  const onChange = (value: number) => {
-    setStart((value - 1) * numberItem)
-    setEnd(value * numberItem)
-  }
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowHeader}>
         <ul className={styles.colCard}>
-          <img src={"https://cms.medpro.com.vn/uploads/1627418134461_d1b169c9b4.png"} alt=" " />
+          <img
+            src={
+              'https://cms.medpro.com.vn/uploads/1627418134461_d1b169c9b4.png'
+            }
+            alt=' '
+          />
           <li>
             <p>NHẬN BIẾT VÀ PHÒNG NGỪA THOÁI HÓA ĐÓT SỐNG CỔ</p>
-            <span>Thoái hóa đốt sống cổ hay còn gọi là thoái hóa cột sống cổ hoặc thoái hóa cột sống lưng là một trong những tên gọi của tình trạng bệnh lý thoái hóa hệ thống xương cột sống do nhiều nguyên nhân khác nhau trong công việc, lao động, hoạt động, tuổi tác.</span>
+            <span>
+              Thoái hóa đốt sống cổ hay còn gọi là thoái hóa cột sống cổ hoặc
+              thoái hóa cột sống lưng là một trong những tên gọi của tình trạng
+              bệnh lý thoái hóa hệ thống xương cột sống do nhiều nguyên nhân
+              khác nhau trong công việc, lao động, hoạt động, tuổi tác.
+            </span>
           </li>
         </ul>
         <ul className={styles.colCard}>
           <li>
             <p>NỔI MỀ ĐAY - DO ĐÂU ?</p>
-            <span>Mề đay là tình trạng phản ứng của các mao mạch dưới da hay niêm mạc do các tác nhân từ bên trong hoặc bên ngoài cơ thể, gây hiện tượng phù tại chỗ, da bị phồng lên, kèm triệu chứng ngứa ngáy khó chịu.</span>
+            <span>
+              Mề đay là tình trạng phản ứng của các mao mạch dưới da hay niêm
+              mạc do các tác nhân từ bên trong hoặc bên ngoài cơ thể, gây hiện
+              tượng phù tại chỗ, da bị phồng lên, kèm triệu chứng ngứa ngáy khó
+              chịu.
+            </span>
           </li>
           <li>
             <p>NHỨC MỎI MẮT THỜI COVID VÀ CÁCH ỨNG PHÓ</p>
-            <span>Trong thời điểm dịch bệnh COVID-19, từ trẻ em đến người lớn giải trí, làm việc, học tập đều qua các thiết bị điện tử kết nối với internet. Việc sử dụng quá nhiều các thiết bị điện tử thông minh cũng gây hại cho đôi mắt.</span>
+            <span>
+              Trong thời điểm dịch bệnh COVID-19, từ trẻ em đến người lớn giải
+              trí, làm việc, học tập đều qua các thiết bị điện tử kết nối với
+              internet. Việc sử dụng quá nhiều các thiết bị điện tử thông minh
+              cũng gây hại cho đôi mắt.
+            </span>
           </li>
         </ul>
       </Row>

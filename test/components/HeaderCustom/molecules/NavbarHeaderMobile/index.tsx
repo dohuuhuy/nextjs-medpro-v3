@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import Container from '../../../Container'
 import { Col, Row } from 'antd'
 import React from 'react'

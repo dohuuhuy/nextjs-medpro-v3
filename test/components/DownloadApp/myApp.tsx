@@ -1,10 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import React from 'react'
 import style from './style.module.less'
 import cx from 'classnames'
 
-interface myApp {
+interface MyApp {
   arrApp: Item[]
 }
 interface Item {
@@ -14,7 +13,7 @@ interface Item {
   link: string
 }
 
-export const MyApp = ({ arrApp }: myApp) => {
+export const MyApp = ({ arrApp }: MyApp) => {
   return (
     <Row className={style.MyApp}>
       <Col xl={24} md={24} sm={24} className={style.ColMyApp}>

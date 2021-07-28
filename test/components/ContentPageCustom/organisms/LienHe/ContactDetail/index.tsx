@@ -17,11 +17,8 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
   if (!dataContactDetail) {
     return <Container className={style.containerError}>gelo</Container>
   }
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
-  }
   return (
-    <Form className={style.FormContact} onFinish={onFinish} layout={'inline'}>
+    <Form className={style.FormContact} layout={'inline'}>
       <ul className={style.listFormContact}>
         <li>
           <div className={style.title}>

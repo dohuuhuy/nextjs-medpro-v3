@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'

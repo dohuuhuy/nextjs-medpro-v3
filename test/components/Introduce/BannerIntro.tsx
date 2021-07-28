@@ -3,16 +3,16 @@ import React from 'react'
 import Container from '../Container'
 import styles from './style.module.less'
 
-interface contentIntro {
-  dataContentIntro: contentIntroItem
+interface ContentIntro {
+  dataContentIntro: ContentIntroItem
 }
-interface contentIntroItem {
+interface ContentIntroItem {
   title: string
   subTitle: string
   description: string
 }
 
-export const BannerIntro = ({ dataContentIntro }: contentIntro) => {
+export const BannerIntro = ({ dataContentIntro }: ContentIntro) => {
   if (!dataContentIntro) {
     return null
   }
