@@ -13,8 +13,8 @@ export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
   if (checkDataInput(getContent)) {
     return <DataFailure description={'Lỗi không có data nội dung trang'} />
   }
-
   const { key, content } = getContent
+
 
   switch (key) {
     case 'thac-mac':
