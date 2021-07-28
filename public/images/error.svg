@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg t="1627451038662" class="icon" viewBox="0 0 1417 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2619" xmlns:xlink="http://www.w3.org/1999/xlink" width="177.125" height="128">
+    <defs>
+        <style type="text/css">@font-face { font-family: rbicon; src: url("chrome-extension://dipiagiiohfljcicegpgffpbnjmgjcnf/fonts/rbicon.woff2") format("woff2"); font-weight: normal; font-style: normal; }
+@font-face { font-family: feedback-iconfont; src: url("//at.alicdn.com/t/font_1031158_1uhr8ri0pk5.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1031158_1uhr8ri0pk5.woff2") format("woff2"), url("//at.alicdn.com/t/font_1031158_1uhr8ri0pk5.woff") format("woff"), url("//at.alicdn.com/t/font_1031158_1uhr8ri0pk5.ttf") format("truetype"), url("//at.alicdn.com/t/font_1031158_1uhr8ri0pk5.svg#iconfont") format("svg"); }
+</style>
+    </defs>
+    <path d="M0 0h1417.846154v1024H0z" fill="#333333" p-id="2620"></path>
+    <path d="M0 1024l512-512 196.923077 196.923077L1142.153846 275.692308l275.692308 275.692307v472.615385H0zM728.615385 236.307692a98.461538 98.461538 0 1 1 0 196.923077 98.461538 98.461538 0 0 1 0-196.923077z" fill="#7dc5eb" p-id="2621"></path>
+</svg>

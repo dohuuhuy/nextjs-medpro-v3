@@ -13,7 +13,7 @@ export const ImageFooter = ({ logoChecked }: Props) => {
       {logoChecked?.map(({ link, imgLogo }: any, i: number) => (
         <li key={i}>
           <a href={link}>
-            <img src={imgLogo} className={style.img} alt='imgLogo' />
+            <img src={imgLogo} className={style.img} alt='icon' />
           </a>
         </li>
       ))}
