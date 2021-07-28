@@ -21,12 +21,12 @@ const MyApp: FC<any> = ({ Component, pageProps }) => {
 
   const dispatch = useDispatch()
 
-  const list_partners = useSelector(
+  const listPartners = useSelector(
     (state: AppState) => state.totalDataReducer.listPartners
   )
 
   useEffect(() => {
-    if (list_partners.length < 1) {
+    if (listPartners.length < 1) {
       dispatch(getPartnerId())
     }
   })
@@ -43,7 +43,6 @@ const MyApp: FC<any> = ({ Component, pageProps }) => {
 }
 
 export const getInitialProps = async ({ Component, ctx }: AppContext) => {
-  console.log('ctx :>> ', ctx)
   return {
     pageProps: {
       // Call page-level getInitialProps

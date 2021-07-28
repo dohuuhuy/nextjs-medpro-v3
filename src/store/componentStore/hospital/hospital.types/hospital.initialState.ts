@@ -1,10 +1,10 @@
 export interface HospitalState {
-  information: information
+  information: Information
   listFeature: ItemFeature[]
   listHospital: any
 }
 
-export interface information {
+export interface Information {
   partnerId: string
   header: any
   banners: any[]

@@ -26,7 +26,7 @@ const SelectedHospital = () => {
     setIsModalVisible(false)
   }
 
-  const list_partners = useSelector(
+  const listPartners = useSelector(
     (state: AppState) => state.totalDataReducer.listPartners
   )
 
@@ -82,7 +82,7 @@ const SelectedHospital = () => {
             return option?.children
           }}
         >
-          {list_partners?.map(({ partnerId, nameHospital }, index: number) => {
+          {listPartners?.map(({ partnerId, nameHospital }, index: number) => {
             return (
               <Option key={index} value={partnerId}>
                 {nameHospital}

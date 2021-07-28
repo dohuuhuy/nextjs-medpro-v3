@@ -2,12 +2,12 @@ import { NewsActions, NewsTypes } from '@store/interface'
 
 export const getNewsAndEvent = (): NewsActions => {
   return {
-    type: NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST
+    type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST
   }
 }
 
 export const getListNewsBanner = (): NewsActions => {
   return {
-    type: NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST
+    type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST
   }
 }

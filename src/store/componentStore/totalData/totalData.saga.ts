@@ -13,7 +13,7 @@ import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-function* setPartnerIdLocal({ partnerId }: TotalDataParams.partnerLocal) {
+function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
   const listPartners: TotalDataState = yield select(
     (state: AppState) => state.totalDataReducer.listPartners
   )
@@ -28,13 +28,13 @@ function* setPartnerIdLocal({ partnerId }: TotalDataParams.partnerLocal) {
 
   if (getPartner) {
     yield put({
-      type: HosptailTypes.Information.Hospital_CLEAR_DETAILS
+      type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
     })
 
     persistor.purge()
 
     yield put({
-      type: HosptailTypes.Information.Information_REQUEST,
+      type: HosptailTypes.Information.INFORMATION_REQUEST,
       partnerId: getPartner
     })
   } else {
@@ -48,7 +48,7 @@ function* setPartnerIdLocal({ partnerId }: TotalDataParams.partnerLocal) {
 
 function* WatchSetPartnerIdLocal() {
   yield takeLatest(
-    TotalDataTypes.LocalPartnerId.partnerId_Local_REQUEST as any,
+    TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST as any,
     setPartnerIdLocal
   )
 }
@@ -60,7 +60,7 @@ function* getListPartners() {
     const listPartners: AxiosResponse = yield call(getData, url)
 
     yield put({
-      type: TotalDataTypes.ListPartners.ListPartners_REQUEST_SUCCESS,
+      type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
       listPartners
     })
 
@@ -68,7 +68,7 @@ function* getListPartners() {
       const getPartner = findPartnerId({ listPartners })
       if (getPartner) {
         yield put({
-          type: HosptailTypes.Information.Information_REQUEST,
+          type: HosptailTypes.Information.INFORMATION_REQUEST,
           partnerId: getPartner
         })
       } else {
@@ -80,16 +80,18 @@ function* getListPartners() {
         })
 
         yield put({
-          type: HosptailTypes.Information.Hospital_CLEAR_DETAILS
+          type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
         })
       }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 function* WatchListPartners() {
   yield takeLatest(
-    TotalDataTypes.ListPartners.ListPartners_REQUEST,
+    TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST,
     getListPartners
   )
 }

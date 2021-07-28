@@ -16,13 +16,13 @@ export default function totalDataReducer(
   action: TotalDataActions
 ) {
   switch (action.type) {
-    case TotalDataTypes.ListPartners.ListPartners_REQUEST_SUCCESS:
+    case TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS:
       return {
         ...state,
         listPartners: action.listPartners
       }
 
-    case TotalDataTypes.ListPartners.SET_PartnerId: {
+    case TotalDataTypes.ListPartners.SET_PARTNERID: {
       return {
         ...state,
         partnerId: action.partnerId,

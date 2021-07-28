@@ -6,15 +6,15 @@ import {
 
 export const getPartnerId = (): TotalDataActions => {
   return {
-    type: TotalDataTypes.ListPartners.ListPartners_REQUEST
+    type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST
   }
 }
 
 export const setPartnerIdLocal = ({
   partnerId
-}: TotalDataParams.partnerLocal): TotalDataActions => {
+}: TotalDataParams.PartnerLocal): TotalDataActions => {
   return {
-    type: TotalDataTypes.LocalPartnerId.partnerId_Local_REQUEST,
+    type: TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST,
     partnerId
   }
 }

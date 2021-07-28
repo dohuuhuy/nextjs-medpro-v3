@@ -2,12 +2,12 @@
 
 export namespace TotalDataTypes {
   export enum ListPartners {
-    ListPartners_REQUEST = 'ListPartners_REQUEST',
-    ListPartners_REQUEST_SUCCESS = 'ListPartners_REQUEST_SUCCESS',
-    SET_PartnerId = 'SET_PartnerId'
+    LIST_PARTNERS_REQUEST = 'LIST_PARTNERS_REQUEST',
+    LIST_PARTNERS_REQUEST_SUCCESS = 'LIST_PARTNERS_REQUEST_SUCCESS',
+    SET_PARTNERID = 'SET_PARTNERID'
   }
 
   export enum LocalPartnerId {
-    partnerId_Local_REQUEST = 'partnerId_Local_REQUEST'
+    PARTNERID_LOCAL_REQUEST = 'PARTNERID_LOCAL_REQUEST'
   }
 }

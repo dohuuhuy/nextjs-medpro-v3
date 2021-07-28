@@ -23,17 +23,17 @@ function* getHospitalDetails({ partnerId }: any) {
     // console.error(res)
 
     yield put({
-      type: HosptailTypes.Information.Information_REQUEST_SUCCESS,
+      type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
       information: JSON_EXP
     })
 
     yield put({
-      type: TotalDataTypes.ListPartners.SET_PartnerId,
+      type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId
     })
 
     yield put({
-      type: HosptailTypes.Feature.FeatureByPartner_REQUEST
+      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
     })
 
     if (_DEVELOPMENT) {
@@ -47,7 +47,7 @@ function* getHospitalDetails({ partnerId }: any) {
     const { message } = get(error, 'response.data', '')
 
     yield put({
-      type: TotalDataTypes.ListPartners.SET_PartnerId,
+      type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId: ''
     })
     openToast({
@@ -60,7 +60,7 @@ function* getHospitalDetails({ partnerId }: any) {
 
 function* WatchGetHospitalDetails() {
   yield takeEvery(
-    HosptailTypes.Information.Information_REQUEST,
+    HosptailTypes.Information.INFORMATION_REQUEST,
     getHospitalDetails
   )
 }
@@ -78,15 +78,17 @@ function* getFeatureByPartner() {
     const { data } = respone
 
     yield put({
-      type: HosptailTypes.Feature.FeatureByPartner_REQUEST_SUCCESS,
+      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
       listFeature: data
     })
-  } catch (error) {}
+  } catch (error) {
+    error
+  }
 }
 
 function* WatchGetFeatureByPartner() {
   yield takeLatest(
-    HosptailTypes.Feature.FeatureByPartner_REQUEST,
+    HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST,
     getFeatureByPartner
   )
 }
@@ -102,15 +104,17 @@ function* getListHospital() {
     })
     const { data } = response
     yield put({
-      type: HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS,
+      type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
       listHospital: data
     })
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 function* WatchGetListHospital() {
   yield takeLatest(
-    HosptailTypes.ListHospital.ListHospital_REQUEST,
+    HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST,
     getListHospital
   )
 }

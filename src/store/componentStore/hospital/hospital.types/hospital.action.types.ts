@@ -1,17 +1,17 @@
 export namespace HosptailTypes {
   export enum Information {
-    Information_REQUEST = 'Information_REQUEST',
-    Information_REQUEST_SUCCESS = 'Information_REQUEST_SUCCESS',
-    Hospital_CLEAR_DETAILS = 'Hospital_CLEAR_DETAILS'
+    INFORMATION_REQUEST = 'INFORMATION_REQUEST',
+    INFORMATION_REQUEST_SUCCESS = 'INFORMATION_REQUEST_SUCCESS',
+    HOSPITAL_CLEAR_DETAILS = 'HOSPITAL_CLEAR_DETAILS'
   }
 
   export enum Feature {
-    FeatureByPartner_REQUEST = 'FeatureByPartner_REQUEST',
-    FeatureByPartner_REQUEST_SUCCESS = 'FeatureByPartner_REQUEST_SUCCESS'
+    FEATURE_BY_PARTNER_REQUEST = 'FEATURE_BY_PARTNER_REQUEST',
+    FEATURE_BY_PARTNER_REQUEST_SUCCESS = 'FEATURE_BY_PARTNER_REQUEST_SUCCESS'
   }
 
   export enum ListHospital {
-    ListHospital_REQUEST = 'ListHospital_REQUEST',
-    ListHospital_REQUEST_SUCCESS = 'ListHospital_REQUEST_SUCCESS'
+    LIST_HOSPITAL_REQUEST = 'LIST_HOSPITAL_REQUEST',
+    LIST_HOSPITAL_REQUEST_SUCCESS = 'LIST_HOSPITAL_REQUEST_SUCCESS'
   }
 }

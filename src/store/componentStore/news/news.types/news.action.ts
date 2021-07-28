@@ -5,28 +5,28 @@ export type NewsActions = NewsAndEventAction | ListNewsBannerAction
 // ----------------------------------------------------------------------------------------------
 
 export type NewsAndEventAction =
-  | NewsAndEvent_Request
-  | NewsAndEvent_Request_Success
+  | NewsAndEventRequest
+  | Newsandeventrequestsuccess
 
-export interface NewsAndEvent_Request {
-  type: NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST
+export interface NewsAndEventRequest {
+  type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST
 }
 
-export interface NewsAndEvent_Request_Success {
-  type: NewsTypes.NewsAndEvent.NewsAndEvent_REQUEST_SUCCESS
+export interface Newsandeventrequestsuccess {
+  type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS
   newsPin: any[]
   news: any[]
 }
 
 export type ListNewsBannerAction =
-  | ListNewsBanner_Request
-  | ListNewsBanner_Request_Success
+  | ListNewsBannerRequest
+  | ListNewsBannerRequestSuccess
 
-export interface ListNewsBanner_Request {
-  type: NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST
+export interface ListNewsBannerRequest {
+  type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST
 }
 
-export interface ListNewsBanner_Request_Success {
-  type: NewsTypes.ListNewsBanner.ListNewsBanner_REQUEST_SUCCESS
+export interface ListNewsBannerRequestSuccess {
+  type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST_SUCCESS
   listNewsBanner: any[]
 }

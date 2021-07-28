@@ -10,48 +10,48 @@ export type HospitalActions =
 // --------------------------------------------------------------
 
 export type InfomationAction =
-  | Information_Request
-  | Information_Request_Success
-  | Hospital_Clear_Details
+  | InformationRequest
+  | InformationRequestSuccess
+  | HospitalClearDetails
 
-export interface Information_Request {
-  type: HosptailTypes.Information.Information_REQUEST
-  partnerId: String
+export interface InformationRequest {
+  type: HosptailTypes.Information.INFORMATION_REQUEST
+  partnerId: string
 }
 
-export interface Information_Request_Success {
-  type: HosptailTypes.Information.Information_REQUEST_SUCCESS
-  information: Object
+export interface InformationRequestSuccess {
+  type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS
+  information: Record<string, any>
 }
 
-export interface Hospital_Clear_Details {
-  type: HosptailTypes.Information.Hospital_CLEAR_DETAILS
+export interface HospitalClearDetails {
+  type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
 }
 
 // --------------------------------------------------------------------------
 
 export type FeatureAction =
-  | FeatureByPartner_Request
-  | FeatureByPartner_Request_Success
+  | FeatureByPartnerRequest
+  | FeatureByPartnerRequestSuccess
 
-export interface FeatureByPartner_Request {
-  type: HosptailTypes.Feature.FeatureByPartner_REQUEST
+export interface FeatureByPartnerRequest {
+  type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
 }
 
-export interface FeatureByPartner_Request_Success {
-  type: HosptailTypes.Feature.FeatureByPartner_REQUEST_SUCCESS
+export interface FeatureByPartnerRequestSuccess {
+  type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS
   listFeature: any[]
 }
 
 export type ListHospitalAction =
-  | ListHospital_Request
-  | ListHospital_Request_Success
+  | ListHospitalRequest
+  | ListHospitalRequestSuccess
 
-export interface ListHospital_Request {
-  type: HosptailTypes.ListHospital.ListHospital_REQUEST
+export interface ListHospitalRequest {
+  type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
 }
 
-export interface ListHospital_Request_Success {
-  type: HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS
+export interface ListHospitalRequestSuccess {
+  type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS
   listHospital: any[]
 }
