@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { check } from '@utils/checkValue'
+
 import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -21,7 +21,8 @@ export const BannerHome = ({
   const { imageBackground } = getBanner
 
   const SelectFeature = (type: string) => {
-    if (appId === 'medpro' && check(type)) {
+    const { checkDataInput } = require('./../DataFailure')
+    if (appId === 'medpro' && checkDataInput(type)) {
       dispatchListHospital()
       router.push('/chon-benh-vien')
     }
