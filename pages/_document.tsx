@@ -27,7 +27,7 @@ class CustomDocument extends Document<{
     return (
       <Html lang='vi'>
         <Head>
-          <FavIcon image={this.props.image} />
+          <FavIcon />
           <script
             src='https://resource-testing.medpro.com.vn/static/js/wechat.js'
             async={true}

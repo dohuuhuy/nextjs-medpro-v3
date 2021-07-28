@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FavIcon = ({}: any) => {
+const FavIcon = () => {
   return <link rel='shortcut icon' href='/favicon/medpro.png' />
 }
 
