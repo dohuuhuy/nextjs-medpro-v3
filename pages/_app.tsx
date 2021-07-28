@@ -7,10 +7,11 @@ import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
-import React, { useEffect } from 'react'
+import { AppContext } from 'next/app'
+import React, { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const MyApp = ({ Component, pageProps }: any) => {
+const MyApp: FC<any> = ({ Component, pageProps }) => {
   const LayoutWrapper = Component.Layout || React.Fragment
 
   useEffect(() => {
@@ -40,4 +41,19 @@ const MyApp = ({ Component, pageProps }: any) => {
     </>
   )
 }
+
+export const getInitialProps = async ({ Component, ctx }: AppContext) => {
+  console.log('ctx :>> ', ctx)
+  return {
+    pageProps: {
+      // Call page-level getInitialProps
+      ...(Component.getInitialProps
+        ? await Component.getInitialProps(ctx)
+        : {}),
+      // Some custom thing for all pages
+      pathname: ctx.pathname
+    }
+  }
+}
+
 export default wrapper.withRedux(MyApp)

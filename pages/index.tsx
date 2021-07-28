@@ -21,5 +21,11 @@ const HomePage = () => {
   return null
 }
 
+// HomePage.getInitialProps = async ({ store }: any) => {
+//   console.log('store :>> ', store)
+//   return {}
+// }
+
 HomePage.Layout = HomeLayout
+
 export default HomePage

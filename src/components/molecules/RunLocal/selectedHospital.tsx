@@ -3,7 +3,7 @@ import { ArrowUpOutlined } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
 import { BackTop, Button, Modal, Select } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
 const { Option } = Select
@@ -12,6 +12,10 @@ const SelectedHospital = () => {
   const dispatch = useDispatch()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
+
+  useEffect(() => {
+    dispatch(set_partnerId_local({ partnerId: 'medpro' }))
+  })
 
   const toggle = () => {
     setIsModalVisible(!isModalVisible)
