@@ -24,20 +24,16 @@ const NewsPageDetails = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (check(totalPages)) {
-      dispatch(getCountNewsContent())
-    }
-  })
-
-  useEffect(() => {
     if (check(listNewsBanner)) {
       dispatch(getListNewsBanner())
     }
-  })
 
-  useEffect(() => {
     if (check(listNewsContent)) {
       dispatch(getListNewsContent())
+    }
+
+    if (Number(totalPages) === 0) {
+      dispatch(getCountNewsContent())
     }
   })
 
