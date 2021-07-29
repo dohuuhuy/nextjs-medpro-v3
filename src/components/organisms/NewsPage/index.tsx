@@ -10,10 +10,9 @@ const NewsPageDetails = () => {
     (state: AppState) => state.newsReducer.listNewsBanner
   )
 
-  // const listNewsContent = useSelector(
-  //   (state: AppState) => state.newsReducer.listNewsContent
-  // )
-  const listNewsContent = []
+  const listNewsContent = useSelector(
+    (state: AppState) => state.newsReducer.listNewsContent
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
