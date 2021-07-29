@@ -1,6 +1,8 @@
-import { getData } from '@store/api'
+import { countData, getData } from '@store/api'
 import { NewsTypes } from '@store/interface'
+import { LIMIT_PAGE_NEWS } from '@utils/contants'
 import { AxiosResponse } from 'axios'
+import { ceil } from 'lodash'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 
 function* getNewsAndEvent() {
@@ -49,10 +51,9 @@ function* WatchGetListNewsBanner() {
   )
 }
 
-function* getListNewsContent(page = 1) {
+function* getListNewsContent({ page = 1 }) {
   try {
-    const LIMIT_PAGE_NEWS = 8
-    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS;
+    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
     const response: AxiosResponse = yield call(getData, url)
     yield put({
@@ -66,20 +67,18 @@ function* getListNewsContent(page = 1) {
 
 function* WatchGetListNewsContent() {
   yield takeLatest(
-    NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST,
+    NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST as any,
     getListNewsContent
   )
 }
 
 function* getCountNewsContent() {
   try {
-    const LIMIT_PAGE_NEWS = 8
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc`
-    const response: AxiosResponse = yield call(getData, url)
-    const sumPage = Math.ceil(Object.keys(response.data).length / LIMIT_PAGE_NEWS)
+    const response: AxiosResponse = yield call(countData, url)
     yield put({
       type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS,
-      totalData: sumPage
+      totalPages: ceil(Number(response) / LIMIT_PAGE_NEWS)
     })
   } catch (error) {
     console.error(error)
@@ -98,7 +97,7 @@ const newsSagas = function* root() {
     fork(WatchGetNewsAndEvent),
     fork(WatchGetListNewsBanner),
     fork(WatchGetListNewsContent),
-    fork(WatchGetCountNewsContent),
+    fork(WatchGetCountNewsContent)
   ])
 }
 export default newsSagas

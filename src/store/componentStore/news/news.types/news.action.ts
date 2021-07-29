@@ -1,6 +1,10 @@
 import { NewsTypes } from '@store/interface'
 
-export type NewsActions = NewsAndEventAction | ListNewsBannerAction | ListNewsContentAction | CountNewsContentAction
+export type NewsActions =
+  | NewsAndEventAction
+  | ListNewsBannerAction
+  | ListNewsContentAction
+  | CountNewsContentAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -54,5 +58,5 @@ export interface CountNewsContentRequest {
 
 export interface CountNewsContentRequestSuccess {
   type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS
-  totalData: number
+  totalPages: number
 }

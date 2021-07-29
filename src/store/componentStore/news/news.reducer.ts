@@ -4,7 +4,7 @@ const init: NewsState = {
   newsAndEvent: [],
   listNewsBanner: [],
   listNewsContent: [],
-  totalData: 0
+  totalPages: 0
 }
 
 export default function newsReducer(state = init, action: NewsActions) {
@@ -29,7 +29,7 @@ export default function newsReducer(state = init, action: NewsActions) {
     case NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS:
       return {
         ...state,
-        countNewsContent: action.totalData
+        totalPages: action.totalPages
       }
     default:
       return state

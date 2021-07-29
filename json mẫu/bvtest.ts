@@ -264,6 +264,14 @@ export const JSON_EXP = {
     },
     {
       id: '',
+      key: '/tin-tuc',
+      title: 'TIN TỨC VÀ SỰ KIỆN',
+      subTitle: '',
+      imageBackground: '',
+      details: ''
+    },
+    {
+      id: '',
       key: '/thac-mac',
       title: 'THẮC MẮC',
       subTitle:

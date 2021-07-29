@@ -1,26 +1,19 @@
-import { Col, Row, Pagination } from 'antd'
+import { Col, Row } from 'antd'
 import React from 'react'
 import Container from '../Container'
 import styles from './style.module.less'
 
 interface NewsPageCustom {
   dataNewsPageBanner: any[]
-  dataNewsPageContent: any[]
-  totalData: number
+  dataNewsPageContent?: any[]
+  totalData?: number
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
-export const NewsPageCustom = ({
-  dataNewsPageBanner,
-  dataNewsPageContent,
-  totalData,
-}: NewsPageCustom) => {
+export const NewsPageCustom = ({ dataNewsPageBanner }: NewsPageCustom) => {
   const { DataFailure, checkData } = require('../DataFailure')
   if (checkData(dataNewsPageBanner)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
-  }
-  if (checkData(dataNewsPageContent)) {
-    return <DataFailure description={'Lỗi không có data tin tức content'} />
   }
 
   return (
@@ -33,10 +26,7 @@ export const NewsPageCustom = ({
               ?.map(({ title, description, image }: any, index: number) => (
                 <li key={index} className={styles.card}>
                   <figure className={styles.cardImg}>
-                    <img
-                      src={API_NEWS + image?.[0].url}
-                      alt=' '
-                    />
+                    <img src={API_NEWS + image?.[0].url} alt=' ' />
                   </figure>
                   <div className={styles.cardBody}>
                     <p>{title}</p>

@@ -1,4 +1,8 @@
-import { getListNewsBanner, getCountNewsContent, getListNewsContent } from '@actionStore/rootAction'
+import {
+  getCountNewsContent,
+  getListNewsBanner,
+  getListNewsContent
+} from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
@@ -14,29 +18,29 @@ const NewsPageDetails = () => {
     (state: AppState) => state.newsReducer.listNewsContent
   )
 
-  const totalData = useSelector(
-    (state: AppState) => state.newsReducer.totalData
+  const totalPages = useSelector(
+    (state: AppState) => state.newsReducer.totalPages
   )
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (check(totalPages)) {
+      dispatch(getCountNewsContent())
+    }
+  })
 
   useEffect(() => {
     if (check(listNewsBanner)) {
       dispatch(getListNewsBanner())
     }
-    if (check(totalData)) {
-      dispatch(getCountNewsContent())
-    }
+  })
+
+  useEffect(() => {
     if (check(listNewsContent)) {
       dispatch(getListNewsContent())
     }
   })
 
-  return (
-    <NewsPageCustom
-      dataNewsPageBanner={listNewsBanner}
-      dataNewsPageContent={listNewsContent}
-      totalData={totalData}
-    />
-  )
+  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} />
 }
 export default NewsPageDetails
