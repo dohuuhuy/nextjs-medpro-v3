@@ -36,10 +36,10 @@ export type ListNewsContentAction =
   | ListNewsContentRequestSuccess
 
 export interface ListNewsContentRequest {
-  type: NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST
+  type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST
 }
 
 export interface ListNewsContentRequestSuccess {
-  type: NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST_SUCCESS
+  type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS
   listNewsContent: any[]
 }

@@ -4,15 +4,17 @@ import Container from '../Container'
 import styles from './style.module.less'
 
 interface NewsPageCustom {
-  dataNewsPageBanner: any
-  dataNewsPageContent: any
+  dataNewsPageBanner: any[]
+  dataNewsPageContent: any[]
 }
+export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = ({
   dataNewsPageBanner,
   dataNewsPageContent
 }: NewsPageCustom) => {
   const { DataFailure } = require('../DataFailure')
+  console.log("data ", dataNewsPageBanner.splice(1, 2), dataNewsPageContent)
   if (!dataNewsPageBanner || dataNewsPageBanner.length < 1) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
   }
@@ -23,7 +25,28 @@ export const NewsPageCustom = ({
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowHeader}>
+        {dataNewsPageBanner.length && dataNewsPageBanner.splice(0, 1)?.map(({ title, description, image }: any, index: number) => (
+          <ul key={index} className={styles.colCard}>
+            <img
+              className={styles.img}
+              src={API_NEWS + image?.[0].url}
+              alt=' '
+            />
+            <li>
+              <p>{title}</p>
+              <span>{description}</span>
+            </li>
+          </ul>
+        ))}
         <ul className={styles.colCard}>
+          {dataNewsPageBanner.length && dataNewsPageBanner.splice(1, 3)?.map(({ title, description }: any, index: number) => (
+            <li key={index}>
+              <p>{title}</p>
+              <span>{description}</span>
+            </li>
+          ))}
+        </ul>
+        {/* <ul className={styles.colCard}>
           <img
             src={
               'https://cms.medpro.com.vn/uploads/1627418134461_d1b169c9b4.png'
@@ -59,7 +82,7 @@ export const NewsPageCustom = ({
               cũng gây hại cho đôi mắt.
             </span>
           </li>
-        </ul>
+        </ul> */}
       </Row>
       <Row className={styles.rowContent} />
     </Container>

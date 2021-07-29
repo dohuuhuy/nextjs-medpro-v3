@@ -22,6 +22,7 @@ const NewsPageDetails = () => {
     if (check(listNewsContent)) {
       dispatch(getListNewsContent())
     }
+
   })
 
   return (
