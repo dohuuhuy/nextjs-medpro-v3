@@ -8,7 +8,10 @@ interface NewsPageCustom {
   dataNewsPageContent: any
 }
 
-export const NewsPageCustom = ({ dataNewsPageBanner, dataNewsPageContent }: NewsPageCustom) => {
+export const NewsPageCustom = ({
+  dataNewsPageBanner,
+  dataNewsPageContent
+}: NewsPageCustom) => {
   const { DataFailure } = require('../DataFailure')
   if (!dataNewsPageBanner || dataNewsPageBanner.length < 1) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />

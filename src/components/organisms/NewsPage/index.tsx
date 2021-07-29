@@ -16,12 +16,19 @@ const NewsPageDetails = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (check(listNewsBanner) && check(listNewsContent)) {
-      dispatch(getListNewsBanner()),
-        dispatch(getListNewsContent())
+    if (check(listNewsBanner)) {
+      dispatch(getListNewsBanner())
+    }
+    if (check(listNewsContent)) {
+      dispatch(getListNewsContent())
     }
   })
 
-  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} dataNewsPageContent={listNewsContent} />
+  return (
+    <NewsPageCustom
+      dataNewsPageBanner={listNewsBanner}
+      dataNewsPageContent={listNewsContent}
+    />
+  )
 }
 export default NewsPageDetails
