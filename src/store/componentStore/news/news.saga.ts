@@ -49,9 +49,11 @@ function* WatchGetListNewsBanner() {
   )
 }
 
-function* getListNewsContent() {
+function* getListNewsContent(page = 1) {
   try {
-    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC`
+    const LIMIT_PAGE_NEWS = 8
+    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS;
+    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
     const response: AxiosResponse = yield call(getData, url)
     yield put({
       type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS,
@@ -69,11 +71,34 @@ function* WatchGetListNewsContent() {
   )
 }
 
+function* getCountNewsContent() {
+  try {
+    const LIMIT_PAGE_NEWS = 8
+    const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc`
+    const response: AxiosResponse = yield call(getData, url)
+    const sumPage = Math.ceil(Object.keys(response.data).length / LIMIT_PAGE_NEWS)
+    yield put({
+      type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS,
+      totalData: sumPage
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* WatchGetCountNewsContent() {
+  yield takeLatest(
+    NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST,
+    getCountNewsContent
+  )
+}
+
 const newsSagas = function* root() {
   yield all([
     fork(WatchGetNewsAndEvent),
     fork(WatchGetListNewsBanner),
-    fork(WatchGetListNewsContent)
+    fork(WatchGetListNewsContent),
+    fork(WatchGetCountNewsContent),
   ])
 }
 export default newsSagas
