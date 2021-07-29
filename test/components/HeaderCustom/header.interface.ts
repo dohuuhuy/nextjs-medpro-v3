@@ -18,6 +18,7 @@ export interface ItemMenu {
   icon: string
   active: boolean
   group: string
+  status: boolean
 }
 
 export interface ItemMenuMobile {

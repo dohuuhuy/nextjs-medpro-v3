@@ -14,16 +14,19 @@ const MenuHeader = ({ menuHeader }: Props) => {
 
   return (
     <ul className={style.ListMenuHeader}>
-      {menuHeader?.map((item) => (
-        <li
-          key={item.key}
-          className={pathname === item.link ? style.active : ''}
-        >
-          <Link href={item.link || '/'}>
-            <a>{item.label}</a>
-          </Link>
-        </li>
-      ))}
+      {menuHeader?.map(
+        (item) =>
+          item.status && (
+            <li
+              key={item.key}
+              className={pathname === item.link ? style.active : ''}
+            >
+              <Link href={item.link || '/'}>
+                <a>{item.label}</a>
+              </Link>
+            </li>
+          )
+      )}
     </ul>
   )
 }
