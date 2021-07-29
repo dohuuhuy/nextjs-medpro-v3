@@ -1,5 +1,6 @@
 export interface NewsState {
   newsAndEvent: any[]
   listNewsBanner: any[]
-  listNewsContent: any[]
+  listNewsContent: any[],
+  totalData: number
 }

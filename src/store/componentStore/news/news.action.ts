@@ -17,3 +17,9 @@ export const getListNewsContent = (): NewsActions => {
     type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST
   }
 }
+
+export const getCountNewsContent = (): NewsActions => {
+  return {
+    type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST
+  }
+}

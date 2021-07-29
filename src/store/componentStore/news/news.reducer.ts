@@ -3,7 +3,8 @@ import { NewsActions, NewsState, NewsTypes } from '@store/interface'
 const init: NewsState = {
   newsAndEvent: [],
   listNewsBanner: [],
-  listNewsContent: []
+  listNewsContent: [],
+  totalData: 0
 }
 
 export default function newsReducer(state = init, action: NewsActions) {
@@ -25,7 +26,11 @@ export default function newsReducer(state = init, action: NewsActions) {
         ...state,
         listNewsContent: action.listNewsContent
       }
-
+    case NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        countNewsContent: action.totalData
+      }
     default:
       return state
   }
