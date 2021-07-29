@@ -13,7 +13,7 @@ export default function newsReducer(state = init, action: NewsActions) {
         newsAndEvent: action.newsPin.concat(action.news)
       }
 
-    case NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST_SUCCESS:
+    case NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS:
       return {
         ...state,
         listNewsBanner: action.listNewsBanner

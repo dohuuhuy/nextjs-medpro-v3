@@ -33,7 +33,7 @@ function* getListNewsBanner() {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
     const response: AxiosResponse = yield call(getData, url)
     yield put({
-      type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST_SUCCESS,
+      type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS,
       listNewsBanner: response
     })
   } catch (error) {
@@ -43,7 +43,7 @@ function* getListNewsBanner() {
 
 function* WatchGetListNewsBanner() {
   yield takeLatest(
-    NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST,
+    NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST,
     getListNewsBanner
   )
 }

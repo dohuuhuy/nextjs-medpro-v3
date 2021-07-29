@@ -2,7 +2,7 @@ import { HospitalActions, HospitalState, HosptailTypes } from '@store/interface'
 
 const init: HospitalState = {
   information: {
-    partnerId: 'string',
+    partnerId: '',
     header: {},
     banners: [],
     deployHospital: [],

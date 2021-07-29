@@ -23,10 +23,10 @@ export type ListNewsBannerAction =
   | ListNewsBannerRequestSuccess
 
 export interface ListNewsBannerRequest {
-  type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST
+  type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST
 }
 
 export interface ListNewsBannerRequestSuccess {
-  type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST_SUCCESS
+  type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS
   listNewsBanner: any[]
 }

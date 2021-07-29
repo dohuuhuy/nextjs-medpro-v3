@@ -9,8 +9,8 @@ interface ContentPageCustom {
 }
 
 export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
-  const { checkDataInput, DataFailure } = require('./../DataFailure')
-  if (checkDataInput(getContent)) {
+  const { checkData, DataFailure } = require('./../DataFailure')
+  if (checkData(getContent)) {
     return <DataFailure description={'Lỗi không có data nội dung trang'} />
   }
   const { key, content } = getContent

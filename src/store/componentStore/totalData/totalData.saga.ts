@@ -27,10 +27,6 @@ function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
   const getPartner = findPartnerId(runObject)
 
   if (getPartner) {
-    yield put({
-      type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
-    })
-
     persistor.purge()
 
     yield put({

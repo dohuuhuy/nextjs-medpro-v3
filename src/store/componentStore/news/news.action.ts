@@ -8,6 +8,6 @@ export const getNewsAndEvent = (): NewsActions => {
 
 export const getListNewsBanner = (): NewsActions => {
   return {
-    type: NewsTypes.ListNewsBanner.LISTNEWSBANNER_REQUEST
+    type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST
   }
 }

@@ -8,8 +8,8 @@ interface IntroduceCustom {
 }
 
 export const IntroduceCustom = ({ dataIntroduce }: IntroduceCustom) => {
-  const { checkDataInput, DataFailure } = require('./../DataFailure')
-  if (checkDataInput(dataIntroduce)) {
+  const { checkData, DataFailure } = require('./../DataFailure')
+  if (checkData(dataIntroduce)) {
     return <DataFailure description={'Lỗi không có data giới thiệu'} />
   }
 

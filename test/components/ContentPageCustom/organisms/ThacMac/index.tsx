@@ -7,8 +7,8 @@ import style from './styles.module.less'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
-  const { checkDataInput, DataFailure } = require('./../../../DataFailure')
-  if (checkDataInput(content)) {
+  const { checkData, DataFailure } = require('./../../../DataFailure')
+  if (checkData(content)) {
     return <DataFailure description={'Lỗi không có data thắc mắc'} />
   }
 

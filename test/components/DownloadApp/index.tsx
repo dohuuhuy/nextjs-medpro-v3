@@ -9,8 +9,8 @@ interface DownloadCustom {
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
-  const { checkDataInput, DataFailure } = require('./../DataFailure')
-  if (checkDataInput(dataDownload)) {
+  const { checkData, DataFailure } = require('./../DataFailure')
+  if (checkData(dataDownload)) {
     return <DataFailure description={'Lỗi không có data tải ứng dụng'} />
   }
   return (

@@ -2,12 +2,12 @@ import React from 'react'
 import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
-import { checkDataInput, DataFailure } from './../DataFailure'
+import { checkData, DataFailure } from './../DataFailure'
 
 export const BannersCustom = (props: any) => {
   const { getBanner } = props
 
-  if (checkDataInput(getBanner)) {
+  if (checkData(getBanner)) {
     return <DataFailure description={'Lỗi không có data banners'} />
   }
 

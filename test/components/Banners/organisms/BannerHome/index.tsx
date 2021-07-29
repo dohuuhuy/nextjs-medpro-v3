@@ -19,9 +19,9 @@ export const BannerHome = ({
   const { imageBackground } = getBanner
 
   const SelectFeature = (type: string) => {
-    const { checkDataInput } = require('./../../../DataFailure')
+    const { checkData } = require('./../../../DataFailure')
 
-    if (appId === 'medpro' && checkDataInput(type)) {
+    if (appId === 'medpro' && checkData(type)) {
       dispatchListHospital()
       router.push('/chon-benh-vien')
     }

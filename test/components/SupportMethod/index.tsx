@@ -12,8 +12,8 @@ interface SupportMedthodCustom {
 export const SupportMedthodCustom = ({
   dataSupportMethod
 }: SupportMedthodCustom) => {
-  const { checkDataInput, DataFailure } = require('./../DataFailure')
-  if (checkDataInput(dataSupportMethod)) {
+  const { checkData, DataFailure } = require('./../DataFailure')
+  if (checkData(dataSupportMethod)) {
     return <DataFailure description={'Lỗi không có data hỗ trợ'} />
   }
 

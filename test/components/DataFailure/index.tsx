@@ -4,7 +4,7 @@ import React from 'react'
 import Container from 'test/components/Container'
 import style from './styles.module.less'
 
-export const checkDataInput = (element: any) => {
+export const checkData = (element: any) => {
   if (
     !element ||
     isEmpty(element) ||

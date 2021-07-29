@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 import Container from '../Container'
-import { checkDataInput, DataFailure } from './../DataFailure'
+import { checkData, DataFailure } from './../DataFailure'
 import { DeloyHospital } from './SliderHospital.interface'
 import styles from './style.module.less'
 
@@ -13,7 +13,7 @@ interface DeloyHospitalCustom {
 export const DeloyHospitalCustom = ({
   dataDeloyHospital
 }: DeloyHospitalCustom) => {
-  if (checkDataInput(dataDeloyHospital)) {
+  if (checkData(dataDeloyHospital)) {
     return <DataFailure description={'Lỗi không có data dataDeloyHospital'} />
   }
 
