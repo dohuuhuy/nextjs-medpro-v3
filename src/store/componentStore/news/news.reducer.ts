@@ -19,6 +19,12 @@ export default function newsReducer(state = init, action: NewsActions) {
         listNewsBanner: action.listNewsBanner
       }
 
+    case NewsTypes.ListNewsContent.LISTNEWSCONTENT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listNewsContent: action.listNewsContent
+      }
+
     default:
       return state
   }
