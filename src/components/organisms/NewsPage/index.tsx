@@ -20,6 +20,7 @@ const NewsPageDetails = () => {
       dispatch(getListNewsBanner()),
         dispatch(getListNewsContent())
     }
+
   })
 
   return <NewsPageCustom dataNewsPageBanner={listNewsBanner} dataNewsPageContent={listNewsContent} />
