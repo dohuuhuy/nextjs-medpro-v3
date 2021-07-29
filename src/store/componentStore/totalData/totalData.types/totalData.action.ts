@@ -14,9 +14,8 @@ export interface ListPartnersReques {
 }
 
 export interface ListPartnersRequestSuccess {
-  [x: string]: any
   type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS
-  list_partners: any[]
+  listPartners: any[]
 }
 
 export interface SetParnerId {
