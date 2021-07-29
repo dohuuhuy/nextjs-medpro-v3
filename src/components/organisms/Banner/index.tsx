@@ -14,10 +14,7 @@ const BannerLayout = () => {
 
   const {
     listFeature,
-    information: {
-      banners,
-      header: { menuHeader, insideLink, menuMobile }
-    }
+    information: { banners, header }
   } = useSelector((state: AppState) => state.hospitalReducer)
 
   const { partnerId, appId } = useSelector(
@@ -29,6 +26,10 @@ const BannerLayout = () => {
   const getBanner = find(banners, { key: pathname })
 
   if (check(getBanner)) {
+    if (check(header)) {
+      return null
+    }
+    const { menuHeader, insideLink, menuMobile } = header
     const listMenu = [].concat(menuHeader, insideLink, menuMobile)
     return <BreadcumbCustom listMenu={listMenu} />
   }

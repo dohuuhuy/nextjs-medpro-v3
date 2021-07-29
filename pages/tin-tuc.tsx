@@ -1,6 +1,6 @@
-import React from 'react'
-import dynamic from 'next/dynamic'
 import NewsPageDetails from '@components/organisms/NewsPage'
+import dynamic from 'next/dynamic'
+import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const TinTucPage = () => {

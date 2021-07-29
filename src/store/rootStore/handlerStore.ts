@@ -1,11 +1,10 @@
 import { NODE_ENV } from '@config/envs/env'
-
 import { VERSION } from '@config/version'
-import { Store } from 'antd/lib/form/interface'
 import { applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+// import logger from 'redux-logger'
 import { Persistor } from 'redux-persist'
-import createSagaMiddleware, { Task } from 'redux-saga'
+import createSagaMiddleware from 'redux-saga'
 
 export const sagaMiddleware = createSagaMiddleware()
 
@@ -26,10 +25,6 @@ export const checkVersion = (persistor: Persistor) => {
   } else {
     persistor.purge()
   }
-}
-
-export interface SagaStore extends Store {
-  sagaTask?: Task
 }
 
 export const setVersion = () => {

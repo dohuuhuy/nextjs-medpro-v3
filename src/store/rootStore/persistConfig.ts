@@ -1,5 +1,5 @@
 import { VERSION } from '@config/version'
-import rootReducer from '@store/rootReducer'
+import { rootReducer } from '@store/rootReducer'
 import { persistReducer } from 'redux-persist'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'

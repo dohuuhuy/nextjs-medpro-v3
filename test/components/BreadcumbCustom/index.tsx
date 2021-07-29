@@ -26,19 +26,15 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
         <Row className={style.rowBreadcumbCustom}>
           <Col className={style.colBreadcumbCustom}>
             <Breadcrumb separator='>' className={style.Breadcrumb}>
-              {listBreadcumb.length &&
-                listBreadcumb?.map((item: any) => {
-                  return (
-                    <Breadcrumb.Item
-                      className={style.ItemBreadcrumb}
-                      key={item?.label}
-                    >
-                      <Link href={item?.link || '#'}>
-                        <a>{item?.label || ''}</a>
-                      </Link>
-                    </Breadcrumb.Item>
-                  )
-                })}
+              {listBreadcumb?.map((item: any, i: number) => {
+                return (
+                  <Breadcrumb.Item className={style.ItemBreadcrumb} key={i}>
+                    <Link href={item?.link || '#'}>
+                      <a>{item?.label || ''}</a>
+                    </Link>
+                  </Breadcrumb.Item>
+                )
+              })}
             </Breadcrumb>
           </Col>
         </Row>
