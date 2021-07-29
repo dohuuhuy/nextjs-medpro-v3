@@ -32,6 +32,7 @@ function* getListNewsBanner() {
   try {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
     const response: AxiosResponse = yield call(getData, url)
+
     yield put({
       type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS,
       listNewsBanner: response
@@ -69,6 +70,10 @@ function* WatchGetListNewsContent() {
 }
 
 const newsSagas = function* root() {
-  yield all([fork(WatchGetNewsAndEvent), fork(WatchGetListNewsBanner), fork(WatchGetListNewsContent)])
+  yield all([
+    fork(WatchGetNewsAndEvent),
+    fork(WatchGetListNewsBanner),
+    fork(WatchGetListNewsContent)
+  ])
 }
 export default newsSagas

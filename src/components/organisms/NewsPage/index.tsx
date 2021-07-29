@@ -1,4 +1,4 @@
-import { getListNewsBanner, getListNewsContent } from '@actionStore/rootAction'
+import { getListNewsBanner } from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
@@ -19,10 +19,9 @@ const NewsPageDetails = () => {
     if (check(listNewsBanner)) {
       dispatch(getListNewsBanner())
     }
-    if (check(listNewsContent)) {
-      dispatch(getListNewsContent())
-    }
-
+    // if (check(listNewsContent)) {
+    //   dispatch(getListNewsContent())
+    // }
   })
 
   return (
