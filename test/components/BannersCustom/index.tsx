@@ -1,8 +1,8 @@
 import React from 'react'
+import { checkData, DataFailure } from '../DataFailure'
 import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
-import { checkData, DataFailure } from './../DataFailure'
 
 export const BannersCustom = (props: any) => {
   const { getBanner } = props
