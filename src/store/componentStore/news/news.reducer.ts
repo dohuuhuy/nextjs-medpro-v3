@@ -2,7 +2,8 @@ import { NewsActions, NewsState, NewsTypes } from '@store/interface'
 
 const init: NewsState = {
   newsAndEvent: [],
-  listNewsBanner: []
+  listNewsBanner: [],
+  listNewsContent: []
 }
 
 export default function newsReducer(state = init, action: NewsActions) {
