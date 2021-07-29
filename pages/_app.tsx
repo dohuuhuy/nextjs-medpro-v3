@@ -8,11 +8,18 @@ import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
-import React, { useEffect } from 'react'
+import { AppProps } from 'next/app'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Page } from 'type/page'
 
-const MyApp = ({ Component, pageProps }: any) => {
-  const LayoutWrapper = Component.Layout || React.Fragment
+type Props = AppProps & {
+  Component: Page
+}
+
+const MyApp = ({ Component, pageProps }: Props) => {
+  const getLayout = Component.getLayout ?? ((page) => page)
+  const LayoutWrapper = Component.Layout ?? Fragment
 
   useEffect(() => {
     setVersion()
@@ -35,7 +42,7 @@ const MyApp = ({ Component, pageProps }: any) => {
     <>
       <LayoutWrapper>
         <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </LayoutWrapper>
       <SelectedHospital />
     </>
