@@ -1,9 +1,14 @@
 import React from 'react'
-import { ItemChecked } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
   logoChecked?: ItemChecked[]
+}
+
+export interface ItemChecked {
+  id?: string
+  imgLogo: string
+  link: string
 }
 
 export const ImageFooter = ({ logoChecked }: Props) => {

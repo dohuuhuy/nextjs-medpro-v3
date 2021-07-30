@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import React from 'react'
-import { CopyRight } from './CopyRight'
-import { FooterContent } from './FooterContent'
-import { PropsFooter } from './interface.footer'
+import { CopyRight } from './organisms/CopyRight'
+import { FooterContent } from './organisms/FooterContent'
+import { PropsFooter } from './organisms/interface.footer'
 import style from './styles.module.less'
 
 const { Footer } = Layout

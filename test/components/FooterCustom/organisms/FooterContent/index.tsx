@@ -1,12 +1,12 @@
 import { Col, Row } from 'antd'
 import cx from 'classnames'
 import React from 'react'
-import Container from '../Container'
-import { ImageFooter } from './ImageFooter'
-import { InfoFooter } from './InfoFooter'
-import { PropsFooter } from './interface.footer'
+import Container from '../../../Container'
+import { ImageFooter } from '../../molecules/ImageFooter'
+import { InfoFooter } from '../../molecules/InfoFooter'
 import style from './styles.module.less'
-import { SuportFooter } from './SuportFooter'
+import { SuportFooter } from '../../molecules/SuportFooter'
+import { PropsFooter } from '../interface.footer'
 
 export const FooterContent = ({ dataFooter }: PropsFooter) => {
   if (!dataFooter || dataFooter.length < 1) {
@@ -22,11 +22,14 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
   return (
     <div className={style.viewFooter}>
       <Container>
-        <Row className={style.colFooter}>
+        <Row className={style.rowFooter}>
           <Col
-            xl={4}
-            md={4}
             className={cx(style.viewCol, CheckValue(logoFooter))}
+            xl={4}
+            lg={4}
+            md={24}
+            sm={24}
+            xs={24}
           >
             <a
               href={logoFooter.linkImage}
@@ -43,29 +46,38 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
           </Col>
 
           <Col
-            xl={10}
-            md={10}
             className={cx(style.viewCol, CheckValue(infoContact))}
+            xl={10}
+            lg={10}
+            md={24}
+            sm={24}
+            xs={24}
           >
             <InfoFooter infoContact={infoContact} />
           </Col>
 
           <Col
-            xl={4}
-            md={4}
             className={cx(
               style.viewCol,
               style.linkSupport,
               CheckValue(linkSupport)
             )}
+            xl={4}
+            lg={4}
+            md={24}
+            sm={24}
+            xs={24}
           >
             <SuportFooter linkSupport={linkSupport} />
           </Col>
 
           <Col
-            xl={6}
-            md={6}
             className={cx(style.viewCol, CheckValue(logoChecked))}
+            xl={6}
+            lg={6}
+            md={24}
+            sm={24}
+            xs={24}
           >
             <ImageFooter logoChecked={logoChecked} />
           </Col>

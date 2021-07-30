@@ -1,10 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
-import { ItemSupport } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
   linkSupport: ItemSupport[]
+}
+
+export interface ItemSupport {
+  id?: string
+  label: string
+  link: string
 }
 
 export const SuportFooter = ({ linkSupport }: Props) => {

@@ -1,0 +1,29 @@
+.viewFooter {
+  background-color: #f8fafd;
+  padding: 2rem 0;
+  border-top: 1px solid #dfe3eb;
+  .rowFooter {
+    justify-content: center;
+    .viewCol {
+      margin: 0;
+      padding: 0 15px;
+      width: 100%;
+      .logo {
+        max-width: 160px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .viewFooter {
+    .rowFooter {
+      .viewCol {
+        text-align: center;
+      }
+      .linkSupport {
+        display: none;
+      }
+    }
+  }
+}
