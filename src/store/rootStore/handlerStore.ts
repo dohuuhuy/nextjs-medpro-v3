@@ -2,7 +2,6 @@ import { NODE_ENV } from '@config/envs/env'
 import { VERSION } from '@config/version'
 import { applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-// import logger from 'redux-logger'
 import { Persistor } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
 

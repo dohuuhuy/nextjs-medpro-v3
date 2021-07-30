@@ -92,12 +92,11 @@ export const NewsPageCustom = ({
               )}
           </div>
           <Pagination
-            defaultCurrent={1}
             total={totalPages}
             onChange={onChange}
+            pageSize={Math.ceil(Number(totalPages) / 8)}
             className={styles.Pagination}
-          // pageSize={Math.ceil(Number(totalPages) / 8)}
-          // size={"small"}
+            responsive
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />

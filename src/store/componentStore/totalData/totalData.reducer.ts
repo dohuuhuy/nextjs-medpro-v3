@@ -3,6 +3,7 @@ import {
   TotalDataState,
   TotalDataTypes
 } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const initState: TotalDataState = {
   partnerId: '',
@@ -13,7 +14,7 @@ const initState: TotalDataState = {
 
 export default function totalDataReducer(
   state = initState,
-  action: TotalDataActions
+  action: TotalDataActions | { type: typeof HYDRATE; payload: TotalDataState }
 ) {
   switch (action.type) {
     case TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS:
