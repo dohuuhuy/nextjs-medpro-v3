@@ -25,19 +25,19 @@ export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
     <div className={style.HeaderCustom}>
       <Container className={style.containerHeaderCustom}>
         <Row className={style.rowHeaderCustom}>
-          <Col xl={6} className={style.Col_LogoHeader}>
+          <Col xl={6} lg={6} md={6} className={style.Col_LogoHeader}>
             <LogoHeader
               logoHeader={logoHeader}
               logoHeaderMobile={logoHeaderMobile}
             />
           </Col>
-          <Col xl={14} className={style.Col_GroupMenuHeader}>
+          <Col xl={14} lg={14} md={14} className={style.Col_GroupMenuHeader}>
             <GroupMenuHeader
               menuHeader={menuHeader}
               Authencartion={Authencartion}
             />
           </Col>
-          <Col xl={4} md={12} className={style.Col_SupportHeader}>
+          <Col xl={4} lg={4} md={12} className={style.Col_SupportHeader}>
             <SupportHeader support={support} />
           </Col>
         </Row>

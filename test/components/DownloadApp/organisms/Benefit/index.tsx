@@ -10,7 +10,7 @@ interface Content {
   listBenefit: any[]
 }
 
-export const ListBenefit = ({ listBenefit, imgMobile }: Content) => {
+export const Benefit = ({ listBenefit, imgMobile }: Content) => {
   const rightListBenefit = filter(listBenefit, { position: 'right' })
   const leftListBenefit = filter(listBenefit, { position: 'left' })
 

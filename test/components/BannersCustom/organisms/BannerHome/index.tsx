@@ -56,7 +56,9 @@ export const BannerHome = ({
                     return (
                       <li key={i} onClick={() => SelectFeature(type)}>
                         <a>
-                          <img src={urlImage} onError={onError} />
+                          <figure>
+                            <img src={urlImage} onError={onError} />
+                          </figure>
                           <p>{name}</p>
                         </a>
                       </li>

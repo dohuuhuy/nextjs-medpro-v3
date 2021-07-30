@@ -1,6 +1,8 @@
 import React from 'react'
 import Container from '../Container'
-import { MyApp } from './organisms/myApp'
+import { Benefit } from './organisms/Benefit'
+
+import { MyApp } from './organisms/MyApp'
 import styles from './style.module.less'
 
 interface DownloadCustom {
@@ -23,10 +25,10 @@ export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
   return (
     <Container className={styles.DownloadCustom} id='tai-ung-dung'>
       <MyApp arrApp={dataDownload.myApp} />
-      {/* <ListBenefit
+      <Benefit
         listBenefit={dataDownload.listBenefit}
         imgMobile={dataDownload.imgMobile}
-      /> */}
+      />
     </Container>
   )
 }

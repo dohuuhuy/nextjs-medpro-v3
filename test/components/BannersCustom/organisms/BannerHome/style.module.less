@@ -5,14 +5,14 @@
   overflow: hidden;
   position: relative;
   .backgroundImage {
-    height: 720px;
+    padding-bottom: 50%;
   }
   .contentBannerHome {
     width: 100%;
     padding: 0 15px;
     position: absolute;
-    bottom: 30px;
-    top: 50px;
+    bottom: 3%;
+    top: 5%;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -42,14 +42,22 @@
           background: transparent;
           width: 50%;
           justify-content: center;
-          margin: 0 0 8% !important;
-          img {
-            width: 55px;
-            height: 55px;
-          }
-          p {
-            font-weight: 500;
-            padding: 0px 20px;
+
+          margin-bottom: 2%;
+          a {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            figure {
+              max-width: 55px;
+              margin-bottom: 0;
+            }
+            p {
+              font-weight: 500;
+              padding: 0px 20px;
+            }
           }
         }
       }
@@ -58,9 +66,6 @@
 }
 @media only screen and (max-width: 768px) {
   .BannerHome {
-    .backgroundImage {
-      height: 180px;
-    }
     .contentBannerHome {
       position: unset;
       .boxService {
@@ -87,6 +92,9 @@
               justify-content: center;
               padding: 12px 15px;
               white-space: nowrap;
+              p {
+                margin: 0;
+              }
             }
           }
         }
@@ -95,25 +103,8 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .BannerHome {
-    .backgroundImage {
-      height: 300px;
-    }
-  }
-}
-@media (min-width: 1024px) {
-  .BannerHome {
-    .backgroundImage {
-      height: 500px;
-    }
-  }
-}
-
-@media (min-width: 1440px) {
-  .BannerHome {
-    .backgroundImage {
-      height: 720px;
-    }
+    margin-top: 60px;
   }
 }
