@@ -28,13 +28,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     await store.dispatch(getNewsAndEvent())
     store.dispatch(END)
-
     await (store as SagaStore)?.sagaTask?.toPromise()
-
-    // const state = store.getState()
-
-    // console.log('state :>> ', state)
-
     return { props: { custom: 'custom' } }
   }
 )

@@ -5,7 +5,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const authen = {
-  isAuthen: true,
+  isAuthen: false,
   nameUser: 'Huyi'
 }
 
