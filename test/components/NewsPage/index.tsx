@@ -20,7 +20,7 @@ export const NewsPageCustom = ({ dataNewsPageBanner, dataNewsPageContent, totalP
 
   useEffect(() => {
     dispatch(getCountNewsContent())
-    dispatch(getListNewsContent())
+    dispatch(getListNewsContent(page))
   }, [page, dispatch])
 
   console.log("data ", dataNewsPageContent, page)
