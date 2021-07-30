@@ -12,9 +12,10 @@ export const getListNewsBanner = (): NewsActions => {
   }
 }
 
-export const getListNewsContent = (): NewsActions => {
+export const getListNewsContent = (page: number): NewsActions => {
   return {
     type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST,
+    page
   }
 }
 

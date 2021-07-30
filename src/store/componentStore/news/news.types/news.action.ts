@@ -45,12 +45,12 @@ export type ListNewsContentAction =
 
 export interface ListNewsContentRequest {
   type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST
+  page: number
 }
 
 export interface ListNewsContentRequestSuccess {
   type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS
   listNewsContent: any[]
-  page: number
 }
 
 // ----------------------------------------------------------------------------------------------

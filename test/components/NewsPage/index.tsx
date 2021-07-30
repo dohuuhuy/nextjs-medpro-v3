@@ -1,10 +1,10 @@
+import { getListNewsContent } from '@actionStore/rootAction'
 import { Col, Pagination, Row } from 'antd'
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Container from '../Container'
 import styles from './style.module.less'
-import moment from 'moment'
-import { getListNewsContent, getCountNewsContent } from '@actionStore/rootAction'
-import { useDispatch } from 'react-redux'
 
 interface NewsPageCustom {
   dataNewsPageBanner: any[]
@@ -13,19 +13,21 @@ interface NewsPageCustom {
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
-
-export const NewsPageCustom = ({ dataNewsPageBanner, dataNewsPageContent, totalPages }: NewsPageCustom) => {
+export const NewsPageCustom = ({
+  dataNewsPageBanner,
+  dataNewsPageContent,
+  totalPages
+}: NewsPageCustom) => {
   const [page, setPage] = useState(1)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCountNewsContent())
-    dispatch(getListNewsContent())
+    dispatch(getListNewsContent(page))
   }, [page, dispatch])
 
-  console.log("data ", dataNewsPageContent, page)
   const onChange = () => {
     setPage(page + 1)
+    window.scrollTo(0, 0)
   }
 
   const { DataFailure, checkData } = require('../DataFailure')
@@ -68,28 +70,33 @@ export const NewsPageCustom = ({ dataNewsPageBanner, dataNewsPageContent, totalP
       </Row>
       <Row className={styles.rowContent}>
         <Col xs={24} sm={24} xl={15}>
-          <ul className={styles.listNews}>
-            {dataNewsPageContent?.length && dataNewsPageContent?.map(({ title, description, image, created_at: creatAt }: any, index: number) => (
-              <li key={index} className={styles.news}>
-                <figure className={styles.newsImg}>
-                  <img src={API_NEWS + image?.[0].url} alt=" " />
-                </figure>
-                <div className={styles.newsBody}>
-                  <a>{title}</a>
-                  <p>{moment.utc(creatAt).format("DD/MM/YYYY, H:mm")}</p>
-                  <span>{description}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.listNews}>
+            {dataNewsPageContent?.length &&
+              dataNewsPageContent?.map(
+                (
+                  { title, description, image, created_at: creatAt }: any,
+                  index: number
+                ) => (
+                  <div key={index} className={styles.news}>
+                    <figure className={styles.newsImg}>
+                      <img src={API_NEWS + image?.[0].url} alt=' ' />
+                    </figure>
+                    <div className={styles.newsBody}>
+                      <a>{title}</a>
+                      <p>{moment.utc(creatAt).format('DD/MM/YYYY, H:mm')}</p>
+                      <span>{description}</span>
+                    </div>
+                  </div>
+                )
+              )}
+          </div>
+          <Pagination
+            total={totalPages}
+            onChange={onChange}
+            className={styles.Pagination}
+          />
         </Col>
         <Col xs={24} sm={24} xl={9} />
-      </Row>
-      <Row>
-        <Pagination
-          total={24}
-          onChange={onChange}
-        />
       </Row>
     </Container>
   )
