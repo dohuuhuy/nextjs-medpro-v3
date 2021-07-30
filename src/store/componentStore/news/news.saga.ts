@@ -58,7 +58,7 @@ function* getListNewsContent({ page = 1 }) {
     const response: AxiosResponse = yield call(getData, url)
     yield put({
       type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS,
-      listNewsContent: response
+      listNewsContent: response,
     })
   } catch (error) {
     console.error(error)

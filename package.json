@@ -32,6 +32,7 @@
     "install": "0.13.0",
     "lodash": "4.17.21",
     "medpro-sdk": "git+http://gitlab+deploy-token-180303:zfRxNF8DjXzSP3489f1q@gitlab.com/medpro/medpro-sdk.git#develop",
+    "moment": "^2.29.1",
     "next": "latest",
     "next-compose-plugins": "2.2.1",
     "next-redux-wrapper": "7.0.2",

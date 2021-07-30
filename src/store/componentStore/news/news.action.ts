@@ -14,7 +14,7 @@ export const getListNewsBanner = (): NewsActions => {
 
 export const getListNewsContent = (): NewsActions => {
   return {
-    type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST
+    type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST,
   }
 }
 

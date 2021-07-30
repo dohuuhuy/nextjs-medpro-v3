@@ -46,6 +46,7 @@ export interface ListNewsContentRequest {
 export interface ListNewsContentRequestSuccess {
   type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS
   listNewsContent: any[]
+  page: number
 }
 
 export type CountNewsContentAction =

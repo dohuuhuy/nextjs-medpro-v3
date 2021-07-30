@@ -1,28 +1,101 @@
+.Description(@fontsize, @lineLimit) {
+  font: @fontsize;
+  line-height: 1.45;
+  font-weight: 400;
+  text-align: justify;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @lineLimit;
+  -webkit-box-orient: vertical;
+}
+.Title(@fontsize, @weight){
+  font-size: @fontsize;
+  font-weight: @weight;
+}
 .rowHeader {
   .listCard {
     padding: 0 12px 0 12px;
+    @media (max-width: 768px){
+      padding: 0;
+    }
       .card {
         list-style: none;
+        @media (max-width: 1024px){
+          padding: 1.25rem 0 !important;
+        }
         .cardImg {
             img {
               width: 100%;
               height: auto;
             }
         }
-        p {
-          font-size: 1.3rem;
-          font-weight: 700;
+        a {
+          .Title(1.3rem, 700);
+          @media (max-width: 1024px)
+          {
+            .Title(0.975rem, 600);
+          }
         }
         span {
-          font-size: 0.975rem;
-          line-height: 1.45;
-          text-align: justify;
-  
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
+          .Description(0.975rem, 4);
+          @media (max-width: 1024px)
+          {
+            .Description(0.875rem, 4);
+          }
         }
       }
+  }
+}
+.rowContent {
+  .listNews {
+    @media (max-width: 768px){
+      padding: 0;
+    }
+    .news {
+      display: flex;
+      flex-direction: revert;
+      margin-top: 40px;
+      @media (max-width: 768px){
+        padding: 0;
+      }
+      .newsImg {
+        img{
+          width: 280px;
+          height: 170px;
+          @media (max-width: 768px){
+            width: 150px;
+            height: 120px;
+          }
+        }
+      }
+      .newsBody {
+        padding-left: 17px;
+        a {
+          .Title(1.125rem, none);
+          @media (max-width: 768px)
+          {
+            .Title(0.875rem, none);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+          }
+        }
+        p{
+          font-size: .75rem;
+          color: #777;
+          overflow: hidden;
+          margin: 20px 0 5px 0;
+        }
+        span {
+          .Description(400 1rem arial, 3);
+          @media (max-width: 768px)
+          {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

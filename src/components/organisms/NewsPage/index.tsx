@@ -37,6 +37,6 @@ const NewsPageDetails = () => {
     }
   })
 
-  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} />
+  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} dataNewsPageContent={listNewsContent} totalPages={totalPages} />
 }
 export default NewsPageDetails

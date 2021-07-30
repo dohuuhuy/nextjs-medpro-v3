@@ -24,7 +24,7 @@ export default function newsReducer(state = init, action: NewsActions) {
     case NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS:
       return {
         ...state,
-        listNewsContent: action.listNewsContent
+        listNewsContent: action.listNewsContent,
       }
     case NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS:
       return {
