@@ -1,4 +1,5 @@
 import { HospitalActions, HospitalState, HosptailTypes } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
   information: {
@@ -16,7 +17,10 @@ const init: HospitalState = {
   listHospital: []
 }
 
-export default function hospitalReducer(state = init, action: HospitalActions) {
+export default function hospitalReducer(
+  state = init,
+  action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
+) {
   switch (action.type) {
     case HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS:
       return {

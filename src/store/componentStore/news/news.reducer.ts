@@ -1,4 +1,5 @@
 import { NewsActions, NewsState, NewsTypes } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const init: NewsState = {
   newsAndEvent: [],
@@ -7,7 +8,10 @@ const init: NewsState = {
   totalPages: 0
 }
 
-export default function newsReducer(state = init, action: NewsActions) {
+export default function newsReducer(
+  state = init,
+  action: NewsActions | { type: typeof HYDRATE; payload: NewsState }
+): NewsState {
   switch (action.type) {
     case NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS:
       return {
@@ -24,7 +28,7 @@ export default function newsReducer(state = init, action: NewsActions) {
     case NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS:
       return {
         ...state,
-        listNewsContent: action.listNewsContent,
+        listNewsContent: action.listNewsContent
       }
     case NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS:
       return {
