@@ -1,0 +1,29 @@
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.leftListBenefit {
+  .ListCustom();
+  li {
+    margin-bottom: 10% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    .img_small {
+      .imgLogo();
+    }
+    .list_content {
+      .list_title {
+        .title();
+      }
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

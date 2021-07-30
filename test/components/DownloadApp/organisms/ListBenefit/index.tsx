@@ -1,10 +1,9 @@
 import { Col, Row } from 'antd'
 import { filter } from 'lodash'
 import React from 'react'
-import { BenefitLeft } from './BenefitLeft'
+import { BenefitLeft } from '../../molecules/BenefitLeft'
+import { BenefitRight } from '../../molecules/BenefitRight'
 import style from './style.module.less'
-
-import { BenefitRight } from './BenefitRight'
 
 interface Content {
   imgMobile: string
