@@ -25,7 +25,7 @@ export interface InformationRequestSuccess {
 }
 
 export interface HospitalClearDetails {
-  type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
+  type: HosptailTypes.Information.INFORMATION_CLEAR
 }
 
 // --------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.listInfoContact {
+  .ListCustom();
+  .nameCompany {
+    font-size: 14px;
+    font-weight: bolder;
+    color: #0352cc;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .listInfoContact {
+    text-align: center;
+  }
+}

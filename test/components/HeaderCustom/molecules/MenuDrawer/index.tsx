@@ -11,12 +11,21 @@ interface Props {
   Authencartion: any[]
 }
 
-export const MenuDrawer = ({ logo, listSupport, Authencartion }: Props) => {
+export const MenuDrawer = ({
+  logo,
+  listSupport,
+  Authencartion,
+  setDrawer
+}: Props) => {
   const { funcGroup, guideGroup, supportGroup }: any = listSupport
   const { isAuthen, nameUser }: any = Authencartion
   return (
     <div className={style.drawerMenu}>
-      <NavbarHeaderMobile drawer={true} logo={logo} />
+      <NavbarHeaderMobile
+        drawer={true}
+        logo={logo}
+        togleDrawer={() => setDrawer()}
+      />
       <Container className={style.containerDrawerMenu}>
         <Row className={style.rowView}>
           <div className={style.itemSingle}>

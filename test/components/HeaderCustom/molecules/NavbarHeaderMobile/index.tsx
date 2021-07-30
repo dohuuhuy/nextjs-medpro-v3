@@ -24,7 +24,7 @@ export const NavbarHeaderMobile = ({
         </Col>
         <Col span={4} className={style.colButtonHeaderMobile}>
           <button
-            onClick={togleDrawer}
+            onClick={() => togleDrawer()}
             className={drawer ? style.btnClose : style.btnMenu}
           >
             {drawer ? (

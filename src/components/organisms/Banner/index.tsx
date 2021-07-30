@@ -31,6 +31,11 @@ const BannerLayout = () => {
     }
     const { menuHeader, insideLink, menuMobile } = header
     const listMenu = [].concat(menuHeader, insideLink, menuMobile)
+    const getLink = find(listMenu, { link: pathname })
+
+    if (check(getLink)) {
+      return null
+    }
     return <BreadcumbCustom listMenu={listMenu} />
   }
 

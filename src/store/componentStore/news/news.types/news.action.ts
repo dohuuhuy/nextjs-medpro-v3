@@ -22,6 +22,8 @@ export interface Newsandeventrequestsuccess {
   news: any[]
 }
 
+// ----------------------------------------------------------------------------------------------
+
 export type ListNewsBannerAction =
   | ListNewsBannerRequest
   | ListNewsBannerRequestSuccess
@@ -34,6 +36,8 @@ export interface ListNewsBannerRequestSuccess {
   type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS
   listNewsBanner: any[]
 }
+
+// ----------------------------------------------------------------------------------------------
 
 export type ListNewsContentAction =
   | ListNewsContentRequest
@@ -48,6 +52,8 @@ export interface ListNewsContentRequestSuccess {
   listNewsContent: any[]
   page: number
 }
+
+// ----------------------------------------------------------------------------------------------
 
 export type CountNewsContentAction =
   | CountNewsContentRequest

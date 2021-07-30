@@ -33,7 +33,7 @@ export const ThacMacContent = ({ content }: any) => {
   return (
     <Container className={style.ThacMacContent}>
       <Row className={style.rowThacMac}>
-        <Col xl={7} className={style.colTab}>
+        <Col xl={7} lg={7} sm={24} xs={24} className={style.colTab}>
           <h2 className={style.titleTab}>Giải đáp nhanh câu hỏi</h2>
           <ul className={style.listTab}>
             {isArray(content) &&
@@ -55,7 +55,7 @@ export const ThacMacContent = ({ content }: any) => {
               })}
           </ul>
         </Col>
-        <Col xl={17} className={style.colContentMenu}>
+        <Col xl={17} lg={17} sm={24} xs={24} className={style.colContentMenu}>
           <Space direction='vertical' style={{ width: '100%' }}>
             {Faq.faq?.map(({ id, question, answer }: any) => {
               return (

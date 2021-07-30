@@ -1,8 +1,8 @@
 import { Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-import Container from '../Container'
-import { FooterSign } from './FooterSign'
+import Container from './../../../Container'
+import { FooterSign } from '../../molecules/FooterSign'
 import styles from './style.module.less'
 
 interface CardIntro {

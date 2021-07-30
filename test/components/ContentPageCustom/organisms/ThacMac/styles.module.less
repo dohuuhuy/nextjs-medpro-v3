@@ -1,6 +1,6 @@
 .ThacMacContent {
-  margin: 60px 0;
   .rowThacMac {
+    margin: 30px 0;
     .colTab {
       padding: 0 15px;
       .titleTab {
@@ -15,7 +15,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        
+
         li {
           cursor: pointer;
           font-weight: 600;
@@ -31,6 +31,23 @@
     }
     .colContentMenu {
       padding: 0 15px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ThacMacContent {
+    .rowThacMac {
+      .colContentMenu,
+      .colTab {
+        padding: 0px;
+      }
+      .colTab {
+        .listTab {
+          margin-bottom: 30px;
+          border-bottom: 1px solid;
+          padding: 10px 0;
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { BannerIntro } from './BannerIntro'
-import { CardIntro } from './CardIntro'
+import { BannerIntro } from './organisms/BannerIntro'
+import { CardIntro } from './organisms/CardIntro'
 import { IntroducHospital } from './Introduce.interface'
 import styles from './style.module.less'
 interface IntroduceCustom {

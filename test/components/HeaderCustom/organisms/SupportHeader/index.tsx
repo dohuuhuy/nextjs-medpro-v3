@@ -12,9 +12,9 @@ export const SupportHeader = ({ support }: SupportHeader) => {
   }
   return (
     <div className={style.SupportHeader}>
-      <div className={style.imgSupport}>
+      <figure className={style.imgSupport}>
         <img src={urlImage} alt='icon' onError={onError} />
-      </div>
+      </figure>
 
       <div className={style.descSupport}>
         <p> {support.textSuport} </p>

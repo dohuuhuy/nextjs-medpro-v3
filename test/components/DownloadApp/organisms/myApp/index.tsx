@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd'
+import cx from 'classnames'
 import React from 'react'
 import style from './style.module.less'
-import cx from 'classnames'
 
 interface MyApp {
   arrApp: Item[]

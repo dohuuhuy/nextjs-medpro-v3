@@ -15,8 +15,10 @@ const DefaultLayout = ({ children }: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header />
-      <BannerPage />
-      {children}
+      <div className={styles.main}>
+        <BannerPage />
+        {children}
+      </div>
       <Footer />
     </Layout>
   )

@@ -24,7 +24,7 @@ export default function hospitalReducer(state = init, action: HospitalActions) {
         information: action.information
       }
 
-    case HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS: {
+    case HosptailTypes.Information.INFORMATION_CLEAR: {
       return {
         ...state,
         information: state.information

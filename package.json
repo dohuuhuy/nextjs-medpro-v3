@@ -18,7 +18,7 @@
     "export": "next build && next export",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
     "lint:ts": "tslint -c tslint.json -t stylish --fix {pages,src,test,server}/**/*.{ts,tsx}",
-    "lint:less": "stylelint src/**/*.less",
+    "lint:less": "stylelint {pages,src,test}/**/*.less",
     "lint:types": "tsc -p . --noEmit"
   },
   "dependencies": {

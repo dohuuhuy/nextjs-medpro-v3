@@ -1,9 +1,16 @@
 import React from 'react'
-import { ItemContact } from './interface.footer'
 import style from './styles.module.less'
 
 interface Props {
   infoContact: ItemContact[]
+}
+
+export interface ItemContact {
+  id?: string
+  key?: string
+  label?: string
+  value: string
+  link: string
 }
 
 export const InfoFooter = ({ infoContact }: Props) => {

@@ -70,7 +70,7 @@ function* getListPartners() {
         })
 
         yield put({
-          type: HosptailTypes.Information.HOSPITAL_CLEAR_DETAILS
+          type: HosptailTypes.Information.INFORMATION_CLEAR
         })
       }
     }

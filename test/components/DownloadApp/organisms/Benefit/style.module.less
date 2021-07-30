@@ -1,0 +1,33 @@
+.ListBenefit {
+  justify-content: center;
+  .slideMobileCol {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    .slideMobile {
+      padding: 0 30px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .colBenefitRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .colBenefitLeft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+// css reponsive footer
+@media only screen and (max-width: 768px) {
+  .ListBenefit {
+    .colBenefitRight,
+    .colBenefitLeft {
+      display: none;
+    }
+  }
+}

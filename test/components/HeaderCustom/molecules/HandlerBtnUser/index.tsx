@@ -1,4 +1,5 @@
 import { LoginOutlined, UserOutlined } from '@ant-design/icons'
+import { openInNewTab } from '@components/atoms/openInNewTab'
 import { Button, Dropdown } from 'antd'
 import React from 'react'
 import { DropdownProfile } from '../DropdownProfile'
@@ -37,6 +38,11 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
           type='default'
           size='large'
           icon={iconHandler}
+          onClick={() =>
+            openInNewTab(
+              `https://id-testing.medpro.com.vn/check-phone/url=${'http://localhost:3007'}&partnerId=${'medpro'}&bookingFlow=true`
+            )
+          }
         >
           {'Đăng nhập'}
         </Button>

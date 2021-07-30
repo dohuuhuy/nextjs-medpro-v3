@@ -8,7 +8,8 @@
 
 .viewBanner {
   @media only screen and (max-width: 768px) {
-    display: none !important;
+    // display: none !important;
+    min-height: 120px;
   }
 
   width: 100%;
@@ -17,8 +18,7 @@
   justify-content: center;
   align-items: center;
   .background();
-  margin-top: 130px;
-  height: 200px;
+  min-height: 200px;
   .title {
     color: white;
     text-decoration: underline;
@@ -26,13 +26,13 @@
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 20px;
   }
   .subTitle {
     color: white;
     text-align: center;
     text-transform: none;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 13px;
   }
 }
