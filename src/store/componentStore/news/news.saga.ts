@@ -2,7 +2,6 @@ import { countData, getData } from '@store/api'
 import { NewsTypes } from '@store/interface'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
 import { AxiosResponse } from 'axios'
-import { ceil } from 'lodash'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 
 function* getNewsAndEvent() {
@@ -58,7 +57,7 @@ function* getListNewsContent({ page = 1 }) {
     const response: AxiosResponse = yield call(getData, url)
     yield put({
       type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS,
-      listNewsContent: response,
+      listNewsContent: response
     })
   } catch (error) {
     console.error(error)
@@ -78,7 +77,7 @@ function* getCountNewsContent() {
     const response: AxiosResponse = yield call(countData, url)
     yield put({
       type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS,
-      totalPages: ceil(Number(response) / LIMIT_PAGE_NEWS)
+      totalPages: Number(response)
     })
   } catch (error) {
     console.error(error)

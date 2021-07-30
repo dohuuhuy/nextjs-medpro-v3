@@ -9,90 +9,116 @@
   -webkit-line-clamp: @lineLimit;
   -webkit-box-orient: vertical;
 }
-.Title(@fontsize, @weight){
+.Title(@fontsize, @weight) {
   font-size: @fontsize;
   font-weight: @weight;
 }
-.rowHeader {
-  .listCard {
-    padding: 0 12px 0 12px;
-    @media (max-width: 768px){
-      padding: 0;
-    }
+.ContainerNews {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .rowHeader {
+    .listCard {
+      padding: 0 12px 0 12px;
+      @media (max-width: 768px) {
+        padding: 0;
+      }
       .card {
         list-style: none;
-        @media (max-width: 1024px){
+        @media (max-width: 1024px) {
           padding: 1.25rem 0 !important;
         }
         .cardImg {
-            img {
-              width: 100%;
-              height: auto;
-            }
+          img {
+            width: 100%;
+            height: auto;
+          }
         }
         a {
           .Title(1.3rem, 700);
-          @media (max-width: 1024px)
-          {
+          @media (max-width: 1024px) {
             .Title(0.975rem, 600);
           }
         }
         span {
           .Description(0.975rem, 4);
-          @media (max-width: 1024px)
-          {
+          @media (max-width: 1024px) {
             .Description(0.875rem, 4);
           }
         }
       }
-  }
-}
-.rowContent {
-  .listNews {
-    @media (max-width: 768px){
-      padding: 0;
     }
-    .news {
-      display: flex;
-      flex-direction: revert;
-      margin-top: 40px;
-      @media (max-width: 768px){
+  }
+  .rowContent {
+    .Pagination {
+      align-items: center;
+      text-align: center;
+      .ant-pagination-item {
+        @media (max-width:425px){
+          display: inline-block;
+          min-width: 32px;
+          height: 32px;
+          margin-right: 8px;
+          line-height: 30px;
+          text-align: center;
+          vertical-align: middle;
+          list-style: none;
+          background-color: #fff;
+          border: 1px solid #d9d9d9;
+          border-radius: 2px;
+          outline: 0;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
+    }
+    .listNews {
+      @media (max-width: 768px) {
         padding: 0;
       }
-      .newsImg {
-        img{
-          width: 280px;
-          height: 170px;
-          @media (max-width: 768px){
-            width: 150px;
-            height: 120px;
+      margin: 30px 0;
+      .news {
+        display: flex;
+        flex-direction: revert;
+        margin-bottom: 30px;
+        @media (max-width: 768px) {
+          padding: 0;
+        }
+        .newsImg {
+          img {
+            width: 280px;
+            height: 170px;
+            @media (max-width: 768px) {
+              width: 150px;
+              height: 120px;
+            }
           }
         }
-      }
-      .newsBody {
-        padding-left: 17px;
-        a {
-          .Title(1.125rem, none);
-          @media (max-width: 768px)
-          {
-            .Title(0.875rem, none);
+        .newsBody {
+          padding-left: 17px;
+          a {
+            .Title(1.125rem, none);
+            @media (max-width: 768px) {
+              .Title(0.875rem, none);
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 4;
+              -webkit-box-orient: vertical;
+            }
+          }
+          p {
+            font-size: 0.75rem;
+            color: #777;
             overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
+            margin: 20px 0 5px 0;
           }
-        }
-        p{
-          font-size: .75rem;
-          color: #777;
-          overflow: hidden;
-          margin: 20px 0 5px 0;
-        }
-        span {
-          .Description(400 1rem arial, 3);
-          @media (max-width: 768px)
-          {
-            display: none;
+          span {
+            .Description(400 1rem arial, 3);
+            @media (max-width: 768px) {
+              display: none;
+            }
           }
         }
       }
