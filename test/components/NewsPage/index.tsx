@@ -93,7 +93,10 @@ export const NewsPageCustom = ({
           <Pagination
             total={totalPages}
             onChange={onChange}
+            defaultCurrent={1}
+            pageSize={8}
             className={styles.Pagination}
+            responsive
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />
