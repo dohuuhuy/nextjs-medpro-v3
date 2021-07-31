@@ -1,8 +1,4 @@
-import {
-  getCountNewsContent,
-  getListNewsBanner,
-  getListNewsContent
-} from '@actionStore/rootAction'
+import { getCountNewsContent, getListNewsBanner } from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
@@ -28,15 +24,21 @@ const NewsPageDetails = () => {
       dispatch(getListNewsBanner())
     }
 
-    if (check(listNewsContent)) {
-      dispatch(getListNewsContent())
-    }
+    // if (check(listNewsContent)) {
+    //   dispatch(getListNewsContent())
+    // }
 
     if (Number(totalPages) === 0) {
       dispatch(getCountNewsContent())
     }
   })
 
-  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} dataNewsPageContent={listNewsContent} totalPages={totalPages} />
+  return (
+    <NewsPageCustom
+      dataNewsPageBanner={listNewsBanner}
+      dataNewsPageContent={listNewsContent}
+      totalPages={totalPages}
+    />
+  )
 }
 export default NewsPageDetails

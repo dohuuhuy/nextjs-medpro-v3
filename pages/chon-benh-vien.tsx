@@ -1,10 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+import SelectHospitalPage from '@components/pages/SelectHospitalPage'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ChonBenhVienPage = () => {
-  return <HandlerGetContentPage />
+  return <SelectHospitalPage />
 }
 
 ChonBenhVienPage.Layout = DefaultLayout
