@@ -37,6 +37,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Input
                 size='large'
+                autoFocus
                 onChange={onSearchHospital}
                 className={styles.inputSearch}
                 placeholder='Tìm nhanh bệnh viện'
