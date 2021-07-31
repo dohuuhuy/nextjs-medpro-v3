@@ -30,6 +30,7 @@ export const NewsPageCustom = ({
     window.scrollTo(0, 0)
   }
 
+  console.log("data ", dataNewsPageContent, totalPages, page)
   const { DataFailure, checkData } = require('../DataFailure')
   if (checkData(dataNewsPageBanner)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
@@ -93,8 +94,7 @@ export const NewsPageCustom = ({
           <Pagination
             total={totalPages}
             onChange={onChange}
-            defaultCurrent={1}
-            pageSize={8}
+            pageSize={Math.ceil(Number(totalPages) / 8)}
             className={styles.Pagination}
             responsive
           />
