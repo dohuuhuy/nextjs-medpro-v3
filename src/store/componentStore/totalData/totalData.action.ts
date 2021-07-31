@@ -18,3 +18,9 @@ export const setPartnerIdLocal = ({
     partnerId
   }
 }
+
+export const getListCity = (): TotalDataActions => {
+  return {
+    type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+  }
+}

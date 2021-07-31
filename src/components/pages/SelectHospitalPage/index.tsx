@@ -8,7 +8,13 @@ const SelectHospitalPage = () => {
     (state: AppState) => state.hospitalReducer.listHospital
   )
 
-  return <SelectHospitalCustom listHospital={listHospital} />
+  const listCity = useSelector(
+    (state: AppState) => state.totalDataReducer.listCity
+  )
+
+  return (
+    <SelectHospitalCustom listHospital={listHospital} listCity={listCity} />
+  )
 }
 
 export default SelectHospitalPage

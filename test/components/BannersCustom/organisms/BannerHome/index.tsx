@@ -1,3 +1,4 @@
+import { check } from '@utils/checkValue'
 import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -9,7 +10,8 @@ export const BannerHome = ({
   listFeature,
   // partnerId,
   appId,
-  dispatchListHospital
+  dispatchListHospital,
+  listHospital
 }: any) => {
   const router = useRouter()
 
@@ -22,7 +24,9 @@ export const BannerHome = ({
     const { checkData } = require('./../../../DataFailure')
 
     if (appId === 'medpro' && checkData(type)) {
-      dispatchListHospital()
+      if (check(listHospital)) {
+        dispatchListHospital()
+      }
       router.push('/chon-benh-vien')
     }
   }

@@ -1,18 +1,65 @@
 import React from 'react'
 import Container from './../Container'
 import styles from './style.module.less'
-import { Col, Row } from 'antd'
+import { Col, Input, Row, Select, Space } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
+
+const { Option } = Select
+
+const { Search } = Input
 
 export interface Props {
   listHospital: Array<any>
+  listCity: Array<any>
 }
 
-const SelectHospitalCustom = ({ listHospital }: Props) => {
+const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
+  function onChange(value: any) {
+    console.log(`selected ${value}`)
+  }
+
+  function onSearch(val: any) {
+    console.log('search:', val)
+  }
+
   return (
     <Container className={styles.containerSelectHospitalCustom}>
       <Row className={styles.rowSelect}>
         <Col xl={24} className={styles.colGroupInputSelect}>
-          select
+          <ul className={styles.GroupInputSelect}>
+            <li>
+              <Search onSearch={onSearch} />
+              <Input
+                size='large'
+                className={styles.inputSearch}
+                placeholder='Tìm nhanh bệnh viện'
+                prefix={<SearchOutlined />}
+              />
+            </li>
+            <li>
+              <Select
+                className={styles.inputSelect}
+                showSearch
+                style={{ width: '100%' }}
+                placeholder='Chọn tỉnh thành'
+                optionFilterProp='children'
+                onChange={onChange}
+                onSearch={onSearch}
+                filterOption={(input, option) =>
+                  option?.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                {listCity.map(({ id, name, code }) => {
+                  return (
+                    <Option value={code} key={id}>
+                      {name}
+                    </Option>
+                  )
+                })}
+              </Select>
+            </li>
+          </ul>
         </Col>
         <Col xl={24} className={styles.colListCard}>
           <ul className={styles.listCard}>

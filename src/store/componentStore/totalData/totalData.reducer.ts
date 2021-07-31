@@ -9,6 +9,7 @@ const initState: TotalDataState = {
   partnerId: '',
   appId: '',
   listPartners: [],
+  listCity: [],
   loading: false
 }
 
@@ -21,6 +22,12 @@ export default function totalDataReducer(
       return {
         ...state,
         listPartners: action.listPartners
+      }
+
+    case TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listCity: action.listCity
       }
 
     case TotalDataTypes.ListPartners.SET_PARTNERID: {

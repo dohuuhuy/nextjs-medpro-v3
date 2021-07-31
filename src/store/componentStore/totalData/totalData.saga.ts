@@ -4,7 +4,6 @@ import {
   AppState,
   HosptailTypes,
   TotalDataParams,
-  TotalDataState,
   TotalDataTypes
 } from '@store/interface'
 import { persistor } from '@store/rootStore'
@@ -14,7 +13,7 @@ import { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
-  const listPartners: TotalDataState = yield select(
+  const listPartners: AppState = yield select(
     (state: AppState) => state.totalDataReducer.listPartners
   )
 
@@ -86,7 +85,31 @@ function* WatchListPartners() {
   )
 }
 
+function* getListCity() {
+  try {
+    const url =
+      'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
+
+    const respone: AxiosResponse = yield call(getData, url)
+
+    yield put({
+      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS,
+      listCity: respone
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* WatchListCity() {
+  yield takeLatest(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
+}
+
 const totalDataSagas = function* root() {
-  yield all([fork(WatchListPartners), fork(WatchSetPartnerIdLocal)])
+  yield all([
+    fork(WatchListPartners),
+    fork(WatchSetPartnerIdLocal),
+    fork(WatchListCity)
+  ])
 }
 export default totalDataSagas

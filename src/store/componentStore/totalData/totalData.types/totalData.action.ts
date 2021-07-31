@@ -1,6 +1,9 @@
 import { TotalDataTypes } from '@store/interface'
 
-export type TotalDataActions = ListPartnersAction | PartnerIdlocalAction
+export type TotalDataActions =
+  | ListPartnersAction
+  | ListCityAction
+  | PartnerIdlocalAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -29,4 +32,20 @@ export type PartnerIdlocalAction = SetPartnerIdLocal
 export interface SetPartnerIdLocal {
   type: TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST
   partnerId: string
+}
+
+// ----------------------------------------------------------------------------------------------
+
+export type ListCityAction =
+  | ListCityReques
+  | ListCityRequestSuccess
+  | SetParnerId
+
+export interface ListCityReques {
+  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+}
+
+export interface ListCityRequestSuccess {
+  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
+  listCity: any[]
 }

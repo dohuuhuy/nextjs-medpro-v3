@@ -14,7 +14,8 @@ const BannerLayout = () => {
 
   const {
     listFeature,
-    information: { banners, header }
+    information: { banners, header },
+    listHospital
   } = useSelector((state: AppState) => state.hospitalReducer)
 
   const { partnerId, appId } = useSelector(
@@ -41,6 +42,7 @@ const BannerLayout = () => {
 
   return (
     <BannersCustom
+      listHospital={listHospital}
       dispatchListHospital={() => dispatch(getListHospital())}
       getBanner={getBanner}
       listFeature={listFeature}

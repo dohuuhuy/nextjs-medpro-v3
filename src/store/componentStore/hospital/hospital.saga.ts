@@ -16,26 +16,36 @@ import {
 
 function* getHospitalDetails({ partnerId }: any) {
   try {
+    // 0. gọi Api lấy dữ liệu
     // const url =
     //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
 
     // const res: AxiosResponse = yield call(getData, url)
     // console.error(res)
 
+    //  1. lưu thông tin bệnh viện vào state
     yield put({
       type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
       information: JSON_EXP
     })
 
+    // 2. cập nhật lại partnerId bệnh viện
     yield put({
       type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId
     })
 
+    // 3. lấy danh sách dịch vụ theo bệnh viện
     yield put({
       type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
     })
 
+    // 4. lấy danh sách tỉnh thành
+    yield put({
+      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+    })
+
+    // 5. thông báo chọn bệnh viện thành công ở Dev
     if (_DEVELOPMENT) {
       openToast({
         message: 'Chọn bệnh viện thành công!',
