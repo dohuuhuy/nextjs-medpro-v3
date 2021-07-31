@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from './../Container'
 import styles from './style.module.less'
-import { Col, Input, Row, Select, Space } from 'antd'
+import { Col, Input, Row, Select } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+import { filter } from 'lodash'
+import { checkData, DataFailure } from '@componentsTest/DataFailure'
 
 const { Option } = Select
-
-const { Search } = Input
 
 export interface Props {
   listHospital: Array<any>
@@ -14,12 +14,20 @@ export interface Props {
 }
 
 const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
-  function onChange(value: any) {
-    console.log(`selected ${value}`)
+  const [listHospitals, setlistHospitals] = useState<any[]>([])
+
+  function onChange(code: any) {
+    const findHospital = filter(listHospital, { city: { code: code } })
+    setlistHospitals(findHospital)
   }
 
-  function onSearch(val: any) {
-    console.log('search:', val)
+  function onSearchHospital(e: any) {
+    const { value } = e.target
+
+    const findHospital = listHospital.filter(
+      ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+    )
+    setlistHospitals(findHospital)
   }
 
   return (
@@ -28,9 +36,9 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
         <Col xl={24} className={styles.colGroupInputSelect}>
           <ul className={styles.GroupInputSelect}>
             <li>
-              <Search onSearch={onSearch} />
               <Input
                 size='large'
+                onChange={onSearchHospital}
                 className={styles.inputSearch}
                 placeholder='Tìm nhanh bệnh viện'
                 prefix={<SearchOutlined />}
@@ -44,7 +52,6 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                 placeholder='Chọn tỉnh thành'
                 optionFilterProp='children'
                 onChange={onChange}
-                onSearch={onSearch}
                 filterOption={(input, option) =>
                   option?.children.toLowerCase().indexOf(input.toLowerCase()) >=
                   0
@@ -63,30 +70,34 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
         </Col>
         <Col xl={24} className={styles.colListCard}>
           <ul className={styles.listCard}>
-            {listHospital?.map(
-              ({ name: nameHospital, address, image }, i: number) => {
-                const imageErrorSrc = '/images/logo.png'
-                const urlImage = image || imageErrorSrc
-                return (
-                  <li key={i}>
-                    <div className={styles.cardHospital}>
-                      <figure className={styles.cardView}>
-                        <img
-                          src={urlImage}
-                          alt='icon'
-                          onError={(e) => {
-                            e.target.src = imageErrorSrc
-                          }}
-                        />
-                      </figure>
-                      <div className={styles.cardBody}>
-                        <p className={styles.nameHospital}>{nameHospital}</p>
-                        <p className={styles.address}>{address}</p>
+            {checkData(listHospitals) ? (
+              <DataFailure description='Không tìm thấy !' />
+            ) : (
+              listHospitals?.map(
+                ({ name: nameHospital, address, image }, i: number) => {
+                  const imageErrorSrc = '/images/logo.png'
+                  const urlImage = image || imageErrorSrc
+                  return (
+                    <li key={i}>
+                      <div className={styles.cardHospital}>
+                        <figure className={styles.cardView}>
+                          <img
+                            src={urlImage}
+                            alt='icon'
+                            onError={(e) => {
+                              e.target.src = imageErrorSrc
+                            }}
+                          />
+                        </figure>
+                        <div className={styles.cardBody}>
+                          <p className={styles.nameHospital}>{nameHospital}</p>
+                          <p className={styles.address}>{address}</p>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                )
-              }
+                    </li>
+                  )
+                }
+              )
             )}
           </ul>
         </Col>

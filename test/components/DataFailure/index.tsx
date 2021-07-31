@@ -16,7 +16,11 @@ export const checkData = (element: any) => {
   }
 }
 
-export const DataFailure = ({ description }: any) => {
+interface Props {
+  description: any
+}
+
+export const DataFailure = ({ description }: Props) => {
   return (
     <Container className={style.ContainerEmpty}>
       <Empty description={description} />
