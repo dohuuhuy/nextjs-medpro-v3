@@ -1,10 +1,10 @@
+import { SearchOutlined } from '@ant-design/icons'
+import { Col, Input, Row, Select } from 'antd'
+import { filter } from 'lodash'
 import React, { useState } from 'react'
 import Container from './../Container'
+import { checkData, DataFailure } from './../DataFailure'
 import styles from './style.module.less'
-import { Col, Input, Row, Select } from 'antd'
-import { SearchOutlined } from '@ant-design/icons'
-import { filter } from 'lodash'
-import { checkData, DataFailure } from '@componentsTest/DataFailure'
 
 const { Option } = Select
 
@@ -23,7 +23,6 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
 
   function onSearchHospital(e: any) {
     const { value } = e.target
-
     const findHospital = listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
