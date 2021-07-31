@@ -18,69 +18,26 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
         <h2>Tin tức & sự kiện</h2>
       </Row>
       <Row className={styles.rowListNews}>
-        <Col xl={10} lg={10} md={24} sm={24} className={styles.colListNewsPin}>
-          <ul className={styles.ListNewsAndEventPin}>
-            {dataNewsAndEvent
-              .slice(0, 1)
-              .map(
-                ({
-                  id,
-                  image,
-                  title,
-                  author,
-                  description,
-                  created_at: createdAt
-                }: any) => {
-                  return (
-                    <li key={id}>
-                      <div className={styles.cardNews}>
-                        <figure className={styles.img}>
-                          <img src={API_NEWS + image?.[0].url} alt='' />
-                        </figure>
-                        <div className={styles.cardBody}>
-                          <p className={styles.title}>{title}</p>
-                          <p className={styles.time}>
-                            {moment(createdAt).format('DD/MM/YYYY, h:mm')}
-                          </p>
-                          <p className={styles.author}>{author}</p>
-                          <p className={styles.description}>{description}</p>
-                        </div>
-                      </div>
-                    </li>
-                  )
-                }
-              )}
+        <Col xl={10} lg={10} md={24} className={styles.colListNewsPin}>
+          <ul className={styles.ListNewsAndEvent}>
+            {dataNewsAndEvent.slice(0, 1).map((item: any) => {
+              return (
+                <li key={item?.id}>
+                  <CardNewsCustom {...item} />
+                </li>
+              )
+            })}
           </ul>
         </Col>
-        <Col xl={14} lg={14} md={24} sm={24} className={styles.colListNews}>
+        <Col xl={14} lg={14} md={24} className={styles.colListNews}>
           <ul className={styles.ListNewsAndEvent}>
-            {dataNewsAndEvent.slice(1, 5).map(
-              ({
-                id,
-                image,
-                title,
-
-                author,
-                created_at: createdAt
-              }: any) => {
-                return (
-                  <li key={id}>
-                    <div className={styles.cardNews}>
-                      <figure className={styles.img}>
-                        <img src={API_NEWS + image?.[0].url} alt='' />
-                      </figure>
-                      <div className={styles.cardBody}>
-                        <p className={styles.title}>{title}</p>
-                        <p className={styles.time}>
-                          {moment(createdAt).format('DD/MM/YYYY, h:mm')}
-                        </p>
-                        <p className={styles.author}>{author}</p>
-                      </div>
-                    </div>
-                  </li>
-                )
-              }
-            )}
+            {dataNewsAndEvent.slice(1, 5).map((item: any) => {
+              return (
+                <li key={item?.id}>
+                  <CardNewsCustom {...item} />
+                </li>
+              )
+            })}
           </ul>
         </Col>
       </Row>
@@ -92,5 +49,29 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
         </Button>
       </Row>
     </Container>
+  )
+}
+
+const CardNewsCustom = ({
+  image,
+  title,
+  created_at: createdAt,
+  description,
+  author
+}: any) => {
+  return (
+    <div className={styles.cardNews}>
+      <figure className={styles.cardView}>
+        <img src={API_NEWS + image?.[0].url} alt='' />
+      </figure>
+      <div className={styles.cardBody}>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.time}>
+          {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+        </p>
+        <p className={styles.author}>{author}</p>
+        <p className={styles.description}>{description}</p>
+      </div>
+    </div>
   )
 }
