@@ -49,54 +49,57 @@
     }
   }
   .rowContent {
-    .Pagination {
-      align-items: center;
-      text-align: center;
-    }
-    .listNews {
-      @media (max-width: 768px) {
-        padding: 0;
+    .colContent {
+      padding: 0 15px;
+      .Pagination {
+        align-items: center;
+        text-align: center;
       }
-      margin: 30px 0;
-      .news {
-        display: flex;
-        flex-direction: revert;
-        margin-bottom: 30px;
+      .listNews {
         @media (max-width: 768px) {
           padding: 0;
         }
-        .newsImg {
-          img {
-            width: 280px;
-            height: 170px;
-            @media (max-width: 768px) {
-              width: 150px;
-              height: 120px;
+        margin: 30px 0;
+        .news {
+          display: flex;
+          flex-direction: revert;
+          margin-bottom: 30px;
+          @media (max-width: 768px) {
+            padding: 0;
+          }
+          .newsImg {
+            img {
+              width: 280px;
+              height: 170px;
+              @media (max-width: 768px) {
+                width: 150px;
+                height: 120px;
+              }
             }
           }
-        }
-        .newsBody {
-          padding-left: 17px;
-          a {
-            .Title(1.125rem, none);
-            @media (max-width: 768px) {
-              .Title(0.875rem, none);
+          .newsBody {
+            padding-left: 17px;
+            a {
+              .Title(1.125rem, none);
+              @media (max-width: 768px) {
+                .Title(0.875rem, none);
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+              }
+            }
+            p {
+              font-size: 0.75rem;
+              color: #777;
               overflow: hidden;
-              display: -webkit-box;
-              -webkit-line-clamp: 4;
-              -webkit-box-orient: vertical;
+              margin: 20px 0 5px 0;
             }
-          }
-          p {
-            font-size: 0.75rem;
-            color: #777;
-            overflow: hidden;
-            margin: 20px 0 5px 0;
-          }
-          span {
-            .Description(400 1rem arial, 3);
-            @media (max-width: 768px) {
-              display: none;
+            span {
+              .Description(400 1rem arial, 3);
+              @media (max-width: 768px) {
+                display: none;
+              }
             }
           }
         }

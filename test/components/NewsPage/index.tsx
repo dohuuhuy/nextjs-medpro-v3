@@ -1,38 +1,30 @@
-import { getListNewsContent } from '@actionStore/rootAction'
 import { Col, Pagination, Row } from 'antd'
 import moment from 'moment'
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+import React from 'react'
 import Container from '../Container'
 import styles from './style.module.less'
 
 interface NewsPageCustom {
-  dataNewsPageBanner: any[]
-  dataNewsPageContent?: any[]
+  listNewsBanner: any[]
+  listNewsContent?: any[]
   totalPages?: number
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = ({
-  dataNewsPageBanner,
-  dataNewsPageContent,
+  listNewsBanner,
+  listNewsContent,
   totalPages
 }: NewsPageCustom) => {
-  const [page, setPage] = useState(1)
-  const dispatch = useDispatch()
+  const router = useRouter()
 
-  useEffect(() => {
-    dispatch(getListNewsContent(page))
-  }, [page, dispatch])
-
-  const onChange = () => {
-    setPage(page + 1)
-    window.scrollTo(0, 0)
+  const onChange = (pageNumber: any) => {
+    router.push(`?page=${pageNumber}`)
   }
 
-  console.log("data ", dataNewsPageContent, totalPages, page)
   const { DataFailure, checkData } = require('../DataFailure')
-  if (checkData(dataNewsPageBanner)) {
+  if (checkData(listNewsBanner)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
   }
 
@@ -41,7 +33,7 @@ export const NewsPageCustom = ({
       <Row className={styles.rowHeader}>
         <Col xs={24} sm={24} md={12} xl={12}>
           <ul className={styles.listCard}>
-            {dataNewsPageBanner
+            {listNewsBanner
               .slice(0, 1)
               ?.map(({ title, description, image }: any, index: number) => (
                 <li key={index} className={styles.card}>
@@ -58,7 +50,7 @@ export const NewsPageCustom = ({
         </Col>
         <Col xs={24} sm={24} md={12} xl={12}>
           <ul className={styles.listCard}>
-            {dataNewsPageBanner
+            {listNewsBanner
               ?.slice(1, 3)
               .map(({ title, description }: any, index: number) => (
                 <li key={index} className={styles.card}>
@@ -70,26 +62,25 @@ export const NewsPageCustom = ({
         </Col>
       </Row>
       <Row className={styles.rowContent}>
-        <Col xs={24} sm={24} xl={15}>
+        <Col xs={24} sm={24} xl={15} className={styles.colContent}>
           <div className={styles.listNews}>
-            {dataNewsPageContent?.length &&
-              dataNewsPageContent?.map(
-                (
-                  { title, description, image, created_at: creatAt }: any,
-                  index: number
-                ) => (
-                  <div key={index} className={styles.news}>
-                    <figure className={styles.newsImg}>
-                      <img src={API_NEWS + image?.[0].url} alt=' ' />
-                    </figure>
-                    <div className={styles.newsBody}>
-                      <a>{title}</a>
-                      <p>{moment.utc(creatAt).format('DD/MM/YYYY, H:mm')}</p>
-                      <span>{description}</span>
-                    </div>
+            {listNewsContent?.map(
+              (
+                { title, description, image, created_at: creatAt }: any,
+                index: number
+              ) => (
+                <div key={index} className={styles.news}>
+                  <figure className={styles.newsImg}>
+                    <img src={API_NEWS + image?.[0].url} alt=' ' />
+                  </figure>
+                  <div className={styles.newsBody}>
+                    <a>{title}</a>
+                    <p>{moment.utc(creatAt).format('DD/MM/YYYY, H:mm')}</p>
+                    <span>{description}</span>
                   </div>
-                )
-              )}
+                </div>
+              )
+            )}
           </div>
           <Pagination
             total={totalPages}

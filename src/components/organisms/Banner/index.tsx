@@ -40,10 +40,15 @@ const BannerLayout = () => {
     return <BreadcumbCustom listMenu={listMenu} />
   }
 
+  const fncGetListHospital = () => {
+    if (check(listHospital)) {
+      dispatch(getListHospital())
+    }
+  }
+
   return (
     <BannersCustom
-      listHospital={listHospital}
-      dispatchListHospital={() => dispatch(getListHospital())}
+      dispatchListHospital={fncGetListHospital}
       getBanner={getBanner}
       listFeature={listFeature}
       partnerId={partnerId}
