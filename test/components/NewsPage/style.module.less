@@ -1,48 +1,63 @@
-.Description(@fontsize, @lineLimit) {
-  font: @fontsize;
-  line-height: 1.45;
-  font-weight: 400;
+// mixin css
+.customLine( @line) {
   text-align: justify;
-
+  text-transform: none;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: @lineLimit;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: @line;
   -webkit-box-orient: vertical;
 }
-.Title(@fontsize, @weight) {
-  font-size: @fontsize;
-  font-weight: @weight;
+
+.CustomCardBody (@descNone) {
+  .title {
+    font-size: 13px;
+    font-weight: 500;
+    .customLine(2);
+    margin-bottom: 5px;
+  }
+  .author {
+    font-weight: 500;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .description {
+    font-size: 13px;
+    margin: 0;
+    .customLine(4);
+    display: @descNone;
+  }
 }
+
+// Css main News page
 .ContainerNews {
   margin-top: 30px;
   margin-bottom: 30px;
   .rowHeader {
-    .listCard {
-      padding: 0 12px 0 12px;
-      @media (max-width: 768px) {
-        padding: 0;
-      }
-      .card {
-        list-style: none;
-        @media (max-width: 1024px) {
-          padding: 1.25rem 0 !important;
-        }
-        .cardImg {
-          img {
-            width: 100%;
-            height: auto;
+    .colRight,
+    .colLeft {
+      padding: 0 15px;
+      .listNews {
+        margin: 15px 0;
+        .cardNews {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          padding: 7.5px 0;
+          .cardView {
+            margin: 0;
+            div {
+              height: 100%;
+            }
           }
-        }
-        a {
-          .Title(1.3rem, 700);
-          @media (max-width: 1024px) {
-            .Title(0.975rem, 600);
-          }
-        }
-        span {
-          .Description(0.975rem, 4);
-          @media (max-width: 1024px) {
-            .Description(0.875rem, 4);
+          .cardBody {
+            .CustomCardBody(block);
           }
         }
       }
@@ -56,53 +71,53 @@
         text-align: center;
       }
       .listNews {
-        @media (max-width: 768px) {
-          padding: 0;
-        }
-        margin: 30px 0;
-        .news {
+        border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+        padding: 15px 0;
+        .cardNews {
           display: flex;
           flex-direction: revert;
-          margin-bottom: 30px;
-          @media (max-width: 768px) {
-            padding: 0;
-          }
-          .newsImg {
-            img {
-              width: 280px;
-              height: 170px;
-              @media (max-width: 768px) {
-                width: 150px;
-                height: 120px;
-              }
+          justify-content: stretch;
+          padding: 7.5px 0;
+          .cardView {
+            width: 40%;
+            margin: 0;
+            div {
+              height: 100%;
             }
           }
-          .newsBody {
-            padding-left: 17px;
-            a {
-              .Title(1.125rem, none);
-              @media (max-width: 768px) {
-                .Title(0.875rem, none);
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-              }
+          .cardBody {
+            width: 60%;
+            padding-left: 15px;
+            @media (max-width: 425px) {
+              padding-left: 5px;
             }
-            p {
-              font-size: 0.75rem;
-              color: #777;
-              overflow: hidden;
-              margin: 20px 0 5px 0;
-            }
-            span {
-              .Description(400 1rem arial, 3);
-              @media (max-width: 768px) {
-                display: none;
+            .CustomCardBody(block);
+            @media only screen and (max-width: 425px) {
+              .description {
+                display: none !important;
               }
             }
           }
         }
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ContainerNews {
+    .rowHeader {
+      .colRight,
+      .colLeft {
+        padding: 0;
+      }
+    }
+    .rowContent {
+      .colContent {
+        padding: 0;
       }
     }
   }

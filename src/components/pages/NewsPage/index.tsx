@@ -39,7 +39,7 @@ const NewsPageDetails = () => {
 
   useEffect(() => {
     dispatch(getListNewsContent(Number(page)))
-  }, [Number(page)])
+  }, [page])
 
   return (
     <NewsPageCustom

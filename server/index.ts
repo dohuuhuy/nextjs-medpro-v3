@@ -10,6 +10,10 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
+  server.get('/authorized/:info', (req: any, res: any) => {
+    return app.render(req, res, '/authorized/info?info', req.query)
+  })
+
   server.get('/gioi-thieu', (req: any, res: any) => {
     return app.render(req, res, '/gioi-thieu', req.query)
   })

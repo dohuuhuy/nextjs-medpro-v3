@@ -1,7 +1,6 @@
 .ListMenuHeader {
+  margin: 7.5px 10px;
   width: 100%;
-  padding: 0;
-  margin: 0 10px;
   border-top: 1px solid #dfe3eb;
   list-style: none;
   display: flex;
@@ -11,7 +10,6 @@
   li {
     text-align: center;
     position: relative;
-    font-size: 0.875rem;
 
     &:before {
       border-color: #0352cc !important;
@@ -34,19 +32,16 @@
       }
     }
     a {
+      font-size: 13px;
+      font-weight: 600;
       display: block;
-      padding: 0.8rem !important;
-      transition: all 0.3s ease-in-out;
-      outline: none;
-      font-weight: 500;
+      padding: 0.8rem;
       white-space: nowrsap;
-      transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
     }
   }
   li.active {
     a {
-      color: #0352cc !important;
-      font-weight: 500;
+      color: #0352cc;
     }
     &:before {
       width: 100%;

@@ -1,5 +1,7 @@
+import { DoubleRightOutlined } from '@ant-design/icons'
 import { Button, Col, Row } from 'antd'
 import moment from 'moment'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
@@ -44,7 +46,9 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
       <Row className={styles.rowBtnViewDetails}>
         <Button>
           <Link href='/tin-tuc'>
-            <a>Xem Thêm Các Bài Viết Khác {'>>'}</a>
+            <a>
+              Xem Thêm Các Bài Viết Khác <DoubleRightOutlined />
+            </a>
           </Link>
         </Button>
       </Row>
@@ -59,17 +63,26 @@ const CardNewsCustom = ({
   description,
   author
 }: any) => {
+  const imgUrl = API_NEWS + image?.[0].url
   return (
     <div className={styles.cardNews}>
       <figure className={styles.cardView}>
-        <img src={API_NEWS + image?.[0].url} alt='' />
+        <Image
+          src={imgUrl}
+          width='500'
+          height='300'
+          layout='responsive'
+          loading='eager'
+        />
       </figure>
       <div className={styles.cardBody}>
         <p className={styles.title}>{title}</p>
-        <p className={styles.time}>
-          {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+        <p>
+          <span className={styles.time}>
+            {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+          </span>
+          <span className={styles.author}>{author}</span>
         </p>
-        <p className={styles.author}>{author}</p>
         <p className={styles.description}>{description}</p>
       </div>
     </div>

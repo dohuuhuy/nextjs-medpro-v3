@@ -52,7 +52,7 @@ function* WatchGetListNewsBanner() {
 
 function* getListNewsContent({ page = 1 }) {
   try {
-    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS
+    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS || 1
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
     const response: AxiosResponse = yield call(getData, url)
     yield put({
