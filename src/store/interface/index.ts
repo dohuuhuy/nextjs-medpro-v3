@@ -3,6 +3,12 @@ export * from '@componentStore/demo/demo.types/demo.action'
 export * from '@componentStore/demo/demo.types/demo.action.types'
 export * from '@componentStore/demo/demo.types/demo.initialState'
 export * from '@componentStore/demo/demo.types/demo.params'
+
+// user
+export * from '@componentStore/user/user.types/user.action'
+export * from '@componentStore/user/user.types/user.action.types'
+export * from '@componentStore/user/user.types/user.initialState'
+export * from '@componentStore/user/user.types/user.params'
 // hospital
 export * from '@componentStore/hospital/hospital.types/hospital.action'
 export * from '@componentStore/hospital/hospital.types/hospital.action.types'
@@ -19,10 +25,16 @@ export * from '@componentStore/totalData/totalData.types/totalData.action.types'
 export * from '@componentStore/totalData/totalData.types/totalData.initialState'
 export * from '@componentStore/totalData/totalData.types/totalData.params'
 
-import { HospitalState, NewsState, TotalDataState } from '@store/interface'
+import {
+  HospitalState,
+  NewsState,
+  TotalDataState,
+  UserState
+} from '@store/interface'
 
 export type AppState = {
   totalDataReducer: TotalDataState
   hospitalReducer: HospitalState
   newsReducer: NewsState
+  userReducer: UserState
 }

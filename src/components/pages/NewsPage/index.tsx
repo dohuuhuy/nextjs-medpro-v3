@@ -14,17 +14,10 @@ const NewsPageDetails = () => {
   const router = useRouter()
   const { page } = router.query
 
-  const listNewsBanner = useSelector(
-    (state: AppState) => state.newsReducer.listNewsBanner
+  const { listNewsBanner, listNewsContent, totalPages } = useSelector(
+    (state: AppState) => state.newsReducer
   )
 
-  const listNewsContent = useSelector(
-    (state: AppState) => state.newsReducer.listNewsContent
-  )
-
-  const totalPages = useSelector(
-    (state: AppState) => state.newsReducer.totalPages
-  )
   const dispatch = useDispatch()
 
   useEffect(() => {
