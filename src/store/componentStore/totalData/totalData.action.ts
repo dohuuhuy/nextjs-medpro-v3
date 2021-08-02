@@ -4,7 +4,7 @@ import {
   TotalDataTypes
 } from '@store/interface'
 
-export const getPartnerId = (): TotalDataActions => {
+export const getListPartners = (): TotalDataActions => {
   return {
     type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST
   }
