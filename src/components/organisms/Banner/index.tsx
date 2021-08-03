@@ -14,7 +14,8 @@ const BannerLayout = () => {
 
   const {
     listFeature,
-    information: { banners, header }
+    information: { banners, header },
+    listHospital
   } = useSelector((state: AppState) => state.hospitalReducer)
 
   const { partnerId, appId } = useSelector(
@@ -39,9 +40,15 @@ const BannerLayout = () => {
     return <BreadcumbCustom listMenu={listMenu} />
   }
 
+  const fncGetListHospital = () => {
+    if (check(listHospital)) {
+      dispatch(getListHospital())
+    }
+  }
+
   return (
     <BannersCustom
-      dispatchListHospital={() => dispatch(getListHospital())}
+      dispatchListHospital={fncGetListHospital}
       getBanner={getBanner}
       listFeature={listFeature}
       partnerId={partnerId}

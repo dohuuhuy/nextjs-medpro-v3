@@ -10,4 +10,9 @@ export namespace TotalDataTypes {
   export enum LocalPartnerId {
     PARTNERID_LOCAL_REQUEST = 'PARTNERID_LOCAL_REQUEST'
   }
+
+  export enum ListCity {
+    LIST_CITY_REQUEST = 'LIST_CITY_REQUEST',
+    LIST_CITY_REQUEST_SUCCESS = 'LIST_CITY_REQUEST_SUCCESS'
+  }
 }

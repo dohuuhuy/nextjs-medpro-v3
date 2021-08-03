@@ -4,7 +4,7 @@ import {
   TotalDataTypes
 } from '@store/interface'
 
-export const getPartnerId = (): TotalDataActions => {
+export const getListPartners = (): TotalDataActions => {
   return {
     type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST
   }
@@ -16,5 +16,11 @@ export const setPartnerIdLocal = ({
   return {
     type: TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST,
     partnerId
+  }
+}
+
+export const getListCity = (): TotalDataActions => {
+  return {
+    type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
   }
 }

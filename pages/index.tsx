@@ -21,14 +21,14 @@ const HomePage = () => {
     }
   })
 
-  return 'uhvisdh'
+  return null
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     await store.dispatch(getNewsAndEvent())
     store.dispatch(END)
-    await (store as SagaStore)?.sagaTask?.toPromise()
+    await (store as SagaStore).sagaTask?.toPromise()
     return { props: { custom: 'custom' } }
   }
 )

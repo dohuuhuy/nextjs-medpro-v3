@@ -1,4 +1,4 @@
-import NewsPageDetails from '@components/organisms/NewsPage'
+import NewsPageDetails from '@components/pages/NewsPage'
 import dynamic from 'next/dynamic'
 import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))

@@ -29,7 +29,12 @@ const lessConfig = {
 const nextConfig = {
   images: {
     // cấu hình domain cho hình ảnh
-    domains: ['mdbootstrap.com', 'medpro.vn']
+    domains: [
+      'medpro.vn',
+      'cms.medpro.com.vn',
+      'resource.medpro.com.vn',
+      'resource-testing.medpro.com.vn'
+    ]
   },
 
   ...lessConfig,

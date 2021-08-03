@@ -2,6 +2,7 @@ import DemoReducer from '@componentStore/demo/demo.reducer'
 import hospitalReducer from '@componentStore/hospital/hospital.reducer'
 import newsReducer from '@componentStore/news/news.reducer'
 import totalDataReducer from '@componentStore/totalData/totalData.reducer'
+import userReducer from '@componentStore/user/user.reducer'
 // import { HYDRATE } from 'next-redux-wrapper'
 import { Reducer } from 'react'
 import { AnyAction, combineReducers } from 'redux'
@@ -11,7 +12,8 @@ const reducers = {
   DemoReducer,
   totalDataReducer,
   hospitalReducer,
-  newsReducer
+  newsReducer,
+  userReducer
 }
 
 const combinedReducers = combineReducers(reducers)

@@ -5,21 +5,18 @@ import {
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const NewsPageDetails = () => {
-  const listNewsBanner = useSelector(
-    (state: AppState) => state.newsReducer.listNewsBanner
+  const router = useRouter()
+  const { page } = router.query
+
+  const { listNewsBanner, listNewsContent, totalPages } = useSelector(
+    (state: AppState) => state.newsReducer
   )
 
-  const listNewsContent = useSelector(
-    (state: AppState) => state.newsReducer.listNewsContent
-  )
-
-  const totalPages = useSelector(
-    (state: AppState) => state.newsReducer.totalPages
-  )
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,6 +28,16 @@ const NewsPageDetails = () => {
     }
   })
 
-  return <NewsPageCustom dataNewsPageBanner={listNewsBanner} dataNewsPageContent={listNewsContent} totalPages={totalPages} />
+  useEffect(() => {
+    dispatch(getListNewsContent(Number(page)))
+  }, [page])
+
+  return (
+    <NewsPageCustom
+      listNewsBanner={listNewsBanner}
+      listNewsContent={listNewsContent}
+      totalPages={totalPages}
+    />
+  )
 }
 export default NewsPageDetails
