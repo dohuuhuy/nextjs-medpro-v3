@@ -1,6 +1,7 @@
 import {
   getCountNewsContent,
-  getListNewsBanner
+  getListNewsBanner,
+  getListNewsContent
 } from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'

@@ -93,7 +93,8 @@ function* WatchGetCountNewsContent() {
 
 function* getDetailNews({ slug }: any) {
   try {
-    const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
+    // const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
+    const url = `https://cms.medpro.com.vn/posts?slug=nguyen-nhan-gay-noi-hach-o-co`
     const reponse: AxiosResponse = yield call(getData, url)
     yield put({
       type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS,

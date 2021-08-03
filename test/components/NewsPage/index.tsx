@@ -1,15 +1,10 @@
 import { Col, Pagination, Row } from 'antd'
 import cx from 'classnames'
 import moment from 'moment'
-<<<<<<< HEAD
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-=======
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
->>>>>>> 9d2ed50fb69cec5e6d1848345a0b6e0d22ba6db2
 import Container from '../Container'
 import styles from './style.module.less'
 interface NewsPageCustom {
@@ -82,23 +77,23 @@ interface PropsCard {
   obsImg?: boolean
 }
 const CardCustom = ({ item, obsImg = false }: PropsCard) => {
-  const { image, title, created_at: createdAt, description, author }: any = item
-  const imgUrl = API_NEWS + image?.[0].url
-
+  const { image, slug, title, created_at: createdAt, description, author }: any = item
+  // const imgUrl = API_NEWS + image?.[0].url
   return (
     <div className={styles.cardNews} key={title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
-        <Image
+        {/* <Image
           src={imgUrl}
           width='600'
           height='300'
           layout='responsive'
           loading='eager'
-        />
+        /> */}
       </figure>
 
       <div className={styles.cardBody}>
-        <p className={styles.title}>{title}</p>
+        <Link href={`/tin-tuc/${slug}`}>
+          <p className={styles.title}>{title}</p></Link>
         <p className={styles.time}>
           {moment(createdAt).format('DD/MM/YYYY, h:mm')}
         </p>
