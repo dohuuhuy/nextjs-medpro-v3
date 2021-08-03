@@ -27,27 +27,27 @@ class CustomDocument extends Document<{
     return (
       <Html lang='vi'>
         <Head>
-          <FavIcon image={this.props.image} />
+          <FavIcon />
           <script
             src='https://resource-testing.medpro.com.vn/static/js/wechat.js'
-            async
+            async={true}
           />
           <script
             src='https://www.googletagmanager.com/gtag/js?id=UA-148064018-1'
-            async
+            async={true}
           />
           <script
             src='https://resource-testing.medpro.com.vn/static/js/gtag.js'
-            async
+            async={true}
           />
-          <script src='https://zjs.zdn.vn/zalo/sdk.js' async></script>
-          <link rel='preconnect' href='https://fonts.googleapis.com'></link>
-          <link rel='preconnect' href='https://fonts.gstatic.com'></link>
+          <script src='https://zjs.zdn.vn/zalo/sdk.js' async={true} />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
 
           <link
             href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
             rel='stylesheet'
-          ></link>
+          />
 
           <link
             rel='stylesheet'

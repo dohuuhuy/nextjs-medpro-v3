@@ -1,0 +1,53 @@
+.ThacMacContent {
+  .rowThacMac {
+    margin: 30px 0;
+    .colTab {
+      padding: 0 15px;
+      .titleTab {
+        padding: 11px 15px;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        background: #1da1f2;
+        color: #fff;
+        border-radius: 4px;
+      }
+      .listTab {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          cursor: pointer;
+          font-weight: 600;
+          padding: 10px 15px 10px 30px;
+          &:hover {
+            color: #307be7;
+          }
+        }
+        .active {
+          color: #307be7;
+        }
+      }
+    }
+    .colContentMenu {
+      padding: 0 15px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ThacMacContent {
+    .rowThacMac {
+      .colContentMenu,
+      .colTab {
+        padding: 0px;
+      }
+      .colTab {
+        .listTab {
+          margin-bottom: 30px;
+          border-bottom: 1px solid;
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+}

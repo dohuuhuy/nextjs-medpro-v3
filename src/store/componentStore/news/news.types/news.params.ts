@@ -1,1 +1,1 @@
-export namespace news_Params {}
+export namespace NewsParams {}

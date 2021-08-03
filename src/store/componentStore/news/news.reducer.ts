@@ -1,24 +1,46 @@
-import {
-  NewsAtHome_Action_Types,
-  news_Action,
-  news_State
-} from '@store/interface'
+import { NewsActions, NewsState, NewsTypes } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
-const totalData_InitialState: news_State = {
-  newsAndEvent: []
+const init: NewsState = {
+  newsAndEvent: [],
+  listNewsBanner: [],
+  listNewsContent: [],
+  totalPages: 0,
+  detailNews: []
 }
 
-export default function news_Reducer(
-  state = totalData_InitialState,
-  action: news_Action
-) {
+export default function newsReducer(
+  state = init,
+  action: NewsActions | { type: typeof HYDRATE; payload: NewsState }
+): NewsState {
   switch (action.type) {
-    case NewsAtHome_Action_Types.ListNewsAtHome_REQUEST_SUCCESS:
+    case NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS:
       return {
         ...state,
         newsAndEvent: action.newsPin.concat(action.news)
       }
 
+    case NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listNewsBanner: action.listNewsBanner
+      }
+
+    case NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listNewsContent: action.listNewsContent
+      }
+    case NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        totalPages: action.totalPages
+      }
+    case NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        detailNews: action.detailNews
+      }
     default:
       return state
   }

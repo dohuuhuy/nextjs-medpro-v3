@@ -1,11 +1,14 @@
-import {
-  Hospital_Action,
-  Hospital_Details_Action_Types,
-} from '@store/interface'
+import { HospitalActions, HosptailTypes } from '@store/interface'
 
-export const hospital_get_details = (partnerId: String): Hospital_Action => {
+export const getHospitalDetails = (partnerId: string): HospitalActions => {
   return {
-    type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-    partnerId,
+    type: HosptailTypes.Information.INFORMATION_REQUEST,
+    partnerId
+  }
+}
+
+export const getListHospital = (): HospitalActions => {
+  return {
+    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
   }
 }

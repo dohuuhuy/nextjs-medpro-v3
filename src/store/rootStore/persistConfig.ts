@@ -1,13 +1,13 @@
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { VERSION } from '@config/version'
-import rootReducer from '@store/rootReducer'
+import { rootReducer } from '@store/rootReducer'
 import { persistReducer } from 'redux-persist'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 export const listPersists = [
-  'DemoReducer',
-  'totalData_Reducer',
-  'hospital_Reducer',
+  'totalDataReducer',
+  'hospitalReducer',
+  'newsReducer'
 ]
 
 export const createNoopStorage = () => {
@@ -20,7 +20,7 @@ export const createNoopStorage = () => {
     },
     removeItem(_key: string) {
       return Promise.resolve()
-    },
+    }
   }
 }
 
@@ -35,10 +35,8 @@ export const persistedReducer = () => {
     version: VERSION,
     storage,
     stateReconciler: autoMergeLevel2,
-    whitelist: listPersists,
+    whitelist: listPersists
   }
 
-  const persistedReducer = persistReducer(persistConfig, rootReducer as any)
-
-  return persistedReducer
+  return persistReducer(persistConfig, rootReducer as any)
 }

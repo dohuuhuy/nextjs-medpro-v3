@@ -1,36 +1,28 @@
-export interface hospital_State {
-  hospital_details: hospital_details | {}
+export interface HospitalState {
+  information: Information
+  listFeature: ItemFeature[]
+  listHospital: any
 }
 
-export interface hospital_details {
-  info: Array<infoItem>
-  menu: Array<menuItem>
-  menuFooter: Array<menuFooterItem>
+export interface Information {
+  partnerId: string
+  header: any
+  banners: any[]
+  deployHospital: any[]
+  introducHospital: any
+  downloadApp: any
+  supportMethods: any[]
+  footer: any
+  contentPage: any[]
 }
 
-export interface infoItem {
-  key: String
-  displayPrefix: String
-  value: String
-  isShow?: boolean
-}
-
-export interface menuItem {
-  key: String
-  link: String
-  url: String
-  name: String
-  content: String
-  sortOrder: String
-  icon: String
-}
-
-export interface menuFooterItem {
-  key: String
-  link: String
-  url: String
-  name: String
-  content: String
-  sortOrder: String
-  icon: String
+export interface ItemFeature {
+  type: string
+  _id: string
+  parentId: string
+  name: string
+  image: string
+  priority: number
+  status: boolean
+  mobileStatus: boolean
 }

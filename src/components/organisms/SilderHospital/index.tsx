@@ -1,10 +1,13 @@
-import { DeloyHospitalCustom } from '@n17dccn172/booking-libs'
+// import { DeloyHospitalCustom } from '@n17dccn172/booking-libs'
+
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
+import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
 const DeployHospital = () => {
   const deployHospital = useSelector(
-    (state: any) => state.hospital_Reducer.hospital_details.deployHospital
+    (state: AppState) => state.hospitalReducer.information.deployHospital
   )
 
   return <DeloyHospitalCustom dataDeloyHospital={deployHospital} />

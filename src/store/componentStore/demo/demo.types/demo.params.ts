@@ -1,10 +1,10 @@
 // Kiểm soát tham số trong hàm thực hiện hành động ---------------------------------------------------------------
 export namespace demoParams {
-  export interface getDemo_Params {
+  export interface GetDemoParams {
     nameColor: string
   }
 
-  export interface deleteDemo_Params {
+  export interface DeleteDemoParams {
     id: string
   }
 }

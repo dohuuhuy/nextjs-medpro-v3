@@ -12,12 +12,12 @@ const SEO_DEFAULT = {
         url: 'https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg',
         width: 1200,
         height: 630,
-        alt: 'dvdv',
-      },
+        alt: 'dvdv'
+      }
     ],
     locale: 'vi',
-    site_name: 'Home',
-  },
+    site_name: 'Home'
+  }
 }
 
 export default SEO_DEFAULT

@@ -1,90 +1,66 @@
 import { _PRODUCTION } from '@config/envs/env'
+import { getData } from '@store/api'
 import {
-  Hospital_Details_Action_Types,
-  ListPartners_Action_Types,
-  list_partners_item,
-  partnerId_Local_Action_Types,
-  totalData_Params,
-  totalData_State
+  AppState,
+  HosptailTypes,
+  TotalDataParams,
+  TotalDataTypes
 } from '@store/interface'
 import { persistor } from '@store/rootStore'
 import { openToast } from '@utils/Notification'
-import { get_PartnerId } from '@utils/run_local_hospitals'
-import axios, { AxiosResponse } from 'axios'
+import { findPartnerId } from '@utils/run_local_hospitals'
+import { AxiosResponse } from 'axios'
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-const getData = async (url: any) => {
-  const res = await axios.get(url)
-  const { data } = res
-  return data
-}
-
-function* set_partnerId_local({ partnerId }: totalData_Params.partnerLocal) {
-  const totalData_Reducer: totalData_State = yield select(
-    (state) => state.totalData_Reducer
+function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
+  const listPartners: AppState = yield select(
+    (state: AppState) => state.totalDataReducer.listPartners
   )
 
-  const { list_partners } = totalData_Reducer
-
-  const runObject: get_PartnerId = {
-    listPartners: list_partners,
+  const runObject = {
+    listPartners,
     partnerId,
     local: true
   }
 
-  const getPartnerId = get_PartnerId(runObject)
+  const getPartner = findPartnerId(runObject)
 
-  if (getPartnerId) {
-    yield put({ type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS })
-
+  if (getPartner) {
     persistor.purge()
 
     yield put({
-      type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-      partnerId: getPartnerId
-    })
-  } else {
-    openToast({
-      message: 'Không tìm thấy partnerId của bệnh viên, vui lòng thử lại !',
-      type: 'error',
-      duration: 3
+      type: HosptailTypes.Information.INFORMATION_REQUEST,
+      partnerId: getPartner
     })
   }
 }
 
-function* watch_partnerId_local() {
+function* WatchSetPartnerIdLocal() {
   yield takeLatest(
-    partnerId_Local_Action_Types.partnerId_Local_REQUEST as any,
-    set_partnerId_local
+    TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST as any,
+    setPartnerIdLocal
   )
 }
 
-function* get_list_partners() {
+function* getListPartners() {
   try {
     const url =
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-    const listPartners: AxiosResponse<Array<list_partners_item>> = yield call(
-      getData,
-      url
-    )
+    const listPartners: AxiosResponse = yield call(getData, url)
 
     yield put({
-      type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS,
-      list_partners: listPartners
+      type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
+      listPartners
     })
 
     if (_PRODUCTION) {
-      const getPartnerId = get_PartnerId({ listPartners })
-      if (getPartnerId) {
+      const getPartner = findPartnerId({ listPartners })
+      if (getPartner) {
         yield put({
-          type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS,
-          partnerId: getPartnerId
+          type: HosptailTypes.Information.INFORMATION_REQUEST,
+          partnerId: getPartner
         })
       } else {
-        yield put({
-          type: ListPartners_Action_Types.ListPartners_ERROR
-        })
-
         openToast({
           message:
             'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
@@ -93,25 +69,47 @@ function* get_list_partners() {
         })
 
         yield put({
-          type: Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS
+          type: HosptailTypes.Information.INFORMATION_CLEAR
         })
       }
     }
   } catch (error) {
-    // yield put({
-    //   type: ListPartners_Action_Types.ListPartners_ERROR,
-    // })
+    console.error(error)
   }
 }
 
-function* watch_list_partners() {
+function* WatchListPartners() {
   yield takeLatest(
-    ListPartners_Action_Types.ListPartners_REQUEST as any,
-    get_list_partners
+    TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST,
+    getListPartners
   )
 }
 
-const totalData_Sagas = function* root() {
-  yield all([fork(watch_list_partners), fork(watch_partnerId_local)])
+function* getListCity() {
+  try {
+    const url =
+      'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
+
+    const respone: AxiosResponse = yield call(getData, url)
+
+    yield put({
+      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS,
+      listCity: respone
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
-export default totalData_Sagas
+
+function* WatchListCity() {
+  yield takeLatest(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
+}
+
+const totalDataSagas = function* root() {
+  yield all([
+    fork(WatchListPartners),
+    fork(WatchSetPartnerIdLocal),
+    fork(WatchListCity)
+  ])
+}
+export default totalDataSagas

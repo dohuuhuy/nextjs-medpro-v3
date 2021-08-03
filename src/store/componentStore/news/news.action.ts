@@ -1,8 +1,32 @@
-import { NewsAtHome_Action_Types } from './news.types/news.action.types'
-import { news_Action } from '@store/interface'
+import { NewsActions, NewsTypes } from '@store/interface'
 
-export const getListNewsAtHome = (): news_Action => {
+export const getNewsAndEvent = (): NewsActions => {
   return {
-    type: NewsAtHome_Action_Types.ListNewsAtHome_REQUEST
+    type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST
+  }
+}
+
+export const getListNewsBanner = (): NewsActions => {
+  return {
+    type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST
+  }
+}
+
+export const getListNewsContent = (page: number): NewsActions => {
+  return {
+    type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST,
+    page
+  }
+}
+
+export const getCountNewsContent = (): NewsActions => {
+  return {
+    type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST
+  }
+}
+
+export const getDetailNews = (): NewsActions => {
+  return {
+    type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
   }
 }

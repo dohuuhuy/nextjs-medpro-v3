@@ -5,16 +5,16 @@ export const openToast = ({
   type,
   message,
   description,
-  duration,
+  duration
 }: ArgsProps) => {
   const setDuration = () => {
     if (duration) {
       return duration
     } else {
-      if ((type = 'error')) return 7
-      if ((type = 'warning')) return 4
-      if ((type = 'info')) return 9
-      if ((type = 'success')) return 6
+      if (type === 'error') return 7
+      if (type === 'warning') return 4
+      if (type === 'info') return 9
+      if (type === 'success') return 6
       return 3
     }
   }
@@ -23,6 +23,6 @@ export const openToast = ({
     message,
     description,
     type,
-    duration: Number(setDuration()),
+    duration: Number(setDuration())
   })
 }

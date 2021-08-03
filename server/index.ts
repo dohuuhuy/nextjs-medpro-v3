@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import next from 'next'
-const express = require('express')
+import express from 'express'
+
 const server = express()
 const port = parseInt(process.env.PORT || '3006', 10)
 const NODE_ENV = process.env.NODE_ENV
@@ -9,6 +11,10 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
+  // server.get('/authorized/:info', (req: any, res: any) => {
+  //   return app.render(req, res, '/authorized/:info', req.query)
+  // })
+
   server.get('/gioi-thieu', (req: any, res: any) => {
     return app.render(req, res, '/gioi-thieu', req.query)
   })
@@ -24,6 +30,9 @@ app.prepare().then(() => {
   server.get('/lien-he', (req: any, res: any) => {
     return app.render(req, res, '/lien-he', req.query)
   })
+  server.get('/tin-tuc', (req: any, res: any) => {
+    return app.render(req, res, '/tin-tuc', req.query)
+  })
 
   server
     .all('*', (req: any, res: any) => {
@@ -32,6 +41,6 @@ app.prepare().then(() => {
     .listen(port)
 
   console.log(
-    `> Server listening at http://localhost:${port} as ${NODE_ENV} as ${ENV}`,
+    `> Server listening at http://localhost:${port} as ${NODE_ENV} as ${ENV}`
   )
 })

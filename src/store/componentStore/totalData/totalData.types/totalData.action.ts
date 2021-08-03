@@ -1,49 +1,51 @@
-import {
-  ListPartners_Action_Types,
-  partnerId_Local_Action_Types,
-} from '@store/interface'
+import { TotalDataTypes } from '@store/interface'
 
-export type totalData_Action = listPartners_Action | partnerId_local_Action
+export type TotalDataActions =
+  | ListPartnersAction
+  | ListCityAction
+  | PartnerIdlocalAction
 
 // ----------------------------------------------------------------------------------------------
 
-export type listPartners_Action =
-  | listPartners_Request
-  | listPartners_Request_Success
-  | check_localhost
-  | ListPartners_ERROR
-  | set_parnerId
+export type ListPartnersAction =
+  | ListPartnersReques
+  | ListPartnersRequestSuccess
+  | SetParnerId
 
-export interface demo_get {
-  type: 'from_cache'
+export interface ListPartnersReques {
+  type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST
 }
 
-export interface listPartners_Request {
-  type: ListPartners_Action_Types.ListPartners_REQUEST
+export interface ListPartnersRequestSuccess {
+  type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS
+  listPartners: any[]
 }
 
-export interface listPartners_Request_Success {
-  type: ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS
-  list_partners: Array<any>
-}
-
-export interface check_localhost {
-  type: ListPartners_Action_Types.CHECK_LOCALHOST
-}
-
-export interface set_parnerId {
-  type: ListPartners_Action_Types.SET_PartnerId
+export interface SetParnerId {
+  type: TotalDataTypes.ListPartners.SET_PARTNERID
   partnerId: any
 }
 
-export interface ListPartners_ERROR {
-  type: ListPartners_Action_Types.ListPartners_ERROR
-  err: boolean
-}
 // ----------------------------------------------------------------------------------------------
-export type partnerId_local_Action = set_partnerId_local
+export type PartnerIdlocalAction = SetPartnerIdLocal
 
-export interface set_partnerId_local {
-  type: partnerId_Local_Action_Types.partnerId_Local_REQUEST
+export interface SetPartnerIdLocal {
+  type: TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST
   partnerId: string
+}
+
+// ----------------------------------------------------------------------------------------------
+
+export type ListCityAction =
+  | ListCityReques
+  | ListCityRequestSuccess
+  | SetParnerId
+
+export interface ListCityReques {
+  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+}
+
+export interface ListCityRequestSuccess {
+  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
+  listCity: any[]
 }

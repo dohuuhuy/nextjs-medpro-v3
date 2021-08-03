@@ -1,0 +1,49 @@
+.background {
+  background-size: cover;
+  background-image: linear-gradient(to right, #687ad0, #04a3bd);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.wapperBreadcumbCustom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .background();
+  min-height: 116px;
+  .containerBreadcumbCustom {
+    .rowBreadcumbCustom {
+      .colBreadcumbCustom {
+        .Breadcrumb {
+          padding: 15px 20px;
+          span {
+            span {
+              color: white;
+            }
+            .ItemBreadcrumb {
+              a {
+                color: white;
+              }
+              font-size: 14px;
+              font-weight: 500;
+              vertical-align: middle;
+              opacity: 0.6;
+              transition: all 0.3s ease;
+              &:hover {
+                opacity: 1;
+              }
+            }
+            &:last-child {
+              .ItemBreadcrumb {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

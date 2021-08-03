@@ -10,6 +10,28 @@
             "alias": {
               "@config": "./src/config",
               "@components": "./src/components",
+              "@componentsTest": "./test/components",
+              "@componentStore": "./src/store/componentStore",
+              "@utils": "./src/utils",
+              "@store": "./src/store",
+              "@templates": "./templates",
+              "@assets": "./assets",
+              "@public": "./public"
+            }
+          }
+        ]
+      ]
+    },
+    "testing": {
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "@config": "./src/config",
+              "@components": "./src/components",
               "@componentStore": "./src/store/componentStore",
               "@utils": "./src/utils",
               "@store": "./src/store",

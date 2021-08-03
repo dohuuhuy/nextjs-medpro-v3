@@ -1,30 +1,52 @@
-import {
-  Hospital_Action,
-  Hospital_Details_Action_Types,
-  hospital_State,
-} from '@store/interface'
+import { HospitalActions, HospitalState, HosptailTypes } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
-const hospital_InitialState: hospital_State = {
-  hospital_details: {},
+const init: HospitalState = {
+  information: {
+    partnerId: '',
+    header: {},
+    banners: [],
+    deployHospital: [],
+    introducHospital: {},
+    downloadApp: {},
+    supportMethods: [],
+    footer: {},
+    contentPage: []
+  },
+  listFeature: [],
+  listHospital: []
 }
 
-export default function hospital_Reducer(
-  state = hospital_InitialState,
-  action: Hospital_Action,
+export default function hospitalReducer(
+  state = init,
+  action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ) {
   switch (action.type) {
-    case Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS:
+    case HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS:
       return {
         ...state,
-        hospital_details: action.hospital_details,
+        information: action.information
       }
 
-    case Hospital_Details_Action_Types.Hospital_CLEAR_DETAILS: {
+    case HosptailTypes.Information.INFORMATION_CLEAR: {
       return {
         ...state,
-        hospital_details: hospital_InitialState.hospital_details,
+        information: state.information
       }
     }
+
+    case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listFeature: action.listFeature
+      }
+
+    case HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listHospital: action.listHospital
+      }
+
     default:
       return state
   }

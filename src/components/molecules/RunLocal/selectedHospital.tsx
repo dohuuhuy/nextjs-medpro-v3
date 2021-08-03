@@ -1,8 +1,10 @@
-import { set_partnerId_local } from '@actionStore/rootAction'
-import { _DEVELOPMENT } from '@config/envs/env'
+import { setPartnerIdLocal } from '@actionStore/rootAction'
+import { ArrowUpOutlined } from '@ant-design/icons'
+import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
 import { AppState } from '@store/interface'
-import { Button, Modal, Select } from 'antd'
-import React, { useState } from 'react'
+import { check } from '@utils/checkValue'
+import { BackTop, Button, Modal, Select } from 'antd'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
 const { Option } = Select
@@ -12,33 +14,55 @@ const SelectedHospital = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const showModal = () => {
+  const { listPartners, partnerId } = useSelector(
+    (state: AppState) => state.totalDataReducer
+  )
+
+  useEffect(() => {
+    if (check(partnerId)) {
+      dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
+    }
+  })
+
+  const toggle = () => {
     setIsModalVisible(!isModalVisible)
   }
 
-  const handleOk = () => {
-    setIsModalVisible(false)
-  }
-
-  const handleCancel = () => {
-    setIsModalVisible(false)
-  }
-
   function onChange(value: any) {
-    dispatch(set_partnerId_local({ partnerId: value }))
+    dispatch(setPartnerIdLocal({ partnerId: value }))
     setIsModalVisible(false)
   }
 
-  const list_partners: any = useSelector<AppState>(
-    (state: any) => state.totalData_Reducer.list_partners
-  )
+  const filterOption = (input: string, option: any) => {
+    if (option?.children) {
+      return option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
+    return option?.children
+  }
 
   return (
     <div>
-      {_DEVELOPMENT ? (
+      <BackTop>
+        <div
+          style={{
+            height: 40,
+            width: 40,
+            lineHeight: '40px',
+            borderRadius: 4,
+            backgroundColor: '#1088e9',
+            color: '#fff',
+            textAlign: 'center',
+            fontSize: 14
+          }}
+        >
+          <ArrowUpOutlined />
+        </div>
+      </BackTop>
+
+      {_DEVELOPMENT || _TESTING ? (
         <Button
           type='primary'
-          onClick={showModal}
+          onClick={toggle}
           className={styles.Btn_local_hospital}
         >
           Chọn bệnh viện trên localhost
@@ -46,32 +70,25 @@ const SelectedHospital = () => {
       ) : null}
       <Modal
         footer={false}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        onOk={toggle}
+        onCancel={toggle}
         title=' Nhập partnerId bệnh viện để hiển thị trên localhost'
         visible={isModalVisible}
         closable={isModalVisible}
       >
         <Select
-          showSearch
+          showSearch={true}
           defaultValue='Bệnh viện Test'
           style={{ width: '100%' }}
           placeholder='Chọn bệnh viện'
           optionFilterProp='children'
           onChange={onChange}
-          filterOption={(input, option) => {
-            if (option?.children) {
-              return (
-                option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              )
-            }
-            return option?.children
-          }}
+          filterOption={filterOption}
         >
-          {list_partners?.map(
-            ({ partnerId, nameHospital }: any, index: number) => {
+          {listPartners?.map(
+            ({ partnerId: partnerIdItem, nameHospital }, index: number) => {
               return (
-                <Option key={index} value={partnerId}>
+                <Option key={index} value={partnerIdItem}>
                   {nameHospital}
                 </Option>
               )
@@ -84,10 +101,3 @@ const SelectedHospital = () => {
 }
 
 export default SelectedHospital
-
-export const listHospital = [
-  {
-    name: 'bệnh viện trưng vương',
-    partnerId: 'trungvuong'
-  }
-]

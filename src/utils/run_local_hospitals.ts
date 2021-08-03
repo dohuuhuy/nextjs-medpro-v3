@@ -1,4 +1,6 @@
-export interface get_PartnerId {
+import { find } from 'lodash'
+
+export interface GetPartnerId {
   listPartners: any
   partnerId?: string
   local?: boolean
@@ -11,27 +13,23 @@ export const handlerDoamain = () => {
   return domain
 }
 
-export const get_PartnerId = ({
+export const findPartnerId = ({
   partnerId,
   listPartners,
   local
-}: get_PartnerId) => {
+}: GetPartnerId) => {
   if (local) {
-    const is_partnerId: any = listPartners.find(
-      (i: any) => i.partnerId === partnerId
-    )
+    const isPartnerId: any = find(listPartners, { partnerId })
 
-    // const is_partnerId: any = find(listPartners, partnerId)
-
-    if (!is_partnerId) {
+    if (!isPartnerId) {
       return null
     }
 
-    const is_domain: any = listPartners.find((i: any) =>
+    const isDomain: any = listPartners.find((i: any) =>
       i.domain.includes('localhost')
     )
 
-    if (is_domain) {
+    if (isDomain) {
       listPartners.pop()
     }
 
@@ -47,14 +45,4 @@ export const get_PartnerId = ({
   )
   if (!res) return null
   return res?.partnerId
-}
-
-export const check_list_partners = () => {
-  const list_partners = window.localStorage.getItem('list_partners')
-
-  if (list_partners !== null) {
-    return JSON.parse(list_partners)
-  } else {
-    window.location.reload()
-  }
 }

@@ -1,15 +1,18 @@
 // Kiểm soát hành động -----------------------------------------------------------------------------------------
-export enum ListPartners_Action_Types {
-  ListPartners_REQUEST = 'ListPartners_REQUEST',
-  ListPartners_REQUEST_SUCCESS = 'ListPartners_REQUEST_SUCCESS',
-  ListPartners_REQUEST_FAILURE = ' ListPartners_REQUEST_FAILURE',
-  ListPartners_UPDATE = 'ListPartners_UPDATE',
-  ListPartners_DELETE = 'ListPartners_DELETE',
-  CHECK_LOCALHOST = 'CHECK_LOCALHOST',
-  ListPartners_ERROR = 'ListPartners_ERROR',
-  SET_PartnerId = 'SET_PartnerId',
-}
 
-export enum partnerId_Local_Action_Types {
-  partnerId_Local_REQUEST = 'partnerId_Local_REQUEST',
+export namespace TotalDataTypes {
+  export enum ListPartners {
+    LIST_PARTNERS_REQUEST = 'LIST_PARTNERS_REQUEST',
+    LIST_PARTNERS_REQUEST_SUCCESS = 'LIST_PARTNERS_REQUEST_SUCCESS',
+    SET_PARTNERID = 'SET_PARTNERID'
+  }
+
+  export enum LocalPartnerId {
+    PARTNERID_LOCAL_REQUEST = 'PARTNERID_LOCAL_REQUEST'
+  }
+
+  export enum ListCity {
+    LIST_CITY_REQUEST = 'LIST_CITY_REQUEST',
+    LIST_CITY_REQUEST_SUCCESS = 'LIST_CITY_REQUEST_SUCCESS'
+  }
 }

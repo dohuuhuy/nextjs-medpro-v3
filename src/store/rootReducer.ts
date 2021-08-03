@@ -1,17 +1,30 @@
-import { combineReducers } from 'redux'
-
 import DemoReducer from '@componentStore/demo/demo.reducer'
-import totalData_Reducer from '@componentStore/totalData/totalData.reducer'
-import hospital_Reducer from '@componentStore/hospital/hospital.reducer'
-import news_Reducer from '@componentStore/news/news.reducer'
+import hospitalReducer from '@componentStore/hospital/hospital.reducer'
+import newsReducer from '@componentStore/news/news.reducer'
+import totalDataReducer from '@componentStore/totalData/totalData.reducer'
+import userReducer from '@componentStore/user/user.reducer'
+// import { HYDRATE } from 'next-redux-wrapper'
+import { Reducer } from 'react'
+import { AnyAction, combineReducers } from 'redux'
+import { AppState } from './interface'
 
 const reducers = {
-  DemoReducer: DemoReducer,
-  totalData_Reducer: totalData_Reducer,
-  hospital_Reducer: hospital_Reducer,
-  news_Reducer: news_Reducer
+  DemoReducer,
+  totalDataReducer,
+  hospitalReducer,
+  newsReducer,
+  userReducer
 }
 
-const rootReducer = combineReducers(reducers)
+const combinedReducers = combineReducers(reducers)
 
-export default rootReducer
+export const rootReducer: Reducer<AppState, AnyAction> = (state, action) => {
+  // if (action.type === HYDRATE) {
+  //   const nextState = {
+  //     ...state,
+  //     ...action.payload
+  //   }
+  //   return nextState
+  // }
+  return combinedReducers(state as any, action)
+}

@@ -3,23 +3,38 @@ export * from '@componentStore/demo/demo.types/demo.action'
 export * from '@componentStore/demo/demo.types/demo.action.types'
 export * from '@componentStore/demo/demo.types/demo.initialState'
 export * from '@componentStore/demo/demo.types/demo.params'
+
+// user
+export * from '@componentStore/user/user.types/user.action'
+export * from '@componentStore/user/user.types/user.action.types'
+export * from '@componentStore/user/user.types/user.initialState'
+export * from '@componentStore/user/user.types/user.params'
 // hospital
 export * from '@componentStore/hospital/hospital.types/hospital.action'
 export * from '@componentStore/hospital/hospital.types/hospital.action.types'
 export * from '@componentStore/hospital/hospital.types/hospital.initialState'
 export * from '@componentStore/hospital/hospital.types/hospital.params'
+// news
+export * from '@componentStore/news/news.types/news.action'
+export * from '@componentStore/news/news.types/news.action.types'
+export * from '@componentStore/news/news.types/news.initialState'
+export * from '@componentStore/news/news.types/news.params'
 // totalData
 export * from '@componentStore/totalData/totalData.types/totalData.action'
 export * from '@componentStore/totalData/totalData.types/totalData.action.types'
 export * from '@componentStore/totalData/totalData.types/totalData.initialState'
 export * from '@componentStore/totalData/totalData.types/totalData.params'
 
-// news
-export * from '@componentStore/news/news.types/news.action'
-export * from '@componentStore/news/news.types/news.action.types'
-export * from '@componentStore/news/news.types/news.initialState'
-// export * from '@componentStore/news/news.types/news.params'
-//
-import { totalData_State, hospital_State } from '@store/interface'
+import {
+  HospitalState,
+  NewsState,
+  TotalDataState,
+  UserState
+} from '@store/interface'
 
-export type AppState = totalData_State | hospital_State
+export type AppState = {
+  totalDataReducer: TotalDataState
+  hospitalReducer: HospitalState
+  newsReducer: NewsState
+  userReducer: UserState
+}

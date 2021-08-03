@@ -1,13 +1,13 @@
-export interface totalData_State {
+export interface TotalDataState {
   partnerId: string
-  list_partners: list_partners
-  localhost: boolean
+  appId: string
+  listPartners: ItemlistPartners[]
+  listCity: Array<any>
   loading: boolean
-  list_error: any
 }
 
-export interface list_partners extends Array<list_partners_item> {}
-export interface list_partners_item {
-  domain: Array<string>
+export interface ItemlistPartners {
+  domain: string[]
   partnerId: string
+  nameHospital: string
 }

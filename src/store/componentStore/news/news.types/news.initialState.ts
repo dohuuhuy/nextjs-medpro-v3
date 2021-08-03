@@ -1,3 +1,7 @@
-export interface news_State {
-  newsAndEvent: Array<any>
+export interface NewsState {
+  newsAndEvent: any[]
+  listNewsBanner: any[]
+  listNewsContent: any[]
+  totalPages: number
+  detailNews: any[]
 }

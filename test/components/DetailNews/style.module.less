@@ -1,0 +1,147 @@
+.text(@fontsize, @weight){
+  font-size: @fontsize;
+  font-weight: @weight;
+  text-align: justify;
+}
+
+.textList(@fontsize, @weight){
+  .text(@fontsize, @weight);
+  text-transform: uppercase;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+}
+.hover(){
+  color: #0056B3;
+  cursor: pointer;
+}
+
+.ContainerNews{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.rowContentPost{
+  margin: 25px 0 25px 0;
+  .colLeftPost {
+    padding: 0 15px 0 0;
+    .listPost {
+      list-style: none;
+      padding: 0;
+      .title{
+        p{
+          .text(27px, 700);
+          @media (max-width: 425px) {
+            font-size: 20px;
+          }
+        }
+      }
+      .time{
+        display: flex;
+        p{
+          .text(16px, 400);
+          font-style: italic;
+        }
+        span {
+          .text(16px, 600);
+        }
+      }
+      .description{
+        background-color: #1DA1F2;
+        padding-left: 8px;
+        p{
+          .text(15px,400);
+          background-color: #E8F4FF;
+          padding: 30px;
+        }
+      }
+      .content {
+        p{
+          .text(16px, 400);
+        }
+      }
+    }
+  }
+  
+  .colRightPost {
+    padding-left: 15px;
+    h2 {
+      .text(20px, 600);
+      text-align: center;
+      padding-bottom: 36px;
+    }
+    .listCategory{
+      list-style: none;
+      padding: 0 ;
+      .card {
+        display: flex;
+        margin-bottom: 45px ;
+        .cardImg{
+          min-width: 40%;
+        }
+        .cardBody{
+          min-width: 60%;
+          padding-left: 18px;
+          p{
+            .textList(12px, 500);
+            &:hover {
+              .hover();
+            }
+          }
+          span {
+            .text(12px, 300)
+          }
+        }
+      }
+    }
+    .btnViewNews {
+        .text(16px,500);
+        text-align: center;
+        &:hover{
+          .hover();
+        }
+    }
+  }
+  
+}
+.rowFooterPost{
+  margin: 25px 0 25px 0;
+  .colBottomPost {
+    .titleBot{
+      .text(20px, 700);
+    }
+    .listPostNew {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      @media (max-width: 425px) {
+        flex-direction: column;
+      }
+      .cardNew {
+        width: 33%;
+        padding-left: 25px;
+        padding-right: 25px;
+        &:first-child {
+          padding-left: none;
+        }
+        @media (max-width: 425px) {
+          min-width: 100%;
+          margin-bottom: 25px;
+        }
+      .cardNewImg{
+        width: 100%;
+      }
+      .cardNewBody{
+        p{
+          .textList(14px, 600);
+          &:hover {
+            .hover()
+          }
+        }
+      }
+      }
+    }
+  }
+}

@@ -25,6 +25,9 @@ app.prepare().then(() => {
     server.get('/lien-he', (req, res) => {
         return app.render(req, res, '/lien-he', req.query);
     });
+    server.get('/tin-tuc', (req, res) => {
+        return app.render(req, res, '/tin-tuc', req.query);
+    });
     server
         .all('*', (req, res) => {
         handle(req, res);

@@ -1,39 +1,51 @@
-import {
-  hospital_details,
-  Hospital_Details_Action_Types,
-  ListPartners_Action_Types
-} from '@store/interface'
+import { _DEVELOPMENT } from '@config/envs/env'
+import { client } from '@config/medproSDK'
+import { AppState, HosptailTypes, TotalDataTypes } from '@store/interface'
 import { openToast } from '@utils/Notification'
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
 import { get } from 'lodash'
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
-import { _DEVELOPMENT } from './../../../config/envs/env'
+import {
+  all,
+  fork,
+  put,
+  select,
+  takeEvery,
+  takeLatest
+} from 'redux-saga/effects'
 
-const getData = async (url: any) => {
-  const res = await axios.get(url)
-  const { data } = res
-  return data
-}
-
-function* hospital_get_details({ partnerId }: any) {
+function* getHospitalDetails({ partnerId }: any) {
   try {
-    const url =
-      'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
+    // 0. gọi Api lấy dữ liệu
+    // const url =
+    //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
 
-    const res: AxiosResponse<hospital_details> = yield call(getData, url)
-    console.error(res)
+    // const res: AxiosResponse = yield call(getData, url)
+    // console.error(res)
 
+    //  1. lưu thông tin bệnh viện vào state
     yield put({
-      type: Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS_SUCCESS,
-      hospital_details: JSON_EXP
+      type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
+      information: JSON_EXP
     })
 
+    // 2. cập nhật lại partnerId bệnh viện
     yield put({
-      type: ListPartners_Action_Types.SET_PartnerId,
+      type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId
     })
 
+    // 3. lấy danh sách dịch vụ theo bệnh viện
+    yield put({
+      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
+    })
+
+    // 4. lấy danh sách tỉnh thành
+    yield put({
+      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+    })
+
+    // 5. thông báo chọn bệnh viện thành công ở Dev
     if (_DEVELOPMENT) {
       openToast({
         message: 'Chọn bệnh viện thành công!',
@@ -42,12 +54,10 @@ function* hospital_get_details({ partnerId }: any) {
       })
     }
   } catch (error) {
-    const { statusCode, message } = get(error, 'response.data', '')
-
-    console.log(' statusCode, message :>> ', statusCode, message)
+    const { message } = get(error, 'response.data', '')
 
     yield put({
-      type: ListPartners_Action_Types.SET_PartnerId,
+      type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId: ''
     })
     openToast({
@@ -58,14 +68,72 @@ function* hospital_get_details({ partnerId }: any) {
   }
 }
 
-function* watch_hospital_get_details() {
+function* WatchGetHospitalDetails() {
   yield takeEvery(
-    Hospital_Details_Action_Types.Hospital_REQUEST_DETAILS as any,
-    hospital_get_details
+    HosptailTypes.Information.INFORMATION_REQUEST,
+    getHospitalDetails
   )
 }
 
-const hospital_Sagas = function* root() {
-  yield all([fork(watch_hospital_get_details)])
+function* getFeatureByPartner() {
+  try {
+    const partnerid: string = yield select(
+      (state: AppState) => state.totalDataReducer.partnerId
+    )
+
+    const respone: AxiosResponse = yield client.getFeatureByPartner({
+      partnerid
+    })
+
+    const { data } = respone
+
+    yield put({
+      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
+      listFeature: data
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
-export default hospital_Sagas
+
+function* WatchGetFeatureByPartner() {
+  yield takeLatest(
+    HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST,
+    getFeatureByPartner
+  )
+}
+
+function* getListHospital() {
+  try {
+    const appid: string = yield select(
+      (state: AppState) => state.totalDataReducer.appId
+    )
+
+    const response: AxiosResponse = yield client.getHospitalListByAppId({
+      appid
+    })
+    const { data } = response
+    yield put({
+      type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
+      listHospital: data
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* WatchGetListHospital() {
+  yield takeLatest(
+    HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST,
+    getListHospital
+  )
+}
+
+const hospitalSagas = function* root() {
+  yield all([
+    fork(WatchGetHospitalDetails),
+    fork(WatchGetFeatureByPartner),
+    fork(WatchGetListHospital)
+  ])
+}
+export default hospitalSagas

@@ -1,54 +1,43 @@
 import {
-  ListPartners_Action_Types,
-  totalData_Action,
-  totalData_State,
+  TotalDataActions,
+  TotalDataState,
+  TotalDataTypes
 } from '@store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
-const totalData_InitialState: totalData_State = {
+const initState: TotalDataState = {
   partnerId: '',
-  list_partners: [],
-  localhost: false,
-  loading: false,
-  list_error: {
-    ListPartners_ERROR: false,
-  },
+  appId: '',
+  listPartners: [],
+  listCity: [],
+  loading: false
 }
 
-export default function totalData_Reducer(
-  state = totalData_InitialState,
-  action: totalData_Action,
+export default function totalDataReducer(
+  state = initState,
+  action: TotalDataActions | { type: typeof HYDRATE; payload: TotalDataState }
 ) {
   switch (action.type) {
-    case ListPartners_Action_Types.ListPartners_REQUEST_SUCCESS:
+    case TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS:
       return {
         ...state,
-
-        list_partners: action.list_partners,
+        listPartners: action.listPartners
       }
 
-    case ListPartners_Action_Types.SET_PartnerId: {
+    case TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listCity: action.listCity
+      }
+
+    case TotalDataTypes.ListPartners.SET_PARTNERID: {
       return {
         ...state,
         partnerId: action.partnerId,
+        appId: action.partnerId === 'medpro' ? action.partnerId : ''
       }
     }
-    case ListPartners_Action_Types.CHECK_LOCALHOST:
-      return {
-        ...state,
-        localhost: true,
-      }
 
-    case ListPartners_Action_Types.ListPartners_ERROR:
-      if (action.err === false) {
-        return {
-          ...state,
-          list_error: { ListPartners_ERROR: action.err },
-        }
-      }
-      return {
-        ...state,
-        list_error: { ListPartners_ERROR: true },
-      }
     default:
       return state
   }

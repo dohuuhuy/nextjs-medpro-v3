@@ -1,11 +1,9 @@
 import { NODE_ENV } from '@config/envs/env'
-
 import { VERSION } from '@config/version'
-import { Store } from 'antd/lib/form/interface'
 import { applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Persistor } from 'redux-persist'
-import createSagaMiddleware, { Task } from 'redux-saga'
+import createSagaMiddleware from 'redux-saga'
 
 export const sagaMiddleware = createSagaMiddleware()
 
@@ -21,17 +19,11 @@ export const checkVersion = (persistor: Persistor) => {
   if (localVersion) {
     if (localVersion !== VERSION) {
       window.localStorage.removeItem('jwt')
-      console.log('Xóa persistor :>> ', localVersion, VERSION)
       persistor.purge()
     }
   } else {
-    console.log('Xóa persistor :>> ', localVersion, VERSION)
     persistor.purge()
   }
-}
-
-export interface SagaStore extends Store {
-  sagaTask?: Task
 }
 
 export const setVersion = () => {
