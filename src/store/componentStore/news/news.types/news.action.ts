@@ -5,6 +5,7 @@ export type NewsActions =
   | ListNewsBannerAction
   | ListNewsContentAction
   | CountNewsContentAction
+  | DetailNewsAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -67,3 +68,21 @@ export interface CountNewsContentRequestSuccess {
   type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS
   totalPages: number
 }
+
+//-----------------------------------------------------------------------------------------------
+
+export type DetailNewsAction =
+  | DetailNewsRequest
+  | DetailNewsRequestSuccess
+
+export interface DetailNewsRequest {
+  type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
+  slug: string
+}
+
+export interface DetailNewsRequestSuccess {
+  type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS
+  detailNews: any[]
+}
+
+//-----------------------------------------------------------------------------------------------

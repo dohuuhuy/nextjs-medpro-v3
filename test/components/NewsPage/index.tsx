@@ -1,6 +1,7 @@
 import { getListNewsContent } from '@actionStore/rootAction'
 import { Col, Pagination, Row } from 'antd'
 import moment from 'moment'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Container from '../Container'
@@ -24,13 +25,10 @@ export const NewsPageCustom = ({
   useEffect(() => {
     dispatch(getListNewsContent(page))
   }, [page, dispatch])
-
-  const onChange = () => {
-    setPage(page + 1)
+  const onChange = (value: number) => {
+    setPage(value)
     window.scrollTo(0, 0)
   }
-
-  console.log("data ", dataNewsPageContent, totalPages, page)
   const { DataFailure, checkData } = require('../DataFailure')
   if (checkData(dataNewsPageBanner)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
@@ -43,13 +41,15 @@ export const NewsPageCustom = ({
           <ul className={styles.listCard}>
             {dataNewsPageBanner
               .slice(0, 1)
-              ?.map(({ title, description, image }: any, index: number) => (
+              ?.map(({ title, description, image, slug }: any, index: number) => (
                 <li key={index} className={styles.card}>
                   <figure className={styles.cardImg}>
                     <img src={API_NEWS + image?.[0].url} alt=' ' />
                   </figure>
                   <div className={styles.cardBody}>
-                    <a>{title}</a>
+                    <Link href={`/tin-tuc/${slug}`}>
+                      <p>{title}</p>
+                    </Link>
                     <span>{description}</span>
                   </div>
                 </li>
@@ -60,9 +60,11 @@ export const NewsPageCustom = ({
           <ul className={styles.listCard}>
             {dataNewsPageBanner
               ?.slice(1, 3)
-              .map(({ title, description }: any, index: number) => (
+              .map(({ title, description, slug }: any, index: number) => (
                 <li key={index} className={styles.card}>
-                  <a>{title}</a>
+                  <Link href={`/tin-tuc/${slug}`}>
+                    <p>{title}</p>
+                  </Link>
                   <span>{description}</span>
                 </li>
               ))}
@@ -75,16 +77,18 @@ export const NewsPageCustom = ({
             {dataNewsPageContent?.length &&
               dataNewsPageContent?.map(
                 (
-                  { title, description, image, created_at: creatAt }: any,
+                  { title, description, image, slug, created_at: creatAt }: any,
                   index: number
                 ) => (
                   <div key={index} className={styles.news}>
-                    <figure className={styles.newsImg}>
+                    <div className={styles.newsImg}>
                       <img src={API_NEWS + image?.[0].url} alt=' ' />
-                    </figure>
+                    </div>
                     <div className={styles.newsBody}>
-                      <a>{title}</a>
-                      <p>{moment.utc(creatAt).format('DD/MM/YYYY, H:mm')}</p>
+                      <Link href={`/tin-tuc/${slug}`}>
+                        <p className={styles.title}>{title}</p>
+                      </Link>
+                      <p className={styles.time}>{moment.utc(creatAt).format('DD/MM/YYYY, H:mm')}</p>
                       <span>{description}</span>
                     </div>
                   </div>

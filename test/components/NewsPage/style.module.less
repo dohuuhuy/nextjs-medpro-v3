@@ -13,6 +13,10 @@
   font-size: @fontsize;
   font-weight: @weight;
 }
+.hover(){
+  color:#0056B3;
+  cursor: pointer;
+}
 .ContainerNews {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -33,8 +37,11 @@
             height: auto;
           }
         }
-        a {
+        p {
           .Title(1.3rem, 700);
+          &:hover{
+            .hover();
+          }
           @media (max-width: 1024px) {
             .Title(0.975rem, 600);
           }
@@ -77,8 +84,11 @@
         }
         .newsBody {
           padding-left: 17px;
-          a {
-            .Title(1.125rem, none);
+          .title {
+            .Title(1.125rem, 500);
+            &:hover{
+              .hover();
+            }
             @media (max-width: 768px) {
               .Title(0.875rem, none);
               overflow: hidden;
@@ -87,7 +97,7 @@
               -webkit-box-orient: vertical;
             }
           }
-          p {
+          .time {
             font-size: 0.75rem;
             color: #777;
             overflow: hidden;

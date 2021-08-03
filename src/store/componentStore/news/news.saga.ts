@@ -91,12 +91,33 @@ function* WatchGetCountNewsContent() {
   )
 }
 
+function* getDetailNews({ slug }: any) {
+  try {
+    const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
+    const reponse: AxiosResponse = yield call(getData, url)
+    yield put({
+      type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS,
+      detailNews: reponse
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* WatchGetDetailNews() {
+  yield takeLatest(
+    NewsTypes.DetailNews.DETAIL_NEWS_REQUEST as any,
+    getDetailNews
+  )
+}
+
 const newsSagas = function* root() {
   yield all([
     fork(WatchGetNewsAndEvent),
     fork(WatchGetListNewsBanner),
     fork(WatchGetListNewsContent),
-    fork(WatchGetCountNewsContent)
+    fork(WatchGetCountNewsContent),
+    fork(WatchGetDetailNews),
   ])
 }
 export default newsSagas

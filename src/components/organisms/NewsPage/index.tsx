@@ -1,7 +1,6 @@
 import {
   getCountNewsContent,
-  getListNewsBanner,
-  getListNewsContent
+  getListNewsBanner
 } from '@actionStore/rootAction'
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { AppState } from '@store/interface'
@@ -27,11 +26,6 @@ const NewsPageDetails = () => {
     if (check(listNewsBanner)) {
       dispatch(getListNewsBanner())
     }
-
-    if (check(listNewsContent)) {
-      dispatch(getListNewsContent())
-    }
-
     if (Number(totalPages) === 0) {
       dispatch(getCountNewsContent())
     }

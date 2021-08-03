@@ -27,6 +27,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                   id,
                   image,
                   title,
+                  slug,
                   author,
                   description,
                   created_at: createdAt
@@ -38,7 +39,8 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                           <img src={API_NEWS + image?.[0].url} alt='' />
                         </figure>
                         <div className={styles.cardBody}>
-                          <p className={styles.title}>{title}</p>
+                          <Link href={`/tin-tuc/ + ${slug}`}>
+                            <p className={styles.title}>{title}</p></Link>
                           <p className={styles.time}>
                             {moment(createdAt).format('DD/MM/YYYY, h:mm')}
                           </p>
@@ -59,7 +61,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                 id,
                 image,
                 title,
-
+                slug,
                 author,
                 created_at: createdAt
               }: any) => {
@@ -70,7 +72,8 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
                         <img src={API_NEWS + image?.[0].url} alt='' />
                       </figure>
                       <div className={styles.cardBody}>
-                        <p className={styles.title}>{title}</p>
+                        <Link href={`/tin-tuc/ + ${slug}`}>
+                          <p className={styles.title}>{title}</p></Link>
                         <p className={styles.time}>
                           {moment(createdAt).format('DD/MM/YYYY, h:mm')}
                         </p>
