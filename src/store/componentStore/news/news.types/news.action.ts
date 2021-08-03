@@ -6,6 +6,7 @@ export type NewsActions =
   | ListNewsContentAction
   | CountNewsContentAction
   | DetailNewsAction
+  | SameNewsAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -83,6 +84,21 @@ export interface DetailNewsRequest {
 export interface DetailNewsRequestSuccess {
   type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS
   detailNews: any[]
+}
+
+//-----------------------------------------------------------------------------------------------
+
+export type SameNewsAction =
+  | SameNewsRequest
+  | SameNewsRequestSuccess
+
+export interface SameNewsRequest {
+  type: NewsTypes.SameNews.SAME_NEWS_REQUEST
+}
+
+export interface SameNewsRequestSuccess {
+  type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS
+  sameNews: any[]
 }
 
 //-----------------------------------------------------------------------------------------------

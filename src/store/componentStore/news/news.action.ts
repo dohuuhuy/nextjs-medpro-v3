@@ -25,8 +25,15 @@ export const getCountNewsContent = (): NewsActions => {
   }
 }
 
-export const getDetailNews = (): NewsActions => {
+export const getDetailNews = (slug: any): NewsActions => {
   return {
-    type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
+    type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST,
+    slug
+  }
+}
+
+export const getSameNews = (): NewsActions => {
+  return {
+    type: NewsTypes.SameNews.SAME_NEWS_REQUEST
   }
 }

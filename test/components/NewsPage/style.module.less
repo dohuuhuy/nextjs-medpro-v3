@@ -11,10 +11,18 @@
 
 .CustomCardBody (@descNone) {
   .title {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 700;
+    @media (max-width:768px){
+      font-size: 16px;
+    font-weight: 600;
+    }
     .customLine(2);
     margin-bottom: 5px;
+    &:hover{
+      color:#0056B3;
+      cursor: pointer;
+    }
   }
   .author {
     font-weight: 500;
@@ -28,16 +36,21 @@
     margin-bottom: 5px;
   }
   .description {
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: justify;
+    overflow: hidden;
     margin: 0;
+    @media (max-width:768px){
+      font-size: 12px;
+      font-weight: 500;
+    }
     .customLine(4);
     display: @descNone;
   }
 }
-// .hover(){
-//   color:#0056B3;
-//   cursor: pointer;
-// }
+
 // Css main News page
 .ContainerNews {
   margin-top: 30px;
