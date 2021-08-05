@@ -72,9 +72,7 @@ export interface CountNewsContentRequestSuccess {
 
 //-----------------------------------------------------------------------------------------------
 
-export type DetailNewsAction =
-  | DetailNewsRequest
-  | DetailNewsRequestSuccess
+export type DetailNewsAction = DetailNewsRequest | DetailNewsRequestSuccess
 
 export interface DetailNewsRequest {
   type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
@@ -88,9 +86,7 @@ export interface DetailNewsRequestSuccess {
 
 //-----------------------------------------------------------------------------------------------
 
-export type SameNewsAction =
-  | SameNewsRequest
-  | SameNewsRequestSuccess
+export type SameNewsAction = SameNewsRequest | SameNewsRequestSuccess
 
 export interface SameNewsRequest {
   type: NewsTypes.SameNews.SAME_NEWS_REQUEST
@@ -100,5 +96,6 @@ export interface SameNewsRequestSuccess {
   type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS
   sameNews: any[]
 }
+
 
 //-----------------------------------------------------------------------------------------------
