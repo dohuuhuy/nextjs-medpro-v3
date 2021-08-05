@@ -6,7 +6,8 @@ const init: NewsState = {
   listNewsBanner: [],
   listNewsContent: [],
   totalPages: 0,
-  detailNews: []
+  detailNews: [],
+  sameNews: []
 }
 
 export default function newsReducer(
@@ -40,6 +41,11 @@ export default function newsReducer(
       return {
         ...state,
         detailNews: action.detailNews
+      }
+    case NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        sameNews: action.sameNews
       }
     default:
       return state

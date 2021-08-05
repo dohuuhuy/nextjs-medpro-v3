@@ -78,17 +78,17 @@ interface PropsCard {
 }
 const CardCustom = ({ item, obsImg = false }: PropsCard) => {
   const { image, slug, title, created_at: createdAt, description, author }: any = item
-  // const imgUrl = API_NEWS + image?.[0].url
+  const imgUrl = API_NEWS + image?.[0].url
   return (
     <div className={styles.cardNews} key={title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
-        {/* <Image
+        <Image
           src={imgUrl}
           width='600'
           height='300'
           layout='responsive'
           loading='eager'
-        /> */}
+        />
       </figure>
 
       <div className={styles.cardBody}>

@@ -4,4 +4,5 @@ export interface NewsState {
   listNewsContent: any[]
   totalPages: number
   detailNews: any[]
+  sameNews: any[]
 }
