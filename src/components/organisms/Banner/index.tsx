@@ -8,15 +8,13 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const BannerLayout = () => {
+const BannerLayout = ({ banners, header }: any) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const {
-    listFeature,
-    information: { banners, header },
-    listHospital
-  } = useSelector((state: AppState) => state.hospitalReducer)
+  const { listFeature, listHospital } = useSelector(
+    (state: AppState) => state.hospitalReducer
+  )
 
   const { partnerId, appId } = useSelector(
     (state: AppState) => state.totalDataReducer

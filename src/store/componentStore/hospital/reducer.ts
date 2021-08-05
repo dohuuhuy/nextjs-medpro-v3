@@ -22,6 +22,8 @@ export default function hospitalReducer(
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ) {
   switch (action.type) {
+    case HYDRATE:
+      return { ...state, ...action.payload }
     case HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS:
       return {
         ...state,

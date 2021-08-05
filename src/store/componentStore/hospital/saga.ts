@@ -1,10 +1,8 @@
-import { _DEVELOPMENT } from '@config/envs/env'
+/* eslint-disable no-console */
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes, TotalDataTypes } from '@store/interface'
-import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
-import { get } from 'lodash'
 import {
   all,
   fork,
@@ -16,13 +14,7 @@ import {
 
 function* getHospitalDetails({ partnerId }: any) {
   try {
-    // 0. gọi Api lấy dữ liệu
-    // const url =
-    //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
-
-    // const res: AxiosResponse = yield call(getData, url)
-    // console.error(res)
-
+    console.log('partnerId :>> ', partnerId)
     //  1. lưu thông tin bệnh viện vào state
     yield put({
       type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
@@ -34,37 +26,8 @@ function* getHospitalDetails({ partnerId }: any) {
       type: TotalDataTypes.ListPartners.SET_PARTNERID,
       partnerId
     })
-
-    // 3. lấy danh sách dịch vụ theo bệnh viện
-    yield put({
-      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
-    })
-
-    // 4. lấy danh sách tỉnh thành
-    yield put({
-      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
-    })
-
-    // 5. thông báo chọn bệnh viện thành công ở Dev
-    if (_DEVELOPMENT) {
-      openToast({
-        message: 'Chọn bệnh viện thành công!',
-        type: 'success',
-        duration: 4.5
-      })
-    }
   } catch (error) {
-    const { message } = get(error, 'response.data', '')
-
-    yield put({
-      type: TotalDataTypes.ListPartners.SET_PARTNERID,
-      partnerId: ''
-    })
-    openToast({
-      message,
-      type: 'error',
-      duration: 4.5
-    })
+    console.error(error)
   }
 }
 

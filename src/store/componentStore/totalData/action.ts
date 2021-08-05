@@ -10,6 +10,13 @@ export const getListPartners = (): TotalDataActions => {
   }
 }
 
+export const listPartnersRequestSuccess = (listPartners: any) => {
+  return {
+    type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
+    listPartners
+  }
+}
+
 export const setPartnerIdLocal = ({
   partnerId
 }: TotalDataParams.PartnerLocal): TotalDataActions => {

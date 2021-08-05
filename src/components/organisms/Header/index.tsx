@@ -1,19 +1,15 @@
+/* eslint-disable no-console */
 // import { HeaderCustom } from '@n17dccn172/booking-libs'
 import { HeaderCustom } from '@componentsTest/HeaderCustom'
-import { AppState } from '@store/interface'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 const authen = {
   isAuthen: false,
   nameUser: 'Huyi'
 }
 
-const HeaderLayout = () => {
-  const header = useSelector(
-    (state: AppState) => state.hospitalReducer.information.header
-  )
-
+const HeaderLayout = ({ header }: any) => {
+  // return null
   return <HeaderCustom dataHeader={header} Authencartion={authen} />
 }
 

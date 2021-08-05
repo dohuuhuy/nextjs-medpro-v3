@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+import { AppState } from '@store/interface'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -18,19 +20,22 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
+  state: AppState
 }
 
-const HomeLayout = ({ children }: Props) => {
+const HomeLayout = (props: Props) => {
+  const { children, state } = props
+
   return (
     <Layout className={styles.layout}>
-      <Header />
-      <BannerPage />
-      <SliderHospital />
-      <Introduce />
-      <Download />
+      <Header {...state} />
+      <BannerPage {...state} />
+      <SliderHospital {...state} />
+      <Introduce {...state} />
+      <Download {...state} />
       <NewsAndEvent />
-      <SupportMethod />
-      <Footer />
+      <SupportMethod {...state} />
+      <Footer {...state} />
       {children}
     </Layout>
   )

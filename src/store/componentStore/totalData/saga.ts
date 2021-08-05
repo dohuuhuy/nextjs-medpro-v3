@@ -1,48 +1,9 @@
-import { getListCitySuccess } from './action'
-
-import { _PRODUCTION } from '@config/envs/env'
+import { getHospitalDetails } from '@actionStore/rootAction'
 import { getData } from '@store/api'
-import {
-  AppState,
-  HosptailTypes,
-  TotalDataParams,
-  TotalDataTypes
-} from '@store/interface'
-import { persistor } from '@store/rootStore'
-import { openToast } from '@utils/Notification'
-import { findPartnerId } from '@utils/run_local_hospitals'
+import { TotalDataTypes } from '@store/interface'
 import { AxiosResponse } from 'axios'
-import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects'
-
-function* setPartnerIdLocal({ partnerId }: TotalDataParams.PartnerLocal) {
-  const listPartners: AppState = yield select(
-    (state: AppState) => state.totalDataReducer.listPartners
-  )
-
-  const runObject = {
-    listPartners,
-    partnerId,
-    local: true
-  }
-
-  const getPartner = findPartnerId(runObject)
-
-  if (getPartner) {
-    persistor.purge()
-
-    yield put({
-      type: HosptailTypes.Information.INFORMATION_REQUEST,
-      partnerId: getPartner
-    })
-  }
-}
-
-function* WatchSetPartnerIdLocal() {
-  yield takeLatest(
-    TotalDataTypes.LocalPartnerId.PARTNERID_LOCAL_REQUEST as any,
-    setPartnerIdLocal
-  )
-}
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
+import { getListCitySuccess, listPartnersRequestSuccess } from './action'
 
 function* getListPartners() {
   try {
@@ -50,31 +11,9 @@ function* getListPartners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse = yield call(getData, url)
 
-    yield put({
-      type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
-      listPartners
-    })
+    yield put(listPartnersRequestSuccess(listPartners))
 
-    if (_PRODUCTION) {
-      const getPartner = findPartnerId({ listPartners })
-      if (getPartner) {
-        yield put({
-          type: HosptailTypes.Information.INFORMATION_REQUEST,
-          partnerId: getPartner
-        })
-      } else {
-        openToast({
-          message:
-            'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
-          type: 'error',
-          duration: 1000
-        })
-
-        yield put({
-          type: HosptailTypes.Information.INFORMATION_CLEAR
-        })
-      }
-    }
+    yield put(getHospitalDetails('medpro'))
   } catch (error) {
     console.error(error)
   }
@@ -103,10 +42,6 @@ function* WatchListCity() {
 }
 
 const totalDataSagas = function* root() {
-  yield all([
-    fork(WatchListPartners),
-    fork(WatchSetPartnerIdLocal),
-    fork(WatchListCity)
-  ])
+  yield all([fork(WatchListPartners), fork(WatchListCity)])
 }
 export default totalDataSagas
