@@ -64,21 +64,22 @@ const CardNewsCustom = ({
   description,
   author
 }: any) => {
-  // const imgUrl1 =  API_NEWS + image?.[0].url
+  const imgUrl1 = API_NEWS + image?.[0].url
   return (
     <div className={styles.cardNews}>
       <figure className={styles.cardView}>
-        {/* <Image
+        <Image
           src={imgUrl1}
           width='500'
           height='300'
           layout='responsive'
           loading='eager'
-        /> */}
+        />
       </figure>
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p></Link>
+          <p className={styles.title}>{title}</p>
+        </Link>
         <p>
           <span className={styles.time}>
             {moment(createdAt).format('DD/MM/YYYY, h:mm')}
