@@ -93,8 +93,7 @@ function* WatchGetCountNewsContent() {
 
 function* getDetailNews({ slug }: any) {
   try {
-    // const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
-    const url = `https://cms.medpro.com.vn/posts?slug=nguyen-nhan-gay-noi-hach-o-co`
+    const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
     const reponse: AxiosResponse = yield call(getData, url)
     yield put({
       type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS,
@@ -112,6 +111,26 @@ function* WatchGetDetailNews() {
   )
 }
 
+function* getSameNews() {
+  try {
+    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&categories.slug=tin-tuc&_limit=5`
+    const reponse: AxiosResponse = yield call(getData, url)
+    yield put({
+      type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS,
+      sameNews: reponse
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* WatchGetSameNews() {
+  yield takeLatest(
+    NewsTypes.SameNews.SAME_NEWS_REQUEST,
+    getSameNews
+  )
+}
+
 const newsSagas = function* root() {
   yield all([
     fork(WatchGetNewsAndEvent),
@@ -119,6 +138,7 @@ const newsSagas = function* root() {
     fork(WatchGetListNewsContent),
     fork(WatchGetCountNewsContent),
     fork(WatchGetDetailNews),
+    fork(WatchGetSameNews),
   ])
 }
 export default newsSagas
