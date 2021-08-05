@@ -1,13 +1,14 @@
+import {
+  getDetailNews,
+  getListNewsBanner,
+  getSameNews
+} from '@actionStore/rootAction'
 import { DetailNewsCustom } from '@componentsTest/DetailNews'
 import { AppState } from '@store/interface'
+import { check } from '@utils/checkValue'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  getDetailNews, getListNewsBanner, getSameNews
-} from '@actionStore/rootAction'
-import { useRouter } from 'next/router'
-import { check } from '@utils/checkValue'
-
 
 export const DetailsNews = () => {
   const router = useRouter()
@@ -16,7 +17,6 @@ export const DetailsNews = () => {
   const { detailNews, listNewsBanner, sameNews } = useSelector(
     (state: AppState) => state.newsReducer
   )
-  console.log("same ", sameNews, "baner ", listNewsBanner)
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -30,5 +30,11 @@ export const DetailsNews = () => {
   useEffect(() => {
     dispatch(getDetailNews(DetailsPost))
   }, [DetailsPost])
-  return <DetailNewsCustom dataDetail={detailNews} dataNewest={listNewsBanner} dataSameNews={sameNews} />
+  return (
+    <DetailNewsCustom
+      dataDetail={detailNews}
+      dataNewest={listNewsBanner}
+      dataSameNews={sameNews}
+    />
+  )
 }

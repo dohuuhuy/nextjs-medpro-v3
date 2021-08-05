@@ -32,7 +32,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   return (
     <Container className={styles.containerSelectHospitalCustom}>
       <Row className={styles.rowSelect}>
-        <Col xl={24} className={styles.colGroupInputSelect}>
+        <Col xl={24} xs={24} className={styles.colGroupInputSelect}>
           <ul className={styles.GroupInputSelect}>
             <li>
               <Input
@@ -68,7 +68,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             </li>
           </ul>
         </Col>
-        <Col xl={24} className={styles.colListCard}>
+        <Col xl={24} xs={24} className={styles.colListCard}>
           <ul className={styles.listCard}>
             {checkData(listHospitals) ? (
               <DataFailure description='Không tìm thấy !' />

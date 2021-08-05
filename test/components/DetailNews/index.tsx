@@ -1,90 +1,91 @@
 import Container from '@componentsTest/Container'
-import { Row, Col, Button } from 'antd'
+import { Row, Col } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import { DataFailure, checkData } from '../DataFailure'
 import styles from './style.module.less'
 import moment from 'moment'
 import Image from 'next/image'
-
+import cx from 'classnames'
 interface DetailNewsCustom {
-  dataDetail: any[],
-  dataNewest: any[],
+  dataDetail: any[]
+  dataNewest: any[]
   dataSameNews: any[]
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
-export const DetailNewsCustom = ({ dataDetail, dataNewest, dataSameNews }: DetailNewsCustom) => {
+export const DetailNewsCustom = ({
+  dataDetail,
+  dataNewest,
+  dataSameNews
+}: DetailNewsCustom) => {
   if (checkData(dataDetail)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
   }
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowContentPost}>
-        <Col xs={24} xl={17} className={styles.colLeftPost}>
+        <Col xs={24} xl={16} lg={16} className={styles.colLeftPost}>
           <ul className={styles.listPost}>
-            {dataDetail.map(({ title, created_at: createdAt, author, description, content }: any, index: number) => (
-              <div key={index}>
-                <li className={styles.title}>
-                  <p>{title}</p>
-                </li>
-                <li className={styles.time}>
-                  <p>{moment(createdAt).format('DD/MM/YYYY, h:mm') + ' bởi'} <span>{author}</span></p>
-                </li>
-                <li>
-                  <blockquote className={styles.description}>
-                    <p>{description}</p>
-                  </blockquote>
-                </li>
-                <li className={styles.content}>
-                  <p dangerouslySetInnerHTML={{ __html: content }} />
-                </li>
-              </div>
-            ))}
-
+            {dataDetail.map(
+              (
+                {
+                  title,
+                  created_at: createdAt,
+                  author,
+                  description,
+                  content
+                }: any,
+                index: number
+              ) => (
+                <div key={index}>
+                  <li className={styles.title}>
+                    <p>{title}</p>
+                  </li>
+                  <li className={styles.time}>
+                    <p>
+                      <span>
+                        {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+                      </span>
+                      <span> {author}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <blockquote className={styles.description}>
+                      <p>{description}</p>
+                    </blockquote>
+                  </li>
+                  <li className={styles.content}>
+                    <p dangerouslySetInnerHTML={{ __html: content }} />
+                  </li>
+                </div>
+              )
+            )}
           </ul>
         </Col>
-        <Col xs={24} xl={7} className={styles.colRightPost}>
+        <Col xs={24} xl={8} lg={8} className={styles.colRightPost}>
           <h2>TIN CÙNG CHUYÊN MỤC</h2>
           <ul className={styles.listCategory}>
-            {dataSameNews.map(({ slug, image, title, created_at: createdAt }: any, index: number) => (
-              <li key={index} className={styles.card}>
-                <figure className={styles.cardImg}>
-                  <img src={API_NEWS + image?.[0].url} alt="" />
-                </figure>
-                <div className={styles.cardBody}>
-                  <Link href={`/tin-tuc/${slug}`}>
-                    <p>{title}</p>
-                  </Link>
-                  <span>{moment(createdAt).format('DD/MM/YYYY, h:mm')}</span>
-                </div>
-              </li>
+            {dataSameNews.map((item: any, index: number) => (
+              <CardNewsCustom item={item} key={index} />
             ))}
-
           </ul>
           <div className={styles.btnViewNews}>
             <Link href='/tin-tuc'>
-              <p>Xem tất cả</p>
+              <a>
+                <em>Xem tất cả</em>
+              </a>
             </Link>
           </div>
         </Col>
       </Row>
       <Row className={styles.rowFooterPost}>
         <Col className={styles.colBottomPost}>
-          <div className={styles.titleBot}><p>BÀI VIẾT MỚI NHẤT</p></div>
+          <h2>BÀI VIẾT MỚI NHẤT</h2>
+
           <ul className={styles.listPostNew}>
-            {dataNewest.map(({ slug, image, title, created_at: createdAt }: any, index: number) => (
-              <li key={index} className={styles.cardNew}>
-                <figure className={styles.cardNewImg}>
-                  <img src={API_NEWS + image?.[0].url} alt="" />
-                </figure>
-                <div className={styles.cardNewBody}>
-                  <Link href={`/tin-tuc/${slug}`}>
-                    <p>{title}</p>
-                  </Link>
-                  <span>{moment(createdAt).format('DD/MM/YYYY, h:mm')}</span>
-                </div>
-              </li>
+            {dataNewest.map((item: any, index: number) => (
+              <CardNewsCustom item={item} key={index} />
             ))}
           </ul>
         </Col>
@@ -93,32 +94,44 @@ export const DetailNewsCustom = ({ dataDetail, dataNewest, dataSameNews }: Detai
   )
 }
 
-const CardNewsCustom = ({
-  slug,
-  image,
-  title,
-  created_at: createdAt
-}: any) => {
-  const imgUrl1 = API_NEWS + image?.[0].url
+interface PropsCard {
+  item: any[]
+  obsImg?: boolean
+}
+
+const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
+  const {
+    image,
+    slug,
+    title,
+    created_at: createdAt,
+    description,
+    author
+  }: any = item
+  const imgUrl = API_NEWS + image?.[0].url
   return (
-    <div className={styles.cardNews}>
-      <figure className={styles.cardView}>
+    <div className={styles.cardNews} key={title}>
+      <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
         <Image
-          src={imgUrl1}
-          width='500'
+          src={imgUrl}
+          width='600'
           height='300'
           layout='responsive'
           loading='eager'
         />
       </figure>
+
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p></Link>
-        <p>
-          <span className={styles.time}>
-            {moment(createdAt).format('DD/MM/YYYY, h:mm')}
-          </span>
+          <a>
+            <p className={styles.title}>{title}</p>
+          </a>
+        </Link>
+        <p className={styles.time}>
+          {moment(createdAt).format('DD/MM/YYYY, h:mm')}
         </p>
+        {author && <p className={styles.author}>{author}</p>}
+        <p className={styles.description}>{description}</p>
       </div>
     </div>
   )
