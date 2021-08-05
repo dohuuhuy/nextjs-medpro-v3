@@ -1,4 +1,4 @@
-import { getListCitySuccess } from './totalData.action'
+import { getListCitySuccess } from './action'
 
 import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
@@ -91,9 +91,7 @@ function* getListCity() {
   try {
     const url =
       'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
-
     const respone: AxiosResponse = yield call(getData, url)
-
     yield put(getListCitySuccess(respone))
   } catch (error) {
     console.error(error)
