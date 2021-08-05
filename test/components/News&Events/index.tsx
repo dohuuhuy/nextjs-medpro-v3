@@ -78,7 +78,8 @@ const CardNewsCustom = ({
       </figure>
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p></Link>
+          <p className={styles.title}>{title}</p>
+        </Link>
         <p>
           <span className={styles.time}>
             {moment(createdAt).format('DD/MM/YYYY, h:mm')}

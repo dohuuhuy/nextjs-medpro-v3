@@ -24,3 +24,10 @@ export const getListCity = (): TotalDataActions => {
     type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
   }
 }
+
+export const getListCitySuccess = (listCity: any): TotalDataActions => {
+  return {
+    type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS,
+    listCity
+  }
+}
