@@ -1,9 +1,9 @@
-import { SelectServiceCustom } from '@componentsTest/SelectServiceCustom'
+import { SelectSpecialistCustom } from '@componentsTest/SelectSpecialistCustom'
 // import { AppState } from '@store/interface'
 import React from 'react'
 // import { useSelector } from 'react-redux'
 
-export const SelectServicePage = () => {
+export const SelectSpecialistPage = () => {
   // const listHospital = useSelector(
   //   (state: AppState) => state.hospitalReducer.listHospital
   // )
@@ -13,6 +13,6 @@ export const SelectServicePage = () => {
   // )
 
   return (
-    <SelectServiceCustom />
+    <SelectSpecialistCustom />
   )
 }

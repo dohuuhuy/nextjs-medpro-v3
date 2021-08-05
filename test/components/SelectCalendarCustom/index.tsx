@@ -1,10 +1,9 @@
 import { HomeOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
-import { Row, Col, CalendarProps, Calendar } from 'antd'
+import { Row, Col, Calendar } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import styles from './style.module.less'
-
 
 export const SelectCalendarCustom = () => {
   return (
@@ -54,9 +53,7 @@ export const SelectCalendarCustom = () => {
                     </div>
                   )
                 }}
-                dateCellRender={({ date }) => {
-                  return ()
-                }} />
+              />
             </li>
           </ul>
           <div className={styles.btnBack}>
