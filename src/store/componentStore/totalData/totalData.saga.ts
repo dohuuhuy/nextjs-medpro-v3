@@ -1,4 +1,5 @@
-import { getListCity, getListCitySuccess } from './totalData.action'
+import { getListCitySuccess } from './totalData.action'
+
 import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
 import {
