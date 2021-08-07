@@ -1,8 +1,8 @@
 import React from 'react'
+import { LienHeContent } from './organisms/LienHe'
 import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 import { ThacMacContent } from './organisms/ThacMac'
-import { LienHeContent } from './organisms/LienHe'
 
 interface ContentPageCustom {
   getContent: any

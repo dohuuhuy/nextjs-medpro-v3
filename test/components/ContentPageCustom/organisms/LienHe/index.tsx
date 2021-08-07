@@ -6,7 +6,7 @@ import style from './styles.module.less'
 
 export const LienHeContent = ({ content }: PropsProduce) => {
   if (!content) {
-    return <Container className={style.containerError}>gelo</Container>
+    return <Container className={style.containerError}>loading ...</Container>
   }
 
   const { detailsContact, mapsContact } = content
