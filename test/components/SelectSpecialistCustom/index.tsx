@@ -1,11 +1,76 @@
 import Container from '@components/atoms/Container'
-import React from 'react'
+import { Col, Row, Input } from 'antd'
+import React, { useState } from 'react'
 import styles from './style.module.less'
 
-export const SelectSpecialistCustom = () => {
-  return (
-    <Container>
+import { HomeOutlined, SearchOutlined } from '@ant-design/icons'
+import Link from 'next/link'
 
+export const SelectSpecialistCustom = () => {
+  const [search, setSearch] = useState("")
+  const OnChange = (value: any) => {
+    setSearch(value)
+  }
+  const Data = [
+    { name: "Khoa" }
+  ]
+  return (
+    <Container className={styles.conSpecialist}>
+      <Row className={styles.rowSpecialist}>
+        <Col xs={24} xl={6} className={styles.colLeft}>
+          <h2 className={styles.title}>Thông tin khám</h2>
+          <ul className={styles.listInfo}>
+            <li className={styles.Info}>
+              <figure className={styles.ImgInfo}>
+                {/* <img /> */}
+                <HomeOutlined />
+              </figure>
+              <div className={styles.content}>
+                <p>Bệnh viện Nhi Đồng 1</p>
+              </div>
+            </li>
+          </ul>
+        </Col>
+        <Col xs={24} xl={18} className={styles.colRight}>
+          <h2 className={styles.title}>Vui lòng chọn ngày khám</h2>
+          <ul className={styles.listSpec}>
+            <li className={styles.search}>
+              <Input
+                placeholder="Tìm nhanh chuyên khoa"
+                size="middle"
+                prefix={
+                  <SearchOutlined />
+                }
+                allowClear
+                onChange={OnChange}
+              />
+            </li>
+            <li>
+
+            </li>
+          </ul>
+          <div className={styles.btnBack}>
+            <Link href={`/chon-benh-vien`}>
+              <p>Quay lại</p>
+            </Link>
+          </div>
+        </Col>
+      </Row>
     </Container>
   )
 }
+
+// const ListInfo = (item) => {
+//   const {hospital}: any = item
+//   return (
+//     <li className={styles.Info}>
+//       <figure className={styles.ImgInfo}>
+//         {/* <img /> */}
+//         <HomeOutlined />
+//       </figure>
+//       <div className={styles.content}>
+//         <p>Bệnh viện Nhi Đồng 1</p>
+//       </div>
+//     </li>
+//   )
+// }

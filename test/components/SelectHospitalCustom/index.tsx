@@ -47,7 +47,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Select
                 className={styles.inputSelect}
-                showSearch
+                // showSearch
                 style={{ width: '100%' }}
                 placeholder='Chọn tỉnh thành'
                 optionFilterProp='children'
