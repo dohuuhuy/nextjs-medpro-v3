@@ -2,17 +2,37 @@ import Container from '@components/atoms/Container'
 import { Col, Row, Input } from 'antd'
 import React, { useState } from 'react'
 import styles from './style.module.less'
-
 import { HomeOutlined, SearchOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 
 export const SelectSpecialistCustom = () => {
-  const [search, setSearch] = useState("")
-  const OnChange = (value: any) => {
-    setSearch(value)
+  const [listSpecialist, setlistSpecialist] = useState<any[]>([])
+  function OnChange(e: any) {
+    const { value } = e.target
+    const findHospital = Data.filter(
+      ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+    )
+    setlistSpecialist(findHospital)
   }
   const Data = [
-    { name: "Khoa" }
+    { name: "Khoa Thần Kinh" },
+    { name: "Khoa Mắt" },
+    { name: "Khoa Tai Mũi Mọng" },
+    { name: "Khoa Tim" },
+    { name: "Khoa Sơ Sinh" },
+    { name: "Khoa Tiêu Hóa" },
+    { name: "Khoa Thần Kinh" },
+    { name: "Khoa Mắt" },
+    { name: "Khoa Tai Mũi Mọng" },
+    { name: "Khoa Tim" },
+    { name: "Khoa Sơ Sinh" },
+    { name: "Khoa Tiêu Hóa" },
+    { name: "Khoa Thần Kinh" },
+    { name: "Khoa Mắt" },
+    { name: "Khoa Tai Mũi Mọng" },
+    { name: "Khoa Tim" },
+    { name: "Khoa Sơ Sinh" },
+    { name: "Khoa Tiêu Hóa" }
   ]
   return (
     <Container className={styles.conSpecialist}>
@@ -36,8 +56,10 @@ export const SelectSpecialistCustom = () => {
           <ul className={styles.listSpec}>
             <li className={styles.search}>
               <Input
+                className={styles.Search}
+                size='large'
                 placeholder="Tìm nhanh chuyên khoa"
-                size="middle"
+                autoFocus
                 prefix={
                   <SearchOutlined />
                 }
@@ -45,8 +67,12 @@ export const SelectSpecialistCustom = () => {
                 onChange={OnChange}
               />
             </li>
-            <li>
-
+            <li className={styles.cardList}>
+              {Data.map(({ name }: any, index: number) => (
+                <div key={index} className={styles.cardBody}>
+                  <p>{name}</p>
+                </div>
+              ))}
             </li>
           </ul>
           <div className={styles.btnBack}>
