@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '../Container'
 import { Benefit } from './organisms/Benefit'
+import { MyApp } from './organisms/myApp'
 
-import { MyApp } from './organisms/MyApp'
 import styles from './style.module.less'
 
 interface DownloadCustom {
