@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-//--------------------------------------------------------------
+// --------------------------------------------------------------
 
 export const getData = async (url: any) => {
   const res = await axios.get(url)
@@ -9,7 +9,7 @@ export const getData = async (url: any) => {
   return data
 }
 
-//--------------------------------------------------------------\
+// --------------------------------------------------------------\
 
 export const countData = async (url: any) => {
   const res = await axios.get(url)
@@ -17,5 +17,5 @@ export const countData = async (url: any) => {
   return data.length
 }
 
-//--------------------------------------------------------------
+// --------------------------------------------------------------
 

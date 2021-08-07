@@ -61,7 +61,7 @@ export const NewsPageCustom = ({
             onChange={onChange}
             pageSize={Math.ceil(Number(totalPages) / 8)}
             className={styles.Pagination}
-            responsive
+            responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
           />
