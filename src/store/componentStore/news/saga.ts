@@ -1,5 +1,5 @@
 import { countData, getData } from '@store/api'
-import { NewsTypes } from '@store/interface'
+import { CountNewsContentRequestSuccess, DetailNewsRequestSuccess, ListNewsBannerRequestSuccess, ListNewsContentRequestSuccess, Newsandeventrequestsuccess, NewsTypes, SameNewsRequestSuccess } from '@store/interface'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
@@ -12,11 +12,7 @@ function* getNewsAndEvent() {
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc&_limit=5&_sort=updated_at:desc`
     const news: AxiosResponse = yield call(getData, url)
 
-    yield put({
-      type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS,
-      newsPin,
-      news
-    })
+    yield put(Newsandeventrequestsuccess({ newsPin, news }))
   } catch (error) {
     console.error(error)
   }
@@ -34,10 +30,7 @@ function* getListNewsBanner() {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
     const response: AxiosResponse = yield call(getData, url)
 
-    yield put({
-      type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS,
-      listNewsBanner: response
-    })
+    yield put(ListNewsBannerRequestSuccess(response))
   } catch (error) {
     console.error(error)
   }
@@ -55,10 +48,7 @@ function* getListNewsContent({ page = 1 }) {
     const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS || 1
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
     const response: AxiosResponse = yield call(getData, url)
-    yield put({
-      type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS,
-      listNewsContent: response
-    })
+    yield put(ListNewsContentRequestSuccess(response))
   } catch (error) {
     console.error(error)
   }
@@ -75,10 +65,7 @@ function* getCountNewsContent() {
   try {
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc`
     const response: AxiosResponse = yield call(countData, url)
-    yield put({
-      type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS,
-      totalPages: Number(response)
-    })
+    yield put(CountNewsContentRequestSuccess(response))
   } catch (error) {
     console.error(error)
   }
@@ -95,10 +82,7 @@ function* getDetailNews({ slug }: any) {
   try {
     const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
     const reponse: AxiosResponse = yield call(getData, url)
-    yield put({
-      type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS,
-      detailNews: reponse
-    })
+    yield put(DetailNewsRequestSuccess(reponse))
   } catch (error) {
     console.error(error)
   }
@@ -115,10 +99,7 @@ function* getSameNews() {
   try {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&categories.slug=tin-tuc&_limit=5`
     const reponse: AxiosResponse = yield call(getData, url)
-    yield put({
-      type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS,
-      sameNews: reponse
-    })
+    yield put(SameNewsRequestSuccess(reponse))
   } catch (error) {
     console.error(error)
   }

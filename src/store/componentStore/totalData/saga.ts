@@ -1,10 +1,12 @@
-import { getListCitySuccess } from './action'
-
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
 import {
   AppState,
   HosptailTypes,
+  ListCityRequestSuccess,
+  ListPartnersRequestSuccess,
+  SetParnerId,
   TotalDataParams,
   TotalDataTypes
 } from '@store/interface'
@@ -50,18 +52,12 @@ function* getListPartners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse = yield call(getData, url)
 
-    yield put({
-      type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
-      listPartners
-    })
+    yield put(ListPartnersRequestSuccess(listPartners))
 
     if (_PRODUCTION) {
       const getPartner = findPartnerId({ listPartners })
       if (getPartner) {
-        yield put({
-          type: HosptailTypes.Information.INFORMATION_REQUEST,
-          partnerId: getPartner
-        })
+        yield put(SetParnerId(getPartner))
       } else {
         openToast({
           message:
@@ -92,7 +88,7 @@ function* getListCity() {
     const url =
       'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
     const respone: AxiosResponse = yield call(getData, url)
-    yield put(getListCitySuccess(respone))
+    yield put(ListCityRequestSuccess(respone))
   } catch (error) {
     console.error(error)
   }

@@ -37,10 +37,3 @@ export const getSameNews = (): NewsActions => {
     type: NewsTypes.SameNews.SAME_NEWS_REQUEST
   }
 }
-
-export const sameNewsRequestSuccess = (sameNews: any) => {
-  return {
-    type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS,
-    sameNews
-  }
-}

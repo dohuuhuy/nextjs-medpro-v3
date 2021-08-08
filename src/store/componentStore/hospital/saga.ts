@@ -1,6 +1,6 @@
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
-import { AppState, HosptailTypes, TotalDataTypes } from '@store/interface'
+import { AppState, FeatureByPartnerRequestSuccess, HosptailTypes, ListHospitalRequestSuccess, TotalDataTypes } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -87,10 +87,7 @@ function* getFeatureByPartner() {
 
     const { data } = respone
 
-    yield put({
-      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
-      listFeature: data
-    })
+    yield put(FeatureByPartnerRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -113,10 +110,7 @@ function* getListHospital() {
       appid
     })
     const { data } = response
-    yield put({
-      type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
-      listHospital: data
-    })
+    yield put(ListHospitalRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
