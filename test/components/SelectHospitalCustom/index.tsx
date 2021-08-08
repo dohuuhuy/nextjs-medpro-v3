@@ -9,15 +9,15 @@ import styles from './style.module.less'
 const { Option } = Select
 
 export interface Props {
-  listHospital: Array<any>
-  listCity: Array<any>
+  listHospital: any[]
+  listCity: any[]
 }
 
 const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   const [listHospitals, setlistHospitals] = useState<any[]>([])
 
   function onChange(code: any) {
-    const findHospital = filter(listHospital, { city: { code: code } })
+    const findHospital = filter(listHospital, { city: { code } })
     setlistHospitals(findHospital)
   }
 
@@ -37,7 +37,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Input
                 size='large'
-                autoFocus
+                autoFocus={true}
                 onChange={onSearchHospital}
                 className={styles.inputSearch}
                 placeholder='Tìm nhanh bệnh viện'
@@ -47,7 +47,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Select
                 className={styles.inputSelect}
-                // showSearch
+                showSearch={true}
                 style={{ width: '100%' }}
                 placeholder='Chọn tỉnh thành'
                 optionFilterProp='children'
@@ -84,7 +84,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                           <img
                             src={urlImage}
                             alt='icon'
-                            onError={(e) => {
+                            onError={(e: any) => {
                               e.target.src = imageErrorSrc
                             }}
                           />

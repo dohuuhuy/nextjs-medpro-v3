@@ -76,7 +76,7 @@ export const BannerHome = ({
   )
 }
 
-export type BannerHome = Array<BannerHomeItem>
+export type BannerHome = BannerHomeItem[]
 
 export interface BannerHomeItem {
   id: string

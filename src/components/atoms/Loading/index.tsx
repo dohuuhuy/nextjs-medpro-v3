@@ -6,7 +6,7 @@ import Container from '../Container'
 import styles from './style.module.less'
 
 const Loading = () => {
-  const antIcon = <LoadingOutlined style={{ fontSize: 60 }} spin />
+  const antIcon = <LoadingOutlined style={{ fontSize: 60 }} spin={true} />
 
   return (
     <Container className={styles.containerLoading}>

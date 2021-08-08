@@ -70,7 +70,7 @@ export interface CountNewsContentRequestSuccess {
   totalPages: number
 }
 
-//-----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
 
 export type DetailNewsAction = DetailNewsRequest | DetailNewsRequestSuccess
 
@@ -84,7 +84,7 @@ export interface DetailNewsRequestSuccess {
   detailNews: any[]
 }
 
-//-----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
 
 export type SameNewsAction = SameNewsRequest | SameNewsRequestSuccess
 
@@ -98,4 +98,4 @@ export interface SameNewsRequestSuccess {
 }
 
 
-//-----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
