@@ -4,11 +4,11 @@ import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 import { ThacMacContent } from './organisms/ThacMac'
 
-interface ContentPageCustom {
+interface Props {
   getContent: any
 }
 
-export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
+export const ContentPageCustom = ({ getContent }: Props) => {
   const { checkData, DataFailure } = require('./../DataFailure')
   if (checkData(getContent)) {
     return <DataFailure description={'Lỗi không có data nội dung trang'} />

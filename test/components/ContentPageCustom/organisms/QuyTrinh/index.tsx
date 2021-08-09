@@ -1,4 +1,4 @@
-import { checkData } from '@componentsTest/DataFailure'
+import { checkData } from './../../../DataFailure'
 import { Row } from 'antd'
 import React from 'react'
 import Container from '../../../Container'

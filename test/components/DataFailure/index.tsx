@@ -1,7 +1,7 @@
 import { Empty } from 'antd'
 import { isEmpty, isNull, isUndefined } from 'lodash'
 import React from 'react'
-import Container from 'test/components/Container'
+import Container from '../Container'
 import style from './styles.module.less'
 
 export const checkData = (element: any) => {
