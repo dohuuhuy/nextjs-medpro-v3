@@ -106,7 +106,7 @@ export type DetailNewsAction = DetailNewsRequest | DetailNewsRequestSuccess
 
 export interface DetailNewsRequest {
   type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
-  slug: string
+  slug: any
 }
 
 export interface DetailNewsRequestSuccess {
