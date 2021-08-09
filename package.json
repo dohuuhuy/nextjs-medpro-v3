@@ -19,6 +19,7 @@
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
     "lint:ts": "tslint -c tslint.json -t stylish --fix {pages,src,test,server}/**/*.{ts,tsx}",
     "lint:less": "stylelint {pages,src,test}/**/*.less",
+    "lint:fix": "npm run lint:less --fix",
     "lint:types": "tsc -p . --noEmit"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "redux-devtools-extension": "2.13.9",
     "redux-logger": "3.0.6",
     "redux-saga": "1.1.3",
+    "stylelint-config-standard": "22.0.0",
     "svg-sprite-loader": "6.0.9",
     "ts-node": "10.1.0"
   },
