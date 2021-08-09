@@ -39,7 +39,7 @@ export const SelectServiceCustom = () => {
               <Col xs={2} sm={2} xl={2}>#</Col>
               <Col xs={9} sm={13} xl={13}>Tên dịch vụ</Col>
               <Col xs={8} sm={4} xl={4}>Giá tiền</Col>
-              <Col xs={5} sm={5} xl={5}></Col>
+              <Col xs={5} sm={5} xl={5}/>
             </Row>
             {/* mảng dữ liệu dịch vụ được khởi tạo ở đây */}
             <Row className={styles.rowValues}>

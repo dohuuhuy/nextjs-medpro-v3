@@ -59,11 +59,11 @@ export const SelectSpecialistCustom = () => {
                 className={styles.Search}
                 size='large'
                 placeholder="Tìm nhanh chuyên khoa"
-                autoFocus
+                autoFocus={true}
                 prefix={
                   <SearchOutlined />
                 }
-                allowClear
+                allowClear={true}
                 onChange={OnChange}
               />
             </li>

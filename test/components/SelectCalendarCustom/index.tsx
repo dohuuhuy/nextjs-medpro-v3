@@ -46,10 +46,12 @@ export const SelectCalendarCustom = () => {
           <ul>
             <li>
               <Calendar
-                headerRender={({ value, type, onChange, onTypeChange }) => {
+                headerRender={({ value }) => {
                   return (
                     <div>
-                      <h2>THÁNG {value.month() + 1} - {value.year()}</h2>
+                      <h2>
+                        THÁNG {value.month() + 1} - {value.year()}
+                      </h2>
                     </div>
                   )
                 }}
