@@ -18,6 +18,9 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius:  5px;
 }
+.hidden{
+  display: none;
+}
 .conCalendar{
   @media (max-width: 768px){
     padding: 0;
@@ -59,6 +62,24 @@
     }
     .title{
       .Title();
+    }
+    .listCalendar{
+      list-style: none;
+      .cardCalendar{
+      }
+    }
+    .listTime{
+      border-top: 2px solid #BFBFBF;
+      list-style: none;
+      padding: 15px 0 15px 0;
+      .cardTime{
+        display: flex;
+        
+        p{
+          min-width: 160px;
+          border: 2px solid #032A5F;
+        }
+      }
     }
     .btnBack{
       border-top: 3px solid #DFE3EB;

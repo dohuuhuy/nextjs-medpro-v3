@@ -2,10 +2,15 @@ import { HomeOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import { Row, Col, Calendar } from 'antd'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './style.module.less'
+import cx from 'classnames'
 
 export const SelectCalendarCustom = () => {
+  const [Date, setDate] = useState()
+  const onChange = (value: any) => {
+    setDate(value)
+  }
   return (
     <Container className={styles.conCalendar}>
       <Row className={styles.rowCalendar}>
@@ -43,8 +48,8 @@ export const SelectCalendarCustom = () => {
         </Col>
         <Col xs={24} xl={18} className={styles.colRight}>
           <h2 className={styles.title}>Vui lòng chọn ngày khám</h2>
-          <ul>
-            <li>
+          <ul className={styles.listCalendar}>
+            <li className={styles.cardCalendar}>
               <Calendar
                 headerRender={({ value }) => {
                   return (
@@ -55,7 +60,16 @@ export const SelectCalendarCustom = () => {
                     </div>
                   )
                 }}
+                onSelect={onChange}
               />
+            </li>
+          </ul>
+          <ul className={cx(Date ? styles.listTime : styles.hidden)}>
+            <h2>Buổi sáng</h2>
+            <li className={styles.cardTime}>
+              <p>7:00 - 8:30</p>
+              <p>7:00 - 8:30</p>
+              <p>7:00 - 8:30</p>
             </li>
           </ul>
           <div className={styles.btnBack}>
