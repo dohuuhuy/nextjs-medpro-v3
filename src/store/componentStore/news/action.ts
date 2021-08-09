@@ -25,7 +25,7 @@ export const getCountNewsContent = (): NewsActions => {
   }
 }
 
-export const getDetailNews = (slug: any): NewsActions => {
+export const getDetailNews = (slug: string): NewsActions => {
   return {
     type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST,
     slug
