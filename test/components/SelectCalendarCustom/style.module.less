@@ -33,6 +33,43 @@
     display: flex;
     flex-direction: column-reverse;
   }
+  .colRight{
+    padding: 0 15px 0 15px;
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
+    }
+    .title{
+      .Title();
+    }
+    .listCalendar{
+      list-style: none;
+      .cardCalendar{
+        background-color: red;
+      }
+    }
+    .btnBack{
+      border-top: 3px solid #DFE3EB;
+      p{
+        padding: 27px;
+        .text(15px,600);
+        cursor: pointer;
+      }
+    }
+    .listTime{
+      border-top: 2px solid #BFBFBF;
+      list-style: none;
+      padding: 15px 0 15px 0;
+      .cardTime{
+        display: flex;
+        p{
+          min-width: 160px;
+          border: 2px solid #032A5F;
+        }
+      }
+    }
+    
+  }
   .colLeft{
     padding: 0 15px 0 15px;
     .title{
@@ -54,40 +91,5 @@
       }
     }
   }
-  .colRight{
-    padding: 0 15px 0 15px;
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 0;
-    }
-    .title{
-      .Title();
-    }
-    .listCalendar{
-      list-style: none;
-      .cardCalendar{
-      }
-    }
-    .listTime{
-      border-top: 2px solid #BFBFBF;
-      list-style: none;
-      padding: 15px 0 15px 0;
-      .cardTime{
-        display: flex;
-        
-        p{
-          min-width: 160px;
-          border: 2px solid #032A5F;
-        }
-      }
-    }
-    .btnBack{
-      border-top: 3px solid #DFE3EB;
-      p{
-        padding: 27px;
-        .text(15px,600);
-        cursor: pointer;
-      }
-    }
-  }
+  
 }

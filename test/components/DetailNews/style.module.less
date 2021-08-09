@@ -1,3 +1,82 @@
+// mixin css ------------------------------------------
+
+.text(@fontsize, @weight) {
+  font-size: @fontsize;
+  font-weight: @weight;
+  text-align: justify;
+}
+
+.customLine( @line) {
+  text-align: justify;
+  text-transform: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.CustomCardBody (@descNone) {
+  .title {
+    font-size: 13px;
+    font-weight: 500;
+    .customLine(2);
+    margin-bottom: 5px;
+  }
+  .author {
+    font-weight: 500;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .description {
+    font-size: 13px;
+    margin: 0;
+    .customLine(4);
+    display: @descNone;
+  }
+}
+
+.hover() {
+  color: #0056b3;
+  cursor: pointer;
+}
+
+.cardNews-768px {
+  padding: 7.5px;
+  .cardBody {
+    .title {
+      font-size: 12px;
+    }
+    .time {
+      font-size: 11px;
+    }
+  }
+}
+
+.cardNews-425px {
+  width: 100%;
+  display: flex;
+  flex-direction: revert;
+  justify-content: stretch;
+  padding: 7.5px 0;
+  .cardView {
+    width: 40%;
+    margin: 0;
+    div {
+      height: 100%;
+    }
+  }
+  .cardBody {
+    width: 60%;
+    padding-left: 5px;
+  }
+}
 // css ContainerNews -------------------------------------------
 .ContainerNews {
   margin-top: 30px;
@@ -170,82 +249,4 @@
   }
 }
 
-// mixin css ------------------------------------------
 
-.text(@fontsize, @weight) {
-  font-size: @fontsize;
-  font-weight: @weight;
-  text-align: justify;
-}
-
-.customLine( @line) {
-  text-align: justify;
-  text-transform: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: @line;
-  -webkit-box-orient: vertical;
-}
-
-.CustomCardBody (@descNone) {
-  .title {
-    font-size: 13px;
-    font-weight: 500;
-    .customLine(2);
-    margin-bottom: 5px;
-  }
-  .author {
-    font-weight: 500;
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 5px;
-  }
-  .time {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 5px;
-  }
-  .description {
-    font-size: 13px;
-    margin: 0;
-    .customLine(4);
-    display: @descNone;
-  }
-}
-
-.hover() {
-  color: #0056b3;
-  cursor: pointer;
-}
-
-.cardNews-768px {
-  padding: 7.5px;
-  .cardBody {
-    .title {
-      font-size: 12px;
-    }
-    .time {
-      font-size: 11px;
-    }
-  }
-}
-
-.cardNews-425px {
-  width: 100%;
-  display: flex;
-  flex-direction: revert;
-  justify-content: stretch;
-  padding: 7.5px 0;
-  .cardView {
-    width: 40%;
-    margin: 0;
-    div {
-      height: 100%;
-    }
-  }
-  .cardBody {
-    width: 60%;
-    padding-left: 5px;
-  }
-}
