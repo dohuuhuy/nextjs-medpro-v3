@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 export const SelectSpecialistCustom = () => {
   const [listSpecialist, setlistSpecialist] = useState<any[]>([])
+  console.log(listSpecialist)
   function OnChange(e: any) {
     const { value } = e.target
     const findHospital = Data.filter(
@@ -37,7 +38,7 @@ export const SelectSpecialistCustom = () => {
   return (
     <Container className={styles.conSpecialist}>
       <Row className={styles.rowSpecialist}>
-        <Col xs={24} xl={6} className={styles.colLeft}>
+        <Col xs={24} sm={24} md={6} xl={6} className={styles.colLeft}>
           <h2 className={styles.title}>Thông tin khám</h2>
           <ul className={styles.listInfo}>
             <li className={styles.Info}>
@@ -51,7 +52,7 @@ export const SelectSpecialistCustom = () => {
             </li>
           </ul>
         </Col>
-        <Col xs={24} xl={18} className={styles.colRight}>
+        <Col xs={24} sm={24} md={18} xl={18} className={styles.colRight}>
           <h2 className={styles.title}>Vui lòng chọn ngày khám</h2>
           <ul className={styles.listSpec}>
             <li className={styles.search}>
@@ -59,11 +60,11 @@ export const SelectSpecialistCustom = () => {
                 className={styles.Search}
                 size='large'
                 placeholder="Tìm nhanh chuyên khoa"
-                autoFocus
+                autoFocus={true}
                 prefix={
                   <SearchOutlined />
                 }
-                allowClear
+                allowClear={true}
                 onChange={OnChange}
               />
             </li>
