@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Container from '@components/atoms/Container'
 import { Col, Row, Input } from 'antd'
 import React, { useState } from 'react'
@@ -7,7 +8,7 @@ import Link from 'next/link'
 
 export const SelectSpecialistCustom = () => {
   const [listSpecialist, setlistSpecialist] = useState<any[]>([])
-  console.log(listSpecialist)
+  console.log('listSpecialist :>> ', listSpecialist)
   function OnChange(e: any) {
     const { value } = e.target
     const findHospital = Data.filter(
@@ -15,26 +16,7 @@ export const SelectSpecialistCustom = () => {
     )
     setlistSpecialist(findHospital)
   }
-  const Data = [
-    { name: "Khoa Thần Kinh" },
-    { name: "Khoa Mắt" },
-    { name: "Khoa Tai Mũi Mọng" },
-    { name: "Khoa Tim" },
-    { name: "Khoa Sơ Sinh" },
-    { name: "Khoa Tiêu Hóa" },
-    { name: "Khoa Thần Kinh" },
-    { name: "Khoa Mắt" },
-    { name: "Khoa Tai Mũi Mọng" },
-    { name: "Khoa Tim" },
-    { name: "Khoa Sơ Sinh" },
-    { name: "Khoa Tiêu Hóa" },
-    { name: "Khoa Thần Kinh" },
-    { name: "Khoa Mắt" },
-    { name: "Khoa Tai Mũi Mọng" },
-    { name: "Khoa Tim" },
-    { name: "Khoa Sơ Sinh" },
-    { name: "Khoa Tiêu Hóa" }
-  ]
+
   return (
     <Container className={styles.conSpecialist}>
       <Row className={styles.rowSpecialist}>
@@ -59,11 +41,9 @@ export const SelectSpecialistCustom = () => {
               <Input
                 className={styles.Search}
                 size='large'
-                placeholder="Tìm nhanh chuyên khoa"
+                placeholder='Tìm nhanh chuyên khoa'
                 autoFocus={true}
-                prefix={
-                  <SearchOutlined />
-                }
+                prefix={<SearchOutlined />}
                 allowClear={true}
                 onChange={OnChange}
               />
@@ -101,3 +81,24 @@ export const SelectSpecialistCustom = () => {
 //     </li>
 //   )
 // }
+
+export const Data = [
+  { name: 'Khoa Thần Kinh' },
+  { name: 'Khoa Mắt' },
+  { name: 'Khoa Tai Mũi Mọng' },
+  { name: 'Khoa Tim' },
+  { name: 'Khoa Sơ Sinh' },
+  { name: 'Khoa Tiêu Hóa' },
+  { name: 'Khoa Thần Kinh' },
+  { name: 'Khoa Mắt' },
+  { name: 'Khoa Tai Mũi Mọng' },
+  { name: 'Khoa Tim' },
+  { name: 'Khoa Sơ Sinh' },
+  { name: 'Khoa Tiêu Hóa' },
+  { name: 'Khoa Thần Kinh' },
+  { name: 'Khoa Mắt' },
+  { name: 'Khoa Tai Mũi Mọng' },
+  { name: 'Khoa Tim' },
+  { name: 'Khoa Sơ Sinh' },
+  { name: 'Khoa Tiêu Hóa' }
+]
