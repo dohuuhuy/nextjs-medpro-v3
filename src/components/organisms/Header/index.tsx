@@ -1,5 +1,4 @@
-// import { HeaderCustom } from '@n17dccn172/booking-libs'
-import { HeaderCustom } from '@componentsTest/HeaderCustom'
+import { HeaderCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
