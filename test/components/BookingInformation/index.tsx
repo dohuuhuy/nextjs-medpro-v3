@@ -14,11 +14,31 @@ import styles from './styles.module.less'
 
 const { Step } = Steps
 
-export const BookingInformation = () => {
+export interface Props {
+  info: any
+}
+
+export const BookingInformation = ({ info }: Props) => {
   const [current, setcurrent] = useState(0)
 
   return (
     <Container className={styles.BookingInformation}>
+      <Row className={styles.rowName}>
+        <Col className={styles.colName} xl={24} span={24}>
+          <div className={styles.cardInfo}>
+            <figure className={styles.cardView}>
+              <img src={info?.image} alt='logo' />
+            </figure>
+            <div className={styles.cardBody}>
+              <h2>{info?.name}</h2>
+              <p className={styles.address}>
+                <em>{info?.address}</em>
+              </p>
+            </div>
+          </div>
+        </Col>
+      </Row>
+
       <Row className={styles.rowSteps}>
         <Col xl={24} xs='24' className={styles.colSteps}>
           <Steps
