@@ -1,7 +1,6 @@
 import { getListPartners } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
-import '@n17dccn172/booking-libs/libs/index.css'
 import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
