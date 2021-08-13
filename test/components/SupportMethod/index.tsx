@@ -4,15 +4,14 @@ import React from 'react'
 import Container from '../Container'
 import style from './style.module.less'
 import { SupportMethod } from './SupportMethod.interface'
-
-interface SupportMedthodCustom {
+import { DataFailure, checkData } from '../DataFailure'
+export interface SupportMedthodCustom {
   dataSupportMethod: SupportMethod
 }
 
 export const SupportMedthodCustom = ({
   dataSupportMethod
 }: SupportMedthodCustom) => {
-  const { checkData, DataFailure } = require('./../DataFailure')
   if (checkData(dataSupportMethod)) {
     return <DataFailure description={'Lỗi không có data hỗ trợ'} />
   }

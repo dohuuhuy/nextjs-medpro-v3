@@ -1,7 +1,7 @@
 import { SearchOutlined } from '@ant-design/icons'
 import { Col, Input, Row, Select, Modal } from 'antd'
 import { filter } from 'lodash'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from './../Container'
 import { checkData, DataFailure } from './../DataFailure'
 import styles from './style.module.less'
@@ -19,9 +19,17 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   const [listHospitals, setlistHospitals] = useState<any[]>([])
   const [Notification, setNotification] = useState(false)
 
+  useEffect(() => {
+    setlistHospitals(listHospital)
+  }, [])
+
   function onChange(code: any) {
-    const findHospital = filter(listHospital, { city: { code } })
-    setlistHospitals(findHospital)
+    if (code === 'huyi') {
+      setlistHospitals(listHospital)
+    } else {
+      const findHospital = filter(listHospital, { city: { code } })
+      setlistHospitals(findHospital)
+    }
   }
 
   function onSearchHospital(e: any) {
@@ -68,6 +76,10 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                   0
                 }
               >
+                <Option value='huyi' key={'Chọn tỉnh thành'}>
+                  Chọn tỉnh thành
+                </Option>
+
                 {listCity.map(({ id, name, code }) => {
                   return (
                     <Option value={code} key={id}>

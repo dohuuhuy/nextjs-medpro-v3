@@ -4,10 +4,10 @@ import { find, isArray } from 'lodash'
 import React, { useEffect, useMemo, useState } from 'react'
 import Container from '../../../Container'
 import style from './styles.module.less'
+import { DataFailure, checkData } from '../../../DataFailure'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
-  const { checkData, DataFailure } = require('./../../../DataFailure')
   if (checkData(content)) {
     return <DataFailure description={'Lỗi không có data thắc mắc'} />
   }
