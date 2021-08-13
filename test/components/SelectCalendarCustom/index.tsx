@@ -1,5 +1,5 @@
 import { HomeOutlined } from '@ant-design/icons'
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 import { Row, Col, Calendar } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'

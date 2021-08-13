@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './styles.module.less'
 
-interface BenefitRight {
+export interface BenefitRight {
   rightListBenefit: BenefitRightItem[]
 }
-interface BenefitRightItem {
+export interface BenefitRightItem {
   id: any
   title: string
   description: string

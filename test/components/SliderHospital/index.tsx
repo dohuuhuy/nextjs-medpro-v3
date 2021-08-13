@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 import Container from '../Container'
-import { checkData, DataFailure } from './../DataFailure'
+import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
 
 interface Props {

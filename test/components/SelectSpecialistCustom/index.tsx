@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import Container from '@components/atoms/Container'
+import Container from '../Container'
 import { Col, Row, Input } from 'antd'
 import React, { useState } from 'react'
 import styles from './styles.module.less'

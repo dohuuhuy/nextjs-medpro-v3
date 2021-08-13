@@ -1,83 +1,119 @@
 /* eslint-disable no-console */
-import Container from './../Container'
+import {
+  CalendarOutlined,
+  CustomerServiceOutlined,
+  IdcardOutlined,
+  SolutionOutlined,
+  UsergroupAddOutlined
+} from '@ant-design/icons'
+import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
-import { Button, Col, message, Row, Steps } from 'antd'
+import Container from '../Container'
+import { StepsAction } from './organisms'
+import styles from './styles.module.less'
+
 const { Step } = Steps
+
 export const BookingInformation = () => {
   const [current, setcurrent] = useState(0)
 
-  // const onChange = (current: any) => {
-  //   console.log('onChange:', current)
-  //   setcurrent(current)
-  // }
-
-  const next = () => {
-    setcurrent(current + 1)
-  }
-
-  const prev = () => {
-    setcurrent(current - 1)
-  }
-
   return (
-    <Container>
-      <Row>
-        <Col xl={24}>
-          <Steps current={current}>
+    <Container className={styles.BookingInformation}>
+      <Row className={styles.rowSteps}>
+        <Col xl={24} xs='24' className={styles.colSteps}>
+          <Steps
+            current={current}
+            className={styles.steps}
+            responsive
+            labelPlacement='horizontal'
+            size='small'
+          >
             {steps.map((item) => (
-              <Step key={item.title} title={item.title} />
+              <Step key={item.title} title={item.title} icon={item.icon} />
             ))}
           </Steps>
-          <div className='steps-content'>{steps[current].content}</div>
-          <div className='steps-action'>
-            {current < steps.length - 1 && (
-              <Button type='primary' onClick={() => next()}>
-                Tiếp theo
-              </Button>
-            )}
-            {current === steps.length - 1 && (
-              <Button
-                type='primary'
-                onClick={() => message.success('Processing complete!')}
-              >
-                Hoàn thành
-              </Button>
-            )}
-            {current > 0 && (
-              <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-                Quay lại
-              </Button>
-            )}
+        </Col>
+      </Row>
+      <Row className={styles.rowContent}>
+        <Col
+          xl={7}
+          lg={7}
+          md={24}
+          sm={24}
+          xs={24}
+          className={styles.colInfoBooking}
+        >
+          <div className={styles.cardInfoBooking}>
+            <div className={styles.cardHeader}>Thông tin khám</div>
+            <div className={styles.cardBody}>
+              <p>Card content</p>
+              <p>Card content</p>
+              <p>Card content</p>
+            </div>
           </div>
+        </Col>
+        <Col
+          xl={17}
+          lg={17}
+          md={24}
+          sm={24}
+          xs={24}
+          className={styles.colStepsContent}
+        >
+          <div className={styles.stepsContent}>{steps[current].content}</div>
+        </Col>
+      </Row>
+      <Row className={styles.rowStepsAction}>
+        <Col xl={24} xs='24' className={styles.colStepsAction}>
+          <StepsAction
+            current={current}
+            setcurrent={setcurrent}
+            steps={steps}
+          />
         </Col>
       </Row>
     </Container>
   )
 }
 
+export const Demo = () => {
+  return (
+    <div>
+      First-content huyi
+      <h2>Helo</h2>
+    </div>
+  )
+}
+
 const steps = [
   {
     title: 'Dịch vụ',
-    content: 'First-content'
+    icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
+    content: <Demo />
   },
   {
     title: 'Chuyên khoa',
+    icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
     content: 'Second-content'
   },
   {
     title: 'Bác sỉ',
+    icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
     content: 'Last-content'
   },
   {
     title: 'Ngày khám',
+    icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
     content: 'Last-content'
   },
-  {
-    title: 'Hồ sơ',
-    content: 'Last-content'
-  },
+  // {
+  //   title: 'Hồ sơ',
+  //   icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+  //   content: 'Last-content'
+  // },
   {
     title: 'Xác nhận',
+    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
     content: 'Last-content'
   }
 ]

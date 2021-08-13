@@ -1,4 +1,4 @@
-import { NewsEventCustom } from '@componentsTest/News&Events'
+import { NewsEventCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'

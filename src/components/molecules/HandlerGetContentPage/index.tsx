@@ -1,6 +1,4 @@
-// import { ContentPageCustom } from '@n17dccn172/booking-libs'
-
-import { ContentPageCustom } from '@componentsTest/ContentPageCustom'
+import { ContentPageCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'

@@ -3,8 +3,8 @@ import { Col, Input, Modal, Row, Select } from 'antd'
 import { filter } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Container from './../Container'
-import { checkData, DataFailure } from './../DataFailure'
+import Container from '../Container'
+import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
 
 const { Option } = Select

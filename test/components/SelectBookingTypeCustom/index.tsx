@@ -1,4 +1,4 @@
-import Container from '@components/atoms/Container'
+import Container from '../Container'
 import { Row, Col } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'

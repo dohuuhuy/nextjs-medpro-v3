@@ -7,7 +7,7 @@ import { LogoHeader } from './organisms/LogoHeader'
 import { NavBottom } from './organisms/NavBottom'
 import { SupportHeader } from './organisms/SupportHeader'
 import styles from './styles.module.less'
-import { checkData, DataFailure } from './../DataFailure'
+import { checkData, DataFailure } from '../DataFailure'
 export interface PropsHeader {
   dataHeader: any[] | any
   Authencartion: any[] | any

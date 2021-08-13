@@ -1,6 +1,4 @@
-// import { IntroduceCustom } from '@n17dccn172/booking-libs'
-
-import { IntroduceCustom } from '@componentsTest/IntroduceCustom'
+import { IntroduceCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'

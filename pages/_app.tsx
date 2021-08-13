@@ -1,5 +1,6 @@
-import { getListPartners } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
+import '@medpro/booking-libs/libs/index.css'
+import { getListPartners } from '@actionStore/rootAction'
 import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
 import { AppState } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'

@@ -1,4 +1,4 @@
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 import { Row, Col } from 'antd'
 import Link from 'next/link'
 import React from 'react'

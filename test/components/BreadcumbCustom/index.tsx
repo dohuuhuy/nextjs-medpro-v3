@@ -1,4 +1,4 @@
-import { checkData } from '@componentsTest/DataFailure'
+import { checkData } from '../DataFailure'
 import { Breadcrumb, Col, Row } from 'antd'
 import { find } from 'lodash'
 import Link from 'next/link'

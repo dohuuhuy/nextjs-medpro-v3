@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@medpro/booking-libs": "0.0.82",
+    "@medpro/booking-libs": "0.0.90",
     "@types/express": "4.17.13",
     "@types/react-slick": "0.23.5",
     "@types/redux-logger": "3.0.9",

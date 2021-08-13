@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd'
 import React from 'react'
-import Container from './../../../Container'
+import Container from '../../../Container'
 import { ContactDetail } from './ContactDetail'
 import styles from './styles.module.less'
 
