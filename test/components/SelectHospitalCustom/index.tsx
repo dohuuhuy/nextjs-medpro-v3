@@ -1,10 +1,12 @@
 import { SearchOutlined } from '@ant-design/icons'
-import { Col, Input, Row, Select } from 'antd'
+import { Col, Input, Row, Select, Modal } from 'antd'
 import { filter } from 'lodash'
 import React, { useState } from 'react'
 import Container from './../Container'
 import { checkData, DataFailure } from './../DataFailure'
 import styles from './style.module.less'
+import { BellFilled } from '@ant-design/icons'
+import cx from 'classnames'
 
 const { Option } = Select
 
@@ -15,6 +17,7 @@ export interface Props {
 
 const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   const [listHospitals, setlistHospitals] = useState<any[]>([])
+  const [Notification, setNotification] = useState(false)
 
   function onChange(code: any) {
     const findHospital = filter(listHospital, { city: { code } })
@@ -27,6 +30,14 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlistHospitals(findHospital)
+  }
+  function handleNotification() {
+    Modal.info({
+      className: styles.Modal,
+      icon: <BellFilled />,
+      title: 'Thông báo',
+      content: "Bệnh viện sẽ sẵn sàng nhận đặt khám qua Medpro trong thời gian tới.",
+    })
   }
 
   return (
@@ -79,7 +90,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                   const urlImage = image || imageErrorSrc
                   return (
                     <li key={i}>
-                      <div className={styles.cardHospital}>
+                      <div className={styles.cardHospital} onClick={handleNotification}>
                         <figure className={styles.cardView}>
                           <img
                             src={urlImage}
