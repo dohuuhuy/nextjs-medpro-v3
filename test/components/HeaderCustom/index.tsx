@@ -6,7 +6,7 @@ import { GroupMenuHeader } from './organisms/GroupMenuHeader'
 import { LogoHeader } from './organisms/LogoHeader'
 import { NavBottom } from './organisms/NavBottom'
 import { SupportHeader } from './organisms/SupportHeader'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 import { checkData, DataFailure } from './../DataFailure'
 export interface PropsHeader {
   dataHeader: any[] | any
@@ -22,22 +22,22 @@ export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
     dataHeader
 
   return (
-    <div className={style.HeaderCustom}>
-      <Container className={style.containerHeaderCustom}>
-        <Row className={style.rowHeaderCustom}>
-          <Col xl={6} lg={6} md={6} className={style.Col_LogoHeader}>
+    <div className={styles.HeaderCustom}>
+      <Container className={styles.containerHeaderCustom}>
+        <Row className={styles.rowHeaderCustom}>
+          <Col xl={6} lg={6} md={6} className={styles.Col_LogoHeader}>
             <LogoHeader
               logoHeader={logoHeader}
               logoHeaderMobile={logoHeaderMobile}
             />
           </Col>
-          <Col xl={14} lg={14} md={14} className={style.Col_GroupMenuHeader}>
+          <Col xl={14} lg={14} md={14} className={styles.Col_GroupMenuHeader}>
             <GroupMenuHeader
               menuHeader={menuHeader}
               Authencartion={Authencartion}
             />
           </Col>
-          <Col xl={4} lg={4} md={12} className={style.Col_SupportHeader}>
+          <Col xl={4} lg={4} md={12} className={styles.Col_SupportHeader}>
             <SupportHeader support={support} />
           </Col>
         </Row>

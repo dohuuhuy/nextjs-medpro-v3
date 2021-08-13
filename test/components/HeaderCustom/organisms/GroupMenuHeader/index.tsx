@@ -2,10 +2,10 @@ import Container from '../../../Container'
 import { Row } from 'antd'
 import React from 'react'
 import MenuHeader from '../../molecules/MenuHeader'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 import { MenuInfo } from '../../molecules/MenuInfo'
 
-interface GroupMenuHeader {
+export interface GroupMenuHeader {
   menuHeader: any
   Authencartion: any
 }
@@ -16,10 +16,10 @@ export const GroupMenuHeader = ({
 }: GroupMenuHeader) => {
   return (
     <Container>
-      <Row className={style.rowMenuInfo}>
+      <Row className={styles.rowMenuInfo}>
         <MenuInfo Authencartion={Authencartion} />
       </Row>
-      <Row className={style.rowMenuHeader}>
+      <Row className={styles.rowMenuHeader}>
         <MenuHeader menuHeader={menuHeader} />
       </Row>
     </Container>

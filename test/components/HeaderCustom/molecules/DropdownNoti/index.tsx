@@ -2,19 +2,19 @@ import React from 'react'
 import { Menu } from 'antd'
 import { ClockCircleOutlined } from '@ant-design/icons'
 import Link from 'next/link'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const DropdownNoti = () => {
   return (
-    <div className={style.dropdownNotification}>
-      <div className={style.header_dropdown}>
+    <div className={styles.dropdownNotification}>
+      <div className={styles.header_dropdown}>
         <span>
           <b>Danh sách thông báo</b>
         </span>
       </div>
       <div className='mdbdropdownItem'>
         <Menu>
-          <Menu.Item className={style.notification}>
+          <Menu.Item className={styles.notification}>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Reprehenderit eligendi ipsam culpa modi eaque, est autem libero
@@ -25,7 +25,7 @@ export const DropdownNoti = () => {
               <ClockCircleOutlined /> 1 tuần trước
             </p>
           </Menu.Item>
-          <Menu.Item className={style.btnNotifi}>
+          <Menu.Item className={styles.btnNotifi}>
             <Link href='/'>Xem tất cả</Link>
           </Menu.Item>
         </Menu>

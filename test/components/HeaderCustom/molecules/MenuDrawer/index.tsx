@@ -2,7 +2,7 @@ import { Row } from 'antd'
 import React from 'react'
 import Container from '../../../Container'
 import { NavbarHeaderMobile } from '../NavbarHeaderMobile'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   setDrawer: any
@@ -20,15 +20,15 @@ export const MenuDrawer = ({
   const { funcGroup, guideGroup, supportGroup }: any = listSupport
   const { isAuthen, nameUser }: any = Authencartion
   return (
-    <div className={style.drawerMenu}>
+    <div className={styles.drawerMenu}>
       <NavbarHeaderMobile
         drawer={true}
         logo={logo}
         togleDrawer={() => setDrawer()}
       />
-      <Container className={style.containerDrawerMenu}>
-        <Row className={style.rowView}>
-          <div className={style.itemSingle}>
+      <Container className={styles.containerDrawerMenu}>
+        <Row className={styles.rowView}>
+          <div className={styles.itemSingle}>
             <img
               src={
                 'https://resource-testing.medpro.com.vn/static/media/icon/avatar.svg'
@@ -39,24 +39,24 @@ export const MenuDrawer = ({
           </div>
         </Row>
 
-        <Row className={style.rowView}>
+        <Row className={styles.rowView}>
           {isAuthen ? (
             <HandlerList element={funcGroup} />
           ) : (
-            <button className={style.btnLogin}>Đăng nhập tài khoản</button>
+            <button className={styles.btnLogin}>Đăng nhập tài khoản</button>
           )}
         </Row>
 
-        <Row className={style.rowView}>
+        <Row className={styles.rowView}>
           <HandlerList element={guideGroup} />
         </Row>
 
-        <Row className={style.rowView}>
+        <Row className={styles.rowView}>
           <HandlerList element={supportGroup} />
         </Row>
 
-        <Row className={style.rowView}>
-          <div className={style.itemSingle}>
+        <Row className={styles.rowView}>
+          <div className={styles.itemSingle}>
             <img
               src={
                 'https://resource-testing.medpro.com.vn/static/media/icon/log-out.svg'
@@ -76,7 +76,7 @@ export const MenuDrawer = ({
 
 const HandlerList = ({ element }: any) => {
   return (
-    <ul className={style.HandlerList}>
+    <ul className={styles.HandlerList}>
       {element.map(({ icon, label }: any, index: number) => {
         return (
           <li key={index}>

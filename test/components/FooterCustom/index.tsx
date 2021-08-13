@@ -4,7 +4,7 @@ import React from 'react'
 import { CopyRight } from './organisms/CopyRight'
 import { FooterContent } from './organisms/FooterContent'
 import { PropsFooter } from './organisms/interface.footer'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 const { Footer } = Layout
 
@@ -14,7 +14,7 @@ export const FooterCustom = ({ dataFooter }: PropsFooter) => {
   }
 
   return (
-    <Footer className={style.footer}>
+    <Footer className={styles.footer}>
       <FooterContent dataFooter={dataFooter} />
       <CopyRight />
     </Footer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Row, Col, Space } from 'antd'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 import {
   BellOutlined,
   FileAddOutlined,
@@ -16,20 +16,20 @@ interface Props {
 
 export const DropdownProfile = ({ nameUser }: Props) => {
   return (
-    <Menu className={style.dropdownProfile}>
-      <Item className={style.item_user}>
-        <Row className={style.view_user}>
-          <Col className={style.colAvt}>
+    <Menu className={styles.dropdownProfile}>
+      <Item className={styles.item_user}>
+        <Row className={styles.view_user}>
+          <Col className={styles.colAvt}>
             <i className='fas fa-user-circle' />
           </Col>
-          <Col className={style.colHello}>
+          <Col className={styles.colHello}>
             <span>Xin chào! </span>
-            <strong className={style.info_name}>{nameUser}</strong>
+            <strong className={styles.info_name}>{nameUser}</strong>
           </Col>
         </Row>
       </Item>
       <Divider />
-      <Item className={style.item_information}>
+      <Item className={styles.item_information}>
         <a href='/user'>
           <Space>
             <SolutionOutlined />
@@ -37,7 +37,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
           </Space>
         </a>
       </Item>
-      <Item className={style.item_information}>
+      <Item className={styles.item_information}>
         <a href='#'>
           <Space>
             <FileAddOutlined />
@@ -45,7 +45,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
           </Space>
         </a>
       </Item>
-      <Item className={style.item_information}>
+      <Item className={styles.item_information}>
         <a href='#'>
           <Space>
             <BellOutlined />
@@ -53,7 +53,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
           </Space>
         </a>
       </Item>
-      <Item className={style.item_information}>
+      <Item className={styles.item_information}>
         <a href='/logout'>
           <Space>
             <PoweroffOutlined />

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 import { DataFailure, checkData } from '../DataFailure'
 export interface NewsPageCustom {
   listNewsBanner: any[]

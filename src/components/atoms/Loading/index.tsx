@@ -3,7 +3,7 @@ import { Col, Row, Spin } from 'antd'
 import React from 'react'
 import Container from '../Container'
 
-import styles from './style.module.less'
+import styles from './styles.module.less'
 
 const Loading = () => {
   const antIcon = <LoadingOutlined style={{ fontSize: 60 }} spin={true} />

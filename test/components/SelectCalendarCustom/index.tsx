@@ -3,7 +3,7 @@ import Container from '@componentsTest/Container'
 import { Row, Col, Calendar } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 import cx from 'classnames'
 
 export const SelectCalendarCustom = () => {

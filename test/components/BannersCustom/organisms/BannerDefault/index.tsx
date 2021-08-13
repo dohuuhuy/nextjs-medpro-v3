@@ -1,7 +1,7 @@
 import { Row } from 'antd'
 import React from 'react'
 import Container from '../../../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const BannerDefault = ({ getBanner }: any) => {
   if (!getBanner) {
@@ -12,16 +12,16 @@ export const BannerDefault = ({ getBanner }: any) => {
 
   return (
     <div
-      className={style.viewBanner}
+      className={styles.viewBanner}
       style={{
         backgroundImage: imageBackground && `url(${imageBackground})`
       }}
     >
       <Container>
         <Row>
-          <h1 className={style.title}>{title}</h1>
+          <h1 className={styles.title}>{title}</h1>
           <p
-            className={style.subTitle}
+            className={styles.subTitle}
             dangerouslySetInnerHTML={{ __html: subTitle }}
           />
         </Row>

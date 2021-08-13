@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { ItemMenu } from '../../header.interface'
 import { useRouter } from 'next/router'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   menuHeader: ItemMenu[]
@@ -13,13 +13,13 @@ const MenuHeader = ({ menuHeader }: Props) => {
   const { pathname } = router
 
   return (
-    <ul className={style.ListMenuHeader}>
+    <ul className={styles.ListMenuHeader}>
       {menuHeader?.map(
         (item) =>
           item.status && (
             <li
               key={item.key}
-              className={pathname === item.link ? style.active : ''}
+              className={pathname === item.link ? styles.active : ''}
             >
               <Link href={item.link || '/'}>
                 <a>{item.label}</a>

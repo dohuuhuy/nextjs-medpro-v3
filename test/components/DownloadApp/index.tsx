@@ -3,7 +3,7 @@ import Container from '../Container'
 import { Benefit } from './organisms/Benefit'
 import { MyApp } from './organisms/myApp'
 import { DataFailure, checkData } from '../DataFailure'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 
 export interface DownloadCustom {
   dataDownload: DownloadApp

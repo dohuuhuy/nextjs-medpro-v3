@@ -3,7 +3,7 @@ import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
 import React, { useEffect, useMemo, useState } from 'react'
 import Container from '../../../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 import { DataFailure, checkData } from '../../../DataFailure'
 const { Panel } = Collapse
 
@@ -33,18 +33,18 @@ export const ThacMacContent = ({ content }: any) => {
   const ContentFaq = useMemo(() => funcFaq(Faq.faq), [Faq.faq])
 
   return (
-    <Container className={style.ThacMacContent}>
-      <Row className={style.rowThacMac}>
-        <Col xl={7} lg={7} sm={24} xs={24} className={style.colTab}>
-          <h2 className={style.titleTab}>Giải đáp nhanh câu hỏi</h2>
-          <ul className={style.listTab}>
+    <Container className={styles.ThacMacContent}>
+      <Row className={styles.rowThacMac}>
+        <Col xl={7} lg={7} sm={24} xs={24} className={styles.colTab}>
+          <h2 className={styles.titleTab}>Giải đáp nhanh câu hỏi</h2>
+          <ul className={styles.listTab}>
             {isArray(content) &&
               content?.map(({ id, name }: any) => {
                 return (
                   <li
                     key={id}
                     onClick={() => x(id)}
-                    className={Faq.id === id ? style.active : ''}
+                    className={Faq.id === id ? styles.active : ''}
                   >
                     {Faq.id === id ? (
                       <CaretDownOutlined />
@@ -57,7 +57,7 @@ export const ThacMacContent = ({ content }: any) => {
               })}
           </ul>
         </Col>
-        <Col xl={17} lg={17} sm={24} xs={24} className={style.colContentMenu}>
+        <Col xl={17} lg={17} sm={24} xs={24} className={styles.colContentMenu}>
           {ContentFaq}
         </Col>
       </Row>

@@ -3,9 +3,9 @@ import Link from 'next/link'
 import React from 'react'
 import Container from './../../../Container'
 import { FooterSign } from '../../molecules/FooterSign'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 
-interface CardIntro {
+export interface CardIntro {
   dataCardIntro: CardIntroItem[]
 }
 export interface CardIntroItem {

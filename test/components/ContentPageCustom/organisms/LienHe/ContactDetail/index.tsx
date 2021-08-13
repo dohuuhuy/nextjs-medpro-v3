@@ -2,7 +2,7 @@
 import { Button, Form, Input, Select } from 'antd'
 import React from 'react'
 import Container from '../../../../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface ContactDetail {
   dataContactDetail: ItemContact[]
@@ -15,13 +15,13 @@ interface ItemContact {
 }
 export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
   if (!dataContactDetail) {
-    return <Container className={style.containerError}>gelo</Container>
+    return <Container className={styles.containerError}>gelo</Container>
   }
   return (
-    <Form className={style.FormContact} layout={'inline'}>
-      <ul className={style.listFormContact}>
+    <Form className={styles.FormContact} layout={'inline'}>
+      <ul className={styles.listFormContact}>
         <li>
-          <div className={style.title}>
+          <div className={styles.title}>
             <label>Họ và tên</label>
             <sup>*</sup>
           </div>
@@ -37,13 +37,13 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           >
             <Input
               autoFocus={true}
-              className={style.input}
+              className={styles.input}
               placeholder='Vui lòng nhập họ và tên (có dấu)...'
             />
           </Form.Item>
         </li>
         <li>
-          <div className={style.title}>
+          <div className={styles.title}>
             <label>Địa chỉ Email</label>
           </div>
           <Form.Item
@@ -59,13 +59,13 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
             ]}
           >
             <Input
-              className={style.input}
+              className={styles.input}
               placeholder='Vui lòng nhập email...'
             />
           </Form.Item>
         </li>
         <li>
-          <div className={style.title}>
+          <div className={styles.title}>
             <label>Số điện thoại</label>
             <sup>*</sup>
           </div>
@@ -85,13 +85,13 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           >
             <Input
               type='number'
-              className={style.input}
+              className={styles.input}
               placeholder='Vui lòng nhập số điện thoại...'
             />
           </Form.Item>
         </li>
         <li>
-          <div className={style.title}>
+          <div className={styles.title}>
             <label>Vấn đề của bạn</label>
             <sup>*</sup>
           </div>
@@ -105,7 +105,7 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
             ]}
           >
             <Select
-              className={style.select}
+              className={styles.select}
               defaultValue='1'
               style={{ width: '100%' }}
             >
@@ -117,7 +117,7 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           </Form.Item>
         </li>
         <li>
-          <div className={style.title}>
+          <div className={styles.title}>
             <label>Nhập nội dung cần trợ giúp</label>
             <sup>*</sup>
           </div>
@@ -131,7 +131,7 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
             ]}
           >
             <Input.TextArea
-              className={style.input}
+              className={styles.input}
               placeholder='Vui lòng nhập nội dung cần hỗ trợ...'
               maxLength={500}
               rows={5}
@@ -139,7 +139,7 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           </Form.Item>
         </li>
       </ul>
-      <div className={style.btnSupport}>
+      <div className={styles.btnSupport}>
         <Button htmlType='submit'>gửi hỗ trợ </Button>
       </div>
     </Form>

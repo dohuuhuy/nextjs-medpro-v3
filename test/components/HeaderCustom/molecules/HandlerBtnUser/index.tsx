@@ -3,13 +3,13 @@ import { Button, Dropdown } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { DropdownProfile } from '../DropdownProfile'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
   const iconHandler = isAuthen ? (
-    <UserOutlined className={style.icons} />
+    <UserOutlined className={styles.icons} />
   ) : (
-    <LoginOutlined className={style.icons} />
+    <LoginOutlined className={styles.icons} />
   )
 
   const router = useRouter()
@@ -29,7 +29,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
           placement='bottomRight'
         >
           <Button
-            className={isAuthen ? style.user : style.login}
+            className={isAuthen ? styles.user : styles.login}
             type='default'
             size='large'
             icon={iconHandler}
@@ -42,7 +42,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
     default:
       return (
         <Button
-          className={isAuthen ? style.user : style.login}
+          className={isAuthen ? styles.user : styles.login}
           type='default'
           size='large'
           icon={iconHandler}

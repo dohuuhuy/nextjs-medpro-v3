@@ -1,16 +1,16 @@
 import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import React from 'react'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 export const BtnLogin = ({ nameUser, isAuthen }: any) => {
   const iconHandler = isAuthen ? (
-    <UserOutlined className={style.icons} />
+    <UserOutlined className={styles.icons} />
   ) : (
-    <LoginOutlined className={style.icons} />
+    <LoginOutlined className={styles.icons} />
   )
   return (
     <Button
-      className={isAuthen ? style.user : style.login}
+      className={isAuthen ? styles.user : styles.login}
       type='default'
       size='large'
       icon={iconHandler}

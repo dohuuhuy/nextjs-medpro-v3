@@ -2,7 +2,7 @@
 import Container from '@components/atoms/Container'
 import { Col, Row, Input } from 'antd'
 import React, { useState } from 'react'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 import { HomeOutlined, SearchOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 

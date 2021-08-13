@@ -1,12 +1,12 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { Col, Input, Row, Select, Modal } from 'antd'
+import { BellFilled, SearchOutlined } from '@ant-design/icons'
+import { Col, Input, Modal, Row, Select } from 'antd'
 import { filter } from 'lodash'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Container from './../Container'
 import { checkData, DataFailure } from './../DataFailure'
-import styles from './style.module.less'
-import { BellFilled } from '@ant-design/icons'
-import cx from 'classnames'
+import styles from './styles.module.less'
+import './modal.module.css'
 
 const { Option } = Select
 
@@ -16,8 +16,8 @@ export interface Props {
 }
 
 const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
+  const router = useRouter()
   const [listHospitals, setlistHospitals] = useState<any[]>([])
-  const [Notification, setNotification] = useState(false)
 
   useEffect(() => {
     setlistHospitals(listHospital)
@@ -39,13 +39,18 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
     )
     setlistHospitals(findHospital)
   }
-  function handleNotification() {
-    Modal.info({
-      className: styles.Modal,
-      icon: <BellFilled />,
-      title: 'Thông báo',
-      content: "Bệnh viện sẽ sẵn sàng nhận đặt khám qua Medpro trong thời gian tới.",
-    })
+
+  function handleNotification(message: string, partnerId: string) {
+    if (checkData(message)) {
+      router.push(`${partnerId}/thong-tin-dat-kham`)
+    } else {
+      Modal.info({
+        className: styles.Modal,
+        icon: <BellFilled />,
+        title: 'Thông báo',
+        content: message
+      })
+    }
   }
 
   return (
@@ -97,12 +102,18 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
               <DataFailure description='Không tìm thấy !' />
             ) : (
               listHospitals?.map(
-                ({ name: nameHospital, address, image }, i: number) => {
+                (
+                  { name: nameHospital, address, image, message, partnerId },
+                  i: number
+                ) => {
                   const imageErrorSrc = '/images/logo.png'
                   const urlImage = image || imageErrorSrc
                   return (
                     <li key={i}>
-                      <div className={styles.cardHospital} onClick={handleNotification}>
+                      <div
+                        className={styles.cardHospital}
+                        onClick={() => handleNotification(message, partnerId)}
+                      >
                         <figure className={styles.cardView}>
                           <img
                             src={urlImage}

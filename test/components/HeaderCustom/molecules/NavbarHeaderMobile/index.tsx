@@ -1,7 +1,7 @@
 import Container from '../../../Container'
 import { Col, Row } from 'antd'
 import React from 'react'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   logo: string
@@ -15,17 +15,17 @@ export const NavbarHeaderMobile = ({
   drawer = false
 }: Props) => {
   return (
-    <Container className={style.headerDrawer}>
-      <Row className={style.rowHeaderDrawer}>
-        <Col span={8} className={style.colLogoHeaderMobile}>
+    <Container className={styles.headerDrawer}>
+      <Row className={styles.rowHeaderDrawer}>
+        <Col span={8} className={styles.colLogoHeaderMobile}>
           <figure>
-            <img src={logo} className={style.logoDrawer} alt='logo' />
+            <img src={logo} className={styles.logoDrawer} alt='logo' />
           </figure>
         </Col>
-        <Col span={4} className={style.colButtonHeaderMobile}>
+        <Col span={4} className={styles.colButtonHeaderMobile}>
           <button
             onClick={() => togleDrawer()}
-            className={drawer ? style.btnClose : style.btnMenu}
+            className={drawer ? styles.btnClose : styles.btnMenu}
           >
             {drawer ? (
               <span>Đóng</span>
@@ -38,7 +38,7 @@ export const NavbarHeaderMobile = ({
                 <span>Menu</span>
               </div>
             )}
-            <i className={style.bars} />
+            <i className={styles.bars} />
           </button>
         </Col>
       </Row>

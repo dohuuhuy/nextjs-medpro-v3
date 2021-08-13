@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   infoContact: ItemContact[]
@@ -15,18 +15,18 @@ export interface ItemContact {
 
 export const InfoFooter = ({ infoContact }: Props) => {
   return (
-    <ul className={style.listInfoContact}>
+    <ul className={styles.listInfoContact}>
       {infoContact?.map((item, index: number) => {
         if (item.key === 'nameHospital') {
           return (
             <li key={index}>
-              <p className={style.nameCompany}>{item.value}</p>
+              <p className={styles.nameCompany}>{item.value}</p>
             </li>
           )
         }
         return (
           <li key={index}>
-            <p className={style.infocompany}>
+            <p className={styles.infocompany}>
               {item.label}:{' '}
               {item.link ? (
                 <a href={item.link} target='_blank' rel='noreferrer'>

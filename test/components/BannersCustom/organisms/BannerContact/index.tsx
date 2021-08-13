@@ -2,7 +2,7 @@ import Container from '../../../Container'
 import { Layout, Row } from 'antd'
 import React from 'react'
 import CardContact from './CardContact'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 const { Content } = Layout
 
@@ -14,23 +14,23 @@ export const BannerContact = ({ getBanner }: any) => {
 
   return (
     <Content
-      className={style.viewBanner}
+      className={styles.viewBanner}
       style={{
         backgroundImage: imageBackground && `url(${imageBackground})`
       }}
     >
-      <Container className={style.containerBanner}>
-        <Row className={style.rowLabel}>
-          <h1 className={style.title}>
-            <span className={style.textTitle}>{title}</span>
+      <Container className={styles.containerBanner}>
+        <Row className={styles.rowLabel}>
+          <h1 className={styles.title}>
+            <span className={styles.textTitle}>{title}</span>
           </h1>
 
           <p
-            className={style.subTitle}
+            className={styles.subTitle}
             dangerouslySetInnerHTML={{ __html: subTitle }}
           />
         </Row>
-        <Row className={style.rowOption}>
+        <Row className={styles.rowOption}>
           <CardContact cardContact={details} />
         </Row>
       </Container>

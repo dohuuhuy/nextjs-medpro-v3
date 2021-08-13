@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   Menu: any[]
@@ -8,10 +8,10 @@ interface Props {
 
 export const NavBottom = ({ Menu }: Props) => {
   return (
-    <ul className={style.nav_bottom}>
+    <ul className={styles.nav_bottom}>
       {Menu.map((item, index: number) => (
-        <li key={index} className={style.colBtn}>
-          <a className={style.btn}>
+        <li key={index} className={styles.colBtn}>
+          <a className={styles.btn}>
             <img src={item.icon} alt='icon' />
             <span>{item.label}</span>
           </a>
@@ -23,15 +23,15 @@ export const NavBottom = ({ Menu }: Props) => {
 
 //  {
 //    isAuthen ? (
-//      <Col className={style.colBtn}>
-//        <a className={style.btn}>
+//      <Col className={styles.colBtn}>
+//        <a className={styles.btn}>
 //          <UserOutlined />
 //          Hồ sơ
 //        </a>
 //      </Col>
 //    ) : (
-//      <Col className={style.colBtn}>
-//        <a className={style.btn}>
+//      <Col className={styles.colBtn}>
+//        <a className={styles.btn}>
 //          <LoginOutlined />
 //          Đăng nhập
 //        </a>

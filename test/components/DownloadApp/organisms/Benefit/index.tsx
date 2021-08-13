@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { BenefitLeft } from '../../molecules/BenefitLeft'
 import { BenefitRight } from '../../molecules/BenefitRight'
-import style from './style.module.less'
+import styles from './styles.module.less'
 
 interface Content {
   imgMobile: string
@@ -16,8 +16,8 @@ export const Benefit = ({ listBenefit, imgMobile }: Content) => {
   const leftListBenefit = filter(listBenefit, { position: 'left' })
 
   return (
-    <Row className={style.ListBenefit}>
-      <Col xl={7} md={6} className={style.colBenefitLeft}>
+    <Row className={styles.ListBenefit}>
+      <Col xl={7} md={6} className={styles.colBenefitLeft}>
         <BenefitLeft leftListBenefit={leftListBenefit} />
       </Col>
       <Col
@@ -26,9 +26,9 @@ export const Benefit = ({ listBenefit, imgMobile }: Content) => {
         md={12}
         sm={24}
         xs={24}
-        className={style.slideMobileCol}
+        className={styles.slideMobileCol}
       >
-        <figure className={style.slideMobile}>
+        <figure className={styles.slideMobile}>
           {/* <img src={imgMobile} alt='' /> */}
           <Image
             src={imgMobile}
@@ -39,7 +39,7 @@ export const Benefit = ({ listBenefit, imgMobile }: Content) => {
           />
         </figure>
       </Col>
-      <Col xl={7} md={6} className={style.colBenefitRight}>
+      <Col xl={7} md={6} className={styles.colBenefitRight}>
         <BenefitRight rightListBenefit={rightListBenefit} />
       </Col>
     </Row>

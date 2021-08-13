@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 
 export const API_NEWS = 'https://cms.medpro.com.vn'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { BannerIntro } from './organisms/BannerIntro'
 import { CardIntro } from './organisms/CardIntro'
 import { IntroducHospital } from './Introduce.interface'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 import { DataFailure, checkData } from '../DataFailure'
 export interface IntroduceCustom {
   dataIntroduce: IntroducHospital
