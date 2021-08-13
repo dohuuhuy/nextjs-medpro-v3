@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 import Container from './../Container'
 import { checkData, DataFailure } from './../DataFailure'
 import styles from './styles.module.less'
-import './modal.module.css'
 
 const { Option } = Select
 
@@ -45,10 +44,17 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
       router.push(`${partnerId}/thong-tin-dat-kham`)
     } else {
       Modal.info({
+        closable: true,
+        width: 'unset',
+        centered: true,
         className: styles.Modal,
         icon: <BellFilled />,
         title: 'Thông báo',
-        content: message
+        content: message,
+        okButtonProps: {
+          disabled: true,
+          style: { display: 'none' }
+        }
       })
     }
   }
