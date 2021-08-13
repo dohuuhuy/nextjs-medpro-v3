@@ -2,10 +2,10 @@ import React from 'react'
 import Container from '../Container'
 import { Benefit } from './organisms/Benefit'
 import { MyApp } from './organisms/myApp'
-
+import { DataFailure, checkData } from '../DataFailure'
 import styles from './style.module.less'
 
-interface DownloadCustom {
+export interface DownloadCustom {
   dataDownload: DownloadApp
 }
 
@@ -18,7 +18,6 @@ export interface DownloadApp {
 }
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
-  const { checkData, DataFailure } = require('./../DataFailure')
   if (checkData(dataDownload)) {
     return <DataFailure description={'Lỗi không có data tải ứng dụng'} />
   }

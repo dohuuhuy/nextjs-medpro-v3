@@ -1,3 +1,4 @@
+import { DataFailure, checkData } from '../DataFailure'
 import { Layout } from 'antd'
 import React from 'react'
 import { CopyRight } from './organisms/CopyRight'
@@ -8,7 +9,6 @@ import style from './styles.module.less'
 const { Footer } = Layout
 
 export const FooterCustom = ({ dataFooter }: PropsFooter) => {
-  const { checkData, DataFailure } = require('./../DataFailure')
   if (checkData(dataFooter)) {
     return <DataFailure description={'Lỗi không có data footer'} />
   }
