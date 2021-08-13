@@ -61,10 +61,30 @@
       list-style: none;
       padding: 15px 0 15px 0;
       .cardTime{
+        margin-top: 10px;
         display: flex;
+        flex-wrap: wrap;
         p{
+          .text(14px, 600);
           min-width: 160px;
-          border: 2px solid #032A5F;
+          border-radius: 5px;
+          padding: 8px 45px;
+          white-space: nowrap;
+          flex: 0 1 22%;
+          justify-content: center;
+          border: 1px solid #0352cc;
+          margin: 5px;
+          color: #0352cc;
+          transition: all .3s ease-in-out;
+          &:hover{
+            cursor: pointer;
+            color: white;
+            background-color: #0453CC;
+          }
+          @media (max-width:425px){
+            min-width: 120px;
+            padding: 8px 15px;
+          }
         }
       }
     }

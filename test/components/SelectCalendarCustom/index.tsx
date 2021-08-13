@@ -14,7 +14,7 @@ export const SelectCalendarCustom = () => {
   return (
     <Container className={styles.conCalendar}>
       <Row className={styles.rowCalendar}>
-        <Col xs={24} xl={6} className={styles.colLeft}>
+        <Col xs={24} sm={24} md={6} xl={6} className={styles.colLeft}>
           <h2 className={styles.title}>Thông tin khám</h2>
           <ul className={styles.listInfo}>
             <li className={styles.Info}>
@@ -46,7 +46,7 @@ export const SelectCalendarCustom = () => {
             </li>
           </ul>
         </Col>
-        <Col xs={24} xl={18} className={styles.colRight}>
+        <Col xs={24} sm={24} md={18} xl={18} className={styles.colRight}>
           <h2 className={styles.title}>Vui lòng chọn ngày khám</h2>
           <ul className={styles.listCalendar}>
             <li className={styles.cardCalendar}>
@@ -67,6 +67,9 @@ export const SelectCalendarCustom = () => {
           <ul className={cx(Date ? styles.listTime : styles.hidden)}>
             <h2>Buổi sáng</h2>
             <li className={styles.cardTime}>
+              <p>7:00 - 8:30</p>
+              <p>7:00 - 8:30</p>
+              <p>7:00 - 8:30</p>
               <p>7:00 - 8:30</p>
               <p>7:00 - 8:30</p>
               <p>7:00 - 8:30</p>
