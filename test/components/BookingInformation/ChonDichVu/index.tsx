@@ -1,8 +1,11 @@
 import { Table } from 'antd'
+import { find, findIndex } from 'lodash'
 import React from 'react'
 
 export const ChonDichVu = (props: any) => {
   const { bookingTree, quickView, setquickView, current, setcurrent } = props
+
+  const KEY = 'Dịch vụ'
 
   const columns = [
     {
@@ -48,11 +51,28 @@ export const ChonDichVu = (props: any) => {
       columns={columns as any}
       dataSource={data}
       pagination={false}
-      onRow={(record) => {
+      onRow={(record, rowIndex: any) => {
         const { name } = record.nameService
         return {
           onClick: () => {
-            setquickView([name])
+            const findKey = find(quickView, { key: KEY })
+            const findKeyIndex = findIndex(quickView, { key: KEY })
+
+            if (findKey) {
+              quickView[findKeyIndex] = {
+                key: KEY,
+                value: name,
+                data: bookingTree?.child[rowIndex]
+              }
+            } else {
+              quickView.push({
+                key: KEY,
+                value: name,
+                data: bookingTree?.child[rowIndex]
+              })
+            }
+
+            setquickView(quickView)
             setcurrent(current + 1)
           }
         }

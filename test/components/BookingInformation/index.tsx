@@ -6,7 +6,7 @@ import {
   SolutionOutlined,
   UsergroupAddOutlined
 } from '@ant-design/icons'
-import { ChonDichVu } from '@componentsTest/SelectServiceCustom'
+import { ChonDichVu } from '@componentsTest/BookingInformation/ChonDichVu'
 import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
@@ -104,8 +104,12 @@ export const BookingInformation = ({ info, bookingTree }: Props) => {
           <div className={styles.cardInfoBooking}>
             <div className={styles.cardHeader}>Thông tin khám</div>
             <div className={styles.cardBody}>
-              {quickView?.map((item, i) => {
-                return <p key={i}>{item}</p>
+              {quickView?.map(({ key, value }, i) => {
+                return (
+                  <p key={i}>
+                    {key}: {value}
+                  </p>
+                )
               })}
             </div>
           </div>
