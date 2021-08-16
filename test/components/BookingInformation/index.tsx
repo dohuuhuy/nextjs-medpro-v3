@@ -6,6 +6,7 @@ import {
   SolutionOutlined,
   UsergroupAddOutlined
 } from '@ant-design/icons'
+import { ChonDichVu } from '@componentsTest/SelectServiceCustom'
 import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
@@ -17,10 +18,57 @@ const { Step } = Steps
 
 export interface Props {
   info: any
+  bookingTree: any
 }
 
-export const BookingInformation = ({ info }: Props) => {
+export const BookingInformation = ({ info, bookingTree }: Props) => {
+  console.log('bookingTree :>> ', bookingTree)
   const [current, setcurrent] = useState(0)
+
+  const [quickView, setquickView] = useState([])
+
+  console.log('quickView :>> ', quickView)
+
+  const steps = [
+    {
+      title: 'Dịch vụ',
+      icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
+      content: (
+        <ChonDichVu
+          bookingTree={bookingTree}
+          quickView={quickView}
+          setquickView={setquickView}
+          current={current}
+          setcurrent={setcurrent}
+        />
+      )
+    },
+    {
+      title: 'Chuyên khoa',
+      icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Second-content'
+    },
+    {
+      title: 'Bác sỉ',
+      icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Ngày khám',
+      icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Hồ sơ',
+      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Xác nhận',
+      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    }
+  ]
 
   return (
     <Container className={styles.BookingInformation}>
@@ -39,7 +87,7 @@ export const BookingInformation = ({ info }: Props) => {
             labelPlacement='horizontal'
             size='small'
           >
-            {steps.map((item, i: number) => (
+            {steps?.map((item, i: number) => (
               <Step
                 key={item.title}
                 title={item.title}
@@ -56,9 +104,9 @@ export const BookingInformation = ({ info }: Props) => {
           <div className={styles.cardInfoBooking}>
             <div className={styles.cardHeader}>Thông tin khám</div>
             <div className={styles.cardBody}>
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
+              {quickView?.map((item, i) => {
+                return <p key={i}>{item}</p>
+              })}
             </div>
           </div>
         </Col>
@@ -84,45 +132,3 @@ export const BookingInformation = ({ info }: Props) => {
     </Container>
   )
 }
-
-export const Demo = () => {
-  return (
-    <div>
-      First-content huyi
-      <h2>Helo</h2>
-    </div>
-  )
-}
-
-const steps = [
-  {
-    title: 'Dịch vụ',
-    icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
-    content: <Demo />
-  },
-  {
-    title: 'Chuyên khoa',
-    icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Second-content'
-  },
-  {
-    title: 'Bác sỉ',
-    icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Ngày khám',
-    icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Hồ sơ',
-    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Xác nhận',
-    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  }
-]
