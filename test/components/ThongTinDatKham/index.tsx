@@ -39,17 +39,17 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
     {
       title: 'Ngày khám',
       icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
-      content: 'Last-content'
+      content: 'Ngày khám'
     },
     {
       title: 'Hồ sơ',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Last-content'
+      content: 'Hồ sơ'
     },
     {
       title: 'Xác nhận',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Last-content'
+      content: 'Xác nhận'
     }
   ]
 
