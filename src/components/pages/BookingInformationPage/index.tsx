@@ -1,4 +1,4 @@
-import { BookingInformation } from '@componentsTest/BookingInformation'
+import { ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
 import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
@@ -18,7 +18,7 @@ const BookingInformationPage = () => {
 
   const findHospital = find(listHospital, { partnerId })
 
-  return <BookingInformation info={findHospital} bookingTree={bookingTree} />
+  return <ThongTinDatKham info={findHospital} bookingTree={bookingTree} />
 }
 
 export default BookingInformationPage
