@@ -2,37 +2,18 @@
 /* eslint-disable no-console */
 import { SearchOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
-import { find, findIndex } from 'lodash'
 import React from 'react'
 import Container from '../../Container'
+import { handlerQuickView } from '../utils/func'
 import styles from './styles.module.less'
 
 export const ChonChuyenKhoa = (props: any) => {
+  const ChuyenKhoa = 'Chuyên khoa'
   const { quickView, setquickView, next } = props
-
-  const KEY = 'Chuyên khoa'
 
   const onClick = (id: any, name: string) => {
     console.log('id :>> ', id)
-
-    const findKey = find(quickView, { key: KEY })
-    const findKeyIndex = findIndex(quickView, { key: KEY })
-
-    if (findKey) {
-      quickView[findKeyIndex] = {
-        key: KEY,
-        value: name,
-        data: quickView[0]?.data?.child[findKeyIndex]
-      }
-    } else {
-      quickView.push({
-        key: KEY,
-        value: name,
-        data: quickView[0]?.data?.child[findKeyIndex]
-      })
-    }
-
-    setquickView(quickView)
+    setquickView(handlerQuickView(quickView, ChuyenKhoa, name))
     next()
   }
   return (
