@@ -7,6 +7,7 @@ export type HospitalActions =
   | InfomationAction
   | FeatureAction
   | ListHospitalAction
+  | BookingTreeAction
 
 // --------------------------------------------------------------
 
@@ -69,4 +70,18 @@ export const ListHospitalRequestSuccess = (listHospital: any) => {
     type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
     listHospital
   }
+}
+
+//  -------------------------------------
+
+export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
+
+export interface BookingTreeRequest {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
+  partnerid: string
+}
+
+export interface BookingTreeRequestSuccess {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS
+  bookingTree: any[]
 }

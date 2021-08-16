@@ -12,3 +12,17 @@ export const getListHospital = (): HospitalActions => {
     type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
   }
 }
+
+export const getBookingTree = (partnerid: any): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
+    partnerid
+  }
+}
+
+export const getBookingTreeSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS,
+    bookingTree: data
+  }
+}

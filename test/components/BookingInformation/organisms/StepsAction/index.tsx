@@ -10,10 +10,12 @@ interface Props {
 
 export const StepsAction = ({ current, setcurrent, steps }: Props) => {
   const next = () => {
+    window.scrollTo(0, 0)
     setcurrent(current + 1)
   }
 
   const prev = () => {
+    window.scrollTo(0, 0)
     setcurrent(current - 1)
   }
 

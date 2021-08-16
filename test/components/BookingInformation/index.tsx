@@ -6,36 +6,75 @@ import {
   SolutionOutlined,
   UsergroupAddOutlined
 } from '@ant-design/icons'
+import { ChonDichVu } from '@componentsTest/SelectServiceCustom'
 import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
-import { StepsAction } from './organisms'
+import { CardInfo } from './organisms/CardInfo'
+import { StepsAction } from './organisms/StepsAction'
 import styles from './styles.module.less'
 
 const { Step } = Steps
 
 export interface Props {
   info: any
+  bookingTree: any
 }
 
-export const BookingInformation = ({ info }: Props) => {
+export const BookingInformation = ({ info, bookingTree }: Props) => {
+  console.log('bookingTree :>> ', bookingTree)
   const [current, setcurrent] = useState(0)
+
+  const [quickView, setquickView] = useState([])
+
+  console.log('quickView :>> ', quickView)
+
+  const steps = [
+    {
+      title: 'Dịch vụ',
+      icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
+      content: (
+        <ChonDichVu
+          bookingTree={bookingTree}
+          quickView={quickView}
+          setquickView={setquickView}
+          current={current}
+          setcurrent={setcurrent}
+        />
+      )
+    },
+    {
+      title: 'Chuyên khoa',
+      icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Second-content'
+    },
+    {
+      title: 'Bác sỉ',
+      icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Ngày khám',
+      icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Hồ sơ',
+      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    },
+    {
+      title: 'Xác nhận',
+      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+      content: 'Last-content'
+    }
+  ]
 
   return (
     <Container className={styles.BookingInformation}>
       <Row className={styles.rowName}>
         <Col className={styles.colName} xl={24} span={24}>
-          <div className={styles.cardInfo}>
-            <figure className={styles.cardView}>
-              <img src={info?.image} alt='logo' />
-            </figure>
-            <div className={styles.cardBody}>
-              <h2>{info?.name}</h2>
-              <p className={styles.address}>
-                <em>{info?.address}</em>
-              </p>
-            </div>
-          </div>
+          <CardInfo info={info} />
         </Col>
       </Row>
 
@@ -48,39 +87,37 @@ export const BookingInformation = ({ info }: Props) => {
             labelPlacement='horizontal'
             size='small'
           >
-            {steps.map((item) => (
-              <Step key={item.title} title={item.title} icon={item.icon} />
+            {steps?.map((item, i: number) => (
+              <Step
+                key={item.title}
+                title={item.title}
+                icon={item.icon}
+                onClick={() => setcurrent(i)}
+              />
             ))}
           </Steps>
         </Col>
       </Row>
+
       <Row className={styles.rowContent}>
-        <Col
-          xl={7}
-          lg={7}
-          md={24}
-          sm={24}
-          xs={24}
-          className={styles.colInfoBooking}
-        >
+        <Col xl={7} lg={7} span={24} className={styles.colInfoBooking}>
           <div className={styles.cardInfoBooking}>
             <div className={styles.cardHeader}>Thông tin khám</div>
             <div className={styles.cardBody}>
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
+              {quickView?.map((item, i) => {
+                return <p key={i}>{item}</p>
+              })}
             </div>
           </div>
         </Col>
-        <Col
-          xl={17}
-          lg={17}
-          md={24}
-          sm={24}
-          xs={24}
-          className={styles.colStepsContent}
-        >
-          <div className={styles.stepsContent}>{steps[current].content}</div>
+        <Col xl={17} lg={17} span={24} className={styles.colStepsContent}>
+          <div className={styles.cardStepsContent}>
+            <div className={styles.cardHeader}>
+              Vui lòng {steps[current].title === 'Xác nhận' ? '' : 'chọn'}{' '}
+              {steps[current].title}
+            </div>
+            <div className={styles.cardBody}>{steps[current].content}</div>
+          </div>
         </Col>
       </Row>
       <Row className={styles.rowStepsAction}>
@@ -95,45 +132,3 @@ export const BookingInformation = ({ info }: Props) => {
     </Container>
   )
 }
-
-export const Demo = () => {
-  return (
-    <div>
-      First-content huyi
-      <h2>Helo</h2>
-    </div>
-  )
-}
-
-const steps = [
-  {
-    title: 'Dịch vụ',
-    icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
-    content: <Demo />
-  },
-  {
-    title: 'Chuyên khoa',
-    icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Second-content'
-  },
-  {
-    title: 'Bác sỉ',
-    icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Ngày khám',
-    icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Hồ sơ',
-    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  },
-  {
-    title: 'Xác nhận',
-    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-    content: 'Last-content'
-  }
-]
