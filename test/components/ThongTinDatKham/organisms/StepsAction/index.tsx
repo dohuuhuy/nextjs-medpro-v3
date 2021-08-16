@@ -3,22 +3,13 @@ import React from 'react'
 import styles from './styles.module.less'
 
 interface Props {
-  current: any
-  setcurrent: any
+  next: any
+  prev: any
   steps: any
+  current: any
 }
 
-export const StepsAction = ({ current, setcurrent, steps }: Props) => {
-  const next = () => {
-    window.scrollTo(0, 0)
-    setcurrent(current + 1)
-  }
-
-  const prev = () => {
-    window.scrollTo(0, 0)
-    setcurrent(current - 1)
-  }
-
+export const StepsAction = ({ next, prev, steps, current }: Props) => {
   return (
     <div className={styles.stepsAction}>
       {current < steps.length - 1 && (

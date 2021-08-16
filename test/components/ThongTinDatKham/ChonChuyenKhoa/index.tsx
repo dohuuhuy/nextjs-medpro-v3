@@ -8,21 +8,13 @@ import Container from '../../Container'
 import styles from './styles.module.less'
 
 export const ChonChuyenKhoa = (props: any) => {
-  const { quickView, setquickView, current, setcurrent } = props
+  const { quickView, setquickView, next } = props
 
   const KEY = 'Chuyên khoa'
 
-  // const [listSpecialist, setlistSpecialist] = useState<any[]>([])
-
-  // function OnChange(e: any) {
-  //   const { value } = e.target
-  //   const findHospital = Data.filter(
-  //     ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
-  //   )
-  //   // setlistSpecialist(findHospital)
-  // }
-
   const onClick = (id: any, name: string) => {
+    console.log('id :>> ', id)
+
     const findKey = find(quickView, { key: KEY })
     const findKeyIndex = findIndex(quickView, { key: KEY })
 
@@ -41,7 +33,7 @@ export const ChonChuyenKhoa = (props: any) => {
     }
 
     setquickView(quickView)
-    setcurrent(current + 1)
+    next()
   }
   return (
     <Container className={styles.ChonChuyenKhoa}>
@@ -52,7 +44,6 @@ export const ChonChuyenKhoa = (props: any) => {
         autoFocus={true}
         prefix={<SearchOutlined />}
         allowClear={true}
-        // onChange={OnChange}
       />
 
       <ul className={styles.listChuyenKhoa}>
@@ -70,3 +61,13 @@ export const ChonChuyenKhoa = (props: any) => {
 }
 
 export const Data = [{ name: 'Khoa Thần Kinh' }, { name: 'Khoa Mắt' }]
+
+// const [listSpecialist, setlistSpecialist] = useState<any[]>([])
+
+// function OnChange(e: any) {
+//   const { value } = e.target
+//   const findHospital = Data.filter(
+//     ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+//   )
+//   // setlistSpecialist(findHospital)
+// }

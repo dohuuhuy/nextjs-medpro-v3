@@ -3,7 +3,7 @@ import { find, findIndex } from 'lodash'
 import React from 'react'
 
 export const ChonDichVu = (props: any) => {
-  const { bookingTree, quickView, setquickView, current, setcurrent } = props
+  const { bookingTree, quickView, setquickView, next } = props
 
   const KEY = 'Dịch vụ'
 
@@ -73,7 +73,7 @@ export const ChonDichVu = (props: any) => {
             }
 
             setquickView(quickView)
-            setcurrent(current + 1)
+            next()
           }
         }
       }}

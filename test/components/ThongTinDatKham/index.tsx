@@ -23,17 +23,23 @@ export interface Props {
 }
 
 export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
-  console.log('bookingTree :>> ', bookingTree)
-
   const stepBooking = bookingTree?.path?.split('_') || []
-
-  console.log('stepBooking :>> ', stepBooking)
-
   const [current, setcurrent] = useState(0)
-
   const [quickView, setquickView] = useState([])
 
+  console.log('bookingTree :>> ', bookingTree)
+  console.log('stepBooking :>> ', stepBooking)
   console.log('quickView :>> ', quickView)
+
+  const next = () => {
+    window.scrollTo(0, 0)
+    setcurrent(current + 1)
+  }
+
+  const prev = () => {
+    window.scrollTo(0, 0)
+    setcurrent(current - 1)
+  }
 
   const steps: any = [
     {
@@ -62,11 +68,10 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
         icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
         content: (
           <ChonDichVu
-            bookingTree={bookingTree}
+            next={next}
             quickView={quickView}
+            bookingTree={bookingTree}
             setquickView={setquickView}
-            current={current}
-            setcurrent={setcurrent}
           />
         )
       })
@@ -76,10 +81,9 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
         icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
         content: (
           <ChonChuyenKhoa
+            next={next}
             quickView={quickView}
             setquickView={setquickView}
-            current={current}
-            setcurrent={setcurrent}
           />
         )
       })
@@ -149,9 +153,10 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
       <Row className={styles.rowStepsAction}>
         <Col xl={24} xs='24' className={styles.colStepsAction}>
           <StepsAction
-            current={current}
-            setcurrent={setcurrent}
+            next={next}
+            prev={prev}
             steps={steps}
+            current={current}
           />
         </Col>
       </Row>
