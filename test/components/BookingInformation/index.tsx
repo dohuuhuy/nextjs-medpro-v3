@@ -9,7 +9,8 @@ import {
 import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
-import { StepsAction } from './organisms'
+import { CardInfo } from './organisms/CardInfo'
+import { StepsAction } from './organisms/StepsAction'
 import styles from './styles.module.less'
 
 const { Step } = Steps
@@ -25,17 +26,7 @@ export const BookingInformation = ({ info }: Props) => {
     <Container className={styles.BookingInformation}>
       <Row className={styles.rowName}>
         <Col className={styles.colName} xl={24} span={24}>
-          <div className={styles.cardInfo}>
-            <figure className={styles.cardView}>
-              <img src={info?.image} alt='logo' />
-            </figure>
-            <div className={styles.cardBody}>
-              <h2>{info?.name}</h2>
-              <p className={styles.address}>
-                <em>{info?.address}</em>
-              </p>
-            </div>
-          </div>
+          <CardInfo info={info} />
         </Col>
       </Row>
 
@@ -48,21 +39,20 @@ export const BookingInformation = ({ info }: Props) => {
             labelPlacement='horizontal'
             size='small'
           >
-            {steps.map((item) => (
-              <Step key={item.title} title={item.title} icon={item.icon} />
+            {steps.map((item, i: number) => (
+              <Step
+                key={item.title}
+                title={item.title}
+                icon={item.icon}
+                onClick={() => setcurrent(i)}
+              />
             ))}
           </Steps>
         </Col>
       </Row>
+
       <Row className={styles.rowContent}>
-        <Col
-          xl={7}
-          lg={7}
-          md={24}
-          sm={24}
-          xs={24}
-          className={styles.colInfoBooking}
-        >
+        <Col xl={7} lg={7} span={24} className={styles.colInfoBooking}>
           <div className={styles.cardInfoBooking}>
             <div className={styles.cardHeader}>Thông tin khám</div>
             <div className={styles.cardBody}>
@@ -72,15 +62,14 @@ export const BookingInformation = ({ info }: Props) => {
             </div>
           </div>
         </Col>
-        <Col
-          xl={17}
-          lg={17}
-          md={24}
-          sm={24}
-          xs={24}
-          className={styles.colStepsContent}
-        >
-          <div className={styles.stepsContent}>{steps[current].content}</div>
+        <Col xl={17} lg={17} span={24} className={styles.colStepsContent}>
+          <div className={styles.cardStepsContent}>
+            <div className={styles.cardHeader}>
+              Vui lòng {steps[current].title === 'Xác nhận' ? '' : 'chọn'}{' '}
+              {steps[current].title}
+            </div>
+            <div className={styles.cardBody}>{steps[current].content}</div>
+          </div>
         </Col>
       </Row>
       <Row className={styles.rowStepsAction}>

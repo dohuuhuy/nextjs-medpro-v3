@@ -14,8 +14,6 @@ const BookingInformationPage = () => {
 
   const findHospital = find(listHospital, { partnerId })
 
-  console.log('findHospital :>> ', findHospital)
-
   return <BookingInformation info={findHospital} />
 }
 

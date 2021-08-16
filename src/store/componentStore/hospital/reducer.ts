@@ -14,7 +14,8 @@ const init: HospitalState = {
     contentPage: []
   },
   listFeature: [],
-  listHospital: []
+  listHospital: [],
+  bookingTree: []
 }
 
 export default function hospitalReducer(
@@ -22,6 +23,12 @@ export default function hospitalReducer(
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ) {
   switch (action.type) {
+    case HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS:
+      return {
+        ...state,
+        bookingTree: action.bookingTree
+      }
+
     case HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS:
       return {
         ...state,

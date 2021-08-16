@@ -1,6 +1,14 @@
+/* eslint-disable no-console */
+import { getBookingTreeSuccess } from '@actionStore/rootAction'
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
-import { AppState, FeatureByPartnerRequestSuccess, HosptailTypes, ListHospitalRequestSuccess, TotalDataTypes } from '@store/interface'
+import {
+  AppState,
+  FeatureByPartnerRequestSuccess,
+  HosptailTypes,
+  ListHospitalRequestSuccess,
+  TotalDataTypes
+} from '@store/interface'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -123,11 +131,37 @@ function* WatchGetListHospital() {
   )
 }
 
+function* getBookingTree({ partnerid }: any) {
+  try {
+    const response: AxiosResponse = yield client.getBookingTreeDynamic(
+      { treeId: 'DATE' },
+      {
+        partnerid,
+        appid: partnerid
+      }
+    )
+
+    console.log('response :>> ', response)
+
+    yield put(getBookingTreeSuccess(response.data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* WatcherGetBookingTree() {
+  yield takeLatest(
+    HosptailTypes.BookingTree.BOOKING_TREE_REQUEST as any,
+    getBookingTree
+  )
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(WatchGetHospitalDetails),
     fork(WatchGetFeatureByPartner),
-    fork(WatchGetListHospital)
+    fork(WatchGetListHospital),
+    fork(WatcherGetBookingTree)
   ])
 }
 export default hospitalSagas
