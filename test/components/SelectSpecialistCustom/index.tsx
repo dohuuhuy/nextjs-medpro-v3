@@ -6,7 +6,7 @@ import styles from './styles.module.less'
 import { HomeOutlined, SearchOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 
-export const SelectSpecialistCustom = () => {
+export const ChonChuyenKhoa = () => {
   const [listSpecialist, setlistSpecialist] = useState<any[]>([])
   console.log('listSpecialist :>> ', listSpecialist)
   function OnChange(e: any) {

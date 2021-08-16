@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import styles from './styles.module.less'
 import cx from 'classnames'
 
-export const SelectCalendarCustom = () => {
+export const ChonLichKham = () => {
   const [Date, setDate] = useState()
   const onChange = (value: any) => {
     setDate(value)

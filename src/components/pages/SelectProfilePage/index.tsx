@@ -1,4 +1,4 @@
-import { SelectProfileCustom } from '@componentsTest/SelectProfileCustom'
+import { ChonHoSo } from '@componentsTest/SelectProfileCustom'
 // import { AppState } from '@store/interface'
 import React from 'react'
 // import { useSelector } from 'react-redux'
@@ -13,6 +13,6 @@ export const SelectProfilePage = () => {
   // )
 
   return (
-    <SelectProfileCustom />
+    <ChonHoSo />
   )
 }

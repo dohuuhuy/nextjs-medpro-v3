@@ -7,6 +7,9 @@ import {
   UsergroupAddOutlined
 } from '@ant-design/icons'
 import { ChonDichVu } from '@componentsTest/SelectServiceCustom'
+import { ChonChuyenKhoa } from '@componentsTest/SelectSpecialistCustom'
+import { ChonLichKham } from '@componentsTest/SelectCalendarCustom'
+import { ChonHoSo } from '@componentsTest/SelectProfileCustom'
 import { Col, Row, Steps } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
@@ -46,7 +49,9 @@ export const BookingInformation = ({ info, bookingTree }: Props) => {
     {
       title: 'Chuyên khoa',
       icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Second-content'
+      content: (
+        <ChonChuyenKhoa />
+      )
     },
     {
       title: 'Bác sỉ',
@@ -56,12 +61,12 @@ export const BookingInformation = ({ info, bookingTree }: Props) => {
     {
       title: 'Ngày khám',
       icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
-      content: 'Last-content'
+      content: <ChonLichKham />
     },
     {
       title: 'Hồ sơ',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Last-content'
+      content: <ChonHoSo />
     },
     {
       title: 'Xác nhận',

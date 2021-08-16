@@ -1,4 +1,4 @@
-import { SelectSpecialistCustom } from '@componentsTest/SelectSpecialistCustom'
+import { ChonChuyenKhoa } from '@componentsTest/SelectSpecialistCustom'
 // import { AppState } from '@store/interface'
 import React from 'react'
 // import { useSelector } from 'react-redux'
@@ -13,6 +13,6 @@ export const SelectSpecialistPage = () => {
   // )
 
   return (
-    <SelectSpecialistCustom />
+    <ChonChuyenKhoa />
   )
 }

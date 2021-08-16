@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { UserAddOutlined, DeleteOutlined, ArrowRightOutlined } from '@ant-design/icons'
 
-export const SelectProfileCustom = () => {
+export const ChonHoSo = () => {
   const [Detail, setDetail] = useState(false)
   const Data = [
     {
