@@ -33,7 +33,7 @@ export const ChonDichVu = (props: any) => {
     }
   ]
 
-  const data = bookingTree.child?.map((item: any, index: number) => {
+  const data = bookingTree?.child?.map((item: any, index: number) => {
     const { name, days, price } = item.detail
     return {
       index,

@@ -1,4 +1,4 @@
-import { ChonDichVu } from '@componentsTest/BookingInformation/ChonDichVu'
+import { ChonDichVu } from '@componentsTest/ThongTinDatKham/ChonDichVu'
 import React from 'react'
 
 export const SelectServicePage = () => {
