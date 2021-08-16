@@ -1,22 +1,36 @@
 import { Table } from 'antd'
 import React from 'react'
-import { handlerQuickView } from '../utils/func'
+import { handlerQuickView, handlerValue } from '../utils/func'
+export const DichVu = {
+  vn: 'Dịch vụ',
+  en: 'service'
+}
 
 export const ChonDichVu = (props: any) => {
-  const DichVu = 'Dịch vụ'
-  const { bookingTree, quickView, setquickView, next } = props
+  const { quickView, setquickView, next } = props
 
   return (
     <Table
       rowKey='uid'
       columns={columns as any}
-      dataSource={dataRows(bookingTree)}
+      dataSource={dataRows(props)}
       pagination={false}
-      onRow={(record) => {
-        const { name } = record.nameService
+      onRow={(record, id: any) => {
+        const {
+          nameService: { name },
+          subType
+        } = record
         return {
           onClick: () => {
-            setquickView(handlerQuickView(quickView, DichVu, name))
+            setquickView(
+              handlerQuickView({
+                quickView,
+                KEY: DichVu,
+                name,
+                id,
+                subType
+              })
+            )
             next()
           }
         }
@@ -25,8 +39,8 @@ export const ChonDichVu = (props: any) => {
   )
 }
 
-const dataRows = (bookingTree: any) => {
-  return bookingTree?.child?.map((item: any, index: number) => {
+const dataRows = (props: any) => {
+  return handlerValue(props, DichVu)?.map((item: any, index: number) => {
     const { name, days, price } = item.detail
     return {
       index,
@@ -34,7 +48,8 @@ const dataRows = (bookingTree: any) => {
         name,
         days
       },
-      price
+      price,
+      subType: item.subType
     }
   })
 }

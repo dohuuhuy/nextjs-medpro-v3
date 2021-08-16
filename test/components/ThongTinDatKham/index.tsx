@@ -19,6 +19,8 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
   const [current, setcurrent] = useState(0)
   const [quickView, setquickView] = useState([])
 
+  console.log('bookingTree :>> ', bookingTree)
+
   const next = () => {
     window.scrollTo(0, 0)
     setcurrent(current + 1)
