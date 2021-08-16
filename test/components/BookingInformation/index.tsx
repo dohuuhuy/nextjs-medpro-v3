@@ -126,11 +126,11 @@ const steps = [
     icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
     content: 'Last-content'
   },
-  // {
-  //   title: 'Hồ sơ',
-  //   icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-  //   content: 'Last-content'
-  // },
+  {
+    title: 'Hồ sơ',
+    icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
+    content: 'Last-content'
+  },
   {
     title: 'Xác nhận',
     icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
