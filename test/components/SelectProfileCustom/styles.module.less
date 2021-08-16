@@ -2,7 +2,9 @@
   font-size: @size;
   font-weight: @weight;
 }
-
+.hidden{
+  display: none;
+}
 .container{
   margin-top: 40px;
   h2 {
@@ -25,11 +27,12 @@
     .card{
       border: 2px solid #DFE3EB;
       padding: 15px 15px 0 15px;
+      margin-bottom: 20px;
       &:hover{
         cursor: pointer;
         border: 2px solid #5152CC;
       }
-      .cardContent{
+      .cardBody{
         list-style: none;
         padding: 0;
         .element{
@@ -58,6 +61,64 @@
             p{
               font-size: 13px;
               font-weight: 400;
+            }
+          }
+        }
+        .Bottom{
+          border-top: 2px solid #DFE3EB;
+          padding: 15px 0;
+          display: flex;
+          align-items: center;
+          .delete{
+            display: flex;
+            color: #FD397A;
+            background-color: #FFEBF1;
+            padding: 8px 20px;
+            border-radius: 3px;
+            height: 34px;
+            &:hover{
+              color: #FFFFFF;
+              background-color: #FD397A;
+            }
+            p{
+              font-size: 12px;
+              font-weight: 600;
+              padding-left: 8px;
+            }
+          }
+          .repair{
+            display: flex;
+            color: #3699FF;
+            background-color: #FFEBF1;
+            padding: 8px 20px;
+            border-radius: 3px;
+            margin-left: 10px;
+            height: 34px;
+            &:hover{
+              color: #FFFFFF;
+              background-color: #3699FF;
+            }
+            p{
+              font-size: 12px;
+              font-weight: 600;
+              padding-left: 8px;
+            }
+          }
+          .continue{
+            display: flex;
+            color: white;
+            background-color: #1DA1F2;
+            padding: 10px 20px;
+            border-radius: 3px;
+            margin-right: 0;
+            &:hover{
+              background-color: #007BFF;
+              cursor: pointer;
+            }
+            p{
+              font-size: 14px;
+              font-weight: 600;
+              padding-right: 8px;
             }
           }
         }
