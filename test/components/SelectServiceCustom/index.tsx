@@ -28,19 +28,6 @@ export const ChonDichVu = (props: any) => {
       dataIndex: 'price',
       render: (text: any) => <p>{text}đ</p>
     }
-    // {
-    //   title: '',
-    //   align: 'center',
-    //   dataIndex: 'action',
-    //   render: (_: any, record: any) => {
-    //     const { name } = record.nameService
-    //     return (
-    //       <Button type='primary' onClick={() => setquickView([name])}>
-    //         Chọn
-    //       </Button>
-    //     )
-    //   }
-    // }
   ]
 
   const data = bookingTree.child?.map((item: any, index: number) => {
