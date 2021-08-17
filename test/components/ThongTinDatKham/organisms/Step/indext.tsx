@@ -9,7 +9,7 @@ export const StepsCustom = (props: any) => {
     <Steps
       size='small'
       responsive={true}
-      current={2}
+      current={current}
       className={styles.steps}
       labelPlacement='horizontal'
     >
