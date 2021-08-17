@@ -6,16 +6,13 @@
   border-radius: 3px;
   max-width: 100%;
   align-items: center;
+  border: none;
   &:hover{
     color: @color;
     background-color: @colorText;
     cursor: pointer;
   }
-  figure{
-    margin-bottom: 0;
-  }
-  p{
-    padding-left: 8px;
+  span{
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 0;
@@ -23,54 +20,58 @@
   &:last-child{
     color: white;
     background-color: @color;
+    flex-direction: row-reverse;
     &:hover{
       color: white;
       background-color: @colorText;
     }
-    p{
-      padding-left: 0;
+    span{
       padding-right: 8px;
       font-size: 14px;
       text-align: center;
     }
   }
 }
-.container{
+.containerProfile{
   margin-top: 40px;
   .listCard{
     list-style: none;
     padding: 0;
     margin: 0 auto 40px;
     max-width: 450px;
-    .card{
+    .cardProfile{
       margin: 20px 0;
       border: 2px solid #DFE3EB;
       border-radius: 3px;
       padding: 15px;
       .cardBody{
         padding-bottom: 30px;
-        .listContent{
+        .listItem{
           list-style: none;
           padding: 0;
-          .content{
-            display: flex;
-            font-size: 14px;
-            font-weight: 400;
-            color: #7D8EA5;
+          li {
+            .cardItem{
+              display: flex;
+              font-size: 14px;
+              font-weight: 400;
+              color: #7D8EA5;
+              .itemKeys{
+                display: flex;
+                min-width: 150px;
+                p{
+                  padding-left: 10px;
+                }
+              }
+            }
             &:first-child{
+              .cardItem{
               font-size: 14px;
               font-weight: bolder;
               color: #0453CC;
               text-transform: uppercase;
-              .title{
-                min-width: 0;
-              }
-            }
-            .title{
-              display: flex;
-              min-width: 150px;
-              p{
-                padding-left: 10px;
+                .itemKeys{
+                  min-width: 0;
+                }
               }
             }
           }
@@ -81,6 +82,7 @@
         padding-top: 30px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
         .delete{
           .btnFooter(#fd397a,#FFEBF1);
@@ -95,39 +97,6 @@
             min-width: 100%;
           }
         }
-      }
-    }
-  }
-  .Footer{
-    border-top: 1px solid #7D8EA5;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 30px;
-    .Quaylai{
-      p{
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-    }
-    .ThemHoSo{
-      background-color: #3699FF;
-      width: 200px;
-      padding: 12px 20px;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      &:hover{
-        color: white;
-        background-color: #0453CC;
-        cursor: pointer;
-      }
-      p{
-        margin: 0;
-        color: white;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
       }
     }
   }

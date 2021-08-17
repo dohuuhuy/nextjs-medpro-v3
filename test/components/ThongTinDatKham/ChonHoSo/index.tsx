@@ -2,10 +2,11 @@ import {
   ArrowRightOutlined,
   DeleteOutlined,
   ReadOutlined,
-  UserAddOutlined
+  UserAddOutlined,
 } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import React from 'react'
+import { Button } from 'antd'
 import styles from './styles.module.less'
 
 export const ChonHoSo = () => {
@@ -63,56 +64,45 @@ export const ChonHoSo = () => {
     }
   ])
   return (
-    <Container className={styles.container}>
+    <Container className={styles.containerProfile}>
+      <div>
+        <Button icon={<UserAddOutlined />} size='large' type='primary' />
+      </div>
       <ul className={styles.listCard}>
         {Filter.map((item: any, index: any) => (
-          <li key={index} className={styles.card}>
-            <div className={styles.cardBody}>
-              <ul className={styles.listContent}>
-                {item.map(({ icon, title, values }: any) => (
-                  <li key={title} className={styles.content}>
-                    <div className={styles.title}>
-                      <figure>{icon}</figure>
-                      <p>{title}</p>
-                    </div>
-                    <div className={styles.values}>
-                      <p>{values}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={styles.cardFooter}>
-              <div className={styles.delete}>
-                <figure>
-                  <DeleteOutlined />
-                </figure>
-                <p>Xóa</p>
+          <li key={index}>
+            <div className={styles.cardProfile}>
+              <div className={styles.cardBody}>
+                <ul className={styles.listItem}>
+                  {item.map(({ icon, title, values }: any) => (
+                    <li key={title}>
+                      <div className={styles.cardItem}>
+                        <div className={styles.itemKeys}>
+                          <figure className={styles.itemView}>{icon}</figure>
+                          <p>{title}</p>
+                        </div>
+                        <div className={styles.itemValues}>
+                          <p>{values}</p>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className={styles.repair}>
-                <figure>
-                  <ReadOutlined />
-                </figure>
-                <p>Sửa</p>
-              </div>
-              <div className={styles.continue}>
-                <p>Tiếp tục</p>
-                <figure>
-                  <ArrowRightOutlined />
-                </figure>
+              <div className={styles.cardFooter}>
+                <Button size='middle' icon={<DeleteOutlined />} className={styles.delete}>
+                  Xóa
+                </Button>
+                <Button size='middle' icon={<DeleteOutlined />} className={styles.repair}>
+                  Sửa
+                </Button>
+                <Button size='large' icon={<ArrowRightOutlined />} className={styles.continue}>
+                  Tiếp tục
+                </Button>
               </div>
             </div>
           </li>
         ))}
-        <div className={styles.Footer}>
-          <div className={styles.Quaylai}>
-            <p>Quay lại</p>
-          </div>
-          <div className={styles.ThemHoSo}>
-            <p>Thêm hồ sơ</p>
-          </div>
-        </div>
       </ul>
     </Container>
   )
