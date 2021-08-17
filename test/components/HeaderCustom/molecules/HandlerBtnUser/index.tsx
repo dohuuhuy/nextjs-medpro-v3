@@ -33,7 +33,6 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
           <Button
             className={isAuthen ? styles.user : styles.login}
             type='default'
-            size='large'
             icon={iconHandler}
           >
             {nameUser}

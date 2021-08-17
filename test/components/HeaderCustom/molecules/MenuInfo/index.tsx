@@ -31,7 +31,6 @@ export const MenuInfo = ({ Authencartion }: Props) => {
           <Button
             className={styles.downloadApp}
             type='default'
-            size='large'
             icon={<MobileFilled className={styles.icons} />}
           >
             Tải ứng dụng
