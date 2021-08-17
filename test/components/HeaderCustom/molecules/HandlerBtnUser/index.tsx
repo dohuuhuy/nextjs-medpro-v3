@@ -16,7 +16,9 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
 
   const Login = () => {
     router.push(
-      `https://id-testing.medpro.com.vn/check-phone/url=${'http://localhost:3007'}&partnerId=${'medpro'}&bookingFlow=true`
+      `https://id-testing.medpro.com.vn/check-phone/url=${
+        window.location.origin
+      }&partnerId=${'medpro'}&bookingFlow=true`
     )
   }
 
