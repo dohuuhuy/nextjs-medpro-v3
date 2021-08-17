@@ -13,13 +13,14 @@ export interface PropsHeader {
   Authencartion: any[] | any
 }
 
-export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
+export const HeaderCustom = (Props: PropsHeader) => {
+  const { dataHeader, Authencartion } = Props
+
   if (checkData(dataHeader)) {
     return <DataFailure description={'Lỗi không có data header'} />
   }
 
-  const { logoHeader, logoHeaderMobile, menuHeader, menuMobile, support }: any =
-    dataHeader
+  const { logoHeader, logoHeaderMobile, menuMobile, support }: any = dataHeader
 
   return (
     <div className={styles.HeaderCustom}>
@@ -32,10 +33,7 @@ export const HeaderCustom = ({ dataHeader, Authencartion }: PropsHeader) => {
             />
           </Col>
           <Col xl={14} lg={14} md={14} className={styles.Col_GroupMenuHeader}>
-            <GroupMenuHeader
-              menuHeader={menuHeader}
-              Authencartion={Authencartion}
-            />
+            <GroupMenuHeader {...Props} />
           </Col>
           <Col xl={4} lg={4} md={12} className={styles.Col_SupportHeader}>
             <SupportHeader support={support} />

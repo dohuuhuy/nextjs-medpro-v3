@@ -66,10 +66,12 @@ export const DropdownProfile = ({ nameUser }: Props) => {
         return (
           <Item className={styles.item} key={i}>
             <Link href={lug}>
-              <Space>
-                {icon}
-                {label}
-              </Space>
+              <a>
+                <Space>
+                  {icon}
+                  {label}
+                </Space>
+              </a>
             </Link>
           </Item>
         )

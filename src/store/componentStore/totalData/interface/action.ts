@@ -34,13 +34,6 @@ export interface SetParnerId {
   partnerId: any
 }
 
-export const SetParnerId = (partnerId: any) => {
-  return {
-    type: TotalDataTypes.ListPartners.SET_PARTNERID,
-    partnerId
-  }
-}
-
 // ----------------------------------------------------------------------------------------------
 export type PartnerIdlocalAction = SetPartnerIdLocal
 

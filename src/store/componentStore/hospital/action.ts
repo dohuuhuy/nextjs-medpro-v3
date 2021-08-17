@@ -7,6 +7,15 @@ export const getHospitalDetails = (partnerId: string): HospitalActions => {
   }
 }
 
+export const InformationRequestSuccess = (
+  information: Record<string, any>
+): HospitalActions => {
+  return {
+    type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
+    information
+  }
+}
+
 export const getListHospital = (): HospitalActions => {
   return {
     type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
@@ -24,5 +33,11 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
   return {
     type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS,
     bookingTree: data
+  }
+}
+
+export const FeatureByPartnerRequest = (): HospitalActions => {
+  return {
+    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
   }
 }

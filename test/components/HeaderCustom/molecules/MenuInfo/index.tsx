@@ -7,17 +7,14 @@ import { HandlerBtnUser } from '../HandlerBtnUser'
 import { NoitiBell } from '../NotiBell'
 import styles from './styles.module.less'
 
-interface Props {
-  Authencartion: Info[] | any
-}
-
 export interface Info {
   isAuthen: boolean
   nameUser?: string
 }
 
-export const MenuInfo = ({ Authencartion }: Props) => {
-  const { isAuthen, nameUser }: any = Authencartion
+export const MenuInfo = (Props: any) => {
+  const { Authencartion, ListPatientRequest } = Props
+  const { isAuthen }: any = Authencartion
   const notification = { totalNew: 0 }
 
   return (
@@ -39,7 +36,10 @@ export const MenuInfo = ({ Authencartion }: Props) => {
       </li>
 
       <li>
-        <HandlerBtnUser isAuthen={isAuthen} nameUser={nameUser} />
+        <HandlerBtnUser
+          {...Authencartion}
+          funcGetListPatient={ListPatientRequest}
+        />
       </li>
     </ul>
   )
