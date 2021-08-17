@@ -17,16 +17,14 @@ export const NoitiBell = ({ notification }: any) => {
     >
       <Badge
         count={notification.totalNew || null}
-        showZero={true}
-        size='small'
         className={styles.bell}
+        size='small'
+        showZero={true}
       >
-        <a
-          className={bell ? styles.activeBell : 'ant-dropdown-link'}
+        <BellOutlined
+          style={{ fontSize: '20px', color: '#08c' }}
           onClick={onClick}
-        >
-          <BellOutlined style={{ fontSize: '20px', color: '#08c' }} />
-        </a>
+        />
       </Badge>
     </Dropdown>
   )
