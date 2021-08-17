@@ -3,8 +3,6 @@ import { Medthods } from '../utils/interface'
 import styles from './styles.module.less'
 
 export const ChonHoSo = (Props: Medthods) => {
-  console.log('listPatient :>> ', Props.listPatient)
-
   return (
     <div className={styles.container}>
       <ul className={styles.listCard}>
