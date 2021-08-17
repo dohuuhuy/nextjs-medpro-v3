@@ -9,6 +9,7 @@ import {
   ListHospitalRequestSuccess,
   TotalDataTypes
 } from '@store/interface'
+import { check } from '@utils/checkValue'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -126,6 +127,10 @@ function* WatchGetListHospital() {
 
 function* getBookingTree({ partnerid }: any) {
   try {
+    const listPatient: string = yield select(
+      (state: AppState) => state.userReducer.listPatient
+    )
+
     const response: AxiosResponse = yield client.getBookingTreeDynamic(
       { treeId: 'DATE' },
       {
@@ -134,6 +139,10 @@ function* getBookingTree({ partnerid }: any) {
       }
     )
     yield put(act.getBookingTreeSuccess(response.data))
+
+    if (check(listPatient)) {
+      yield put(act.ListPatientRequest())
+    }
   } catch (error) {
     console.log(error)
   }
