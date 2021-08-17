@@ -6,6 +6,6 @@ export interface UserState {
     token: string
     isCS: boolean
   }
-  listPatient: any
+  listPatient: Array<any>
   [x: string]: any
 }

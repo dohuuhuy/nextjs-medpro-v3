@@ -8,4 +8,5 @@ export interface Medthods {
   quickView: never[]
   setquickView: React.Dispatch<React.SetStateAction<never[]>>
   steps: null
+  listPatient: any[]
 }

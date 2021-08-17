@@ -11,7 +11,7 @@ export const ListPatientRequest = (): UserActions => {
   return { type: UserTypes.Patient.LIST_PATIENT_REQUEST }
 }
 
-export const ListPatientRequestSuccess = (listPatient: any): UserActions => {
+export const ListPatientRequestSuccess = (listPatient: any[]): UserActions => {
   return {
     type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS,
     listPatient

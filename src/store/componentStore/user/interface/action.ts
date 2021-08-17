@@ -19,5 +19,5 @@ export interface ListPatientRequest {
 
 export interface ListPatientRequestSuccess {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS
-  listPatient: any
+  listPatient: any[]
 }

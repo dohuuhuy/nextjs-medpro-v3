@@ -16,9 +16,19 @@ const BookingInformationPage = () => {
     (state: AppState) => state.hospitalReducer.bookingTree
   )
 
+  const listPatient = useSelector(
+    (state: AppState) => state.userReducer.listPatient
+  )
+
   const findHospital = find(listHospital, { partnerId })
 
-  return <ThongTinDatKham info={findHospital} bookingTree={bookingTree} />
+  const methods = {
+    listPatient,
+    bookingTree,
+    info: findHospital
+  }
+
+  return <ThongTinDatKham {...methods} />
 }
 
 export default BookingInformationPage

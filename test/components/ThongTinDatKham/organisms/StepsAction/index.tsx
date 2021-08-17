@@ -7,8 +7,10 @@ export const StepsAction = (props: any) => {
 
   return (
     <div className={styles.stepsAction}>
+      {current > 0 && <Button onClick={prev}>Quay lại</Button>}
+
       {current < steps.length - 1 && (
-        <Button type='primary' onClick={next}>
+        <Button type='primary' style={{ marginLeft: '40px' }} onClick={next}>
           Tiếp tục
         </Button>
       )}
@@ -18,11 +20,6 @@ export const StepsAction = (props: any) => {
           onClick={() => message.success('Nhập thông tin đặt khám thành công!')}
         >
           Xác nhận
-        </Button>
-      )}
-      {current > 0 && (
-        <Button style={{ marginLeft: '40px' }} onClick={prev}>
-          Quay lại
         </Button>
       )}
     </div>
