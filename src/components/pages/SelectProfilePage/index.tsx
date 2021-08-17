@@ -1,4 +1,4 @@
-import { ChonHoSo } from '@componentsTest/SelectProfileCustom'
+import { ChonHoSo } from '@componentsTest/ThongTinDatKham/ChonHoSo'
 // import { AppState } from '@store/interface'
 import React from 'react'
 // import { useSelector } from 'react-redux'
