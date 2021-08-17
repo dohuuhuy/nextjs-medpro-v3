@@ -1,6 +1,6 @@
 import { Table } from 'antd'
 import React from 'react'
-import { handlerQuickView, handlerValue } from '../utils/func'
+import { handlerQuickView, handlerValue, VNĐ } from '../utils/func'
 export const DichVu = {
   vn: 'Dịch vụ',
   en: 'service'
@@ -76,6 +76,6 @@ const columns = [
     title: 'Giá tiền',
     align: 'center',
     dataIndex: 'price',
-    render: (text: any) => <p>{text}đ</p>
+    render: (text: any) => <p>{VNĐ(text)}đ</p>
   }
 ]
