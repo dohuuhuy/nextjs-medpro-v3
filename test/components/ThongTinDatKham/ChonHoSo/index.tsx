@@ -9,7 +9,6 @@ import React from 'react'
 import styles from './styles.module.less'
 
 export const ChonHoSo = () => {
-  // const [Detail, setDetail] = useState(false)
   const Data = [
     {
       name: 'Mạc Lệ Thảo',
@@ -63,7 +62,7 @@ export const ChonHoSo = () => {
     }
   ])
   return (
-    <Container className={styles.container}>
+    <div className={styles.container}>
       <ul className={styles.listCard}>
         {Filter.map((item: any, index: any) => (
           <li key={index} className={styles.card}>
@@ -114,6 +113,6 @@ export const ChonHoSo = () => {
           </div>
         </div>
       </ul>
-    </Container>
+    </div>
   )
 }
