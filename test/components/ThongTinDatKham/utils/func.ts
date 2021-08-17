@@ -51,7 +51,7 @@ export const handlerValue = (props: any, KEY: any) => {
     case 2:
       return three
     default:
-      break
+      return []
   }
 }
 
