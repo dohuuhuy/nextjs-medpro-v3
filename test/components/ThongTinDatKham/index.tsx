@@ -8,6 +8,7 @@ import { StepsCustom } from './organisms/Step/indext'
 import { StepsAction } from './organisms/StepsAction'
 import styles from './styles.module.less'
 import { handleStep } from './utils/handler'
+import { Medthods } from './utils/interface'
 
 export interface Props {
   info: any
@@ -36,7 +37,7 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
     setcurrent(current - 1)
   }
 
-  const medthods = {
+  const medthods: Medthods = {
     current,
     stepBooking,
     next,
@@ -47,6 +48,7 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
     setquickView,
     steps: null
   }
+
   const steps = handleStep(medthods)
 
   medthods.steps = steps

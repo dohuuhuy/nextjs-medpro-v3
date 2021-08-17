@@ -36,9 +36,12 @@ export const handlerQuickView = (props: Props) => {
 
 export const handlerValue = (props: any, KEY: any) => {
   const { stepBooking, bookingTree, quickView } = props
+
   const stepIndex = stepBooking.indexOf(KEY.en)
   const quickIndex = findIndex(quickView, { subType: KEY.en })
+
   const willIndex = quickView[quickIndex]?.willIndex
+
   const one = bookingTree?.child
   const two = one?.[willIndex]?.child
   const three = two?.[willIndex]?.child

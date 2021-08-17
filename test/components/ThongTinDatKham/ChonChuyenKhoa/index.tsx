@@ -3,12 +3,13 @@ import { Input } from 'antd'
 import React, { useEffect, useState } from 'react'
 import Container from '../../Container'
 import { handlerQuickView, handlerValue } from '../utils/func'
+import { Medthods } from '../utils/interface'
 import styles from './styles.module.less'
 export const ChuyenKhoa = {
   vn: 'Chuyên khoa',
   en: 'subject'
 }
-export const ChonChuyenKhoa = (props: any) => {
+export const ChonChuyenKhoa = (props: Medthods) => {
   const { quickView, setquickView, next } = props
 
   const getList = handlerValue(props, ChuyenKhoa)

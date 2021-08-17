@@ -8,6 +8,7 @@ import {
 import React from 'react'
 import { ChonChuyenKhoa } from '../ChonChuyenKhoa'
 import { ChonDichVu } from '../ChonDichVu'
+import { ChonHoSo } from '../ChonHoSo'
 
 export const handleStep = (medthods: any) => {
   const { stepBooking } = medthods
@@ -21,7 +22,7 @@ export const handleStep = (medthods: any) => {
     {
       title: 'Hồ sơ',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Hồ sơ'
+      content: <ChonHoSo />
     },
     {
       title: 'Xác nhận',

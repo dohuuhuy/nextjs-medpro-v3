@@ -1,12 +1,13 @@
 import { Table } from 'antd'
 import React from 'react'
 import { handlerQuickView, handlerValue, VNĐ } from '../utils/func'
+import { Medthods } from '../utils/interface'
 export const DichVu = {
   vn: 'Dịch vụ',
   en: 'service'
 }
 
-export const ChonDichVu = (props: any) => {
+export const ChonDichVu = (props: Medthods) => {
   const { quickView, setquickView, next } = props
 
   return (
