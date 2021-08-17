@@ -1,4 +1,4 @@
-import { SelectCalendarCustom } from '@componentsTest/SelectCalendarCustom'
+import { ChonLichKham } from '@componentsTest/SelectCalendarCustom'
 // import { AppState } from '@store/interface'
 import React from 'react'
 // import { useSelector } from 'react-redux'
@@ -13,6 +13,6 @@ export const SelectCalendarPage = () => {
   // )
 
   return (
-    <SelectCalendarCustom />
+    <ChonLichKham />
   )
 }
