@@ -1,21 +1,13 @@
 /* eslint-disable no-console */
-import {
-  CalendarOutlined,
-  CustomerServiceOutlined,
-  IdcardOutlined,
-  SolutionOutlined,
-  UsergroupAddOutlined
-} from '@ant-design/icons'
-import { ChonDichVu } from '@componentsTest/ThongTinDatKham/ChonDichVu'
-import { Col, Row, Steps } from 'antd'
+import { Col, Row } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
-import { ChonChuyenKhoa } from './ChonChuyenKhoa'
 import { CardInfo } from './organisms/CardInfo'
+import { CardConcise } from './organisms/cardInfoBooking'
+import { StepsCustom } from './organisms/Step/indext'
 import { StepsAction } from './organisms/StepsAction'
 import styles from './styles.module.less'
-
-const { Step } = Steps
+import { handleStep } from './utils/handler'
 
 export interface Props {
   info: any
@@ -23,74 +15,41 @@ export interface Props {
 }
 
 export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
-  console.log('bookingTree :>> ', bookingTree)
-
   const stepBooking = bookingTree?.path?.split('_') || []
-
-  console.log('stepBooking :>> ', stepBooking)
-
   const [current, setcurrent] = useState(0)
-
   const [quickView, setquickView] = useState([])
 
-  console.log('quickView :>> ', quickView)
+  console.log('bookingTree :>> ', bookingTree)
 
-  const steps: any = [
-    {
-      title: 'Ngày khám',
-      icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
-      content: 'Ngày khám'
-    },
-    {
-      title: 'Hồ sơ',
-      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Hồ sơ'
-    },
-    {
-      title: 'Xác nhận',
-      icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Xác nhận'
-    }
-  ]
-
-  for (let index = 0; index < stepBooking.length; index++) {
-    const item = stepBooking[index]
-
-    if (item === 'service') {
-      steps.splice(index, 0, {
-        title: 'Dịch vụ',
-        icon: <CustomerServiceOutlined style={{ color: '#1da1f2' }} />,
-        content: (
-          <ChonDichVu
-            bookingTree={bookingTree}
-            quickView={quickView}
-            setquickView={setquickView}
-            current={current}
-            setcurrent={setcurrent}
-          />
-        )
-      })
-    } else if (item === 'subject') {
-      steps.splice(index, 0, {
-        title: 'Chuyên khoa',
-        icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
-        content: (
-          <ChonChuyenKhoa
-            quickView={quickView}
-            setquickView={setquickView}
-            current={current}
-            setcurrent={setcurrent}
-          />
-        )
-      })
-    } else if (item === 'doctor') {
-      steps.splice(index, 0, {
-        title: 'Bác sỉ',
-        icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
-        content: 'Last-content'
-      })
-    }
+  const next = () => {
+    window.scrollTo(0, 0)
+    setcurrent(current + 1)
   }
+
+  const optional = (i: any) => {
+    window.scrollTo(0, 0)
+    setcurrent(i)
+  }
+
+  const prev = () => {
+    window.scrollTo(0, 0)
+    setcurrent(current - 1)
+  }
+
+  const medthods = {
+    current,
+    stepBooking,
+    next,
+    prev,
+    optional,
+    bookingTree,
+    quickView,
+    setquickView,
+    steps: null
+  }
+  const steps = handleStep(medthods)
+
+  medthods.steps = steps
 
   return (
     <Container className={styles.BookingInformation}>
@@ -102,40 +61,15 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
 
       <Row className={styles.rowSteps}>
         <Col xl={24} xs='24' className={styles.colSteps}>
-          <Steps
-            current={current}
-            className={styles.steps}
-            responsive
-            labelPlacement='horizontal'
-            size='small'
-          >
-            {steps?.map((item: any, i: number) => (
-              <Step
-                key={item.title}
-                title={item.title}
-                icon={item.icon}
-                onClick={() => setcurrent(i)}
-              />
-            ))}
-          </Steps>
+          <StepsCustom {...medthods} />
         </Col>
       </Row>
 
       <Row className={styles.rowContent}>
         <Col xl={7} lg={7} span={24} className={styles.colInfoBooking}>
-          <div className={styles.cardInfoBooking}>
-            <div className={styles.cardHeader}>Thông tin khám</div>
-            <div className={styles.cardBody}>
-              {quickView?.map(({ key, value }, i) => {
-                return (
-                  <p key={i}>
-                    {key}: {value}
-                  </p>
-                )
-              })}
-            </div>
-          </div>
+          <CardConcise {...medthods} />
         </Col>
+
         <Col xl={17} lg={17} span={24} className={styles.colStepsContent}>
           <div className={styles.cardStepsContent}>
             <div className={styles.cardHeader}>
@@ -146,13 +80,10 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
           </div>
         </Col>
       </Row>
+
       <Row className={styles.rowStepsAction}>
         <Col xl={24} xs='24' className={styles.colStepsAction}>
-          <StepsAction
-            current={current}
-            setcurrent={setcurrent}
-            steps={steps}
-          />
+          <StepsAction {...medthods} />
         </Col>
       </Row>
     </Container>

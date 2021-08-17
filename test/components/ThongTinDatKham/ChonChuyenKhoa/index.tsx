@@ -1,47 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import { SearchOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
-import { find, findIndex } from 'lodash'
 import React from 'react'
 import Container from '../../Container'
+import { handlerQuickView, handlerValue } from '../utils/func'
 import styles from './styles.module.less'
-
+export const ChuyenKhoa = {
+  vn: 'Chuyên khoa',
+  en: 'subject'
+}
 export const ChonChuyenKhoa = (props: any) => {
-  const { quickView, setquickView, current, setcurrent } = props
+  const { quickView, setquickView, next } = props
 
-  const KEY = 'Chuyên khoa'
-
-  // const [listSpecialist, setlistSpecialist] = useState<any[]>([])
-
-  // function OnChange(e: any) {
-  //   const { value } = e.target
-  //   const findHospital = Data.filter(
-  //     ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
-  //   )
-  //   // setlistSpecialist(findHospital)
-  // }
-
-  const onClick = (id: any, name: string) => {
-    const findKey = find(quickView, { key: KEY })
-    const findKeyIndex = findIndex(quickView, { key: KEY })
-
-    if (findKey) {
-      quickView[findKeyIndex] = {
-        key: KEY,
-        value: name,
-        data: quickView[0]?.data?.child[findKeyIndex]
-      }
-    } else {
-      quickView.push({
-        key: KEY,
-        value: name,
-        data: quickView[0]?.data?.child[findKeyIndex]
-      })
-    }
-
-    setquickView(quickView)
-    setcurrent(current + 1)
+  const onClick = (id: any, name: string, subType: string) => {
+    setquickView(
+      handlerQuickView({ quickView, KEY: ChuyenKhoa, name, id, subType })
+    )
+    next()
   }
   return (
     <Container className={styles.ChonChuyenKhoa}>
@@ -52,21 +26,24 @@ export const ChonChuyenKhoa = (props: any) => {
         autoFocus={true}
         prefix={<SearchOutlined />}
         allowClear={true}
-        // onChange={OnChange}
       />
 
-      <ul className={styles.listChuyenKhoa}>
-        {quickView[0]?.data?.child?.map(({ detail }: any, index: number) => {
-          const { name, id } = detail
-          return (
-            <li key={index} onClick={() => onClick(id, name)}>
-              <p>{name.toUpperCase()}</p>
-            </li>
-          )
-        })}
-      </ul>
+      <ul className={styles.listChuyenKhoa}>{itemList(props, onClick)}</ul>
     </Container>
   )
 }
 
-export const Data = [{ name: 'Khoa Thần Kinh' }, { name: 'Khoa Mắt' }]
+const itemList = (props: any, onClick: any) => {
+  {
+    return handlerValue(props, ChuyenKhoa)?.map(
+      ({ detail, subType }: any, index: number) => {
+        const { name } = detail
+        return (
+          <li key={index} onClick={() => onClick(index, name, subType)}>
+            <p>{name.toUpperCase()}</p>
+          </li>
+        )
+      }
+    )
+  }
+}

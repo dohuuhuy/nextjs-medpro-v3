@@ -2,22 +2,8 @@ import { Button, message } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
 
-interface Props {
-  current: any
-  setcurrent: any
-  steps: any
-}
-
-export const StepsAction = ({ current, setcurrent, steps }: Props) => {
-  const next = () => {
-    window.scrollTo(0, 0)
-    setcurrent(current + 1)
-  }
-
-  const prev = () => {
-    window.scrollTo(0, 0)
-    setcurrent(current - 1)
-  }
+export const StepsAction = (props: any) => {
+  const { next, prev, steps, current } = props
 
   return (
     <div className={styles.stepsAction}>
