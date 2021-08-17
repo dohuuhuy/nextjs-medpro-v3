@@ -1,71 +1,79 @@
-import React from 'react'
-import { Menu, Row, Col, Space } from 'antd'
-import styles from './styles.module.less'
 import {
-  BellOutlined,
   FileAddOutlined,
   PoweroffOutlined,
   SolutionOutlined
 } from '@ant-design/icons'
+import { Menu, Space } from 'antd'
+import Link from 'next/link'
+import React from 'react'
+import styles from './styles.module.less'
 
-const { Item, Divider } = Menu
+const { Item } = Menu
 
 interface Props {
   nameUser?: string
 }
 
+interface Menus {
+  lug: string
+  label: JSX.Element | string
+  icon: JSX.Element | null
+  tag?: JSX.Element | null | string
+}
+
 export const DropdownProfile = ({ nameUser }: Props) => {
+  const menu: Array<Menus> = [
+    {
+      lug: '#',
+      label: (
+        <p>
+          Xin chào! <b>{nameUser}</b>
+        </p>
+      ),
+      icon: null
+    },
+    {
+      lug: '/user',
+      label: 'Hồ sơ bệnh nhân',
+      icon: <SolutionOutlined />
+    },
+    {
+      lug: '/user',
+      label: 'Hồ sơ bệnh nhân',
+      icon: <SolutionOutlined />
+    },
+    {
+      lug: '/user',
+      label: 'Phiếu khám',
+      icon: <FileAddOutlined />
+    },
+    {
+      lug: '/logout',
+      label: 'Thoát',
+      icon: <PoweroffOutlined />
+    },
+    {
+      lug: '#',
+      tag: 'em',
+      label: ' Phiên bản 1.1.1',
+      icon: null
+    }
+  ]
+
   return (
-    <Menu className={styles.dropdownProfile}>
-      <Item className={styles.item_user}>
-        <Row className={styles.view_user}>
-          <Col className={styles.colAvt}>
-            <i className='fas fa-user-circle' />
-          </Col>
-          <Col className={styles.colHello}>
-            <span>Xin chào! </span>
-            <strong className={styles.info_name}>{nameUser}</strong>
-          </Col>
-        </Row>
-      </Item>
-      <Divider />
-      <Item className={styles.item_information}>
-        <a href='/user'>
-          <Space>
-            <SolutionOutlined />
-            Hồ sơ bệnh nhân
-          </Space>
-        </a>
-      </Item>
-      <Item className={styles.item_information}>
-        <a href='#'>
-          <Space>
-            <FileAddOutlined />
-            Phiếu khám
-          </Space>
-        </a>
-      </Item>
-      <Item className={styles.item_information}>
-        <a href='#'>
-          <Space>
-            <BellOutlined />
-            Thông báo
-          </Space>
-        </a>
-      </Item>
-      <Item className={styles.item_information}>
-        <a href='/logout'>
-          <Space>
-            <PoweroffOutlined />
-            Thoát
-          </Space>
-        </a>
-      </Item>
-      <Item>
-        <div className='version'>
-          <i>Phiên bản 1.1.1</i>
-        </div>
-      </Item>
+    <Menu className={styles.menuDropdown}>
+      {menu?.map(({ lug, label, icon }, i: number) => {
+        return (
+          <Item className={styles.item} key={i}>
+            <Link href={lug}>
+              <Space>
+                {icon}
+                {label}
+              </Space>
+            </Link>
+          </Item>
+        )
+      })}
     </Menu>
   )
 }

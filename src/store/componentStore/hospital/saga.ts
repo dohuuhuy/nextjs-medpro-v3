@@ -140,9 +140,6 @@ function* getBookingTree({ partnerid }: any) {
         appid: partnerid
       }
     )
-
-    console.log('response :>> ', response)
-
     yield put(getBookingTreeSuccess(response.data))
   } catch (error) {
     console.log(error)
