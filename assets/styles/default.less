@@ -15,6 +15,7 @@ body {
 a {
   color: #12263f;
   width: 100%;
+  font-size: @13;
   &:hover {
     color: #007bff;
     cursor: pointer;
@@ -40,20 +41,6 @@ big {
   font-size: @14;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  width: 100%;
-  color: #12263f;
-}
-
-@rslg: 0.5vw;
-@rsmd: 1vw;
-@rssm: 2vw;
-
 h1 {
   font-size: @h1;
 }
@@ -73,7 +60,25 @@ h6 {
   font-size: @h6;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: 100%;
+  color: #12263f;
+}
+
+@rslg: 0.5vw;
+@rsmd: 1vw;
+@rssm: 2vw;
+
 @media only screen and (max-width: 1440px) and (min-width: 2560px) {
+  a {
+    font-size: @13;
+  }
+
   h1 {
     font-size: @h1;
   }
@@ -95,6 +100,9 @@ h6 {
 }
 
 @media only screen and (max-width: 1024px) {
+  a {
+    font-size: @13;
+  }
   h1 {
     font-size: calc(@h1 - @rslg);
   }
@@ -116,6 +124,9 @@ h6 {
 }
 
 @media only screen and (max-width: 768px) {
+  a {
+    font-size: @12;
+  }
   h1 {
     font-size: calc(@h1 - @rsmd);
   }
@@ -137,6 +148,9 @@ h6 {
 }
 
 @media only screen and (max-width: 426px) {
+  a {
+    font-size: @12;
+  }
   h1 {
     font-size: calc(@h1 - @rssm);
   }
@@ -145,15 +159,6 @@ h6 {
   }
   h3 {
     font-size: calc(@h3 - @rssm);
-  }
-  h4 {
-    font-size: calc(@h4 - @rssm);
-  }
-  h5 {
-    font-size: calc(@h5 - @rssm);
-  }
-  h6 {
-    font-size: calc(@h6 - @rssm);
   }
 }
 
@@ -176,4 +181,13 @@ input[type='number'] {
 img {
   width: 100%;
   border-radius: 5px;
+}
+
+.d-none {
+  display: none;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
 }

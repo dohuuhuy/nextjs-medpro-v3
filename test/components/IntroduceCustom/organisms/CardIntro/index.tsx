@@ -4,7 +4,7 @@ import React from 'react'
 import Container from '../../../Container'
 import { FooterSign } from '../../molecules/FooterSign'
 import styles from './styles.module.less'
-
+import cx from 'classnames'
 export interface CardIntro {
   dataCardIntro: CardIntroItem[]
 }
@@ -18,7 +18,7 @@ export interface CardIntroItem {
 
 export const CardIntro = ({ dataCardIntro }: CardIntro) => {
   return (
-    <Container className={styles.containerGroudCard}>
+    <Container className={cx(styles.containerGroudCard)}>
       <Row>
         <ul className={styles.groudCard}>
           {dataCardIntro?.map(

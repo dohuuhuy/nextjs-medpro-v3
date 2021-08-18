@@ -1,5 +1,4 @@
-import { DoubleRightOutlined } from '@ant-design/icons'
-import { Button, Col, Row } from 'antd'
+import { Col, Row } from 'antd'
 import moment from 'moment'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -44,13 +43,11 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
         </Col>
       </Row>
       <Row className={styles.rowBtnViewDetails}>
-        <Button>
-          <Link href='/tin-tuc'>
-            <a>
-              Xem Thêm Các Bài Viết Khác <DoubleRightOutlined />
-            </a>
-          </Link>
-        </Button>
+        <Link href='/tin-tuc'>
+          <a>
+            <i>Xem thêm</i>
+          </a>
+        </Link>
       </Row>
     </Container>
   )
