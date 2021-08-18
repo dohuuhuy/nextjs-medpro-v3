@@ -22,7 +22,7 @@ export const handleStep = (medthods: any) => {
     {
       title: 'Hồ sơ',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: <ChonHoSo />
+      content: <ChonHoSo {...medthods} />
     },
     {
       title: 'Xác nhận',

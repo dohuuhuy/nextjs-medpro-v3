@@ -1,109 +1,87 @@
-import {
-  ArrowRightOutlined,
-  DeleteOutlined,
-  ReadOutlined,
-  UserAddOutlined,
-} from '@ant-design/icons'
-import Container from '@componentsTest/Container'
-import React from 'react'
 import { Button } from 'antd'
+import React, { useState } from 'react'
+import { Medthods } from '../utils/interface'
 import styles from './styles.module.less'
+import { UserAddOutlined, DeleteOutlined, ArrowRightOutlined } from '@ant-design/icons'
 
-export const ChonHoSo = () => {
-  // const [Detail, setDetail] = useState(false)
-  const Data = [
+export const ChonHoSo = (Props: Medthods) => {
+  const Filter = Props?.listPatient.map((item: any) => [
     {
-      name: 'Mạc Lệ Thảo',
-      birthday: '17/7/2000',
-      phone: '0987654321',
-      sex: 'Nữ',
-      nation: 'Kinh',
-      address:
-        'Bảo hiểm xã hội Tây Ninh, Xã Châu Phong, Thị xã Tân Châu, Tỉnh An Giang'
+      id: "1",
+      Key: "",
+      Value: item.fullname,
     },
     {
-      name: 'Mạc Lệ Thảo 2',
-      birthday: '17/7/2000',
-      phone: '0987654321',
-      sex: 'Nữ',
-      nation: 'Kinh',
-      address:
-        'Bảo hiểm xã hội Tây Ninh, Xã Châu Phong, Thị xã Tân Châu, Tỉnh An Giang'
-    }
-  ]
-  const Filter = Data.map((item) => [
-    {
-      icon: <UserAddOutlined />,
-      title: '',
-      values: item.name
+      id: "2",
+      Key: "Ngày sinh",
+      Value: item.birthdate,
     },
     {
-      icon: <UserAddOutlined />,
-      title: 'Ngày sinh',
-      values: item.birthday
+      id: "3",
+      Key: "Số điện thoại",
+      Value: item.mobile,
     },
     {
-      icon: <UserAddOutlined />,
-      title: 'Số điện thoại',
-      values: item.phone
+      id: "4",
+      Key: "Giới tính",
+      Value: item.sex ? "Nam" : "Nữ",
     },
     {
-      icon: <UserAddOutlined />,
-      title: 'Giới tính',
-      values: item.sex
+      id: "5",
+      Key: "Dân tộc",
+      Value: Props?.listPatient.map(item => (item.nation.name))
     },
     {
-      icon: <UserAddOutlined />,
-      title: 'Dân tộc',
-      values: item.nation
-    },
-    {
-      icon: <UserAddOutlined />,
-      title: 'Địa chỉ',
-      values: item.address
+      id: "6",
+      Key: "Địa chỉ",
+      Value: item.fullAddress,
     }
   ])
+  const [Show, setShow] = useState(false)
   return (
-    <Container className={styles.containerProfile}>
-      <div>
-        <Button icon={<UserAddOutlined />} size='large' type='primary' />
-      </div>
+    <div className={styles.container}>
       <ul className={styles.listCard}>
-        {Filter.map((item: any, index: any) => (
-          <li key={index}>
-            <div className={styles.cardProfile}>
-              <div className={styles.cardBody}>
-                <ul className={styles.listItem}>
-                  {item.map(({ icon, title, values }: any) => (
-                    <li key={title}>
-                      <div className={styles.cardItem}>
-                        <div className={styles.itemKeys}>
-                          <figure className={styles.itemView}>{icon}</figure>
-                          <p>{title}</p>
+        {Filter.map((item: any, index: any) => {
+          return (
+            <li key={index}>
+              <div className={styles.cardProfile}>
+                <div className={styles.cardBody}>
+                  <ul className={styles.listItem}>
+                    {item.map(({ id, Key, Value }: any) => (
+                      <li key={id} onClick={() => setShow(!Show)}>
+                        <div className={id > "3" && !Show ? styles.hidden : styles.cardItem}>
+                          <div className={styles.itemKeys}>
+                            <figure className={styles.itemView}>
+                              <UserAddOutlined />
+                            </figure>
+                            <p>{Key}</p>
+                          </div>
+                          <div className={styles.itemValues}>
+                            <p>{Value}</p>
+                          </div>
                         </div>
-                        <div className={styles.itemValues}>
-                          <p>{values}</p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={Show ? styles.cardFooter : styles.hidden}>
+                  <div className={styles.feature}>
+                    <Button size='middle' icon={<DeleteOutlined />} className={styles.delete}>
+                      Xóa
+                    </Button>
+                    <Button size='middle' icon={<DeleteOutlined />} className={styles.repair}>
+                      Sửa
+                    </Button>
+                  </div>
+                  <Button size='large' icon={<ArrowRightOutlined />} className={styles.continue}>
+                    Tiếp tục
+                  </Button>
+                </div>
               </div>
-              <div className={styles.cardFooter}>
-                <Button size='middle' icon={<DeleteOutlined />} className={styles.delete}>
-                  Xóa
-                </Button>
-                <Button size='middle' icon={<DeleteOutlined />} className={styles.repair}>
-                  Sửa
-                </Button>
-                <Button size='large' icon={<ArrowRightOutlined />} className={styles.continue}>
-                  Tiếp tục
-                </Button>
-              </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          )
+        })}
       </ul>
-    </Container>
+    </div>
   )
 }

@@ -55,10 +55,10 @@ export const ChonChuyenKhoa = (props: Medthods) => {
 
 const itemList = (getList: any, onClick: any) => {
   {
-    return getList?.map(({ detail, subType }: any, index: number) => {
+    return getList?.map(({ detail, subType }: any, i: number) => {
       const { name } = detail
       return (
-        <li key={index} onClick={() => onClick(index, name, subType)}>
+        <li key={i} onClick={() => onClick(i, name, subType)}>
           <p>{name.toUpperCase()}</p>
         </li>
       )

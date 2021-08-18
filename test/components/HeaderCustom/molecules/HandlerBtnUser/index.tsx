@@ -1,11 +1,17 @@
+/* eslint-disable no-console */
 import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Dropdown } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { DropdownProfile } from '../DropdownProfile'
 import styles from './styles.module.less'
 
-export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
+export const HandlerBtnUser = ({
+  isAuthen = false,
+  nameUser,
+  funcGetListPatient
+}: any) => {
   const iconHandler = isAuthen ? (
     <UserOutlined className={styles.icons} />
   ) : (
@@ -13,6 +19,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
   )
 
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const Login = () => {
     router.push(
@@ -22,6 +29,12 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
     )
   }
 
+  const onClick = () => {
+    funcGetListPatient && dispatch(funcGetListPatient())
+  }
+
+  const style: any = isAuthen ? styles.user : styles.login
+
   switch (isAuthen) {
     case true:
       return (
@@ -30,12 +43,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
           trigger={['click']}
           placement='bottomRight'
         >
-          <Button
-            className={isAuthen ? styles.user : styles.login}
-            type='default'
-            size='large'
-            icon={iconHandler}
-          >
+          <Button className={style} icon={iconHandler} onClick={onClick}>
             {nameUser}
           </Button>
         </Dropdown>
@@ -43,13 +51,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
 
     default:
       return (
-        <Button
-          className={isAuthen ? styles.user : styles.login}
-          type='default'
-          size='large'
-          icon={iconHandler}
-          onClick={Login}
-        >
+        <Button className={style} icon={iconHandler} onClick={Login}>
           {'Đăng nhập'}
         </Button>
       )

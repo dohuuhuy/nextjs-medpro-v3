@@ -7,6 +7,13 @@ export const DichVu = {
   en: 'service'
 }
 
+interface Colums {
+  title: string
+  align: string
+  dataIndex: string
+  render?: ({ name, days }: any) => JSX.Element | undefined
+}
+
 export const ChonDichVu = (props: Medthods) => {
   const { quickView, setquickView, next } = props
 
@@ -41,26 +48,24 @@ export const ChonDichVu = (props: Medthods) => {
 }
 
 const dataRows = (props: any) => {
-  return handlerValue(props, DichVu)?.map((item: any, index: number) => {
-    const { name, days, price } = item.detail
+  return handlerValue(props, DichVu)?.map((item: any, i: number) => {
+    const { name, days } = item.detail
     return {
-      index,
+      index: i,
       nameService: {
         name,
         days
       },
-      price,
-      subType: item.subType
+      ...item
     }
   })
 }
 
-const columns = [
+const columns: Colums[] = [
   {
     title: '#',
     align: 'center',
-    dataIndex: 'index',
-    key: 'index'
+    dataIndex: 'index'
   },
   {
     title: 'Tên dịch vụ',

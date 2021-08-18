@@ -6,21 +6,20 @@ import styles from './styles.module.less'
 import { MenuInfo } from '../../molecules/MenuInfo'
 
 export interface GroupMenuHeader {
-  menuHeader: any
+  dataHeader: any
   Authencartion: any
 }
 
-export const GroupMenuHeader = ({
-  menuHeader,
-  Authencartion
-}: GroupMenuHeader) => {
+export const GroupMenuHeader = (Props: GroupMenuHeader) => {
+  const { dataHeader } = Props
+
   return (
     <Container>
       <Row className={styles.rowMenuInfo}>
-        <MenuInfo Authencartion={Authencartion} />
+        <MenuInfo {...Props} />
       </Row>
       <Row className={styles.rowMenuHeader}>
-        <MenuHeader menuHeader={menuHeader} />
+        <MenuHeader menuHeader={dataHeader.menuHeader} />
       </Row>
     </Container>
   )

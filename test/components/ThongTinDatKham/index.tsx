@@ -13,9 +13,10 @@ import { Medthods } from './utils/interface'
 export interface Props {
   info: any
   bookingTree: any
+  listPatient: any
 }
 
-export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
+export const ThongTinDatKham = ({ info, bookingTree, listPatient }: Props) => {
   const stepBooking = bookingTree?.path?.split('_') || []
   const [current, setcurrent] = useState(0)
   const [quickView, setquickView] = useState([])
@@ -46,7 +47,8 @@ export const ThongTinDatKham = ({ info, bookingTree }: Props) => {
     bookingTree,
     quickView,
     setquickView,
-    steps: null
+    steps: null,
+    listPatient
   }
 
   const steps = handleStep(medthods)

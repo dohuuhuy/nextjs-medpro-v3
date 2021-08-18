@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { getBookingTreeSuccess } from '@actionStore/rootAction'
+import * as act from '@actionStore/rootAction'
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
 import {
@@ -9,6 +9,7 @@ import {
   ListHospitalRequestSuccess,
   TotalDataTypes
 } from '@store/interface'
+import { check } from '@utils/checkValue'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -32,26 +33,19 @@ function* getHospitalDetails({ partnerId }: any) {
     // console.error(res)
 
     //  1. lưu thông tin bệnh viện vào state
-    yield put({
-      type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
-      information: JSON_EXP
-    })
+    yield put(act.InformationRequestSuccess(JSON_EXP))
 
     // 2. cập nhật lại partnerId bệnh viện
-    yield put({
-      type: TotalDataTypes.ListPartners.SET_PARTNERID,
-      partnerId
-    })
+    yield put(act.SetParnerId(partnerId))
 
     // 3. lấy danh sách dịch vụ theo bệnh viện
-    yield put({
-      type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
-    })
+    yield put(act.FeatureByPartnerRequest())
 
     // 4. lấy danh sách tỉnh thành
-    yield put({
-      type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
-    })
+    yield put(act.getListCity())
+
+    // 5. lấy hồ sơ bệnh nhân
+    yield put(act.ListPatientRequest())
 
     // 5. thông báo chọn bệnh viện thành công ở Dev
     if (_DEVELOPMENT) {
@@ -133,6 +127,10 @@ function* WatchGetListHospital() {
 
 function* getBookingTree({ partnerid }: any) {
   try {
+    const listPatient: string = yield select(
+      (state: AppState) => state.userReducer.listPatient
+    )
+
     const response: AxiosResponse = yield client.getBookingTreeDynamic(
       { treeId: 'DATE' },
       {
@@ -140,7 +138,11 @@ function* getBookingTree({ partnerid }: any) {
         appid: partnerid
       }
     )
-    yield put(getBookingTreeSuccess(response.data))
+    yield put(act.getBookingTreeSuccess(response.data))
+
+    if (check(listPatient)) {
+      yield put(act.ListPatientRequest())
+    }
   } catch (error) {
     console.log(error)
   }

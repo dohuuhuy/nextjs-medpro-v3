@@ -8,7 +8,8 @@ const init: UserState = {
     email: '',
     token: '',
     isCS: false
-  }
+  },
+  listPatient: []
 }
 
 export default function userReducer(
@@ -18,7 +19,8 @@ export default function userReducer(
   switch (action.type) {
     case UserTypes.SaveInfoUser.USER_INFO_SAVE:
       return { ...state, userInfo: { ...action.userInfo } }
-
+    case UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS:
+      return { ...state, listPatient: action.listPatient }
     default:
       return state
   }
