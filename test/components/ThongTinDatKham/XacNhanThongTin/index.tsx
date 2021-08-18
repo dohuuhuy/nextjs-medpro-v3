@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Row, Col } from 'antd'
 import style from './styles.module.less'
 import Container from '@components/atoms/Container';
+import { UserAddOutlined } from '@ant-design/icons'
 export const XacNhanThongTin = () => {
   const dataSource = [
     {
@@ -70,8 +71,43 @@ export const XacNhanThongTin = () => {
         <Col xl={12} className={style.colProfile}>
           <ul className={style.listItem}>
             <li>
-              <div className={style.ItemProfile}>
-
+              <div className={style.itemProfile}>
+                <div className={style.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={style.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+                <div className={style.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={style.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+                <div className={style.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={style.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+                <div className={style.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={style.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
               </div>
             </li>
           </ul>
