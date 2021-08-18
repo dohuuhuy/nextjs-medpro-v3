@@ -20,8 +20,6 @@ function* ListPatientRequest() {
       token: token
     })
 
-    console.log('response.data :>> ', response.data)
-
     yield put(ListPatientRequestSuccess(response.data))
   } catch (error) {
     console.log(error)

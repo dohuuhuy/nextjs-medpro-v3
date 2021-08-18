@@ -13,7 +13,7 @@ export interface Info {
 }
 
 export const MenuInfo = (Props: any) => {
-  const { Authencartion, ListPatientRequest } = Props
+  const { Authencartion } = Props
   const { isAuthen }: any = Authencartion
   const notification = { totalNew: 0 }
 
@@ -36,10 +36,7 @@ export const MenuInfo = (Props: any) => {
       </li>
 
       <li>
-        <HandlerBtnUser
-          {...Authencartion}
-          funcGetListPatient={ListPatientRequest}
-        />
+        <HandlerBtnUser {...Authencartion} />
       </li>
     </ul>
   )
