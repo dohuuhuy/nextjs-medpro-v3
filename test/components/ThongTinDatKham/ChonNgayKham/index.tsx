@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import dayjs from 'dayjs'
-import range from 'lodash-es/range'
 import styles from './styles.module.less'
 import cx from 'classnames'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Button, Space } from 'antd'
+import { range } from 'lodash'
 
 const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
