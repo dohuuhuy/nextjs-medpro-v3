@@ -1,40 +1,39 @@
-import Container from '@componentsTest/Container'
+import { ArrowRightOutlined, DeleteOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
-import { Button } from 'antd'
-import {
-  DeleteOutlined,
-  ArrowRightOutlined
-} from '@ant-design/icons'
+import cx from 'classnames'
 
-export const CardFooter = () => {
+interface Props {
+  className: any
+}
+
+export const CardFooter = ({ className = '' }: Props) => {
   return (
-    <Container>
-      <div className={styles.cardFooter}>
-        <div className={styles.feature}>
-          <Button
-            size='middle'
-            icon={<DeleteOutlined />}
-            className={styles.delete}
-          >
-            Xóa
-          </Button>
-          <Button
-            size='middle'
-            icon={<DeleteOutlined />}
-            className={styles.repair}
-          >
-            Sửa
-          </Button>
-        </div>
+    <div className={cx(styles.cardFooter, className)}>
+      <div className={styles.feature}>
         <Button
-          size='large'
-          icon={<ArrowRightOutlined />}
-          className={styles.continue}
+          size='middle'
+          icon={<DeleteOutlined />}
+          className={styles.delete}
         >
-          Tiếp tục
+          Xóa
+        </Button>
+        <Button
+          size='middle'
+          icon={<DeleteOutlined />}
+          className={styles.repair}
+        >
+          Sửa
         </Button>
       </div>
-    </Container>
+      <Button
+        size='middle'
+        icon={<ArrowRightOutlined />}
+        className={styles.continue}
+      >
+        Tiếp tục
+      </Button>
+    </div>
   )
 }

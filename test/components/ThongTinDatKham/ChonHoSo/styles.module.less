@@ -1,45 +1,55 @@
-.hidden{
+.hidden {
   display: none;
 }
-.container{
-  margin-top: 30px;
-  .listCard{
+.container {
+  .listCard {
     list-style: none;
     padding: 0;
-    margin: 0 auto 40px;
+    margin: 0;
     max-width: 100%;
-    .cardProfile{
-      margin: 20px 0;
-      border: 2px solid #DFE3EB;
-      border-radius: 3px;
-      padding: 15px;
-      .cardBody{
-        .listItem{
-          list-style: none;
-          padding: 0;
-          li {
-            .cardItem{
+    & > li {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .cardProfile {
+        border: 2px solid #dfe3eb;
+        border-radius: 3px;
+        padding: 15px;
+        .cardBody {
+          width: 100%;
+          .listItem {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+              width: 100%;
               display: flex;
-              font-size: 14px;
-              font-weight: 400;
-              color: #7D8EA5;
-              .itemKeys{
+              align-items: flex-start;
+              .cardItem {
                 display: flex;
-                min-width: 150px;
-                p{
-                  padding-left: 10px;
+                font-size: 13px;
+                font-weight: 400;
+                color: #7d8ea5;
+                .itemKeys {
+                  display: flex;
+                  align-items: flex-start;
+                  // min-width: 60px;
                 }
               }
-            }
-            &:first-child{
-              .cardItem{
-              font-size: 14px;
-              font-weight: bolder;
-              color: #0453CC;
-              text-transform: uppercase;
-                .itemKeys{
-                  min-width: 0;
+
+              &:first-child {
+                p {
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: #12263f;
                 }
+              }
+
+              &:not(:first-child, :last-child) {
+                width: 50%;
+                display: flex;
               }
             }
           }
