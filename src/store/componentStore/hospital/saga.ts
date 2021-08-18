@@ -9,7 +9,6 @@ import {
   ListHospitalRequestSuccess,
   TotalDataTypes
 } from '@store/interface'
-import { check } from '@utils/checkValue'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -43,9 +42,6 @@ function* getHospitalDetails({ partnerId }: any) {
 
     // 4. lấy danh sách tỉnh thành
     yield put(act.getListCity())
-
-    // 5. lấy hồ sơ bệnh nhân
-    yield put(act.ListPatientRequest())
 
     // 5. thông báo chọn bệnh viện thành công ở Dev
     if (_DEVELOPMENT) {
@@ -127,10 +123,6 @@ function* WatchGetListHospital() {
 
 function* getBookingTree({ partnerid }: any) {
   try {
-    const listPatient: string = yield select(
-      (state: AppState) => state.userReducer.listPatient
-    )
-
     const response: AxiosResponse = yield client.getBookingTreeDynamic(
       { treeId: 'DATE' },
       {
@@ -139,10 +131,6 @@ function* getBookingTree({ partnerid }: any) {
       }
     )
     yield put(act.getBookingTreeSuccess(response.data))
-
-    if (check(listPatient)) {
-      yield put(act.ListPatientRequest())
-    }
   } catch (error) {
     console.log(error)
   }

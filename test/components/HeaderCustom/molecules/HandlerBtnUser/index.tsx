@@ -1,17 +1,11 @@
-/* eslint-disable no-console */
 import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Dropdown } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { DropdownProfile } from '../DropdownProfile'
 import styles from './styles.module.less'
 
-export const HandlerBtnUser = ({
-  isAuthen = false,
-  nameUser,
-  funcGetListPatient
-}: any) => {
+export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
   const iconHandler = isAuthen ? (
     <UserOutlined className={styles.icons} />
   ) : (
@@ -19,7 +13,6 @@ export const HandlerBtnUser = ({
   )
 
   const router = useRouter()
-  const dispatch = useDispatch()
 
   const Login = () => {
     router.push(
@@ -27,10 +20,6 @@ export const HandlerBtnUser = ({
         window.location.origin
       }&partnerId=${'medpro'}&bookingFlow=true`
     )
-  }
-
-  const onClick = () => {
-    funcGetListPatient && dispatch(funcGetListPatient())
   }
 
   const style: any = isAuthen ? styles.user : styles.login
@@ -43,7 +32,7 @@ export const HandlerBtnUser = ({
           trigger={['click']}
           placement='bottomRight'
         >
-          <Button className={style} icon={iconHandler} onClick={onClick}>
+          <Button className={style} icon={iconHandler}>
             {nameUser}
           </Button>
         </Dropdown>
