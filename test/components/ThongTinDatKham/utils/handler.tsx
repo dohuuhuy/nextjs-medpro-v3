@@ -9,6 +9,7 @@ import React from 'react'
 import { ChonChuyenKhoa } from '../ChonChuyenKhoa'
 import { ChonDichVu } from '../ChonDichVu'
 import { ChonHoSo } from '../ChonHoSo'
+import { XacNhanThongTin } from '../XacNhanThongTin'
 import { ChonNgayKham } from '../ChonNgayKham'
 
 export const handleStep = (medthods: any) => {
@@ -28,7 +29,7 @@ export const handleStep = (medthods: any) => {
     {
       title: 'Xác nhận',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
-      content: 'Xác nhận'
+      content: <XacNhanThongTin />
     }
   ]
 
