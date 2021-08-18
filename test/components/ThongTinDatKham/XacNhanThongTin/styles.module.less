@@ -1,9 +1,32 @@
-.listItem{
-  list-style: none;
-  .itemProfile{
-    display: flex;
-    .itemKey{
-      display: flex;
+.tblProfile{
+  margin-bottom: 50px;
+  background-color: red;
+  color: aqua;
+}
+.rowProfile{
+  .colProfile{
+    margin-top: 20px;
+    .listItem{
+      list-style: none;
+      li{
+        .itemProfile{
+          display: flex;
+          .itemKey{
+            display: flex;
+            min-width: 150px;
+            p{
+              padding-left: 5px;
+            }
+          }
+        }
+        &:first-child{
+          .itemValue{
+            p{
+              color: red
+            }
+          }
+        }
+      }
     }
   }
 }

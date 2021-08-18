@@ -1,7 +1,6 @@
 import React from 'react'
 import { Table, Row, Col } from 'antd'
-import style from './styles.module.less'
-import Container from '@components/atoms/Container';
+import styles from './styles.module.less'
 import { UserAddOutlined } from '@ant-design/icons'
 export const XacNhanThongTin = () => {
   const dataSource = [
@@ -63,58 +62,122 @@ export const XacNhanThongTin = () => {
     },
   ];
   return (
-    <Container>
+    <div className={styles.container}>
       <h2>Thông tin đặt khám</h2>
-      <Table dataSource={dataSource} pagination={false} columns={columns as any} />
+      <Table className={styles.tblProfile} dataSource={dataSource} pagination={false} columns={columns as any} />
       <h2>Thông tin bệnh nhân</h2>
-      <Row>
-        <Col xl={12} className={style.colProfile}>
-          <ul className={style.listItem}>
+      <Row className={styles.rowProfile}>
+        <Col xl={12} className={styles.colProfile}>
+          <ul className={styles.listItem}>
             <li>
-              <div className={style.itemProfile}>
-                <div className={style.itemKey}>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
                   <figure>
                     <UserAddOutlined />
                   </figure>
                   <p>Họ và tên</p>
                 </div>
-                <div className={style.itemValue}>
+                <div className={styles.itemValue}>
                   <p>Lê Thị Luyến</p>
                 </div>
-                <div className={style.itemKey}>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
                   <figure>
                     <UserAddOutlined />
                   </figure>
                   <p>Họ và tên</p>
                 </div>
-                <div className={style.itemValue}>
+                <div className={styles.itemValue}>
                   <p>Lê Thị Luyến</p>
                 </div>
-                <div className={style.itemKey}>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
                   <figure>
                     <UserAddOutlined />
                   </figure>
                   <p>Họ và tên</p>
                 </div>
-                <div className={style.itemValue}>
+                <div className={styles.itemValue}>
                   <p>Lê Thị Luyến</p>
                 </div>
-                <div className={style.itemKey}>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
                   <figure>
                     <UserAddOutlined />
                   </figure>
                   <p>Họ và tên</p>
                 </div>
-                <div className={style.itemValue}>
+                <div className={styles.itemValue}>
                   <p>Lê Thị Luyến</p>
                 </div>
               </div>
             </li>
           </ul>
-        </Col>
-        <Col xl={12} className={style.colProfile}>b</Col>
+          <ul className={styles.listItem}>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={styles.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={styles.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={styles.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className={styles.itemProfile}>
+                <div className={styles.itemKey}>
+                  <figure>
+                    <UserAddOutlined />
+                  </figure>
+                  <p>Họ và tên</p>
+                </div>
+                <div className={styles.itemValue}>
+                  <p>Lê Thị Luyến</p>
+                </div>
+              </div>
+            </li>
+          </ul>
       </Row>
-    </Container>
+    </div>
 
-  )
+      )
 }
