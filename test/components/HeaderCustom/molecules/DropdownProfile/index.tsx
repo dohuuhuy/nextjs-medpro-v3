@@ -50,7 +50,7 @@ export const DropdownProfile = ({ nameUser }: Props) => {
       icon: <BellOutlined />
     },
     {
-      lug: '/logout',
+      lug: '/dang-xuat',
       label: 'Thoát',
       icon: <PoweroffOutlined />
     },
