@@ -1,4 +1,5 @@
 import {
+  BellOutlined,
   FileAddOutlined,
   PoweroffOutlined,
   SolutionOutlined
@@ -37,15 +38,16 @@ export const DropdownProfile = ({ nameUser }: Props) => {
       label: 'Hồ sơ bệnh nhân',
       icon: <SolutionOutlined />
     },
+
     {
       lug: '/user',
-      label: 'Hồ sơ bệnh nhân',
-      icon: <SolutionOutlined />
+      label: 'Phiếu khám bệnh',
+      icon: <FileAddOutlined />
     },
     {
       lug: '/user',
-      label: 'Phiếu khám',
-      icon: <FileAddOutlined />
+      label: 'Thông báo',
+      icon: <BellOutlined />
     },
     {
       lug: '/logout',
