@@ -3,10 +3,10 @@ import cx from 'classnames'
 import React from 'react'
 import styles from './styles.module.less'
 
-interface MyApp {
+export interface MyApp {
   arrApp: Item[]
 }
-interface Item {
+export interface Item {
   id: string
   key: string
   imgLogo: string
@@ -25,7 +25,9 @@ export const MyApp = ({ arrApp }: MyApp) => {
         md={24}
         sm={24}
       >
-        TẢI ỨNG DỤNG <span>MEDPRO</span>
+        <h1>
+          TẢI ỨNG DỤNG <span>MEDPRO</span>
+        </h1>
       </Col>
       <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
         <ul className={styles.listDownload}>

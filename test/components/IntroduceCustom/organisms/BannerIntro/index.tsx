@@ -24,7 +24,7 @@ export const BannerIntro = ({ dataContentIntro }: ContentIntro) => {
         <Row className={styles.boxPara}>
           <Col xl={9} md={9} sm={24} className={styles.intro}>
             <span>{title}</span>
-            <h3>{subTitle}</h3>
+            <h1>{subTitle}</h1>
           </Col>
 
           <Col xl={15} md={15} sm={24} className={styles.Paragraph}>

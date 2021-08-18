@@ -29,11 +29,11 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
                     <img src={imgCard} alt={title} />
                   </figure>
                   <div className={styles.cardBody}>
-                    <h4 className={styles.title}>
+                    <h5 className={styles.title}>
                       <Link href={link}>
                         <a>{title} </a>
                       </Link>
-                    </h4>
+                    </h5>
                     <p className={styles.subTitle}>{subTitle}</p>
                   </div>
                 </div>
