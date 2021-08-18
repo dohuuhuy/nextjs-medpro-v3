@@ -9,52 +9,52 @@ export const XacNhanThongTin = (Props: Medthods) => {
     {
       key: '1',
       Stt: '1',
-      ChuyenKhoa: "CHĂM SÓC GIẢM NHẸ",
+      ChuyenKhoa: 'CHĂM SÓC GIẢM NHẸ',
       DichVu: 'Khám dịch vụ 150,000đ',
-      BacSi: "Lương Văn Đến",
+      BacSi: 'Lương Văn Đến',
       GioKham: '19/08 15:30',
-      TienKham: "150.000đ",
+      TienKham: '150.000đ'
     },
     {
       key: '2',
       Stt: '2',
-      ChuyenKhoa: "CHĂM SÓC GIẢM NHẸ 1",
+      ChuyenKhoa: 'CHĂM SÓC GIẢM NHẸ 1',
       DichVu: 'Khám dịch vụ 150,000đ',
-      BacSi: "Lương Văn Đến",
+      BacSi: 'Lương Văn Đến',
       GioKham: '19/08 15:30',
-      TienKham: "150.000đ",
-    },
-  ];
+      TienKham: '150.000đ'
+    }
+  ]
   const columns = [
     {
       title: '#',
       dataIndex: 'Stt',
-      align: "center",
+      align: 'center'
     },
     {
       title: 'Chuyên khoa',
       dataIndex: 'ChuyenKhoa',
-      align: "center",
+      align: 'center'
     },
     {
       title: 'Dịch vụ',
       dataIndex: 'DichVu',
-      align: "center",
+      align: 'center'
     },
     {
       title: 'Bác sĩ',
       dataIndex: 'BacSi',
-      align: "center",
+      align: 'center'
     },
     {
       title: 'Giờ khám',
       dataIndex: 'GioKham',
-      align: "center",
+      align: 'center'
     },
     {
       title: 'Tiền khám',
       dataIndex: 'TienKham',
-      align: "center",
+      align: 'center'
     },
     {
       title: '',

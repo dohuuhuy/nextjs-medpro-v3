@@ -20,7 +20,7 @@ export const SupportMedthodCustom = ({
     <Container className={styles.supportMedthod}>
       <Row className={styles.rowSupport}>
         <span className={styles.title}>Hỗ trợ</span>
-        <h3 className={styles.subTitle}>Các hình thức hỗ trợ</h3>
+        <h2 className={styles.subTitle}>Các hình thức hỗ trợ</h2>
       </Row>
       <Row className={styles.listSupportRow}>
         {dataSupportMethod?.map(
