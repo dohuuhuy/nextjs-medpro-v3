@@ -29,7 +29,7 @@ export const ChonHoSo = (Props: Medthods) => {
     {
       id: "5",
       Key: "Dân tộc",
-      Value: Props?.listPatient.map(item => (item.nation.name))
+      Value: item.nation.name
     },
     {
       id: "6",
@@ -48,7 +48,7 @@ export const ChonHoSo = (Props: Medthods) => {
                 <div className={styles.cardBody}>
                   <ul className={styles.listItem}>
                     {item.map(({ id, Key, Value }: any) => (
-                      <li key={id} onClick={() => setShow(!Show)}>
+                      <li key={item.id} onClick={() => setShow(!Show)}>
                         <div className={id > "3" && !Show ? styles.hidden : styles.cardItem}>
                           <div className={styles.itemKeys}>
                             <figure className={styles.itemView}>
