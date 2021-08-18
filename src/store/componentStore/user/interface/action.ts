@@ -4,11 +4,15 @@ export type UserActions = UserInfoAction | PatientAction
 
 // --------------------------------------------------------------
 
-export type UserInfoAction = UserInfoSave
+export type UserInfoAction = UserSave | UserClear
 
-export interface UserInfoSave {
-  type: UserTypes.SaveInfoUser.USER_INFO_SAVE
+export interface UserSave {
+  type: UserTypes.User.USER_SAVE
   userInfo: any
+}
+
+export interface UserClear {
+  type: UserTypes.User.USER_RESET
 }
 
 export type PatientAction = ListPatientRequest | ListPatientRequestSuccess

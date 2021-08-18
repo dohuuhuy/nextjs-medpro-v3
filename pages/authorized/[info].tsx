@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { saveInfoUserLogin } from '@actionStore/rootAction'
+import { UserLogin } from '@actionStore/rootAction'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import queryString from 'querystring'
@@ -21,7 +21,7 @@ const Author = () => {
   const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    dispatch(saveInfoUserLogin(query))
+    dispatch(UserLogin(query))
     window.localStorage.setItem('jwt', query?.token)
     nookies.set(query, 'user', JSON.stringify(query), { path: '/' })
     const cookies = nookies.get(query)
@@ -39,7 +39,7 @@ export default Author
 //   (store) => async (ctx) => {
 //     const { params } = ctx
 //     const query = queryString.parse(params?.info as string)
-//     await store.dispatch(saveInfoUserLogin(query))
+//     await store.dispatch(UserLogin(query))
 
 //     store.dispatch(END)
 //     await (store as SagaStore).sagaTask?.toPromise()

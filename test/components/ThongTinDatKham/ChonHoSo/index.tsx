@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Button } from 'antd'
 import React, { useState, useEffect, useMemo } from 'react'
 import { Medthods } from '../utils/interface'

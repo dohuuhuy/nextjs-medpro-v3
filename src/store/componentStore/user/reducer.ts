@@ -17,10 +17,14 @@ export default function userReducer(
   action: UserActions | { type: typeof HYDRATE; payload: UserState }
 ) {
   switch (action.type) {
-    case UserTypes.SaveInfoUser.USER_INFO_SAVE:
+    case UserTypes.User.USER_SAVE:
       return { ...state, userInfo: { ...action.userInfo } }
     case UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS:
       return { ...state, listPatient: action.listPatient }
+
+    case UserTypes.User.USER_RESET:
+      return { ...init }
+
     default:
       return state
   }
