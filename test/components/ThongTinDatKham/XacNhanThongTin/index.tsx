@@ -1,8 +1,10 @@
 import React from 'react'
-import { Table, Row, Col } from 'antd'
+import { Table, Space } from 'antd'
 import styles from './styles.module.less'
+import { Medthods } from '../utils/interface'
 import { UserAddOutlined } from '@ant-design/icons'
-export const XacNhanThongTin = () => {
+import { DeleteOutlined } from '@ant-design/icons'
+export const XacNhanThongTin = (Props: Medthods) => {
   const dataSource = [
     {
       key: '1',
@@ -58,7 +60,7 @@ export const XacNhanThongTin = () => {
       title: '',
       dataIndex: 'Xoa',
       align: "center",
-      render: () => <a>Xoasa</a>,
+      render: () => <a><DeleteOutlined /><span>Xóa</span></a>,
     },
   ];
   return (
@@ -66,118 +68,97 @@ export const XacNhanThongTin = () => {
       <h2>Thông tin đặt khám</h2>
       <Table className={styles.tblProfile} dataSource={dataSource} pagination={false} columns={columns as any} />
       <h2>Thông tin bệnh nhân</h2>
-      <Row className={styles.rowProfile}>
-        <Col xl={12} className={styles.colProfile}>
-          <ul className={styles.listItem}>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <ul className={styles.listItem}>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className={styles.itemProfile}>
-                <div className={styles.itemKey}>
-                  <figure>
-                    <UserAddOutlined />
-                  </figure>
-                  <p>Họ và tên</p>
-                </div>
-                <div className={styles.itemValue}>
-                  <p>Lê Thị Luyến</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-      </Row>
+      <ul className={styles.listItem}>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+        <li>
+          <div className={styles.itemProfile}>
+            <Space>
+              <Space className={styles.itemKeys}>
+                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
+                <p><UserAddOutlined /></p><p>Họ và tên</p>
+              </Space>
+              <p className={styles.itemValues}>Nguyễn thị luyến</p>
+            </Space>
+          </div>
+        </li>
+      </ul>
     </div>
 
-      )
+  )
 }
