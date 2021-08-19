@@ -4,15 +4,16 @@ import {
   PhoneOutlined,
   PieChartOutlined,
   TeamOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons'
 import React from 'react'
 import { Medthods } from '../../utils/interface'
 export const HandleFilter = (Props: Medthods) => {
-  return Props?.listPatient.map((item: any) => [
+  const item = Props?.listPatient?.[1]
+  return ([
     {
       id: item.id,
-      key: '',
+      key: 'Họ và tên',
       value: item?.fullname,
       icon: <UserOutlined />
     },

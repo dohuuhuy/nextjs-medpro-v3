@@ -1,18 +1,30 @@
 .tblProfile{
   margin-bottom: 50px;
-  background-color: red;
-  color: aqua;
+  border: 1px solid #0453CC;
+  tr{
+    color: #7d8ea5;
+    th {
+      background-color: #0453CC;
+      color: aliceblue;
+    }
+    a{
+      color: #FD397A;
+    }
+  }
+  
+
 }
-.listItem{
+.cardBody{
   list-style: none;
-  padding: 0;
+  padding: 15px;
   display: flex;
   flex-wrap: wrap;
+  border: 2px solid #0453CC;
   li{
     width: 50%;
     display: flex;
     align-items: flex-start;
-    .itemProfile{
+    .cardItem{
       display: flex;
       font-size: 13px;
       font-weight: 400;
@@ -33,6 +45,5 @@
         text-transform: uppercase;
       }
     }
-  }
-    
+  }  
 }

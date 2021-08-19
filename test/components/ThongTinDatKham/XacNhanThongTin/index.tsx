@@ -2,9 +2,10 @@ import React from 'react'
 import { Table, Space } from 'antd'
 import styles from './styles.module.less'
 import { Medthods } from '../utils/interface'
-import { UserAddOutlined } from '@ant-design/icons'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteFilled } from '@ant-design/icons'
+import { HandleFilter } from './Components/func'
 export const XacNhanThongTin = (Props: Medthods) => {
+  const Filter = HandleFilter(Props)
   const dataSource = [
     {
       key: '1',
@@ -60,7 +61,7 @@ export const XacNhanThongTin = (Props: Medthods) => {
       title: '',
       dataIndex: 'Xoa',
       align: "center",
-      render: () => <a><DeleteOutlined /><span>Xóa</span></a>,
+      render: () => <a><DeleteFilled /><span>Xóa</span></a>,
     },
   ];
   return (
@@ -68,95 +69,23 @@ export const XacNhanThongTin = (Props: Medthods) => {
       <h2>Thông tin đặt khám</h2>
       <Table className={styles.tblProfile} dataSource={dataSource} pagination={false} columns={columns as any} />
       <h2>Thông tin bệnh nhân</h2>
-      <ul className={styles.listItem}>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
-        <li>
-          <div className={styles.itemProfile}>
-            <Space>
-              <Space className={styles.itemKeys}>
-                {/* <p>{icon}</p> {key && <p>{key}</p>} */}
-                <p><UserAddOutlined /></p><p>Họ và tên</p>
-              </Space>
-              <p className={styles.itemValues}>Nguyễn thị luyến</p>
-            </Space>
-          </div>
-        </li>
+      <ul className={styles.cardBody}>
+        {
+          Filter.map(({ id, key, value, icon }: any, i: number) => {
+            return (
+              <li key={id + i}>
+                <div className={styles.cardItem}>
+                  <Space>
+                    <Space className={styles.itemKeys}>
+                      <p>{icon}</p> {key && <p>{key}</p>}
+                    </Space>
+                    <p className={styles.itemValues}>{value}</p>
+                  </Space>
+                </div>
+              </li>
+            )
+          })
+        }
       </ul>
     </div>
 
