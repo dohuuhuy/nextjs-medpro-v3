@@ -78,7 +78,7 @@ export const XacNhanThongTin = (Props: Medthods) => {
           })
         }
       </ul>
-    </div>
+    </div >
 
   )
 }
