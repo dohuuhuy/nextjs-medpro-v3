@@ -15,15 +15,6 @@ export const XacNhanThongTin = (Props: Medthods) => {
       BacSi: 'Lương Văn Đến',
       GioKham: '19/08 15:30',
       TienKham: '150.000đ'
-    },
-    {
-      key: '2',
-      Stt: '2',
-      ChuyenKhoa: 'CHĂM SÓC GIẢM NHẸ 1',
-      DichVu: 'Khám dịch vụ 150,000đ',
-      BacSi: 'Lương Văn Đến',
-      GioKham: '19/08 15:30',
-      TienKham: '150.000đ'
     }
   ]
   const columns = [

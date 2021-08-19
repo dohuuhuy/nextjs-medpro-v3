@@ -1,18 +1,34 @@
 .tblProfile{
   margin-bottom: 50px;
   border: 1px solid #0453CC;
-  tr{
-    color: #7d8ea5;
+  thead{
     th {
       background-color: #0453CC;
       color: aliceblue;
     }
-    a{
-      color: #FD397A;
+  }
+  tbody{
+    color: #7d8ea5;
+  }
+  a{
+    color: #FD397A;
+  }
+  @media (max-width:768px){
+    thead{
+      float:left;
+      width: 50%;
+      th{
+        display: block;
+      }
+    }
+    tbody{
+      float:right;
+      width: 50%;
+      td{
+        display: block;
+      }
     }
   }
-  
-
 }
 .cardBody{
   list-style: none;
@@ -24,6 +40,9 @@
     width: 50%;
     display: flex;
     align-items: flex-start;
+    @media (max-width: 768px){
+      width: 100%;
+    }
     .cardItem{
       display: flex;
       font-size: 13px;
