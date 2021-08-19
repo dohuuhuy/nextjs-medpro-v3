@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Col, Row } from 'antd'
+import { Col, message, Row } from 'antd'
 import React, { useState } from 'react'
 import Container from '../Container'
 import { CardInfo } from './organisms/CardInfo'
@@ -38,7 +38,12 @@ export const ThongTinDatKham = ({ info, bookingTree, listPatient }: Props) => {
     setcurrent(current - 1)
   }
 
+  const onClick = () => {
+    message.success('Nhập thông tin đặt khám thành công!')
+  }
+
   const medthods: Medthods = {
+    onClick,
     current,
     stepBooking,
     next,

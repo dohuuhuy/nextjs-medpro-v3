@@ -51,34 +51,41 @@ export const XacNhanThongTin = (Props: Medthods) => {
     {
       title: '',
       dataIndex: 'Xoa',
-      align: "center",
-      render: () => <a><DeleteFilled /><span>Xóa</span></a>,
-    },
-  ];
+      align: 'center',
+      render: () => (
+        <a>
+          <DeleteFilled />
+          <span>Xóa</span>
+        </a>
+      )
+    }
+  ]
   return (
     <div className={styles.container}>
-      <h2>Thông tin đặt khám</h2>
-      <Table className={styles.tblProfile} dataSource={dataSource} pagination={false} columns={columns as any} />
-      <h2>Thông tin bệnh nhân</h2>
+      <h3>Thông tin đặt khám</h3>
+      <Table
+        className={styles.tblProfile}
+        dataSource={dataSource}
+        pagination={false}
+        columns={columns as any}
+      />
+      <h3>Thông tin bệnh nhân</h3>
       <ul className={styles.cardBody}>
-        {
-          Filter.map(({ id, key, value, icon }: any, i: number) => {
-            return (
-              <li key={id + i}>
-                <div className={styles.cardItem}>
-                  <Space>
-                    <Space className={styles.itemKeys}>
-                      <p>{icon}</p> {key && <p>{key}</p>}
-                    </Space>
-                    <p className={styles.itemValues}>{value}</p>
+        {Filter?.map(({ id, key, value, icon }: any, i: number) => {
+          return (
+            <li key={id + i}>
+              <div className={styles.cardItem}>
+                <Space>
+                  <Space className={styles.itemKeys}>
+                    <p>{icon}</p> {key && <p>{key}</p>}
                   </Space>
-                </div>
-              </li>
-            )
-          })
-        }
+                  <p className={styles.itemValues}>{value}</p>
+                </Space>
+              </div>
+            </li>
+          )
+        })}
       </ul>
     </div>
-
   )
 }

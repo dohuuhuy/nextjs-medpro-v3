@@ -3,6 +3,7 @@ export interface Medthods {
   stepBooking: any
   next: () => void
   prev: () => void
+  onClick: () => void
   optional: (i: any) => void
   bookingTree: any
   quickView: never[]
