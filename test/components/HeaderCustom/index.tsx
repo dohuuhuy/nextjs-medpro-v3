@@ -16,6 +16,8 @@ export interface PropsHeader {
 export const HeaderCustom = (Props: PropsHeader) => {
   const { dataHeader, Authencartion } = Props
 
+  console.log('checkData(dataHeader) :>> ', checkData(dataHeader))
+
   if (checkData(dataHeader)) {
     return <DataFailure description={'Lỗi không có data header'} />
   }
