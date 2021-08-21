@@ -1,6 +1,5 @@
-git stash
-git fetch
-git pull
-yarn
-yarn build
-pm2 restart photo
+git stash &&
+git fetch &&
+git pull &&
+yarn build:testing &&
+pm2 restart web-srr
