@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { SetParnerId } from '@actionStore/rootAction'
 import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
 import {
@@ -6,7 +7,7 @@ import {
   HosptailTypes,
   ListCityRequestSuccess,
   ListPartnersRequestSuccess,
-  SetParnerId,
+  // SetParnerId,
   TotalDataParams,
   TotalDataTypes
 } from '@store/interface'
