@@ -47,7 +47,7 @@ export const ChonLichKham = () => {
           </ul>
         </Col>
         <Col xs={24} sm={24} md={18} xl={18} className={styles.colRight}>
-          <h2 className={styles.title}>Vui lòng chọn ngày khám</h2>
+          <h2 className={styles.title}>Vui lòng chọn ngày khám 2</h2>
           <ul className={styles.listCalendar}>
             <li className={styles.cardCalendar}>
               <Calendar
