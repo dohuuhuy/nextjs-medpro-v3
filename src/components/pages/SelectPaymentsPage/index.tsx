@@ -1,10 +1,8 @@
-// import { HinhThucThanhToan } from '@componentsTest/SelectPaymentsCustom'
-// import React from 'react'
-// import { useSelector } from 'react-redux'
+import { HinhThucThanhToan } from '@componentsTest/SelectPaymentsCustom'
+import React from 'react'
 
 export const SelectPaymentsPage = () => {
-
-  // return (
-  // <HinhThucThanhToan />
-  // )
+  return (
+    <HinhThucThanhToan />
+  )
 }

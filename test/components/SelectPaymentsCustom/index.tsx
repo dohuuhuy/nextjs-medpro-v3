@@ -11,9 +11,9 @@ export const HinhThucThanhToan = () => {
   return (
     <div className={styles.Container}>
       <Row className={styles.rowPayments}>
-        <Col xl={12} className={styles.colBill}>
-          <div className={styles.PhuongThucThanhToan}>
-            <h3>Phương thức thanh toán</h3>
+        <Col xl={12} className={styles.colPayments}>
+          <h3>Phương thức thanh toán</h3>
+          <div className={styles.cardView}>
             <Radio.Group>
               <Space direction="vertical">
                 <Radio value={1}>
@@ -40,28 +40,21 @@ export const HinhThucThanhToan = () => {
             </Radio.Group>
           </div>
         </Col>
-        <Col xl={12} className={styles.colPayments}>
-          <div className={styles.ThongTinThanhToan}>
-            <h3>Thông tin thanh toán</h3>
+
+        <Col xl={12} className={styles.colBill}>
+          <h3>Thông tin thanh toán</h3>
+          <div className={styles.cardView}>
             <ul className={styles.listBill}>
               <li>
                 <div className={styles.itemService}>
-                  <Space>
-                    <Space className={styles.itemKeys}>
-                      <p>{<LineChartOutlined />}</p> {<p>Dịch vụ</p>}
-                    </Space>
-                    <p className={styles.itemValues}>KHÁM DỊCH VỤ 150,000Đ</p>
-                  </Space>
+                  <p className={styles.itemKeys}>{<LineChartOutlined />} Dịch vụ</p>
+                  <p className={styles.itemValues}>KHÁM DỊCH VỤ</p>
                 </div>
               </li>
               <li>
                 <div className={styles.itemMoney}>
-                  <Space>
-                    <Space className={styles.itemKeys}>
-                      <p>{<MoneyCollectFilled />}</p> {<p>Tiền khám</p>}
-                    </Space>
-                    <p className={styles.itemValues}>150,000Đ</p>
-                  </Space>
+                  <p className={styles.itemKeys}>{<MoneyCollectFilled />} Tiền khám</p>
+                  <p className={styles.itemValues}>150,000 VNĐ</p>
                 </div>
               </li>
             </ul>
@@ -69,19 +62,22 @@ export const HinhThucThanhToan = () => {
               <li>
                 <div className={styles.itemSum}>
                   <p>Tổng tiền khám: </p>
-                  <strong>150.000 VNĐ</strong>
+                  <span>150.000 VNĐ</span>
                 </div>
               </li>
               <li>
                 <div className={styles.itemFee}>
                   <p>Phí tiện ích: </p>
-                  <strong>150.000 VNĐ</strong>
+                  <span>0 VNĐ</span>
                 </div>
+              </li>
+              <li>
+                <div className={styles.br}></div>
               </li>
               <li>
                 <div className={styles.itemTotal}>
                   <p>Tổng cộng: </p>
-                  <strong>150.000 VNĐ</strong>
+                  <span>150.000 VNĐ</span>
                 </div>
               </li>
             </ul>
