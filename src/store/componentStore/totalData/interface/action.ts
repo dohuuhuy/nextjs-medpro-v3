@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Action } from 'redux'
 import { TotalDataTypes } from '@store/interface'
 
 export type TotalDataActions =
-  | ListPartnersAction
-  | ListCityAction
-  | PartnerIdlocalAction
+  | Action<ListPartnersAction>
+  | Action<ListCityAction>
+  | Action<PartnerIdlocalAction>
 
 // ----------------------------------------------------------------------------------------------
 
