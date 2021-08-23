@@ -32,7 +32,7 @@ import {
   UserState
 } from '@store/interface'
 
-export type AppState = {
+export interface AppState {
   totalDataReducer: TotalDataState
   hospitalReducer: HospitalState
   newsReducer: NewsState

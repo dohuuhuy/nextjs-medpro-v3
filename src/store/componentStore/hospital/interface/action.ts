@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { HosptailTypes } from '@store/interface'
+import { Action } from 'redux'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
 export type HospitalActions =
-  | InfomationAction
-  | FeatureAction
-  | ListHospitalAction
-  | BookingTreeAction
+  | Action<InfomationAction>
+  | Action<FeatureAction>
+  | Action<ListHospitalAction>
+  | Action<BookingTreeAction>
 
 // --------------------------------------------------------------
 

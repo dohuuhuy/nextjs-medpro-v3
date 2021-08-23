@@ -20,6 +20,8 @@ const HeaderLayout = () => {
     Authencartion: authen
   }
 
+  console.log('methods :>> ', methods)
+
   return <HeaderCustom {...methods} />
 }
 

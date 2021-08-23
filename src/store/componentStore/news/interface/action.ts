@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Action } from 'redux'
 import { NewsTypes } from '@store/interface'
 
 export type NewsActions =
-  | NewsAndEventAction
-  | ListNewsBannerAction
-  | ListNewsContentAction
-  | CountNewsContentAction
-  | DetailNewsAction
-  | SameNewsAction
+  | Action<NewsAndEventAction>
+  | Action<ListNewsBannerAction>
+  | Action<ListNewsContentAction>
+  | Action<CountNewsContentAction>
+  | Action<DetailNewsAction>
+  | Action<SameNewsAction>
 
 // ----------------------------------------------------------------------------------------------
 
