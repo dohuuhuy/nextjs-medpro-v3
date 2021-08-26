@@ -9,7 +9,7 @@ import {
 import { openToast } from '@utils/Notification'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
-import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
+import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 function* getListPartners() {
   try {
@@ -58,7 +58,7 @@ function* getListCity() {
 }
 
 function* WatchListCity() {
-  yield takeLatest(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
+  yield takeEvery(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
 }
 
 const totalDataSagas = function* root() {

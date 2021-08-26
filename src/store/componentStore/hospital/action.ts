@@ -1,5 +1,6 @@
 import { HospitalActions, HosptailTypes } from '@store/interface'
 
+// lấy json thông tin bệnh viện
 export const getHospitalDetails = (partnerId: string): HospitalActions => {
   return {
     type: HosptailTypes.Information.INFORMATION_REQUEST,
@@ -16,12 +17,21 @@ export const InformationRequestSuccess = (
   }
 }
 
+// lấy danh sách bệnh viện
 export const getListHospital = (): HospitalActions => {
   return {
     type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
   }
 }
 
+export const ListHospitalRequestSuccess = (listHospital: any) => {
+  return {
+    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
+    listHospital
+  }
+}
+
+// lấy luồng đặt khám
 export const getBookingTree = (partnerid: any): HospitalActions => {
   return {
     type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
@@ -36,22 +46,18 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
   }
 }
 
+// lấy danh sách dịch vụ theo bệnh viện
 export const FeatureByPartnerRequest = (): HospitalActions => {
   return {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
   }
 }
 
-export const FeatureByPartnerRequestSuccess = (listFeature: any) => {
+export const FeatureByPartnerRequestSuccess = (
+  listFeature: Record<string, any>
+) => {
   return {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
     listFeature
-  }
-}
-
-export const ListHospitalRequestSuccess = (listHospital: any) => {
-  return {
-    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
-    listHospital
   }
 }

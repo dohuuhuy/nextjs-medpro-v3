@@ -34,13 +34,9 @@ const HomePage = () => {
   return null
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
+HomeLayout.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async () => {
-    store.dispatch(ac.getNewsAndEvent())
-
-    const x = store.getState().newsReducer.newsAndEvent
-    console.log(`x`, x)
-    return { props: { custom: 'custom' } }
+    store.dispatch(ac.getHospitalDetails('medpro'))
   }
 )
 

@@ -18,6 +18,8 @@ function* getHospitalDetails({ partnerId }: any) {
 
     // 4. lấy danh sách tỉnh thành
     yield put(ac.getListCity())
+
+    yield put(ac.getNewsAndEvent())
   } catch (error) {
     console.error(error)
   }
@@ -41,6 +43,7 @@ function* getFeatureByPartner() {
     })
 
     const { data } = respone
+
     yield put(ac.FeatureByPartnerRequestSuccess(data))
   } catch (error) {
     console.error(error)
@@ -63,7 +66,6 @@ function* getListHospital() {
     const response: AxiosResponse = yield client.getHospitalListByAppId({
       appid
     })
-
     const { data } = response
     yield put(ac.ListHospitalRequestSuccess(data))
   } catch (error) {
