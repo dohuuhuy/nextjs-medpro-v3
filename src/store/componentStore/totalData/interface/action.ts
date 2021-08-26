@@ -21,13 +21,6 @@ export interface ListPartnersRequestSuccess {
   listPartners: any[]
 }
 
-export const ListPartnersRequestSuccess = (listPartners: any) => {
-  return {
-    type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
-    listPartners
-  }
-}
-
 export interface SetParnerId {
   type: TotalDataTypes.ListPartners.SET_PARTNERID
   partnerId: any
@@ -55,11 +48,4 @@ export interface ListCityReques {
 export interface ListCityRequestSuccess {
   type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
   listCity: any[]
-}
-
-export const ListCityRequestSuccess = (listCity: any) => {
-  return {
-    type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS,
-    listCity
-  }
 }

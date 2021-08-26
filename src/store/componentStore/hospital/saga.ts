@@ -4,6 +4,7 @@ import { AppState, HosptailTypes } from '@store/interface'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
+
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* getHospitalDetails() {
@@ -17,6 +18,8 @@ function* getHospitalDetails() {
 
     // tìm ra partnerid từ trong danh sách partner
     const partnerId = findPartnerId({ listPartners })
+
+    console.log('partnerId :>> ', partnerId)
 
     // lưu thông tin bệnh viện vào state
     yield put(ac.InformationRequestSuccess(JSON_EXP))
@@ -55,6 +58,8 @@ function* getFeatureByPartner() {
     })
 
     const { data } = respone
+
+    console.log('data :>> ', data)
 
     yield put(ac.FeatureByPartnerRequestSuccess(data))
   } catch (error) {
