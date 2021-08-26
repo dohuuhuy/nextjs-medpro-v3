@@ -1,7 +1,6 @@
 import { UserTypes } from '@store/interface'
-import { Action } from 'redux'
 
-export type UserActions = Action<UserInfoAction> | Action<PatientAction>
+export type UserActions = UserInfoAction | PatientAction
 
 // --------------------------------------------------------------
 

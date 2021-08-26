@@ -9,14 +9,17 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
+  state: any
 }
 
-const DefaultLayout = ({ children }: Props) => {
+const DefaultLayout = (props: Props) => {
+  const { children } = props
   return (
     <Layout className={styles.layout}>
       <Header />
       <div className={styles.main}>
         <BannerPage />
+
         {children}
       </div>
       <Footer />

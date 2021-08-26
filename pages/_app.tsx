@@ -1,20 +1,17 @@
+import * as ac from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
-import { getListPartners } from '@actionStore/rootAction'
-import SelectedHospital from '@components/molecules/RunLocal/selectedHospital'
-import { AppState } from '@store/interface'
-import { persistor, wrapper } from '@store/rootStore'
+import { persistor, SagaStore, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
-import { check } from '@utils/checkValue'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 import React, { Fragment, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Page } from 'type/page'
 
 type Props = AppProps & {
   Component: Page
+  [x: string]: any
 }
 
 const MyApp = ({ Component, pageProps }: Props) => {
@@ -26,27 +23,18 @@ const MyApp = ({ Component, pageProps }: Props) => {
     checkVersion(persistor)
   })
 
-  const dispatch = useDispatch()
-
-  const listPartners = useSelector(
-    (state: AppState) => state.totalDataReducer.listPartners
-  )
-
-  useEffect(() => {
-    if (check(listPartners)) {
-      dispatch(getListPartners())
-    }
-  })
-
   return (
-    <>
-      <LayoutWrapper>
-        <DefaultSeo {...SEO} />
-        {getLayout(<Component {...pageProps} />)}
-      </LayoutWrapper>
-      <SelectedHospital />
-    </>
+    <LayoutWrapper>
+      <DefaultSeo {...SEO} />
+      {getLayout(<Component {...pageProps} />)}
+    </LayoutWrapper>
   )
 }
+
+MyApp.getInitialProps = wrapper.getInitialPageProps(
+  (store: SagaStore) => async () => {
+    store.dispatch(ac.getHospitalDetails())
+  }
+)
 
 export default wrapper.withRedux(MyApp)

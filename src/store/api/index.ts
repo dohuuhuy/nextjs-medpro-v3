@@ -17,3 +17,9 @@ export const countData = async (url: any) => {
 }
 
 // --------------------------------------------------------------
+
+const api = axios.create({
+  baseURL: 'http://localhost:3333'
+})
+
+export default api

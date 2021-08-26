@@ -3,5 +3,6 @@ import { ComponentType, ReactElement, ReactNode } from 'react'
 
 export type Page<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
-  Layout?: ComponentType
+  Layout?: ComponentType<any,any>,
+  [...x: string]: any
 }

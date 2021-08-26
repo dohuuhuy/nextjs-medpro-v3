@@ -1,6 +1,7 @@
 import { getListHospital } from '@actionStore/rootAction'
+import { BannersCustom } from '@componentsTest/BannersCustom'
+import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 
-import { BreadcumbCustom, BannersCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
@@ -14,8 +15,8 @@ const BannerLayout = () => {
 
   const {
     listFeature,
-    information: { banners, header },
-    listHospital
+    listHospital,
+    information: { banners, header }
   } = useSelector((state: AppState) => state.hospitalReducer)
 
   const { partnerId, appId } = useSelector(

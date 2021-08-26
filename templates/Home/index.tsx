@@ -1,10 +1,11 @@
+import { AppState } from '@store/interface'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
-// const BannerPage = dynamic(() => import('@components/organisms/Banner'))
+const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 // const SliderHospital = dynamic(
 //   () => import('@components/organisms/SilderHospital')
 // )
@@ -18,18 +19,21 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
+  state: AppState
 }
 
-const HomeLayout = ({ children }: Props) => {
+const HomeLayout = (props: Props) => {
+  const { children } = props
+
   return (
     <Layout className={styles.layout}>
       <Header />
-      {/* <BannerPage />
-      <SliderHospital />
-      <Introduce />
-      <Download />
+      <BannerPage />
+      {/* <SliderHospital  />
+      <Introduce  />
+      <Download  />
       <NewsAndEvent />
-      <SupportMethod /> */}
+      <SupportMethod  /> */}
       <Footer />
       {children}
     </Layout>
