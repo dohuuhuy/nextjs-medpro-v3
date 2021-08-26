@@ -19,8 +19,6 @@ function* getHospitalDetails() {
     // tìm ra partnerid từ trong danh sách partner
     const partnerId = findPartnerId({ listPartners })
 
-    console.log('partnerId :>> ', partnerId)
-
     // lưu thông tin bệnh viện vào state
     yield put(ac.InformationRequestSuccess(JSON_EXP))
 
@@ -28,7 +26,7 @@ function* getHospitalDetails() {
     yield put(ac.SetParnerId(partnerId))
 
     // lấy danh sách dịch vụ theo bệnh viện
-    yield put(ac.FeatureByPartnerRequest())
+    // yield put(ac.FeatureByPartnerRequest())
 
     // lấy danh sách tỉnh thành
     yield put(ac.getListCity())
