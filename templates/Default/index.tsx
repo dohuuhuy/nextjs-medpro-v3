@@ -6,7 +6,7 @@ import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
 const BannerPage = dynamic(() => import('@components/organisms/Banner'))
-const Footer = dynamic(() => import('@components/organisms/Footer'))
+// const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
@@ -24,7 +24,7 @@ const DefaultLayout = (props: Props) => {
 
         {children}
       </div>
-      <Footer {...state} />
+      {/* <Footer {...state} /> */}
     </Layout>
   )
 }

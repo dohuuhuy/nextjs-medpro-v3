@@ -1,13 +1,7 @@
-
 import * as act from '@actionStore/rootAction'
 import { _DEVELOPMENT } from '@config/envs/env'
 import { client } from '@config/medproSDK'
-import {
-  AppState,
-  FeatureByPartnerRequestSuccess,
-  HosptailTypes,
-  ListHospitalRequestSuccess
-} from '@store/interface'
+import { AppState, HosptailTypes } from '@store/interface'
 import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
@@ -22,7 +16,6 @@ import {
 
 function* getHospitalDetails({ partnerId }: any) {
   try {
-    console.log('partnerId :>> ', partnerId)
     //  1. lưu thông tin bệnh viện vào state
     yield put(act.InformationRequestSuccess(JSON_EXP))
 
@@ -67,7 +60,7 @@ function* getFeatureByPartner() {
 
     const { data } = respone
 
-    yield put(FeatureByPartnerRequestSuccess(data))
+    yield put(act.FeatureByPartnerRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -90,7 +83,7 @@ function* getListHospital() {
       appid
     })
     const { data } = response
-    yield put(ListHospitalRequestSuccess(data))
+    yield put(act.ListHospitalRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }

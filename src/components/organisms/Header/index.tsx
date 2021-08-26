@@ -1,15 +1,26 @@
-
 import { HeaderCustom } from '@componentsTest/HeaderCustom'
+import { AppState } from '@store/interface'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const authen = {
-  isAuthen: false,
-  nameUser: 'Huyi'
-}
+const HeaderLayout = () => {
+  const header = useSelector(
+    (state: AppState) => state.hospitalReducer.information.header
+  )
 
-const HeaderLayout = ({ header }: any) => {
+  const userInfo = useSelector((state: AppState) => state.userReducer.userInfo)
 
-  return <HeaderCustom dataHeader={header} Authencartion={authen} />
+  const authen = {
+    isAuthen: userInfo.token ? true : false,
+    nameUser: userInfo.fullName
+  }
+
+  const methods = {
+    dataHeader: header,
+    Authencartion: authen
+  }
+
+  return <HeaderCustom {...methods} />
 }
 
 export default HeaderLayout

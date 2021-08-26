@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
 const Header = dynamic(() => import('@components/organisms/Header'))
-// const BannerPage = dynamic(() => import('@components/organisms/Banner'))
+const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 // const SliderHospital = dynamic(
 //   () => import('@components/organisms/SilderHospital')
 // )
@@ -15,7 +15,7 @@ const Header = dynamic(() => import('@components/organisms/Header'))
 // const SupportMethod = dynamic(
 //   () => import('@components/organisms/SupportMethod')
 // )
-const Footer = dynamic(() => import('@components/organisms/Footer'))
+// const Footer s= dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
@@ -28,13 +28,13 @@ const HomeLayout = (props: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header {...state} />
-      {/* <BannerPage {...state} />
-      <SliderHospital {...state} />
+      <BannerPage {...state} />
+      {/* <SliderHospital {...state} />
       <Introduce {...state} />
       <Download {...state} />
       <NewsAndEvent />
       <SupportMethod {...state} /> */}
-      <Footer {...state} />
+      {/* <Footer {...state} /> */}
       {children}
     </Layout>
   )

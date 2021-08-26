@@ -41,3 +41,17 @@ export const FeatureByPartnerRequest = (): HospitalActions => {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
   }
 }
+
+export const FeatureByPartnerRequestSuccess = (listFeature: any) => {
+  return {
+    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
+    listFeature
+  }
+}
+
+export const ListHospitalRequestSuccess = (listHospital: any) => {
+  return {
+    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
+    listHospital
+  }
+}

@@ -1,9 +1,8 @@
+import * as ac from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
 import { persistor, SagaStore, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
-import { JSON_EXP } from 'json mẫu/bvtest'
-import withReduxSaga from 'next-redux-saga'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
@@ -33,9 +32,13 @@ const MyApp = ({ Component, pageProps, stateSever }: Props) => {
 }
 
 MyApp.getInitialProps = wrapper.getInitialPageProps(
-  (_store: SagaStore) => async () => {
-    return { stateSever: JSON_EXP }
+  (store: SagaStore) => async () => {
+    store.dispatch(ac.getHospitalDetails('medpro'))
+
+    const state = store.getState()
+
+    return { stateSever: state }
   }
 )
 
-export default wrapper.withRedux(withReduxSaga({ async: true })(MyApp))
+export default wrapper.withRedux(MyApp)

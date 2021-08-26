@@ -1,10 +1,9 @@
-import { Action } from 'redux'
 import { TotalDataTypes } from '@store/interface'
 
 export type TotalDataActions =
-  | Action<ListPartnersAction>
-  | Action<ListCityAction>
-  | Action<PartnerIdlocalAction>
+  | ListPartnersAction
+  | ListCityAction
+  | PartnerIdlocalAction
 
 // ----------------------------------------------------------------------------------------------
 
