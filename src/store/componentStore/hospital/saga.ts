@@ -1,24 +1,36 @@
 import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from '@store/interface'
+import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-function* getHospitalDetails({ partnerId }: any) {
+function* getHospitalDetails() {
   try {
-    //  1. lưu thông tin bệnh viện vào state
+    const listPartners: AppState = yield select(
+      (state: AppState) => state.totalDataReducer.listPartners
+    )
+
+    // lấy danh sách partner bệnh viên
+    yield put(ac.getListPartners())
+
+    // tìm ra partnerid từ trong danh sách partner
+    const partnerId = findPartnerId({ listPartners })
+
+    // lưu thông tin bệnh viện vào state
     yield put(ac.InformationRequestSuccess(JSON_EXP))
 
-    // 2. cập nhật lại partnerId bệnh viện
+    // cập nhật lại partnerId bệnh viện
     yield put(ac.SetParnerId(partnerId))
 
-    // 3. lấy danh sách dịch vụ theo bệnh viện
+    // lấy danh sách dịch vụ theo bệnh viện
     yield put(ac.FeatureByPartnerRequest())
 
-    // 4. lấy danh sách tỉnh thành
+    // lấy danh sách tỉnh thành
     yield put(ac.getListCity())
 
+    // lấy tin tức và sự kiện ở home
     yield put(ac.getNewsAndEvent())
   } catch (error) {
     console.error(error)

@@ -1,10 +1,9 @@
 import { HospitalActions, HosptailTypes } from '@store/interface'
 
 // lấy json thông tin bệnh viện
-export const getHospitalDetails = (partnerId: string): HospitalActions => {
+export const getHospitalDetails = (): HospitalActions => {
   return {
-    type: HosptailTypes.Information.INFORMATION_REQUEST,
-    partnerId
+    type: HosptailTypes.Information.INFORMATION_REQUEST
   }
 }
 

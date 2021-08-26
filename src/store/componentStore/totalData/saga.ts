@@ -1,13 +1,9 @@
-import * as ac from '@actionStore/rootAction'
-import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
 import {
   ListCityRequestSuccess,
   ListPartnersRequestSuccess,
   TotalDataTypes
 } from '@store/interface'
-import { openToast } from '@utils/Notification'
-import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
@@ -18,22 +14,6 @@ function* getListPartners() {
     const listPartners: AxiosResponse = yield call(getData, url)
 
     yield put(ListPartnersRequestSuccess(listPartners))
-
-    if (_PRODUCTION) {
-      const getPartner = findPartnerId({ listPartners })
-      if (getPartner) {
-        yield put(ac.SetParnerId(getPartner))
-      } else {
-        openToast({
-          message:
-            'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
-          type: 'error',
-          duration: 1000
-        })
-
-        yield put(ac.getHospitalDetails('medpro'))
-      }
-    }
   } catch (error) {
     console.error(error)
   }

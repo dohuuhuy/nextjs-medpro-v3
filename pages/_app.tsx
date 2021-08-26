@@ -1,6 +1,5 @@
 import * as ac from '@actionStore/rootAction'
 import '@assets/styles/app.less'
-import { client } from '@config/medproSDK'
 import '@medpro/booking-libs/libs/index.css'
 import { persistor, SagaStore, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
@@ -34,7 +33,7 @@ const MyApp = ({ Component, pageProps }: Props) => {
 
 MyApp.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async () => {
-    store.dispatch(ac.getHospitalDetails('medpro'))
+    store.dispatch(ac.getHospitalDetails())
   }
 )
 

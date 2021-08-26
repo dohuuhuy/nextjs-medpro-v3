@@ -14,7 +14,7 @@ export const handlerDoamain = () => {
 }
 
 export const findPartnerId = ({
-  partnerId,
+  partnerId = 'medpro',
   listPartners,
   local
 }: GetPartnerId) => {

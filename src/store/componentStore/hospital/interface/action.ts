@@ -18,7 +18,7 @@ export type InfomationAction =
 
 export interface InformationRequest {
   type: HosptailTypes.Information.INFORMATION_REQUEST
-  partnerId: string
+  // partnerId: string
 }
 
 export interface InformationRequestSuccess {
