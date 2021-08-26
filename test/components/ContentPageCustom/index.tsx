@@ -1,15 +1,14 @@
 import React from 'react'
+import { checkData } from '../DataFailure'
 import { LienHeContent } from './organisms/LienHe'
 import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 import { ThacMacContent } from './organisms/ThacMac'
-
-interface ContentPageCustom {
+interface Props {
   getContent: any
 }
 
-export const ContentPageCustom = ({ getContent }: ContentPageCustom) => {
-  const { checkData } = require('./../DataFailure')
+export const ContentPageCustom = ({ getContent }: Props) => {
   if (checkData(getContent)) {
     return null
   }

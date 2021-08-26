@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../../../Container'
-import style from './style.module.less'
+import styles from './styles.module.less'
 
 export const BannerHome = ({
   getBanner,
@@ -28,9 +28,9 @@ export const BannerHome = ({
   }
 
   return (
-    <div className={style.BannerHome}>
+    <div className={styles.BannerHome}>
       <div
-        className={style.backgroundImage}
+        className={styles.backgroundImage}
         style={{
           backgroundImage: imageBackground && `url(${imageBackground})`,
           backgroundRepeat: 'no-repeat',
@@ -38,13 +38,19 @@ export const BannerHome = ({
           backgroundSize: '100% 100%'
         }}
       />
-      <Container className={style.contentBannerHome}>
-        <Row className={style.boxService}>
-          <Col span={24} sm={24} xl={24} md={24} className={style.ColTitle}>
+      <Container className={styles.contentBannerHome}>
+        <Row className={styles.boxService}>
+          <Col span={24} sm={24} xl={24} md={24} className={styles.ColTitle}>
             <h1>CHỌN DỊCH VỤ</h1>
           </Col>
-          <Col span={24} sm={24} xl={24} md={24} className={style.ColBoxServic}>
-            <ul className={style.listBoxService}>
+          <Col
+            span={24}
+            sm={24}
+            xl={24}
+            md={24}
+            className={styles.ColBoxServic}
+          >
+            <ul className={styles.listBoxService}>
               {listFeature.map(
                 ({ name, image, status, type }: any, i: number) => {
                   const imageErrorSrc = '/images/error.svg'
@@ -76,7 +82,7 @@ export const BannerHome = ({
   )
 }
 
-export type BannerHome = Array<BannerHomeItem>
+export type BannerHome = BannerHomeItem[]
 
 export interface BannerHomeItem {
   id: string

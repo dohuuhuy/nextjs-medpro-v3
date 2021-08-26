@@ -1,9 +1,10 @@
+import { Action } from 'redux'
 import { TotalDataTypes } from '@store/interface'
 
 export type TotalDataActions =
-  | ListPartnersAction
-  | ListCityAction
-  | PartnerIdlocalAction
+  | Action<ListPartnersAction>
+  | Action<ListCityAction>
+  | Action<PartnerIdlocalAction>
 
 // ----------------------------------------------------------------------------------------------
 
@@ -19,6 +20,13 @@ export interface ListPartnersReques {
 export interface ListPartnersRequestSuccess {
   type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS
   listPartners: any[]
+}
+
+export const ListPartnersRequestSuccess = (listPartners: any) => {
+  return {
+    type: TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS,
+    listPartners
+  }
 }
 
 export interface SetParnerId {
@@ -48,4 +56,11 @@ export interface ListCityReques {
 export interface ListCityRequestSuccess {
   type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
   listCity: any[]
+}
+
+export const ListCityRequestSuccess = (listCity: any) => {
+  return {
+    type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS,
+    listCity
+  }
 }

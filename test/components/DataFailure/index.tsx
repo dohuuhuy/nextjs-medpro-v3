@@ -1,8 +1,8 @@
 import { Empty } from 'antd'
 import { isEmpty, isNull, isUndefined } from 'lodash'
 import React from 'react'
-import Container from 'test/components/Container'
-import style from './styles.module.less'
+import Container from '../Container'
+import styles from './styles.module.less'
 
 export const checkData = (element: any) => {
   if (
@@ -22,7 +22,7 @@ interface Props {
 
 export const DataFailure = ({ description }: Props) => {
   return (
-    <Container className={style.ContainerEmpty}>
+    <Container className={styles.ContainerEmpty}>
       <Empty description={description} />
     </Container>
   )

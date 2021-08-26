@@ -1,3 +1,4 @@
+import { getBookingTree } from '@actionStore/rootAction'
 import SelectHospitalCustom from '@componentsTest/SelectHospitalCustom'
 import { AppState } from '@store/interface'
 import React from 'react'
@@ -13,7 +14,11 @@ const SelectHospitalPage = () => {
   )
 
   return (
-    <SelectHospitalCustom listHospital={listHospital} listCity={listCity} />
+    <SelectHospitalCustom
+      listHospital={listHospital}
+      listCity={listCity}
+      getBookingTree={getBookingTree}
+    />
   )
 }
 

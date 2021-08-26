@@ -1,4 +1,4 @@
-import { getNewsAndEvent } from '@actionStore/rootAction'
+import { getNewsAndEvent, ListPatientRequest } from '@actionStore/rootAction'
 import { AppState } from '@store/interface'
 import { SagaStore, wrapper } from '@store/rootStore'
 import { check } from '@utils/checkValue'
@@ -15,9 +15,20 @@ const HomePage = () => {
     (state: AppState) => state.newsReducer.newsAndEvent
   )
 
+  const listPatient = useSelector(
+    (state: AppState) => state.userReducer.listPatient
+  )
+
+  const token = useSelector(
+    (state: AppState) => state.userReducer.userInfo.token
+  )
+
   useEffect(() => {
     if (check(newsAndEvent)) {
       dispatch(getNewsAndEvent())
+    }
+    if (check(listPatient)) {
+      token && dispatch(ListPatientRequest())
     }
   })
 

@@ -1,11 +1,11 @@
-import { checkData } from '@componentsTest/DataFailure'
+import { checkData } from '../DataFailure'
 import { Breadcrumb, Col, Row } from 'antd'
 import { find } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const BreadcumbCustom = ({ listMenu }: any) => {
   if (checkData(listMenu)) {
@@ -21,14 +21,14 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
   const listBreadcumb = [].concat(listMenu.shift(), item)
 
   return (
-    <div className={style.wapperBreadcumbCustom}>
-      <Container className={style.containerBreadcumbCustom}>
-        <Row className={style.rowBreadcumbCustom}>
-          <Col className={style.colBreadcumbCustom}>
-            <Breadcrumb separator='>' className={style.Breadcrumb}>
+    <div className={styles.wapperBreadcumbCustom}>
+      <Container className={styles.containerBreadcumbCustom}>
+        <Row className={styles.rowBreadcumbCustom}>
+          <Col className={styles.colBreadcumbCustom}>
+            <Breadcrumb separator='>' className={styles.Breadcrumb}>
               {listBreadcumb?.map(({ link, label }: any, i: number) => {
                 return (
-                  <Breadcrumb.Item className={style.ItemBreadcrumb} key={i}>
+                  <Breadcrumb.Item className={styles.ItemBreadcrumb} key={i}>
                     <Link href={link || '#'}>
                       <a>{label || ''}</a>
                     </Link>

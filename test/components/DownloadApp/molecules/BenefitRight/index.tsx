@@ -1,10 +1,10 @@
 import React from 'react'
-import style from './style.module.less'
+import styles from './styles.module.less'
 
-interface BenefitRight {
+export interface BenefitRight {
   rightListBenefit: BenefitRightItem[]
 }
-interface BenefitRightItem {
+export interface BenefitRightItem {
   id: any
   title: string
   description: string
@@ -13,15 +13,15 @@ interface BenefitRightItem {
 }
 export const BenefitRight = ({ rightListBenefit }: BenefitRight) => {
   return (
-    <ul className={style.rightListBenefit}>
+    <ul className={styles.rightListBenefit}>
       {rightListBenefit.map(
         ({ title, description, imgBenefit }: BenefitRightItem) => (
           <li key={title}>
-            <figure className={style.img_small}>
+            <figure className={styles.img_small}>
               <img src={imgBenefit} alt='' />
             </figure>
-            <div className={style.list_content}>
-              <h4 className={style.list_title}>{title}</h4>
+            <div className={styles.list_content}>
+              <h4 className={styles.list_title}>{title}</h4>
               <p dangerouslySetInnerHTML={{ __html: description }} />
             </div>
           </li>

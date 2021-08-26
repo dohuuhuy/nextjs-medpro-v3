@@ -2,7 +2,7 @@ import { BellOutlined } from '@ant-design/icons'
 import { Badge, Dropdown } from 'antd'
 import React, { useState } from 'react'
 import { DropdownNoti } from '../DropdownNoti'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const NoitiBell = ({ notification }: any) => {
   const [bell, setBell] = useState(false)
@@ -17,16 +17,14 @@ export const NoitiBell = ({ notification }: any) => {
     >
       <Badge
         count={notification.totalNew || null}
-        showZero={true}
+        className={styles.bell}
         size='small'
-        className={style.bell}
+        showZero={true}
       >
-        <a
-          className={bell ? style.activeBell : 'ant-dropdown-link'}
+        <BellOutlined
+          style={{ fontSize: '20px', color: '#08c' }}
           onClick={onClick}
-        >
-          <BellOutlined style={{ fontSize: '20px', color: '#08c' }} />
-        </a>
+        />
       </Badge>
     </Dropdown>
   )

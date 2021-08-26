@@ -1,4 +1,4 @@
-// import { DownloadCustom } from '@n17dccn172/booking-libs'
+// import { DownloadCustom } from '@medpro/booking-libs'
 import { DownloadCustom } from '@componentsTest/DownloadApp'
 import React from 'react'
 

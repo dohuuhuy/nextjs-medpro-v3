@@ -1,7 +1,7 @@
 import { Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 
 export const FooterSign = () => {
   return (

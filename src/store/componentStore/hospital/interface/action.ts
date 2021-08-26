@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { HosptailTypes } from '@store/interface'
+import { Action } from 'redux'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
 export type HospitalActions =
-  | InfomationAction
-  | FeatureAction
-  | ListHospitalAction
+  | Action<InfomationAction>
+  | Action<FeatureAction>
+  | Action<ListHospitalAction>
+  | Action<BookingTreeAction>
 
 // --------------------------------------------------------------
 
@@ -43,6 +46,13 @@ export interface FeatureByPartnerRequestSuccess {
   listFeature: any[]
 }
 
+export const FeatureByPartnerRequestSuccess = (listFeature: any) => {
+  return {
+    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
+    listFeature
+  }
+}
+
 export type ListHospitalAction =
   | ListHospitalRequest
   | ListHospitalRequestSuccess
@@ -54,4 +64,25 @@ export interface ListHospitalRequest {
 export interface ListHospitalRequestSuccess {
   type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS
   listHospital: any[]
+}
+
+export const ListHospitalRequestSuccess = (listHospital: any) => {
+  return {
+    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
+    listHospital
+  }
+}
+
+//  -------------------------------------
+
+export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
+
+export interface BookingTreeRequest {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
+  partnerid: string
+}
+
+export interface BookingTreeRequestSuccess {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS
+  bookingTree: any[]
 }

@@ -13,6 +13,7 @@
     "node": true
   },
   "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": 0,
     "no-control-regex": 0,
     "@typescript-eslint/no-namespace": "off",
     "react/react-in-jsx-scope": 0,
@@ -31,5 +32,11 @@
         "argsIgnorePattern": "^_"
       }
     ]
+    // "no-console": [
+    //   2,
+    //   {
+    //     "allow": ["warn", "error"]
+    //   }
+    // ]
   }
 }

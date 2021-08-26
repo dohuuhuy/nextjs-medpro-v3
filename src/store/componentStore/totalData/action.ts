@@ -38,3 +38,10 @@ export const getListCitySuccess = (listCity: any): TotalDataActions => {
     listCity
   }
 }
+
+export const SetParnerId = (partnerId: any) => {
+  return {
+    type: TotalDataTypes.ListPartners.SET_PARTNERID,
+    partnerId
+  }
+}

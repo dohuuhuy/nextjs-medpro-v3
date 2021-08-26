@@ -1,24 +1,41 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { Col, Input, Row, Select } from 'antd'
+import { BellFilled, SearchOutlined } from '@ant-design/icons'
+import { Col, Input, Modal, Row, Select } from 'antd'
 import { filter } from 'lodash'
-import React, { useState } from 'react'
-import Container from './../Container'
-import { checkData, DataFailure } from './../DataFailure'
-import styles from './style.module.less'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Container from '../Container'
+import { checkData, DataFailure } from '../DataFailure'
+import styles from './styles.module.less'
 
 const { Option } = Select
 
 export interface Props {
-  listHospital: Array<any>
-  listCity: Array<any>
+  listHospital: any[]
+  listCity: any[]
+  getBookingTree: any
 }
 
-const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
+const SelectHospitalCustom = ({
+  listHospital,
+  listCity,
+  getBookingTree
+}: Props) => {
+  const router = useRouter()
+  const dispatch = useDispatch()
   const [listHospitals, setlistHospitals] = useState<any[]>([])
 
+  useEffect(() => {
+    setlistHospitals(listHospital)
+  })
+
   function onChange(code: any) {
-    const findHospital = filter(listHospital, { city: { code: code } })
-    setlistHospitals(findHospital)
+    if (code === 'huyi') {
+      setlistHospitals(listHospital)
+    } else {
+      const findHospital = filter(listHospital, { city: { code } })
+      setlistHospitals(findHospital)
+    }
   }
 
   function onSearchHospital(e: any) {
@@ -29,6 +46,27 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
     setlistHospitals(findHospital)
   }
 
+  function handleNotification(message: string, partnerId: string) {
+    if (checkData(message)) {
+      dispatch(getBookingTree(partnerId))
+      router.push(`${partnerId}/thong-tin-dat-kham`)
+    } else {
+      Modal.info({
+        closable: true,
+        width: 'unset',
+        centered: true,
+        className: styles.Modal,
+        icon: <BellFilled />,
+        title: 'Thông báo',
+        content: message,
+        okButtonProps: {
+          disabled: true,
+          style: { display: 'none' }
+        }
+      })
+    }
+  }
+
   return (
     <Container className={styles.containerSelectHospitalCustom}>
       <Row className={styles.rowSelect}>
@@ -37,7 +75,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Input
                 size='large'
-                autoFocus
+                autoFocus={true}
                 onChange={onSearchHospital}
                 className={styles.inputSearch}
                 placeholder='Tìm nhanh bệnh viện'
@@ -47,7 +85,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Select
                 className={styles.inputSelect}
-                showSearch
+                showSearch={true}
                 style={{ width: '100%' }}
                 placeholder='Chọn tỉnh thành'
                 optionFilterProp='children'
@@ -57,6 +95,10 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                   0
                 }
               >
+                <Option value='huyi' key={'Chọn tỉnh thành'}>
+                  Chọn tỉnh thành
+                </Option>
+
                 {listCity.map(({ id, name, code }) => {
                   return (
                     <Option value={code} key={id}>
@@ -74,17 +116,23 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
               <DataFailure description='Không tìm thấy !' />
             ) : (
               listHospitals?.map(
-                ({ name: nameHospital, address, image }, i: number) => {
+                (
+                  { name: nameHospital, address, image, message, partnerId },
+                  i: number
+                ) => {
                   const imageErrorSrc = '/images/logo.png'
                   const urlImage = image || imageErrorSrc
                   return (
                     <li key={i}>
-                      <div className={styles.cardHospital}>
+                      <div
+                        className={styles.cardHospital}
+                        onClick={() => handleNotification(message, partnerId)}
+                      >
                         <figure className={styles.cardView}>
                           <img
                             src={urlImage}
                             alt='icon'
-                            onError={(e) => {
+                            onError={(e: any) => {
                               e.target.src = imageErrorSrc
                             }}
                           />

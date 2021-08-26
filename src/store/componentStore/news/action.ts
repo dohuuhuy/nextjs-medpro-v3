@@ -25,7 +25,9 @@ export const getCountNewsContent = (): NewsActions => {
   }
 }
 
-export const getDetailNews = (slug: any): NewsActions => {
+export const getDetailNews = (
+  slug: string | string[] | undefined
+): NewsActions => {
   return {
     type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST,
     slug
@@ -35,12 +37,5 @@ export const getDetailNews = (slug: any): NewsActions => {
 export const getSameNews = (): NewsActions => {
   return {
     type: NewsTypes.SameNews.SAME_NEWS_REQUEST
-  }
-}
-
-export const sameNewsRequestSuccess = (sameNews: any) => {
-  return {
-    type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS,
-    sameNews
   }
 }

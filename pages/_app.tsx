@@ -1,4 +1,5 @@
 import '@assets/styles/app.less'
+import '@medpro/booking-libs/libs/index.css'
 import { persistor, SagaStore, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { JSON_EXP } from 'json mẫu/bvtest'

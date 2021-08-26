@@ -3,22 +3,26 @@ import { Button, Dropdown } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { DropdownProfile } from '../DropdownProfile'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
   const iconHandler = isAuthen ? (
-    <UserOutlined className={style.icons} />
+    <UserOutlined className={styles.icons} />
   ) : (
-    <LoginOutlined className={style.icons} />
+    <LoginOutlined className={styles.icons} />
   )
 
   const router = useRouter()
 
   const Login = () => {
     router.push(
-      `https://id-testing.medpro.com.vn/check-phone/url=${'http://localhost:3007'}&partnerId=${'medpro'}&bookingFlow=true`
+      `https://id-testing.medpro.com.vn/check-phone/url=${
+        window.location.origin
+      }&partnerId=${'medpro'}&bookingFlow=true`
     )
   }
+
+  const style: any = isAuthen ? styles.user : styles.login
 
   switch (isAuthen) {
     case true:
@@ -28,12 +32,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
           trigger={['click']}
           placement='bottomRight'
         >
-          <Button
-            className={isAuthen ? style.user : style.login}
-            type='default'
-            size='large'
-            icon={iconHandler}
-          >
+          <Button className={style} icon={iconHandler}>
             {nameUser}
           </Button>
         </Dropdown>
@@ -41,13 +40,7 @@ export const HandlerBtnUser = ({ isAuthen = false, nameUser }: any) => {
 
     default:
       return (
-        <Button
-          className={isAuthen ? style.user : style.login}
-          type='default'
-          size='large'
-          icon={iconHandler}
-          onClick={Login}
-        >
+        <Button className={style} icon={iconHandler} onClick={Login}>
           {'Đăng nhập'}
         </Button>
       )

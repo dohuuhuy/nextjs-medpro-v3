@@ -1,11 +1,11 @@
 import { Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-import Container from './../../../Container'
+import Container from '../../../Container'
 import { FooterSign } from '../../molecules/FooterSign'
-import styles from './style.module.less'
-
-interface CardIntro {
+import styles from './styles.module.less'
+import cx from 'classnames'
+export interface CardIntro {
   dataCardIntro: CardIntroItem[]
 }
 export interface CardIntroItem {
@@ -18,7 +18,7 @@ export interface CardIntroItem {
 
 export const CardIntro = ({ dataCardIntro }: CardIntro) => {
   return (
-    <Container className={styles.containerGroudCard}>
+    <Container className={cx(styles.containerGroudCard)}>
       <Row>
         <ul className={styles.groudCard}>
           {dataCardIntro?.map(
@@ -29,11 +29,11 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
                     <img src={imgCard} alt={title} />
                   </figure>
                   <div className={styles.cardBody}>
-                    <h4 className={styles.title}>
+                    <h5 className={styles.title}>
                       <Link href={link}>
                         <a>{title} </a>
                       </Link>
-                    </h4>
+                    </h5>
                     <p className={styles.subTitle}>{subTitle}</p>
                   </div>
                 </div>

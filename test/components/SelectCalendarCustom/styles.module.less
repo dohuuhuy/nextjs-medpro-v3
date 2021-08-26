@@ -1,0 +1,115 @@
+.Title(){
+  background-color: #1DA1F2;
+    border-top-right-radius: 5px;
+    border-top-left-radius:  5px;
+    padding: 20px;
+    color: #FFF;
+    margin: 0;
+    .text(16px,500);
+}
+.text(@size, @weight){
+  font-size: @size;
+  font-weight: @weight;
+}
+.list(){
+  list-style: none;
+  padding: 25px 25px 47px;
+  border: 1px solid #DFE3EB;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius:  5px;
+}
+.hidden{
+  display: none;
+}
+.conCalendar{
+  @media (max-width: 768px){
+    padding: 0;
+  }
+}
+.rowCalendar {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  @media (max-width: 768px){
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .colRight{
+    padding: 0 15px 0 15px;
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
+    }
+    .title{
+      .Title();
+    }
+    .listCalendar{
+      list-style: none;
+      .cardCalendar{
+        background-color: red;
+      }
+    }
+    .btnBack{
+      border-top: 3px solid #DFE3EB;
+      p{
+        padding: 27px;
+        .text(15px,600);
+        cursor: pointer;
+      }
+    }
+    .listTime{
+      border-top: 2px solid #BFBFBF;
+      list-style: none;
+      padding: 15px 0 15px 0;
+      .cardTime{
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        p{
+          .text(14px, 600);
+          min-width: 160px;
+          border-radius: 5px;
+          padding: 8px 45px;
+          white-space: nowrap;
+          flex: 0 1 22%;
+          justify-content: center;
+          border: 1px solid #0352cc;
+          margin: 5px;
+          color: #0352cc;
+          transition: all .3s ease-in-out;
+          &:hover{
+            cursor: pointer;
+            color: white;
+            background-color: #0453CC;
+          }
+          @media (max-width:425px){
+            min-width: 120px;
+            padding: 8px 15px;
+          }
+        }
+      }
+    }
+    
+  }
+  .colLeft{
+    padding: 0 15px 0 15px;
+    .title{
+      .Title();
+    }
+    .listInfo{
+      .list();
+      .ImgInfo{
+        margin-right: 7px;
+      }
+      .Info{
+        display: flex;
+        .content{
+          display: flex;
+          p{
+            .text(13px, 500);
+          }
+        }
+      }
+    }
+  }
+  
+}

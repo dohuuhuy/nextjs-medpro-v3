@@ -1,3 +1,4 @@
+// import { NewsEventCustom } from '@medpro/booking-libs'
 import { NewsEventCustom } from '@componentsTest/News&Events'
 import { AppState } from '@store/interface'
 import React from 'react'

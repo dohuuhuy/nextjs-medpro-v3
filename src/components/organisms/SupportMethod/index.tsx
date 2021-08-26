@@ -1,4 +1,4 @@
-// import { SupportMedthodCustom } from '@n17dccn172/booking-libs'
+// import { SupportMedthodCustom } from '@medpro/booking-libs'
 import { SupportMedthodCustom } from '@componentsTest/SupportMethod'
 import React from 'react'
 

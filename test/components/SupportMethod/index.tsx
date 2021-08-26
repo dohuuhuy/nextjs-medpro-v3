@@ -2,28 +2,27 @@ import { Col, Row } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
-import style from './style.module.less'
+import styles from './styles.module.less'
 import { SupportMethod } from './SupportMethod.interface'
-
-interface SupportMedthodCustom {
+import { DataFailure, checkData } from '../DataFailure'
+export interface SupportMedthodCustom {
   dataSupportMethod: SupportMethod
 }
 
 export const SupportMedthodCustom = ({
   dataSupportMethod
 }: SupportMedthodCustom) => {
-  const { checkData, DataFailure } = require('./../DataFailure')
   if (checkData(dataSupportMethod)) {
     return <DataFailure description={'Lỗi không có data hỗ trợ'} />
   }
 
   return (
-    <Container className={style.supportMedthod}>
-      <Row className={style.rowSupport}>
-        <span className={style.title}>Hỗ trợ</span>
-        <h3 className={style.subTitle}>Các hình thức hỗ trợ</h3>
+    <Container className={styles.supportMedthod}>
+      <Row className={styles.rowSupport}>
+        <span className={styles.title}>Hỗ trợ</span>
+        <h2 className={styles.subTitle}>Các hình thức hỗ trợ</h2>
       </Row>
-      <Row className={style.listSupportRow}>
+      <Row className={styles.listSupportRow}>
         {dataSupportMethod?.map(
           (
             { nameMedthod, imgCard, description, link = '#' }: any,
@@ -36,14 +35,14 @@ export const SupportMedthodCustom = ({
               md={6}
               sm={12}
               xs={12}
-              className={style.itemSupportCol}
+              className={styles.itemSupportCol}
             >
-              <div className={style.cardSupport}>
-                <img src={imgCard} className={style.img} alt='imgCard' />
-                <div className={style.cardContent}>
-                  <h4 className={style.titleCard}>{nameMedthod}</h4>
+              <div className={styles.cardSupport}>
+                <img src={imgCard} className={styles.img} alt='imgCard' />
+                <div className={styles.cardContent}>
+                  <h4 className={styles.titleCard}>{nameMedthod}</h4>
                   <Link href={link} passHref={true}>
-                    <a className={style.descriptionCard}>{description}</a>
+                    <a className={styles.descriptionCard}>{description}</a>
                   </Link>
                 </div>
               </div>

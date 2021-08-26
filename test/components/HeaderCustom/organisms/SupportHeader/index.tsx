@@ -1,6 +1,6 @@
-import style from './styles.module.less'
+import styles from './styles.module.less'
 import React from 'react'
-interface SupportHeader {
+export interface SupportHeader {
   support?: any
 }
 
@@ -11,14 +11,14 @@ export const SupportHeader = ({ support }: SupportHeader) => {
     e.target.src = imageErrorSrc
   }
   return (
-    <div className={style.SupportHeader}>
-      <figure className={style.imgSupport}>
+    <div className={styles.SupportHeader}>
+      <figure className={styles.imgSupport}>
         <img src={urlImage} alt='icon' onError={onError} />
       </figure>
 
-      <div className={style.descSupport}>
+      <div className={styles.descSupport}>
         <p> {support.textSuport} </p>
-        <a href={'tel:' + support.phone} className={style.phoneSupport}>
+        <a href={'tel:' + support.phone} className={styles.phoneSupport}>
           {support.phone}
         </a>
       </div>

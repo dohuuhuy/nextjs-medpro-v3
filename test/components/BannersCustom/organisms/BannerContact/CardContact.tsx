@@ -1,15 +1,15 @@
 import React from 'react'
 import { ItemBanner, ItemCard } from './bannercontact.interface'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 const CardContact = ({ cardContact }: ItemBanner) => {
   return (
-    <ul className={style.listContact}>
+    <ul className={styles.listContact}>
       {cardContact.map(
         ({ key, title, subTitle, link, img, textBottom }: ItemCard) => {
           return (
             <li key={key}>
-              <div className={style.card}>
+              <div className={styles.card}>
                 <h2>{title}</h2>
                 <p
                   dangerouslySetInnerHTML={{

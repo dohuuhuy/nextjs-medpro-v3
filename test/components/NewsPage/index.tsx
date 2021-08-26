@@ -6,8 +6,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import styles from './style.module.less'
-interface NewsPageCustom {
+import styles from './styles.module.less'
+import { DataFailure, checkData } from '../DataFailure'
+export interface NewsPageCustom {
   listNewsBanner: any[]
   listNewsContent?: any[]
   totalPages?: number
@@ -25,7 +26,6 @@ export const NewsPageCustom = ({
     router.push(`?page=${pageNumber}`)
   }
 
-  const { DataFailure, checkData } = require('../DataFailure')
   if (checkData(listNewsBanner)) {
     return <DataFailure description={'Lỗi không có data tin tức banner'} />
   }
@@ -61,7 +61,7 @@ export const NewsPageCustom = ({
             onChange={onChange}
             pageSize={Math.ceil(Number(totalPages) / 8)}
             className={styles.Pagination}
-            responsive
+            responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
           />
@@ -77,7 +77,14 @@ interface PropsCard {
   obsImg?: boolean
 }
 const CardCustom = ({ item, obsImg = false }: PropsCard) => {
-  const { image, slug, title, created_at: createdAt, description, author }: any = item
+  const {
+    image,
+    slug,
+    title,
+    created_at: createdAt,
+    description,
+    author
+  }: any = item
   const imgUrl = API_NEWS + image?.[0].url
   return (
     <div className={styles.cardNews} key={title}>
@@ -93,7 +100,8 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
 
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p></Link>
+          <p className={styles.title}>{title}</p>
+        </Link>
         <p className={styles.time}>
           {moment(createdAt).format('DD/MM/YYYY, h:mm')}
         </p>

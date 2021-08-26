@@ -1,18 +1,18 @@
 import React from 'react'
 import Container from '../../../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const DefaultContent = ({ content }: any) => {
   if (!content) {
     return (
-      <Container className={style.containerError}>
+      <Container className={styles.containerError}>
         <em>getContent không tồn tại</em>
       </Container>
     )
   }
 
   return (
-    <Container className={style.containerDefault}>
+    <Container className={styles.containerDefault}>
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </Container>
   )

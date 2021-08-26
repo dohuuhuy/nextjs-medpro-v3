@@ -1,9 +1,15 @@
-import { getHospitalDetails } from '@actionStore/rootAction'
+import { getHospitalDetails, SetParnerId } from '@actionStore/rootAction'
+import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
-import { TotalDataTypes } from '@store/interface'
+import {
+  ListCityRequestSuccess,
+  ListPartnersRequestSuccess,
+  TotalDataTypes
+} from '@store/interface'
+import { openToast } from '@utils/Notification'
+import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
-import { getListCitySuccess, listPartnersRequestSuccess } from './action'
 
 function* getListPartners() {
   try {
@@ -11,9 +17,23 @@ function* getListPartners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: AxiosResponse = yield call(getData, url)
 
-    yield put(listPartnersRequestSuccess(listPartners))
+    yield put(ListPartnersRequestSuccess(listPartners))
 
-    yield put(getHospitalDetails('medpro'))
+    if (_PRODUCTION) {
+      const getPartner = findPartnerId({ listPartners })
+      if (getPartner) {
+        yield put(SetParnerId(getPartner))
+      } else {
+        openToast({
+          message:
+            'Không tìm thấy partnerId của bệnh viên, vui lòng thông báo cho chúng tôi khi thấy sự cố này !',
+          type: 'error',
+          duration: 1000
+        })
+
+        yield put(getHospitalDetails('medpro'))
+      }
+    }
   } catch (error) {
     console.error(error)
   }
@@ -31,7 +51,7 @@ function* getListCity() {
     const url =
       'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
     const respone: AxiosResponse = yield call(getData, url)
-    yield put(getListCitySuccess(respone))
+    yield put(ListCityRequestSuccess(respone))
   } catch (error) {
     console.error(error)
   }

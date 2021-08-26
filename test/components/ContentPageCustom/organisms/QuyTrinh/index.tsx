@@ -1,8 +1,8 @@
-import { checkData } from '@componentsTest/DataFailure'
+import { checkData } from '../../../DataFailure'
 import { Row } from 'antd'
 import React from 'react'
 import Container from '../../../Container'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 export const QuyTrinhContent = ({ content }: PropsProduce) => {
   if (checkData(content)) {
@@ -10,20 +10,20 @@ export const QuyTrinhContent = ({ content }: PropsProduce) => {
   }
 
   return (
-    <Container className={style.viewProduce}>
-      <Row className={style.rowProduce}>
-        <ul className={style.step}>
+    <Container className={styles.viewProduce}>
+      <Row className={styles.rowProduce}>
+        <ul className={styles.step}>
           {content?.map(
             ({ id, stepName, name, content: contentItem }: ItemProduce) => (
-              <li key={id} className={style.rowStep}>
-                <div className={style.coltitle}>
-                  <b className={style.titleStep}>{stepName}</b>
+              <li key={id} className={styles.rowStep}>
+                <div className={styles.coltitle}>
+                  <b className={styles.titleStep}>{stepName}</b>
                 </div>
-                <div className={style.dot} />
-                <div className={style.colContent}>
-                  <b className={style.titleStep}>{name}</b>
+                <div className={styles.dot} />
+                <div className={styles.colContent}>
+                  <b className={styles.titleStep}>{name}</b>
                   <div
-                    className={style.view_content}
+                    className={styles.view_content}
                     dangerouslySetInnerHTML={{ __html: contentItem }}
                   />
                 </div>

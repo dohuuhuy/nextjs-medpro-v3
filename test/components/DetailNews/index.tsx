@@ -1,13 +1,13 @@
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 import { Row, Col } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import { DataFailure, checkData } from '../DataFailure'
-import styles from './style.module.less'
+import styles from './styles.module.less'
 import moment from 'moment'
 import Image from 'next/image'
 import cx from 'classnames'
-interface DetailNewsCustom {
+export interface DetailNewsCustom {
   dataDetail: any[]
   dataNewest: any[]
   dataSameNews: any[]

@@ -1,12 +1,12 @@
 import { Col, Row } from 'antd'
 import cx from 'classnames'
 import React from 'react'
-import style from './style.module.less'
+import styles from './styles.module.less'
 
-interface MyApp {
+export interface MyApp {
   arrApp: Item[]
 }
-interface Item {
+export interface Item {
   id: string
   key: string
   imgLogo: string
@@ -15,24 +15,26 @@ interface Item {
 
 export const MyApp = ({ arrApp }: MyApp) => {
   return (
-    <Row className={style.MyApp}>
-      <Col xl={24} md={24} sm={24} className={style.ColMyApp}>
-        <span className={style.download}> DOWNLOAD</span>
+    <Row className={styles.MyApp}>
+      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+        <span className={styles.download}> DOWNLOAD</span>
       </Col>
       <Col
-        className={cx(style.header_title, style.ColMyApp)}
+        className={cx(styles.header_title, styles.ColMyApp)}
         xl={24}
         md={24}
         sm={24}
       >
-        TẢI ỨNG DỤNG <span>MEDPRO</span>
+        <h1>
+          TẢI ỨNG DỤNG <span>MEDPRO</span>
+        </h1>
       </Col>
-      <Col xl={24} md={24} sm={24} className={style.ColMyApp}>
-        <ul className={style.listDownload}>
+      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+        <ul className={styles.listDownload}>
           {arrApp?.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
               <a href={link} target='_blank' rel='noreferrer'>
-                <img src={imgLogo} className={style.mid_logo} alt='' />
+                <img src={imgLogo} className={styles.mid_logo} alt='' />
               </a>
             </li>
           ))}

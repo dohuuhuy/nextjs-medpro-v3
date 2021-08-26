@@ -33,7 +33,8 @@ const nextConfig = {
       'medpro.vn',
       'cms.medpro.com.vn',
       'resource.medpro.com.vn',
-      'resource-testing.medpro.com.vn'
+      'resource-testing.medpro.com.vn',
+      'firebasestorage.googleapis.com'
     ]
   },
 

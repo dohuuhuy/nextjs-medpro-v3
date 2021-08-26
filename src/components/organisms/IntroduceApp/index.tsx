@@ -1,5 +1,4 @@
-// import { IntroduceCustom } from '@n17dccn172/booking-libs'
-
+// import { IntroduceCustom } from '@medpro/booking-libs'
 import { IntroduceCustom } from '@componentsTest/IntroduceCustom'
 import React from 'react'
 

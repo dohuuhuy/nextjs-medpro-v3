@@ -1,12 +1,13 @@
+import { Action } from 'redux'
 import { NewsTypes } from '@store/interface'
 
 export type NewsActions =
-  | NewsAndEventAction
-  | ListNewsBannerAction
-  | ListNewsContentAction
-  | CountNewsContentAction
-  | DetailNewsAction
-  | SameNewsAction
+  | Action<NewsAndEventAction>
+  | Action<ListNewsBannerAction>
+  | Action<ListNewsContentAction>
+  | Action<CountNewsContentAction>
+  | Action<DetailNewsAction>
+  | Action<SameNewsAction>
 
 // ----------------------------------------------------------------------------------------------
 
@@ -24,6 +25,14 @@ export interface Newsandeventrequestsuccess {
   news: any[]
 }
 
+export const Newsandeventrequestsuccess = ({ newsPin, news }: any) => {
+  return {
+    type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS,
+    newsPin,
+    news
+  }
+}
+
 // ----------------------------------------------------------------------------------------------
 
 export type ListNewsBannerAction =
@@ -37,6 +46,13 @@ export interface ListNewsBannerRequest {
 export interface ListNewsBannerRequestSuccess {
   type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS
   listNewsBanner: any[]
+}
+
+export const ListNewsBannerRequestSuccess = (listNewsBanner: any) => {
+  return {
+    type: NewsTypes.ListNewsBanner.LIST_NEWS_BANNER_REQUEST_SUCCESS,
+    listNewsBanner
+  }
 }
 
 // ----------------------------------------------------------------------------------------------
@@ -55,6 +71,13 @@ export interface ListNewsContentRequestSuccess {
   listNewsContent: any[]
 }
 
+export const ListNewsContentRequestSuccess = (listNewsContent: any) => {
+  return {
+    type: NewsTypes.ListNewsContent.LIST_NEWS_CONTENT_REQUEST_SUCCESS,
+    listNewsContent
+  }
+}
+
 // ----------------------------------------------------------------------------------------------
 
 export type CountNewsContentAction =
@@ -70,13 +93,20 @@ export interface CountNewsContentRequestSuccess {
   totalPages: number
 }
 
-//-----------------------------------------------------------------------------------------------
+export const CountNewsContentRequestSuccess = (totalPages: any) => {
+  return {
+    type: NewsTypes.CountNewsContent.COUNT_NEWS_CONTENT_REQUEST_SUCCESS,
+    totalPages
+  }
+}
+
+// -----------------------------------------------------------------------------------------------
 
 export type DetailNewsAction = DetailNewsRequest | DetailNewsRequestSuccess
 
 export interface DetailNewsRequest {
   type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST
-  slug: string
+  slug: any
 }
 
 export interface DetailNewsRequestSuccess {
@@ -84,7 +114,14 @@ export interface DetailNewsRequestSuccess {
   detailNews: any[]
 }
 
-//-----------------------------------------------------------------------------------------------
+export const DetailNewsRequestSuccess = (detailNews: any) => {
+  return {
+    type: NewsTypes.DetailNews.DETAIL_NEWS_REQUEST_SUCCESS,
+    detailNews
+  }
+}
+
+// -----------------------------------------------------------------------------------------------
 
 export type SameNewsAction = SameNewsRequest | SameNewsRequestSuccess
 
@@ -97,5 +134,10 @@ export interface SameNewsRequestSuccess {
   sameNews: any[]
 }
 
-
-//-----------------------------------------------------------------------------------------------
+export const SameNewsRequestSuccess = (sameNews: any) => {
+  return {
+    type: NewsTypes.SameNews.SAME_NEWS_REQUEST_SUCCESS,
+    sameNews
+  }
+}
+// -----------------------------------------------------------------------------------------------

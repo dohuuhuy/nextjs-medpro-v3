@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import style from './styles.module.less'
+import styles from './styles.module.less'
 
 interface Props {
   linkSupport: ItemSupport[]
@@ -14,12 +14,12 @@ export interface ItemSupport {
 
 export const SuportFooter = ({ linkSupport }: Props) => {
   return (
-    <ul className={style.listLinkSupport}>
+    <ul className={styles.listLinkSupport}>
       {linkSupport?.map((item: any, index: number) => (
         <li key={index}>
           <Link href={item.link}>
-            <a className={style.aLink}>
-              <p className={style.infocompany}>{item.label}</p>
+            <a className={styles.aLink}>
+              <p className={styles.infocompany}>{item.label}</p>
             </a>
           </Link>
         </li>

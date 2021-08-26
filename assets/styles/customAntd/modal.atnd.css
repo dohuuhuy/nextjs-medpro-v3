@@ -1,0 +1,7 @@
+.ant-modal-content .ant-modal-body {
+  padding: 15px;
+}
+
+.ant-modal-confirm-info .ant-modal-confirm-body > .anticon {
+  color: #007bff !important;
+}
