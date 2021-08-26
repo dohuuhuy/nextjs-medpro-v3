@@ -8,12 +8,9 @@ import { useSelector } from 'react-redux'
 const BookingInformationPage = () => {
   const router = useRouter()
   const { partnerId } = router.query
-  const listHospital = useSelector(
-    (state: AppState) => state.hospitalReducer.listHospital
-  )
 
-  const bookingTree = useSelector(
-    (state: AppState) => state.hospitalReducer.bookingTree
+  const { listHospital, bookingTree } = useSelector(
+    (state: AppState) => state.hospitalReducer.listHospital
   )
 
   const listPatient = useSelector(
