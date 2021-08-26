@@ -9,7 +9,7 @@ const HomePage = () => {
 
 HomeLayout.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async () => {
-    store.dispatch(ac.getHospitalDetails('medpro'))
+    store.dispatch(ac.getHospitalDetails())
   }
 )
 
