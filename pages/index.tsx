@@ -1,6 +1,6 @@
 import * as ac from '@actionStore/rootAction'
 // import { AppState } from '@store/interface'
-import { wrapper } from '@store/rootStore'
+import { SagaStore, wrapper } from '@store/rootStore'
 // import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 // import { useEffect } from 'react'
@@ -35,8 +35,11 @@ const HomePage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    await store.dispatch(ac.getNewsAndEvent())
+  (store: SagaStore) => async () => {
+    store.dispatch(ac.getNewsAndEvent())
+
+    const x = store.getState().newsReducer.newsAndEvent
+    console.log(`x`, x)
     return { props: { custom: 'custom' } }
   }
 )

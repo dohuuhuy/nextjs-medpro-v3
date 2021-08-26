@@ -7,6 +7,7 @@ import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 import React, { Fragment, useEffect } from 'react'
+import { END } from 'redux-saga'
 import { Page } from 'type/page'
 
 type Props = AppProps & {
@@ -14,7 +15,7 @@ type Props = AppProps & {
   [x: string]: any
 }
 
-const MyApp = ({ Component, pageProps, stateSever }: Props) => {
+const MyApp = ({ Component, pageProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
 
@@ -24,7 +25,7 @@ const MyApp = ({ Component, pageProps, stateSever }: Props) => {
   })
 
   return (
-    <LayoutWrapper state={stateSever}>
+    <LayoutWrapper>
       <DefaultSeo {...SEO} />
       {getLayout(<Component {...pageProps} />)}
     </LayoutWrapper>
@@ -33,11 +34,10 @@ const MyApp = ({ Component, pageProps, stateSever }: Props) => {
 
 MyApp.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async () => {
-    store.dispatch(ac.getHospitalDetails('medpro'))
-
-    const state = store.getState()
-
-    return { stateSever: state }
+    await store.dispatch(ac.getHospitalDetails('medpro'))
+    await store.dispatch(ac.FeatureByPartnerRequest())
+    await store.dispatch(END)
+    await (store as SagaStore)?.sagaTask?.toPromise()
   }
 )
 

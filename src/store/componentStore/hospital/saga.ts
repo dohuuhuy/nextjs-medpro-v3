@@ -1,48 +1,30 @@
-import * as act from '@actionStore/rootAction'
-import { _DEVELOPMENT } from '@config/envs/env'
+import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from '@store/interface'
-import { openToast } from '@utils/Notification'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
-import {
-  all,
-  fork,
-  put,
-  select,
-  takeEvery,
-  takeLatest
-} from 'redux-saga/effects'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* getHospitalDetails({ partnerId }: any) {
   try {
     //  1. lưu thông tin bệnh viện vào state
-    yield put(act.InformationRequestSuccess(JSON_EXP))
+    yield put(ac.InformationRequestSuccess(JSON_EXP))
 
     // 2. cập nhật lại partnerId bệnh viện
-    yield put(act.SetParnerId(partnerId))
+    yield put(ac.SetParnerId(partnerId))
 
     // 3. lấy danh sách dịch vụ theo bệnh viện
-    yield put(act.FeatureByPartnerRequest())
+    yield put(ac.FeatureByPartnerRequest())
 
     // 4. lấy danh sách tỉnh thành
-    yield put(act.getListCity())
-
-    // 5. thông báo chọn bệnh viện thành công ở Dev
-    if (_DEVELOPMENT) {
-      openToast({
-        message: 'Chọn bệnh viện thành công!',
-        type: 'success',
-        duration: 4.5
-      })
-    }
+    yield put(ac.getListCity())
   } catch (error) {
     console.error(error)
   }
 }
 
 function* WatchGetHospitalDetails() {
-  yield takeEvery(
+  yield takeLatest(
     HosptailTypes.Information.INFORMATION_REQUEST,
     getHospitalDetails
   )
@@ -59,8 +41,7 @@ function* getFeatureByPartner() {
     })
 
     const { data } = respone
-
-    yield put(act.FeatureByPartnerRequestSuccess(data))
+    yield put(ac.FeatureByPartnerRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -82,8 +63,9 @@ function* getListHospital() {
     const response: AxiosResponse = yield client.getHospitalListByAppId({
       appid
     })
+
     const { data } = response
-    yield put(act.ListHospitalRequestSuccess(data))
+    yield put(ac.ListHospitalRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -105,7 +87,7 @@ function* getBookingTree({ partnerid }: any) {
         appid: partnerid
       }
     )
-    yield put(act.getBookingTreeSuccess(response.data))
+    yield put(ac.getBookingTreeSuccess(response.data))
   } catch (error) {
     console.log(error)
   }

@@ -1,4 +1,4 @@
-import { getHospitalDetails, SetParnerId } from '@actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import { _PRODUCTION } from '@config/envs/env'
 import { getData } from '@store/api'
 import {
@@ -22,7 +22,7 @@ function* getListPartners() {
     if (_PRODUCTION) {
       const getPartner = findPartnerId({ listPartners })
       if (getPartner) {
-        yield put(SetParnerId(getPartner))
+        yield put(ac.SetParnerId(getPartner))
       } else {
         openToast({
           message:
@@ -31,7 +31,7 @@ function* getListPartners() {
           duration: 1000
         })
 
-        yield put(getHospitalDetails('medpro'))
+        yield put(ac.getHospitalDetails('medpro'))
       }
     }
   } catch (error) {

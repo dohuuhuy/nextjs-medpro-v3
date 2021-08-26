@@ -1,4 +1,3 @@
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -20,7 +19,6 @@ const DefaultLayout = (props: Props) => {
       <Header {...state} />
       <div className={styles.main}>
         <BannerPage {...state} />
-        <HandlerGetContentPage {...state} />
 
         {children}
       </div>

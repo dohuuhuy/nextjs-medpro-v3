@@ -1,6 +1,7 @@
 import { getListHospital } from '@actionStore/rootAction'
+import { BannersCustom } from '@componentsTest/BannersCustom'
+import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 
-import { BreadcumbCustom, BannersCustom } from '@medpro/booking-libs'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
@@ -8,13 +9,15 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const BannerLayout = ({ banners, header }: any) => {
+const BannerLayout = () => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const { listFeature, listHospital } = useSelector(
-    (state: AppState) => state.hospitalReducer
-  )
+  const {
+    listFeature,
+    listHospital,
+    information: { banners, header }
+  } = useSelector((state: AppState) => state.hospitalReducer)
 
   const { partnerId, appId } = useSelector(
     (state: AppState) => state.totalDataReducer
