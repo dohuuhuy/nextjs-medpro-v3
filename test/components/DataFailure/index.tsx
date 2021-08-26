@@ -14,9 +14,13 @@ export const checkData = (element: any) => {
 }
 
 interface Props {
-  description: any
+  desc: any
 }
 
-export const DataFailure = ({ description }: Props) => {
-  return <h1>{description}</h1>
+export const DataFailure = ({ desc }: Props) => {
+  return (
+    <p className='center'>
+      <em>{desc}</em>
+    </p>
+  )
 }

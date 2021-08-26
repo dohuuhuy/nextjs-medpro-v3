@@ -6,7 +6,7 @@ import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-function* getHospitalDetails() {
+function* getHospitalDetails({ host }: any) {
   try {
     const listPartners: AppState = yield select(
       (state: AppState) => state.totalDataReducer.listPartners
@@ -16,7 +16,7 @@ function* getHospitalDetails() {
     yield put(ac.getListPartners())
 
     // tìm ra partnerid từ trong danh sách partner
-    const partnerId = findPartnerId({ listPartners })
+    const partnerId = findPartnerId({ listPartners, host })
 
     // lưu thông tin bệnh viện vào state
     yield put(ac.InformationRequestSuccess(JSON_EXP))

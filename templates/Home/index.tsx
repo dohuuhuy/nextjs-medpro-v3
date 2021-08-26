@@ -11,7 +11,7 @@ const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 // )
 // const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 // const Download = dynamic(() => import('@components/organisms/DownloadApp'))
-// const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
+const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 // const SupportMethod = dynamic(
 //   () => import('@components/organisms/SupportMethod')
 // )
@@ -29,11 +29,11 @@ const HomeLayout = (props: Props) => {
     <Layout className={styles.layout}>
       <Header />
       <BannerPage />
-      {/* <SliderHospital  />
-      <Introduce  />
-      <Download  />
+      {/* <SliderHospital  /> */}
+      {/* <Introduce  /> */}
+      {/* <Download  /> */}
       <NewsAndEvent />
-      <SupportMethod  /> */}
+      {/* <SupportMethod  /> */}
       <Footer />
       {children}
     </Layout>

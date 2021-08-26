@@ -2,12 +2,18 @@ import * as ac from '@actionStore/rootAction'
 import { getData } from '@store/api'
 import { TotalDataTypes } from '@store/interface'
 import { AxiosResponse } from 'axios'
-import { listPartner } from 'json mẫu/listPartner'
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 function* getListPartners() {
   try {
-    yield put(ac.listPartnersRequestSuccess(listPartner))
+    const url =
+      'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
+    const listPartners: [] = yield call(getData, url)
+
+    console.log('listPartner :>> ', listPartners.length)
+
+    if (listPartners.length)
+      yield put(ac.listPartnersRequestSuccess(listPartners))
   } catch (error) {
     console.error(error)
   }

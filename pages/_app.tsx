@@ -32,9 +32,11 @@ const MyApp = ({ Component, pageProps }: Props) => {
 }
 
 MyApp.getInitialProps = wrapper.getInitialPageProps(
-  (store: SagaStore) => async () => {
-    store.dispatch(ac.getHospitalDetails())
-  }
+  (store: SagaStore) =>
+    async ({ ctx }: any) => {
+      const host = ctx.req?.headers.host
+      store.dispatch(ac.getHospitalDetails(host))
+    }
 )
 
 export default wrapper.withRedux(MyApp)

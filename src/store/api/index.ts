@@ -1,9 +1,11 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 // --------------------------------------------------------------
 
 export const getData = async (url: any) => {
-  const res = await axios.get(url, { headers: { partnerid: 'medpro' } })
+  const res: AxiosResponse = await axios.get(url, {
+    headers: { partnerid: 'medpro' }
+  })
   const { data } = res
   return data
 }
