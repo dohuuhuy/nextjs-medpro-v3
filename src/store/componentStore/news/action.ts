@@ -73,7 +73,7 @@ export const ListNewsBannerRequestSuccess = (listNewsBanner: any) => {
   }
 }
 
-export const Newsandeventrequestsuccess = ({ newsPin, news }: any) => {
+export const NewsAndEventRequestSuccess = ({ newsPin, news }: any) => {
   return {
     type: NewsTypes.NewsAndEvent.NEWS_AND_EVENT_REQUEST_SUCCESS,
     newsPin,

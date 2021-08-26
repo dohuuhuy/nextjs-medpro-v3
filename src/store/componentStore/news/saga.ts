@@ -13,7 +13,7 @@ function* getNewsAndEvent() {
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc&_limit=5&_sort=updated_at:desc`
     const news: AxiosResponse = yield call(getData, url)
 
-    yield put(ac.Newsandeventrequestsuccess({ newsPin, news }))
+    yield put(ac.NewsAndEventRequestSuccess({ newsPin, news }))
   } catch (error) {
     console.error(error)
   }
