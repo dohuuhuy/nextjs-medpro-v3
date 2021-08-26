@@ -47,7 +47,7 @@ function* WatchGetHospitalDetails() {
 function* getFeatureByPartner() {
   try {
     const partnerid: string = yield select(
-      (state: AppState) => state.totalDataReducer.partnerId
+      (state: AppState) => state.hospitalReducer.information.partnerId
     )
 
     const respone: AxiosResponse = yield client.getFeatureByPartner({

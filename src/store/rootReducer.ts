@@ -1,4 +1,3 @@
-import DemoReducer from '@componentStore/demo/reducer'
 import hospitalReducer from '@componentStore/hospital/reducer'
 import newsReducer from '@componentStore/news/reducer'
 import totalDataReducer from '@componentStore/totalData/reducer'
@@ -9,7 +8,6 @@ import { AnyAction, combineReducers } from 'redux'
 import { AppState } from './interface'
 
 const reducers = {
-  DemoReducer,
   totalDataReducer,
   hospitalReducer,
   newsReducer,

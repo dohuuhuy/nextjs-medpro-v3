@@ -10,17 +10,14 @@ function* getListPartners() {
       'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
     const listPartners: [] = yield call(getData, url)
 
-    console.log('listPartner :>> ', listPartners.length)
-
-    if (listPartners.length)
-      yield put(ac.listPartnersRequestSuccess(listPartners))
+    yield put(ac.listPartnersRequestSuccess(listPartners))
   } catch (error) {
     console.error(error)
   }
 }
 
 function* WatchListPartners() {
-  yield takeLatest(
+  yield takeEvery(
     TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST,
     getListPartners
   )
@@ -39,7 +36,7 @@ function* getListCity() {
 }
 
 function* WatchListCity() {
-  yield takeEvery(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
+  yield takeLatest(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
 }
 
 const totalDataSagas = function* root() {
