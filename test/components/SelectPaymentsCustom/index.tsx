@@ -1,20 +1,22 @@
+import React, { useState } from 'react'
 import { Row, Col, Space, Radio, Tooltip } from 'antd'
 import styles from './styles.module.less'
 import { LineChartOutlined, MoneyCollectFilled } from '@ant-design/icons'
+import Container from '@componentsTest/Container'
 
 export const HinhThucThanhToan = () => {
-  // const onChange = (e) => {
-  //   this.setState({
-  //     value: e.target.value,
-  //   });
-  // };
+  const [values, setValues] = useState(0)
+
+  const onChange = (e: any) => {
+    setValues(e.target.value);
+  };
   return (
-    <div className={styles.Container}>
+    <Container>
       <Row className={styles.rowPayments}>
-        <Col xl={12} className={styles.colPayments}>
+        <Col xs={24} sm={24} lg={12} xl={12} className={styles.colPayments}>
           <h3>Phương thức thanh toán</h3>
           <div className={styles.cardView}>
-            <Radio.Group>
+            <Radio.Group onChange={onChange}>
               <Space direction="vertical">
                 <Radio value={1}>
                   <Tooltip title="Nhờ người thân hoặc bạn bè thanh toán hộ phí khám">
@@ -26,7 +28,7 @@ export const HinhThucThanhToan = () => {
                 <Radio value={4}>
                   Ví điện tử
                   <Space style={{ display: 'block' }}>
-                    <Radio.Group>
+                    <Radio.Group defaultValue={1} className={values === 4 ? styles.wallet : styles.hidden}>
                       <Radio value={1}>
                         MoMo
                       </Radio>
@@ -41,7 +43,7 @@ export const HinhThucThanhToan = () => {
           </div>
         </Col>
 
-        <Col xl={12} className={styles.colBill}>
+        <Col xs={24} sm={24} lg={12} xl={12} className={styles.colBill}>
           <h3>Thông tin thanh toán</h3>
           <div className={styles.cardView}>
             <ul className={styles.listBill}>
@@ -84,6 +86,6 @@ export const HinhThucThanhToan = () => {
           </div>
         </Col>
       </Row>
-    </div>
+    </Container>
   )
 }

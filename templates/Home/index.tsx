@@ -14,7 +14,7 @@ const Header = dynamic(() => import('@components/organisms/Header'))
 // const SupportMethod = dynamic(
 //   () => import('@components/organisms/SupportMethod')
 // )
-// const Footer = dynamic(() => import('@components/organisms/Footer'))
+const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
@@ -29,8 +29,8 @@ const HomeLayout = ({ children }: Props) => {
       <Introduce />
       <Download />
       <NewsAndEvent />
-      <SupportMethod />
-      <Footer /> */}
+      <SupportMethod /> */}
+      <Footer />
       {children}
     </Layout>
   )

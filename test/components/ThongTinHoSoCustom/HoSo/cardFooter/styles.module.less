@@ -1,0 +1,62 @@
+.btnFooter(@colorText, @color){
+  display: flex;
+  padding: 8px 20px;
+  color: @colorText;
+  background-color: @color;
+  border-radius: 3px;
+  align-items: center;
+  border: none;
+  &:hover{
+    color: @color;
+    background-color: @colorText;
+    cursor: pointer;
+  }
+  span{
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+.cardFooter{
+  border-top: 1px solid #DFE3EB;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  .feature{
+    display: flex;
+    min-width: 200px;
+    justify-content: space-between;
+    .delete{
+      .btnFooter(#fd397a,#FFEBF1);
+    }
+    .repair{
+      .btnFooter(#3699FF, #DFF1FD);
+    }
+  }
+  .continue{
+    display: flex;
+    padding: 8px 20px;
+    color: white;
+    background-color: #3699FF;
+    border-radius: 3px;
+    align-items: center;
+    border: none;
+    flex-direction: row-reverse;
+    &:hover{
+      color: white;
+      background-color: #0453CC;
+      cursor: pointer;
+    }
+    span{
+      padding-right: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    @media (max-width: 425px){
+      margin-top: 10px;
+      min-width: 100%;
+    }
+  }
+}

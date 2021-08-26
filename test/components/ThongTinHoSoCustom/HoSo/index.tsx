@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
 import { Space } from 'antd'
 import React, { useState } from 'react'
-import { Medthods } from '../utils/interface'
-import { CardFooter } from './cardFooter'
-import { HandleFilter } from './Components/func'
 import styles from './styles.module.less'
-export const ChonHoSo = (Props: Medthods) => {
+import { CardFooter } from './cardFooter'
+import { HandleFilter } from './components/func'
+import { Medthods } from './components/interface'
 
+export const HoSo = (Props: Medthods) => {
   const Filter = HandleFilter(Props)
   const [show, setishow] = useState(false)
 
@@ -17,6 +16,7 @@ export const ChonHoSo = (Props: Medthods) => {
 
   return (
     <div className={styles.container}>
+      <h1>Danh sách hồ sơ bệnh nhân</h1>
       <ul className={styles.listCard}>
         {Filter.map((item: any, index: any) => {
           const isShowCardFooter = show === index ? '' : styles.hidden
