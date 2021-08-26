@@ -36,6 +36,7 @@
     "moment": "^2.29.1",
     "next": "latest",
     "next-compose-plugins": "2.2.1",
+    "next-redux-saga": "4.1.2",
     "next-redux-wrapper": "7.0.2",
     "next-with-less": "^1.0.0",
     "nookies": "2.5.2",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@types/lodash": "4.14.171",
+    "@types/next-redux-saga": "3.0.2",
     "@types/node": "16.3.0",
     "@types/react": "17.0.13",
     "@typescript-eslint/eslint-plugin": "^2.26.0",

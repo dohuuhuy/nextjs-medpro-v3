@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import { AppState } from '@store/interface'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'

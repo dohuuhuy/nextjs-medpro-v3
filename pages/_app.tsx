@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import '@assets/styles/app.less'
-import '@n17dccn172/booking-libs/libs/index.css'
 import { persistor, SagaStore, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { JSON_EXP } from 'json mẫu/bvtest'
+import withReduxSaga from 'next-redux-saga'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
@@ -38,4 +37,4 @@ MyApp.getInitialProps = wrapper.getInitialPageProps(
   }
 )
 
-export default wrapper.withRedux(MyApp)
+export default wrapper.withRedux(withReduxSaga({ async: true })(MyApp))
