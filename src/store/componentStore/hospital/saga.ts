@@ -1,73 +1,47 @@
-/* eslint-disable no-console */
-import * as act from '@actionStore/rootAction'
-import { _DEVELOPMENT } from '@config/envs/env'
+import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
-import {
-  AppState,
-  FeatureByPartnerRequestSuccess,
-  HosptailTypes,
-  ListHospitalRequestSuccess,
-  TotalDataTypes
-} from '@store/interface'
-import { openToast } from '@utils/Notification'
+import { AppState, HosptailTypes } from '@store/interface'
+import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
 import { JSON_EXP } from 'json mẫu/bvtest'
-import { get } from 'lodash'
-import {
-  all,
-  fork,
-  put,
-  select,
-  takeEvery,
-  takeLatest
-} from 'redux-saga/effects'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-function* getHospitalDetails({ partnerId }: any) {
+function* getHospitalDetails({ host }: any) {
   try {
-    // 0. gọi Api lấy dữ liệu
-    // const url =
-    //   'http://103.48.193.51:10016/hospital/v2/full-details/' + partnerId
+    const listPartners: AppState = yield select(
+      (state: AppState) => state.totalDataReducer.listPartners
+    )
 
-    // const res: AxiosResponse = yield call(getData, url)
-    // console.error(res)
+    // lấy danh sách partner bệnh viện
+    yield put(ac.getListPartners())
 
-    //  1. lưu thông tin bệnh viện vào state
-    yield put(act.InformationRequestSuccess(JSON_EXP))
+    // tìm ra partnerid từ trong danh sách partner
+    const partnerId = findPartnerId({ listPartners, host })
 
-    // 2. cập nhật lại partnerId bệnh viện
-    yield put(act.SetParnerId(partnerId))
+    // lưu thông tin bệnh viện vào state
+    yield put(ac.InformationRequestSuccess(JSON_EXP))
 
-    // 3. lấy danh sách dịch vụ theo bệnh viện
-    yield put(act.FeatureByPartnerRequest())
+    // cập nhật lại partnerId bệnh viện
+    yield put(ac.SetParnerId(partnerId))
 
-    // 4. lấy danh sách tỉnh thành
-    yield put(act.getListCity())
+    // lấy danh sách bệnh viện
+    yield put(ac.getListHospital())
 
-    // 5. thông báo chọn bệnh viện thành công ở Dev
-    if (_DEVELOPMENT) {
-      openToast({
-        message: 'Chọn bệnh viện thành công!',
-        type: 'success',
-        duration: 4.5
-      })
-    }
+    // lấy danh sách dịch vụ theo bệnh viện
+    yield put(ac.FeatureByPartnerRequest())
+
+    // lấy danh sách tỉnh thành
+    yield put(ac.getListCity())
+
+    // lấy tin tức và sự kiện ở home
+    yield put(ac.getNewsAndEvent())
   } catch (error) {
-    const { message } = get(error, 'response.data', '')
-
-    yield put({
-      type: TotalDataTypes.ListPartners.SET_PARTNERID,
-      partnerId: ''
-    })
-    openToast({
-      message,
-      type: 'error',
-      duration: 4.5
-    })
+    console.error(error)
   }
 }
 
 function* WatchGetHospitalDetails() {
-  yield takeEvery(
+  yield takeLatest(
     HosptailTypes.Information.INFORMATION_REQUEST,
     getHospitalDetails
   )
@@ -76,7 +50,7 @@ function* WatchGetHospitalDetails() {
 function* getFeatureByPartner() {
   try {
     const partnerid: string = yield select(
-      (state: AppState) => state.totalDataReducer.partnerId
+      (state: AppState) => state.hospitalReducer.information.partnerId
     )
 
     const respone: AxiosResponse = yield client.getFeatureByPartner({
@@ -85,7 +59,7 @@ function* getFeatureByPartner() {
 
     const { data } = respone
 
-    yield put(FeatureByPartnerRequestSuccess(data))
+    yield put(ac.FeatureByPartnerRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -108,7 +82,7 @@ function* getListHospital() {
       appid
     })
     const { data } = response
-    yield put(ListHospitalRequestSuccess(data))
+    yield put(ac.ListHospitalRequestSuccess(data))
   } catch (error) {
     console.error(error)
   }
@@ -130,7 +104,7 @@ function* getBookingTree({ partnerid }: any) {
         appid: partnerid
       }
     )
-    yield put(act.getBookingTreeSuccess(response.data))
+    yield put(ac.getBookingTreeSuccess(response.data))
   } catch (error) {
     console.log(error)
   }

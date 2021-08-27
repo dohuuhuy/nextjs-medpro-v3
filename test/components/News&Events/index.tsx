@@ -1,3 +1,4 @@
+import { checkData, DataFailure } from '@componentsTest/DataFailure'
 import { Col, Row } from 'antd'
 import moment from 'moment'
 import Image from 'next/image'
@@ -9,9 +10,8 @@ import styles from './styles.module.less'
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
-  if (!dataNewsAndEvent || dataNewsAndEvent.length < 1) {
-    return <em>Không có dataNewsEventCustom </em>
-  }
+  if (checkData(dataNewsAndEvent))
+    return <DataFailure desc={'Không có dataNewsEventCustom '} />
 
   return (
     <Container className={styles.dataNewsAndEvent}>
@@ -21,7 +21,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
       <Row className={styles.rowListNews}>
         <Col xl={10} lg={10} md={24} className={styles.colListNewsPin}>
           <ul className={styles.ListNewsAndEvent}>
-            {dataNewsAndEvent.slice(0, 1).map((item: any) => {
+            {dataNewsAndEvent?.slice(0, 1)?.map((item: any) => {
               return (
                 <li key={item?.id}>
                   <CardNewsCustom {...item} />
@@ -32,7 +32,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
         </Col>
         <Col xl={14} lg={14} md={24} className={styles.colListNews}>
           <ul className={styles.ListNewsAndEvent}>
-            {dataNewsAndEvent.slice(1, 5).map((item: any) => {
+            {dataNewsAndEvent?.slice(1, 5)?.map((item: any) => {
               return (
                 <li key={item?.id}>
                   <CardNewsCustom {...item} />

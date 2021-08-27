@@ -1,6 +1,5 @@
-import React from 'react'
-import dynamic from 'next/dynamic'
 import SelectHospitalPage from '@components/pages/SelectHospitalPage'
+import dynamic from 'next/dynamic'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ChonBenhVienPage = () => {

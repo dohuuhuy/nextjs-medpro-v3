@@ -1,11 +1,13 @@
-/* eslint-disable no-console */
+import * as ac from '@actionStore/rootAction'
 import { UserLogin } from '@actionStore/rootAction'
+import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import nookies from 'nookies'
 import queryString from 'querystring'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import nookies from 'nookies'
+import { END } from 'redux-saga'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 export interface Props {
@@ -35,22 +37,25 @@ const Author = () => {
 Author.Layout = DefaultLayout
 export default Author
 
-// export const getServerSideProps = wrapper.getServerSideProps(
-//   (store) => async (ctx) => {
-//     const { params } = ctx
-//     const query = queryString.parse(params?.info as string)
-//     await store.dispatch(UserLogin(query))
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (ctx) => {
+    const { params } = ctx
 
-//     store.dispatch(END)
-//     await (store as SagaStore).sagaTask?.toPromise()
+    const host = ctx?.req?.headers.host
+    await store.dispatch(ac.getHospitalDetails(host))
+    const query = queryString.parse(params?.info as string)
+    await store.dispatch(UserLogin(query))
 
-//     const user = store.getState().userReducer
+    store.dispatch(END)
+    await (store as SagaStore).sagaTask?.toPromise()
 
-//     const cookies = nookies.get(ctx)
-//     return {
-//       props: {
-//         path: cookies.path ? cookies.path : '/'
-//       }
-//     }
-//   }
-// )
+    // const user = store.getState().userReducer
+
+    const cookies = nookies.get(ctx)
+    return {
+      props: {
+        path: cookies.path ? cookies.path : '/'
+      }
+    }
+  }
+)

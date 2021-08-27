@@ -38,6 +38,14 @@ export default function totalDataReducer(
       }
     }
 
+    case HYDRATE: {
+      const nextState = {
+        ...state,
+        ...action.payload
+      }
+      return nextState
+    }
+
     default:
       return state
   }

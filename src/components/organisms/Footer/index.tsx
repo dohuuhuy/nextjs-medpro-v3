@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux'
+import { FooterCustom } from '@componentsTest/FooterCustom'
 import { AppState } from '@store/interface'
 import React from 'react'
-import { FooterCustom } from '@medpro/booking-libs'
+import { useSelector } from 'react-redux'
 
 const FooterLayout = () => {
   const footer = useSelector(

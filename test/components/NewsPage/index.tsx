@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
+import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
-import { DataFailure, checkData } from '../DataFailure'
 export interface NewsPageCustom {
   listNewsBanner: any[]
   listNewsContent?: any[]
@@ -35,14 +35,14 @@ export const NewsPageCustom = ({
       <Row className={styles.rowHeader}>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colLeft}>
           <div className={styles.listNews}>
-            {listNewsBanner.slice(0, 1)?.map((item: any, i: number) => (
+            {listNewsBanner?.slice(0, 1)?.map((item: any, i: number) => (
               <CardCustom item={item} key={i} />
             ))}
           </div>
         </Col>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colRight}>
           <div className={styles.listNews}>
-            {listNewsBanner?.slice(1, 3).map((item: any, i: number) => (
+            {listNewsBanner?.slice(1, 3)?.map((item: any, i: number) => (
               <CardCustom item={item} key={i} obsImg={true} />
             ))}
           </div>

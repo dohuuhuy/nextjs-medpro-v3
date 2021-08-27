@@ -33,6 +33,7 @@ import {
 } from '@store/interface'
 
 export interface AppState {
+  [x: string]: any
   totalDataReducer: TotalDataState
   hospitalReducer: HospitalState
   newsReducer: NewsState

@@ -36,5 +36,6 @@ yarn-error.log*
 
 .eslintrc
 
-
 /package-lock.json
+/yarn-error.log
+/yarn.lock

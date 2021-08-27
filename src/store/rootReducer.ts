@@ -1,4 +1,3 @@
-import DemoReducer from '@componentStore/demo/reducer'
 import hospitalReducer from '@componentStore/hospital/reducer'
 import newsReducer from '@componentStore/news/reducer'
 import totalDataReducer from '@componentStore/totalData/reducer'
@@ -9,7 +8,6 @@ import { AnyAction, combineReducers } from 'redux'
 import { AppState } from './interface'
 
 const reducers = {
-  DemoReducer,
   totalDataReducer,
   hospitalReducer,
   newsReducer,
@@ -19,12 +17,14 @@ const reducers = {
 const combinedReducers = combineReducers(reducers)
 
 export const rootReducer: Reducer<AppState, AnyAction> = (state, action) => {
-  if (action.type === HYDRATE) {
-    const nextState = {
-      ...state,
-      ...action.payload
-    }
-    return nextState
+  switch (action.type) {
+    case HYDRATE:
+      return {
+        ...state,
+        ...action.payload
+      }
+
+    default:
+      return combinedReducers(state as any, action)
   }
-  return combinedReducers(state as any, action)
 }
