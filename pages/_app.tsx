@@ -15,7 +15,6 @@ type Props = AppProps & {
 const MyApp = ({ Component, pageProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
-
   return (
     <LayoutWrapper>
       <DefaultSeo {...SEO} />

@@ -9,7 +9,7 @@ const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
   if (checkData(content)) {
-    return <DataFailure description={'Lỗi không có data thắc mắc'} />
+    return <DataFailure desc={'Lỗi không có data thắc mắc'} />
   }
 
   const [Faq, setFaq] = useState({
