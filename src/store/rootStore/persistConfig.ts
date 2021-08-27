@@ -24,19 +24,19 @@ export const createNoopStorage = () => {
   }
 }
 
-export const persistedReducer = () => {
-  const storage =
-    typeof window !== 'undefined'
-      ? createWebStorage('local')
-      : createNoopStorage()
+const storage =
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
+    : createNoopStorage()
 
-  const persistConfig = {
-    key: 'nextjs',
-    version: VERSION,
-    storage,
-    // stateReconciler: autoMergeLevel2,
-    whitelist: listPersists
-  }
-
-  return persistReducer(persistConfig, rootReducer as any)
+const persistConfig = {
+  key: 'nextjs',
+  version: VERSION,
+  whitelist: listPersists,
+  storage: storage
 }
+
+export const persistedReducer = persistReducer(
+  persistConfig,
+  rootReducer as any
+)
