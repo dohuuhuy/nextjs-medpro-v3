@@ -1,6 +1,6 @@
+import * as ac from '@actionStore/rootAction'
 import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
-import { indexContainer } from 'src/containers'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 
 const HomePage = () => {
@@ -9,7 +9,13 @@ const HomePage = () => {
 
 HomePage.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async (ctx: any) => {
-    indexContainer({ store, ctx })
+    const host = ctx?.req?.headers.host
+
+    await store.dispatch(ac.getHospitalDetails(host))
+
+    const x = await store.getState()
+    console.log('x :>> ', x)
+    return { props: { custom: 'custom' } }
   }
 )
 

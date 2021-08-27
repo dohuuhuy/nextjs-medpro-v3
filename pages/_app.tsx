@@ -1,25 +1,26 @@
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
-import { wrapper } from '@store/rootStore'
+import { persistor, wrapper } from '@store/rootStore'
+import { setVersion, checkVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Page } from 'type/page'
 
 type Props = AppProps & {
   Component: Page
-  [x: string]: any
+  [T: string]: any
 }
 
 const MyApp = ({ Component, pageProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
 
-  // useEffect(() => {
-  //   setVersion()
-  //   checkVersion(persistor)
-  // })
+  useEffect(() => {
+    setVersion()
+    checkVersion(persistor)
+  })
 
   return (
     <LayoutWrapper>

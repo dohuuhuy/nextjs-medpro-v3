@@ -12,7 +12,7 @@ function* getHospitalDetails({ host }: any) {
       (state: AppState) => state.totalDataReducer.listPartners
     )
 
-    // lấy danh sách partner bệnh viên
+    // lấy danh sách partner bệnh viện
     yield put(ac.getListPartners())
 
     // tìm ra partnerid từ trong danh sách partner
