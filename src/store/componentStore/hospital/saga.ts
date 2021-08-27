@@ -24,6 +24,9 @@ function* getHospitalDetails({ host }: any) {
     // cập nhật lại partnerId bệnh viện
     yield put(ac.SetParnerId(partnerId))
 
+    // lấy danh sách bệnh viện
+    yield put(ac.getListHospital())
+
     // lấy danh sách dịch vụ theo bệnh viện
     yield put(ac.FeatureByPartnerRequest())
 
