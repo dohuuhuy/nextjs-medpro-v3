@@ -1,7 +1,7 @@
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
 import { persistor, wrapper } from '@store/rootStore'
-import { setVersion, checkVersion } from '@store/rootStore/handlerStore'
+import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
