@@ -18,7 +18,13 @@ export const store = () => {
     bindMiddleware([sagaMiddleware])
   )
   persistor = persistStore(store)
-  store.sagaTask = sagaMiddleware.run(rootSaga)
+
+  store.runSagaTask = () => {
+    store.sagaTask = sagaMiddleware.run(rootSaga)
+  }
+
+  store.runSagaTask()
+
   return store
 }
 

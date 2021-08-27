@@ -10,12 +10,9 @@ const HomePage = () => {
 HomePage.getInitialProps = wrapper.getInitialPageProps(
   (store: SagaStore) => async (ctx: any) => {
     const host = ctx?.req?.headers.host
-
     await store.dispatch(ac.getHospitalDetails(host))
-
-    const x = await store.getState()
-    console.log('x :>> ', x)
-    return { props: { custom: 'custom' } }
+    const state = await store.getState()
+    return { state }
   }
 )
 
