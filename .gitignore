@@ -39,3 +39,8 @@ yarn-error.log*
 /package-lock.json
 /yarn-error.log
 /yarn.lock
+
+
+# cách dùng git ignore
+# git rm -rf --cached .
+# git add .
