@@ -1,6 +1,6 @@
-import * as ac from '@actionStore/rootAction'
-import { SagaStore, wrapper } from '@store/rootStore'
+import { wrapper, SagaStore } from '@store/rootStore'
 import dynamic from 'next/dynamic'
+import * as ac from '@actionStore/rootAction'
 import { END } from 'redux-saga'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 
@@ -15,9 +15,6 @@ HomePage.getInitialProps = wrapper.getInitialPageProps(
 
     store.dispatch(END)
     await (store as SagaStore).sagaTask?.toPromise()
-
-    const state = await store.getState()
-    return { state }
   }
 )
 

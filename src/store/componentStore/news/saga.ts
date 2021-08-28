@@ -31,6 +31,8 @@ function* getListNewsBanner() {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
     const response: AxiosResponse = yield call(getData, url)
 
+    console.log('response :>> ', response)
+
     yield put(ac.ListNewsBannerRequestSuccess(response))
   } catch (error) {
     console.error(error)
