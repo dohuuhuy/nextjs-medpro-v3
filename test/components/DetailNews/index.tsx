@@ -2,7 +2,7 @@ import Container from '../Container'
 import { Row, Col } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-import { DataFailure, checkData } from '../DataFailure'
+// import { DataFailure, checkData } from '../DataFailure'
 import styles from './styles.module.less'
 import moment from 'moment'
 import Image from 'next/image'
@@ -19,9 +19,11 @@ export const DetailNewsCustom = ({
   dataNewest,
   dataSameNews
 }: DetailNewsCustom) => {
-  if (checkData(dataDetail)) {
-    return <DataFailure description={'Lỗi không có data tin tức banner'} />
-  }
+  // if (checkData(dataDetail)) {
+  //   return <DataFailure desc={'Lỗi không có data tin tức banner'} />
+  // }
+
+  console.log('dataSameNews :>> ', dataSameNews)
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowContentPost}>

@@ -6,6 +6,8 @@ import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 import React, { Fragment } from 'react'
 import { Page } from 'type/page'
+// import * as ac from '@actionStore/rootAction'
+// import { END } from 'redux-saga'
 
 type Props = AppProps & {
   Component: Page
@@ -23,5 +25,14 @@ const MyApp = ({ Component, pageProps }: Props) => {
     </LayoutWrapper>
   )
 }
+
+// MyApp.getInitialProps = wrapper.getInitialPageProps(
+//   (store: SagaStore) => async (ctx: any) => {
+//     // const host = ctx?.req?.headers.host
+//     // await store.dispatch(ac.getHospitalDetails(host))
+//     // store.dispatch(END)
+//     // await (store as SagaStore).sagaTask?.toPromise()
+//   }
+// )
 
 export default wrapper.withRedux(MyApp)

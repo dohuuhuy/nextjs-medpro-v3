@@ -20,19 +20,17 @@ export const getServerSideProps = wrapper.getServerSideProps(
     } = ctx
 
     console.log('page :>> ', page)
-
     const host = ctx?.req?.headers.host
     await store.dispatch(ac.getHospitalDetails(host))
+
     await store.dispatch(ac.getListNewsBanner())
     await store.dispatch(ac.getCountNewsContent())
     await store.dispatch(ac.getListNewsContent(Number(page)))
 
     const state = await store.getState().newsReducer.listNewsContent
 
-    console.log('state :>> ', state)
-
     await store.dispatch(END)
     await (store as SagaStore).sagaTask?.toPromise()
-    return { props: { custom: 'custom' } }
+    return { props: { custom: state } }
   }
 )
