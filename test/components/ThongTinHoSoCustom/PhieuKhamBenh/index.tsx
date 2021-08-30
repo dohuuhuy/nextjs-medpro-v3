@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Space } from 'antd'
 import styles from './styles.module.less'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { HandleFilter } from './components/func'
@@ -22,7 +23,7 @@ export const PhieuKhamBenh = (Props: Medthods) => {
         {Filter.map((listUser: any, index: any) => {
           return (
             <li key={index + "d"}>
-              <div className={styles.cardHeader} onClick={() => onShow(index)}>
+              <div className={show === index ? styles.cardHeaderActive : styles.cardHeaderInactive} onClick={() => onShow(index)}>
                 <span>{listUser[0]}</span>
                 {show === index ? <UpOutlined /> : <DownOutlined />}
               </div>
@@ -35,8 +36,12 @@ export const PhieuKhamBenh = (Props: Medthods) => {
                           return (
                             <li key={i + "d"}>
                               <div className={styles.cardView}>
-                                <div>{key}</div>
-                                <div>{value}</div>
+                                <div className={styles.itemKeys}>
+                                  <p >{key}</p>
+                                </div>
+                                <div className={styles.itemValues}>
+                                  <p >{value}</p>
+                                </div>
                               </div>
                             </li>
                           )

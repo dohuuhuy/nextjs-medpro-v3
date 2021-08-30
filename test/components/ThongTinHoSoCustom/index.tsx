@@ -106,7 +106,7 @@ export const ThongTinHoSoCustom = () => {
   return (
     <Container>
       <Row className={styles.rowInfomation}>
-        <Col xl={8} className={styles.colFunc}>
+        <Col xs={12} xl={8} className={styles.colFunc}>
           <Container>
             <div className={styles.btnAddProfile}>
               <Button icon={<UserAddOutlined />} href="/tao-ho-so">Thêm hồ sơ bệnh nhân</Button>
@@ -126,7 +126,7 @@ export const ThongTinHoSoCustom = () => {
             </div>
           </Container>
         </Col>
-        <Col xl={16} className={styles.colContent}>
+        <Col xs={12} xl={16} className={styles.colContent}>
           <Container>
             {Page === "File"
               ? <HoSo {...dataProfile} />
