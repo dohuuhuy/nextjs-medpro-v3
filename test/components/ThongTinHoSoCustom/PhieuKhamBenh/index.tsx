@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { HandleFilter } from './components/func'
-import { AnyAaaaRecord } from 'dns'
 export interface Medthods {
   listUser: any[]
 }
@@ -16,12 +15,6 @@ export const PhieuKhamBenh = (Props: Medthods) => {
     console.log("index ", index)
     setishow(show !== index ? index : '')
   }
-  const x = GetURLParameter("testing.medpro.com.vn:80")
-  function GetURLParameter(sParam: any) {
-    const text = sParam.split(":")
-    return text[0]
-  }
-  console.log(x)
   return (
     <div className={styles.Container}>
       <h1>Danh sách phiếu khám bệnh</h1>
