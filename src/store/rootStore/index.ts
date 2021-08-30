@@ -1,7 +1,7 @@
 import { AppState } from '@store/interface'
 import { rootReducer } from '@store/rootReducer'
 import rootSaga from '@store/rootSaga'
-import { createWrapper } from 'next-redux-wrapper'
+import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { createStore, Store } from 'redux'
 import { Persistor, persistStore } from 'redux-persist'
 import { Task } from 'redux-saga'
@@ -13,29 +13,24 @@ export interface SagaStore extends Store<AppState> {
   sagaTask?: Task | undefined
 }
 
-export const store2 = () => {
+export const store2: MakeStore<any> = () => {
   let store: any
   const isServer = typeof window === 'undefined'
-  console.log('isServer :>> ', isServer)
 
   if (isServer) {
-    const store: any = createStore(
-      rootReducer as any,
-      bindMiddleware([sagaMiddleware])
-    )
-
+    store = createStore(rootReducer as any, bindMiddleware([sagaMiddleware]))
     store.sagaTask = sagaMiddleware.run(rootSaga)
-
     return store
   } else {
-    store = createStore(persistedReducer(), bindMiddleware([sagaMiddleware]))
+    console.log('isServer :>> ', isServer)
+    store = createStore(persistedReducer, bindMiddleware([sagaMiddleware]))
     store.__persistor = persistStore(store)
     store.sagaTask = sagaMiddleware.run(rootSaga)
     return store
   }
 }
 
-const store = () => {
+export const store = () => {
   const store: any = createStore(
     rootReducer as any,
     bindMiddleware([sagaMiddleware])
