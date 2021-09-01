@@ -1,0 +1,40 @@
+.container{
+  .listNoti{
+    list-style: none;
+    padding: 0;
+    .cardView{
+      padding: 10px 0;
+      .cardContent{
+        padding: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        &:hover{
+          background: linear-gradient(90deg, #bae8e8,#b8c1ec);
+          transition: 1s;
+        }
+        .Time{
+          p{
+            font-weight: bolder;
+            text-transform: uppercase;
+            color: #627792;
+            font-size: 10px;
+            margin: 0;
+          }
+        }
+        .Content{
+          p{
+            font-weight: 500;
+            font-size: 13px;
+            margin: 0;
+          }
+        }
+        .Detail{
+          float: right;
+          a{
+            margin: 0;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

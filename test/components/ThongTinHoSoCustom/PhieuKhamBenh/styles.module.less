@@ -24,18 +24,27 @@
 }
 .Container{
   .listUser{
-    background-color: red;
     padding: 0;
     list-style: none;
     width: 100%;
     .cardHeaderInactive{
       .Header(white,#7D8EA5);
+      &:hover{
+        cursor: pointer;
+        span{
+          font-size: 17px;
+          color:#007BFF;
+        }
+      }
     }
     .cardHeaderActive{
       .Header(#007BFF,white);
       border-radius: 5px;
       padding: 5px 10px ;
       transition: 0.5s;
+      &:hover{
+        cursor: pointer;
+      }
     }
     .listExam{
       list-style: none;
