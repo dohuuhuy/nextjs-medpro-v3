@@ -6,8 +6,8 @@ import {
 import { HYDRATE } from 'next-redux-wrapper'
 
 const initState: TotalDataState = {
-  partnerId: '',
   appId: '',
+  partnerId: '',
   listPartners: [],
   listCity: [],
   loading: false
