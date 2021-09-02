@@ -30,7 +30,7 @@ export const store2: MakeStore<any> = () => {
   }
 }
 
-export const store = () => {
+export const store: MakeStore<any> = () => {
   const store: any = createStore(
     rootReducer as any,
     bindMiddleware([sagaMiddleware])

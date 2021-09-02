@@ -1,3 +1,5 @@
+import { combinedReducers } from '@store/rootReducer'
+
 // demo
 export * from '@componentStore/demo/interface/action'
 export * from '@componentStore/demo/interface/types'
@@ -25,17 +27,4 @@ export * from '@componentStore/totalData/interface/types'
 export * from '@componentStore/totalData/interface/initialState'
 export * from '@componentStore/totalData/interface/params'
 
-import {
-  HospitalState,
-  NewsState,
-  TotalDataState,
-  UserState
-} from '@store/interface'
-
-export interface AppState {
-  [x: string]: any
-  totalDataReducer: TotalDataState
-  hospitalReducer: HospitalState
-  newsReducer: NewsState
-  userReducer: UserState
-}
+export type AppState = ReturnType<typeof combinedReducers>

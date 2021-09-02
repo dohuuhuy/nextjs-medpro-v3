@@ -1,6 +1,6 @@
 export interface TotalDataState {
-  partnerId: string
   appId: string
+  partnerId: string
   listPartners: ItemlistPartners[]
   listCity: any[]
   loading: boolean
