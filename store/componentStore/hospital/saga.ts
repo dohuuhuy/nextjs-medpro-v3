@@ -1,4 +1,4 @@
-import * as ac from 'store/actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'

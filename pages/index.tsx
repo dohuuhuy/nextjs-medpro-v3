@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic'
 import { HomeCtl } from 'src/containers/home'
-import * as ac from 'store/actionStore/rootAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { AppState } from 'store/interface'
+import * as ac from '@actionStore/rootAction'
+import { check } from '@utils/checkValue'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
@@ -14,7 +15,7 @@ const HomePage = (props: any) => {
   )
 
   useEffect(() => {
-    !listFeature && dispatch(ac.FeatureByPartnerRequest(props.partnerId))
+    check(listFeature) && dispatch(ac.FeatureByPartnerRequest(props.partnerId))
   }, [])
   return <NewsAndEvent {...props.data} />
 }

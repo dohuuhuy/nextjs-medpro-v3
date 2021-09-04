@@ -3,8 +3,9 @@ import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import * as ac from 'store/actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import { AppState } from 'store/interface'
+import { check } from '@utils/checkValue'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ChonBenhVienPage = (props: any) => {
@@ -17,8 +18,8 @@ const ChonBenhVienPage = (props: any) => {
   )
 
   useEffect(() => {
-    !listCity && dispatch(ac.getListCity())
-    !listHospital && dispatch(ac.getListHospital())
+    check(listCity) && dispatch(ac.getListCity())
+    check(listHospital) && dispatch(ac.getListHospital())
   }, [])
 
   return <SelectHospitalPage {...props.data} />

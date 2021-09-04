@@ -1,4 +1,4 @@
-import * as ac from 'store/actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import { countData, getData } from 'store/api'
 import { NewsTypes } from 'store/interface'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
