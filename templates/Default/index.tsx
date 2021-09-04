@@ -1,3 +1,4 @@
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -9,20 +10,23 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
-  state: any
+  appProps: any
 }
 
 const DefaultLayout = (props: Props) => {
-  const { children } = props
+  const { children, appProps } = props
+
+  const info = appProps?.introducHospital
   return (
     <Layout className={styles.layout}>
-      <Header />
+      <Header {...info} />
       <div className={styles.main}>
-        <BannerPage />
+        <BannerPage {...info} />
+        <HandlerGetContentPage {...info} />
 
         {children}
       </div>
-      <Footer />
+      <Footer {...info} />
     </Layout>
   )
 }

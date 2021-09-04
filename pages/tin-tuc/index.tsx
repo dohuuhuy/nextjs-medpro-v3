@@ -1,26 +1,18 @@
-import * as ac from '@actionStore/rootAction'
 import NewsPageDetails from '@components/pages/NewsPage'
-import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
 import React from 'react'
+import { TinTucCtrl } from 'src/containers/News/news'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const TinTucPage = () => {
-  return <NewsPageDetails />
+const TinTucPage = ({ data }: any) => {
+  return <NewsPageDetails {...data} />
 }
 
 TinTucPage.Layout = DefaultLayout
 export default TinTucPage
 
-TinTucPage.getInitialProps = wrapper.getInitialPageProps(
-  (store: SagaStore) =>
-    async ({ ctx }: any) => {
-      const {
-        query: { page = 1 }
-      } = ctx
+export const getServerSideProps = async (ctx: any) => {
+  const data = await TinTucCtrl(ctx)
 
-      store.dispatch(ac.getListNewsBanner())
-      store.dispatch(ac.getCountNewsContent())
-      store.dispatch(ac.getListNewsContent(Number(page)))
-    }
-)
+  return { props: { data } }
+}

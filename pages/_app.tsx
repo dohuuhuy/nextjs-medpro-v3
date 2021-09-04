@@ -1,55 +1,42 @@
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
-import { SagaStore, wrapper } from '@store/rootStore'
+import { Information } from 'store/interface'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
-import React, { Fragment } from 'react'
-import { END } from 'redux-saga'
+import React, { Fragment, useEffect } from 'react'
+import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
-import * as ac from '@actionStore/rootAction'
-// import { END } from 'redux-saga'
-
+import { wrapper } from 'store/rootStore'
 type Props = AppProps & {
   Component: Page
   [T: string]: any
+  appProps: Information
 }
 
-const MyApp = ({ Component, pageProps }: Props) => {
+const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
 
+  useEffect(() => {
+    window?.localStorage.setItem(
+      'partnerId',
+      appProps.introducHospital.partnerId
+    )
+  }, [])
+
   return (
-    <LayoutWrapper>
+    <LayoutWrapper appProps={appProps}>
       <DefaultSeo {...SEO} />
-      {getLayout(<Component {...pageProps} />)}
+      {getLayout(<Component {...pageProps} partnerId={appProps.partnerId} />)}
     </LayoutWrapper>
   )
 }
 
-MyApp.getInitialProps = wrapper.getInitialPageProps(
-  (store: SagaStore) => async (context: any) => {
-    // 1. Wait for all page actions to dispatch
-    const pageProps = {
-      ...(context.Component.getInitialProps
-        ? await context.Component.getInitialProps(context)
-        : {})
-    }
+MyApp.getInitialProps = async (ctx: any) => {
+  const appProps = await appCtrl(ctx)
 
-    const host = context.ctx?.req?.headers.host
-    await store.dispatch(ac.getHospitalDetails(host))
-
-    // 2. Stop the saga if on server
-    if (context.ctx.req) {
-      store.dispatch(END)
-      await store.sagaTask?.toPromise()
-    }
-
-    // 3. Return props
-    return {
-      pageProps
-    }
-  }
-)
+  return { appProps }
+}
 
 export default wrapper.withRedux(MyApp)

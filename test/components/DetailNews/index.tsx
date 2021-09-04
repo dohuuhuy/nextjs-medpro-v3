@@ -5,26 +5,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
-// import { DataFailure, checkData } from '../DataFailure'
 import styles from './styles.module.less'
 export interface DetailNewsCustom {
-  dataDetail: any[]
-  dataNewest: any[]
-  dataSameNews: any[]
+  detailNews: any[]
+  sameNews: any[]
+  listNewsBanner: any[]
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const DetailNewsCustom = ({
-  dataDetail,
-  dataNewest,
-  dataSameNews
+  detailNews,
+  sameNews,
+  listNewsBanner
 }: DetailNewsCustom) => {
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowContentPost}>
         <Col xs={24} xl={16} lg={16} className={styles.colLeftPost}>
           <ul className={styles.listPost}>
-            {dataDetail.map((item: any, index: number) => {
+            {detailNews?.map((item: any, index: number) => {
               return (
                 <div key={index}>
                   <li className={styles.title}>
@@ -54,7 +53,7 @@ export const DetailNewsCustom = ({
         <Col xs={24} xl={8} lg={8} className={styles.colRightPost}>
           <h2>TIN CÙNG CHUYÊN MỤC</h2>
           <ul className={styles.listCategory}>
-            {dataSameNews.map((item: any, index: number) => (
+            {sameNews?.map((item: any, index: number) => (
               <CardNewsCustom item={item} key={index} />
             ))}
           </ul>
@@ -72,7 +71,7 @@ export const DetailNewsCustom = ({
           <h2>BÀI VIẾT MỚI NHẤT</h2>
 
           <ul className={styles.listPostNew}>
-            {dataNewest.map((item: any, index: number) => (
+            {listNewsBanner?.map((item: any, index: number) => (
               <CardNewsCustom item={item} key={index} />
             ))}
           </ul>

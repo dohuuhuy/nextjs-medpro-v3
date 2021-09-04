@@ -1,14 +1,9 @@
-import { DeloyHospitalCustom } from '@medpro/booking-libs'
-import { AppState } from '@store/interface'
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
+import { Information } from 'store/interface'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-const DeployHospital = () => {
-  const deployHospital = useSelector(
-    (state: AppState) => state.hospitalReducer.information.deployHospital
-  )
-
-  return <DeloyHospitalCustom dataDeloyHospital={deployHospital} />
+const DeployHospital = (info: Information) => {
+  return <DeloyHospitalCustom dataDeloyHospital={info.deployHospital} />
 }
 
 export default DeployHospital

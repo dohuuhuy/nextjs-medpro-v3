@@ -4,13 +4,8 @@ import React from 'react'
 import Container from '../../../Container'
 import styles from './styles.module.less'
 
-export const BannerHome = ({
-  getBanner,
-  listFeature,
-  // partnerId,
-  appId,
-  dispatchListHospital
-}: any) => {
+export const BannerHome = ({ getBanner, listFeature, partnerId }: any) => {
+
   const router = useRouter()
 
   if (!getBanner) {
@@ -21,8 +16,7 @@ export const BannerHome = ({
   const SelectFeature = (type: string) => {
     const { checkData } = require('./../../../DataFailure')
 
-    if (appId === 'medpro' && checkData(type)) {
-      dispatchListHospital()
+    if (partnerId === 'medpro' && checkData(type)) {
       router.push('/chon-benh-vien')
     }
   }

@@ -10,7 +10,7 @@ export interface IntroduceCustom {
 
 export const IntroduceCustom = ({ dataIntroduce }: IntroduceCustom) => {
   if (checkData(dataIntroduce)) {
-    return <DataFailure description={'Lỗi không có data giới thiệu'} />
+    return <DataFailure desc={'Lỗi không có data giới thiệu'} />
   }
 
   const { contentIntro, cardIntro } = dataIntroduce

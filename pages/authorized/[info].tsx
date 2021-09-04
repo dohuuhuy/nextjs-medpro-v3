@@ -1,14 +1,12 @@
 import * as ac from '@actionStore/rootAction'
-import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import nookies from 'nookies'
 import { useEffect } from 'react'
-import { END } from 'redux-saga'
+import { useDispatch } from 'react-redux'
 
-const querystring = require('querystring')
 const DefaultLayout = dynamic(() => import('@templates/Default'))
-
+const queryString = require('querystring')
 export interface Props {
   path?: string
   token?: string
@@ -16,9 +14,18 @@ export interface Props {
 
 const Author = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
+
+  const { info } = router.query
+  const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    router.push('/')
+    dispatch(ac.UserLogin(query))
+    window.localStorage.setItem('jwt', query?.token)
+    nookies.set(query, 'user', JSON.stringify(query), { path: '/' })
+    const cookies = nookies.get(query)
+    console.log('cookies.path :>> ', cookies.path)
+    // router.push('/')
   })
 
   return null
@@ -26,22 +33,3 @@ const Author = () => {
 
 Author.Layout = DefaultLayout
 export default Author
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (ctx) => {
-    const { params } = ctx
-
-    const query = querystring.parse(params?.info as string)
-    await store.dispatch(ac.UserLogin(query))
-
-    store.dispatch(END)
-    await (store as SagaStore).sagaTask?.toPromise()
-
-    const cookies = nookies.get(ctx)
-    return {
-      props: {
-        path: cookies.path ? cookies.path : '/'
-      }
-    }
-  }
-)

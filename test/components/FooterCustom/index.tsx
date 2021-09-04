@@ -10,7 +10,7 @@ const { Footer } = Layout
 
 export const FooterCustom = ({ dataFooter }: PropsFooter) => {
   if (checkData(dataFooter)) {
-    return <DataFailure description={'Lỗi không có data footer'} />
+    return <DataFailure desc={'Lỗi không có data footer'} />
   }
 
   return (

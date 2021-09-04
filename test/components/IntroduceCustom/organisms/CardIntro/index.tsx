@@ -22,23 +22,25 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
       <Row>
         <ul className={styles.groudCard}>
           {dataCardIntro?.map(
-            ({ title, subTitle, imgCard, link }: CardIntroItem) => (
-              <li key={title}>
-                <div className={styles.card}>
-                  <figure className={styles.view}>
-                    <img src={imgCard} alt={title} />
-                  </figure>
-                  <div className={styles.cardBody}>
-                    <h5 className={styles.title}>
-                      <Link href={link}>
-                        <a>{title} </a>
-                      </Link>
-                    </h5>
-                    <p className={styles.subTitle}>{subTitle}</p>
+            ({ title, subTitle, imgCard, link }: CardIntroItem) => {
+              return (
+                <li key={title}>
+                  <div className={styles.card}>
+                    <figure className={styles.view}>
+                      <img src={imgCard} alt={title} />
+                    </figure>
+                    <div className={styles.cardBody}>
+                      <h5 className={styles.title}>
+                        <Link href={link || '#'}>
+                          <a>{title} </a>
+                        </Link>
+                      </h5>
+                      <p className={styles.subTitle}>{subTitle}</p>
+                    </div>
                   </div>
-                </div>
-              </li>
-            )
+                </li>
+              )
+            }
           )}
         </ul>
       </Row>
