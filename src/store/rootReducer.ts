@@ -1,6 +1,5 @@
 import { AppState } from '@store/interface'
 import hospitalReducer from '@componentStore/hospital/reducer'
-import newsReducer from '@componentStore/news/reducer'
 import totalDataReducer from '@componentStore/totalData/reducer'
 import userReducer from '@componentStore/user/reducer'
 import { HYDRATE } from 'next-redux-wrapper'
@@ -10,7 +9,6 @@ import { AnyAction, combineReducers } from 'redux'
 const reducers = {
   totalDataReducer,
   hospitalReducer,
-  newsReducer,
   userReducer
 }
 
