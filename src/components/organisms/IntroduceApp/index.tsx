@@ -1,5 +1,5 @@
 import { IntroduceCustom } from '@componentsTest/IntroduceCustom'
-import { Information } from '@store/interface'
+import { Information } from 'store/interface'
 import React from 'react'
 
 const IntroduceLayout = (info: Information) => {

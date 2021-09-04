@@ -1,5 +1,5 @@
 import SelectHospitalCustom from '@componentsTest/SelectHospitalCustom'
-import { AppState } from '@store/interface'
+import { AppState } from 'store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

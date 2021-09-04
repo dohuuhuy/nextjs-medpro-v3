@@ -1,5 +1,5 @@
 import { HeaderCustom } from '@componentsTest/HeaderCustom'
-import { AppState, Information } from '@store/interface'
+import { AppState, Information } from 'store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

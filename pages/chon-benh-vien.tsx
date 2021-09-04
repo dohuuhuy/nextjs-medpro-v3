@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import * as ac from '@actionStore/rootAction'
-import { AppState } from '@store/interface'
+import * as ac from 'store/actionStore/rootAction'
+import { AppState } from 'store/interface'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ChonBenhVienPage = (props: any) => {

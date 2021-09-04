@@ -1,5 +1,5 @@
 import { ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
-import { AppState } from '@store/interface'
+import { AppState } from 'store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'

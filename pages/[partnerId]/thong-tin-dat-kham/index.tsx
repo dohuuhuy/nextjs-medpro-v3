@@ -1,11 +1,11 @@
 import BookingInformationPage from '@components/pages/BookingInformationPage'
 import dynamic from 'next/dynamic'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
-import * as ac from '@actionStore/rootAction'
+import * as ac from 'store/actionStore/rootAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { AppState } from '@store/interface'
+import { AppState } from 'store/interface'
 
 const ThongTinDatKhamPage = () => {
   const router = useRouter()

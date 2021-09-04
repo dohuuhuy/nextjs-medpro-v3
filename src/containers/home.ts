@@ -1,4 +1,4 @@
-import api from '@store/api'
+import api from 'store/api'
 
 export const HomeCtl = async (_ctx: any) => {
   const newsAndEvent = await getNewsAndEvent()
