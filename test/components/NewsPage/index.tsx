@@ -27,7 +27,7 @@ export const NewsPageCustom = ({
   }
 
   if (checkData(listNewsBanner)) {
-    return <DataFailure description={'Lỗi không có data tin tức banner'} />
+    return <DataFailure desc={'Lỗi không có data tin tức banner'} />
   }
 
   return (

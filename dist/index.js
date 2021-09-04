@@ -5,12 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const next_1 = __importDefault(require("next"));
 const express_1 = __importDefault(require("express"));
-const server = express_1.default();
+const server = (0, express_1.default)();
 const port = parseInt(process.env.PORT || '3006', 10);
 const NODE_ENV = process.env.NODE_ENV;
 const ENV = process.env.ENV;
 const dev = NODE_ENV !== 'production';
-const app = next_1.default({ dev });
+const app = (0, next_1.default)({ dev });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
     server.get('/gioi-thieu', (req, res) => {

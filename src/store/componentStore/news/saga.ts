@@ -50,8 +50,6 @@ function* getListNewsContent({ page = 1 }) {
     const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
     const response: AxiosResponse = yield call(getData, url)
 
-    console.log('response :>> ', response)
-
     yield put(ac.ListNewsContentRequestSuccess(response))
   } catch (error) {
     console.error(error)
