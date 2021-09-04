@@ -1,27 +1,19 @@
-import * as ac from '@actionStore/rootAction'
 import { DetailsNews } from '@components/organisms/DetailNews'
-import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
 import React from 'react'
+import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const DetailsPostPage = () => {
-  return <DetailsNews />
+const DetailsPostPage = ({ data }: any) => {
+  return <DetailsNews {...data} />
 }
 
 DetailsPostPage.Layout = DefaultLayout
 export default DetailsPostPage
 
-DetailsPostPage.getInitialProps = wrapper.getInitialPageProps(
-  (store: SagaStore) =>
-    async ({ ctx }: any) => {
-      const {
-        query: { DetailsPost }
-      } = ctx
+export const getServerSideProps = async (ctx: any) => {
+  const data = await ChiTietBaiViet(ctx)
 
-      await store.dispatch(ac.getSameNews())
-      await store.dispatch(ac.getListNewsBanner())
-      await store.dispatch(ac.getDetailNews(DetailsPost))
-    }
-)
+  return { props: { data } }
+}
