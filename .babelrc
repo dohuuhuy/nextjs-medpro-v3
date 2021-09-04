@@ -11,9 +11,9 @@
               "@config": "./src/config",
               "@components": "./src/components",
               "@componentsTest": "./test/components",
-              "@componentStore": "./src/store/componentStore",
+              "@componentStore": "./store/componentStore",
               "@utils": "./src/utils",
-              "@store": "./src/store",
+              "@store": "./store",
               "@templates": "./templates",
               "@assets": "./assets",
               "@public": "./public"
@@ -32,9 +32,9 @@
             "alias": {
               "@config": "./src/config",
               "@components": "./src/components",
-              "@componentStore": "./src/store/componentStore",
+              "@componentStore": "./store/componentStore",
               "@utils": "./src/utils",
-              "@store": "./src/store",
+              "@store": "./store",
               "@templates": "./templates",
               "@assets": "./assets",
               "@public": "./public"
@@ -53,9 +53,9 @@
             "alias": {
               "@config": "./src/config",
               "@components": "./src/components",
-              "@componentStore": "./src/store/componentStore",
+              "@componentStore": "./store/componentStore",
               "@utils": "./src/utils",
-              "@store": "./src/store",
+              "@store": "./store",
               "@templates": "./templates",
               "@assets": "./assets",
               "@public": "./public"

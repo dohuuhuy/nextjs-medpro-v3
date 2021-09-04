@@ -1,4 +1,4 @@
-import { AppState } from '@store/interface'
+import { Information } from 'store/interface'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -11,7 +11,6 @@ const SliderHospital = dynamic(
 )
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
-const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
@@ -19,23 +18,24 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
-  state: AppState
+  appProps: Information
 }
 
 const HomeLayout = (props: Props) => {
-  const { children } = props
+  const { children, appProps } = props
+
+  const info = appProps?.introducHospital
 
   return (
     <Layout className={styles.layout}>
-      <Header />
-      <BannerPage />
-      <SliderHospital />
-      <Introduce />
-      <Download />
-      <NewsAndEvent />
-      <SupportMethod />
-      <Footer />
+      <Header {...info} />
+      <BannerPage {...info} />
+      <SliderHospital {...info} />
+      <Introduce {...info} />
+      <Download {...info} />
       {children}
+      <SupportMethod {...info} />
+      <Footer {...info} />
     </Layout>
   )
 }

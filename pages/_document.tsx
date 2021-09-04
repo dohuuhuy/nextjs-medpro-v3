@@ -7,7 +7,6 @@ import Document, {
   NextScript
 } from 'next/document'
 import React from 'react'
-const sprite = require('svg-sprite-loader/runtime/sprite.build')
 
 class CustomDocument extends Document<{
   spriteContent: string
@@ -15,11 +14,10 @@ class CustomDocument extends Document<{
 }> {
   public static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-    const spriteContent = sprite.stringify()
 
     return {
-      spriteContent,
-      ...initialProps
+      ...initialProps,
+      styles: [...React.Children.toArray(initialProps.styles)]
     }
   }
 
@@ -28,7 +26,7 @@ class CustomDocument extends Document<{
       <Html lang='vi'>
         <Head>
           <FavIcon />
-          {/* <script
+          <script
             src='https://resource-testing.medpro.com.vn/static/js/wechat.js'
             async={true}
           />
@@ -44,7 +42,7 @@ class CustomDocument extends Document<{
 
           <link rel='preconnect' href='https://fonts.googleapis.com' />
 
-          <link rel='preconnect' href='https://fonts.gstatic.com' /> */}
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
 
           <link
             href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
@@ -57,7 +55,7 @@ class CustomDocument extends Document<{
             charSet='UTF-8'
             href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
           />
-          
+
           <link
             rel='stylesheet'
             type='text/css'
@@ -65,7 +63,6 @@ class CustomDocument extends Document<{
           />
         </Head>
         <body>
-          <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
           <Main />
           <NextScript />
         </body>

@@ -6,28 +6,21 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
-export interface NewsPageCustom {
+export interface Props {
   listNewsBanner: any[]
   listNewsContent?: any[]
   totalPages?: number
 }
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
-export const NewsPageCustom = ({
-  listNewsBanner,
-  listNewsContent,
-  totalPages
-}: NewsPageCustom) => {
+export const NewsPageCustom = (props: Props) => {
+  const { listNewsBanner, listNewsContent, totalPages } = props
+
   const router = useRouter()
 
   const onChange = (pageNumber: any) => {
     router.push(`?page=${pageNumber}`)
-  }
-
-  if (checkData(listNewsBanner)) {
-    return <DataFailure description={'Lỗi không có data tin tức banner'} />
   }
 
   return (

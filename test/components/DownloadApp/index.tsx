@@ -19,7 +19,7 @@ export interface DownloadApp {
 
 export const DownloadCustom = ({ dataDownload }: DownloadCustom) => {
   if (checkData(dataDownload)) {
-    return <DataFailure description={'Lỗi không có data tải ứng dụng'} />
+    return <DataFailure desc={'Lỗi không có data tải ứng dụng'} />
   }
   return (
     <Container className={styles.DownloadCustom} id='tai-ung-dung'>

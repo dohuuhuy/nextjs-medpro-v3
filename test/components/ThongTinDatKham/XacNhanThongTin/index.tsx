@@ -5,7 +5,12 @@ import { Medthods } from '../utils/interface'
 import { DeleteFilled } from '@ant-design/icons'
 import { HandleFilter } from './Components/func'
 export const XacNhanThongTin = (Props: Medthods) => {
+  // console.log('Props :>> ', Props)
+
   const Filter = HandleFilter(Props)
+
+  // console.log('Filter :>> ', Filter)
+
   const dataSource = [
     {
       key: '1',
@@ -60,6 +65,7 @@ export const XacNhanThongTin = (Props: Medthods) => {
       )
     }
   ]
+
   return (
     <div className={styles.container}>
       <h3>Thông tin đặt khám</h3>
@@ -86,7 +92,6 @@ export const XacNhanThongTin = (Props: Medthods) => {
           )
         })}
       </ul>
-    </div >
-
+    </div>
   )
 }

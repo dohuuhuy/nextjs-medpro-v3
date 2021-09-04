@@ -1,15 +1,9 @@
-// import { SupportMedthodCustom } from '@medpro/booking-libs'
 import { SupportMedthodCustom } from '@componentsTest/SupportMethod'
-import { AppState } from '@store/interface'
+import { Information } from 'store/interface'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-const SupportMedthod = () => {
-  const supportMethods = useSelector(
-    (state: AppState) => state.hospitalReducer.information.supportMethods
-  )
-
-  return <SupportMedthodCustom dataSupportMethod={supportMethods} />
+const SupportMedthod = (info: Information) => {
+  return <SupportMedthodCustom dataSupportMethod={info.supportMethods} />
 }
 
 export default SupportMedthod
