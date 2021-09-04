@@ -11,11 +11,17 @@ import { ChonDichVu } from '../ChonDichVu'
 import { ChonHoSo } from '../ChonHoSo'
 import { XacNhanThongTin } from '../XacNhanThongTin'
 import { ChonNgayKham } from '../ChonNgayKham'
+import { ChonBacSi } from '../ChonBacSi'
 
 export const handleStep = (medthods: any) => {
   const { stepBooking } = medthods
 
   const steps: any = [
+    {
+      title: 'Bác sĩ',
+      icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
+      content: <ChonBacSi {...medthods} />
+    },
     {
       title: 'Ngày khám',
       icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
@@ -30,7 +36,8 @@ export const handleStep = (medthods: any) => {
       title: 'Xác nhận',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
       content: <XacNhanThongTin {...medthods} />
-    }
+    },
+
   ]
 
   for (let index = 0; index < stepBooking.length; index++) {
@@ -52,7 +59,7 @@ export const handleStep = (medthods: any) => {
       steps.splice(index, 0, {
         title: 'Bác sỉ',
         icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
-        content: 'Last-content'
+        content: <ChonBacSi {...medthods} />
       })
     }
   }
