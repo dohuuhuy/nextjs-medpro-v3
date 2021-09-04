@@ -1,25 +1,17 @@
-import { getListHospital } from '@actionStore/rootAction'
 import { BannersCustom } from '@componentsTest/BannersCustom'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-
-import { AppState } from '@store/interface'
+import { AppState, Information } from '@store/interface'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Information } from '@store/interface'
+import { useSelector } from 'react-redux'
 
 const BannerLayout = (info: Information) => {
-  const dispatch = useDispatch()
   const router = useRouter()
 
-  const { listFeature, listHospital } = useSelector(
+  const { listFeature } = useSelector(
     (state: AppState) => state.hospitalReducer
-  )
-
-  const { partnerId, appId } = useSelector(
-    (state: AppState) => state.totalDataReducer
   )
 
   const { pathname } = router
@@ -40,19 +32,11 @@ const BannerLayout = (info: Information) => {
     return <BreadcumbCustom listMenu={listMenu} />
   }
 
-  const fncGetListHospital = () => {
-    if (check(listHospital)) {
-      dispatch(getListHospital())
-    }
-  }
-
   return (
     <BannersCustom
-      dispatchListHospital={fncGetListHospital}
       getBanner={getBanner}
       listFeature={listFeature}
-      partnerId={partnerId}
-      appId={appId}
+      partnerId={info?.partnerId}
     />
   )
 }

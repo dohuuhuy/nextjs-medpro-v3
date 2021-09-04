@@ -38,6 +38,7 @@ export type FeatureAction =
 
 export interface FeatureByPartnerRequest {
   type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
+  partnerid: string
 }
 
 export interface FeatureByPartnerRequestSuccess {
