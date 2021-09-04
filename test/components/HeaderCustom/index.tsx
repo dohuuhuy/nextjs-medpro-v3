@@ -17,7 +17,7 @@ export const HeaderCustom = (Props: PropsHeader) => {
   const { dataHeader, Authencartion } = Props
 
   if (checkData(dataHeader)) {
-    return <DataFailure description={'Lỗi không có data header'} />
+    return <DataFailure desc={'Lỗi không có data header'} />
   }
 
   const { logoHeader, logoHeaderMobile, menuMobile, support }: any = dataHeader

@@ -8,7 +8,7 @@ export const BannersCustom = (props: any) => {
   const { getBanner } = props
 
   if (checkData(getBanner)) {
-    return <DataFailure description={'Lỗi không có data banners'} />
+    return <DataFailure desc={'Lỗi không có data banners'} />
   }
 
   switch (getBanner.key) {

@@ -13,7 +13,7 @@ export const SupportMedthodCustom = ({
   dataSupportMethod
 }: SupportMedthodCustom) => {
   if (checkData(dataSupportMethod)) {
-    return <DataFailure description={'Lỗi không có data hỗ trợ'} />
+    return <DataFailure desc={'Lỗi không có data hỗ trợ'} />
   }
 
   return (

@@ -113,7 +113,7 @@ const SelectHospitalCustom = ({
         <Col xl={24} xs={24} className={styles.colListCard}>
           <ul className={styles.listCard}>
             {checkData(listHospitals) ? (
-              <DataFailure description='Không tìm thấy !' />
+              <DataFailure desc='Không tìm thấy !' />
             ) : (
               listHospitals?.map(
                 (

@@ -18,7 +18,7 @@ export interface DeloyHospitalItem {
 
 export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
   if (checkData(dataDeloyHospital)) {
-    return <DataFailure description={'Lỗi không có data dataDeloyHospital'} />
+    return <DataFailure desc={'Lỗi không có data dataDeloyHospital'} />
   }
 
   return (
