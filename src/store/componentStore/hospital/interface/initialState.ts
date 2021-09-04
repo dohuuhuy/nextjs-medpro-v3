@@ -1,5 +1,4 @@
 export interface HospitalState {
-  information: Information
   listFeature: ItemFeature[]
   listHospital: any
   bookingTree: any[]

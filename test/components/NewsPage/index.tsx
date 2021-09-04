@@ -15,8 +15,6 @@ export interface Props {
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = (props: Props) => {
-  console.log('props :>> ', props)
-
   const { listNewsBanner, listNewsContent, totalPages } = props
 
   const router = useRouter()
