@@ -11,7 +11,6 @@ const SliderHospital = dynamic(
 )
 const Introduce = dynamic(() => import('@components/organisms/IntroduceApp'))
 const Download = dynamic(() => import('@components/organisms/DownloadApp'))
-const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 const SupportMethod = dynamic(
   () => import('@components/organisms/SupportMethod')
 )
@@ -19,11 +18,13 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
-  info: Information
+  appProps: Information
 }
 
 const HomeLayout = (props: Props) => {
-  const { children, info } = props
+  const { children, appProps } = props
+
+  const info = appProps.introducHospital
 
   return (
     <Layout className={styles.layout}>
@@ -32,10 +33,9 @@ const HomeLayout = (props: Props) => {
       <SliderHospital {...info} />
       <Introduce {...info} />
       <Download {...info} />
-      <NewsAndEvent />
+      {children}
       <SupportMethod {...info} />
       <Footer {...info} />
-      {children}
     </Layout>
   )
 }

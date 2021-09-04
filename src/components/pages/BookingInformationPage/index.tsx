@@ -10,7 +10,7 @@ const BookingInformationPage = () => {
   const { partnerId } = router.query
 
   const { listHospital, bookingTree } = useSelector(
-    (state: AppState) => state.hospitalReducer.listHospital
+    (state: AppState) => state.hospitalReducer
   )
 
   const listPatient = useSelector(

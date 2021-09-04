@@ -3,7 +3,6 @@ import { Col, Input, Modal, Row, Select } from 'antd'
 import { filter } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import Container from '../Container'
 import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
@@ -13,16 +12,10 @@ const { Option } = Select
 export interface Props {
   listHospital: any[]
   listCity: any[]
-  getBookingTree: any
 }
 
-const SelectHospitalCustom = ({
-  listHospital,
-  listCity,
-  getBookingTree
-}: Props) => {
+const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   const router = useRouter()
-  const dispatch = useDispatch()
   const [listHospitals, setlistHospitals] = useState<any[]>([])
 
   useEffect(() => {
@@ -48,7 +41,6 @@ const SelectHospitalCustom = ({
 
   function handleNotification(message: string, partnerId: string) {
     if (checkData(message)) {
-      dispatch(getBookingTree(partnerId))
       router.push(`${partnerId}/thong-tin-dat-kham`)
     } else {
       Modal.info({

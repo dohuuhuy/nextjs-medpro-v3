@@ -22,7 +22,6 @@ export const store2: MakeStore<any> = () => {
     store.sagaTask = sagaMiddleware.run(rootSaga)
     return store
   } else {
-    console.log('isServer :>> ', isServer)
     store = createStore(persistedReducer, bindMiddleware([sagaMiddleware]))
     store.__persistor = persistStore(store)
     store.sagaTask = sagaMiddleware.run(rootSaga)
@@ -39,4 +38,4 @@ export const store: MakeStore<any> = () => {
   return store
 }
 
-export const wrapper = createWrapper<SagaStore>(store)
+export const wrapper = createWrapper<SagaStore>(store2)

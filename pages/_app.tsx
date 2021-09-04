@@ -1,42 +1,42 @@
-import * as ac from '@actionStore/rootAction'
-// import { END } from 'redux-saga'
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
+import { Information } from '@store/interface'
 import { wrapper } from '@store/rootStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 import React, { Fragment, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { indexContainer } from 'src/containers'
+import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
-
 type Props = AppProps & {
   Component: Page
   [T: string]: any
+  appProps: Information
 }
 
-const MyApp = ({ Component, pageProps, data }: Props) => {
+const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
 
-  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(ac.SetParnerId(data.partnerId))
-  })
+    window?.localStorage.setItem(
+      'partnerId',
+      appProps.introducHospital.partnerId
+    )
+  }, [])
 
   return (
-    <LayoutWrapper info={data.infoHospital}>
+    <LayoutWrapper appProps={appProps}>
       <DefaultSeo {...SEO} />
-      {getLayout(<Component {...pageProps} />)}
+      {getLayout(<Component {...pageProps} partnerId={appProps.partnerId} />)}
     </LayoutWrapper>
   )
 }
 
 MyApp.getInitialProps = async (ctx: any) => {
-  const data = await indexContainer(ctx)
+  const appProps = await appCtrl(ctx)
 
-  return { data }
+  return { appProps }
 }
 
 export default wrapper.withRedux(MyApp)

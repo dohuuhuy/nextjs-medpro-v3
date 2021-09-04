@@ -10,11 +10,13 @@ const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
-  info: any
+  appProps: any
 }
 
 const DefaultLayout = (props: Props) => {
-  const { children, info } = props
+  const { children, appProps } = props
+
+  const info = appProps.introducHospital
   return (
     <Layout className={styles.layout}>
       <Header {...info} />

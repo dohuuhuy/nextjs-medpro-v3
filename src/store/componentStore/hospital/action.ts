@@ -47,9 +47,10 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
 }
 
 // lấy danh sách dịch vụ theo bệnh viện
-export const FeatureByPartnerRequest = (): HospitalActions => {
+export const FeatureByPartnerRequest = (partnerid: any): HospitalActions => {
   return {
-    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
+    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST,
+    partnerid
   }
 }
 

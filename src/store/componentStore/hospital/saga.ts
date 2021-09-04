@@ -1,40 +1,12 @@
 import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from '@store/interface'
-import { findPartnerId } from '@utils/run_local_hospitals'
 import { AxiosResponse } from 'axios'
-import { JSON_EXP } from 'json mẫu/bvtest'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
-function* getHospitalDetails({ host }: any) {
+function* getHospitalDetails() {
   try {
-    const listPartners: AppState = yield select(
-      (state: AppState) => state.totalDataReducer.listPartners
-    )
-
-    // lấy danh sách partner bệnh viện
     yield put(ac.getListPartners())
-
-    // tìm ra partnerid từ trong danh sách partner
-    const partnerId = findPartnerId({ listPartners, host })
-
-    // lưu thông tin bệnh viện vào state
-    yield put(ac.InformationRequestSuccess(JSON_EXP))
-
-    // cập nhật lại partnerId bệnh viện
-    yield put(ac.SetParnerId(partnerId))
-
-    // lấy danh sách bệnh viện
-    yield put(ac.getListHospital())
-
-    // lấy danh sách dịch vụ theo bệnh viện
-    yield put(ac.FeatureByPartnerRequest())
-
-    // lấy danh sách tỉnh thành
-    yield put(ac.getListCity())
-
-    // lấy tin tức và sự kiện ở home
-    yield put(ac.getNewsAndEvent())
   } catch (error) {
     console.error(error)
   }
@@ -47,12 +19,8 @@ function* WatchGetHospitalDetails() {
   )
 }
 
-function* getFeatureByPartner() {
+function* getFeatureByPartner({ partnerid }: any) {
   try {
-    const partnerid: string = yield select(
-      (state: AppState) => state.hospitalReducer.information.partnerId
-    )
-
     const respone: AxiosResponse = yield client.getFeatureByPartner({
       partnerid
     })
@@ -104,8 +72,7 @@ function* getBookingTree({ partnerid }: any) {
         appid: partnerid
       }
     )
-    console.error(response)
-    // yield put(ac.getBookingTreeSuccess(response.data))
+    yield put(ac.getBookingTreeSuccess(response.data))
   } catch (error) {
     console.log(error)
   }
