@@ -23,8 +23,9 @@ export const store2: MakeStore<any> = () => {
     return store
   } else {
     store = createStore(persistedReducer, bindMiddleware([sagaMiddleware]))
-    store.__persistor = persistStore(store)
     store.sagaTask = sagaMiddleware.run(rootSaga)
+    store.__persistor = persistStore(store)
+
     return store
   }
 }
