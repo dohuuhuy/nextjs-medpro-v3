@@ -1,12 +1,12 @@
-import Container from '../Container'
-import { Row, Col } from 'antd'
-import Link from 'next/link'
-import React from 'react'
-// import { DataFailure, checkData } from '../DataFailure'
-import styles from './styles.module.less'
+import { Col, Row } from 'antd'
+import cx from 'classnames'
 import moment from 'moment'
 import Image from 'next/image'
-import cx from 'classnames'
+import Link from 'next/link'
+import React from 'react'
+import Container from '../Container'
+// import { DataFailure, checkData } from '../DataFailure'
+import styles from './styles.module.less'
 export interface DetailNewsCustom {
   dataDetail: any[]
   dataNewest: any[]
@@ -19,50 +19,36 @@ export const DetailNewsCustom = ({
   dataNewest,
   dataSameNews
 }: DetailNewsCustom) => {
-  // if (checkData(dataDetail)) {
-  //   return <DataFailure desc={'Lỗi không có data tin tức banner'} />
-  // }
-
-  console.log('dataSameNews :>> ', dataSameNews)
   return (
     <Container className={styles.ContainerNews}>
       <Row className={styles.rowContentPost}>
         <Col xs={24} xl={16} lg={16} className={styles.colLeftPost}>
           <ul className={styles.listPost}>
-            {dataDetail.map(
-              (
-                {
-                  title,
-                  created_at: createdAt,
-                  author,
-                  description,
-                  content
-                }: any,
-                index: number
-              ) => (
+            {dataDetail.map((item: any, index: number) => {
+              return (
                 <div key={index}>
                   <li className={styles.title}>
-                    <p>{title}</p>
+                    <p>{item?.title}</p>
                   </li>
                   <li className={styles.time}>
                     <p>
                       <span>
-                        {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+                        {moment(item?.created_at).format('DD/MM/YYYY, h:mm')}
                       </span>
-                      <span> {author}</span>
+                      <span> {item?.author}</span>
                     </p>
                   </li>
                   <li>
                     <blockquote className={styles.description}>
-                      <p>{description}</p>
+                      <p>{item?.description}</p>
                     </blockquote>
                   </li>
                   <li className={styles.content}>
-                    <p dangerouslySetInnerHTML={{ __html: content }} />
+                    <p dangerouslySetInnerHTML={{ __html: item?.content }} />
                   </li>
                 </div>
               )
-            )}
+            })}
           </ul>
         </Col>
         <Col xs={24} xl={8} lg={8} className={styles.colRightPost}>
@@ -97,22 +83,14 @@ export const DetailNewsCustom = ({
 }
 
 interface PropsCard {
-  item: any[]
+  item: any
   obsImg?: boolean
 }
 
 const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
-  const {
-    image,
-    slug,
-    title,
-    created_at: createdAt,
-    description,
-    author
-  }: any = item
-  const imgUrl = API_NEWS + image?.[0].url
+  const imgUrl = API_NEWS + item?.image?.[0].url
   return (
-    <div className={styles.cardNews} key={title}>
+    <div className={styles.cardNews} key={item?.title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
         <Image
           src={imgUrl}
@@ -124,16 +102,16 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
       </figure>
 
       <div className={styles.cardBody}>
-        <Link href={`/tin-tuc/${slug}`}>
+        <Link href={`/tin-tuc/${item?.slug}`}>
           <a>
-            <p className={styles.title}>{title}</p>
+            <p className={styles.title}>{item?.title}</p>
           </a>
         </Link>
         <p className={styles.time}>
-          {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+          {moment(item?.created_at).format('DD/MM/YYYY, h:mm')}
         </p>
-        {author && <p className={styles.author}>{author}</p>}
-        <p className={styles.description}>{description}</p>
+        {item?.author && <p className={styles.author}>{item?.author}</p>}
+        <p className={styles.description}>{item?.description}</p>
       </div>
     </div>
   )

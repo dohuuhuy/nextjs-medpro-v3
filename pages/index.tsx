@@ -1,7 +1,6 @@
-import { wrapper, SagaStore } from '@store/rootStore'
+// import * as ac from '@actionStore/rootAction'
+import { SagaStore, wrapper } from '@store/rootStore'
 import dynamic from 'next/dynamic'
-import * as ac from '@actionStore/rootAction'
-import { END } from 'redux-saga'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 
 const HomePage = () => {
@@ -9,12 +8,9 @@ const HomePage = () => {
 }
 
 HomePage.getInitialProps = wrapper.getInitialPageProps(
-  (store: SagaStore) => async (ctx: any) => {
-    const host = ctx?.req?.headers.host
-    await store.dispatch(ac.getHospitalDetails(host))
-
-    store.dispatch(END)
-    await (store as SagaStore).sagaTask?.toPromise()
+  (_store: SagaStore) => async (_ctx: any) => {
+    // const host = ctx?.req?.headers.host
+    // await store.dispatch(ac.getHospitalDetails(host))
   }
 )
 
