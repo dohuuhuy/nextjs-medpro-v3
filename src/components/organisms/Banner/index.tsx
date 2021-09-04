@@ -19,9 +19,6 @@ const BannerLayout = (info: Information) => {
   const getBanner = find(info.banners, { key: pathname })
 
   if (check(getBanner)) {
-    if (check(info.header)) {
-      return null
-    }
     const { menuHeader, insideLink, menuMobile } = info.header
     const listMenu = [].concat(menuHeader, insideLink, menuMobile)
     const getLink = find(listMenu, { link: pathname })

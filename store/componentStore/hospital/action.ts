@@ -1,4 +1,4 @@
-import { HospitalActions, HosptailTypes } from 'store/interface'
+import { HospitalActions, HosptailTypes } from '@store/interface'
 
 // lấy json thông tin bệnh viện
 export const getHospitalDetails = (host: any): HospitalActions => {

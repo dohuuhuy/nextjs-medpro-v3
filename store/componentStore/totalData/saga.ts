@@ -1,4 +1,4 @@
-import * as ac from 'store/actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import { getData } from 'store/api'
 import { TotalDataTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'

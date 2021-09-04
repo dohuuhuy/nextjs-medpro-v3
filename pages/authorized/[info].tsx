@@ -1,4 +1,4 @@
-import * as ac from 'store/actionStore/rootAction'
+import * as ac from '@actionStore/rootAction'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import nookies from 'nookies'
@@ -25,7 +25,7 @@ const Author = () => {
     nookies.set(query, 'user', JSON.stringify(query), { path: '/' })
     const cookies = nookies.get(query)
     console.log('cookies.path :>> ', cookies.path)
-    router.push('/')
+    // router.push('/')
   })
 
   return null

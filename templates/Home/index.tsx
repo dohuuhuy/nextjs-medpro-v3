@@ -24,7 +24,7 @@ type Props = {
 const HomeLayout = (props: Props) => {
   const { children, appProps } = props
 
-  const info = appProps.introducHospital
+  const info = appProps?.introducHospital
 
   return (
     <Layout className={styles.layout}>
