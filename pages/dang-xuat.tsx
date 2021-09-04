@@ -1,4 +1,4 @@
-import { UserLogout } from '@actionStore/rootAction'
+import { UserLogout } from 'store/actionStore/rootAction'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'

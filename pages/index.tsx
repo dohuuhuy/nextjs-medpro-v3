@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { HomeCtl } from 'src/containers/home'
-import * as ac from '@actionStore/rootAction'
+import * as ac from 'store/actionStore/rootAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { AppState } from '@store/interface'
+import { AppState } from 'store/interface'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 

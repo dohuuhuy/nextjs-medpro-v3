@@ -1,4 +1,4 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from 'store/actionStore/rootAction'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import nookies from 'nookies'

@@ -1,6 +1,6 @@
 import { BannersCustom } from '@componentsTest/BannersCustom'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import { AppState, Information } from '@store/interface'
+import { AppState, Information } from 'store/interface'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
 import { ContentPageCustom } from '@componentsTest/ContentPageCustom'
-import { Information } from '@store/interface'
+import { Information } from 'store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'

@@ -1,4 +1,4 @@
-import { Information } from '@store/interface'
+import { Information } from 'store/interface'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'

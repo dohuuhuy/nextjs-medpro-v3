@@ -1,4 +1,4 @@
-import api from '@store/api'
+import api from 'store/api'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { JSON_EXP } from 'json mẫu/bvtest'
 
