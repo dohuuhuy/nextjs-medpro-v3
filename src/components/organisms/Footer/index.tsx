@@ -1,14 +1,9 @@
 import { FooterCustom } from '@componentsTest/FooterCustom'
-import { AppState } from '@store/interface'
+import { Information } from '@store/interface'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-const FooterLayout = () => {
-  const footer = useSelector(
-    (state: AppState) => state.hospitalReducer.information.footer
-  )
-
-  return <FooterCustom dataFooter={footer} />
+const FooterLayout = (info: Information) => {
+  return <FooterCustom dataFooter={info.footer} />
 }
 
 export default FooterLayout

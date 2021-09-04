@@ -1,13 +1,9 @@
 import { HeaderCustom } from '@componentsTest/HeaderCustom'
-import { AppState } from '@store/interface'
+import { AppState, Information } from '@store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const HeaderLayout = () => {
-  const header = useSelector(
-    (state: AppState) => state.hospitalReducer.information.header
-  )
-
+const HeaderLayout = (info: Information) => {
   const userInfo = useSelector((state: AppState) => state.userReducer.userInfo)
 
   const authen = {
@@ -16,7 +12,7 @@ const HeaderLayout = () => {
   }
 
   const methods = {
-    dataHeader: header,
+    dataHeader: info.header,
     Authencartion: authen
   }
 
