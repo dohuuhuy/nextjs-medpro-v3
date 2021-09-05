@@ -23,6 +23,6 @@ export const rootReducer: Reducer<AppState, AnyAction> = (state, action) => {
       }
 
     default:
-      return combinedReducers(state as any, action)
+      return combinedReducers(state, action)
   }
 }
