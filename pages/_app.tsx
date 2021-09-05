@@ -8,6 +8,8 @@ import React, { Fragment, useEffect } from 'react'
 import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
 import { wrapper } from '@store/rootStore'
+import * as ac from '@actionStore/rootAction'
+import { useDispatch } from 'react-redux'
 type Props = AppProps & {
   Component: Page
   [T: string]: any
@@ -17,12 +19,18 @@ type Props = AppProps & {
 const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    window?.localStorage.setItem(
-      'partnerId',
-      appProps.introducHospital.partnerId
-    )
+    const jwt = window.localStorage.getItem('jwt')
+
+    console.log('jwt :>> ', jwt)
+
+    const user = jwt ? JSON.parse(jwt) : null
+
+    if (user) {
+      dispatch(ac.UserLogin(user))
+    }
   }, [])
 
   return (
