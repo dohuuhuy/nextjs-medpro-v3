@@ -76,6 +76,8 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             </li>
             <li>
               <Select
+                defaultValue='huyi'
+                defaultActiveFirstOption
                 className={styles.inputSelect}
                 showSearch={true}
                 style={{ width: '100%' }}
@@ -91,7 +93,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                   Chọn tỉnh thành
                 </Option>
 
-                {listCity.map(({ id, name, code }) => {
+                {listCity?.map(({ id, name, code }) => {
                   return (
                     <Option value={code} key={id}>
                       {name}

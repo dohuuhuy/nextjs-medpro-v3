@@ -15,10 +15,14 @@ const ThongTinDatKhamPage = () => {
     (state: AppState) => state.hospitalReducer.bookingTree
   )
 
+  const listPatient = useSelector(
+    (state: AppState) => state.userReducer.listPatient
+  )
+
   const dispatch = useDispatch()
   useEffect(() => {
     check(bookingTree) && dispatch(ac.getBookingTree(router.query?.partnerId))
-    dispatch(ac.ListPatientRequest())
+    check(listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
 
   return <BookingInformationPage />
