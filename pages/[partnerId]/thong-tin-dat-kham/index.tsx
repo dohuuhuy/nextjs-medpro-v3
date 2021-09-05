@@ -18,6 +18,7 @@ const ThongTinDatKhamPage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     check(bookingTree) && dispatch(ac.getBookingTree(router.query?.partnerId))
+    dispatch(ac.ListPatientRequest())
   }, [])
 
   return <BookingInformationPage />
