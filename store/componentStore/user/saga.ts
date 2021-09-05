@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { ListPatientRequestSuccess } from './action'
 import { AppState, UserTypes } from 'store/interface'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
