@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { ListPatientRequestSuccess } from './action'
 import { AppState, UserTypes } from 'store/interface'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
@@ -7,17 +6,18 @@ import { client } from '@config/medproSDK'
 
 function* ListPatientRequest() {
   try {
-    const partnerid: string = yield select(
-      (state: AppState) => state.totalDataReducer.partnerId
-    )
+    // const partnerid: string = yield select(
+    //   (state: AppState) => state.totalDataReducer.partnerId
+    // )
 
     const token: string = yield select(
       (state: AppState) => state.userReducer.userInfo.token
     )
+
+    console.log('token :>> ', token)
+
     const response: AxiosResponse = yield client.getPatientsByUserIdV2({
-      partnerid,
-      appid: partnerid,
-      token: token
+      token
     })
 
     yield put(ListPatientRequestSuccess(response.data))

@@ -31,13 +31,14 @@ import {
   TotalDataState,
   UserState
 } from '@store/interface'
+import { combinedReducers } from '@store/rootReducer'
 
-export interface AppState {
-  [x: string]: any
+export interface AppStates {
+  [T: string]: any
   totalDataReducer: TotalDataState
   hospitalReducer: HospitalState
   newsReducer: NewsState
   userReducer: UserState
 }
 
-// export type AppState = ReturnType<typeof combinedReducers>
+export type AppState = ReturnType<typeof combinedReducers>
