@@ -2,7 +2,7 @@ import { UserTypes } from 'store/interface'
 
 export type UserActions = UserInfoAction | PatientAction
 
-// --------------------------------------------------------------
+// ------------------------thông tin đăng nhập--------------------------------------
 
 export type UserInfoAction = UserSave | UserClear
 
@@ -15,6 +15,8 @@ export interface UserClear {
   type: UserTypes.User.USER_RESET
 }
 
+// -------------------------hồ sơ bệnh nhân-------------------------------------
+
 export type PatientAction = ListPatientRequest | ListPatientRequestSuccess
 
 export interface ListPatientRequest {
@@ -25,3 +27,5 @@ export interface ListPatientRequestSuccess {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS
   listPatient: any[]
 }
+
+// --------------------------------------------------------------

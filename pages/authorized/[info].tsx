@@ -20,12 +20,12 @@ const Author = () => {
   const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    dispatch(ac.UserLogin(query))
     window.localStorage.setItem('jwt', query?.token)
     nookies.set(query, 'user', JSON.stringify(query), { path: '/' })
     const cookies = nookies.get(query)
     console.log('cookies.path :>> ', cookies.path)
-    // router.push('/')
+    router.push('/')
+    dispatch(ac.UserLogin(query))
   })
 
   return null
@@ -33,3 +33,18 @@ const Author = () => {
 
 Author.Layout = DefaultLayout
 export default Author
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) => async (ctx) => {
+//     const { params } = ctx
+//     const query = queryString.parse(params?.info as string)
+//     await store.dispatch(ac.UserLogin(query))
+
+//     store.dispatch(END)
+//     await (store as SagaStore).sagaTask?.toPromise()
+
+//     return {
+//       props: {}
+//     }
+//   }
+// )

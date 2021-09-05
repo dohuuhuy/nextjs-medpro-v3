@@ -1,13 +1,13 @@
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
-import { Information } from 'store/interface'
+import { Information } from '@store/interface'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 import React, { Fragment, useEffect } from 'react'
 import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
-import { wrapper } from 'store/rootStore'
+import { wrapper } from '@store/rootStore'
 type Props = AppProps & {
   Component: Page
   [T: string]: any

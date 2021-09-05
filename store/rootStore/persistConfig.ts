@@ -2,11 +2,12 @@ import { VERSION } from '@config/version'
 import { rootReducer } from 'store/rootReducer'
 import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 
 export const listPersists = [
+  'userReducer',
   'totalDataReducer',
-  'hospitalReducer',
-  'userReducer'
+  'hospitalReducer'
 ]
 
 export const createNoopStorage = () => {
@@ -32,7 +33,8 @@ const persistConfig = {
   key: 'nextjs',
   version: VERSION,
   whitelist: listPersists,
-  storage: storage
+  storage: storage,
+  stateReconciler: autoMergeLevel2
 }
 
 export const persistedReducer = persistReducer(
