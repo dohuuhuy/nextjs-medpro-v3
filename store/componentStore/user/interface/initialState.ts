@@ -7,5 +7,5 @@ export interface UserState {
     isCS: boolean
   }
   listPatient: Array<any>
-  [x: string]: any
+  bookingByUser: Array<any>
 }

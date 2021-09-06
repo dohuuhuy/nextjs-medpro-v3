@@ -9,7 +9,8 @@ const init: UserState = {
     token: '',
     isCS: false
   },
-  listPatient: []
+  listPatient: [],
+  bookingByUser: []
 }
 
 export default function userReducer(
@@ -22,6 +23,9 @@ export default function userReducer(
 
     case UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS:
       return { ...state, listPatient: action.listPatient }
+
+    case UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS:
+      return { ...state, bookingByUser: action.bookingByUser }
 
     case UserTypes.User.USER_RESET:
       return { ...init }
