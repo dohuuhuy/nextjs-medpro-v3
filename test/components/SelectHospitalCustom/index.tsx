@@ -19,7 +19,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
   const [listHospitals, setlistHospitals] = useState<any[]>([])
 
   useEffect(() => {
-    setlistHospitals(listHospital)
+    // setlistHospitals(listHospital)
   })
 
   function onChange(code: any) {
