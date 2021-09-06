@@ -1,9 +1,13 @@
 import * as ac from '@actionStore/rootAction'
+import { LoadingOutlined } from '@ant-design/icons'
+import { AppState } from '@store/interface'
+import { check } from '@utils/checkValue'
+import { Spin } from 'antd'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import nookies from 'nookies'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styles from './styles.module.less'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 const queryString = require('querystring')
@@ -18,18 +22,29 @@ const Author = () => {
 
   const { info } = router.query
   const query: any = queryString.parse(info as string)
+  const token = useSelector(
+    (state: AppState) => state.userReducer.userInfo.token
+  )
 
   useEffect(() => {
-    dispatch(ac.UserLogin(query))
-    window.localStorage.setItem('jwt', query?.token)
-    nookies.set(query, 'user', JSON.stringify(query), { path: '/' })
-    const cookies = nookies.get(query)
-    console.log('cookies.path :>> ', cookies.path)
-    // router.push('/')
+    if (check(token)) {
+      dispatch(ac.UserLogin(query))
+      window.localStorage.setItem('jwt', JSON.stringify(query))
+      router.push('/')
+    }
   })
 
-  return null
+  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />
+
+  return (
+    <div className={styles.login}>
+      <Spin indicator={antIcon} />
+    </div>
+  )
 }
 
 Author.Layout = DefaultLayout
 export default Author
+
+// chổ nào cần phải xử lý lại, tại sao lại save rồi mà persist chưa lưu lại
+// cách phía trên là tạm thời

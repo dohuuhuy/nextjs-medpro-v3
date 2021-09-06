@@ -7,6 +7,7 @@ import Document, {
   NextScript
 } from 'next/document'
 import React from 'react'
+import { GA_TRACKING_ID } from 'src/utils/gtag'
 
 class CustomDocument extends Document<{
   spriteContent: string
@@ -60,6 +61,23 @@ class CustomDocument extends Document<{
             rel='stylesheet'
             type='text/css'
             href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
+          />
+
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `
+            }}
           />
         </Head>
         <body>

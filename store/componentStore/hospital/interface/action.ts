@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { HosptailTypes } from 'store/interface'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
@@ -9,7 +8,7 @@ export type HospitalActions =
   | ListHospitalAction
   | BookingTreeAction
 
-// --------------------------------------------------------------
+// -----------------------------thông tin bệnh viện---------------------------------------------
 
 export type InfomationAction =
   | InformationRequest
@@ -30,7 +29,7 @@ export interface HospitalClearDetails {
   type: HosptailTypes.Information.INFORMATION_CLEAR
 }
 
-// --------------------------------------------------------------------------
+// -----------------------------danh sách dịch vụ---------------------------------------------
 
 export type FeatureAction =
   | FeatureByPartnerRequest
@@ -46,6 +45,8 @@ export interface FeatureByPartnerRequestSuccess {
   listFeature: any[]
 }
 
+// -------------------------------danh sách bệnh viện-------------------------------------------
+
 export type ListHospitalAction =
   | ListHospitalRequest
   | ListHospitalRequestSuccess
@@ -59,7 +60,7 @@ export interface ListHospitalRequestSuccess {
   listHospital: any[]
 }
 
-//  -------------------------------------
+// -----------------------------luồng đặt khám---------------------------------------------
 
 export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
 
@@ -72,3 +73,4 @@ export interface BookingTreeRequestSuccess {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS
   bookingTree: any[]
 }
+// --------------------------------------------------------------------------

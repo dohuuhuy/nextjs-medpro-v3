@@ -34,18 +34,18 @@ export const DropdownProfile = ({ nameUser }: Props) => {
       icon: null
     },
     {
-      lug: '/user',
+      lug: '/thong-tin-ho-so',
       label: 'Hồ sơ bệnh nhân',
       icon: <SolutionOutlined />
     },
 
     {
-      lug: '/user',
+      lug: '/thong-tin-ho-so',
       label: 'Phiếu khám bệnh',
       icon: <FileAddOutlined />
     },
     {
-      lug: '/user',
+      lug: '/thong-tin-ho-so',
       label: 'Thông báo',
       icon: <BellOutlined />
     },

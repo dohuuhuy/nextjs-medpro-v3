@@ -1,22 +1,24 @@
 const SEO_DEFAULT = {
-  title: 'Trang chủ | Đặt Khám Medpro',
-  description: 'default',
-  canonical: 'https://huyi.tk',
+  title: 'Medpro - Đặt khám trực tuyến',
+  description:
+    'Medpro, đặt khám trực tuyến, thanh toán viện phí, nhắc uống thuốc, khám chuyên khoa, bác sĩ, tư vấn sức khoẻ từ xa',
+  canonical: 'https://medpro.vn/',
   noindex: true,
   openGraph: {
-    url: 'https://huyi.tk',
-    title: 'Trang cá nhân HuYi',
-    description: 'Trang cá nhân HuYi',
+    url: 'https://medpro.vn/',
+    title: 'Medpro - Đặt khám trực tuyến',
+    description:
+      'Medpro, đặt khám trực tuyến, thanh toán viện phí, nhắc uống thuốc, khám chuyên khoa, bác sĩ, tư vấn sức khoẻ từ xa',
     images: [
       {
-        url: 'https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg',
+        url: 'https://cms.medpro.com.vn/uploads/d_e1b14f67d2.jpg',
         width: 1200,
         height: 630,
-        alt: 'dvdv'
+        alt: 'home'
       }
     ],
     locale: 'vi',
-    site_name: 'Home'
+    site_name: 'Trang chủ'
   }
 }
 

@@ -34,7 +34,7 @@ export interface SetPartnerIdLocal {
   partnerId: string
 }
 
-// ----------------------------------------------------------------------------------------------
+// ----------------------------------------danh sách tỉnh/thành------------------------------------------------------
 
 export type ListCityAction =
   | ListCityReques
