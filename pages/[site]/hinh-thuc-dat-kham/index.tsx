@@ -9,7 +9,7 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const HinhThucDatKham = () => {
   const router = useRouter()
-  const { partnerId } = router.query
+  const { site } = router.query
 
   const hos = useSelector((state: AppState) => state.hospitalReducer)
 
@@ -18,7 +18,7 @@ const HinhThucDatKham = () => {
   useEffect(() => {
     dispatch(
       ac.FeatureRequest({
-        partnerId,
+        partnerId: site,
         typeReser: 'parasitic'
       })
     )

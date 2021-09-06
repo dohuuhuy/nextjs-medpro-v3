@@ -20,7 +20,7 @@ const ThongTinDatKhamPage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     check(hospital?.bookingTree) &&
-      dispatch(ac.getBookingTree(router.query?.partnerId))
+      dispatch(ac.getBookingTree(router.query?.site))
     check(listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
 

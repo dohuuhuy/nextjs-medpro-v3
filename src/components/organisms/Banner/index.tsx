@@ -1,11 +1,11 @@
-import { BannersCustom } from '@componentsTest/BannersCustom'
+import { Banner, BannersCustom } from '@componentsTest/BannersCustom'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import { AppState, Information } from 'store/interface'
 import { check } from '@utils/checkValue'
-import { find } from 'lodash'
+import { find, isUndefined } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { AppState, Information } from 'store/interface'
 
 const BannerLayout = (info: Information) => {
   const router = useRouter()
@@ -17,19 +17,14 @@ const BannerLayout = (info: Information) => {
     pathname
   } = router
 
-  console.log('pathname :>> ', pathname)
+  const key = isUndefined(site) ? (pathname === '/' ? '/' : '') : `/${site}`
 
-  console.log('site :>> ', site)
-  console.log('info.banners :>> ', info.banners)
-
-  const getBanner = find(info.banners, { key: '/' })
-
-  console.log('getBanner :>> ', getBanner)
+  const getBanner = find(info.banners, { key: key })
 
   if (check(getBanner)) {
     const { menuHeader, insideLink, menuMobile } = info.header
     const listMenu = [].concat(menuHeader, insideLink, menuMobile)
-    const getLink = find(listMenu, { link: site })
+    const getLink = find(listMenu, { link: key })
 
     if (check(getLink)) {
       return null
@@ -37,9 +32,9 @@ const BannerLayout = (info: Information) => {
     return <BreadcumbCustom listMenu={listMenu} />
   }
 
-  const methos = {
-    getBanner,
-    listFeature: hos.listFeatureByApp,
+  const methos: Banner = {
+    getBanner: getBanner,
+    listFeature: hos?.listFeatureByApp,
     partnerId: info?.partnerId
   }
 
