@@ -1,5 +1,8 @@
 import * as ac from '@actionStore/rootAction'
-import SelectHospitalCustom from '@componentsTest/SelectHospitalCustom'
+import {
+  SelectHospital,
+  SelectHospitalCustom
+} from '@componentsTest/SelectHospitalCustom'
 import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
@@ -22,12 +25,12 @@ const ChonBenhVienPage = ({ data }: any) => {
     check(listHospital) && dispatch(ac.getListHospital())
   }, [])
 
-  return (
-    <SelectHospitalCustom
-      listHospital={data.listHospital}
-      listCity={listCity}
-    />
-  )
+  const methods: SelectHospital = {
+    listHospital: data?.listHospital,
+    listCity: listCity
+  }
+
+  return <SelectHospitalCustom {...methods} />
 }
 
 ChonBenhVienPage.Layout = DefaultLayout

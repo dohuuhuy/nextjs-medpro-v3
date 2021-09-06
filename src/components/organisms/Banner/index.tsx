@@ -10,9 +10,7 @@ import { useSelector } from 'react-redux'
 const BannerLayout = (info: Information) => {
   const router = useRouter()
 
-  const { listFeature } = useSelector(
-    (state: AppState) => state.hospitalReducer
-  )
+  const hos = useSelector((state: AppState) => state.hospitalReducer)
 
   const { pathname } = router
 
@@ -29,13 +27,13 @@ const BannerLayout = (info: Information) => {
     return <BreadcumbCustom listMenu={listMenu} />
   }
 
-  return (
-    <BannersCustom
-      getBanner={getBanner}
-      listFeature={listFeature}
-      partnerId={info?.partnerId}
-    />
-  )
+  const methos = {
+    getBanner: getBanner,
+    listFeature: hos.listFeatureByApp,
+    partnerId: info?.partnerId
+  }
+
+  return <BannersCustom {...methos} />
 }
 
 export default BannerLayout

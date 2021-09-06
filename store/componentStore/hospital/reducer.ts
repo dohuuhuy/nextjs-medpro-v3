@@ -2,7 +2,8 @@ import { HospitalActions, HospitalState, HosptailTypes } from 'store/interface'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
-  listFeature: [],
+  listFeatureByApp: [],
+  listFeatureByPartner: [],
   listHospital: [],
   bookingTree: []
 }
@@ -21,7 +22,13 @@ export default function hospitalReducer(
     case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:
       return {
         ...state,
-        listFeature: action.listFeature
+        listFeatureByPartner: action.listFeatureByPartner
+      }
+
+    case HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listFeatureByApp: action.listFeatureByApp
       }
 
     case HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS:

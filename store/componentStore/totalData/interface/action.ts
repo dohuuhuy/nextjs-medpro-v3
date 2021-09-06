@@ -4,6 +4,7 @@ export type TotalDataActions =
   | ListPartnersAction
   | ListCityAction
   | PartnerIdlocalAction
+  | TypeReservice
 
 // ----------------------------------------------------------------------------------------------
 
@@ -48,4 +49,10 @@ export interface ListCityReques {
 export interface ListCityRequestSuccess {
   type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
   listCity: any[]
+}
+
+// ----------------------------------------loại đặt khám------------------------------------------------------
+
+export interface TypeReservice {
+  type: TotalDataTypes.TypeReser.TYPE_RESER
 }

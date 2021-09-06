@@ -1,5 +1,6 @@
 export interface HospitalState {
-  listFeature: ItemFeature[]
+  listFeatureByApp: ItemFeature[]
+  listFeatureByPartner: ItemFeature[]
   listHospital: any
   bookingTree: any[]
 }

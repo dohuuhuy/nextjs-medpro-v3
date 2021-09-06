@@ -1,9 +1,9 @@
 export interface TotalDataState {
-  appId: string
+  appId: AppId
   partnerId: string
   listPartners: ItemlistPartners[]
   listCity: any[]
-  loading: boolean
+  typeReser: TypeReser
 }
 
 export interface ItemlistPartners {
@@ -11,3 +11,7 @@ export interface ItemlistPartners {
   partnerId: string
   nameHospital: string
 }
+
+type AppId = 'medpro' | 'danang' | ''
+
+type TypeReser = 'parasitic' | 'normal'

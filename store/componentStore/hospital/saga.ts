@@ -19,25 +19,31 @@ function* WatchGetHospitalDetails() {
   )
 }
 
-function* getFeatureByPartner({ partnerid }: any) {
+function* getFeatureByPartner({ partnerid, typeReser = 'normal' }: any) {
+  console.log('typeReser :>> ', typeReser)
+
   try {
-    const respone: AxiosResponse = yield client.getFeatureByPartner({
+    const rs: AxiosResponse = yield client.getFeatureByPartner({
       partnerid
     })
 
-    const { data } = respone
-
-    yield put(ac.FeatureByPartnerRequestSuccess(data))
+    switch (typeReser) {
+      case 'parasitic':
+        yield put(ac.FeatureByPartnerSuccess(rs?.data))
+        break
+      case 'normal':
+        yield put(ac.FeatureByAppSuccess(rs?.data))
+        break
+      default:
+        break
+    }
   } catch (error) {
     console.error(error)
   }
 }
 
 function* WatchGetFeatureByPartner() {
-  yield takeLatest(
-    HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST,
-    getFeatureByPartner
-  )
+  yield takeLatest(HosptailTypes.Feature.FEATURE_REQUEST, getFeatureByPartner)
 }
 
 function* getListHospital() {

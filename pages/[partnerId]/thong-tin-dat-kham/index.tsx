@@ -1,5 +1,5 @@
 import * as ac from '@actionStore/rootAction'
-import { ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
+import { Reserver, ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
 import dynamic from 'next/dynamic'
@@ -28,7 +28,7 @@ const ThongTinDatKhamPage = () => {
 
   const findHospital = find(hospital?.listHospital, { partnerId })
 
-  const methods = {
+  const methods: Reserver = {
     listPatient,
     bookingTree: hospital?.bookingTree,
     info: findHospital

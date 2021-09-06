@@ -10,7 +10,7 @@ const initState: TotalDataState = {
   partnerId: '',
   listPartners: [],
   listCity: [],
-  loading: false
+  typeReser: 'normal'
 }
 
 export default function totalDataReducer(
@@ -35,6 +35,13 @@ export default function totalDataReducer(
         ...state,
         partnerId: action.partnerId,
         appId: action.partnerId === 'medpro' ? action.partnerId : ''
+      }
+    }
+
+    case TotalDataTypes.TypeReser.TYPE_RESER: {
+      return {
+        ...state,
+        typeReser: 'parasitic'
       }
     }
 
