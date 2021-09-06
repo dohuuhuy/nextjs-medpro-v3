@@ -1,11 +1,13 @@
 export interface UserState {
-  userInfo: {
-    fullName: string
-    userName: string
-    email: string
-    token: string
-    isCS: boolean
-  }
+  userInfo: userInfo
   listPatient: Array<any>
-  [x: string]: any
+  bookingByUser: Array<any>
+}
+
+interface userInfo {
+  fullName: string
+  userName: string
+  email: string
+  token: string
+  isCS: boolean
 }

@@ -15,4 +15,7 @@ export namespace TotalDataTypes {
     LIST_CITY_REQUEST = 'LIST_CITY_REQUEST',
     LIST_CITY_REQUEST_SUCCESS = 'LIST_CITY_REQUEST_SUCCESS'
   }
+  export enum TypeReser {
+    TYPE_RESER = 'TYPE_RESER'
+  }
 }

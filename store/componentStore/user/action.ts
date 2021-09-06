@@ -23,3 +23,15 @@ export const ListPatientRequestSuccess = (listPatient: any[]): UserActions => {
     listPatient
   }
 }
+export const GetBookingByUser = (): UserActions => {
+  return {
+    type: UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST
+  }
+}
+
+export const GetBookingByUserSuccess = (bookingByUser: any): UserActions => {
+  return {
+    type: UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS,
+    bookingByUser
+  }
+}

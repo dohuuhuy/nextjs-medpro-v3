@@ -45,3 +45,9 @@ export const SetParnerId = (partnerId: any) => {
     partnerId
   }
 }
+
+export const TypeReser = (): TotalDataActions => {
+  return {
+    type: TotalDataTypes.TypeReser.TYPE_RESER
+  }
+}

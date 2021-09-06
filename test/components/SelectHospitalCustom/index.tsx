@@ -9,29 +9,50 @@ import styles from './styles.module.less'
 
 const { Option } = Select
 
-export interface Props {
-  listHospital: any[]
-  listCity: any[]
+export interface SelectHospital {
+  listHospital: ListHospital[]
+  listCity: ListCity[]
 }
 
-const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
+interface ListCity {
+  id: string
+  name: string
+  code: string
+}
+
+interface ListHospital {
+  id: string
+  name: string
+  address: string
+  image: string
+  message: string
+  partnerId: string
+}
+
+export const SelectHospitalCustom = ({
+  listHospital,
+  listCity
+}: SelectHospital) => {
   const router = useRouter()
-  const [listHospitals, setlistHospitals] = useState<any[]>([])
+  const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
+  const [activeList, setactiveList] = useState(true)
 
   useEffect(() => {
-    setlistHospitals(listHospital)
+    activeList && setlistHospitals(listHospital)
   })
 
   function onChange(code: any) {
+    setactiveList(false)
     if (code === 'huyi') {
       setlistHospitals(listHospital)
     } else {
-      const findHospital = filter(listHospital, { city: { code } })
+      const findHospital: any = filter(listHospital, { city: { code } })
       setlistHospitals(findHospital)
     }
   }
 
   function onSearchHospital(e: any) {
+    setactiveList(false)
     const { value } = e.target
     const findHospital = listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
@@ -39,9 +60,11 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
     setlistHospitals(findHospital)
   }
 
-  function handleNotification(message: string, partnerId: string) {
-    if (checkData(message)) {
-      router.push(`${partnerId}/thong-tin-dat-kham`)
+  function redirect(e: ListHospital) {
+    if (checkData(e?.message)) {
+      e?.partnerId
+        ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
+        : alert('không có partnerId')
     } else {
       Modal.info({
         closable: true,
@@ -50,7 +73,7 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
         className: styles.Modal,
         icon: <BellFilled />,
         title: 'Thông báo',
-        content: message,
+        content: e?.message,
         okButtonProps: {
           disabled: true,
           style: { display: 'none' }
@@ -77,11 +100,9 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             <li>
               <Select
                 defaultValue='huyi'
-                defaultActiveFirstOption
                 className={styles.inputSelect}
                 showSearch={true}
                 style={{ width: '100%' }}
-                placeholder='Chọn tỉnh thành'
                 optionFilterProp='children'
                 onChange={onChange}
                 filterOption={(input, option) =>
@@ -93,10 +114,10 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
                   Chọn tỉnh thành
                 </Option>
 
-                {listCity?.map(({ id, name, code }) => {
+                {listCity?.map((e) => {
                   return (
-                    <Option value={code} key={id}>
-                      {name}
+                    <Option value={e?.code} key={e?.id}>
+                      {e?.name}
                     </Option>
                   )
                 })}
@@ -109,37 +130,28 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
             {checkData(listHospitals) ? (
               <DataFailure desc='Không tìm thấy !' />
             ) : (
-              listHospitals?.map(
-                (
-                  { name: nameHospital, address, image, message, partnerId },
-                  i: number
-                ) => {
-                  const imageErrorSrc = '/images/logo.png'
-                  const urlImage = image || imageErrorSrc
-                  return (
-                    <li key={i}>
-                      <div
-                        className={styles.cardHospital}
-                        onClick={() => handleNotification(message, partnerId)}
-                      >
-                        <figure className={styles.cardView}>
-                          <img
-                            src={urlImage}
-                            alt='icon'
-                            onError={(e: any) => {
-                              e.target.src = imageErrorSrc
-                            }}
-                          />
-                        </figure>
-                        <div className={styles.cardBody}>
-                          <p className={styles.nameHospital}>{nameHospital}</p>
-                          <p className={styles.address}>{address}</p>
-                        </div>
-                      </div>
-                    </li>
-                  )
+              listHospitals?.map((e) => {
+                const imageErrorSrc = '/images/logo.png'
+                const urlImage = e?.image || imageErrorSrc
+
+                const onError = (e: any) => {
+                  e.target.src = imageErrorSrc
                 }
-              )
+
+                return (
+                  <li key={e.id} onClick={() => redirect(e)}>
+                    <div className={styles.cardHospital}>
+                      <figure className={styles.cardView}>
+                        <img src={urlImage} alt='icon' onError={onError} />
+                      </figure>
+                      <div className={styles.cardBody}>
+                        <p className={styles.nameHospital}>{e?.name}</p>
+                        <p className={styles.address}>{e?.address}</p>
+                      </div>
+                    </div>
+                  </li>
+                )
+              })
             )}
           </ul>
         </Col>
@@ -147,5 +159,3 @@ const SelectHospitalCustom = ({ listHospital, listCity }: Props) => {
     </Container>
   )
 }
-
-export default SelectHospitalCustom

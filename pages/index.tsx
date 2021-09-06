@@ -8,20 +8,23 @@ import { check } from '@utils/checkValue'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
-const HomePage = (props: any) => {
+const HomePage = ({ data }: any) => {
   const dispatch = useDispatch()
-  const listFeature = useSelector(
-    (state: AppState) => state.hospitalReducer.listFeature
-  )
-  const listPatient = useSelector(
-    (state: AppState) => state.userReducer.listPatient
-  )
+  const hos = useSelector((state: AppState) => state.hospitalReducer)
+  const user = useSelector((state: AppState) => state.userReducer)
+  const total = useSelector((state: AppState) => state.totalDataReducer)
 
   useEffect(() => {
-    check(listFeature) && dispatch(ac.FeatureByPartnerRequest(props.partnerId))
-    check(listPatient) && dispatch(ac.ListPatientRequest())
+    check(hos?.listFeatureByApp) &&
+      dispatch(
+        ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
+      )
+
+    user.userInfo.token &&
+      check(user?.listPatient) &&
+      dispatch(ac.ListPatientRequest())
   }, [])
-  return <NewsAndEvent {...props.data} />
+  return <NewsAndEvent {...data} />
 }
 
 HomePage.Layout = HomeLayout

@@ -10,13 +10,17 @@ import styles from './styles.module.less'
 import { handleStep } from './utils/handler'
 import { Medthods } from './utils/interface'
 
-export interface Props {
+export interface Reserver {
   info: any
   bookingTree: any
   listPatient: any
 }
 
-export const ThongTinDatKham = ({ info, bookingTree, listPatient }: Props) => {
+export const ThongTinDatKham = ({
+  info,
+  bookingTree,
+  listPatient
+}: Reserver) => {
   const stepBooking = bookingTree?.path?.split('_') || []
   const [current, setcurrent] = useState(0)
   const [quickView, setquickView] = useState([])

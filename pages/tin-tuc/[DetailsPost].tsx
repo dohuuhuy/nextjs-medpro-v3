@@ -1,4 +1,4 @@
-import { DetailsNews } from '@components/organisms/DetailNews'
+import { DetailNewsCustom } from '@componentsTest/DetailNews'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
@@ -6,7 +6,7 @@ import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const DetailsPostPage = ({ data }: any) => {
-  return <DetailsNews {...data} />
+  return <DetailNewsCustom {...data} />
 }
 
 DetailsPostPage.Layout = DefaultLayout

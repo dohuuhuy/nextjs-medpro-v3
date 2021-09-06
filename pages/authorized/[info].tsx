@@ -22,12 +22,10 @@ const Author = () => {
 
   const { info } = router.query
   const query: any = queryString.parse(info as string)
-  const token = useSelector(
-    (state: AppState) => state.userReducer.userInfo.token
-  )
+  const user = useSelector((state: AppState) => state.userReducer)
 
   useEffect(() => {
-    if (check(token)) {
+    if (check(user?.userInfo?.token)) {
       dispatch(ac.UserLogin(query))
       window.localStorage.setItem('jwt', JSON.stringify(query))
       router.push('/')

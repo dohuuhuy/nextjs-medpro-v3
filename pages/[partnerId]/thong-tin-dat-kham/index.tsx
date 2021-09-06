@@ -1,31 +1,40 @@
-import BookingInformationPage from '@components/pages/BookingInformationPage'
-import dynamic from 'next/dynamic'
-const DefaultLayout = dynamic(() => import('@templates/Default'))
 import * as ac from '@actionStore/rootAction'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { AppState } from 'store/interface'
+import { Reserver, ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
 import { check } from '@utils/checkValue'
+import { find } from 'lodash'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppState } from 'store/interface'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ThongTinDatKhamPage = () => {
   const router = useRouter()
 
-  const bookingTree = useSelector(
-    (state: AppState) => state.hospitalReducer.bookingTree
-  )
-
+  const hospital = useSelector((state: AppState) => state.hospitalReducer)
   const listPatient = useSelector(
     (state: AppState) => state.userReducer.listPatient
   )
 
   const dispatch = useDispatch()
   useEffect(() => {
-    check(bookingTree) && dispatch(ac.getBookingTree(router.query?.partnerId))
+    check(hospital?.bookingTree) &&
+      dispatch(ac.getBookingTree(router.query?.partnerId))
     check(listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
 
-  return <BookingInformationPage />
+  const { partnerId } = router.query
+
+  const findHospital = find(hospital?.listHospital, { partnerId })
+
+  const methods: Reserver = {
+    listPatient,
+    bookingTree: hospital?.bookingTree,
+    info: findHospital
+  }
+
+  return <ThongTinDatKham {...methods} />
 }
 
 ThongTinDatKhamPage.Layout = DefaultLayout

@@ -32,17 +32,24 @@ export interface HospitalClearDetails {
 // -----------------------------danh sách dịch vụ---------------------------------------------
 
 export type FeatureAction =
-  | FeatureByPartnerRequest
-  | FeatureByPartnerRequestSuccess
+  | FeatureRequest
+  | FeatureByPartnertSuccess
+  | FeatureByAppSuccess
 
-export interface FeatureByPartnerRequest {
-  type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST
+export interface FeatureRequest {
+  type: HosptailTypes.Feature.FEATURE_REQUEST
   partnerid: string
+  typeReser: string
 }
 
-export interface FeatureByPartnerRequestSuccess {
+export interface FeatureByPartnertSuccess {
   type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS
-  listFeature: any[]
+  listFeatureByPartner: any[]
+}
+
+export interface FeatureByAppSuccess {
+  type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS
+  listFeatureByApp: any[]
 }
 
 // -------------------------------danh sách bệnh viện-------------------------------------------

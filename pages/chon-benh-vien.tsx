@@ -1,14 +1,17 @@
-import SelectHospitalPage from '@components/pages/SelectHospitalPage'
+import * as ac from '@actionStore/rootAction'
+import {
+  SelectHospital,
+  SelectHospitalCustom
+} from '@componentsTest/SelectHospitalCustom'
+import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import * as ac from '@actionStore/rootAction'
 import { AppState } from 'store/interface'
-import { check } from '@utils/checkValue'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const ChonBenhVienPage = (props: any) => {
+const ChonBenhVienPage = ({ data }: any) => {
   const dispatch = useDispatch()
   const listHospital = useSelector(
     (state: AppState) => state.hospitalReducer.listHospital
@@ -22,7 +25,12 @@ const ChonBenhVienPage = (props: any) => {
     check(listHospital) && dispatch(ac.getListHospital())
   }, [])
 
-  return <SelectHospitalPage {...props.data} />
+  const methods: SelectHospital = {
+    listHospital: data?.listHospital,
+    listCity: listCity
+  }
+
+  return <SelectHospitalCustom {...methods} />
 }
 
 ChonBenhVienPage.Layout = DefaultLayout

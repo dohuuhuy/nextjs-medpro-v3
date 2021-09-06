@@ -1,6 +1,6 @@
 import '@assets/styles/app.less'
 import '@medpro/booking-libs/libs/index.css'
-import { Information } from '@store/interface'
+import { AppState, Information } from '@store/interface'
 import { wrapper } from '@store/rootStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
@@ -10,6 +10,10 @@ import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
 import * as gtag from '@utils/gtag'
 import { useRouter } from 'next/router'
+import { PersistGate } from 'redux-persist/integration/react'
+import { useDispatch, useSelector, useStore } from 'react-redux'
+import * as ac from '@actionStore/rootAction'
+import { check } from '@utils/checkValue'
 
 type Props = AppProps & {
   Component: Page
@@ -21,6 +25,8 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
   const router = useRouter()
+
+  const dispatch = useDispatch()
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url)
@@ -31,11 +37,23 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
     }
   }, [router.events])
 
+  const partnerId = useSelector(
+    (state: AppState) => state.totalDataReducer.partnerId
+  )
+
+  useEffect(() => {
+    check(partnerId) && dispatch(ac.SetParnerId(appProps.partnerId))
+  })
+
+  const store: any = useStore()
+
   return (
-    <LayoutWrapper appProps={appProps}>
-      <DefaultSeo {...SEO} />
-      {getLayout(<Component {...pageProps} partnerId={appProps.partnerId} />)}
-    </LayoutWrapper>
+    <PersistGate persistor={store.persistor} loading={<div>Loading</div>}>
+      <LayoutWrapper appProps={appProps}>
+        <DefaultSeo {...SEO} />
+        {getLayout(<Component {...pageProps} partnerId={appProps.partnerId} />)}
+      </LayoutWrapper>
+    </PersistGate>
   )
 }
 

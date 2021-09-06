@@ -47,18 +47,29 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
 }
 
 // lấy danh sách dịch vụ theo bệnh viện
-export const FeatureByPartnerRequest = (partnerid: any): HospitalActions => {
+export const FeatureRequest = ({
+  partnerId,
+  typeReser
+}: any): HospitalActions => {
   return {
-    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST,
-    partnerid
+    type: HosptailTypes.Feature.FEATURE_REQUEST,
+    partnerid: partnerId,
+    typeReser
   }
 }
 
-export const FeatureByPartnerRequestSuccess = (
-  listFeature: Record<string, any>
-) => {
+export const FeatureByAppSuccess = (listFeatureByApp: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS,
+    listFeatureByApp
+  }
+}
+
+export const FeatureByPartnerSuccess = (
+  listFeatureByPartner: any
+): HospitalActions => {
   return {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
-    listFeature
+    listFeatureByPartner
   }
 }

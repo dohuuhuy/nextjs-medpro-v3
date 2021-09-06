@@ -1,11 +1,11 @@
-import NewsPageDetails from '@components/pages/NewsPage'
+import { NewsPageCustom } from '@componentsTest/NewsPage'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { TinTucCtrl } from 'src/containers/News/news'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const TinTucPage = ({ data }: any) => {
-  return <NewsPageDetails {...data} />
+  return <NewsPageCustom {...data} />
 }
 
 TinTucPage.Layout = DefaultLayout

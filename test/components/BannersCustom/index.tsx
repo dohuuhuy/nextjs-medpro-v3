@@ -4,21 +4,25 @@ import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
 
-export const BannersCustom = (props: any) => {
-  const { getBanner } = props
+export interface Banner {
+  getBanner: any
+  listFeature: any[]
+  partnerId: string
+}
 
-  if (checkData(getBanner)) {
+export const BannersCustom = (props: Banner) => {
+  if (checkData(props?.getBanner)) {
     return <DataFailure desc={'Lỗi không có data banners'} />
   }
 
-  switch (getBanner.key) {
+  switch (props.getBanner.key) {
     case '/':
       return <BannerHome {...props} />
 
     case '/lien-he':
-      return <BannerContact getBanner={getBanner} />
+      return <BannerContact getBanner={props?.getBanner} />
 
     default:
-      return <BannerDefault getBanner={getBanner} />
+      return <BannerDefault getBanner={props?.getBanner} />
   }
 }
