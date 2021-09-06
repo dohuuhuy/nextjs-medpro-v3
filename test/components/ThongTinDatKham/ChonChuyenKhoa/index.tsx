@@ -10,10 +10,11 @@ export const ChuyenKhoa = {
   en: 'subject'
 }
 export const ChonChuyenKhoa = (props: Medthods) => {
+  console.log("Chuyen khoa", props)
   const { quickView, setquickView, next } = props
 
   const getList = handlerValue(props, ChuyenKhoa)
-
+  console.log("handle Chuyen khoa", getList)
   const [findList, setfindList] = useState([])
 
   useEffect(() => {

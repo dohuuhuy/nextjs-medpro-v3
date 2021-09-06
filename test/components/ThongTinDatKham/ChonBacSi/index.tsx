@@ -3,9 +3,10 @@ import styles from './styles.module.less'
 import { Space, Input, Menu, Dropdown } from 'antd'
 import { SearchOutlined, DownOutlined } from '@ant-design/icons'
 import { listDegree, listSpecial, listSex } from './utils/array'
+import { Medthods } from '../utils/interface'
 
-export const ChonBacSi = () => {
-
+export const ChonBacSi = (Props: Medthods) => {
+  console.log("bac si", Props)
   const dropDegree = (
     <Menu>
       {listDegree.map((item: any, id: any) => {
