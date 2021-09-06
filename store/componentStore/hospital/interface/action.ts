@@ -44,12 +44,12 @@ export interface FeatureRequest {
 
 export interface FeatureByPartnertSuccess {
   type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS
-  listFeatureByApp: any[]
+  listFeatureByPartner: any[]
 }
 
 export interface FeatureByAppSuccess {
   type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS
-  listFeatureByPartner: any[]
+  listFeatureByApp: any[]
 }
 
 // -------------------------------danh sách bệnh viện-------------------------------------------

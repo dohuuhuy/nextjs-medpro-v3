@@ -25,11 +25,15 @@ function* getFeatureByPartner({ partnerid, typeReser }: any) {
       partnerid
     })
 
-    if (typeReser === 'normal') {
-      yield put(ac.FeatureByAppSuccess(rs?.data))
-    }
-    if (typeReser === 'parasitic') {
-      yield put(ac.FeatureByPartnerSuccess(rs?.data))
+    switch (typeReser) {
+      case 'parasitic':
+        yield put(ac.FeatureByPartnerSuccess(rs?.data))
+        break
+      case 'normal':
+        yield put(ac.FeatureByAppSuccess(rs?.data))
+        break
+      default:
+        break
     }
   } catch (error) {
     console.error(error)

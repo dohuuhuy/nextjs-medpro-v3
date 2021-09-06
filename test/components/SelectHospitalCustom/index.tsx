@@ -63,7 +63,7 @@ export const SelectHospitalCustom = ({
   function redirect(e: ListHospital) {
     if (checkData(e?.message)) {
       e?.partnerId
-        ? router.push(`${e?.partnerId}/thong-tin-dat-kham`)
+        ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
         : alert('không có partnerId')
     } else {
       Modal.info({
