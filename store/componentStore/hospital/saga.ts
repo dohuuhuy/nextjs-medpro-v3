@@ -19,23 +19,17 @@ function* WatchGetHospitalDetails() {
   )
 }
 
-function* getFeatureByPartner({ partnerid, typeReser = 'normal' }: any) {
-  console.log('typeReser :>> ', typeReser)
-
+function* getFeatureByPartner({ partnerid, typeReser }: any) {
   try {
     const rs: AxiosResponse = yield client.getFeatureByPartner({
       partnerid
     })
 
-    switch (typeReser) {
-      case 'parasitic':
-        yield put(ac.FeatureByPartnerSuccess(rs?.data))
-        break
-      case 'normal':
-        yield put(ac.FeatureByAppSuccess(rs?.data))
-        break
-      default:
-        break
+    if (typeReser === 'normal') {
+      yield put(ac.FeatureByAppSuccess(rs?.data))
+    }
+    if (typeReser === 'parasitic') {
+      yield put(ac.FeatureByPartnerSuccess(rs?.data))
     }
   } catch (error) {
     console.error(error)

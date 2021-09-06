@@ -10,14 +10,18 @@ const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
 const HomePage = ({ data }: any) => {
   const dispatch = useDispatch()
-  const hos = useSelector((state: AppState) => state.hospitalReducer)
+  // const hos = useSelector((state: AppState) => state.hospitalReducer)
   const user = useSelector((state: AppState) => state.userReducer)
   const total = useSelector((state: AppState) => state.totalDataReducer)
 
   useEffect(() => {
-    check(hos?.listFeatureByApp) &&
-      dispatch(ac.FeatureRequest({ partnerId: total?.partnerId }))
-    check(user?.listPatient) && dispatch(ac.ListPatientRequest())
+    dispatch(
+      ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
+    )
+
+    user.userInfo.token &&
+      check(user?.listPatient) &&
+      dispatch(ac.ListPatientRequest())
   }, [])
   return <NewsAndEvent {...data} />
 }

@@ -58,14 +58,16 @@ export const FeatureRequest = ({
   }
 }
 
-export const FeatureByAppSuccess = (listFeatureByApp: any[]) => {
+export const FeatureByAppSuccess = (listFeatureByApp: any): HospitalActions => {
   return {
     type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS,
     listFeatureByApp
   }
 }
 
-export const FeatureByPartnerSuccess = (listFeatureByPartner: any[]) => {
+export const FeatureByPartnerSuccess = (
+  listFeatureByPartner: any
+): HospitalActions => {
   return {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
     listFeatureByPartner
