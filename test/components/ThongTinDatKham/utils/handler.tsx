@@ -18,11 +18,6 @@ export const handleStep = (medthods: any) => {
 
   const steps: any = [
     {
-      title: 'Bác sĩ',
-      icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
-      content: <ChonBacSi {...medthods} />
-    },
-    {
       title: 'Ngày khám',
       icon: <CalendarOutlined color='red' style={{ color: '#1da1f2' }} />,
       content: <ChonNgayKham />
