@@ -12,14 +12,24 @@ const BannerLayout = (info: Information) => {
 
   const hos = useSelector((state: AppState) => state.hospitalReducer)
 
-  const { pathname } = router
+  const {
+    query: { site },
+    pathname
+  } = router
 
-  const getBanner = find(info.banners, { key: pathname })
+  console.log('pathname :>> ', pathname)
+
+  console.log('site :>> ', site)
+  console.log('info.banners :>> ', info.banners)
+
+  const getBanner = find(info.banners, { key: '/' })
+
+  console.log('getBanner :>> ', getBanner)
 
   if (check(getBanner)) {
     const { menuHeader, insideLink, menuMobile } = info.header
     const listMenu = [].concat(menuHeader, insideLink, menuMobile)
-    const getLink = find(listMenu, { link: pathname })
+    const getLink = find(listMenu, { link: site })
 
     if (check(getLink)) {
       return null

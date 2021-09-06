@@ -6,11 +6,16 @@ import React from 'react'
 const HandlerGetContentPage = (info: Information) => {
   const router = useRouter()
 
-  const { pathname } = router
+  const {
+    // pathname,
+    query: { site }
+  } = router
 
-  const _pathname = pathname.replace('/', '')
+  // console.log('pathname :>> ', router.query.site)
 
-  const getContent = find(info.contentPage, { key: _pathname })
+  // const _pathname = pathname.replace('/', '')
+
+  const getContent = find(info.contentPage, { key: site })
 
   return <ContentPageCustom getContent={getContent} />
 }

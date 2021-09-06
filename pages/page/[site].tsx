@@ -4,16 +4,16 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const QuyTrinhPage = () => {
+const Site = () => {
   const meta: NextSeoProps = {
-    title: 'Quy trình',
-    description: 'Quy trình medpro',
+    title: 'Giới thiệu',
+    description: 'Giới thiệu medpro',
     canonical: 'https://medpro.vn',
     openGraph: {
       type: 'website',
       url: 'https://medpro.vn',
-      title: 'Quy trình',
-      description: 'Quy trình medpro',
+      title: 'Giới thiệu',
+      description: 'Giới thiệu medpro',
       images: [
         {
           url: `https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg`,
@@ -22,7 +22,7 @@ const QuyTrinhPage = () => {
           alt: 'giới thiệu'
         }
       ],
-      site_name: 'Trang Quy trình'
+      site_name: 'Trang Giới thiệu'
     }
   }
 
@@ -33,5 +33,5 @@ const QuyTrinhPage = () => {
   )
 }
 
-QuyTrinhPage.Layout = DefaultLayout
-export default QuyTrinhPage
+Site.Layout = DefaultLayout
+export default Site
