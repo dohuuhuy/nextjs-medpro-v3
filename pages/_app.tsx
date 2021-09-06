@@ -5,9 +5,12 @@ import { wrapper } from '@store/rootStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
+import * as gtag from '@utils/gtag'
+import { useRouter } from 'next/router'
+
 type Props = AppProps & {
   Component: Page
   [T: string]: any
@@ -17,6 +20,16 @@ type Props = AppProps & {
 const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
   const LayoutWrapper = Component.Layout ?? Fragment
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <LayoutWrapper appProps={appProps}>
