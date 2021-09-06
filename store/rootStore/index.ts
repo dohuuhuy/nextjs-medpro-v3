@@ -14,19 +14,13 @@ export interface SagaStore extends Store<AppState> {
 }
 
 export const store2: MakeStore<any> = () => {
-  let store: any
-  const isServer = typeof window === 'undefined'
-
-  if (isServer) {
-    store = createStore(rootReducer as any, bindMiddleware([sagaMiddleware]))
-    store.sagaTask = sagaMiddleware.run(rootSaga)
-    return store
-  } else {
-    store = createStore(persistedReducer, bindMiddleware([sagaMiddleware]))
-    store.persistor = persistStore(store)
-    store.sagaTask = sagaMiddleware.run(rootSaga)
-    return store
-  }
+  const store: any = createStore(
+    persistedReducer,
+    bindMiddleware([sagaMiddleware])
+  )
+  store.persistor = persistStore(store)
+  store.sagaTask = sagaMiddleware.run(rootSaga)
+  return store
 }
 
 export const store: MakeStore<any> = () => {

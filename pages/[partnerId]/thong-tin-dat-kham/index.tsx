@@ -12,26 +12,25 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const ThongTinDatKhamPage = () => {
   const router = useRouter()
 
-  const { listHospital, bookingTree } = useSelector(
-    (state: AppState) => state.hospitalReducer
-  )
+  const hospital = useSelector((state: AppState) => state.hospitalReducer)
   const listPatient = useSelector(
     (state: AppState) => state.userReducer.listPatient
   )
 
   const dispatch = useDispatch()
   useEffect(() => {
-    check(bookingTree) && dispatch(ac.getBookingTree(router.query?.partnerId))
+    check(hospital?.bookingTree) &&
+      dispatch(ac.getBookingTree(router.query?.partnerId))
     check(listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
 
   const { partnerId } = router.query
 
-  const findHospital = find(listHospital, { partnerId })
+  const findHospital = find(hospital?.listHospital, { partnerId })
 
   const methods = {
     listPatient,
-    bookingTree,
+    bookingTree: hospital?.bookingTree,
     info: findHospital
   }
 

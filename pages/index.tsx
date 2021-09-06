@@ -17,8 +17,12 @@ const HomePage = (props: any) => {
     (state: AppState) => state.userReducer.listPatient
   )
 
+  const partnerId = useSelector(
+    (state: AppState) => state.totalDataReducer.partnerId
+  )
+
   useEffect(() => {
-    check(listFeature) && dispatch(ac.FeatureByPartnerRequest(props.partnerId))
+    check(listFeature) && dispatch(ac.FeatureByPartnerRequest(partnerId))
     check(listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
   return <NewsAndEvent {...props.data} />

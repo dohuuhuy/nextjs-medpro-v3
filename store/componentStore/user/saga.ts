@@ -1,17 +1,23 @@
-import { AppState, UserTypes } from 'store/interface'
-import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
-import { AxiosResponse } from 'axios'
-import { client } from '@config/medproSDK'
 import * as ac from '@actionStore/rootAction'
+import { client } from '@config/medproSDK'
+import { AxiosResponse } from 'axios'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
+import { AppState, TotalDataState, UserState, UserTypes } from 'store/interface'
 
 function* ListPatientRequest() {
   try {
-    const token: string = yield select(
-      (state: AppState) => state.userReducer.userInfo.token
+    const user: UserState = yield select(
+      (state: AppState) => state.userReducer.userInfo
+    )
+
+    const total: TotalDataState = yield select(
+      (state: AppState) => state.totalDataReducer
     )
 
     const response: AxiosResponse = yield client.getPatientsByUserIdV2({
-      token
+      token: user?.userInfo?.token,
+      partnerid: total?.partnerId,
+      appid: total?.appId
     })
 
     yield put(ac.ListPatientRequestSuccess(response.data))
@@ -26,12 +32,18 @@ function* ListPatientRequestWatcher() {
 
 function* GetBookingByUser() {
   try {
-    const token: string = yield select(
-      (state: AppState) => state.userReducer.userInfo.token
+    const user: UserState = yield select(
+      (state: AppState) => state.userReducer.userInfo
+    )
+
+    const total: TotalDataState = yield select(
+      (state: AppState) => state.totalDataReducer
     )
 
     const response: AxiosResponse = yield client.getAllBookingByUserId({
-      token
+      token: user?.userInfo?.token,
+      partnerid: total?.partnerId,
+      appid: total?.appId
     })
 
     yield put(ac.GetBookingByUserSuccess(response.data))

@@ -8,14 +8,12 @@ import { useSelector, useDispatch } from 'react-redux'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ThongTinHoSo = () => {
-  const listPatient = useSelector(
-    (state: AppState) => state.userReducer.listPatient
-  )
+  const user = useSelector((state: AppState) => state.userReducer)
 
   const dispatch = useDispatch()
   useEffect(() => {
-    check(listPatient) && dispatch(ac.ListPatientRequest())
-    dispatch(ac.GetBookingByUser())
+    check(user?.listPatient) && dispatch(ac.ListPatientRequest())
+    check(user?.bookingByUser) && dispatch(ac.GetBookingByUser())
   }, [])
 
   return <ThongTinHoSoCustom />
