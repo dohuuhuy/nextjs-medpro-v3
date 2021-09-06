@@ -64,7 +64,7 @@ class CustomDocument extends Document<{
           />
 
           <script
-            async
+            async={true}
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <script

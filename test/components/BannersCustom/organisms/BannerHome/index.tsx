@@ -5,7 +5,6 @@ import Container from '../../../Container'
 import styles from './styles.module.less'
 
 export const BannerHome = ({ getBanner, listFeature, partnerId }: any) => {
-
   const router = useRouter()
 
   if (!getBanner) {

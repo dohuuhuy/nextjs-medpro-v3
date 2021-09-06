@@ -36,8 +36,7 @@ export const handleStep = (medthods: any) => {
       title: 'Xác nhận',
       icon: <SolutionOutlined style={{ color: '#1da1f2' }} />,
       content: <XacNhanThongTin {...medthods} />
-    },
-
+    }
   ]
 
   for (let index = 0; index < stepBooking.length; index++) {

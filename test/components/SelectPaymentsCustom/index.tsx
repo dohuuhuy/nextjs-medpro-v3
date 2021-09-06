@@ -8,8 +8,8 @@ export const HinhThucThanhToan = () => {
   const [values, setValues] = useState(0)
 
   const onChange = (e: any) => {
-    setValues(e.target.value);
-  };
+    setValues(e.target.value)
+  }
   return (
     <Container>
       <Row className={styles.rowPayments}>
@@ -17,9 +17,9 @@ export const HinhThucThanhToan = () => {
           <h3>Phương thức thanh toán</h3>
           <div className={styles.cardView}>
             <Radio.Group onChange={onChange}>
-              <Space direction="vertical">
+              <Space direction='vertical'>
                 <Radio value={1}>
-                  <Tooltip title="Nhờ người thân hoặc bạn bè thanh toán hộ phí khám">
+                  <Tooltip title='Nhờ người thân hoặc bạn bè thanh toán hộ phí khám'>
                     Thanh toán hộ
                   </Tooltip>
                 </Radio>
@@ -28,13 +28,12 @@ export const HinhThucThanhToan = () => {
                 <Radio value={4}>
                   Ví điện tử
                   <Space style={{ display: 'block' }}>
-                    <Radio.Group defaultValue={1} className={values === 4 ? styles.wallet : styles.hidden}>
-                      <Radio value={1}>
-                        MoMo
-                      </Radio>
-                      <Radio value={2}>
-                        Zalo Pay
-                      </Radio>
+                    <Radio.Group
+                      defaultValue={1}
+                      className={values === 4 ? styles.wallet : styles.hidden}
+                    >
+                      <Radio value={1}>MoMo</Radio>
+                      <Radio value={2}>Zalo Pay</Radio>
                     </Radio.Group>
                   </Space>
                 </Radio>
@@ -49,13 +48,17 @@ export const HinhThucThanhToan = () => {
             <ul className={styles.listBill}>
               <li>
                 <div className={styles.itemService}>
-                  <p className={styles.itemKeys}>{<LineChartOutlined />} Dịch vụ</p>
+                  <p className={styles.itemKeys}>
+                    {<LineChartOutlined />} Dịch vụ
+                  </p>
                   <p className={styles.itemValues}>KHÁM DỊCH VỤ</p>
                 </div>
               </li>
               <li>
                 <div className={styles.itemMoney}>
-                  <p className={styles.itemKeys}>{<MoneyCollectFilled />} Tiền khám</p>
+                  <p className={styles.itemKeys}>
+                    {<MoneyCollectFilled />} Tiền khám
+                  </p>
                   <p className={styles.itemValues}>150,000 VNĐ</p>
                 </div>
               </li>
@@ -74,7 +77,7 @@ export const HinhThucThanhToan = () => {
                 </div>
               </li>
               <li>
-                <div className={styles.br}></div>
+                <div className={styles.br} />
               </li>
               <li>
                 <div className={styles.itemTotal}>

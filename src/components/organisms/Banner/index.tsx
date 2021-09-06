@@ -38,7 +38,7 @@ const BannerLayout = (info: Information) => {
   }
 
   const methos = {
-    getBanner: getBanner,
+    getBanner,
     listFeature: hos.listFeatureByApp,
     partnerId: info?.partnerId
   }

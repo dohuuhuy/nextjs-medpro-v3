@@ -6,7 +6,7 @@ export const api = async (url: any) => {
       Expires: 0
     }
   }
-  return await fetch(url, option)
+  return fetch(url, option)
     .then((rs) => {
       return rs ? rs.json() : null
     })

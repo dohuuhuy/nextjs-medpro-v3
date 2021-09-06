@@ -32,7 +32,7 @@ const Author = () => {
     }
   })
 
-  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />
+  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
   return (
     <div className={styles.login}>

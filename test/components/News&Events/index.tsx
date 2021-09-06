@@ -10,8 +10,9 @@ import styles from './styles.module.less'
 export const API_NEWS = 'https://cms.medpro.com.vn'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
-  if (checkData(dataNewsAndEvent))
+  if (checkData(dataNewsAndEvent)) {
     return <DataFailure desc={'Không có dataNewsEventCustom '} />
+  }
 
   return (
     <Container className={styles.dataNewsAndEvent}>

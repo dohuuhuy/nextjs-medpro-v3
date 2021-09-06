@@ -5,7 +5,7 @@ import { SearchOutlined } from '@ant-design/icons'
 
 export const ChonBacSi = () => {
   const onChange = () => {
-    console.log("Cần setting")
+    console.log('Cần setting')
   }
   return (
     <div>
@@ -19,7 +19,6 @@ export const ChonBacSi = () => {
           onChange={onChange}
         />
       </Space>
-
     </div>
   )
 }

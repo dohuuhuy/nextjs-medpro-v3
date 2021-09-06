@@ -10,7 +10,7 @@ export const HoSo = (Props: Medthods) => {
   const [show, setishow] = useState(false)
 
   const onShow = (index: any) => {
-    console.log("index ", index)
+    console.log('index ', index)
     setishow(show !== index ? index : '')
   }
 
@@ -30,8 +30,8 @@ export const HoSo = (Props: Medthods) => {
                         show === index
                           ? styles.cardItem
                           : i > 2
-                            ? styles.hidden
-                            : styles.cardItem
+                          ? styles.hidden
+                          : styles.cardItem
                       return (
                         <li key={id + i}>
                           <div className={style}>
