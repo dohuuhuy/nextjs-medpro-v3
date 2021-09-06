@@ -6,9 +6,7 @@ import { AppState, TotalDataState, UserState, UserTypes } from 'store/interface'
 
 function* ListPatientRequest() {
   try {
-    const user: UserState = yield select(
-      (state: AppState) => state.userReducer.userInfo
-    )
+    const user: UserState = yield select((state: AppState) => state.userReducer)
 
     const total: TotalDataState = yield select(
       (state: AppState) => state.totalDataReducer
@@ -32,9 +30,7 @@ function* ListPatientRequestWatcher() {
 
 function* GetBookingByUser() {
   try {
-    const user: UserState = yield select(
-      (state: AppState) => state.userReducer.userInfo
-    )
+    const user: UserState = yield select((state: AppState) => state.userReducer)
 
     const total: TotalDataState = yield select(
       (state: AppState) => state.totalDataReducer

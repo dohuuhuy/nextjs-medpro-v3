@@ -2,9 +2,10 @@ import { Col, Row } from 'antd'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../../../Container'
+import { Banner } from './../../interface'
 import styles from './styles.module.less'
 
-export const BannerHome = ({ getBanner, listFeature, partnerId }: any) => {
+export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
   const router = useRouter()
 
   if (!getBanner) {
@@ -13,9 +14,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: any) => {
   const { imageBackground } = getBanner
 
   const SelectFeature = (type: string) => {
-    const { checkData } = require('./../../../DataFailure')
-
-    if (partnerId === 'medpro' && checkData(type)) {
+    if (partnerId === 'medpro' && type === 'booking.date') {
       router.push('/chon-benh-vien')
     }
   }
@@ -44,29 +43,27 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: any) => {
             className={styles.ColBoxServic}
           >
             <ul className={styles.listBoxService}>
-              {listFeature.map(
-                ({ name, image, status, type }: any, i: number) => {
-                  const imageErrorSrc = '/images/error.svg'
-                  const urlImage = image || imageErrorSrc
-                  const onError = (e: any) => {
-                    e.target.src = imageErrorSrc
-                  }
-                  if (status) {
-                    return (
-                      <li key={i} onClick={() => SelectFeature(type)}>
-                        <a>
-                          <figure>
-                            <img src={urlImage} onError={onError} />
-                          </figure>
-                          <p>{name}</p>
-                        </a>
-                      </li>
-                    )
-                  } else {
-                    return null
-                  }
+              {listFeature.map((e, i: any) => {
+                const imageErrorSrc = '/images/error.svg'
+                const urlImage = e.image || imageErrorSrc
+                const onError = (e: any) => {
+                  e.target.src = imageErrorSrc
                 }
-              )}
+                if (e?.status) {
+                  return (
+                    <li key={i} onClick={() => SelectFeature(e?.type)}>
+                      <a>
+                        <figure>
+                          <img src={urlImage} onError={onError} />
+                        </figure>
+                        <p>{e?.name}</p>
+                      </a>
+                    </li>
+                  )
+                } else {
+                  return null
+                }
+              })}
             </ul>
           </Col>
         </Row>

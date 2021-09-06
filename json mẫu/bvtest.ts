@@ -90,6 +90,16 @@ export const JSON_EXP = {
       },
       {
         id: '',
+        key: 'hinh-thuc-dat-kham',
+        link: '/hinh-thuc-dat-kham',
+        url: '/hinh-thuc-dat-kham',
+        label: 'Hình thức đăt khám',
+        group: 'insideLink',
+        sortOrder: 5,
+        icon: 'fal fa-home'
+      },
+      {
+        id: '',
         key: 'xac-nhan-thong-tin',
         link: '/xac-nhan-thong-tin',
         url: '/xac-nhan-thong-tin',
