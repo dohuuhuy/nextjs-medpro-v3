@@ -1,68 +1,52 @@
-.text(@size, @weight){
-  font-size: @size;
-  font-weight: @weight;
-}
-.container{
-  margin-top: 40px;
-  h2 {
+.rowTypeBooking{
+  .colTitle{
     text-align: center;
-    margin-bottom: 35px;
-    .text(20px, 600);
-    text-transform: uppercase;
-    // &:after{
-    //   content: "";
-    //   position: absolute;
-    //   border-bottom: 5px solid #9bf4cf;
-    //   bottom: 4px;
-    //   left: 0;
-    //   width: 100%;
-    //   z-index: -1;
-    // }
+    margin-top: 50px;
   }
-  .rowType{
-    flex-direction: unset;
-    flex-wrap: wrap;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    padding-bottom: 0;
-    .colType{
-      padding: 0 5px 0 5px;
-      @media (max-width: 575px) {
-        margin-top: 15px;
-      }
-      .card{
-        border: 2px solid #dfe3eb;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-        &:hover{
-          border: 2px solid #0453CC;
-          cursor: pointer;
+  .colTypeBooking{
+    .listTypeBooking{
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      li{
+        width: 30%;
+        padding: 15px;
+        @media (max-width: 425px){
+          width: 100%;
         }
-        .cardImg{
-          margin: 0;
+        @media (min-width: 426px) and (max-width: 768px){
+          width: 50%;
+        }
+        .typeBooking{
+          display: flex;
+          border: 2px solid #D8D8D8;
+          border-radius: 5px;
           padding: 15px;
-          img{
-            height: 40px;
+          &:hover{
+            border-color: #0453CC;
+            cursor: pointer;
+          }
+          .Icon{
             width: 40px;
+            height: 40px;
+          }
+          p{
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
           }
         }
-        p{
-          margin: 0;
-          .text(14px, 500)
-        }
       }
     }
   }
-  .btn{
-    max-width: 700px;
-    border-top: 1px solid #dfe3eb;
-    margin: 30px auto 0;
-    padding-top: 30px;
-    .text(14px, 500);
+}
+.btn{
+  border-top: 2px solid #D8D8D8;
+  padding: 20px 0;
+  margin: 0 15px;
+  &:hover{
     cursor: pointer;
-    &:hover{
-      .text(15px, 600);
-    }
+    font-weight: 600;
   }
 }
