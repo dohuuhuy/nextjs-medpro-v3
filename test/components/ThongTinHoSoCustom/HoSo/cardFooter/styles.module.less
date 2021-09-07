@@ -1,4 +1,4 @@
-.btnFooter(@colorText, @color){
+.btnFooter(@colorText, @color) {
   display: flex;
   padding: 8px 20px;
   color: @colorText;
@@ -6,55 +6,55 @@
   border-radius: 3px;
   align-items: center;
   border: none;
-  &:hover{
+  &:hover {
     color: @color;
     background-color: @colorText;
     cursor: pointer;
   }
-  span{
+  span {
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 0;
   }
 }
-.cardFooter{
-  border-top: 1px solid #DFE3EB;
+.cardFooter {
+  border-top: 1px solid #dfe3eb;
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  .feature{
+  .feature {
     display: flex;
     min-width: 200px;
     justify-content: space-between;
-    .delete{
+    .delete {
       .btnFooter(#fd397a,#FFEBF1);
     }
-    .repair{
-      .btnFooter(#3699FF, #DFF1FD);
+    .repair {
+      .btnFooter(#3699ff, #DFF1FD);
     }
   }
-  .continue{
+  .continue {
     display: flex;
     padding: 8px 20px;
     color: white;
-    background-color: #3699FF;
+    background-color: #3699ff;
     border-radius: 3px;
     align-items: center;
     border: none;
     flex-direction: row-reverse;
-    &:hover{
+    &:hover {
       color: white;
-      background-color: #0453CC;
+      background-color: #0453cc;
       cursor: pointer;
     }
-    span{
+    span {
       padding-right: 8px;
       font-size: 12px;
       font-weight: 600;
     }
-    @media (max-width: 425px){
+    @media (max-width: 426px) {
       margin-top: 10px;
       min-width: 100%;
     }
