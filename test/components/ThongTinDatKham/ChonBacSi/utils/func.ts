@@ -1,28 +1,29 @@
 
 // import { Medthods } from '../../utils/interface'
-import { listDoctor } from './array'
+import { listDoctor } from './components/array'
+import { UserAddOutlined } from '@ant-design/icons'
 
 export const HandleFilter = () => {
   return listDoctor.map(({ name, sex, special, fee }: any) => [
     {
       key: '',
       value: name,
-      // icon: <UserOutlined />
+      icon: "",
     },
     {
       key: 'Giới tính:',
       value: sex ? 'Nam' : 'Nữ',
-      // icon: <CalendarOutlined />
+      icon: "",
     },
     {
       key: 'Chuyên khoa:',
       value: special,
-      // icon: <PhoneOutlined />
+      icon: "",
     },
     {
-      key: 'Giới tính',
-      value: fee ? 'Nam' : 'Nữ',
-      // icon: <TeamOutlined />
+      key: 'Giá khám',
+      value: fee + "đ",
+      icon: "",
     }
   ])
 }

@@ -52,7 +52,7 @@ export const handleStep = (medthods: any) => {
       })
     } else if (item === 'doctor') {
       steps.splice(index, 0, {
-        title: 'Bác sỉ',
+        title: 'Bác sĩ',
         icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
         content: <ChonBacSi {...medthods} />
       })
