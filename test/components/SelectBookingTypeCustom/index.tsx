@@ -13,6 +13,10 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
     router.push(`/${site}/thong-tin-dat-kham`)
   }
 
+  const back = () => {
+    router.back()
+  }
+
   return (
     <Container className={styles.container}>
       <Row className={styles.rowTypeBooking}>
@@ -41,8 +45,9 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
         <Col span='24' className='py-15 mx-15'>
           <hr />
         </Col>
+
         <Col span='24' className='mx-15'>
-          <a className={styles.btn} onClick={() => router.back()}>
+          <a className={styles.btn} onClick={back}>
             Quay lại
           </a>
         </Col>
