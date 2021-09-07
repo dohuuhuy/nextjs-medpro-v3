@@ -16,20 +16,33 @@ app.prepare().then(() => {
   // })
 
   server.get('/gioi-thieu', (req: any, res: any) => {
-    return app.render(req, res, '/gioi-thieu', req.query)
+    return app.render(req, res, '/page/gioi-thieu', req.query)
   })
 
   server.get('/quy-trinh', (req: any, res: any) => {
-    return app.render(req, res, '/quy-trinh', req.query)
+    return app.render(req, res, '/page/quy-trinh', req.query)
   })
 
   server.get('/thac-mac', (req: any, res: any) => {
-    return app.render(req, res, '/thac-mac', req.query)
+    return app.render(req, res, '/page/thac-mac', req.query)
   })
 
   server.get('/lien-he', (req: any, res: any) => {
-    return app.render(req, res, '/lien-he', req.query)
+    return app.render(req, res, '/page/lien-he', req.query)
   })
+
+  server.get('/chinh-sach-bao-mat', (req: any, res: any) => {
+    return app.render(req, res, '/page/chinh-sach-bao-mat', req.query)
+  })
+
+  server.get('/quy-trinh-su-dung', (req: any, res: any) => {
+    return app.render(req, res, '/page/quy-trinh-su-dung', req.query)
+  })
+
+  server.get('/dieu-khoan-dich-vu', (req: any, res: any) => {
+    return app.render(req, res, '/page/dieu-khoan-dich-vu', req.query)
+  })
+
   server.get('/tin-tuc', (req: any, res: any) => {
     return app.render(req, res, '/tin-tuc', req.query)
   })

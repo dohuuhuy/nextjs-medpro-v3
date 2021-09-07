@@ -48,12 +48,14 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const store: any = useStore()
 
   return (
-    <PersistGate persistor={store.persistor} loading={<div>Loading</div>}>
-      <LayoutWrapper appProps={appProps}>
-        <DefaultSeo {...SEO} />
-        {getLayout(<Component {...pageProps} partnerId={appProps.partnerId} />)}
-      </LayoutWrapper>
-    </PersistGate>
+    <LayoutWrapper appProps={appProps}>
+      <DefaultSeo {...SEO} />
+      {getLayout(
+        <PersistGate persistor={store.persistor}>
+          <Component {...pageProps} partnerId={appProps.partnerId} />
+        </PersistGate>
+      )}
+    </LayoutWrapper>
   )
 }
 

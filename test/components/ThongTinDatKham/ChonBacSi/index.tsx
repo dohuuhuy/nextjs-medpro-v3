@@ -16,7 +16,7 @@ export const ChonBacSi = (Props: Medthods) => {
   const Filter = HandleFilter()
 
   const onChange = () => {
-    console.log("Cần setting")
+    console.log('Cần setting')
   }
 
   return (

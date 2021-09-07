@@ -16,9 +16,11 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
 
   const { pathname } = router
 
-  const item = find(listMenu, { link: pathname })
+  const item = find(listMenu, (o: any) => {
+    return o.link !== '/' && pathname.includes(o.link)
+  })
 
-  const listBreadcumb = [].concat(listMenu.shift(), item)
+  const listBreadcumb: listBreadcumb[] = [].concat(listMenu.shift(), item)
 
   return (
     <div className={styles.wapperBreadcumbCustom}>
@@ -26,11 +28,11 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
         <Row className={styles.rowBreadcumbCustom}>
           <Col className={styles.colBreadcumbCustom}>
             <Breadcrumb separator='>' className={styles.Breadcrumb}>
-              {listBreadcumb?.map(({ link, label }: any, i: number) => {
+              {listBreadcumb?.map((e, i: number) => {
                 return (
                   <Breadcrumb.Item className={styles.ItemBreadcrumb} key={i}>
-                    <Link href={link || '#'}>
-                      <a>{label || ''}</a>
+                    <Link href={e?.link || '#'}>
+                      <a>{e?.label || ''}</a>
                     </Link>
                   </Breadcrumb.Item>
                 )
@@ -41,4 +43,9 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
       </Container>
     </div>
   )
+}
+
+interface listBreadcumb {
+  link: string
+  label: string
 }

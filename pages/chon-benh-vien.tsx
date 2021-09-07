@@ -27,7 +27,7 @@ const ChonBenhVienPage = ({ data }: any) => {
 
   const methods: SelectHospital = {
     listHospital: data?.listHospital,
-    listCity: listCity
+    listCity
   }
 
   return <SelectHospitalCustom {...methods} />

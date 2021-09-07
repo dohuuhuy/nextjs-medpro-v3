@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const GioiThieuPage = () => {
+const Site = () => {
   const meta: NextSeoProps = {
     title: 'Giới thiệu',
     description: 'Giới thiệu medpro',
@@ -33,5 +33,5 @@ const GioiThieuPage = () => {
   )
 }
 
-GioiThieuPage.Layout = DefaultLayout
-export default GioiThieuPage
+Site.Layout = DefaultLayout
+export default Site

@@ -4,7 +4,7 @@ import {
   PhoneOutlined,
   PieChartOutlined,
   TeamOutlined,
-  UserOutlined,
+  UserOutlined
 } from '@ant-design/icons'
 import React from 'react'
 import { Medthods } from './interface'

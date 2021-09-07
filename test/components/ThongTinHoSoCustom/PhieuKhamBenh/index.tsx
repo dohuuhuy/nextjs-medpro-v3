@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
-import { Space } from 'antd'
-import styles from './styles.module.less'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
+import React, { useState } from 'react'
 import { HandleFilter } from './components/func'
+import styles from './styles.module.less'
 export interface Medthods {
   listUser: any[]
 }
-
 
 export const PhieuKhamBenh = (Props: Medthods) => {
   const Filter = HandleFilter(Props)
   const [show, setishow] = useState(false)
 
   const onShow = (index: any) => {
-    console.log("index ", index)
+    console.log('index ', index)
     setishow(show !== index ? index : '')
   }
   return (
@@ -22,25 +20,32 @@ export const PhieuKhamBenh = (Props: Medthods) => {
       <ul className={styles.listUser}>
         {Filter.map((listUser: any, index: any) => {
           return (
-            <li key={index + "d"}>
-              <div className={show === index ? styles.cardHeaderActive : styles.cardHeaderInactive} onClick={() => onShow(index)}>
+            <li key={index + 'd'}>
+              <div
+                className={
+                  show === index
+                    ? styles.cardHeaderActive
+                    : styles.cardHeaderInactive
+                }
+                onClick={() => onShow(index)}
+              >
                 <span>{listUser[0]}</span>
                 {show === index ? <UpOutlined /> : <DownOutlined />}
               </div>
               <ul className={show === index ? styles.listExam : styles.hidden}>
                 {listUser[1].map((listUserItem: any, i: any) => {
                   return (
-                    <li key={i + "d"}>
+                    <li key={i + 'd'}>
                       <ul className={styles.listExamItem}>
                         {listUserItem.map(({ key, value }: any, i: any) => {
                           return (
-                            <li key={i + "d"}>
+                            <li key={i + 'd'}>
                               <div className={styles.cardView}>
                                 <div className={styles.itemKeys}>
-                                  <p >{key}</p>
+                                  <p>{key}</p>
                                 </div>
                                 <div className={styles.itemValues}>
-                                  <p >{value}</p>
+                                  <p>{value}</p>
                                 </div>
                               </div>
                             </li>

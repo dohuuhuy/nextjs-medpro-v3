@@ -39,13 +39,13 @@ export const ChonNgayKham = () => {
             type='primary'
             icon={<ArrowLeftOutlined />}
             onClick={handlePrev}
-          ></Button>
+          />
           <div className='datetime'>{dayObj.format(' MM - YYYY')}</div>
           <Button
             type='primary'
             icon={<ArrowRightOutlined />}
             onClick={handleNext}
-          ></Button>
+          />
         </Space>
       </div>
 

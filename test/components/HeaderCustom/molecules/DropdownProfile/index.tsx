@@ -23,7 +23,7 @@ interface Menus {
 }
 
 export const DropdownProfile = ({ nameUser }: Props) => {
-  const menu: Array<Menus> = [
+  const menu: Menus[] = [
     {
       lug: '#',
       label: (

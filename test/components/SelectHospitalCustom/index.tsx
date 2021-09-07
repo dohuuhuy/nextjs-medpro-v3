@@ -1,6 +1,6 @@
 import { BellFilled, SearchOutlined } from '@ant-design/icons'
 import { Col, Input, Modal, Row, Select } from 'antd'
-import { filter } from 'lodash'
+import { filter, uniqueId } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Container from '../Container'
@@ -9,44 +9,21 @@ import styles from './styles.module.less'
 
 const { Option } = Select
 
-export interface SelectHospital {
-  listHospital: ListHospital[]
-  listCity: ListCity[]
-}
-
-interface ListCity {
-  id: string
-  name: string
-  code: string
-}
-
-interface ListHospital {
-  id: string
-  name: string
-  address: string
-  image: string
-  message: string
-  partnerId: string
-}
-
-export const SelectHospitalCustom = ({
-  listHospital,
-  listCity
-}: SelectHospital) => {
+export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
   const [activeList, setactiveList] = useState(true)
 
   useEffect(() => {
-    activeList && setlistHospitals(listHospital)
+    activeList && setlistHospitals(props?.listHospital)
   })
 
   function onChange(code: any) {
     setactiveList(false)
     if (code === 'huyi') {
-      setlistHospitals(listHospital)
+      setlistHospitals(props?.listHospital)
     } else {
-      const findHospital: any = filter(listHospital, { city: { code } })
+      const findHospital: any = filter(props?.listHospital, { city: { code } })
       setlistHospitals(findHospital)
     }
   }
@@ -54,7 +31,7 @@ export const SelectHospitalCustom = ({
   function onSearchHospital(e: any) {
     setactiveList(false)
     const { value } = e.target
-    const findHospital = listHospital.filter(
+    const findHospital = props?.listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlistHospitals(findHospital)
@@ -105,7 +82,7 @@ export const SelectHospitalCustom = ({
                 style={{ width: '100%' }}
                 optionFilterProp='children'
                 onChange={onChange}
-                filterOption={(input, option) =>
+                filterOption={(input, option: any) =>
                   option?.children.toLowerCase().indexOf(input.toLowerCase()) >=
                   0
                 }
@@ -114,9 +91,9 @@ export const SelectHospitalCustom = ({
                   Chọn tỉnh thành
                 </Option>
 
-                {listCity?.map((e) => {
+                {props?.listCity?.map((e) => {
                   return (
-                    <Option value={e?.code} key={e?.id}>
+                    <Option value={e?.code} key={uniqueId()}>
                       {e?.name}
                     </Option>
                   )
@@ -139,7 +116,7 @@ export const SelectHospitalCustom = ({
                 }
 
                 return (
-                  <li key={e.id} onClick={() => redirect(e)}>
+                  <li key={uniqueId()} onClick={() => redirect(e)}>
                     <div className={styles.cardHospital}>
                       <figure className={styles.cardView}>
                         <img src={urlImage} alt='icon' onError={onError} />
@@ -158,4 +135,24 @@ export const SelectHospitalCustom = ({
       </Row>
     </Container>
   )
+}
+
+export interface SelectHospital {
+  listHospital: ListHospital[]
+  listCity: ListCity[]
+}
+
+interface ListCity {
+  id: string
+  name: string
+  code: string
+}
+
+interface ListHospital {
+  id: string
+  name: string
+  address: string
+  image: string
+  message: string
+  partnerId: string
 }
