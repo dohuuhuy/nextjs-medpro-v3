@@ -1,34 +1,34 @@
-import Container from '../Container'
-import { Row, Col, Space } from 'antd'
-import React from 'react'
-import styles from './styles.module.less'
+import { Col, Row, Space } from 'antd'
+import { uniqueId } from 'lodash'
 import { useRouter } from 'next/router'
-export interface Reserver {
-  typeBooking: any[]
-}
-
+import React from 'react'
+import Container from '../Container'
+import styles from './styles.module.less'
 
 export const SelectBookingTypeCustom = (props: Reserver) => {
   const router = useRouter()
   const { site } = router.query
+
+  const directRoute = () => {
+    router.push(`/${site}/thong-tin-dat-kham`)
+  }
+
   return (
     <Container className={styles.container}>
       <Row className={styles.rowTypeBooking}>
-        <Col xs={24} sm={24} md={24} xl={24} className={styles.colTitle}>
-          <h1>CHỌN HÌNH THỨC ĐẶT KHÁM</h1>
+        <Col span='24' className={styles.colTitle}>
+          <h2>Chọn hình thức đặt khám</h2>
         </Col>
-        <Col xs={24} sm={24} md={24} xl={24} className={styles.colTypeBooking}>
+        <Col span='24' className={styles.colTypeBooking}>
           <ul className={styles.listTypeBooking}>
-            {props.typeBooking.map(({ image, name }: any, index: any) => {
+            {props?.typeBooking?.map((e) => {
               return (
-                <li key={index + "id"} onClick={() => router.push(`${site}/hinh-thuc-dat-kham`)}>
+                <li key={uniqueId()} onClick={directRoute}>
                   <Space className={styles.typeBooking}>
-                    <Space className={styles.Icon}>
-                      <img
-                        src={image}
-                        alt="" />
-                    </Space>
-                    <p>{name}</p>
+                    <figure className={styles.icon}>
+                      <img src={e?.image} alt='' />
+                    </figure>
+                    <p>{e?.name}</p>
                   </Space>
                 </li>
               )
@@ -36,7 +36,25 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
           </ul>
         </Col>
       </Row>
-      <div className={styles.btn} onClick={() => router.back()}>Quay lại</div>
+
+      <Row>
+        <Col span='24' className='py-15 mx-15'>
+          <hr />
+        </Col>
+        <Col span='24' className='mx-15'>
+          <a className={styles.btn} onClick={() => router.back()}>
+            Quay lại
+          </a>
+        </Col>
+      </Row>
     </Container>
   )
+}
+export interface Reserver {
+  typeBooking: typeBooking[]
+}
+
+interface typeBooking {
+  image: string
+  name: string
 }
