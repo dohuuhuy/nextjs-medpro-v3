@@ -9,7 +9,7 @@
     "dev:staging": "cross-env NODE_ENV=development ENV=staging PORT=3008 nodemon",
     "dev:production": "cross-env NODE_ENV=development ENV=production PORT=3009 nodemon",
     "build:dev": "cross-env NODE_ENV=production ENV=development next build && tsc --project tsconfig.server.json",
-    "build:testing": "cross-env NODE_ENV=production ENV=testing next build && tsc ",
+    "build:testing": "cross-env NODE_ENV=production ENV=testing next build",
     "build:staging": "cross-env NODE_ENV=production ENV=staging next build && tsc --project tsconfig.server.json",
     "build:production": "cross-env NODE_ENV=production ENV=production next build && tsc --project tsconfig.server.json",
     "start:dev": "cross-env NODE_ENV=production ENV=development PORT=3006 node dist/index.js",
