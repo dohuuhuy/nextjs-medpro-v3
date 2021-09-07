@@ -1,4 +1,5 @@
 import { SelectBookingTypeCustom } from '@componentsTest/SelectBookingTypeCustom'
+import { Reserver } from '@componentsTest/ThongTinDatKham'
 import * as ac from '@actionStore/rootAction'
 import { AppState } from '@store/interface'
 import dynamic from 'next/dynamic'
@@ -23,6 +24,12 @@ const HinhThucDatKham = () => {
       })
     )
   }, [])
+
+  // const methods: Reserver = {
+  //   listPatient,
+  //   bookingTree: hospital?.bookingTree,
+  //   info: findHospital
+  // }
 
   return <SelectBookingTypeCustom />
 }
