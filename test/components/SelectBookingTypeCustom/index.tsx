@@ -1,5 +1,5 @@
 import Container from '../Container'
-import { Row, Col, Space } from 'antd'
+import { Row, Col, Space, Button } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
 import { useRouter } from 'next/router'
@@ -14,14 +14,14 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
   return (
     <Container className={styles.container}>
       <Row className={styles.rowTypeBooking}>
-        <Col xs={24} sm={24} md={24} xl={24} className={styles.colTitle}>
+        <Col xl={24} className={styles.colTitle}>
           <h1>CHỌN HÌNH THỨC ĐẶT KHÁM</h1>
         </Col>
-        <Col xs={24} sm={24} md={24} xl={24} className={styles.colTypeBooking}>
+        <Col xl={24} className={styles.colTypeBooking}>
           <ul className={styles.listTypeBooking}>
             {props.typeBooking.map(({ image, name }: any, index: any) => {
               return (
-                <li key={index + "id"} onClick={() => router.push(`${site}/hinh-thuc-dat-kham`)}>
+                <li key={index + "id"} onClick={() => router.push(`/${site}/thong-tin-dat-kham`)}>
                   <Space className={styles.typeBooking}>
                     <Space className={styles.Icon}>
                       <img
@@ -36,7 +36,9 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
           </ul>
         </Col>
       </Row>
-      <div className={styles.btn} onClick={() => router.back()}>Quay lại</div>
+      <div className={styles.btn} >
+        <Button onClick={() => router.back()}>Quay lại</Button>
+      </div>
     </Container>
   )
 }
