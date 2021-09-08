@@ -1,52 +1,59 @@
-.rowTypeBooking{
-  .colTitle{
+.rowTypeBooking {
+  .colTitle {
     text-align: center;
     margin-top: 50px;
+    h1 {
+      text-transform: uppercase;
+    }
   }
-  .colTypeBooking{
-    .listTypeBooking{
+  .colTypeBooking {
+    .listTypeBooking {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
       padding: 0;
-      li{
-        width: 30%;
-        padding: 15px;
-        @media (max-width: 425px){
-          width: 100%;
+
+      li {
+        width: calc(100% / 3);
+        padding: 7.5px;
+
+        @media (max-width: 768px) {
+          width: calc(100% / 2);
         }
-        @media (min-width: 426px) and (max-width: 768px){
-          width: 50%;
+        @media (max-width: 425px) {
+          width: calc(100% / 1);
         }
-        .typeBooking{
+        .typeBooking {
           display: flex;
-          border: 2px solid #D8D8D8;
+          border: 2px solid #d8d8d8;
           border-radius: 5px;
           padding: 15px;
-          &:hover{
-            border-color: #0453CC;
+          &:hover {
+            border-color: #0453cc;
             cursor: pointer;
           }
-          .Icon{
-            width: 40px;
-            height: 40px;
-          }
-          p{
-            font-size: 14px;
-            font-weight: 500;
+          .icon {
             margin: 0;
+            img {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          p {
+            margin: 0;
+            font-weight: 500;
           }
         }
       }
     }
   }
 }
-.btn{
-  border-top: 2px solid #D8D8D8;
-  padding: 20px 0;
-  margin: 0 15px;
-  &:hover{
-    cursor: pointer;
+.btn {
+  padding: 20px 15px;
+  &:hover {
     font-weight: 600;
   }
 }
