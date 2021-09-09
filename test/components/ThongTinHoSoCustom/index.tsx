@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
-import { Row, Col, Button, Menu } from 'antd'
-import styles from './styles.module.less'
-import Container from '@componentsTest/Container'
-import { HoSo } from './HoSo'
-import { PhieuKhamBenh } from './PhieuKhamBenh'
-import { ThongBao } from './ThongBao'
 import {
-  ProfileOutlined,
-  FileTextOutlined,
   BellOutlined,
-  UserAddOutlined
+  FileTextOutlined,
+  ProfileOutlined
 } from '@ant-design/icons'
-import cx from 'classnames'
+import Container from '@componentsTest/Container'
+import { Col, Row, Tabs } from 'antd'
+import React from 'react'
+import styles from './styles.module.less'
 
 export interface Personal {
   listUser: User[],
@@ -30,138 +25,70 @@ export interface Booking {
 export interface Notice {
   fullname: string
 }
-export const ThongTinHoSoCustom = (props: any) => {
-  console.log("Dữ liệu trả về ", props)
-  const dataProfile = {
-    listPatient: [
-      {
-        fullname: 'Phan Hải Sơn',
-        birthdate: '10/07/1999',
-        mobile: '0937036742',
-        sex: '1',
-        nation: { name: 'Kinh' },
-        fullAddress: '41/60 Phạm Ngũ Lão , P.3, Q. Gò Vấp, TPHCM'
-      },
-      {
-        fullname: 'Phan Hải Sơn',
-        birthdate: '10/07/1999',
-        mobile: '0937036742',
-        sex: '1',
-        nation: { name: 'Kinh' },
-        fullAddress: '41/60 Phạm Ngũ Lão , P.3, Q. Gò Vấp, TPHCM'
-      }
-    ]
-  }
-  const dataCard = {
-    listUser: [
-      {
-        name: 'Đỗ Hửu Huy',
-        listExamination: [
-          {
-            hospital: 'Bệnh viện Da Liễu TP.HCM',
-            special: 'Khám bệnh ngoài da',
-            service: 'Khám dịch vụ',
-            day: '30-06-2021',
-            time: '09:30 (Buổi sáng)',
-            type: 'Đã thanh toán'
-          },
-          {
-            hospital: 'Bệnh viện Da Liễu TP.HCM',
-            special: 'Khám bệnh ngoài da',
-            service: 'Khám dịch vụ',
-            day: '30-06-2021',
-            time: '09:30 (Buổi sáng)',
-            type: 'Đã thanh toán'
-          }
-        ]
-      },
-      {
-        name: 'Đỗ Hửu Huy 1',
-        listExamination: [
-          {
-            hospital: 'Bệnh viện Da Liễu TP.HCM',
-            special: 'Khám bệnh ngoài da',
-            service: 'Khám dịch vụ',
-            day: '30-06-2021',
-            time: '09:30 (Buổi sáng)',
-            type: 'Đã thanh toán'
-          },
-          {
-            hospital: 'Bệnh viện Da Liễu TP.HCM',
-            special: 'Khám bệnh ngoài da',
-            service: 'Khám dịch vụ',
-            day: '30-06-2021',
-            time: '09:30 (Buổi sáng)',
-            type: 'Đã thanh toán'
-          }
-        ]
-      }
-    ]
-  }
+const { TabPane } = Tabs
 
-  const list = [
-    {
-      icon: <ProfileOutlined />,
-      name: 'File',
-      title: 'Hồ sơ bệnh nhân'
-    },
-    {
-      icon: <FileTextOutlined />,
-      name: 'Card',
-      title: 'Phiếu khám bệnh'
-    },
-    {
-      icon: <BellOutlined />,
-      name: 'Noti',
-      title: 'Thông báo'
-    }
-  ]
-  const [Page, setPage] = useState(list[0].name)
-
-  const handlePage = (name: string) => {
-    setPage(name)
-  }
+export const ThongTinHoSoCustom = () => {
   return (
     <Container>
       <Row className={styles.rowInfomation}>
-        <Col xs={12} xl={8} className={styles.colFunc}>
-          <div>
-            <div className={styles.btnAddProfile}>
-              <Button icon={<UserAddOutlined />} href='/tao-ho-so'>
-                Thêm hồ sơ bệnh nhân
-              </Button>
-            </div>
-            <div className={styles.btnGroup}>
-              <Menu defaultSelectedKeys={['File']}>
-                {list.map((item) => (
-                  <Menu.Item
-                    key={item.name}
-                    icon={item.icon}
-                    className={cx(
-                      styles.btnItem,
-                      item.name === Page ? styles.active : styles.unactive
-                    )}
-                    onClick={() => handlePage(item.name)}
-                  >
-                    {item.title}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </div>
-          </div>
-        </Col>
-        <Col xs={12} xl={16} className={styles.colContent}>
-          <div>
-            {Page === 'File' ? (
-              <HoSo {...dataProfile} />
-            ) : Page === 'Card' ? (
-              <PhieuKhamBenh {...dataCard} />
-            ) : (
-              <ThongBao />
-            )}
-          </div>
+        <Col span='24'>
+          <Tabs defaultActiveKey='1' tabPosition='left' className={styles.tabs}>
+            <TabPane
+              className={styles.item}
+              key='1'
+              tab={
+                <span>
+                  <ProfileOutlined />
+                  Hồ sơ bệnh nhân
+                </span>
+              }
+            >
+              Content of Tab 1
+            </TabPane>
+            <TabPane
+              className={styles.item}
+              key='2'
+              tab={
+                <span>
+                  <FileTextOutlined />
+                  Phiếu khám bệnh
+                </span>
+              }
+            >
+              Content of Tab 2
+            </TabPane>
+            <TabPane
+              key='3'
+              tab={
+                <span>
+                  <BellOutlined />
+                  Thông tin
+                </span>
+              }
+            >
+              Content of Tab 3
+            </TabPane>
+          </Tabs>
         </Col>
       </Row>
     </Container>
   )
 }
+
+export const list = [
+  {
+    icon: <ProfileOutlined />,
+    name: 'File',
+    title: 'Hồ sơ bệnh nhân'
+  },
+  {
+    icon: <FileTextOutlined />,
+    name: 'Card',
+    title: 'Phiếu khám bệnh'
+  },
+  {
+    icon: <BellOutlined />,
+    name: 'Noti',
+    title: 'Thông báo'
+  }
+]
