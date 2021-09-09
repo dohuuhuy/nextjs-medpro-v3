@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { AppState } from 'store/interface'
 import * as ac from '@actionStore/rootAction'
 import { check } from '@utils/checkValue'
+import axios from 'axios'
 const HomeLayout = dynamic(() => import('@templates/Home'))
 const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
@@ -14,7 +15,14 @@ const HomePage = ({ data }: any) => {
   const user = useSelector((state: AppState) => state.userReducer)
   const total = useSelector((state: AppState) => state.totalDataReducer)
 
+  const getData = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    console.log(res.data)
+  }
+
   useEffect(() => {
+    getData()
+
     check(hos?.listFeatureByApp) &&
       dispatch(
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
