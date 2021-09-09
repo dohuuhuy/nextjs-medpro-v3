@@ -13,7 +13,25 @@ import {
 } from '@ant-design/icons'
 import cx from 'classnames'
 
-export const ThongTinHoSoCustom = () => {
+export interface Personal {
+  listUser: User[],
+  listBooking: Booking[],
+  listNotice: Notice[],
+}
+
+export interface User {
+  fullname: string
+}
+
+export interface Booking {
+  fullname: string
+}
+
+export interface Notice {
+  fullname: string
+}
+export const ThongTinHoSoCustom = (props: any) => {
+  console.log("Dữ liệu trả về ", props)
   const dataProfile = {
     listPatient: [
       {
