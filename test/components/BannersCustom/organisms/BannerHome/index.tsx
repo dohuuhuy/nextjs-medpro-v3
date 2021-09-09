@@ -32,16 +32,10 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
       />
       <Container className={styles.contentBannerHome}>
         <Row className={styles.boxService}>
-          <Col span={24} sm={24} xl={24} md={24} className={styles.ColTitle}>
+          <Col span={24} className={styles.ColTitle}>
             <h1>CHỌN DỊCH VỤ</h1>
           </Col>
-          <Col
-            span={24}
-            sm={24}
-            xl={24}
-            md={24}
-            className={styles.ColBoxServic}
-          >
+          <Col span={24} className={styles.ColBoxServic}>
             <ul className={styles.listBoxService}>
               {listFeature.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
