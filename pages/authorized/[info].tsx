@@ -27,7 +27,7 @@ const Author = () => {
   useEffect(() => {
     if (check(user?.userInfo?.token)) {
       dispatch(ac.UserLogin(query))
-      window.localStorage.setItem('jwt', JSON.stringify(query))
+      // window.localStorage.setItem('jwt', JSON.stringify(query))
       router.push('/')
     }
   })
