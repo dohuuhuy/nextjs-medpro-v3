@@ -10,7 +10,8 @@ const init: UserState = {
     isCS: false
   },
   listPatient: [],
-  bookingByUser: []
+  bookingByUser: [],
+  noticeByUser: [],
 }
 
 export default function userReducer(
@@ -26,6 +27,9 @@ export default function userReducer(
 
     case UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS:
       return { ...state, bookingByUser: action.bookingByUser }
+
+    case UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST_SUCCESS:
+      return { ...state, noticeByUser: action.noticeByUser }
 
     case UserTypes.User.USER_RESET:
       return { ...init }

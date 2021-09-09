@@ -1,5 +1,4 @@
 import { Menu } from 'antd'
-import { listDegree, listSex, listSpecial } from './array'
 export const dropDegree = (
   <Menu>
     {listDegree.map((item: any, id: any) => {

@@ -55,7 +55,33 @@ function* GetBookingByUserWatcher() {
   )
 }
 
+function* GetNoticeByUser() {
+  try {
+    const user: UserState = yield select((state: AppState) => state.userReducer)
+
+    const total: TotalDataState = yield select(
+      (state: AppState) => state.totalDataReducer
+    )
+
+    const response: AxiosResponse = yield client.getAllNotifByUser({
+      token: user?.userInfo?.token,
+      partnerid: total?.partnerId,
+      appid: total?.appId
+    })
+    yield put(ac.GetNoticeByUserSuccess(response.data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* GetNoticeByUserWatcher() {
+  yield takeLatest(
+    UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST,
+    GetNoticeByUser
+  )
+}
+
 const userSagas = function* root() {
-  yield all([fork(ListPatientRequestWatcher), fork(GetBookingByUserWatcher)])
+  yield all([fork(ListPatientRequestWatcher), fork(GetBookingByUserWatcher), fork(GetNoticeByUserWatcher)])
 }
 export default userSagas

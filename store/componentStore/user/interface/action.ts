@@ -1,6 +1,6 @@
 import { UserTypes } from 'store/interface'
 
-export type UserActions = UserInfoAction | PatientAction | BookingByUser
+export type UserActions = UserInfoAction | PatientAction | BookingByUser | NoticeByUser
 
 // ------------------------thông tin đăng nhập--------------------------------------
 
@@ -39,4 +39,17 @@ export interface Request {
 export interface RequestSuccess {
   type: UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS
   bookingByUser: any[]
+}
+
+// -------------------------Danh sách Notice theo user--------------------------------------
+
+export type NoticeByUser = NoticeRequest | NoticeRequestSuccess
+
+export interface NoticeRequest {
+  type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST
+}
+
+export interface NoticeRequestSuccess {
+  type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST_SUCCESS
+  noticeByUser: any[]
 }

@@ -27,7 +27,6 @@ const HinhThucDatKham = () => {
   const methods: Reserver = {
     typeBooking: hos?.listFeatureByPartner,
   }
-
   return <SelectBookingTypeCustom {...methods} />
 }
 

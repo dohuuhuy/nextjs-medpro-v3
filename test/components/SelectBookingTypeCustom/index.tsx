@@ -6,6 +6,7 @@ import Container from '../Container'
 import styles from './styles.module.less'
 
 export const SelectBookingTypeCustom = (props: Reserver) => {
+  console.log("props ", props)
   const router = useRouter()
   const { site } = router.query
 
@@ -26,11 +27,16 @@ export const SelectBookingTypeCustom = (props: Reserver) => {
         <Col span='24' className={styles.colTypeBooking}>
           <ul className={styles.listTypeBooking}>
             {props?.typeBooking?.map((e) => {
+              const imageError = '/images/error.svg'
+              const image = e?.image
+              const onError = (e: any) => {    // xử lý lỗi image underfind
+                e.target.src = imageError
+              }
               return (
                 <li key={uniqueId()} onClick={directRoute}>
                   <Space className={styles.typeBooking}>
                     <figure className={styles.icon}>
-                      <img src={e?.image} alt='' />
+                      <img src={image} alt='' onError={onError} />
                     </figure>
                     <p>{e?.name}</p>
                   </Space>

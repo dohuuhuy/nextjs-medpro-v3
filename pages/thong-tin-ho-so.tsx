@@ -14,9 +14,16 @@ const ThongTinHoSo = () => {
   useEffect(() => {
     check(user?.listPatient) && dispatch(ac.ListPatientRequest())
     check(user?.bookingByUser) && dispatch(ac.GetBookingByUser())
+    check(user?.noticeByUser) && dispatch(ac.GetNoticeByUser())
   }, [])
 
-  return <ThongTinHoSoCustom />
+  const medthod: any = {
+    listUser: user?.listPatient,
+    listBooking: user?.bookingByUser,
+    listNotice: user?.noticeByUser
+  }
+
+  return <ThongTinHoSoCustom {...medthod} />
 }
 
 ThongTinHoSo.Layout = DefaultLayout
