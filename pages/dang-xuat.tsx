@@ -1,17 +1,17 @@
-import { UserLogout } from 'store/actionStore/rootAction'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import * as ac from 'store/actionStore/rootAction'
 
-const DangXuatPage = () => {
+const Logout = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   useEffect(() => {
-    dispatch(UserLogout())
     router.push('/')
+    dispatch(ac.UserLogout())
   }, [])
 
   return null
 }
 
-export default DangXuatPage
+export default Logout
