@@ -18,15 +18,13 @@ import { appCtrl } from 'src/containers/app'
 
 type Props = AppProps & {
   Component: Page
-  [T: string]: any
   appProps: Information
 }
 
 const MyApp = ({ Component, pageProps, appProps }: Props) => {
-  const Layout = Component?.Layout
   const router = useRouter()
-
   const dispatch = useDispatch()
+
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url)
@@ -44,18 +42,18 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
   useEffect(() => {
     setVersion()
     checkVersion(persistor)
-    check(partnerId) && dispatch(ac.SetParnerId(appProps.partnerId))
+    check(partnerId) && dispatch(ac.SetParnerId(appProps?.partnerId))
   })
 
   const store: any = useStore()
-
   const lod = (
     <PersistGate persistor={store.persistor}>
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} partnerId={appProps.partnerId} />
+      <Component {...pageProps} />
     </PersistGate>
   )
 
+  const Layout = Component?.Layout
   return Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
 }
 
