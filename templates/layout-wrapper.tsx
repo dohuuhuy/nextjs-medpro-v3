@@ -11,6 +11,8 @@ const layouts: any = {
 const LayoutWrapper = (props: any) => {
   const Layout: any = layouts[props.children.type.layout]
 
+  console.log('Layout :>> ', Layout)
+
   if (Layout !== null) {
     return <Layout {...props}>{props.children}</Layout>
   }

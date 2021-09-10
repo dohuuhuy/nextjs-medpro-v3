@@ -27,10 +27,10 @@ class CustomDocument extends Document<{
       <Html lang='vi'>
         <Head>
           <FavIcon />
-          <script
+          {/* <script
             src='https://resource-testing.medpro.com.vn/static/js/wechat.js'
             async={true}
-          />
+          /> */}
 
           <script src='https://zjs.zdn.vn/zalo/sdk.js' async={true} />
 

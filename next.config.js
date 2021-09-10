@@ -36,7 +36,8 @@ const nextConfig = {
       'resource-testing.medpro.com.vn',
       'firebasestorage.googleapis.com',
       'medpro-api-v2-testing.medpro.com.vn',
-      'bo-api-testing.medpro.com.vn'
+      'bo-api-testing.medpro.com.vn',
+      'medpro-inside-testing.medpro.com.vn'
     ]
   },
 
@@ -46,8 +47,8 @@ const nextConfig = {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
-    });
+      use: ['@svgr/webpack']
+    })
     return config
   }
 }

@@ -91,13 +91,17 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
   return (
     <div className={styles.cardNews} key={item?.title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
-        <Image
-          src={imgUrl}
-          width='600'
-          height='300'
-          layout='responsive'
-          loading='eager'
-        />
+        <Link href={`/tin-tuc/${item?.slug}`}>
+          <a>
+            <Image
+              src={imgUrl}
+              width='600'
+              height='300'
+              layout='responsive'
+              loading='eager'
+            />
+          </a>
+        </Link>
       </figure>
 
       <div className={styles.cardBody}>

@@ -1,8 +1,17 @@
+.btnCustom {
+  width: 152px;
+  height: 32px;
+  border-color: #0352cc;
+  border-radius: 3px;
+}
+
 .ListMenuInfo {
+  width: 100%;
   padding: 7.5px 0;
   list-style: none;
   margin: 0;
   display: flex;
+  justify-content: flex-end;
   li {
     display: inline-flex;
     align-items: center;
@@ -43,17 +52,11 @@
         font-size: 16px;
       }
       &.downloadApp {
-        font-weight: 500;
-        border-color: #0352cc;
-        font-size: 14px;
-        position: relative;
+        .btnCustom();
         color: #0352cc;
-        white-space: nowrap;
         background: transparent;
-        border-radius: 3px;
         &:hover {
-          color: #fff !important;
-          z-index: 2;
+          color: #fff;
           background: #0352cc;
         }
       }

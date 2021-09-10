@@ -17,7 +17,7 @@ const BannerLayout = (info: Information) => {
   } = router
 
   const key = isUndefined(site) ? (pathname === '/' ? '/' : '') : `/${site}`
-  const getBanner = find(info.banners, { key: key })
+  const getBanner = find(info.banners, { key })
 
   if (check(getBanner)) {
     const { menuHeader, insideLink, menuMobile } = info.header
@@ -30,7 +30,7 @@ const BannerLayout = (info: Information) => {
   }
 
   const methos: Banner = {
-    getBanner: getBanner,
+    getBanner,
     listFeature: hos?.listFeatureByApp,
     partnerId: info?.partnerId
   }

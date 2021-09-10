@@ -1,5 +1,8 @@
 import * as ac from '@actionStore/rootAction'
-import { Reserver, SelectBookingTypeCustom } from '@componentsTest/SelectBookingTypeCustom'
+import {
+  Reserver,
+  SelectBookingTypeCustom
+} from '@componentsTest/SelectBookingTypeCustom'
 import { AppState } from '@store/interface'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -25,7 +28,7 @@ const HinhThucDatKham = () => {
   }, [])
 
   const methods: Reserver = {
-    typeBooking: hos?.listFeatureByPartner,
+    typeBooking: hos?.listFeatureByPartner
   }
   return <SelectBookingTypeCustom {...methods} />
 }

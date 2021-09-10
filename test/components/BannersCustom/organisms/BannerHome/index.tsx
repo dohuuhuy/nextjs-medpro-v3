@@ -1,4 +1,5 @@
 import { Col, Row } from 'antd'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../../../Container'
@@ -48,7 +49,13 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                     <li key={i} onClick={() => SelectFeature(e?.type)}>
                       <a>
                         <figure>
-                          <img src={urlImage} onError={onError} />
+                          <Image
+                            src={urlImage}
+                            onError={onError}
+                            width='45'
+                            height='45'
+                            loading='eager'
+                          />
                         </figure>
                         <p>{e?.name}</p>
                       </a>

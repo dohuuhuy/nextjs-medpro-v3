@@ -3,7 +3,9 @@ import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
-
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { spring } from '@utils/contants'
 const Header = dynamic(() => import('@components/organisms/Header'))
 const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 const SliderHospital = dynamic(
@@ -22,6 +24,7 @@ type Props = {
 }
 
 const HomeLayout = (props: Props) => {
+  const router = useRouter()
   const { children, appProps } = props
 
   const info = appProps?.introducHospital
@@ -29,12 +32,22 @@ const HomeLayout = (props: Props) => {
   return (
     <Layout className={styles.layout}>
       <Header {...info} />
-      <BannerPage {...info} />
-      <SliderHospital {...info} />
-      <Introduce {...info} />
-      <Download {...info} />
-      {children}
-      <SupportMethod {...info} />
+
+      <motion.div
+        style={{ width: '100%' }}
+        key={router.asPath}
+        transition={spring}
+        initial={{ x: 500, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -500, opacity: 0 }}
+      >
+        <BannerPage {...info} />
+        <SliderHospital {...info} />
+        <Introduce {...info} />
+        <Download {...info} />
+        {children}
+        <SupportMethod {...info} />
+      </motion.div>
       <Footer {...info} />
     </Layout>
   )

@@ -82,18 +82,24 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
   return (
     <div className={styles.cardNews} key={title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>
-        <Image
-          src={imgUrl}
-          width='600'
-          height='300'
-          layout='responsive'
-          loading='eager'
-        />
+        <Link href={`/tin-tuc/${slug}`}>
+          <a>
+            <Image
+              src={imgUrl}
+              width='600'
+              height='300'
+              layout='responsive'
+              loading='eager'
+            />
+          </a>
+        </Link>
       </figure>
 
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p>
+          <a>
+            <p className={styles.title}>{title}</p>
+          </a>
         </Link>
         <p className={styles.time}>
           {moment(createdAt).format('DD/MM/YYYY, h:mm')}
