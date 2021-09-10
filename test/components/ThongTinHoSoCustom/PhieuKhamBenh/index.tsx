@@ -2,11 +2,10 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import React, { useState } from 'react'
 import { HandleFilter } from './components/func'
 import styles from './styles.module.less'
-export interface Medthods {
-  listUser: any[]
-}
+import { Personal } from '../index'
+import { uniqueId } from 'lodash'
 
-export const PhieuKhamBenh = (Props: Medthods) => {
+export const PhieuKhamBenh = (Props: Personal) => {
   const Filter = HandleFilter(Props)
   const [show, setishow] = useState(false)
 
@@ -20,7 +19,7 @@ export const PhieuKhamBenh = (Props: Medthods) => {
       <ul className={styles.listUser}>
         {Filter.map((listUser: any, index: any) => {
           return (
-            <li key={index + 'd'}>
+            <li key={uniqueId()}>
               <div
                 className={
                   show === index

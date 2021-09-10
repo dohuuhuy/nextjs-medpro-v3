@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { CardFooter } from './cardFooter'
 import { HandleFilter } from './components/func'
-import { Medthods } from './components/interface'
+import { Personal } from '../index'
+import { uniqueId } from 'lodash'
 
-export const HoSo = (Props: Medthods) => {
-  const Filter = HandleFilter(Props)
+export const HoSo = (props: Personal) => {
+  const Filter = HandleFilter(props)
   const [show, setishow] = useState(false)
 
   const onShow = (index: any) => {
-    console.log('index ', index)
     setishow(show !== index ? index : '')
   }
 
@@ -25,15 +25,15 @@ export const HoSo = (Props: Medthods) => {
               <div className={styles.cardProfile}>
                 <div className={styles.cardBody} onClick={() => onShow(index)}>
                   <ul className={styles.listItem}>
-                    {item.map(({ id, key, value, icon }: any, i: number) => {
+                    {item.map(({ key, value, icon }: any, i: number) => {
                       const style =
                         show === index
                           ? styles.cardItem
                           : i > 2
-                          ? styles.hidden
-                          : styles.cardItem
+                            ? styles.hidden
+                            : styles.cardItem
                       return (
-                        <li key={id + i}>
+                        <li key={uniqueId()}>
                           <div className={style}>
                             <Space>
                               <Space className={styles.itemKeys}>

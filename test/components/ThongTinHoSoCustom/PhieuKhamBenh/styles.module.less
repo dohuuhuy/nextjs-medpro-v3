@@ -6,15 +6,17 @@
   justify-content: space-between;
   align-items: center;
   background-color: @background;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 5px 20px;
   color: @color;
-  border-bottom: 1px solid @color;
+  border-bottom: 1px solid #DFDFDF;
+  text-transform: uppercase;
   span{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     svg{
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: bolder;
     }
   }
 }
@@ -28,11 +30,10 @@
     list-style: none;
     width: 100%;
     .cardHeaderInactive{
-      .Header(white,#7D8EA5);
+      .Header(white,#142841);
       &:hover{
         cursor: pointer;
         span{
-          font-size: 17px;
           color:#007BFF;
         }
       }

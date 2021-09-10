@@ -1,38 +1,38 @@
-interface Medthods {
-  listUser: Item[]
-}
+import { Personal } from '../../index'
+import moment from 'moment'
 
-interface Item {
-  name: string
-  listExamination: any[]
-}
-export const HandleFilter = (Props: Medthods) => {
-  return Props?.listUser.map(({ name, listExamination }: Item) => [
-    name,
-    listExamination.map((item: any) => [
+export const HandleFilter = (Props: Personal) => {
+  Props.listBooking.map((e) => {
+    e.bookings.map((item) => {
+      console.log("props ", item.partner.name)
+    })
+  })
+  return Props?.listBooking.map((e) => [
+    `${e?.surname} ${e?.name}`,
+    e?.bookings.map((item) => [
       {
         key: '',
-        value: item?.hospital
+        value: item?.partner?.name
       },
       {
-        key: 'Chuyên khoa: ',
-        value: item?.special
+        key: 'Chuyên khoa',
+        value: `: ${item?.subject?.name}`
       },
       {
-        key: 'Dịch vụ: ',
-        value: item?.service
+        key: 'Dịch vụ',
+        value: `: ${item?.service?.name}`
       },
       {
-        key: 'Ngày khám: ',
-        value: item?.day
+        key: 'Ngày khám',
+        value: `: ${moment(item?.date).format("DD/MM/YYYY")}`
       },
       {
-        key: 'Giờ khám dự kiến: ',
-        value: item?.time
+        key: 'Giờ khám dự kiến',
+        value: `: ${moment(item?.date).format("DD/MM/YYYY")}`
       },
       {
         key: '',
-        value: item?.type
+        value: item?.description
       }
     ])
   ])

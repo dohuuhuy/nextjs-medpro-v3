@@ -7,6 +7,8 @@ import Container from '@componentsTest/Container'
 import { Col, Row, Tabs } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
+import { HoSo } from './HoSo'
+import { PhieuKhamBenh } from './PhieuKhamBenh'
 
 export interface Personal {
   listUser: User[],
@@ -15,11 +17,26 @@ export interface Personal {
 }
 
 export interface User {
-  fullname: string
+  fullname: string,
+  birthdate: string,
+  mobile: string,
+  sex: number,
+  nation: { name: string },
+  fullAddress: string
 }
 
 export interface Booking {
-  fullname: string
+  name: string,
+  surname: string,
+  bookings: listBooking[]
+}
+
+export interface listBooking {
+  partner: { name: string },
+  subject: { name: string },
+  service: { name: string },
+  date: string,
+  description: string
 }
 
 export interface Notice {
@@ -27,7 +44,7 @@ export interface Notice {
 }
 const { TabPane } = Tabs
 
-export const ThongTinHoSoCustom = () => {
+export const ThongTinHoSoCustom = (props: Personal) => {
   return (
     <Container>
       <Row className={styles.rowInfomation}>
@@ -43,7 +60,7 @@ export const ThongTinHoSoCustom = () => {
                 </span>
               }
             >
-              Content of Tab 1
+              <HoSo {...props} />
             </TabPane>
             <TabPane
               className={styles.item}
@@ -55,7 +72,7 @@ export const ThongTinHoSoCustom = () => {
                 </span>
               }
             >
-              Content of Tab 2
+              <PhieuKhamBenh {...props} />
             </TabPane>
             <TabPane
               key='3'
