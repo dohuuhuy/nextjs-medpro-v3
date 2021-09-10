@@ -10,11 +10,11 @@ import { Page } from '@utils/type/page'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
+import NextNProgress from 'nextjs-progressbar'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
-import { motion } from 'framer-motion'
 
 type Props = AppProps & {
   Component: Page
@@ -47,29 +47,14 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const store: any = useStore()
   const lod = (
     <PersistGate persistor={store.persistor}>
+      <NextNProgress height={2} color='#0352cc' />
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />{' '}
     </PersistGate>
   )
 
   const Layout = Component?.Layout
-  return (
-    <motion.div
-      key={router.route}
-      initial='initial'
-      animate='animate'
-      variants={{
-        initial: {
-          opacity: 0
-        },
-        animate: {
-          opacity: 1
-        }
-      }}
-    >
-      {Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod}
-    </motion.div>
-  )
+  return Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
 }
 
 MyApp.getInitialProps = async (ctx: any) => {
