@@ -62,7 +62,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   return (
     <Container className={styles.containerSelectHospitalCustom}>
       <Row className={styles.rowSelect}>
-        <Col xl={24} xs={24} className={styles.colGroupInputSelect}>
+        <Col span='24' className={styles.colGroupInputSelect}>
           <ul className={styles.GroupInputSelect}>
             <li>
               <Input
@@ -102,7 +102,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
             </li>
           </ul>
         </Col>
-        <Col xl={24} xs={24} className={styles.colListCard}>
+        <Col span='24' className={styles.colListCard}>
           <ul className={styles.listCard}>
             {checkData(listHospitals) ? (
               <DataFailure desc='Không tìm thấy !' />
