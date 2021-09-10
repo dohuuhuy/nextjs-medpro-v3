@@ -16,20 +16,15 @@ export interface Item {
 export const MyApp = ({ arrApp }: MyApp) => {
   return (
     <Row className={styles.MyApp}>
-      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+      <Col span='24' className={styles.ColMyApp}>
         <span className={styles.download}> DOWNLOAD</span>
       </Col>
-      <Col
-        className={cx(styles.header_title, styles.ColMyApp)}
-        xl={24}
-        md={24}
-        sm={24}
-      >
+      <Col span='24' className={cx(styles.header_title, styles.ColMyApp)}>
         <h1>
           TẢI ỨNG DỤNG <span>MEDPRO</span>
         </h1>
       </Col>
-      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+      <Col span='24' className={styles.ColMyApp}>
         <ul className={styles.listDownload}>
           {arrApp?.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
