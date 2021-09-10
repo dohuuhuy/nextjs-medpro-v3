@@ -7,6 +7,7 @@ import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
 import * as gtag from '@utils/gtag'
 import { Page } from '@utils/type/page'
+import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
@@ -49,12 +50,19 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
     <PersistGate persistor={store.persistor}>
       {/* <NextNProgress height={1} color='#0352cc' /> */}
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} />{' '}
+      <Component {...pageProps} key={router.asPath} />
     </PersistGate>
   )
 
   const Layout = Component?.Layout
-  return Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
+
+  const x = Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
+
+  return (
+    <AnimatePresence exitBeforeEnter initial={false}>
+      {x}
+    </AnimatePresence>
+  )
 }
 
 MyApp.getInitialProps = async (ctx: any) => {
