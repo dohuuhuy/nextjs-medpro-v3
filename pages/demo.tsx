@@ -1,7 +1,7 @@
 import React from 'react'
 
 const demo = () => {
-  return <div>helo</div>
+  return <div></div>
 }
 
 export default demo
