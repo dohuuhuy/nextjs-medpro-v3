@@ -10,7 +10,7 @@ import { Page } from '@utils/type/page'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
-import NextNProgress from 'nextjs-progressbar'
+// import NextNProgress from 'nextjs-progressbar'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -47,7 +47,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const store: any = useStore()
   const lod = (
     <PersistGate persistor={store.persistor}>
-      <NextNProgress height={1} color='#0352cc' />
+      {/* <NextNProgress height={1} color='#0352cc' /> */}
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />{' '}
     </PersistGate>
