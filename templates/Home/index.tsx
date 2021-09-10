@@ -35,7 +35,7 @@ const HomeLayout = (props: Props) => {
 
       <motion.div
         style={{ width: '100%' }}
-        key={router.route}
+        key={router.asPath}
         transition={spring}
         initial={{ x: 500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

@@ -47,7 +47,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const store: any = useStore()
   const lod = (
     <PersistGate persistor={store.persistor}>
-      <NextNProgress height={2} color='#0352cc' />
+      <NextNProgress height={1} color='#0352cc' />
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />{' '}
     </PersistGate>
