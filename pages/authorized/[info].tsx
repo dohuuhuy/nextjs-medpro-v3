@@ -23,15 +23,11 @@ const Author = () => {
   const user = useSelector((state: AppState) => state.userReducer)
 
   useEffect(() => {
+    router.push('/')
     if (check(user?.userInfo?.token)) {
-      router.push('/')
       dispatch(ac.UserLogin(query))
     }
   })
-
-  useEffect(() => {
-    router.prefetch('/')
-  }, [])
 
   const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
