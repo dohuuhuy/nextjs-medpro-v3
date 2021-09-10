@@ -4,10 +4,8 @@ export const dropDegree = (
   <Menu>
     {listDegree.map((item: any, id: any) => {
       return (
-        <Menu.Item key={id + "id"}>
-          <a>
-            {item}
-          </a>
+        <Menu.Item key={id + 'id'}>
+          <a>{item}</a>
         </Menu.Item>
       )
     })}
@@ -18,10 +16,8 @@ export const dropSpecial = (
   <Menu>
     {listSpecial.map((item: any, id: any) => {
       return (
-        <Menu.Item key={id + "id"}>
-          <a>
-            {item}
-          </a>
+        <Menu.Item key={id + 'id'}>
+          <a>{item}</a>
         </Menu.Item>
       )
     })}
@@ -32,10 +28,8 @@ export const dropSex = (
   <Menu>
     {listSex.map((item: any, id: any) => {
       return (
-        <Menu.Item key={id + "id"}>
-          <a>
-            {item}
-          </a>
+        <Menu.Item key={id + 'id'}>
+          <a>{item}</a>
         </Menu.Item>
       )
     })}
