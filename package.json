@@ -42,7 +42,6 @@
     "lodash": "4.17.21",
     "lodash-es": "4.17.21",
     "medpro-sdk": "git+http://gitlab+deploy-token-180303:zfRxNF8DjXzSP3489f1q@gitlab.com/medpro/medpro-sdk.git#develop",
-    "memory-cache": "0.2.0",
     "moment": "^2.29.1",
     "next": "latest",
     "next-compose-plugins": "2.2.1",
