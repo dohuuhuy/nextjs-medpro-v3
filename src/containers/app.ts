@@ -1,6 +1,6 @@
-import { cachedFetch } from './../config/api/index'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { JSON_EXP } from 'json mẫu/bvtest'
+import { api } from './../config/api/index'
 
 export const appCtrl = async (ctx: any) => {
   const host = ctx.ctx?.req?.headers.host
@@ -18,7 +18,7 @@ export const appCtrl = async (ctx: any) => {
 export const getListPartners = async () => {
   const url =
     'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-  const rs = cachedFetch(url)
+  const rs = api(url)
 
   return rs
 }
