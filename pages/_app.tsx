@@ -44,7 +44,6 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const lod = (
     <PersistGate persistor={store.persistor}>
       {/* <NextNProgress height={1} color='#0352cc' /> */}
-      <DefaultSeo {...SEO} />
       <Component {...pageProps} key={router.asPath} />
     </PersistGate>
   )
@@ -55,6 +54,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
+      <DefaultSeo {...SEO} />
       {x}
     </AnimatePresence>
   )
