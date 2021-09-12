@@ -2,7 +2,8 @@ import { Col, Row } from 'antd'
 import cx from 'classnames'
 import React from 'react'
 import styles from './styles.module.less'
-
+import Image from 'next/image'
+import Link from 'next/link'
 export interface MyApp {
   arrApp: Item[]
 }
@@ -16,26 +17,30 @@ export interface Item {
 export const MyApp = ({ arrApp }: MyApp) => {
   return (
     <Row className={styles.MyApp}>
-      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+      <Col span='24' className={styles.ColMyApp}>
         <span className={styles.download}> DOWNLOAD</span>
       </Col>
-      <Col
-        className={cx(styles.header_title, styles.ColMyApp)}
-        xl={24}
-        md={24}
-        sm={24}
-      >
+      <Col span='24' className={cx(styles.header_title, styles.ColMyApp)}>
         <h1>
           TẢI ỨNG DỤNG <span>MEDPRO</span>
         </h1>
       </Col>
-      <Col xl={24} md={24} sm={24} className={styles.ColMyApp}>
+      <Col span='24' className={styles.ColMyApp}>
         <ul className={styles.listDownload}>
           {arrApp?.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
-              <a href={link} target='_blank' rel='noreferrer'>
-                <img src={imgLogo} className={styles.mid_logo} alt='' />
-              </a>
+              <Link href={link}>
+                <a target='_blank'>
+                  <Image
+                    className={styles.mid_logo}
+                    src={imgLogo}
+                    alt='imgBenefit'
+                    width={152}
+                    height={46}
+                    objectFit='cover'
+                  />
+                </a>
+              </Link>
             </li>
           ))}
         </ul>

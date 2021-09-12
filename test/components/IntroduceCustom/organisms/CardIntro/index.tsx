@@ -5,6 +5,7 @@ import Container from '../../../Container'
 import { FooterSign } from '../../molecules/FooterSign'
 import styles from './styles.module.less'
 import cx from 'classnames'
+import Image from 'next/image'
 export interface CardIntro {
   dataCardIntro: CardIntroItem[]
 }
@@ -27,14 +28,21 @@ export const CardIntro = ({ dataCardIntro }: CardIntro) => {
                 <li key={title}>
                   <div className={styles.card}>
                     <figure className={styles.view}>
-                      <img src={imgCard} alt={title} />
+                      <Image
+                        src={imgCard}
+                        alt={title}
+                        width={340}
+                        height={225}
+                        objectFit='cover'
+                        layout='responsive'
+                      />
                     </figure>
                     <div className={styles.cardBody}>
-                      <h5 className={styles.title}>
+                      <h4 className={styles.title}>
                         <Link href={link || '#'}>
                           <a>{title} </a>
                         </Link>
-                      </h5>
+                      </h4>
                       <p className={styles.subTitle}>{subTitle}</p>
                     </div>
                   </div>

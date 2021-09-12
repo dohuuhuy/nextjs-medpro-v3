@@ -1,22 +1,24 @@
 import styles from './styles.module.less'
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export interface ImgLogoHeader {
-  logoHeader: string | undefined
-  logoHeaderMobile: string | undefined
+  logoHeader: string
+  logoHeaderMobile: string
 }
 
-export const LogoHeader = ({ logoHeader, logoHeaderMobile }: ImgLogoHeader) => {
+export const LogoHeader = ({ logoHeader }: ImgLogoHeader) => {
   return (
     <figure className={styles.figureLogoHeader}>
       <Link href='/'>
         <a>
-          <img src={logoHeader} alt='' className={styles.logoHeader} />
-          <img
-            src={logoHeaderMobile}
+          <Image
+            src={logoHeader}
             alt=''
-            className={styles.logoHeaderMobile}
+            className={styles.logoHeader}
+            width='275'
+            height='110'
           />
         </a>
       </Link>

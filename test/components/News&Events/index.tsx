@@ -72,6 +72,7 @@ const CardNewsCustom = ({
           height='300'
           layout='responsive'
           loading='eager'
+          alt='imgUrl1'
         />
       </figure>
       <div className={styles.cardBody}>

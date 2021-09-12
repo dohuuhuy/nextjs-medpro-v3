@@ -1,4 +1,5 @@
 import FavIcon from '@components/organisms/Favicon'
+import { GA_TRACKING_ID } from '@utils/gtag'
 import Document, {
   DocumentContext,
   Head,
@@ -7,7 +8,6 @@ import Document, {
   NextScript
 } from 'next/document'
 import React from 'react'
-import { GA_TRACKING_ID } from 'src/utils/gtag'
 
 class CustomDocument extends Document<{
   spriteContent: string

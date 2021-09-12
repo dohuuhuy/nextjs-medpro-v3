@@ -37,7 +37,8 @@ const nextConfig = {
       'firebasestorage.googleapis.com',
       'medpro-api-v2-testing.medpro.com.vn',
       'bo-api-testing.medpro.com.vn',
-      'medpro-inside-testing.medpro.com.vn'
+      'medpro-inside-testing.medpro.com.vn',
+      'inside-static.medpro.com.vn'
     ]
   },
 

@@ -4,7 +4,7 @@ import Slider, { Settings } from 'react-slick'
 import Container from '../Container'
 import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
-
+import Image from 'next/image'
 interface Props {
   dataDeloyHospital: DeloyHospitalItem[]
 }
@@ -34,7 +34,14 @@ export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
               return (
                 <div key={nameHospital} className={styles.card}>
                   <figure className={styles.view}>
-                    <img src={image} alt='' />
+                    <Image
+                      src={image}
+                      alt={'d'}
+                      width={355}
+                      height={212}
+                      objectFit='cover'
+                      layout='intrinsic'
+                    />
                   </figure>
                   <div className={styles.cardBody}>
                     <a href={imgLink} target='_blank' rel='noreferrer'>

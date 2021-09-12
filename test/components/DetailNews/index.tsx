@@ -99,6 +99,7 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
               height='300'
               layout='responsive'
               loading='eager'
+              alt='news'
             />
           </a>
         </Link>

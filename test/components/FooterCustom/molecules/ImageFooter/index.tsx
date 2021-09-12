@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './styles.module.less'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
   logoChecked?: ItemChecked[]
@@ -16,9 +18,18 @@ export const ImageFooter = ({ logoChecked }: Props) => {
     <ul className={styles.listLogoChecked}>
       {logoChecked?.map(({ link, imgLogo }: any, i: number) => (
         <li key={i}>
-          <a href={link}>
-            <img src={imgLogo} className={styles.img} alt='icon' />
-          </a>
+          <Link href={link}>
+            <a target='_blank'>
+              <Image
+                src={imgLogo}
+                className={styles.img}
+                alt='icon'
+                width={185}
+                height={70}
+                objectFit='cover'
+              />
+            </a>
+          </Link>
         </li>
       ))}
     </ul>
