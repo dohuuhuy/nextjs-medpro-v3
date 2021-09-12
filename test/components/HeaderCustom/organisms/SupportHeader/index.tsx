@@ -1,5 +1,7 @@
 import styles from './styles.module.less'
 import React from 'react'
+
+import Image from 'next/image'
 export interface SupportHeader {
   support?: any
 }
@@ -13,7 +15,13 @@ export const SupportHeader = ({ support }: SupportHeader) => {
   return (
     <div className={styles.SupportHeader}>
       <figure className={styles.imgSupport}>
-        <img src={urlImage} alt='icon' onError={onError} />
+        <Image
+          src={urlImage}
+          alt='icon'
+          onError={onError}
+          width={40}
+          height={40}
+        />
       </figure>
 
       <div className={styles.descSupport}>
