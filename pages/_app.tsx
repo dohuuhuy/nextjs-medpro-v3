@@ -7,7 +7,6 @@ import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
 import TagManager from 'react-gtm-module'
 import { Page } from '@utils/type/page'
-import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
@@ -53,10 +52,10 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const x = Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
+    <>
       <DefaultSeo {...SEO} />
       {x}
-    </AnimatePresence>
+    </>
   )
 }
 

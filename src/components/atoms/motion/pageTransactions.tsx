@@ -16,7 +16,7 @@ export const AnimatePage = ({ children }: any) => {
   return (
     <motion.div
       style={{ width: '100%' }}
-      key={router.asPath}
+      key={router?.asPath}
       variants={pageVariants}
       initial='initial'
       animate='animate'
