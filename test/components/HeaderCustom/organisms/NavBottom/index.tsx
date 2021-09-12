@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.less'
+import Image from 'next/image'
 
 interface Props {
   Menu: any[]
@@ -12,7 +13,7 @@ export const NavBottom = ({ Menu }: Props) => {
       {Menu.map((item, index: number) => (
         <li key={index} className={styles.colBtn}>
           <a className={styles.btn}>
-            <img src={item.icon} alt='icon' />
+            <Image src={item?.icon} alt='icon' height='25' width='25' />
             <span>{item.label}</span>
           </a>
         </li>

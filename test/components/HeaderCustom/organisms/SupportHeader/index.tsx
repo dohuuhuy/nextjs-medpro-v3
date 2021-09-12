@@ -1,7 +1,7 @@
-import styles from './styles.module.less'
-import React from 'react'
-
 import Image from 'next/image'
+import React from 'react'
+import styles from './styles.module.less'
+
 export interface SupportHeader {
   support?: any
 }
