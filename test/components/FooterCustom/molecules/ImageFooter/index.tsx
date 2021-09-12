@@ -19,7 +19,7 @@ export const ImageFooter = ({ logoChecked }: Props) => {
       {logoChecked?.map(({ link, imgLogo }: any, i: number) => (
         <li key={i}>
           <Link href={link}>
-            <a target='_blank'>
+            <a target='_blank' rel='noreferrer'>
               <Image
                 src={imgLogo}
                 className={styles.img}

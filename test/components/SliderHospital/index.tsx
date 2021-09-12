@@ -36,7 +36,7 @@ export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
                   <figure className={styles.view}>
                     <Image
                       src={image}
-                      alt={'d'}
+                      alt={image}
                       width={355}
                       height={212}
                       objectFit='cover'
