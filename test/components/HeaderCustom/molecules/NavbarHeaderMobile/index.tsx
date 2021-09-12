@@ -31,9 +31,13 @@ export const NavbarHeaderMobile = ({
               <span>Đóng</span>
             ) : (
               <div>
-                <img
-                  src='https://resource-testing.medpro.com.vn/static/media/icon/menu_hamburger.svg'
-                  alt=''
+                <Image
+                  src={
+                    'https://resource-testing.medpro.com.vn/static/media/icon/menu_hamburger.svg'
+                  }
+                  alt='icon'
+                  height='18'
+                  width='18'
                 />
                 <span>Menu</span>
               </div>

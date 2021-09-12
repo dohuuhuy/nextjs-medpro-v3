@@ -27,7 +27,6 @@ export const MenuInfo = (Props: any) => {
         <Link href='/#tai-ung-dung' as='/#tai-ung-dung' passHref={true}>
           <Button
             className={styles.downloadApp}
-            type='default'
             icon={<MobileFilled className={styles.icons} />}
           >
             Tải ứng dụng
