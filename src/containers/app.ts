@@ -1,4 +1,3 @@
-import api from 'store/api'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { JSON_EXP } from 'json mẫu/bvtest'
 
@@ -18,7 +17,7 @@ export const appCtrl = async (ctx: any) => {
 export const getListPartners = async () => {
   const url =
     'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-  const rs = await api(url)
+  const rs = await fetch(url)
 
-  return rs.data
+  return await rs.json()
 }
