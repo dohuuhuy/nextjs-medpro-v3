@@ -1,4 +1,4 @@
-import { AnimatePage } from '@components/atoms/motion/pageTransactions'
+import { AnimatePage } from '@components/atoms/motion'
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'

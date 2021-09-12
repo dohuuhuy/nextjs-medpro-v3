@@ -13,7 +13,9 @@ export const AnimatePage = ({ children }: any) => {
 
   // if (width < 1440) return children
 
-  if (router?.asPath === '/tin-tuc') {
+  const effect = ['/tin-tuc', '/lien-he', '/']
+
+  if (effect.includes(router?.asPath)) {
     return children
   }
 

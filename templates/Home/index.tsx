@@ -1,4 +1,4 @@
-import { AnimatePage } from '@components/atoms/motion/pageTransactions'
+import { AnimatePage } from '@components/atoms/motion'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
