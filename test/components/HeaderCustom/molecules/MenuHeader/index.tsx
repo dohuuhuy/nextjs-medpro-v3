@@ -3,6 +3,7 @@ import React from 'react'
 import { ItemMenu } from '../../header.interface'
 import { useRouter } from 'next/router'
 import styles from './styles.module.less'
+import { uniqueId } from 'lodash'
 
 interface Props {
   menuHeader: ItemMenu[]
@@ -14,19 +15,20 @@ const MenuHeader = ({ menuHeader }: Props) => {
 
   return (
     <ul className={styles.ListMenuHeader}>
-      {menuHeader?.map(
-        (item) =>
-          item.status && (
+      {menuHeader?.map((el) => {
+        return (
+          el?.status && (
             <li
-              key={item.key}
-              className={pathname === item.link ? styles.active : ''}
+              key={uniqueId()}
+              className={pathname === el?.link ? styles.active : ''}
             >
-              <Link href={item.link || '/'}>
-                <a>{item.label}</a>
+              <Link href={el.link || '/'}>
+                <a aria-label={el?.label}>{el?.label}</a>
               </Link>
             </li>
           )
-      )}
+        )
+      })}
     </ul>
   )
 }

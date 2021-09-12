@@ -5,7 +5,7 @@ import { AppState, Information } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
-import * as gtag from '@utils/gtag'
+import TagManager from 'react-gtm-module'
 import { Page } from '@utils/type/page'
 import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
@@ -16,6 +16,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
+import { GA_TRACKING_ID } from '@utils/gtag'
 
 type Props = AppProps & {
   Component: Page
@@ -26,14 +27,8 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+    TagManager.initialize({ gtmId: GA_TRACKING_ID })
+  }, [])
 
   const partnerId = useSelector(
     (state: AppState) => state.totalDataReducer.partnerId

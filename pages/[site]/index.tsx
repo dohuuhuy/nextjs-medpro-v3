@@ -6,12 +6,15 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const Site = () => {
   const meta: NextSeoProps = {
+    noindex: true,
+    nofollow: true,
+    robotsProps: {},
     title: 'Giới thiệu',
     description: 'Giới thiệu medpro',
-    canonical: 'https://medpro.vn',
+    canonical: 'https://nextjs-testing.medpro.com.vn',
     openGraph: {
       type: 'website',
-      url: 'https://medpro.vn',
+      url: 'https://nextjs-testing.medpro.com.vn',
       title: 'Giới thiệu',
       description: 'Giới thiệu medpro',
       images: [
