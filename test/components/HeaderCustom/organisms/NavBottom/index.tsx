@@ -10,8 +10,8 @@ interface Props {
 export const NavBottom = ({ Menu }: Props) => {
   return (
     <ul className={styles.nav_bottom}>
-      {Menu.map((item, index: number) => (
-        <li key={index} className={styles.colBtn}>
+      {Menu.map((item, i: number) => (
+        <li key={i} className={styles.colBtn}>
           <a className={styles.btn}>
             <Image src={item?.icon} alt='icon' height='25' width='25' />
             <span>{item.label}</span>
