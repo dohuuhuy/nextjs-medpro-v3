@@ -13,6 +13,10 @@ export const AnimatePage = ({ children }: any) => {
 
   // if (width < 1440) return children
 
+  if (router?.asPath === '/tin-tuc') {
+    return children
+  }
+
   return (
     <motion.div
       style={{ width: '100%' }}

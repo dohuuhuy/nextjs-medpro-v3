@@ -16,6 +16,8 @@ import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
 import { GA_TRACKING_ID } from '@utils/gtag'
+import { BackTop } from 'antd'
+import { ArrowUpOutlined } from '@ant-design/icons'
 
 type Props = AppProps & {
   Component: Page
@@ -55,6 +57,22 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
     <>
       <DefaultSeo {...SEO} />
       {x}
+      <BackTop>
+        <div
+          style={{
+            height: 40,
+            width: 40,
+            lineHeight: '40px',
+            borderRadius: 4,
+            backgroundColor: '#1088e9',
+            color: '#fff',
+            textAlign: 'center',
+            fontSize: 14
+          }}
+        >
+          <ArrowUpOutlined />
+        </div>
+      </BackTop>
     </>
   )
 }
