@@ -47,7 +47,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                 if (e?.status) {
                   return (
                     <li key={i} onClick={() => SelectFeature(e?.type)}>
-                      <a>
+                      <div className={styles.card}>
                         <figure>
                           <Image
                             src={urlImage}
@@ -55,10 +55,11 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                             width='45'
                             height='45'
                             loading='eager'
+                            alt='icon'
                           />
                         </figure>
                         <p>{e?.name}</p>
-                      </a>
+                      </div>
                     </li>
                   )
                 } else {
