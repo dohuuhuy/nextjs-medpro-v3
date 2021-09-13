@@ -2,7 +2,7 @@ import Container from '../../../Container'
 import { Col, Row } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
-
+import Image from 'next/image'
 interface Props {
   logo: string
   togleDrawer?: any
@@ -19,7 +19,7 @@ export const NavbarHeaderMobile = ({
       <Row className={styles.rowHeaderDrawer}>
         <Col span={8} className={styles.colLogoHeaderMobile}>
           <figure>
-            <img src={logo} className={styles.logoDrawer} alt='logo' />
+            <Image src={logo} alt='icon' height='18' width='18' />
           </figure>
         </Col>
         <Col span={4} className={styles.colButtonHeaderMobile}>
@@ -31,9 +31,13 @@ export const NavbarHeaderMobile = ({
               <span>Đóng</span>
             ) : (
               <div>
-                <img
-                  src='https://resource-testing.medpro.com.vn/static/media/icon/menu_hamburger.svg'
-                  alt=''
+                <Image
+                  src={
+                    'https://resource-testing.medpro.com.vn/static/media/icon/menu_hamburger.svg'
+                  }
+                  alt='icon'
+                  height='18'
+                  width='18'
                 />
                 <span>Menu</span>
               </div>

@@ -4,7 +4,7 @@ import React from 'react'
 import Container from '../../../../Container'
 import styles from './styles.module.less'
 
-interface ContactDetail {
+export interface ContactDetail {
   dataContactDetail: ItemContact[]
 }
 interface ItemContact {
@@ -106,10 +106,9 @@ export const ContactDetail = ({ dataContactDetail }: ContactDetail) => {
           >
             <Select
               className={styles.select}
-              defaultValue='1'
               style={{ width: '100%' }}
+              placeholder='Chọn vấn đề'
             >
-              <Select.Option value='1'>Chọn vấn đề</Select.Option>
               <Select.Option value='2'>Vấn đề chuyên môn</Select.Option>
               <Select.Option value='3'>Vấn đề về kỹ thuật</Select.Option>
               <Select.Option value='4'>Vấn đề khác</Select.Option>

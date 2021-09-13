@@ -16,7 +16,7 @@ const HinhThucDatKham = () => {
 
   const hos = useSelector((state: AppState) => state.hospitalReducer)
 
-  console.log('listFeature :>> ', hos.listFeatureByPartner)
+  // console.log('listFeature :>> ', hos.listFeatureByPartner)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(

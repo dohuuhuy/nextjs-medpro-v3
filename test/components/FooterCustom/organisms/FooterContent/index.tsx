@@ -1,12 +1,14 @@
 import { Col, Row } from 'antd'
 import cx from 'classnames'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import Container from '../../../Container'
 import { ImageFooter } from '../../molecules/ImageFooter'
 import { InfoFooter } from '../../molecules/InfoFooter'
-import styles from './styles.module.less'
 import { SuportFooter } from '../../molecules/SuportFooter'
 import { PropsFooter } from '../interface.footer'
+import styles from './styles.module.less'
 
 export const FooterContent = ({ dataFooter }: PropsFooter) => {
   if (!dataFooter || dataFooter.length < 1) {
@@ -26,32 +28,26 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
           <Col
             className={cx(styles.viewCol, CheckValue(logoFooter))}
             xl={4}
-            lg={4}
             md={24}
-            sm={24}
-            xs={24}
           >
-            <a
-              href={logoFooter.linkImage}
-              className={styles.logoFooter}
-              target='_blank'
-              rel='noreferrer'
-            >
-              <img
-                src={logoFooter.logoImage}
-                className={styles.logo}
-                alt='logoFooter'
-              />
-            </a>
+            <Link href={logoFooter.linkImage}>
+              <a className={styles.logoFooter} target='_blank' rel='noreferrer'>
+                <Image
+                  src={logoFooter.logoImage}
+                  className={styles.logo}
+                  objectFit='cover'
+                  width='155'
+                  height='62'
+                  alt='logoFooter'
+                />
+              </a>
+            </Link>
           </Col>
 
           <Col
             className={cx(styles.viewCol, CheckValue(infoContact))}
             xl={10}
-            lg={10}
             md={24}
-            sm={24}
-            xs={24}
           >
             <InfoFooter infoContact={infoContact} />
           </Col>
@@ -63,10 +59,7 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
               CheckValue(linkSupport)
             )}
             xl={4}
-            lg={4}
             md={24}
-            sm={24}
-            xs={24}
           >
             <SuportFooter linkSupport={linkSupport} />
           </Col>
@@ -74,10 +67,7 @@ export const FooterContent = ({ dataFooter }: PropsFooter) => {
           <Col
             className={cx(styles.viewCol, CheckValue(logoChecked))}
             xl={6}
-            lg={6}
             md={24}
-            sm={24}
-            xs={24}
           >
             <ImageFooter logoChecked={logoChecked} />
           </Col>

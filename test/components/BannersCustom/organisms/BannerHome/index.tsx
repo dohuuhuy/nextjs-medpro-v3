@@ -1,4 +1,5 @@
 import { Col, Row } from 'antd'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -37,7 +38,12 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
             <h1>CHỌN DỊCH VỤ</h1>
           </Col>
           <Col span={24} className={styles.ColBoxServic}>
-            <ul className={styles.listBoxService}>
+            <motion.ul
+              className={styles.listBoxService}
+              variants={mUl}
+              initial='hidden'
+              animate='visible'
+            >
               {listFeature.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
                 const urlImage = e.image || imageErrorSrc
@@ -46,8 +52,21 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                 }
                 if (e?.status) {
                   return (
-                    <li key={i} onClick={() => SelectFeature(e?.type)}>
-                      <a>
+                    <motion.li
+                      key={i}
+                      variants={mLi}
+                      onClick={() => SelectFeature(e?.type)}
+                      whileHover={{
+                        scale: 1.2,
+                        opacity: 1
+                      }}
+                      whileFocus={{
+                        scale: 1.2,
+                        opacity: 1
+                      }}
+                      transition={{ stiffness: 300 }}
+                    >
+                      <div className={styles.card}>
                         <figure>
                           <Image
                             src={urlImage}
@@ -55,17 +74,16 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                             width='45'
                             height='45'
                             loading='eager'
+                            alt='icon'
                           />
                         </figure>
                         <p>{e?.name}</p>
-                      </a>
-                    </li>
+                      </div>
+                    </motion.li>
                   )
-                } else {
-                  return null
                 }
               })}
-            </ul>
+            </motion.ul>
           </Col>
         </Row>
       </Container>
@@ -79,4 +97,24 @@ export interface BannerHomeItem {
   id: string
   linkImage: string
   alt: string
+}
+
+export const mUl = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+}
+
+export const mLi = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1
+  }
 }

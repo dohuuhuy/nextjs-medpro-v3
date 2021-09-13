@@ -1,4 +1,5 @@
 import { Row } from 'antd'
+import { motion } from 'framer-motion'
 import React from 'react'
 import Container from '../../../Container'
 import styles from './styles.module.less'
@@ -11,7 +12,10 @@ export const BannerDefault = ({ getBanner }: any) => {
   const { title, subTitle, imageBackground }: any = getBanner
 
   return (
-    <div
+    <motion.div
+      initial='initial'
+      animate='animate'
+      exit={{ opacity: 0 }}
       className={styles.viewBanner}
       style={{
         backgroundImage: imageBackground && `url(${imageBackground})`
@@ -19,13 +23,43 @@ export const BannerDefault = ({ getBanner }: any) => {
     >
       <Container>
         <Row>
-          <h1 className={styles.title}>{title}</h1>
-          <p
+          <motion.h1 variants={fadeInUp} className={styles.title}>
+            <span className={styles.textTitle}>{title}</span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeInUp}
             className={styles.subTitle}
             dangerouslySetInnerHTML={{ __html: subTitle }}
           />
         </Row>
       </Container>
-    </div>
+    </motion.div>
   )
+}
+
+const easing = [0.6, -0.05, 0.01, 0.99]
+
+export const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.05
+    }
+  }
+}
+
+export const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing }
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing
+    }
+  }
 }

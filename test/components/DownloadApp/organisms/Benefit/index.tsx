@@ -36,6 +36,7 @@ export const Benefit = ({ listBenefit, imgMobile }: Content) => {
             height='800'
             layout='responsive'
             loading='eager'
+            alt='slideMobile'
           />
         </figure>
       </Col>

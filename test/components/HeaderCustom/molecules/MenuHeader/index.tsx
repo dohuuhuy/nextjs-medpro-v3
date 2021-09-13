@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { ItemMenu } from '../../header.interface'
-import { useRouter } from 'next/router'
 import styles from './styles.module.less'
 
 interface Props {
@@ -14,19 +14,17 @@ const MenuHeader = ({ menuHeader }: Props) => {
 
   return (
     <ul className={styles.ListMenuHeader}>
-      {menuHeader?.map(
-        (item) =>
-          item.status && (
-            <li
-              key={item.key}
-              className={pathname === item.link ? styles.active : ''}
-            >
-              <Link href={item.link || '/'}>
-                <a>{item.label}</a>
+      {menuHeader?.map((el, i: number) => {
+        return (
+          el?.status && (
+            <li key={i} className={pathname === el?.link ? styles.active : ''}>
+              <Link href={el.link || '/'}>
+                <a aria-label={el?.label}>{el?.label}</a>
               </Link>
             </li>
           )
-      )}
+        )
+      })}
     </ul>
   )
 }

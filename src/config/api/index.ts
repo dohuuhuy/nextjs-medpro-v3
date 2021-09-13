@@ -1,9 +1,7 @@
-export const api = async (url: any) => {
+export const api = (url: any) => {
   const option: any = {
     headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expires: 0
+      'Cache-Control': 'public, max-age=1500, must-revalidate'
     }
   }
   return fetch(url, option)

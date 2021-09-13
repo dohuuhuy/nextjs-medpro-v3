@@ -1,5 +1,5 @@
 import { checkData, DataFailure } from '@componentsTest/DataFailure'
-import { Col, Row } from 'antd'
+import { Col, Row, Space } from 'antd'
 import moment from 'moment'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -72,18 +72,19 @@ const CardNewsCustom = ({
           height='300'
           layout='responsive'
           loading='eager'
+          alt='imgUrl1'
         />
       </figure>
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <p className={styles.title}>{title}</p>
+          <a className={styles.title}>{title}</a>
         </Link>
-        <p>
+        <Space style={{ width: '100%' }}>
           <span className={styles.time}>
             {moment(createdAt).format('DD/MM/YYYY, h:mm')}
           </span>
           <span className={styles.author}>{author}</span>
-        </p>
+        </Space>
         <p className={styles.description}>{description}</p>
       </div>
     </div>

@@ -1,6 +1,6 @@
+import Image from 'next/image'
 import React from 'react'
 import styles from './styles.module.less'
-
 export interface BenefitRight {
   rightListBenefit: BenefitRightItem[]
 }
@@ -18,7 +18,7 @@ export const BenefitRight = ({ rightListBenefit }: BenefitRight) => {
         ({ title, description, imgBenefit }: BenefitRightItem) => (
           <li key={title}>
             <figure className={styles.img_small}>
-              <img src={imgBenefit} alt='' />
+              <Image src={imgBenefit} alt='imgBenefit' width={80} height={80} />
             </figure>
             <div className={styles.list_content}>
               <h4 className={styles.list_title}>{title}</h4>

@@ -27,6 +27,20 @@ const lessConfig = {
 }
 
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|png)',
+        locale: false,
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=99999, must-revalidate'
+          }
+        ]
+      }
+    ]
+  },
   images: {
     // cấu hình domain cho hình ảnh
     domains: [
@@ -37,7 +51,8 @@ const nextConfig = {
       'firebasestorage.googleapis.com',
       'medpro-api-v2-testing.medpro.com.vn',
       'bo-api-testing.medpro.com.vn',
-      'medpro-inside-testing.medpro.com.vn'
+      'medpro-inside-testing.medpro.com.vn',
+      'inside-static.medpro.com.vn'
     ]
   },
 

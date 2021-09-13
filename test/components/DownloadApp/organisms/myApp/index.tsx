@@ -2,7 +2,8 @@ import { Col, Row } from 'antd'
 import cx from 'classnames'
 import React from 'react'
 import styles from './styles.module.less'
-
+import Image from 'next/image'
+import Link from 'next/link'
 export interface MyApp {
   arrApp: Item[]
 }
@@ -28,9 +29,18 @@ export const MyApp = ({ arrApp }: MyApp) => {
         <ul className={styles.listDownload}>
           {arrApp?.map(({ imgLogo, link }: Item, index: number) => (
             <li key={index}>
-              <a href={link} target='_blank' rel='noreferrer'>
-                <img src={imgLogo} className={styles.mid_logo} alt='' />
-              </a>
+              <Link href={link}>
+                <a target='_blank' rel='noreferrer'>
+                  <Image
+                    className={styles.mid_logo}
+                    src={imgLogo}
+                    alt='imgBenefit'
+                    width={152}
+                    height={46}
+                    objectFit='cover'
+                  />
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
