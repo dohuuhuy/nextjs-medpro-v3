@@ -25,9 +25,9 @@ export const ContactDetail = () => {
     <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
       <ul className={styles.listContact}>
         {handlerListFrom(register)?.map((el: any) => {
-          const sub = el.require ? <sup>*</sup> : ''
+          const sub = el?.require ? <sup>*</sup> : ''
           return (
-            <li key={el.label}>
+            <li key={el?.label}>
               <Space direction='vertical' className={styles.enter}>
                 <label>
                   {el?.label} {sub}
