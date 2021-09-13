@@ -40,7 +40,9 @@ export const ContactDetail = () => {
         })}
       </ul>
 
-      <button type='submit'>Gửi hỗ trợ</button>
+      <button type='submit' className={styles.submit}>
+        Gửi hỗ trợ
+      </button>
     </form>
   )
 }
