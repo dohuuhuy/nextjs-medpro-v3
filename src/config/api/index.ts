@@ -1,8 +1,17 @@
 export const api = (url: any) => {
+  const headers = new Headers()
+
+  headers.append('Content-Type', 'application/json')
+  headers.append('Accept', 'application/json')
+
+  headers.append(
+    'Access-Control-Allow-Origin',
+    'https://resource-testing.medpro.com.vn'
+  )
+  headers.append('Access-Control-Allow-Credentials', 'true')
+
   const option: any = {
-    headers: {
-      'Cache-Control': 'public, max-age=1500, must-revalidate'
-    }
+    headers
   }
   return fetch(url, option)
     .then((rs) => {

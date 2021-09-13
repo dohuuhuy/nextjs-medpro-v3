@@ -1,76 +1,87 @@
-.Text(@size, @weight, @color) {
-  font-size: @size;
-  font-weight: @weight;
-  color: @color;
+.enterCustom {
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s;
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
-.FormContact {
-  .btnSupport {
+
+.formContact {
+  .listContact {
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 15px;
-    button {
-      background: #1da1f2 !important;
-      color: #fff !important;
-      align-items: center;
-      font-size: 14px;
-      border-radius: 3px;
-      vertical-align: middle;
-      padding: 10px 60px;
-      font-weight: 600;
-      text-transform: uppercase;
-      display: flex;
-    }
-  }
-  .listFormContact {
-    width: 100%;
+    height: 100%;
     list-style-type: none;
     padding: 0;
     margin: 0;
+
     display: flex;
     flex-wrap: wrap;
+
     li {
       width: 50%;
-      @media only screen and (max-width: 426px) {
-        width: 100% !important;
-      }
-      margin-bottom: 15px;
-      padding: 0 15px;
-      .title {
-        .Text(13px, 600, none);
-        sup {
-          padding-left: 5px;
-          color: red;
-        }
-        margin-bottom: 1rem;
-      }
-      .input {
-        border-radius: 3px;
-        padding: 0 10px;
-        height: 43px;
-        &:hover {
-          border-color: #bfbfbf;
-        }
-        &:focus {
-          background-color: #fff;
-          border-color: #0352cc;
-          outline: 0;
-          box-shadow: none;
-          color: #032a5f;
-        }
-      }
-      .select {
-        > div {
-          border-radius: 3px;
-          align-content: center;
-          align-items: center;
-          height: 43px;
-        }
-      }
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       &:last-child {
         width: 100%;
-        .input {
-          height: unset;
+      }
+
+      .enter {
+        width: 100%;
+        label {
+          font-weight: 500;
+          sup {
+            font-size: 16px;
+            color: red;
+          }
+        }
+        input,
+        select {
+          height: 45px;
+          .enterCustom();
+          &:hover,
+          &:focus {
+            border-color: #007bff;
+          }
+        }
+        textarea {
+          .enterCustom();
+        }
+        input {
+          ::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: #909;
+          }
+          :-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #909;
+            opacity: 1;
+          }
+          ::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #909;
+            opacity: 1;
+          }
+          :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #909;
+          }
+          ::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: #909;
+          }
+
+          ::placeholder {
+            /* Most modern browsers support this now. */
+            color: #909;
+          }
         }
       }
     }

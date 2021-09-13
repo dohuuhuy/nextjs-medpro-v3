@@ -1,8 +1,10 @@
-import { Col, Row } from 'antd'
+/* eslint-disable @next/next/no-img-element */
+import { Col, Row, Space } from 'antd'
 import React from 'react'
 import Container from '../../../Container'
 import { ContactDetail } from './ContactDetail'
 import styles from './styles.module.less'
+// import Image from 'next/image'
 
 export const LienHeContent = ({ content }: PropsProduce) => {
   if (!content) {
@@ -20,11 +22,13 @@ export const LienHeContent = ({ content }: PropsProduce) => {
             {detailsContact?.map(
               ({ subText, text, icon }: ItemContact, i: number) => (
                 <li key={i}>
-                  <img src={icon} alt='icon' />
-                  <div className={styles.textInfo}>
-                    <p className={styles.text}>{text}</p>
-                    <p className={styles.subText}>{subText}</p>
-                  </div>
+                  <Space size='middle'>
+                    <img src={icon} alt='icon' />
+                    <div className={styles.textInfo}>
+                      <p className={styles.text}>{text}</p>
+                      <p className={styles.subText}>{subText}</p>
+                    </div>
+                  </Space>
                 </li>
               )
             )}
@@ -57,7 +61,7 @@ export interface DetailContact {
 
 interface ItemContact {
   id?: string
-  icon?: string
+  icon: string
   subText?: string
   text?: string
 }
