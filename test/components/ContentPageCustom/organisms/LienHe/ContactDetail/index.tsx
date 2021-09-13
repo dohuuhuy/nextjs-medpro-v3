@@ -3,15 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Space } from 'antd'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { error, handlerListFrom } from './handler'
+import { error, handlerListFrom, schemaContact } from './handler'
 import styles from './styles.module.less'
-
-const schemaContact = yup.object().shape({
-  fullname: yup.string().required(),
-  email: yup.string().email().required(),
-  phone: yup.number().required()
-})
 
 export const ContactDetail = () => {
   const {
