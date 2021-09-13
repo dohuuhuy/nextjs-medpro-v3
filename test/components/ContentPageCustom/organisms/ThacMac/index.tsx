@@ -38,23 +38,16 @@ export const ThacMacContent = ({ content }: any) => {
         <Col xl={7} lg={7} sm={24} xs={24} className={styles.colTab}>
           <h2 className={styles.titleTab}>Giải đáp nhanh câu hỏi</h2>
           <ul className={styles.listTab}>
-            {isArray(content) &&
-              content?.map(({ id, name }: any) => {
-                return (
-                  <li
-                    key={id}
-                    onClick={() => x(id)}
-                    className={Faq.id === id ? styles.active : ''}
-                  >
-                    {Faq.id === id ? (
-                      <CaretDownOutlined />
-                    ) : (
-                      <CaretRightOutlined />
-                    )}
-                    {name}
-                  </li>
-                )
-              })}
+            {content?.map(({ id, name }: any) => {
+              const caret =
+                Faq.id === id ? <CaretDownOutlined /> : <CaretRightOutlined />
+              const active = Faq.id === id ? styles.active : ''
+              return (
+                <li key={id} onClick={() => x(id)} className={active}>
+                  {caret} {name}
+                </li>
+              )
+            })}
           </ul>
         </Col>
         <Col xl={17} lg={17} sm={24} xs={24} className={styles.colContentMenu}>
