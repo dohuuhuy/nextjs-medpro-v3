@@ -49,7 +49,8 @@ export const handleStep = (medthods: any) => {
         icon: <IdcardOutlined style={{ color: '#1da1f2' }} />,
         content: <ChonChuyenKhoa {...medthods} />
       })
-    } else if (item === 'doctor') {
+    }
+    else if (item === 'doctor') {
       steps.splice(index, 0, {
         title: 'Bác sĩ',
         icon: <UsergroupAddOutlined style={{ color: '#1da1f2' }} />,
