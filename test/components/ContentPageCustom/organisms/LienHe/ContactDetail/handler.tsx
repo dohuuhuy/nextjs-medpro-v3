@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 export const schemaContact = yup.object().shape({
   fullname: yup.string().required('không được trống'),
-  email: yup.string().email().required('không được trống'),
+  email: yup.string().email(),
   phone: yup.number().required('không được trống')
 })
 
