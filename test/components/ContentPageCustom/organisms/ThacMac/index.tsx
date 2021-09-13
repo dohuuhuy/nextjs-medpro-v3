@@ -3,8 +3,8 @@ import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
 import React, { useEffect, useMemo, useState } from 'react'
 import Container from '../../../Container'
+import { checkData, DataFailure } from '../../../DataFailure'
 import styles from './styles.module.less'
-import { DataFailure, checkData } from '../../../DataFailure'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
@@ -28,9 +28,12 @@ export const ThacMacContent = ({ content }: any) => {
     setFaq(item)
   }
 
-  const x = (id: any) => handlerSetFaqbyTab(id)
+  const Click = (e: any) => {
+    const id = e.target.dataset.id
+    handlerSetFaqbyTab(Number(id))
+  }
 
-  const ContentFaq = useMemo(() => funcFaq(Faq.faq), [Faq.faq])
+  const ContentFaq = useMemo(() => funcFaq(Faq?.faq), [Faq?.faq])
 
   return (
     <Container className={styles.ThacMacContent}>
@@ -38,13 +41,23 @@ export const ThacMacContent = ({ content }: any) => {
         <Col xl={7} lg={7} sm={24} xs={24} className={styles.colTab}>
           <h2 className={styles.titleTab}>Giải đáp nhanh câu hỏi</h2>
           <ul className={styles.listTab}>
-            {content?.map(({ id, name }: any) => {
+            {content?.map((el: any) => {
               const caret =
-                Faq.id === id ? <CaretDownOutlined /> : <CaretRightOutlined />
-              const active = Faq.id === id ? styles.active : ''
+                Faq.id === el?.id ? (
+                  <CaretDownOutlined />
+                ) : (
+                  <CaretRightOutlined />
+                )
+              const active = Faq.id === el?.id ? styles.active : ''
+
               return (
-                <li key={id} onClick={() => x(id)} className={active}>
-                  {caret} {name}
+                <li
+                  key={el?.id}
+                  data-id={el?.id}
+                  onClick={Click}
+                  className={active}
+                >
+                  {caret} {el?.name}
                 </li>
               )
             })}
