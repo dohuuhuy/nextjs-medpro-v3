@@ -60,7 +60,7 @@ export const ThongTinHoSoCustom = (props: Personal) => {
       <Row className={styles.rowInfomation}>
         <Col span='24'>
           <Tabs defaultActiveKey='1' tabPosition='left' className={styles.tabs}>
-            {listTabs.map((e) => {
+            {listTabs?.map((e) => {
               return (
                 <TabPane className={styles.item} key={e.key} tab={e.title}>
                   {e.content}
