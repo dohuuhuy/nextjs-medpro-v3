@@ -9,39 +9,11 @@ import React from 'react'
 import styles from './styles.module.less'
 import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
+import { ThongBao } from './ThongBao'
+import { Personal } from './utils/interface'
+import { motion } from 'framer-motion'
 
-export interface Personal {
-  listUser: User[],
-  listBooking: Booking[],
-  listNotice: Notice[],
-}
 
-export interface User {
-  fullname: string,
-  birthdate: string,
-  mobile: string,
-  sex: number,
-  nation: { name: string },
-  fullAddress: string
-}
-
-export interface Booking {
-  name: string,
-  surname: string,
-  bookings: listBooking[]
-}
-
-export interface listBooking {
-  partner: { name: string },
-  subject: { name: string },
-  service: { name: string },
-  date: string,
-  description: string
-}
-
-export interface Notice {
-  fullname: string
-}
 const { TabPane } = Tabs
 
 export const ThongTinHoSoCustom = (props: Personal) => {
@@ -54,7 +26,7 @@ export const ThongTinHoSoCustom = (props: Personal) => {
               className={styles.item}
               key='1'
               tab={
-                <span>
+                <span className={styles.tabsitem}>
                   <ProfileOutlined />
                   Hồ sơ bệnh nhân
                 </span>
@@ -83,7 +55,7 @@ export const ThongTinHoSoCustom = (props: Personal) => {
                 </span>
               }
             >
-              Content of Tab 3
+              <ThongBao {...props} />
             </TabPane>
           </Tabs>
         </Col>

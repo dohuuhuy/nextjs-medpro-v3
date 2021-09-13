@@ -2,8 +2,10 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import React, { useState } from 'react'
 import { HandleFilter } from './components/func'
 import styles from './styles.module.less'
-import { Personal } from '../index'
+import { Personal } from '../utils/interface'
 import { uniqueId } from 'lodash'
+import { motion } from 'framer-motion'
+import { fadeInUp, stagger } from '../utils/motion'
 
 export const PhieuKhamBenh = (Props: Personal) => {
   const Filter = HandleFilter(Props)
@@ -14,12 +16,12 @@ export const PhieuKhamBenh = (Props: Personal) => {
     setishow(show !== index ? index : '')
   }
   return (
-    <div className={styles.Container}>
+    <motion.div className={styles.Container} initial='initial' animate="animate">
       <h1>Danh sách phiếu khám bệnh</h1>
-      <ul className={styles.listUser}>
+      <motion.ul className={styles.listUser} variants={stagger}>
         {Filter.map((listUser: any, index: any) => {
           return (
-            <li key={uniqueId()}>
+            <motion.li key={uniqueId()} variants={fadeInUp}>
               <div
                 className={
                   show === index
@@ -55,10 +57,10 @@ export const PhieuKhamBenh = (Props: Personal) => {
                   )
                 })}
               </ul>
-            </li>
+            </motion.li>
           )
         })}
-      </ul>
-    </div>
+      </motion.ul>
+    </motion.div>
   )
 }

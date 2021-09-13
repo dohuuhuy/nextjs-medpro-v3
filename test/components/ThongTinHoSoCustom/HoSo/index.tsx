@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { CardFooter } from './cardFooter'
 import { HandleFilter } from './components/func'
-import { Personal } from '../index'
+import { Personal } from '../utils/interface'
 import { uniqueId } from 'lodash'
+import { motion } from 'framer-motion'
+import { fadeInUp, stagger } from '../utils/motion'
 
 export const HoSo = (props: Personal) => {
   const Filter = HandleFilter(props)
@@ -15,13 +17,13 @@ export const HoSo = (props: Personal) => {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>Danh sách hồ sơ bệnh nhân</h1>
-      <ul className={styles.listCard}>
+    <motion.div className={styles.container} initial='initial' animate="animate">
+      <h2>Danh sách hồ sơ bệnh nhân</h2>
+      <motion.ul className={styles.listCard} variants={stagger}>
         {Filter.map((item: any, index: any) => {
           const isShowCardFooter = show === index ? '' : styles.hidden
           return (
-            <li key={index + 'd'}>
+            <motion.li key={index + 'd'} variants={fadeInUp}>
               <div className={styles.cardProfile}>
                 <div className={styles.cardBody} onClick={() => onShow(index)}>
                   <ul className={styles.listItem}>
@@ -49,10 +51,10 @@ export const HoSo = (props: Personal) => {
                 </div>
                 <CardFooter className={isShowCardFooter} />
               </div>
-            </li>
+            </motion.li>
           )
         })}
-      </ul>
-    </div>
+      </motion.ul>
+    </motion.div>
   )
 }

@@ -1,40 +1,51 @@
-.container{
-  .listNoti{
-    list-style: none;
+.rowProduce {
+  .step {
     padding: 0;
-    .cardView{
-      padding: 10px 0;
-      .cardContent{
-        padding: 15px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        &:hover{
-          background: linear-gradient(90deg, #bae8e8,#b8c1ec);
-          transition: 1s;
-        }
-        .Time{
-          p{
-            font-weight: bolder;
-            text-transform: uppercase;
-            color: #627792;
-            font-size: 10px;
-            margin: 0;
-          }
-        }
-        .Content{
-          p{
-            font-weight: 500;
-            font-size: 13px;
-            margin: 0;
-          }
-        }
-        .Detail{
-          float: right;
-          a{
-            margin: 0;
-            font-size: 13px;
-          }
+    margin: 0;
+    .rowStep {
+      flex: 1;
+      display: flex;
+      &:hover{
+        .dot{
+          background-color: #e9ecf2;
+          border: 3px solid #317ce7;
         }
       }
+      .dot {
+        display: flex;
+        flex: 1;
+        max-width: 15px;
+        max-height: 15px;
+        background-color: #317ce7;
+        border-radius: 100%;
+        margin-right: -8px;
+        z-index: 1;
+      }
+      .colContent {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        border-width: 0;
+        border-left: 3px solid #e9ecf2;
+        padding: 0 25px 22px 25px;
+        .titleStep {
+          font-size: 10px;
+          text-align: left;
+          text-transform: uppercase;
+          color: #627792;
+          margin-bottom: 1.2rem;
+        }
+        .view_content {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .detail{
+          text-align: right;
+          font-style: oblique;
+        }
+      }
+      
     }
   }
 }

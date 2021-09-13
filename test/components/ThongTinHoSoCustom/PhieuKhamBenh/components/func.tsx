@@ -28,7 +28,7 @@ export const HandleFilter = (Props: Personal) => {
       },
       {
         key: 'Giờ khám dự kiến',
-        value: `: ${moment(item?.date).format("DD/MM/YYYY")}`
+        value: `: ${moment(item?.date).format("hh:mm")}`
       },
       {
         key: '',
