@@ -11,75 +11,69 @@ import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
 import { ThongBao } from './ThongBao'
 import { Personal } from './utils/interface'
+<<<<<<< HEAD
 
+=======
+// import { motion } from 'framer-motion'
+>>>>>>> 093939824b514ae792f68ccf34699b4cd1b89450
 
 const { TabPane } = Tabs
 
+interface ListTabs {
+  key: string
+  title: JSX.Element
+  content: JSX.Element
+}
+
 export const ThongTinHoSoCustom = (props: Personal) => {
+  const listTabs: ListTabs[] = [
+    {
+      key: 'hsbn',
+      title: (
+        <span className={styles.tabsitem}>
+          <ProfileOutlined />
+          Hồ sơ bệnh nhân
+        </span>
+      ),
+      content: <HoSo {...props} />
+    },
+    {
+      key: 'pkb',
+      title: (
+        <span>
+          <FileTextOutlined />
+          Phiếu khám bệnh
+        </span>
+      ),
+      content: <PhieuKhamBenh {...props} />
+    },
+    {
+      key: 'tb',
+      title: (
+        <span>
+          <BellOutlined />
+          Thông báo
+        </span>
+      ),
+      content: <ThongBao {...props} />
+    }
+  ]
+
   return (
     <Container>
       <Row className={styles.rowInfomation}>
         <Col span='24'>
-          <a>Tạo hồ sơ</a>
-        </Col>
-        <Col span='24'>
-          <Tabs defaultActiveKey='1' tabPosition='left' className={styles.tabs}>
-            <TabPane
-              className={styles.item}
-              key='1'
-              tab={
-                <span className={styles.tabsitem}>
-                  <ProfileOutlined />
-                  Hồ sơ bệnh nhân
-                </span>
-              }
-            >
-              <HoSo {...props} />
-            </TabPane>
-            <TabPane
-              className={styles.item}
-              key='2'
-              tab={
-                <span>
-                  <FileTextOutlined />
-                  Phiếu khám bệnh
-                </span>
-              }
-            >
-              <PhieuKhamBenh {...props} />
-            </TabPane>
-            <TabPane
-              key='3'
-              tab={
-                <span>
-                  <BellOutlined />
-                  Thông tin
-                </span>
-              }
-            >
-              <ThongBao {...props} />
-            </TabPane>
+          <Tabs tabPosition='left'>
+            {listTabs?.map((e) => {
+              return (
+                <TabPane key={e.key} tab={e.title}>
+                  {e.content}
+                </TabPane>
+              )
+            })}
           </Tabs>
         </Col>
       </Row>
     </Container>
   )
 }
-
-export const list = [
-  {
-    icon: <ProfileOutlined />,
-    name: 'File',
-    title: 'Hồ sơ bệnh nhân'
-  },
-  {
-    icon: <FileTextOutlined />,
-    name: 'Card',
-    title: 'Phiếu khám bệnh'
-  },
-  {
-    icon: <BellOutlined />,
-    name: 'Noti',
-    title: 'Thông báo'
-  }
-]

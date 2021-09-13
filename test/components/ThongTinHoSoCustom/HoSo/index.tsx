@@ -17,7 +17,11 @@ export const HoSo = (props: Personal) => {
   }
 
   return (
-    <motion.div className={styles.container} initial='initial' animate="animate">
+    <motion.div
+      className={styles.container}
+      initial='initial'
+      animate='animate'
+    >
       <h2>Danh sách hồ sơ bệnh nhân</h2>
       <motion.ul className={styles.listCard} variants={stagger}>
         {Filter.map((item: any, index: any) => {
@@ -32,8 +36,8 @@ export const HoSo = (props: Personal) => {
                         show === index
                           ? styles.cardItem
                           : i > 2
-                            ? styles.hidden
-                            : styles.cardItem
+                          ? styles.hidden
+                          : styles.cardItem
                       return (
                         <li key={uniqueId()}>
                           <div className={style}>
