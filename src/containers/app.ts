@@ -18,7 +18,7 @@ export const appCtrl = async (ctx: any) => {
 export const getListPartners = async () => {
   const url =
     'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-  const rs = api(url)
+  const rs = await api(url)
 
   return rs
 }
