@@ -11,7 +11,6 @@ import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
 import { ThongBao } from './ThongBao'
 import { Personal } from './utils/interface'
-import { motion } from 'framer-motion'
 
 
 const { TabPane } = Tabs
@@ -20,6 +19,9 @@ export const ThongTinHoSoCustom = (props: Personal) => {
   return (
     <Container>
       <Row className={styles.rowInfomation}>
+        <Col span='24'>
+          <a>Tạo hồ sơ</a>
+        </Col>
         <Col span='24'>
           <Tabs defaultActiveKey='1' tabPosition='left' className={styles.tabs}>
             <TabPane
