@@ -21,6 +21,8 @@ export const ContactDetail = () => {
     reset()
   }
 
+  const disabled = Object.keys(errors).length >= 1
+
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
       <ul className={styles.listContact}>
@@ -33,14 +35,15 @@ export const ContactDetail = () => {
                   {el?.label} {sub}
                 </label>
                 {el?.enter ? el?.enter(el) : ''}
+
+                {error(el?.name, errors)}
               </Space>
-              {error(el?.name, errors)}
             </li>
           )
         })}
       </ul>
 
-      <button type='submit' className={styles.submit}>
+      <button type='submit' disabled={disabled} className={styles.submit}>
         Gửi hỗ trợ
       </button>
     </form>
