@@ -1,9 +1,9 @@
-import { urlAddress } from './../../../src/utils/contants'
 import * as ac from '@actionStore/rootAction'
-import { getData } from 'store/api'
-import { TotalDataTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { getData } from 'store/api'
+import { TotalDataTypes } from 'store/interface'
+import { urlAddress } from '@utils/contants'
 
 function* getListPartners() {
   try {
@@ -24,31 +24,11 @@ function* WatchListPartners() {
   )
 }
 
-const handlerUrl = (type: any, id: any) => {
-  let url
-
-  switch (type) {
-    case 'city':
-      url = urlAddress + '?country_code=' + id
-      break
-
-    case 'district':
-      url = urlAddress + '?city_id=' + id
-      break
-
-    case 'ward':
-      url = urlAddress + '?district_id=' + id
-      break
-  }
-
-  return url
-}
-
 function* handlerAddress({ payload }: any) {
   try {
     const { type, id } = payload
 
-    const respone: AxiosResponse = yield call(getData, handlerUrl(type, id))
+    const respone: AxiosResponse = yield call(getData, urlAddress(type, id))
 
     switch (type) {
       case 'city':
