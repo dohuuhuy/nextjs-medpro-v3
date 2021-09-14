@@ -2,7 +2,7 @@ import { TotalDataTypes } from 'store/interface'
 
 export type TotalDataActions =
   | ListPartnersAction
-  | ListCityAction
+  | AddressAction
   | PartnerIdlocalAction
   | TypeReservice
 
@@ -37,18 +37,33 @@ export interface SetPartnerIdLocal {
 
 // ----------------------------------------danh sách tỉnh/thành------------------------------------------------------
 
-export type ListCityAction =
-  | ListCityReques
-  | ListCityRequestSuccess
-  | SetParnerId
+export type AddressAction =
+  | AddressReques
+  | CityRequestSuccess
+  | DistrictRequestSuccess
+  | WardRequestSuccess
 
-export interface ListCityReques {
-  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST
+export interface AddressReques {
+  type: TotalDataTypes.Address.ADDRESS_REQUEST
+  payload: {
+    type: string
+    id: string
+  }
 }
 
-export interface ListCityRequestSuccess {
-  type: TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS
+export interface CityRequestSuccess {
+  type: TotalDataTypes.Address.LIST_CITY_REQUEST_SUCCESS
   listCity: any[]
+}
+
+export interface DistrictRequestSuccess {
+  type: TotalDataTypes.Address.LIST_DISTRICT_REQUEST_SUCCESS
+  listDistrict: any[]
+}
+
+export interface WardRequestSuccess {
+  type: TotalDataTypes.Address.LIST_WARD_REQUEST_SUCCESS
+  listWard: any[]
 }
 
 // ----------------------------------------loại đặt khám------------------------------------------------------

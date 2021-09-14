@@ -7,7 +7,7 @@ import React from 'react'
 import Container from '../Container'
 import styles from './styles.module.less'
 
-export const API_NEWS = 'https://cms.medpro.com.vn'
+export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
   if (checkData(dataNewsAndEvent)) {
@@ -62,7 +62,7 @@ const CardNewsCustom = ({
   description,
   author
 }: any) => {
-  const imgUrl1 = API_NEWS + image?.[0].url
+  const imgUrl1 = API_CMS + image?.[0].url
   return (
     <div className={styles.cardNews}>
       <figure className={styles.cardView}>

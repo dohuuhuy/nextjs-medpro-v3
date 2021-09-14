@@ -2,8 +2,10 @@ export interface TotalDataState {
   appId: AppId
   partnerId: string
   listPartners: ItemlistPartners[]
-  listCity: any[]
   typeReser: TypeReser
+  listCity: any[]
+  listDistrict: any[]
+  listWard: any[]
 }
 
 export interface ItemlistPartners {

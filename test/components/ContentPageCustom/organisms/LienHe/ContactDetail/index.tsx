@@ -21,26 +21,31 @@ export const ContactDetail = () => {
     reset()
   }
 
+  const disabled = Object.keys(errors).length >= 1
+
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
       <ul className={styles.listContact}>
         {handlerListFrom(register)?.map((el: any) => {
-          const sub = el.require ? <sup>*</sup> : ''
+          const sub = el?.require ? <sup>*</sup> : ''
           return (
-            <li key={el.label}>
+            <li key={el?.label}>
               <Space direction='vertical' className={styles.enter}>
                 <label>
                   {el?.label} {sub}
                 </label>
                 {el?.enter ? el?.enter(el) : ''}
+
+                {error(el?.name, errors)}
               </Space>
-              {error(el?.name, errors)}
             </li>
           )
         })}
       </ul>
 
-      <button type='submit'>Gửi hỗ trợ</button>
+      <button type='submit' disabled={disabled} className={styles.submit}>
+        Gửi hỗ trợ
+      </button>
     </form>
   )
 }

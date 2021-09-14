@@ -21,9 +21,9 @@ const ChonBenhVienPage = ({ data }: any) => {
   )
 
   useEffect(() => {
-    check(listCity) && dispatch(ac.getListCity())
+    check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
     check(listHospital) && dispatch(ac.getListHospital())
-  }, [])
+  }, [dispatch, listCity, listHospital])
 
   const methods: SelectHospital = {
     listHospital: data?.listHospital,

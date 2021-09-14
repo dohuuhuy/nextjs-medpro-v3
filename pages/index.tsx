@@ -23,7 +23,7 @@ const HomePage = ({ data }: any) => {
     user.userInfo.token &&
       check(user?.listPatient) &&
       dispatch(ac.ListPatientRequest())
-  }, [])
+  })
   return <NewsAndEvent {...data} />
 }
 

@@ -1,9 +1,21 @@
 import * as yup from 'yup'
 
+const phoneRegExp = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g
+
 export const schemaContact = yup.object().shape({
-  fullname: yup.string().required('không được trống'),
-  email: yup.string().email().required('không được trống'),
-  phone: yup.number().required('không được trống')
+  fullname: yup
+    .string()
+    .trim('Vui lòng không nhập khoảng trắng !')
+    .strict(true)
+    .required('Vui lòng nhập họ tên !'),
+  email: yup.string().email('Vui nhập đúng định dạng !'),
+  phone: yup
+    .string()
+    .matches(phoneRegExp, 'Số điện thoại không dúng định dạng !')
+    .typeError('Vui lòng nhập số !')
+    .required('Vui lòng nhập số điện thoại !'),
+  problem: yup.string().required('Vui lòng chọn vấn đề!'),
+  content: yup.string().required('Vui lòng nhập nội dung !')
 })
 
 export const error = (element: any, errors: any) => {
@@ -22,15 +34,8 @@ export const handlerListFrom = (register: any) => {
       label: 'Họ và tên',
       place: 'Vui lòng nhập họ và tên',
       require: true,
-      enter: ({ name, place, type, require }: any) => {
-        return (
-          <input
-            {...register(name)}
-            placeholder={place}
-            type={type}
-            required={require}
-          />
-        )
+      enter: ({ name, place, type }: any) => {
+        return <input {...register(name)} placeholder={place} type={type} />
       }
     },
     {
@@ -39,15 +44,8 @@ export const handlerListFrom = (register: any) => {
       label: 'Địa chỉ Email',
       place: 'Vui lòng nhập email..',
       require: false,
-      enter: ({ name, place, type, require }: any) => {
-        return (
-          <input
-            {...register(name)}
-            placeholder={place}
-            type={type}
-            required={require}
-          />
-        )
+      enter: ({ name, place, type }: any) => {
+        return <input {...register(name)} placeholder={place} type={type} />
       }
     },
     {
@@ -56,15 +54,8 @@ export const handlerListFrom = (register: any) => {
       label: 'Số điện thoại',
       place: 'Vui lòng nhập số điện thoại',
       require: true,
-      enter: ({ name, place, type, require }: any) => {
-        return (
-          <input
-            {...register(name)}
-            placeholder={place}
-            type={type}
-            required={require}
-          />
-        )
+      enter: ({ name, place, type }: any) => {
+        return <input {...register(name)} placeholder={place} type={type} />
       }
     },
     {
@@ -73,18 +64,8 @@ export const handlerListFrom = (register: any) => {
       label: 'Chọn vấn đề',
       place: 'Vấn đề của bạn',
       require: true,
-      enter: ({ name, place }: any) => {
-        return (
-          <select
-            {...register(name)}
-            style={{ width: '100%' }}
-            placeholder={place}
-          >
-            <option value='cn'>Vấn đề chuyên môn</option>
-            <option value='kt'>Vấn đề về kỹ thuật</option>
-            <option value='#'>Vấn đề khác</option>
-          </select>
-        )
+      enter: ({ name }: any) => {
+        return <select {...register(name)}>{option}</select>
       }
     },
     {
@@ -92,7 +73,7 @@ export const handlerListFrom = (register: any) => {
       type: 'textarea',
       label: 'Nhập nội dung cần trợ giúp',
       place: 'Vui lòng nhập nội dung cần hỗ trợ...',
-      require: false,
+      require: true,
       maxLength: 500,
       rows: 5,
       enter: ({ maxLength, rows, name, place }: any) => {
@@ -108,3 +89,30 @@ export const handlerListFrom = (register: any) => {
     }
   ]
 }
+
+const opt = [
+  {
+    code: '',
+    label: 'Chọn vấn đề'
+  },
+  {
+    code: 'chuyenmon',
+    label: 'Vấn đề chuyên môn'
+  },
+  {
+    code: 'kythuat',
+    label: 'Vấn đề về kỹ thuật'
+  },
+  {
+    code: 'khac',
+    label: 'Vấn đề khác'
+  }
+]
+
+const option = opt.map(({ code, label }) => {
+  return (
+    <option key={code} value={code}>
+      {label}
+    </option>
+  )
+})
