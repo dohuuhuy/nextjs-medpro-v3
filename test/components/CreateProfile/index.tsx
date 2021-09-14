@@ -9,8 +9,8 @@ const { TabPane } = Tabs
 export const TaoHoSo = () => {
   return (
     <Container>
-      <Row>
-        <Tabs defaultActiveKey='1' className={styles.tabs}>
+      <Row className={styles.rowTabs}>
+        <Tabs defaultActiveKey='1' className={styles.tabs} centered tabPosition={'top'}>
           <TabPane
             className={styles.item}
             key='1'

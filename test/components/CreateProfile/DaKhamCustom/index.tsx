@@ -4,7 +4,7 @@ import styles from './styles.module.less'
 export const DaKhamCustom = () => {
   return (
     <div>
-
+      contents
     </div>
   )
 }

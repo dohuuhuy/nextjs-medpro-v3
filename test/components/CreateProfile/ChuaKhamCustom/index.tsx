@@ -1,45 +1,71 @@
 import React from 'react'
 import styles from './styles.module.less'
-import { Select, Label, Input } from 'antd'
-import { useForm, Controller } from 'react-hook-form'
-import { CaretDownOutlined } from '@ant-design/icons'
+import { Space } from 'antd'
+import { useForm } from 'react-hook-form'
+import { UserAddOutlined, PauseOutlined } from '@ant-design/icons'
+import { error, handleProfile, schemaProfile } from './DetailForm/handle'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Container from '@componentsTest/Container'
 
 export const ChuaKhamCustom = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<any>({
+    resolver: yupResolver(schemaProfile)
+  })
+
+  const submit = (data: any) => {
+    console.log({ data })
+    reset()
+  }
+
   return (
-    <div className={styles.container}>
-      <form>
-        <div>
-          <label>Họ và tên (có dấu)</label>
-          <input placeholder="Nhập Họ và tên" />
+    <Container className={styles.container}>
+      <div className={styles.header}>
+        <h5>NHẬP THÔNG TIN BỆNH NHÂN</h5>
+        <div className={styles.note}>
+          <p>Vui lòng cung cấp thông tin chính xác để được phục vụ tốt nhất.
+            Trong trường hợp cung cấp sai thông tin bệnh nhân & điện thoại, việc xác nhận cuộc hẹn sẽ không hiệu lực trước khi đặt khám.</p>
         </div>
-        {/* <div>
-          <Label>Ngày tháng năm sinh</Label>
-          <Select suffixIcon={<CaretDownOutlined />}>
-            <Select.Option value="20">20</Select.Option>
-            <Select.Option value="30">30</Select.Option>
-          </Select>
-          <Select suffixIcon={<CaretDownOutlined />}>
-            <Select.Option value="20">20</Select.Option>
-            <Select.Option value="30">30</Select.Option>
-          </Select>
-          <Select suffixIcon={<CaretDownOutlined />}>
-            <Select.Option value="20">20</Select.Option>
-            <Select.Option value="30">30</Select.Option>
-          </Select>
-        </div> */}
-        {/* <div>
-          <Label>Số điện thoại</Label>
-          <Input placeholder="Nhập số điện thoại" />
+        <div className={styles.danger}>
+          <span>(*) Thông tin bắt buộc nhập</span>
         </div>
-        <div>
-          <Label>Giới tính</Label>
-          <Select suffixIcon={<CaretDownOutlined />}>
-            <Select.Option value="0">Chọn giới tính</Select.Option>
-            <Select.Option value="1">Nam</Select.Option>
-            <Select.Option value="2">Nữ</Select.Option>
-          </Select>
-        </div> */}
+      </div>
+
+      <form onSubmit={handleSubmit(submit)} className={styles.formProfile}>
+        <ul className={styles.listProfile}>
+          {handleProfile(register)?.map((el: any) => {
+            const sub = el.require ? <sup>*</sup> : ''
+            return (
+              <li key={el.label}>
+                <Space direction='vertical' className={styles.enter}>
+                  <label>
+                    {el?.label} {sub}
+                  </label>
+                  {el?.enter ? el?.enter(el) : ''}
+                </Space>
+                {error(el?.name, errors)}
+              </li>
+            )
+          })}
+        </ul>
       </form>
-    </div>
+
+      <hr className={styles.hr} />
+
+      <div className={styles.btnFooter}>
+        <button className={styles.retype} >
+          <PauseOutlined />
+          Nhập lại
+        </button>
+        <button type='submit' className={styles.submit}>
+          <UserAddOutlined />
+          Tạo mới
+        </button>
+      </div>
+    </Container>
   )
 }
