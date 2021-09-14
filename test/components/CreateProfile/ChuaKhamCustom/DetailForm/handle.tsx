@@ -3,7 +3,7 @@ import * as yup from 'yup'
 export const handleProfile = (register: any) => {
   return [
     {
-      name: "fullname",
+      name: 'fullname',
       type: 'text',
       label: 'Họ và tên (có dấu) ',
       place: 'Ví dụ: Nguyễn Văn Bảo',
@@ -20,10 +20,10 @@ export const handleProfile = (register: any) => {
       }
     },
     {
-      name: "birthday",
-      type: "select",
-      label: "Ngày tháng năm sinh",
-      place: "Chọn ngày sinh",
+      name: 'birthday',
+      type: 'select',
+      label: 'Ngày tháng năm sinh',
+      place: 'Chọn ngày sinh',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -32,17 +32,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
-      name: "mobile",
-      type: "number",
-      label: "Số điện thoại",
-      place: "Nhập số điện thoại",
+      name: 'mobile',
+      type: 'number',
+      label: 'Số điện thoại',
+      place: 'Nhập số điện thoại',
       require: true,
       enter: ({ name, place, type, require }: any) => {
         return (
@@ -56,10 +56,10 @@ export const handleProfile = (register: any) => {
       }
     },
     {
-      name: "sex",
-      type: "select",
-      label: "Giới tính",
-      place: "Chọn giới tính",
+      name: 'sex',
+      type: 'select',
+      label: 'Giới tính',
+      place: 'Chọn giới tính',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -68,17 +68,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
-      name: "job",
-      type: "select",
-      label: "Nghề nghiệp",
-      place: "Chọn nghề nghiệp",
+      name: 'job',
+      type: 'select',
+      label: 'Nghề nghiệp',
+      place: 'Chọn nghề nghiệp',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -87,17 +87,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
-      name: "CMND",
-      type: "number",
-      label: "Số CMND/Passport",
-      place: "Nhập số CMND",
+      name: 'CMND',
+      type: 'number',
+      label: 'Số CMND/Passport',
+      place: 'Nhập số CMND',
       require: true,
       enter: ({ name, place, type, require }: any) => {
         return (
@@ -111,10 +111,10 @@ export const handleProfile = (register: any) => {
       }
     },
     {
-      name: "email",
-      type: "text",
-      label: "Địa chỉ Email",
-      place: "Nhập địa chỉ email để nhận phiếu khám",
+      name: 'email',
+      type: 'text',
+      label: 'Địa chỉ Email',
+      place: 'Nhập địa chỉ email để nhận phiếu khám',
       require: true,
       enter: ({ name, place, type, require }: any) => {
         return (
@@ -128,10 +128,10 @@ export const handleProfile = (register: any) => {
       }
     },
     {
-      name: "nation",
-      type: "select",
-      label: "Dân tộc",
-      place: "Chọn dân tộc",
+      name: 'nation',
+      type: 'select',
+      label: 'Dân tộc',
+      place: 'Chọn dân tộc',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -140,17 +140,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
       name: 'city',
-      type: "select",
-      label: "Tỉnh / Thành",
-      place: "Chọn tỉnh thành",
+      type: 'select',
+      label: 'Tỉnh / Thành',
+      place: 'Chọn tỉnh thành',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -159,17 +159,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
-      name: "district",
-      type: "select",
-      label: "Quận / Huyện",
-      place: "Chọn quận huyện",
+      name: 'district',
+      type: 'select',
+      label: 'Quận / Huyện',
+      place: 'Chọn quận huyện',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -178,17 +178,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
-      name: "ward",
-      type: "select",
-      label: "Phường / Xã",
-      place: "Chọn phường xã",
+      name: 'ward',
+      type: 'select',
+      label: 'Phường / Xã',
+      place: 'Chọn phường xã',
       require: true,
       enter: ({ name, place }: any) => {
         return (
@@ -197,17 +197,17 @@ export const handleProfile = (register: any) => {
             style={{ width: '100%' }}
             placeholder={place}
           >
-            <option value="1">Nam</option>
-            <option value="0">Nữ</option>
+            <option value='1'>Nam</option>
+            <option value='0'>Nữ</option>
           </select>
         )
       }
     },
     {
       name: 'address',
-      type: "text",
-      label: "Địa chỉ",
-      place: "Nhập địa chỉ",
+      type: 'text',
+      label: 'Địa chỉ',
+      place: 'Nhập địa chỉ',
       require: true,
       enter: ({ name, place, type, require }: any) => {
         return (
@@ -222,6 +222,7 @@ export const handleProfile = (register: any) => {
     }
   ]
 }
+
 export const schemaProfile = yup.object().shape({
   fullname: yup.string().required('không được trống'),
   email: yup.string().email().required('không được trống'),
@@ -229,7 +230,7 @@ export const schemaProfile = yup.object().shape({
   city: yup.string().required('không được trống'),
   district: yup.string().required('không được trống'),
   ward: yup.string().required('không được trống'),
-  address: yup.string().required('không được trống'),
+  address: yup.string().required('không được trống')
 })
 
 export const error = (element: any, errors: any) => {

@@ -11,6 +11,7 @@ import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
 import { ThongBao } from './ThongBao'
 import { Personal } from './utils/interface'
+import router from 'next/router'
 
 const { TabPane } = Tabs
 
@@ -57,6 +58,9 @@ export const ThongTinHoSoCustom = (props: Personal) => {
   return (
     <Container>
       <Row className={styles.rowInfomation}>
+        <Col span='24'>
+          <button onClick={() => router.push('/tao-ho-so')}>Tạo hồ sơ</button>
+        </Col>
         <Col span='24'>
           <Tabs tabPosition='left'>
             {listTabs?.map((e) => {
