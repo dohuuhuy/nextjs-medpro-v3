@@ -10,6 +10,8 @@ const initState: TotalDataState = {
   partnerId: '',
   listPartners: [],
   listCity: [],
+  listDistrict: [],
+  listWard: [],
   typeReser: 'normal'
 }
 
@@ -24,10 +26,20 @@ export default function totalDataReducer(
         listPartners: action.listPartners
       }
 
-    case TotalDataTypes.ListCity.LIST_CITY_REQUEST_SUCCESS:
+    case TotalDataTypes.Address.LIST_CITY_REQUEST_SUCCESS:
       return {
         ...state,
         listCity: action.listCity
+      }
+    case TotalDataTypes.Address.LIST_DISTRICT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listDistrict: action.listDistrict
+      }
+    case TotalDataTypes.Address.LIST_WARD_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listWard: action.listWard
       }
 
     case TotalDataTypes.ListPartners.SET_PARTNERID: {

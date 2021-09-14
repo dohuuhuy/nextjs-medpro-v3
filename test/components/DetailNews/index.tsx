@@ -11,7 +11,7 @@ export interface DetailNewsCustom {
   sameNews: any[]
   listNewsBanner: any[]
 }
-export const API_NEWS = 'https://cms.medpro.com.vn'
+export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const DetailNewsCustom = ({
   detailNews,
@@ -87,7 +87,7 @@ interface PropsCard {
 }
 
 const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
-  const imgUrl = API_NEWS + item?.image?.[0].url
+  const imgUrl = API_CMS + item?.image?.[0].url
   return (
     <div className={styles.cardNews} key={item?.title}>
       <figure className={cx(styles.cardView, obsImg ? styles.hidden : '')}>

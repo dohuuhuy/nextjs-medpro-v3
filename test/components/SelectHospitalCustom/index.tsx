@@ -1,6 +1,7 @@
 import { BellFilled, SearchOutlined } from '@ant-design/icons'
 import { Col, Input, Modal, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Container from '../Container'
@@ -16,7 +17,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 
   useEffect(() => {
     activeList && setlistHospitals(props?.listHospital)
-  })
+  }, [activeList, props?.listHospital])
 
   function onChange(code: any) {
     setactiveList(false)
@@ -91,13 +92,14 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   Chọn tỉnh thành
                 </Option>
 
-                {props?.listCity?.map((e) => {
-                  return (
-                    <Option value={e?.code} key={uniqueId()}>
-                      {e?.name}
-                    </Option>
-                  )
-                })}
+                {props?.listCity.length &&
+                  props?.listCity?.map((e) => {
+                    return (
+                      <Option value={e?.code} key={uniqueId()}>
+                        {e?.name}
+                      </Option>
+                    )
+                  })}
               </Select>
             </li>
           </ul>
@@ -119,7 +121,13 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   <li key={uniqueId()} onClick={() => redirect(e)}>
                     <div className={styles.cardHospital}>
                       <figure className={styles.cardView}>
-                        <img src={urlImage} alt='icon' onError={onError} />
+                        <Image
+                          width='50'
+                          height='50'
+                          src={urlImage}
+                          alt='icon'
+                          onError={onError}
+                        />
                       </figure>
                       <div className={styles.cardBody}>
                         <p className={styles.nameHospital}>{e?.name}</p>
@@ -139,10 +147,10 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 
 export interface SelectHospital {
   listHospital: ListHospital[]
-  listCity: ListCity[]
+  listCity: listCity[]
 }
 
-interface ListCity {
+interface listCity {
   id: string
   name: string
   code: string

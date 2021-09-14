@@ -13,7 +13,7 @@ export interface Props {
   listNewsContent?: any[]
   totalPages?: number
 }
-export const API_NEWS = 'https://cms.medpro.com.vn'
+export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = (props: Props) => {
   const { listNewsBanner, listNewsContent, totalPages } = props
@@ -94,7 +94,7 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
     description,
     author
   }: any = item
-  const imgUrl = API_NEWS + image?.[0].url
+  const imgUrl = API_CMS + image?.[0].url
   return (
     <motion.li
       variants={mLi}

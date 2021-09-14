@@ -1,3 +1,4 @@
+import { urlAddress } from './../../../src/utils/contants'
 import * as ac from '@actionStore/rootAction'
 import { getData } from 'store/api'
 import { TotalDataTypes } from 'store/interface'
@@ -23,23 +24,53 @@ function* WatchListPartners() {
   )
 }
 
-function* getListCity() {
-  try {
-    const url =
-      'https://medpro-api-v2-testing.medpro.com.vn/city-mongo/get-all-by-partner'
-    const respone: AxiosResponse = yield call(getData, url)
+const handlerUrl = (type: any, id: any) => {
+  let url
 
-    yield put(ac.getListCitySuccess(respone))
+  switch (type) {
+    case 'city':
+      url = urlAddress + '?country_code=' + id
+      break
+
+    case 'district':
+      url = urlAddress + '?city_id=' + id
+      break
+
+    case 'ward':
+      url = urlAddress + '?district_id=' + id
+      break
+  }
+
+  return url
+}
+
+function* handlerAddress({ payload }: any) {
+  try {
+    const { type, id } = payload
+
+    const respone: AxiosResponse = yield call(getData, handlerUrl(type, id))
+
+    switch (type) {
+      case 'city':
+        yield put(ac.CityRequestSuccess(respone))
+        break
+      case 'district':
+        yield put(ac.DistrictRequestSuccess(respone))
+        break
+      case 'ward':
+        yield put(ac.WardRequestSuccess(respone))
+        break
+    }
   } catch (error) {
     console.error(error)
   }
 }
 
-function* WatchListCity() {
-  yield takeLatest(TotalDataTypes.ListCity.LIST_CITY_REQUEST, getListCity)
+function* WatchAddress() {
+  yield takeLatest(TotalDataTypes.Address.ADDRESS_REQUEST, handlerAddress)
 }
 
 const totalDataSagas = function* root() {
-  yield all([fork(WatchListPartners), fork(WatchListCity)])
+  yield all([fork(WatchListPartners), fork(WatchAddress)])
 }
 export default totalDataSagas
