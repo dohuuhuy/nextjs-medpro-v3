@@ -16,32 +16,34 @@ export interface Detail {
   gender: number
 }
 
-export const HandleFilter = ({ listDoctor }: Medthod) => {
-  return listDoctor.map((item) => [
-    {
-      key: item.detail.role,
-      value: item?.detail.name,
-      icon: <UserOutlined />
-    },
-    {
-      key: 'Giới tính:',
-      value: item?.detail.gender ? 'Nam' : 'Nữ',
-      icon: <WomanOutlined />
-    },
-    {
-      key: 'Chuyên khoa:',
-      value: item?.detail.subject,
-      icon: <ForkOutlined />
-    },
-    {
-      key: 'Lịch khám:',
-      value: "Thứ " + item?.detail.days,
-      icon: <CalendarOutlined />
-    },
-    {
-      key: 'Giá khám',
-      value: item?.detail.price,
-      icon: <DollarCircleOutlined />
-    }
-  ])
+export const HandleFilter = (listDoctor: Listdoctor[]) => {
+  return listDoctor?.map((item) => {
+    return ([
+      {
+        key: item.detail.role,
+        value: item?.detail.name,
+        icon: <UserOutlined />
+      },
+      {
+        key: 'Giới tính:',
+        value: item?.detail.gender ? 'Nam' : 'Nữ',
+        icon: <WomanOutlined />
+      },
+      {
+        key: 'Chuyên khoa:',
+        value: item?.detail.subject,
+        icon: <ForkOutlined />
+      },
+      {
+        key: 'Lịch khám:',
+        value: "Thứ " + item?.detail.days,
+        icon: <CalendarOutlined />
+      },
+      {
+        key: 'Giá khám',
+        value: item?.detail.price,
+        icon: <DollarCircleOutlined />
+      }
+    ])
+  })
 }

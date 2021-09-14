@@ -4,16 +4,18 @@ import React from 'react'
 import { handlerValue } from '../utils/func'
 import { Medthods } from '../utils/interface'
 import styles from './styles.module.less'
-import { dropDegree, dropSex, dropSpecial } from './utils/components/drops'
+// import { dropDegree, dropSex, dropSpecial } from './utils/components/drops'
 import { HandleFilter } from './utils/func'
+import { ListDoctor } from './utils/components/listDoctorCard'
+
 export const BacSi = {
   vn: 'Bác sĩ',
   en: 'doctor'
 }
 export const ChonBacSi = (Props: Medthods) => {
   const listDoctor = handlerValue(Props, BacSi)
-  console.log('Danh sách bác sĩ', listDoctor)
-  const Filter = HandleFilter()
+
+  const Filter = HandleFilter(listDoctor)
 
   const onChange = () => {
     console.log('Cần setting')
@@ -34,14 +36,14 @@ export const ChonBacSi = (Props: Medthods) => {
       <Input
         className={styles.Search}
         size='large'
-        placeholder='Tìm nhanh chuyên khoa'
+        placeholder='Tìm nhanh bác sĩ'
         autoFocus={true}
         prefix={<SearchOutlined />}
         allowClear={true}
         onChange={onChange}
       />
       {/* DropdownList */}
-      <Space className={styles.SpaceDrop}>
+      {/* <Space className={styles.SpaceDrop}>
         <Space>
           <Dropdown
             className={styles.Dropdown}
@@ -75,26 +77,10 @@ export const ChonBacSi = (Props: Medthods) => {
             </a>
           </Dropdown>
         </Space>
-      </Space>
+      </Space> */}
+
       {/* Danh sách bác sĩ  */}
-      <div>
-        <ul>
-          {Filter.map(({ key, value, icon }: any, index: any) => {
-            return (
-              <li key={index + 'id'}>
-                <div>
-                  <Space>
-                    <Space className={styles.itemKeys}>
-                      <p>{icon}</p> {key && <p>{key}</p>}
-                    </Space>
-                    <p className={styles.itemValues}>{value}</p>
-                  </Space>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+      <ListDoctor listCard={Filter} />
     </div>
   )
 }

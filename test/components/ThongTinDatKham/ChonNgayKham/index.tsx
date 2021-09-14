@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import dayjs from 'dayjs'
+import moment from 'moment'
 import styles from './styles.module.less'
 import cx from 'classnames'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
@@ -8,19 +8,19 @@ import { range } from 'lodash'
 
 const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
-const todayObj = dayjs()
+const todayObj = moment()
 
 export const ChonNgayKham = () => {
-  const [dayObj, setDayObj] = useState(dayjs())
+  const [dayObj, setDayObj] = useState(moment())
 
   const thisYear = dayObj.year()
   const thisMonth = dayObj.month() // (January as 0, December as 11)
   const daysInMonth = dayObj.daysInMonth()
 
-  const dayObjOf1 = dayjs(`${thisYear}-${thisMonth + 1}-1`)
+  const dayObjOf1 = moment(`${thisYear}-${thisMonth + 1}-1`)
   const weekDayOf1 = dayObjOf1.day() // (Sunday as 0, Saturday as 6)
 
-  const dayObjOfLast = dayjs(`${thisYear}-${thisMonth + 1}-${daysInMonth}`)
+  const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`)
   const weekDayOfLast = dayObjOfLast.day()
 
   const handlePrev = () => {
@@ -67,8 +67,8 @@ export const ChonNgayKham = () => {
         {range(daysInMonth).map((i) => {
           const today =
             i + 1 === todayObj.date() &&
-            thisMonth === todayObj.month() &&
-            thisYear === todayObj.year()
+              thisMonth === todayObj.month() &&
+              thisYear === todayObj.year()
               ? styles.today
               : ''
           return (

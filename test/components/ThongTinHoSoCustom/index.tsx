@@ -11,7 +11,6 @@ import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
 import { ThongBao } from './ThongBao'
 import { Personal } from './utils/interface'
-// import { motion } from 'framer-motion'
 
 const { TabPane } = Tabs
 
