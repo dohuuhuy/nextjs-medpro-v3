@@ -3,7 +3,7 @@ import { Information } from 'store/interface'
 import React from 'react'
 
 const FooterLayout = (info: Information) => {
-  return <FooterCustom dataFooter={info.footer} />
+  return <FooterCustom {...info.footer} />
 }
 
 export default FooterLayout
