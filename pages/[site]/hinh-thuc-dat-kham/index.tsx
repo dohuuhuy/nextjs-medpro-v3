@@ -14,7 +14,7 @@ const HinhThucDatKham = () => {
   const router = useRouter()
   const { site } = router.query
 
-  const hos = useSelector((state: AppState) => state.hospitalReducer)
+  const hos = useSelector((state: AppState) => state.hospital)
 
   // console.log('listFeature :>> ', hos.listFeatureByPartner)
   const dispatch = useDispatch()

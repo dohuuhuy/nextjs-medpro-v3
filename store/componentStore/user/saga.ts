@@ -6,11 +6,9 @@ import { AppState, TotalDataState, UserState, UserTypes } from 'store/interface'
 
 function* ListPatientRequest() {
   try {
-    const user: UserState = yield select((state: AppState) => state.userReducer)
+    const user: UserState = yield select((state: AppState) => state.user)
 
-    const total: TotalDataState = yield select(
-      (state: AppState) => state.totalDataReducer
-    )
+    const total: TotalDataState = yield select((state: AppState) => state.total)
 
     const response: AxiosResponse = yield client.getPatientsByUserIdV2({
       token: user?.userInfo?.token,
@@ -30,11 +28,9 @@ function* ListPatientRequestWatcher() {
 
 function* GetBookingByUser() {
   try {
-    const user: UserState = yield select((state: AppState) => state.userReducer)
+    const user: UserState = yield select((state: AppState) => state.user)
 
-    const total: TotalDataState = yield select(
-      (state: AppState) => state.totalDataReducer
-    )
+    const total: TotalDataState = yield select((state: AppState) => state.total)
 
     const response: AxiosResponse = yield client.getAllBookingByUserId({
       token: user?.userInfo?.token,
@@ -57,11 +53,9 @@ function* GetBookingByUserWatcher() {
 
 function* GetNoticeByUser() {
   try {
-    const user: UserState = yield select((state: AppState) => state.userReducer)
+    const user: UserState = yield select((state: AppState) => state.user)
 
-    const total: TotalDataState = yield select(
-      (state: AppState) => state.totalDataReducer
-    )
+    const total: TotalDataState = yield select((state: AppState) => state.total)
 
     const response: AxiosResponse = yield client.getAllNotifByUser({
       token: user?.userInfo?.token,
@@ -82,6 +76,10 @@ function* GetNoticeByUserWatcher() {
 }
 
 const userSagas = function* root() {
-  yield all([fork(ListPatientRequestWatcher), fork(GetBookingByUserWatcher), fork(GetNoticeByUserWatcher)])
+  yield all([
+    fork(ListPatientRequestWatcher),
+    fork(GetBookingByUserWatcher),
+    fork(GetNoticeByUserWatcher)
+  ])
 }
 export default userSagas

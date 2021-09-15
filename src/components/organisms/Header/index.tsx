@@ -4,7 +4,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const HeaderLayout = (info: Information) => {
-  const userInfo = useSelector((state: AppState) => state.userReducer.userInfo)
+  const userInfo = useSelector((state: AppState) => state.user.userInfo)
 
   const authen = {
     isAuthen: userInfo.token ? true : false,

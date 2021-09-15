@@ -31,9 +31,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
     TagManager.initialize({ gtmId: GA_TRACKING_ID })
   }, [])
 
-  const partnerId = useSelector(
-    (state: AppState) => state.totalDataReducer.partnerId
-  )
+  const partnerId = useSelector((state: AppState) => state.total.partnerId)
 
   useEffect(() => {
     setVersion()

@@ -11,10 +11,10 @@ const init: UserState = {
   },
   listPatient: [],
   bookingByUser: [],
-  noticeByUser: [],
+  noticeByUser: []
 }
 
-export default function userReducer(
+export default function user(
   state = init,
   action: UserActions | { type: typeof HYDRATE; payload: UserState }
 ) {

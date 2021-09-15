@@ -15,7 +15,7 @@ const SelectedHospital = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const { listPartners, partnerId } = useSelector(
-    (state: AppState) => state.totalDataReducer
+    (state: AppState) => state.total
   )
 
   useEffect(() => {

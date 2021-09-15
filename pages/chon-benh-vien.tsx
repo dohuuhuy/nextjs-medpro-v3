@@ -14,11 +14,9 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const ChonBenhVienPage = ({ data }: any) => {
   const dispatch = useDispatch()
   const listHospital = useSelector(
-    (state: AppState) => state.hospitalReducer.listHospital
+    (state: AppState) => state.hospital.listHospital
   )
-  const listCity = useSelector(
-    (state: AppState) => state.totalDataReducer.listCity
-  )
+  const listCity = useSelector((state: AppState) => state.total.listCity)
 
   useEffect(() => {
     check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))

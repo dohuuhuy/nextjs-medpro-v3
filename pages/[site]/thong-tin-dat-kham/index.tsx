@@ -12,10 +12,8 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const ThongTinDatKhamPage = () => {
   const router = useRouter()
 
-  const hospital = useSelector((state: AppState) => state.hospitalReducer)
-  const listPatient = useSelector(
-    (state: AppState) => state.userReducer.listPatient
-  )
+  const hospital = useSelector((state: AppState) => state.hospital)
+  const listPatient = useSelector((state: AppState) => state.user.listPatient)
 
   const dispatch = useDispatch()
   useEffect(() => {

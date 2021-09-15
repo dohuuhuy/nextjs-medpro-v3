@@ -4,11 +4,7 @@ import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 
-export const listPersists = [
-  'userReducer',
-  'totalDataReducer',
-  'hospitalReducer'
-]
+export const listPersists = ['user', 'total', 'hospital']
 
 export const createNoopStorage = () => {
   return {

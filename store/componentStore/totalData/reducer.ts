@@ -15,7 +15,7 @@ const initState: TotalDataState = {
   typeReser: 'normal'
 }
 
-export default function totalDataReducer(
+export default function total(
   state = initState,
   action: TotalDataActions | { type: typeof HYDRATE; payload: TotalDataState }
 ) {

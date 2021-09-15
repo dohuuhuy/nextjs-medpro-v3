@@ -10,7 +10,7 @@ import { AppState, Information } from 'store/interface'
 
 const BannerLayout = (info: Information) => {
   const router = useRouter()
-  const hos = useSelector((state: AppState) => state.hospitalReducer)
+  const hos = useSelector((state: AppState) => state.hospital)
   const {
     query: { site },
     pathname

@@ -8,7 +8,7 @@ const init: HospitalState = {
   listFeatureByPartner: []
 }
 
-export default function hospitalReducer(
+export default function hospital(
   state = init,
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ) {

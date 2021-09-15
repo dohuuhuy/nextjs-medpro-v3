@@ -20,7 +20,7 @@ const Author = () => {
 
   const { info } = router.query
   const query: any = queryString.parse(info as string)
-  const user = useSelector((state: AppState) => state.userReducer)
+  const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
     if (check(user?.userInfo?.token)) {
