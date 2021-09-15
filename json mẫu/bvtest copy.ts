@@ -565,78 +565,38 @@ export const JSON_EXP = {
     },
     contact: [
       {
+        id: '',
         label: '',
-        value: 'CÔNG TY CỔ PHẦN ỨNG DỤNG PKH',
-        setting: {
-          status: true,
-          underline: true,
-          boolLabel: false,
-          boolValue: true
-        }
+        key: 'nameHospital',
+        value: 'CÔNG TY CỔ PHẦN ỨNG DỤNG PKH'
       },
       {
-        label: 'Nơi đăng ký kinh doanh: ',
-        value: '97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh',
-        setting: {
-          status: true,
-          underline: true,
-          boolLabel: true,
-          boolValue: false
-        }
+        id: '',
+        key: 'address',
+        label: 'Địa chỉ',
+        value: '97 Trần Quang Diệu, phường 14, quận 3, Tp Hồ Chí Minh.',
+        link: ''
       },
       {
-        label: 'Trụ sở chính: ',
-        value: '84 Thành Thái, phường 12, quận 10, TP Hồ Chí Minh',
-        setting: {
-          status: true,
-          underline: true,
-          boolLabel: true,
-          boolValue: false
-        }
+        id: '',
+        key: 'website',
+        label: 'Website',
+        value: 'https://pkh.vn',
+        link: 'https://pkh.vn'
       },
       {
-        label: 'Website: ',
-        value: 'medpro.vn',
-        link: 'https://medpro.vn',
-        setting: {
-          status: true,
-          underline: false,
-          boolLabel: true,
-          boolValue: false
-        }
-      },
-      {
-        label: 'Số điện thoại: ',
-        value: '(028) 710 78098',
-        link: 'tel:028 710 78098',
-        setting: {
-          status: true,
-          underline: false,
-          boolLabel: true,
-          boolValue: false
-        }
-      },
-      {
-        label: 'Tổng đài chăm sóc khách hàng: ',
-        value: '1900 2115',
-        link: 'tel:1900 2115',
-        setting: {
-          status: true,
-          underline: false,
-          boolLabel: true,
-          boolValue: false
-        }
-      },
-      {
-        label: 'Email: ',
+        id: '',
+        key: 'email',
+        label: 'Email',
         value: 'contact@pkh.vn',
-        link: '',
-        setting: {
-          status: true,
-          underline: false,
-          boolLabel: true,
-          boolValue: true
-        }
+        link: ''
+      },
+      {
+        id: '',
+        key: 'phone',
+        label: 'Điện thoại',
+        value: '(028) 710 78098',
+        link: 'tel:028 710 78098'
       }
     ],
     menu: [
@@ -671,43 +631,36 @@ export const JSON_EXP = {
         link: '/quy-dinh-su-dung'
       }
     ],
-    certificate: {
-      title: 'Mã số doanh nghiệp',
-      value: '0314886357',
-      images: [
-        {
-          id: '',
-          key: 'bocongthuong1',
-          image:
-            'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong1.svg',
-          link: 'http://online.gov.vn/Home/WebDetails/44668'
-        },
-        {
-          id: '',
-          key: 'bocongthuong2',
-          image:
-            'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong2.svg',
-          link: 'http://online.gov.vn/Home/WebDetails/44209'
-        }
-      ]
-    },
-    downApp: {
-      QRcode: 'https://play.google.com/store/apps/details?id=vn.com.medpro',
-      imageDownApp: [
-        {
-          key: 'android',
-          image:
-            'https://resource-testing.medpro.com.vn/static/media/logoChecked/GooglePlay.svg',
-          link: 'https://play.google.com/store/apps/details?id=vn.com.medpro'
-        },
-        {
-          key: 'ios',
-          image:
-            'https://resource-testing.medpro.com.vn/static/media/logoChecked/AppStore.svg',
-          link: 'https://apps.apple.com/us/app/id1481561748'
-        }
-      ]
-    }
+    certificate: [
+      {
+        id: '',
+        key: 'bocongthuong1',
+        imgLogo:
+          'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong1.svg',
+        link: 'http://online.gov.vn/Home/WebDetails/44668'
+      },
+      {
+        id: '',
+        key: 'bocongthuong2',
+        imgLogo:
+          'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong2.svg',
+        link: 'http://online.gov.vn/Home/WebDetails/44209'
+      },
+      {
+        id: '',
+        key: 'android',
+        imgLogo:
+          'https://resource-testing.medpro.com.vn/static/media/logoChecked/GooglePlay.svg',
+        link: 'https://play.google.com/store/apps/details?id=vn.com.medpro'
+      },
+      {
+        id: '',
+        key: 'ios',
+        imgLogo:
+          'https://resource-testing.medpro.com.vn/static/media/logoChecked/AppStore.svg',
+        link: 'https://apps.apple.com/us/app/id1481561748'
+      }
+    ]
   },
   contentPage: [
     {

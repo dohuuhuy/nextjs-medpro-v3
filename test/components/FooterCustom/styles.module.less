@@ -1,0 +1,67 @@
+.listCustom {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.wapper {
+  width: 100%;
+  background-color: white;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.container {
+  .colCopy {
+    color: #002e64;
+    text-align: center;
+    font-weight: 400;
+  }
+  .colLogo {
+    text-align: center;
+    font-size: 24px;
+    color: #00b5f1;
+  }
+  .colMenu {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    .menu {
+      .listCustom();
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      li {
+        padding: 0 25px;
+        font-weight: 500;
+      }
+    }
+  }
+  .rowBody {
+    .colContact {
+      .listContact {
+        .listCustom();
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .colDown {
+      .title {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .listApp {
+        .listCustom();
+      }
+    }
+  }
+}
