@@ -15,7 +15,7 @@ const ThongTinHoSo = () => {
     check(user?.listPatient) && dispatch(ac.ListPatientRequest())
     check(user?.bookingByUser) && dispatch(ac.GetBookingByUser())
     check(user?.noticeByUser) && dispatch(ac.GetNoticeByUser())
-  }, [])
+  }, [dispatch, user?.bookingByUser, user?.listPatient, user?.noticeByUser])
 
   const medthod: any = {
     listUser: user?.listPatient,
