@@ -1,12 +1,10 @@
 import { AnimatePage } from '@components/atoms/motion'
+import Footer from '@components/organisms/Footer'
 import { Layout } from 'antd'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import { Information } from 'store/interface'
 import styles from './styles.module.less'
-const Header = dynamic(() => import('@components/organisms/Header'))
-
-const Footer = dynamic(() => import('@components/organisms/Footer'))
 
 type Props = {
   children?: ReactNode
@@ -20,7 +18,7 @@ const HomeLayout = (props: Props) => {
 
   return (
     <Layout className={styles.layout}>
-      <Header {...info} />
+      {/* <Header {...info} /> */}
       <AnimatePage>{children}</AnimatePage>
       <Footer {...info} />
     </Layout>
