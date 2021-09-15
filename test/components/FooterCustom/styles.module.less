@@ -3,12 +3,6 @@
   padding: 0;
   list-style-type: none;
 }
-
-.wapper {
-  width: 100%;
-  background-color: white;
-}
-
 .bold {
   font-weight: 600;
 }
@@ -17,50 +11,82 @@
   text-decoration: underline;
 }
 
-.container {
-  .colCopy {
-    color: #002e64;
-    text-align: center;
-    font-weight: 400;
-  }
-  .colLogo {
-    text-align: center;
-    font-size: 24px;
-    color: #00b5f1;
-  }
-  .colMenu {
-    display: flex;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    .menu {
-      .listCustom();
+.footer {
+  padding: 15px 100px;
+  width: 100%;
+  background-color: white;
+
+  .container {
+    max-width: unset !important;
+    width: unset !important;
+    .colCopy {
+      padding: 0 15px;
+      color: #002e64;
+      text-align: center;
+      font-weight: 400;
+    }
+    .colLogo {
+      padding: 0 15px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 24px;
+      color: #00b5f1;
+      font-weight: 500;
+    }
+    .colMenu {
+      padding: 0 15px;
+      padding: 15px 0;
+      margin-bottom: 15px;
       display: flex;
-      flex-wrap: wrap;
+      justify-self: center;
       justify-content: center;
       align-items: center;
-      align-content: center;
-      li {
-        padding: 0 25px;
-        font-weight: 500;
-      }
-    }
-  }
-  .rowBody {
-    .colContact {
-      .listContact {
+      .menu {
         .listCustom();
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        li {
+          padding: 0 25px;
+          font-weight: bold;
+        }
       }
     }
-    .colDown {
-      .title {
-        text-transform: uppercase;
-        font-weight: 600;
+    .rowBody {
+      margin-bottom: 15px;
+      .colContact {
+        padding: 0 15px;
+        .listContact {
+          .listCustom();
+          display: flex;
+          flex-direction: column;
+        }
       }
-      .listApp {
-        .listCustom();
+      .colDown {
+        padding: 0 15px;
+        .title {
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+        .QRcode {
+          width: 170px;
+          height: 170px;
+        }
+        .listApp {
+          .listCustom();
+        }
+      }
+      .colCertifi {
+        padding: 0 15px;
+        .listCer {
+          .listCustom();
+        }
+        .listImg {
+          .listCustom();
+          display: flex;
+        }
       }
     }
   }

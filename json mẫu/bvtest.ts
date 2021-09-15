@@ -672,19 +672,26 @@ export const JSON_EXP = {
       }
     ],
     certificate: {
-      title: 'Mã số doanh nghiệp',
-      value: '0314886357',
+      list: [
+        {
+          label: 'Mã số doanh nghiệp: ',
+          value: '0314886357',
+          setting: {
+            status: true,
+            underline: false,
+            boolLabel: true,
+            boolValue: false
+          }
+        }
+      ],
+
       images: [
         {
-          id: '',
-          key: 'bocongthuong1',
           image:
             'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong1.svg',
           link: 'http://online.gov.vn/Home/WebDetails/44668'
         },
         {
-          id: '',
-          key: 'bocongthuong2',
           image:
             'https://resource-testing.medpro.com.vn/static/media/logoChecked/BoCongThuong2.svg',
           link: 'http://online.gov.vn/Home/WebDetails/44209'

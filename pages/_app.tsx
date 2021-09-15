@@ -1,7 +1,7 @@
 import * as ac from '@actionStore/rootAction'
 import { ArrowUpOutlined } from '@ant-design/icons'
 import '@assets/styles/app.less'
-import '@medpro/booking-libs/libs/index.css'
+// import '@medpro/booking-libs/libs/index.css'
 import { AppState, Information } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'

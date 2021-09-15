@@ -7,11 +7,17 @@ export interface FooterIF {
 }
 
 interface Certificate {
-  title: string
-  value: string
+  list: {
+    label: string
+    value: string
+    setting: {
+      status: boolean
+      underline: boolean
+      boolLabel: boolean
+      boolValue: boolean
+    }
+  }[]
   images: {
-    id: string
-    key: string
     image: string
     link: string
   }[]
