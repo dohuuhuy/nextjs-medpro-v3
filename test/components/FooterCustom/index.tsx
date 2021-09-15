@@ -1,12 +1,11 @@
 import Container from '@componentsTest/Container'
-import { Row, Col, Space } from 'antd'
+import { Col, Row, Space } from 'antd'
 import { Footer } from 'antd/lib/layout/layout'
+import cx from 'classnames'
 import { uniqueId } from 'lodash'
+import Image from 'next/image'
 import React from 'react'
 import styles from './styles.module.less'
-import cx from 'classnames'
-import Image from 'next/image'
-const QRCode = require('qrcode.react')
 
 interface Props {
   menu: Menu[]
@@ -104,7 +103,6 @@ export const FooterCustom = (props: Props) => {
           </Col>
           <Col span='6' className={styles.colDown}>
             <p className={styles.title}>SCAN ĐỂ TẢI APP</p>
-            <QRCode value='http://facebook.github.io/react/' />,
             <ul className={styles.listApp}>
               {downApp.imageDownApp.map((v) => {
                 return (
