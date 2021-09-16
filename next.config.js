@@ -3,11 +3,8 @@ const path = require('path')
 const lessToJS = require('less-vars-to-js')
 const withLess = require('next-with-less')
 const withImages = require('next-images')
-
 require('dotenv').config()
-
 const webpack = require('webpack')
-
 const withPlugins = require('next-compose-plugins')
 
 // cấu hình varible antd
@@ -27,6 +24,7 @@ const lessConfig = {
 }
 
 const nextConfig = {
+  inlineImageLimit: 16384,
   async headers() {
     return [
       {
@@ -57,9 +55,19 @@ const nextConfig = {
   },
 
   ...lessConfig,
-  exclude: path.join(process.cwd(), 'test', 'components', 'icon', 'icons'),
+  exclude: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
 
   webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      include: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
+      use: [
+        'svg-sprite-loader',
+        {
+          loader: 'svgo-loader'
+        }
+      ]
+    })
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
     return config
   }
