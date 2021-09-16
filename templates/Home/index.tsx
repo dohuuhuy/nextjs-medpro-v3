@@ -1,5 +1,5 @@
 import { AnimatePage } from '@components/atoms/motion'
-import Footer from '@components/organisms/Footer'
+// import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
 import { Layout } from 'antd'
 // import dynamic from 'next/dynamic'
