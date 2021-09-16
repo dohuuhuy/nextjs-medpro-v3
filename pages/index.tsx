@@ -24,7 +24,30 @@ const HomePage = () => {
   //     check(user?.listPatient) &&
   //     dispatch(ac.ListPatientRequest())
   // })
-  return null
+  return (
+    <>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </>
+  )
   // return <NewsAndEvent {...data} />
 }
 
