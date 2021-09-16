@@ -36,9 +36,9 @@ yarn-error.log*
 
 .eslintrc
 
-/package-lock.json
-/yarn-error.log
-/yarn.lock
+package-lock.json
+yarn-error.log
+yarn.lock
 
 
 # cách dùng git ignore

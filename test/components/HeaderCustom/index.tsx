@@ -1,7 +1,5 @@
-import { BellOutlined, CustomerServiceOutlined } from '@ant-design/icons'
 import { Col, Row } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
-import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
