@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import * as React from 'react'
 import * as icons from './icons'
 import styles from './styles.module.less'

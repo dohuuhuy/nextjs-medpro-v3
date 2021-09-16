@@ -37,6 +37,7 @@
     "@zeit/next-css": "1.0.1",
     "antd": "^4.16.13",
     "axios": "0.21.3",
+    "babel-plugin-inline-react-svg": "2.0.1",
     "dayjs": "1.10.6",
     "dotenv": "10.0.0",
     "framer-motion": "4.1.17",

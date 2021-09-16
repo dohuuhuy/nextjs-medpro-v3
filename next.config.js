@@ -7,6 +7,8 @@ require('dotenv').config()
 const webpack = require('webpack')
 const withPlugins = require('next-compose-plugins')
 
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
+
 // cấu hình varible antd
 const themeVariables = lessToJS(
   fs.readFileSync(
@@ -58,21 +60,11 @@ const nextConfig = {
   exclude: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
 
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      include: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
-      use: [
-        'svg-sprite-loader',
-        {
-          loader: 'svgo-loader'
-        }
-      ]
-    })
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
     return config
   }
 }
 
-const plugins = [[withImages], [withLess]]
+const plugins = [[withImages], [withLess], [new SpriteLoaderPlugin()]]
 
 module.exports = withPlugins(plugins, nextConfig)
