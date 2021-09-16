@@ -1,11 +1,13 @@
 export const JSON_EXP = {
   partnerId: 'medpro',
   header: {
-    logoHeader:
-      'https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg',
-    logoHeaderMobile:
-      'https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg',
-    menuHeader: [
+    logo: {
+      desktop:
+        'https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg',
+      mobile:
+        'https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg'
+    },
+    menu: [
       {
         id: '',
         key: 'benh-vien',

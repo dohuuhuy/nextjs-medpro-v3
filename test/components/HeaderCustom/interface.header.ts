@@ -1,22 +1,24 @@
-export interface PropsHeader {
+export interface HeaderIF {
   authen: Authencation
   dataHeader: listHeader
 }
 export interface Authencation {
-  isAuthen: boolean,
+  isAuthen: boolean
   nameUser: string
 }
 export interface listHeader {
-  logoHeader: string
-  menuHeader: itemMenu[]
-}
-export interface itemMenu {
-  id?: string,
-  key: string,
-  link: string,
-  url: string,
-  label: string,
-  group: string,
-  sortOrder: number,
-  status: boolean
+  logo: {
+    desktop: string
+    mobile: string
+  }
+  menu: {
+    id: string
+    key: string
+    link: string
+    url: string
+    label: string
+    group: string
+    sortOrder: number
+    status: boolean
+  }[]
 }
