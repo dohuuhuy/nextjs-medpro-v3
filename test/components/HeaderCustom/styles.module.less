@@ -1,0 +1,52 @@
+.header{
+  width: 100%;
+  background-color: white;
+  padding: 5px 95px 0 95px;
+  .colLogo{
+    display: flex;
+    .figureLogoHeader {
+      margin: 0;
+      padding: 0;
+      img{
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+  .colContent{
+    .listInfo{
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      width: 100%;
+      li{
+        &:first-child,&:nth-child(2){
+          padding-right: 30px;
+        }
+        a{
+          font-size: 12px;
+          font-weight: 600;
+          color: #002E64;
+        }
+      }
+    }
+    .listMenu{
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+      width: 100%;
+      a{
+        font-size: 14px;
+        font-weight: 600;
+        color: #002E64;
+        padding: 10px;
+        &:hover{
+          background-color: #00B5F1;
+          border-radius: 25px;
+        }
+      }
+    }
+    
+  }
+}
+
