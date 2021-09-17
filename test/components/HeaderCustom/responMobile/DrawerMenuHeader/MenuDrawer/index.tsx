@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 
 export const MenuDrawer = (Props: PropsMenuDrawer) => {
+  console.log("object", Props)
   const { authen, listSupport, logo, setDrawer } = Props
   const { isAuthen, nameUser } = authen
 

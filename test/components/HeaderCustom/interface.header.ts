@@ -1,14 +1,17 @@
 export interface PropsHeader {
-  Authencartion: Authen
+  Authencation: Authen
   dataHeader: listHeader
 }
 
 export interface listHeader {
-  logoHeader: string
-  logoHeaderMobile: string
-  menuHeader: itemMenu[]
+  logo: itemLogo
+  menu: itemMenu[]
   menuMobile: itemMenuMobile[]
   listSupport: itemSupport
+}
+export interface itemLogo {
+  desktop: string
+  mobile: string
 }
 export interface itemMenu {
   id?: string,

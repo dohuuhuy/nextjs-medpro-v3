@@ -7,31 +7,32 @@ import { PropsHeader, itemSupport, Authen } from '../../interface.header'
 
 export interface PropsMenuDrawer {
   listSupport: itemSupport,
-  logo: string,
+  logo: { mobile: string },
   authen: Authen,
   setDrawer: any
 }
 
-export const DrawerMenuHeader = ({ dataHeader, Authencartion }: PropsHeader) => {
+export const DrawerMenuHeader = ({ dataHeader, Authencation }: PropsHeader) => {
+  console.log("authen ", Authencation)
   const [drawer, setDrawer] = useState<boolean>(false)
 
   function visibleDrawer() {
     setDrawer(!drawer)
   }
 
-  const { logoHeaderMobile, listSupport } = dataHeader
+  const { logo, listSupport } = dataHeader
 
   const Menudrawer: PropsMenuDrawer = {
     listSupport: listSupport,
-    logo: logoHeaderMobile,
-    authen: Authencartion,
+    logo: logo,
+    authen: Authencation,
     setDrawer: visibleDrawer
   }
   return (
     <React.Fragment>
       <NavbarHeaderMobile
         drawer={drawer}
-        logo={logoHeaderMobile}
+        logo={logo}
         togleDrawer={visibleDrawer}
       />
       <Drawer

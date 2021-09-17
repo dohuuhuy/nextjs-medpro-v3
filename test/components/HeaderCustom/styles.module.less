@@ -1,52 +1,91 @@
-.header{
+@media (max-width: 1020px){
+  .containerHeader{
+    display: none;
+  }
+}
+.header {
   width: 100%;
   background-color: white;
-  padding: 5px 95px 0 95px;
-  .colLogo{
-    display: flex;
-    .figureLogoHeader {
-      margin: 0;
-      padding: 0;
-      img{
-        padding: 0;
-        margin: 0;
+  padding: 15px 100px !important;
+  line-height: unset !important;
+  height: unset !important;
+  .rowGroup {
+    .colGroup {
+      .groupBtn {
+        .listCustom();
+        li {
+          margin: 0 5px;
+          .btn {
+            font-weight: 500;
+            padding: 5px;
+            border-radius: 15px;
+            border: none;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            background-color: white;
+            &:hover {
+              background-color: #00b5f1;
+              color: white;
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }
-  .colContent{
-    .listInfo{
+  .rowHeader {
+    align-items: center;
+    .colLogo {
       display: flex;
-      justify-content: flex-end;
-      list-style: none;
-      width: 100%;
-      li{
-        &:first-child,&:nth-child(2){
-          padding-right: 30px;
-        }
-        a{
-          font-size: 12px;
-          font-weight: 600;
-          color: #002E64;
+      align-items: flex-end;
+      .logo {
+        width: 100%;
+        margin-bottom: 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        align-content: center;
+      }
+    }
+    .colBody {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .listMenu {
+        .listCustom();
+        li {
+          padding: 5px;
+          margin: 0 5px;
+          border: none;
+          border-radius: 15px;
+          &:hover {
+            background-color: #00b5f1;
+            a {
+              color: white;
+              cursor: pointer;
+            }
+          }
+          a {
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+          }
         }
       }
     }
-    .listMenu{
-      display: flex;
-      list-style: none;
-      justify-content: space-between;
-      width: 100%;
-      a{
-        font-size: 14px;
-        font-weight: 600;
-        color: #002E64;
-        padding: 10px;
-        &:hover{
-          background-color: #00B5F1;
-          border-radius: 25px;
-        }
-      }
-    }
-    
   }
 }
 
+// ---------------mixin-----------------
+
+.listCustom {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-bottom: 5px;
+  padding: 0;
+}

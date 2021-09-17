@@ -1,83 +1,74 @@
+import Container from './../Container'
+import { Col, Row } from 'antd'
+import { Header } from 'antd/lib/layout/layout'
+import { uniqueId } from 'lodash'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { PropsHeader } from './interface.header'
-import { Row, Col } from 'antd'
 import styles from './styles.module.less'
-import { uniqueId } from 'lodash'
-import Link from 'next/link'
-import Image from 'next/image'
-import { CustomerServiceOutlined, BellOutlined } from '@ant-design/icons'
-import Container from '@componentsTest/Container'
+import { Icon } from '@componentsTest/Icon'
+import cx from 'classnames'
 import { DrawerMenuHeader } from './responMobile/DrawerMenuHeader'
 import { NavBottom } from './responMobile/NavBottom'
 
 export const HeaderCustom = (Props: PropsHeader) => {
-  const { Authencartion, dataHeader } = Props
-  const { logoHeader, menuHeader, menuMobile } = dataHeader
+  const { dataHeader, Authencation } = Props
+  const { logo, menu } = dataHeader
   return (
-    <div>
-      <Container className={styles.header}>
-        <Row>
-          <Col xl={6} className={styles.colLogo}>
-            <figure className={styles.figureLogoHeader}>
-              <Link href='/'>
-                <a>
-                  <Image
-                    src={logoHeader}
-                    alt=''
-                    width='230'
-                    height='80'
-                  />
-                </a>
-              </Link>
+    <Header className={styles.header}>
+      <Container className={styles.containerHeader}>
+        <Row className={styles.rowGroup}>
+          <Col xl={24} className={styles.colGroup}>
+            <ul className={styles.groupBtn}>
+              <li>
+                <button className={cx(styles.btn)}>
+                  <Icon name='cskh' />
+                  Chăm sóc khách hàng
+                </button>
+              </li>
+              <li>
+                <button className={cx(styles.btn)}>
+                  <Icon name='thongbao' />
+                  Thông báo
+                </button>
+              </li>
+              <li>
+                <button className={cx(styles.btn)}>Đăng nhập | Đăng ký</button>
+              </li>
+            </ul>
+          </Col>
+        </Row>
+        <Row className={styles.rowHeader}>
+          <Col xl={5} className={styles.colLogo}>
+            <figure className={styles.logo}>
+              <Image src={logo.desktop} alt='' width='185' height='55' />
             </figure>
           </Col>
-          <Col xl={18} className={styles.colContent}>
-            <Row className={styles.rowInfo}>
-              <ul className={styles.listInfo}>
-                <li>
-                  <div className={styles.CustomerService}>
-                    <a>
-                      <CustomerServiceOutlined />
-                      Chăm sóc khách hàng
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div className={styles.Notification}>
-                    <a>
-                      <BellOutlined />
-                      Thông báo
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div className={styles.Login}>
-                    <a>Đăng nhập</a> | <a>Đăng kí</a>
-                  </div>
-                </li>
-              </ul>
-            </Row>
-            <Row className={styles.rowMenu}>
-              <ul className={styles.listMenu}>
-                {menuHeader.map((item) => {
-                  return (
-                    <li key={uniqueId()}>
-                      <Link href={item.link || '/'}>
-                        <a aria-label={item?.label}>{item?.label}</a>
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </Row>
+          <Col xl={19} className={styles.colBody}>
+            <ul className={styles.listMenu}>
+              {menu.map((v) => {
+                return (
+                  <li key={uniqueId()}>
+                    <Link href={v.link || '/'}>
+                      <a aria-label={v?.label}>{v?.label}</a>
+                    </Link>
+                  </li>
+                )
+              })}
+              <li>
+                <a className={cx(styles.btn)}>
+                  <Icon name='timkiem' />
+                </a>
+              </li>
+            </ul>
           </Col>
         </Row>
       </Container>
 
-      <DrawerMenuHeader dataHeader={dataHeader} Authencartion={Authencartion} />
+      <DrawerMenuHeader dataHeader={dataHeader} Authencation={Authencation} />
 
-      <NavBottom dataHeader={dataHeader} Authencartion={Authencartion} />
-
-    </div>
+      <NavBottom dataHeader={dataHeader} Authencation={Authencation} />
+    </Header>
   )
 }

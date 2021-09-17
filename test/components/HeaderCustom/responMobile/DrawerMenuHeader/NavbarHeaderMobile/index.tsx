@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 
 export interface PropsNavbar {
-  logo: string,
+  logo: { mobile: string },
   togleDrawer?: any
   drawer: boolean
 }
@@ -17,7 +17,7 @@ export const NavbarHeaderMobile = ({ drawer = false, logo, togleDrawer }: PropsN
       <Row className={styles.rowHeaderDrawer}>
         <Col span={8} className={styles.colLogoHeaderMobile}>
           <figure>
-            <Image src={logo} alt='icon' height='18' width='18' />
+            <Image src={logo.mobile} alt='icon' height='18' width='18' />
           </figure>
         </Col>
         <Col span={4} className={styles.colButtonHeaderMobile}>

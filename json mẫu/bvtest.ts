@@ -1,11 +1,13 @@
 export const JSON_EXP = {
   partnerId: 'medpro',
   header: {
-    logoHeader:
-      'https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg',
-    logoHeaderMobile:
-      'https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg',
-    menuHeader: [
+    logo: {
+      desktop:
+        'https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg',
+      mobile:
+        'https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg'
+    },
+    menu: [
       {
         id: '',
         key: 'benh-vien',
@@ -132,32 +134,42 @@ export const JSON_EXP = {
       },
       {
         id: '',
-        key: 'huong-dan',
-        link: '/huong-dan',
-        url: '/huong-dan',
-        label: 'Hướng dẫn',
+        key: 'ho-so',
+        link: '/ho-so',
+        url: '/ho-so',
+        label: 'Hồ sơ ĐK',
         group: 'menuMobile',
-        sortOrder: 4,
+        sortOrder: 2,
         icon: 'https://resource-testing.medpro.com.vn/static/media/icon/guide.svg'
       },
       {
         id: '',
-        key: 'thong-bao',
-        link: '/user',
-        url: '/user',
-        label: 'Thông báo',
+        key: 'phieu-kham',
+        link: '/phieu-kham',
+        url: '/phieu-kham',
+        label: 'Phiếu khám',
         group: 'menuMobile',
-        sortOrder: 5,
+        sortOrder: 3,
         icon: 'https://resource-testing.medpro.com.vn/static/media/icon/bell.svg'
       },
       {
         id: '',
-        key: 'ho-so',
-        link: '/user',
-        url: '/user',
-        label: 'Hồ sơ',
+        key: 'thong-bao',
+        link: '/thong-bao',
+        url: '/thong-bao',
+        label: 'Thông báo',
         group: 'menuMobile',
-        sortOrder: 6,
+        sortOrder: 4,
+        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg'
+      },
+      {
+        id: '',
+        key: 'tai-khoan',
+        link: '/tai-khoan',
+        url: '/tai-khoan',
+        label: 'Tài khoản',
+        group: 'menuMobile',
+        sortOrder: 5,
         icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg'
       }
     ],

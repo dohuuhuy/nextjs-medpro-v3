@@ -57,13 +57,10 @@ const nextConfig = {
   },
 
   ...lessConfig,
+  exclude: path.join(process.cwd(), 'test', 'components', 'icon', 'icons'),
 
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack']
-    })
     return config
   }
 }

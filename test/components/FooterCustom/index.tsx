@@ -4,15 +4,13 @@ import { Footer } from 'antd/lib/layout/layout'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import QRCode from 'react-qr-code'
 import { FooterIF } from './interface'
 import styles from './styles.module.less'
-import QRCode from 'react-qr-code'
-import Link from 'next/link'
 
 export const FooterCustom = (props: FooterIF) => {
-  console.log(`props`, props)
-
   const { menu, logo, contact, downApp, certificate } = props
 
   return (

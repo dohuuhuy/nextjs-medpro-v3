@@ -13,7 +13,7 @@ const HeaderLayout = (info: Information) => {
 
   const methods = {
     dataHeader: info.header,
-    Authencartion: authen
+    Authencation: authen
   }
 
   return <HeaderCustom {...methods} />

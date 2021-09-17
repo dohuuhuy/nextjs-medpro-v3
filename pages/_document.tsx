@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/next-script-for-ga */
+/* eslint-disable @next/next/no-document-import-in-page */
 import FavIcon from '@components/organisms/Favicon'
 import { GA_TRACKING_ID } from '@utils/gtag'
 import Document, {
@@ -8,6 +10,7 @@ import Document, {
   NextScript
 } from 'next/document'
 import React from 'react'
+const sprite = require('svg-sprite-loader/runtime/sprite.build')
 
 class CustomDocument extends Document<{
   spriteContent: string
@@ -15,8 +18,9 @@ class CustomDocument extends Document<{
 }> {
   public static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-
+    const spriteContent = sprite.stringify()
     return {
+      spriteContent,
       ...initialProps,
       styles: [...React.Children.toArray(initialProps.styles)]
     }
