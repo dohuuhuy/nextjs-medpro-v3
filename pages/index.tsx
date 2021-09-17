@@ -1,7 +1,10 @@
 // import * as ac from '@actionStore/rootAction'
 // import { check } from '@utils/checkValue'
-import { Icon } from '@components/Icon'
+
+import { Icon } from '@componentsTest/Icon'
 import dynamic from 'next/dynamic'
+import React from 'react'
+
 // import { useEffect } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { HomeCtl } from 'src/containers/home'
@@ -27,6 +30,7 @@ const HomePage = () => {
   // })
   return (
     <>
+      {/* <Cskh /> */}
       <Icon name='cskh' />
       <br />
       <br />

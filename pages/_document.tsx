@@ -10,7 +10,7 @@ import Document, {
   NextScript
 } from 'next/document'
 import React from 'react'
-const sprite = require('svg-sprite-loader/runtime/sprite.build')
+// const sprite = require('svg-sprite-loader/runtime/sprite.build')
 
 class CustomDocument extends Document<{
   spriteContent: string
@@ -18,9 +18,9 @@ class CustomDocument extends Document<{
 }> {
   public static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-    const spriteContent = sprite.stringify()
+    // const spriteContent = sprite.stringify()
     return {
-      spriteContent,
+      // spriteContent,
       ...initialProps,
       styles: [...React.Children.toArray(initialProps.styles)]
     }

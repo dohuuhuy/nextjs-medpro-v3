@@ -7,7 +7,7 @@ require('dotenv').config()
 const webpack = require('webpack')
 const withPlugins = require('next-compose-plugins')
 
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
+// const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 
 // cấu hình varible antd
 const themeVariables = lessToJS(
@@ -26,21 +26,6 @@ const lessConfig = {
 }
 
 const nextConfig = {
-  inlineImageLimit: 16384,
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|png)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=99999, must-revalidate'
-          }
-        ]
-      }
-    ]
-  },
   images: {
     // cấu hình domain cho hình ảnh
     domains: [
@@ -61,10 +46,14 @@ const nextConfig = {
 
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    // config.module.rules.push({
+    //   test: /\.svg$/,
+    //   use: ['@svgr/webpack']
+    // })
     return config
   }
 }
 
-const plugins = [[withImages], [withLess], [new SpriteLoaderPlugin()]]
+const plugins = [[withImages], [withLess]]
 
 module.exports = withPlugins(plugins, nextConfig)
