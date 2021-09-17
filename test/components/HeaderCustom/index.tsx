@@ -5,18 +5,19 @@ import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { HeaderIF } from './interface.header'
+import { PropsHeader } from './interface.header'
 import styles from './styles.module.less'
 import { Icon } from '@componentsTest/Icon'
 import cx from 'classnames'
+import { DrawerMenuHeader } from './responMobile/DrawerMenuHeader'
+import { NavBottom } from './responMobile/NavBottom'
 
-export const HeaderCustom = (Props: HeaderIF) => {
-  // console.log('Props', Props)
-  const { dataHeader } = Props
+export const HeaderCustom = (Props: PropsHeader) => {
+  const { dataHeader, Authencation } = Props
   const { logo, menu } = dataHeader
   return (
     <Header className={styles.header}>
-      <Container>
+      <Container className={styles.containerHeader}>
         <Row className={styles.rowGroup}>
           <Col xl={24} className={styles.colGroup}>
             <ul className={styles.groupBtn}>
@@ -64,6 +65,10 @@ export const HeaderCustom = (Props: HeaderIF) => {
           </Col>
         </Row>
       </Container>
+
+      <DrawerMenuHeader dataHeader={dataHeader} Authencation={Authencation} />
+
+      <NavBottom dataHeader={dataHeader} Authencation={Authencation} />
     </Header>
   )
 }
