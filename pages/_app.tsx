@@ -68,7 +68,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
             fontSize: 14
           }}
         >
-          {/* <ArrowUpOutlined /> */}
+          <ArrowUpOutlined />
         </div>
       </BackTop>
     </>
