@@ -3,6 +3,8 @@
 
 import { Icon } from '@componentsTest/Icon'
 import dynamic from 'next/dynamic'
+// const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
+import Cskh from 'public/icons/vercel.svg'
 import React from 'react'
 
 // import { useEffect } from 'react'
@@ -10,7 +12,6 @@ import React from 'react'
 // import { HomeCtl } from 'src/containers/home'
 // import { AppState } from 'store/interface'
 const HomeLayout = dynamic(() => import('@templates/Home'))
-// const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
 const HomePage = () => {
   // const dispatch = useDispatch()

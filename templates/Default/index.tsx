@@ -1,4 +1,5 @@
 import { AnimatePage } from '@components/atoms/motion'
+import Header from '@components/organisms/Header'
 import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
@@ -17,7 +18,7 @@ const DefaultLayout = (props: Props) => {
   const info = appProps?.introducHospital
   return (
     <Layout className={styles.layout}>
-      {/* <Header {...info} /> */}
+      <Header {...info} />
       <div className={styles.main}>
         <AnimatePage>
           {/* <BannerPage {...info} />

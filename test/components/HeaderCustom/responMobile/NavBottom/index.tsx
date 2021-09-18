@@ -4,7 +4,7 @@ import styles from './styles.module.less'
 import { PropsHeader } from '../../interface.header'
 
 export const NavBottom = ({ dataHeader, Authencation }: PropsHeader) => {
-  console.log("data ", dataHeader, Authencation)
+  // console.log("data ", dataHeader, Authencation)
   const { menuMobile } = dataHeader
   return (
     <ul className={styles.nav_bottom}>

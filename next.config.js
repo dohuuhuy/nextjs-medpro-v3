@@ -7,8 +7,6 @@ require('dotenv').config()
 const webpack = require('webpack')
 const withPlugins = require('next-compose-plugins')
 
-// const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
-
 // cấu hình varible antd
 const themeVariables = lessToJS(
   fs.readFileSync(
@@ -42,14 +40,10 @@ const nextConfig = {
   },
 
   ...lessConfig,
-  exclude: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
 
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
-    // config.module.rules.push({
-    //   test: /\.svg$/,
-    //   use: ['@svgr/webpack']
-    // })
+
     return config
   }
 }

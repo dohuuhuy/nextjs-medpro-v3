@@ -41,7 +41,8 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   function redirect(e: ListHospital) {
     if (checkData(e?.message)) {
       e?.partnerId
-        ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
+        ? // ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
+          ''
         : alert('không có partnerId')
     } else {
       Modal.info({
@@ -117,10 +118,16 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                 }
 
                 return (
-                  <li key={uniqueId()} onClick={() => redirect(e)}>
+                  <li key={uniqueId()}>
                     <div className={styles.cardHospital}>
                       <figure className={styles.cardView}>
-                        <Image src={urlImage} alt='icon' onError={onError} width="50" height="50" />
+                        <Image
+                          src={urlImage}
+                          alt='icon'
+                          onError={onError}
+                          width='50'
+                          height='50'
+                        />
                       </figure>
                       <div className={styles.cardBody}>
                         <p className={styles.nameHospital}>{e?.name}</p>
@@ -131,7 +138,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                         <HeartOutlined />
                       </div>
                     </div>
-
                   </li>
                 )
               })

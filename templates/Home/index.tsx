@@ -18,7 +18,7 @@ const HomeLayout = (props: Props) => {
 
   return (
     <Layout className={styles.layout}>
-      <Header {...info} />
+      {/* <Header {...info} /> */}
       <AnimatePage>{children}</AnimatePage>
       <Footer {...info} />
     </Layout>
