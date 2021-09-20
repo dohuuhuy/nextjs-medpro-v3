@@ -1,4 +1,4 @@
-import { Icon } from '@components/Icon/Icon'
+import { Icon } from '@componentsTest/Icon'
 import HomeLayout from '@templates/Home'
 import React from 'react'
 
