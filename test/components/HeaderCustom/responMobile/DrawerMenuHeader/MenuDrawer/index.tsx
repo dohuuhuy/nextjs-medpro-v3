@@ -6,9 +6,8 @@ import Container from '@componentsTest/Container'
 import { Row, Space } from 'antd'
 import Image from 'next/image'
 
-
 export const MenuDrawer = (Props: PropsMenuDrawer) => {
-  console.log("object", Props)
+  // console.log("object", Props)
   const { authen, listSupport, logo, setDrawer } = Props
   const { isAuthen, nameUser } = authen
 
@@ -83,7 +82,13 @@ const HandlerList = ({ element }: any) => {
         return (
           <li key={index}>
             <figure className={styles.figure}>
-              <Image src={icon} className={styles.Img} alt={''} width={16} height={16} />
+              <Image
+                src={icon}
+                className={styles.Img}
+                alt={''}
+                width={16}
+                height={16}
+              />
             </figure>
             {label}
           </li>

@@ -17,12 +17,12 @@ interface IconProps {
 export const Icon: React.FC<IconProps> = ({ name, size = 'small' }) => {
   console.log(`icons[name]`, icons[name])
 
-  // const { viewBox, id } = icons[name]
+  const { viewBox, id } = icons[name]
   return (
     <span>
-      {/* <svg viewBox={viewBox}>
+      <svg viewBox={viewBox}>
         <use xlinkHref={`#${id}`} href={`#${id}`} />
-      </svg> */}
+      </svg>
     </span>
   )
 }

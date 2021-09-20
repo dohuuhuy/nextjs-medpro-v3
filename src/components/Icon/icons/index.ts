@@ -5,3 +5,5 @@ export { default as chuyenkhoa } from '../../../../test/components/DatKham/icon/
 export { default as bacsi } from '../../../../test/components/DatKham/icon/Doctor.svg'
 export { default as dichvu } from '../../../../test/components/DatKham/icon/Service.svg'
 export { default as lichkham } from '../../../../test/components/DatKham/icon/Calender.svg'
+export { default as plus } from './plus.svg'
+export { default as minus } from './minus.svg'

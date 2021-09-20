@@ -6,14 +6,14 @@ import { NavbarHeaderMobile } from './NavbarHeaderMobile'
 import { PropsHeader, itemSupport, Authen } from '../../interface.header'
 
 export interface PropsMenuDrawer {
-  listSupport: itemSupport,
-  logo: { mobile: string },
-  authen: Authen,
+  listSupport: itemSupport
+  logo: { mobile: string }
+  authen: Authen
   setDrawer: any
 }
 
 export const DrawerMenuHeader = ({ dataHeader, Authencation }: PropsHeader) => {
-  console.log("authen ", Authencation)
+  // console.log("authen ", Authencation)
   const [drawer, setDrawer] = useState<boolean>(false)
 
   function visibleDrawer() {
