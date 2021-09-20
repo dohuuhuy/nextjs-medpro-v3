@@ -1,5 +1,6 @@
+import { Icon } from '@components/Icon/Icon'
 import Container from '@componentsTest/Container'
-import { Col, Row, Space } from 'antd'
+import { Button, Col, Row, Space } from 'antd'
 import { Footer } from 'antd/lib/layout/layout'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -15,6 +16,10 @@ export const FooterCustom = (props: FooterIF) => {
 
   return (
     <Footer className={styles.footer}>
+      <Button className={styles.btn}>
+        <Icon name='cskh' />
+      </Button>
+
       <Container className={styles.container}>
         <Row className={styles.rowMenu}>
           <Col span='24' className={styles.colMenu}>

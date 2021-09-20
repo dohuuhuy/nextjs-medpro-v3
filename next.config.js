@@ -50,7 +50,7 @@ const nextConfig = {
       test: /\.svg$/,
       include: path.join(process.cwd(), 'src', 'components', 'Icon', 'icons'),
       use: [
-        'c',
+        'svg-sprite-loader',
         {
           loader: 'svgo-loader'
         }
