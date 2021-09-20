@@ -1,32 +1,35 @@
-/* eslint-disable @next/next/next-script-for-ga */
-/* eslint-disable @next/next/no-document-import-in-page */
 import FavIcon from '@components/organisms/Favicon'
 import { GA_TRACKING_ID } from '@utils/gtag'
 import Document, {
   DocumentContext,
+  DocumentInitialProps,
   Head,
   Html,
   Main,
   NextScript
 } from 'next/document'
 import React from 'react'
+
 import sprite from 'svg-sprite-loader/runtime/sprite.build'
 
-class CustomDocument extends Document<{
+interface CustomDocumentProps {
   spriteContent: string
-  image: any
-}> {
-  public static async getInitialProps(ctx: DocumentContext) {
+}
+
+class CustomDocument extends Document<CustomDocumentProps> {
+  [x: string]: any
+  public static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<CustomDocumentProps & DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx)
     const spriteContent = sprite.stringify()
     return {
       spriteContent,
-      ...initialProps,
-      styles: [...React.Children.toArray(initialProps.styles)]
+      ...initialProps
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <Html lang='vi'>
         <Head>
@@ -65,6 +68,7 @@ class CustomDocument extends Document<{
             }}
           ></script>
         </Head>
+
         <body>
           <noscript
             dangerouslySetInnerHTML={{

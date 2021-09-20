@@ -15,6 +15,8 @@ interface IconProps {
  * Icon
  */
 export const Icon: React.FC<IconProps> = ({ name, size = 'small' }) => {
+  console.log(`icons[name]`, icons[name])
+
   const { viewBox, id } = icons[name]
   return (
     <span>
