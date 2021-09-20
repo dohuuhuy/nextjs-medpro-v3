@@ -1,32 +1,14 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import { Icon } from '@components/icon/Icon'
+import { Icon } from '@components/Icon/Icon'
 
 const HomeLayout = dynamic(() => import('@templates/Home'))
 
 const HomePage = () => {
   return (
     <>
-      <Icon name={'plus'} />
+      <Icon name={'plus'} size='80' />
 
-      {/* <Icon name='cskh' /> */}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
       <br />
     </>
