@@ -15,6 +15,8 @@ interface IconProps {
 
 export const Icon = ({ name, size = '20', className }: IconProps) => {
   const Icon = icons[name]
+
+  console.log(`Icon`, Icon)
   return (
     <span className={cx(styles.icon)}>
       <Image
