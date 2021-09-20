@@ -1,9 +1,11 @@
+import { Icon } from '@components/Icon/Icon'
 import HomeLayout from '@templates/Home'
 import React from 'react'
 
 const HomePage = () => {
   return (
     <>
+      <Icon name='thongbao' fill='red' />
       <br />
       <br />
     </>
