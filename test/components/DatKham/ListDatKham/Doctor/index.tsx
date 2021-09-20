@@ -16,11 +16,6 @@ export const DoctorContent = () => {
               Nam
             </div>
           </li>
-          <li>
-            <div className={styles.cardContent}>
-              Nữ
-            </div>
-          </li>
         </ul>
       </Col>
     </Row>
