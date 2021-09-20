@@ -1,3 +1,7 @@
 export { default as cskh } from './cskh.svg'
 export { default as thongbao } from './thongbao.svg'
 export { default as timkiem } from './timkiem.svg'
+export { default as chuyenkhoa } from '../../../../test/components/DatKham/icon/Specialist.svg'
+export { default as bacsi } from '../../../../test/components/DatKham/icon/Doctor.svg'
+export { default as dichvu } from '../../../../test/components/DatKham/icon/Service.svg'
+export { default as lichkham } from '../../../../test/components/DatKham/icon/Calender.svg'

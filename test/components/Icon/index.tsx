@@ -5,7 +5,7 @@ import styles from './styles.module.less'
 import cx from 'classnames'
 export type Icons = typeof icons
 export type IconName = keyof Icons
-export type IconSize = '20' | '40' | '60' | '80'
+export type IconSize = '20' | '35' | '60' | '80'
 
 interface IconProps {
   name: IconName

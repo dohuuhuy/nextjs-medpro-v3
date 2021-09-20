@@ -18,9 +18,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(60deg,#2FA0EC, #05E3FD);
+      background: linear-gradient(to bottom right,#2FA0EC, #05E3FD);
       h2{
-        text-align: center
+        text-align: center;
+        color: white;
       }
       .GroupInputSelect {
         .ListCustom ();
@@ -37,19 +38,33 @@
             align-content: center;
             align-items: center;
             border-radius: 25px;
+            background-color: #31AFDD;
+            border: none;
+            color: white;
+
             input {
               font-size: 13px;
               padding-left: 7px;
+              background-color: #31AFDD;
             }
           }
           .inputSelect {
+            span{
+              color: white;
+            }
             & > div {
               height: 40px;
               border-radius: 25px;
               align-content: center;
               align-items: center;
               font-size: 13px;
+              background-color: #2ABEE0;
+              border: none;
+              &:hover{
+                cursor: pointer;
+              }
             }
+            
           }
         }
       }
