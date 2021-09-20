@@ -7,8 +7,6 @@ require('dotenv').config()
 const webpack = require('webpack')
 const withPlugins = require('next-compose-plugins')
 
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
-
 // cấu hình varible antd
 const themeVariables = lessToJS(
   fs.readFileSync(
@@ -26,21 +24,6 @@ const lessConfig = {
 }
 
 const nextConfig = {
-  inlineImageLimit: 16384,
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|png)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=99999, must-revalidate'
-          }
-        ]
-      }
-    ]
-  },
   images: {
     // cấu hình domain cho hình ảnh
     domains: [
@@ -56,15 +39,33 @@ const nextConfig = {
     ]
   },
 
-  ...lessConfig,
-  exclude: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
+  // lessConfig,
 
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    config.module.rules.push({
+      test: /\.svg$/,
+      include: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
+      use: [
+        'sg-sprite-lvoader',
+        {
+          loader: 'svgo-loader'
+          // options: {
+          //   plugins: [
+          //     { removeAttrs: { attrs: '(fill)' } },
+          //     { removeTitle: true },
+          //     { cleanupIDs: true },
+          //     { removeStyleElement: true }
+          //   ]
+          // }
+        }
+      ]
+    })
+
     return config
   }
 }
 
-const plugins = [[withImages], [withLess], [new SpriteLoaderPlugin()]]
+const plugins = [withImages, withLess]
 
 module.exports = withPlugins(plugins, nextConfig)

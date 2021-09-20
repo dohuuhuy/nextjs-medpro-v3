@@ -1,6 +1,6 @@
 import * as ac from '@actionStore/rootAction'
-import { ArrowUpOutlined } from '@ant-design/icons'
-import '@assets/styles/app.less'
+// import { ArrowUpOutlined } from '@ant-design/icons'
+// import '@assets/styles/app.less'
 // import '@medpro/booking-libs/libs/index.css'
 import { AppState, Information } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
@@ -68,7 +68,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
             fontSize: 14
           }}
         >
-          <ArrowUpOutlined />
+          {/* <ArrowUpOutlined /> */}
         </div>
       </BackTop>
     </>
