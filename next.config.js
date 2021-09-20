@@ -43,6 +43,24 @@ const nextConfig = {
 
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    config.module.rules.push({
+      test: /\.svg$/,
+      include: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
+      use: [
+        'svg-sprite-loader',
+        {
+          loader: 'svgo-loader',
+          options: {
+            plugins: [
+              { removeAttrs: { attrs: '(fill)' } },
+              { removeTitle: true },
+              { cleanupIDs: true },
+              { removeStyleElement: true }
+            ]
+          }
+        }
+      ]
+    })
 
     return config
   }
