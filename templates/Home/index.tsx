@@ -1,4 +1,5 @@
 import { AnimatePage } from '@components/atoms/motion'
+import Footer from '@components/organisms/Footer'
 import { Layout } from 'antd'
 import React, { ReactNode } from 'react'
 import { Information } from 'store/interface'
@@ -18,7 +19,7 @@ const HomeLayout = (props: Props) => {
     <Layout>
       {/* <Header {...info} /> */}
       <AnimatePage>{children}</AnimatePage>
-      {/* <Footer {...info} /> */}
+      <Footer {...info} />
     </Layout>
   )
 }

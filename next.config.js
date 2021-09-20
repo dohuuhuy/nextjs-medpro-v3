@@ -1,13 +1,14 @@
-const fs = require('fs')
 const path = require('path')
-const lessToJS = require('less-vars-to-js')
-const withLess = require('next-with-less')
+const withPugins = require('next-compose-plugins')
 const withImages = require('next-images')
+
 require('dotenv').config()
 const webpack = require('webpack')
-const withPlugins = require('next-compose-plugins')
 
-// cấu hình varible antd
+const fs = require('fs')
+const lessToJS = require('less-vars-to-js')
+const withLess = require('next-with-less')
+
 const themeVariables = lessToJS(
   fs.readFileSync(
     path.resolve(__dirname, 'assets/styles/variable.less'),
@@ -24,8 +25,8 @@ const lessConfig = {
 }
 
 const nextConfig = {
+  inlineImageLimit: 16384,
   images: {
-    // cấu hình domain cho hình ảnh
     domains: [
       'medpro.vn',
       'cms.medpro.com.vn',
@@ -39,25 +40,19 @@ const nextConfig = {
     ]
   },
 
-  // lessConfig,
+  ...lessConfig,
 
+  exclude: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+
     config.module.rules.push({
       test: /\.svg$/,
       include: path.join(process.cwd(), 'src', 'components', 'icon', 'icons'),
       use: [
-        'sg-sprite-lvoader',
+        'svg-sprite-loader',
         {
           loader: 'svgo-loader'
-          // options: {
-          //   plugins: [
-          //     { removeAttrs: { attrs: '(fill)' } },
-          //     { removeTitle: true },
-          //     { cleanupIDs: true },
-          //     { removeStyleElement: true }
-          //   ]
-          // }
         }
       ]
     })
@@ -68,4 +63,4 @@ const nextConfig = {
 
 const plugins = [withImages, withLess]
 
-module.exports = withPlugins(plugins, nextConfig)
+module.exports = withPugins(plugins, nextConfig)

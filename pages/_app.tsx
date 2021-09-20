@@ -1,23 +1,21 @@
 import * as ac from '@actionStore/rootAction'
-// import { ArrowUpOutlined } from '@ant-design/icons'
-// import '@assets/styles/app.less'
+import { ArrowUpOutlined } from '@ant-design/icons'
+import '@assets/styles/app.less'
 // import '@medpro/booking-libs/libs/index.css'
 import { AppState, Information } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
-import { GA_TRACKING_ID } from '@utils/gtag'
-import { Page } from '@utils/type/page'
 import { BackTop } from 'antd'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
 // import NextNProgress from 'nextjs-progressbar'
 import React, { useEffect } from 'react'
-import TagManager from 'react-gtm-module'
 import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
+import { Page } from 'type/page'
 
 type Props = AppProps & {
   Component: Page
@@ -26,10 +24,6 @@ type Props = AppProps & {
 
 const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    TagManager.initialize({ gtmId: GA_TRACKING_ID })
-  }, [])
 
   const partnerId = useSelector((state: AppState) => state.total.partnerId)
 
@@ -68,7 +62,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
             fontSize: 14
           }}
         >
-          {/* <ArrowUpOutlined /> */}
+          <ArrowUpOutlined />
         </div>
       </BackTop>
     </>

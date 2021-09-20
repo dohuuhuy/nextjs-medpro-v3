@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as icons from './icons'
+import * as icons from '@components/Icon/icons'
 // import styles from './icon.module.scss'
 
 export type Icons = typeof icons
@@ -14,7 +14,7 @@ interface IconProps {
 /**
  * Icon
  */
-export const Icon: React.FC<IconProps> = ({ name, size = 'small' }) => {
+export const Icon: React.FC<IconProps> = ({ name }) => {
   console.log(`icons[name]`, icons[name])
 
   const { viewBox, id } = icons[name]
