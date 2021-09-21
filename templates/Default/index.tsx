@@ -1,4 +1,6 @@
 import { AnimatePage } from '@components/atoms/motion'
+import Footer from '@components/organisms/Footer'
+import Header from '@components/organisms/Header'
 import { Layout } from 'antd'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
@@ -14,7 +16,7 @@ const DefaultLayout = (props: Props) => {
   const info = appProps?.introducHospital
   return (
     <Layout className={styles.layout}>
-      {/* <Header {...info} /> */}
+      <Header {...info} />
       <div className={styles.main}>
         <AnimatePage>
           {/* <BannerPage {...info} />
@@ -23,7 +25,7 @@ const DefaultLayout = (props: Props) => {
           {children}
         </AnimatePage>
       </div>
-      {/* <Footer {...info} /> */}
+      <Footer {...info} />
     </Layout>
   )
 }

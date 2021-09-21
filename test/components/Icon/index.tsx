@@ -13,13 +13,9 @@ interface IconProps {
 }
 
 export const Icon: React.FC<IconProps> = ({ name, size = '20', fill }) => {
-  console.log(`icons[name]`, icons[name])
-
   const _size = size + 'px'
-
-  console.log(`icons[name]`, icons[name])
-
   const { viewBox, id } = icons[name]
+
   return (
     <span
       className={styles.icon}
