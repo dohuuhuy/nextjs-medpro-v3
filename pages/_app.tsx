@@ -1,16 +1,14 @@
 import * as ac from '@actionStore/rootAction'
-import { ArrowUpOutlined } from '@ant-design/icons'
 import '@assets/styles/app.less'
+import { OnTop } from '@components/atoms/OnTop'
 // import '@medpro/booking-libs/libs/index.css'
 import { AppState, Information } from '@store/interface'
 import { persistor, wrapper } from '@store/rootStore'
 import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
 import { check } from '@utils/checkValue'
-import { BackTop } from 'antd'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { AppProps } from 'next/app'
-// import NextNProgress from 'nextjs-progressbar'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -22,7 +20,7 @@ type Props = AppProps & {
   appProps: Information
 }
 
-const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
+const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const dispatch = useDispatch()
 
   const partnerId = useSelector((state: AppState) => state.total.partnerId)
@@ -36,8 +34,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
   const store: any = useStore()
   const lod = (
     <PersistGate persistor={store.persistor}>
-      {/* <NextNProgress height={1} color='#0352cc' /> */}
-      <Component {...pageProps} key={router.asPath} />
+      <Component {...pageProps} appProps={appProps} />
     </PersistGate>
   )
 
@@ -49,22 +46,7 @@ const MyApp = ({ Component, pageProps, appProps, router }: Props) => {
     <>
       <DefaultSeo {...SEO} />
       {x}
-      <BackTop>
-        <div
-          style={{
-            height: 40,
-            width: 40,
-            lineHeight: '40px',
-            borderRadius: 4,
-            backgroundColor: '#1088e9',
-            color: '#fff',
-            textAlign: 'center',
-            fontSize: 14
-          }}
-        >
-          <ArrowUpOutlined />
-        </div>
-      </BackTop>
+      <OnTop />
     </>
   )
 }

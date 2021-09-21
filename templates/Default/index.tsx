@@ -13,7 +13,7 @@ type Props = {
 const DefaultLayout = (props: Props) => {
   const { children, appProps } = props
 
-  const info = appProps?.introducHospital
+  const info = appProps?.info
   return (
     <Layout className={styles.layout}>
       <Header {...info} />

@@ -11,7 +11,7 @@ export const appCtrl = async (ctx: any) => {
 
   return {
     partnerId,
-    introducHospital: JSON_EXP
+    info: JSON_EXP
   }
 }
 

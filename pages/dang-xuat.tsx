@@ -9,7 +9,7 @@ const Logout = () => {
   useEffect(() => {
     router.push('/')
     dispatch(ac.UserLogout())
-  }, [])
+  }, [dispatch, router])
 
   return null
 }
