@@ -1,22 +1,21 @@
-import Container from './../Container'
 import { Col, Row } from 'antd'
-import { Header } from 'antd/lib/layout/layout'
+import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Icon } from '../Icon'
+import Container from './../Container'
 import { PropsHeader } from './interface.header'
-import styles from './styles.module.less'
-import { Icon } from '@componentsTest/Icon'
-import cx from 'classnames'
 import { DrawerMenuHeader } from './responMobile/DrawerMenuHeader'
 import { NavBottom } from './responMobile/NavBottom'
+import styles from './styles.module.less'
 
 export const HeaderCustom = (Props: PropsHeader) => {
   const { dataHeader, Authencation } = Props
   const { logo, menu } = dataHeader
   return (
-    <Header className={styles.header}>
+    <Container fluid fixed className={styles.header}>
       <Container className={styles.containerHeader}>
         <Row className={styles.rowGroup}>
           <Col xl={24} className={styles.colGroup}>
@@ -69,6 +68,6 @@ export const HeaderCustom = (Props: PropsHeader) => {
       <DrawerMenuHeader dataHeader={dataHeader} Authencation={Authencation} />
 
       <NavBottom dataHeader={dataHeader} Authencation={Authencation} />
-    </Header>
+    </Container>
   )
 }

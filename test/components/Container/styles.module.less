@@ -1,5 +1,6 @@
 .container {
-  max-width: 1140px !important;
+  min-width: 1140px;
+  max-width: 1140px;
   margin: auto;
   padding-right: 15px;
   padding-left: 15px;
@@ -15,6 +16,7 @@
   }
   &.container_fixed {
     position: fixed;
+    z-index: 5;
   }
 
   @media (min-width: 1200px) {
