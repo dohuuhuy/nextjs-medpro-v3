@@ -7,12 +7,10 @@ import React from 'react'
 import { Icon } from '../Icon'
 import Container from './../Container'
 import { PropsHeader } from './interface.header'
-import { DrawerMenuHeader } from './responMobile/DrawerMenuHeader'
-import { NavBottom } from './responMobile/NavBottom'
 import styles from './styles.module.less'
 
 export const HeaderCustom = (Props: PropsHeader) => {
-  const { dataHeader, Authencation } = Props
+  const { dataHeader } = Props
   const { logo, menu } = dataHeader
   return (
     <Container fluid className={styles.header}>
@@ -64,10 +62,6 @@ export const HeaderCustom = (Props: PropsHeader) => {
           </Col>
         </Row>
       </Container>
-
-      <DrawerMenuHeader dataHeader={dataHeader} Authencation={Authencation} />
-
-      <NavBottom dataHeader={dataHeader} Authencation={Authencation} />
     </Container>
   )
 }
