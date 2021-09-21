@@ -5,6 +5,7 @@ import styles from './styles.module.less'
 export type Icons = typeof icons
 export type IconName = keyof Icons
 export type IconSize =
+  | '10'
   | '15'
   | '20'
   | '25'

@@ -1,0 +1,107 @@
+.BannerHome {
+  margin-top: 110px;
+  margin-bottom: 60px !important;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  .backgroundImage {
+    padding-bottom: 46%;
+  }
+  .contentBannerHome {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .boxService {
+      width: 100%;
+      min-height: 335px;
+      margin-top: -100px;
+      padding: 0 15px;
+      color: #12263f;
+      background-color: hsla(0, 0%, 100%, 0.9);
+      box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+      border-radius: 10px;
+      .ColTitle {
+        h1 {
+          text-align: center;
+          margin: 30px 0;
+          font-size: 20px;
+          font-weight: 600;
+          color: #12263f;
+        }
+      }
+      .listBoxService {
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          // &:hover {
+          //   border-radius: 10px;
+          //   box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+          // }
+
+          text-align: center;
+          background: transparent;
+          width: 25%;
+          justify-content: center;
+          padding: 15px 0;
+
+          .card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            figure {
+              img {
+                max-width: 45px;
+                max-height: 45px;
+              }
+            }
+            p {
+              font-weight: 500;
+              padding: 0px 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .BannerHome {
+    .contentBannerHome {
+      position: unset;
+      .boxService {
+        margin: 2.5rem 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .BannerHome {
+    .contentBannerHome {
+      position: unset;
+      .boxService {
+        margin: 2.5rem 0;
+        width: 100%;
+        .listBoxService {
+          li {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .BannerHome {
+    margin-top: 60px;
+  }
+}

@@ -1,0 +1,68 @@
+// css mixin
+.ListCustom {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.containerGroudCard {
+  margin-bottom: 30px;
+  .groudCard {
+    .ListCustom();
+    position: relative;
+    margin-top: -90px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    counter-reset: count;
+    li {
+      counter-increment: count;
+      text-align: center;
+      padding: 15px;
+
+      width: (100% / 3);
+
+      .card {
+        .view {
+          width: 100%;
+        }
+        .cardBody {
+          margin: -45px 8% 0;
+          background: #fff;
+          padding: 15px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+          .title {
+            text-align: center;
+          }
+          .subTitle {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .containerGroudCard {
+    .groudCard {
+      li {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .containerGroudCard {
+    .groudCard {
+      li {
+        width: 100%;
+      }
+    }
+  }
+}

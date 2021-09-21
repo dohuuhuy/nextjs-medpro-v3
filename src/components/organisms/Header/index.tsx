@@ -3,7 +3,7 @@ import { AppState, Information } from 'store/interface'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const HeaderLayout = (info: Information) => {
+const Header = (info: Information) => {
   const userInfo = useSelector((state: AppState) => state.user.userInfo)
 
   const authen = {
@@ -19,4 +19,4 @@ const HeaderLayout = (info: Information) => {
   return <HeaderCustom {...methods} />
 }
 
-export default HeaderLayout
+export default Header

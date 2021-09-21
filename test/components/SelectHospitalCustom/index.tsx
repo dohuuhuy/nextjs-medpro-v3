@@ -15,7 +15,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
   const [activeList, setactiveList] = useState(true)
 
-  console.log(`listHospital`, props.listHospital)
 
   useEffect(() => {
     activeList && setlistHospitals(props?.listHospital)
@@ -41,7 +40,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   function redirect(e: ListHospital) {
-    console.log(`e.`, e.deliveryStatus)
 
     if (checkData(e?.message)) {
       e?.partnerId

@@ -13,10 +13,19 @@ export const HeaderCustom = (Props: PropsHeader) => {
   const { dataHeader } = Props
   const { logo, menu } = dataHeader
   return (
-    <Container fluid className={styles.header}>
+    <Container fluid fixed className={styles.header}>
       <Container className={styles.containerHeader}>
-        <Row className={styles.rowGroup}>
-          <Col xl={24} className={styles.colGroup}>
+        <Row className={styles.rowHeader}>
+          <Col xl={6} className={styles.colLogo}>
+            <figure className={styles.logo}>
+              <Link href={'/'}>
+                <a>
+                  <Image src={logo?.desktop} alt='' width='250' height='75' />
+                </a>
+              </Link>
+            </figure>
+          </Col>
+          <Col xl={18} className={styles.colBody}>
             <ul className={styles.groupBtn}>
               <li>
                 <button className={cx(styles.btn)}>
@@ -34,15 +43,7 @@ export const HeaderCustom = (Props: PropsHeader) => {
                 <button className={cx(styles.btn)}>Đăng nhập | Đăng ký</button>
               </li>
             </ul>
-          </Col>
-        </Row>
-        <Row className={styles.rowHeader}>
-          <Col xl={5} className={styles.colLogo}>
-            <figure className={styles.logo}>
-              <Image src={logo.desktop} alt='' width='185' height='55' />
-            </figure>
-          </Col>
-          <Col xl={19} className={styles.colBody}>
+
             <ul className={styles.listMenu}>
               {menu.map((v) => {
                 return (

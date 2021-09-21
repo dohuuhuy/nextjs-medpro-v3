@@ -11,8 +11,6 @@ import styles from './styles.module.less'
 export const BookingType = (props: BookingType) => {
   const info = props?.getInfo || null
 
-  console.log(`info`, info)
-
   const [act, setact] = React.useState(1)
 
   const checkTab = (e: any) => {
@@ -103,20 +101,18 @@ export const BookingType = (props: BookingType) => {
       </Row>
 
       <Row className={styles.rowSlider}>
-        <Col className={styles.colType} span='24'>
+        <Col className={styles.colSilder} span='24'>
           <Slider {...settings} className={styles.Slider}>
             {carousel?.map((e) => {
               return (
                 <div key={uniqueId()} className={styles.card}>
-                  <figure className={styles.view}>
-                    <Image
-                      src={e.image}
-                      alt=''
-                      width={1110}
-                      height={335}
-                      objectFit='cover'
-                    />
-                  </figure>
+                  <Image
+                    src={e?.image}
+                    alt=''
+                    width={1110}
+                    height={335}
+                    objectFit='cover'
+                  />
                 </div>
               )
             })}

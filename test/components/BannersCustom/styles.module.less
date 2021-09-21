@@ -1,0 +1,42 @@
+.background {
+  background-size: cover;
+  background-image: linear-gradient(to right, #687ad0, #04a3bd);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media only screen and (max-width: 768px) {
+  .viewBanner {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+.viewBanner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .background();
+  margin-top: 130px;
+  height: 200px;
+  .title {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: #55dd77;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    .textTitle {
+      font-size: 2.2rem;
+    }
+  }
+  .subTitle {
+    color: white;
+    text-align: center;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}

@@ -40,10 +40,10 @@ export const JSON_EXP = {
       },
       {
         id: '',
-        key: 'tin-tuc-y-te',
-        link: '/tin-tuc-y-te',
-        url: '/tin-tuc-y-te',
-        label: 'Tin tức y tế',
+        key: 'tin-tuc',
+        link: '/tin-tuc',
+        url: '/tin-tuc',
+        label: 'Tin tức',
         group: 'menuHeader',
         sortOrder: 4,
         status: true
@@ -70,10 +70,10 @@ export const JSON_EXP = {
       },
       {
         id: '',
-        key: 'huong-dan-dat-kham',
-        link: '/huong-dan-dat-kham',
-        url: '/huong-dan-dat-kham',
-        label: 'Hướng dẫn đặt khám',
+        key: 'huong-dan',
+        link: '/huong-dan',
+        url: '/huong-dan',
+        label: 'Hướng dẫn',
         group: 'menuHeader',
         sortOrder: 6,
         status: true
