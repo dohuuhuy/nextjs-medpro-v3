@@ -42,13 +42,13 @@ const nextConfig = {
 
   ...lessConfig,
 
-  exclude: path.join(process.cwd(), 'src', 'components', 'Icon', 'icons'),
+  exclude: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
     config.module.rules.push({
       test: /\.svg$/,
-      include: path.join(process.cwd(), 'src', 'components', 'Icon', 'icons'),
+      include: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
       use: [
         'svg-sprite-loader',
         {

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import next from 'next'
 import express from 'express'
 
@@ -11,10 +10,6 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
-  // server.get('/authorized/:info', (req: any, res: any) => {
-  //   return app.render(req, res, '/authorized/:info', req.query)
-  // })
-
   server.get('/gioi-thieu', (req: any, res: any) => {
     return app.render(req, res, '/page/gioi-thieu', req.query)
   })

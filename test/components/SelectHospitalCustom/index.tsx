@@ -1,12 +1,12 @@
 import Container from '@componentsTest/Container'
-import React, { useState, useEffect } from 'react'
-import { Col, Input, Modal, Row, Select, Rate } from 'antd'
+import { Icon } from '@componentsTest/Icon'
+import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
-import { useRouter } from 'next/router'
-import { DataFailure, checkData } from '../DataFailure'
-import styles from './styles.module.less'
-import { BellFilled, SearchOutlined, HeartOutlined } from '@ant-design/icons'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { checkData, DataFailure } from '../DataFailure'
+import styles from './styles.module.less'
 
 const { Option } = Select
 
@@ -17,7 +17,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 
   useEffect(() => {
     activeList && setlistHospitals(props?.listHospital)
-  })
+  }, [activeList, props.listHospital])
 
   function onChange(code: any) {
     setactiveList(false)
@@ -41,8 +41,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   function redirect(e: ListHospital) {
     if (checkData(e?.message)) {
       e?.partnerId
-        ? // ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
-          ''
+        ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
         : alert('không có partnerId')
     } else {
       Modal.info({
@@ -50,7 +49,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         width: 'unset',
         centered: true,
         className: styles.Modal,
-        icon: <BellFilled />,
+        icon: <Icon name='thongbao' fill='red' />,
         title: 'Thông báo',
         content: e?.message,
         okButtonProps: {
@@ -61,91 +60,96 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     }
   }
   return (
-    <Container className={styles.containerSelectHospitalCustom}>
+    <div className={styles.container}>
       <Row className={styles.rowSelect}>
         <Col span='24' className={styles.colGroupInputSelect}>
-          <h2>ĐẶT KHÁM BỆNH VIỆN</h2>
-          <ul className={styles.GroupInputSelect}>
-            <li>
-              <Input
-                size='large'
-                autoFocus={true}
-                onChange={onSearchHospital}
-                className={styles.inputSearch}
-                placeholder='Tìm nhanh bệnh viện'
-                prefix={<SearchOutlined />}
-              />
-            </li>
-            <li>
-              <Select
-                defaultValue='huyi'
-                className={styles.inputSelect}
-                showSearch={true}
-                style={{ width: '100%' }}
-                optionFilterProp='children'
-                onChange={onChange}
-                filterOption={(input, option: any) =>
-                  option?.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                  0
-                }
-              >
-                <Option value='huyi' key={'Chọn tỉnh thành'}>
-                  Chọn tỉnh thành
-                </Option>
+          <Container className={styles.conGroup}>
+            <h2>ĐẶT KHÁM BỆNH VIỆN</h2>
+            <ul className={styles.GroupInputSelect}>
+              <li>
+                <Input
+                  size='large'
+                  autoFocus={true}
+                  onChange={onSearchHospital}
+                  className={styles.inputSearch}
+                  placeholder='Tìm nhanh bệnh viện'
+                  prefix={<Icon name='timkiem' fill='white' />}
+                />
+              </li>
+              <li>
+                <Select
+                  defaultValue='huyi'
+                  className={styles.inputSelect}
+                  showSearch={true}
+                  style={{ width: '100%' }}
+                  optionFilterProp='children'
+                  onChange={onChange}
+                  filterOption={(input, option: any) =>
+                    option?.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  <Option value='huyi' key={'Chọn tỉnh thành'}>
+                    Chọn tỉnh thành
+                  </Option>
 
-                {props?.listCity?.map((e) => {
-                  return (
-                    <Option value={e?.code} key={uniqueId()}>
-                      {e?.name}
-                    </Option>
-                  )
-                })}
-              </Select>
-            </li>
-          </ul>
+                  {props?.listCity?.map((e) => {
+                    return (
+                      <Option value={e?.code} key={uniqueId()}>
+                        {e?.name}
+                      </Option>
+                    )
+                  })}
+                </Select>
+              </li>
+            </ul>
+          </Container>
         </Col>
         <Col span='24' className={styles.colListCard}>
-          <ul className={styles.listCard}>
-            {checkData(listHospitals) ? (
-              <DataFailure desc='Không tìm thấy !' />
-            ) : (
-              listHospitals?.map((e) => {
-                const imageErrorSrc = '/images/logo.png'
-                const urlImage = e?.image || imageErrorSrc
+          <Container className={styles.conList}>
+            <ul className={styles.listCard}>
+              {checkData(listHospitals) ? (
+                <DataFailure desc='Không tìm thấy !' />
+              ) : (
+                listHospitals?.map((e) => {
+                  const imageErrorSrc = '/images/logo.png'
+                  const urlImage = e?.image || imageErrorSrc
 
-                const onError = (e: any) => {
-                  e.target.src = imageErrorSrc
-                }
+                  // const onError = (e: any) => {
+                  //   e.target.src = imageErrorSrc
+                  // }
 
-                return (
-                  <li key={uniqueId()}>
-                    <div className={styles.cardHospital}>
-                      <figure className={styles.cardView}>
-                        <Image
-                          src={urlImage}
-                          alt='icon'
-                          onError={onError}
-                          width='50'
-                          height='50'
-                        />
-                      </figure>
-                      <div className={styles.cardBody}>
-                        <p className={styles.nameHospital}>{e?.name}</p>
-                        <p className={styles.address}>{e?.address}</p>
-                        <Rate className={styles.rate} disabled value={3} />
+                  return (
+                    <li key={uniqueId()} onClick={() => redirect(e)}>
+                      <div className={styles.cardHospital}>
+                        <figure className={styles.cardView}>
+                          <Image
+                            src={urlImage}
+                            alt='icon'
+                            // onError={onError}
+                            width='50'
+                            height='50'
+                          />
+                        </figure>
+                        <div className={styles.cardBody}>
+                          <p className={styles.nameHospital}>{e?.name}</p>
+                          <p className={styles.address}>{e?.address}</p>
+                          <Rate className={styles.rate} disabled value={3} />
+                        </div>
+                        <div className={styles.favorite}>
+                          <Icon name='yeuthich' fill='#CBD2D9' size='15' />
+                        </div>
                       </div>
-                      <div className={styles.favorite}>
-                        <HeartOutlined />
-                      </div>
-                    </div>
-                  </li>
-                )
-              })
-            )}
-          </ul>
+                    </li>
+                  )
+                })
+              )}
+            </ul>
+          </Container>
         </Col>
       </Row>
-    </Container>
+    </div>
   )
 }
 

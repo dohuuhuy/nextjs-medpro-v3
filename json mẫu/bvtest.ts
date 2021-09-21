@@ -11,8 +11,8 @@ export const JSON_EXP = {
       {
         id: '',
         key: 'benh-vien',
-        link: '/benh-vien',
-        url: '/benh-vien',
+        link: '/chon-benh-vien',
+        url: '/chon-benh-vien',
         label: 'Bệnh viện',
         group: 'menuHeader',
         sortOrder: 1,
