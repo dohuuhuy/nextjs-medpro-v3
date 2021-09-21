@@ -1,6 +1,6 @@
 import Container from '@componentsTest/Container'
 import { Icon } from '@componentsTest/Icon'
-import { Col, Row } from 'antd'
+import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
@@ -38,6 +38,7 @@ export const BookingType = (props: BookingType) => {
                 <p>
                   Website: <a>{info.domain}</a>
                 </p>
+                <Rate />
               </div>
               <div className={styles.groupIcon}>
                 <button className={styles.btnIcon}>

@@ -15,6 +15,8 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
   const [activeList, setactiveList] = useState(true)
 
+  console.log(`listHospital`, props.listHospital)
+
   useEffect(() => {
     activeList && setlistHospitals(props?.listHospital)
   }, [activeList, props.listHospital])
@@ -39,6 +41,8 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   function redirect(e: ListHospital) {
+    console.log(`e.`, e.deliveryStatus)
+
     if (checkData(e?.message)) {
       e?.partnerId
         ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
@@ -49,8 +53,14 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         width: 'unset',
         centered: true,
         className: styles.Modal,
-        icon: <Icon name='thongbao' fill='red' />,
-        title: 'Thông báo',
+        icon: null,
+
+        title: (
+          <>
+            <Icon name='thongbao' fill='red' />
+            thông báo
+          </>
+        ),
         content: e?.message,
         okButtonProps: {
           disabled: true,
@@ -116,26 +126,23 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   const imageErrorSrc = '/images/logo.png'
                   const urlImage = e?.image || imageErrorSrc
 
-                  // const onError = (e: any) => {
-                  //   e.target.src = imageErrorSrc
-                  // }
+                  const rate =
+                    Number(e.deliveryStatus) === 1 ? (
+                      <p className={styles.status}>Sắp ra mắt</p>
+                    ) : (
+                      <Rate className={styles.rate} disabled value={3} />
+                    )
 
                   return (
                     <li key={uniqueId()} onClick={() => redirect(e)}>
                       <div className={styles.cardHospital}>
                         <figure className={styles.cardView}>
-                          <Image
-                            src={urlImage}
-                            alt='icon'
-                            width='50'
-                            height='50'
-                          />
+                          <Image src={urlImage} alt='' width='50' height='50' />
                         </figure>
                         <div className={styles.cardBody}>
                           <p className={styles.nameHospital}>{e?.name}</p>
                           <p className={styles.address}>{e?.address}</p>
-                          <Rate className={styles.rate} disabled value={3} />
-                          {/* <p>Sắp ra mắt</p> */}
+                          {rate}
                         </div>
                         <div className={styles.favorite}>
                           <Icon name='yeuthich' fill='#CBD2D9' size='15' />
@@ -171,4 +178,5 @@ export interface ListHospital {
   image: string
   message: string
   partnerId: string
+  deliveryStatus: number
 }
