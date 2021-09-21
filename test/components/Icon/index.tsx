@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as icons from '@components/Icon/icons'
+import * as icons from './icons'
 import styles from './styles.module.less'
 
 export type Icons = typeof icons
