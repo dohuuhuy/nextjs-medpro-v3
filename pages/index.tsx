@@ -5,7 +5,8 @@ import React from 'react'
 const HomePage = () => {
   return (
     <>
-      <Icon name='thongbao' fill='red' />
+      <Icon name='thongbao' />
+      <Icon name="cskh" />
       <br />
       <br />
     </>

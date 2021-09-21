@@ -6,14 +6,39 @@
 .rowDoctor{
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0 24px;
   margin: 0;
   background-color: white;
   .colFilter{
-    
+    .listFilter{
+      list-style: none;
+      
+      padding: 0;
+      margin: 0;
+      ;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li{
+        padding: 10px 8px;
+        width: 50%;
+        .selectFilter{
+          span {
+            display: flex;
+            align-items: center;
+            color: #7B8794;
+          }
+          & > div {
+            height: 40px;
+            border-radius: 16px;
+          }
+        }
+      }
+    }
   }
   .colListDoctor{
-    padding: 12px 24px;
+    padding: 12px 0;
     .listCard{
       list-style: none;
       padding: 0;

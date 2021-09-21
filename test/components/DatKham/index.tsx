@@ -10,6 +10,7 @@ import { DoctorContent } from './ListDatKham/Doctor'
 export const DatKham = () => {
   return (
     <Container className={styles.container}>
+      <Row className={styles.rowThead}></Row>
       <Row className={styles.rowBooking}>
         <Col md={24} xl={15} className={styles.colBooking}>
           <Row className={styles.Specialist}>
@@ -17,8 +18,9 @@ export const DatKham = () => {
               <p>Chuyên khoa</p>
               <DownOutlined />
             </div>
-            <Input className={styles.inputView} prefix={<Icon name='chuyenkhoa' />} placeholder="Chọn chuyên khoa" />
+            <Input className={styles.inputView} prefix={<Icon name='yeuthich' />} placeholder="Chọn chuyên khoa" />
           </Row>
+          <Icon name='chuyenkhoa' fill="red" />
           <SpecialContent />
           <Row className={styles.Doctor}>
             <div className={styles.title}>

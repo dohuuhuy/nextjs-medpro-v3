@@ -2,6 +2,7 @@ import { Icon } from '@componentsTest/Icon'
 import { uniqueId } from 'lodash'
 import React from 'react'
 import styles from './styles.module.less'
+import Image from 'next/image'
 import { Special, dataSpecial } from './utils/data'
 
 export const SpecialContent = () => {
@@ -12,7 +13,7 @@ export const SpecialContent = () => {
           return (
             <li key={uniqueId()}>
               <div className={styles.cardContent}>
-                <Icon name={item.icon} size="35" />
+                <Image src={item.image} height={25} width={25} />
                 <p>{item.name}</p>
               </div>
             </li>

@@ -2,22 +2,19 @@ import React from 'react'
 import styles from './styles.module.less'
 import { Row, Col, Button, Select } from 'antd'
 import { HeartFilled } from '@ant-design/icons'
-import { Icon } from '@componentsTest/Icon'
+import Man from './images/DoctorMan.svg'
+import Image from 'next/image'
 
 export const DoctorContent = () => {
   return (
     <Row className={styles.rowDoctor}>
       <Col xl={24} className={styles.colFilter}>
-        <ul>
+        <ul className={styles.listFilter}>
           <li>
-            <div className={styles.FilterSpecialist}>
-              <Select placeholder="Học hàm/học vị" menuItemSelectedIcon />
-            </div>
+            <Select className={styles.selectFilter} style={{ width: '100%' }} placeholder="Học hàm/học vị" />
           </li>
           <li>
-            <div className={styles.FilterSpecialist}>
-              <Select placeholder="Chuyên khoa" />
-            </div>
+            <Select className={styles.selectFilter} style={{ width: '100%' }} placeholder="Chuyên khoa" />
           </li>
         </ul>
       </Col>
@@ -28,7 +25,7 @@ export const DoctorContent = () => {
               <div className={styles.cardInfo}>
                 <div className={styles.cardBody}>
                   <figure className={styles.cardImg}>
-                    <Icon name='Woman' size='100' />
+                    <Image src={Man} width={100} height={100} />
                   </figure>
                   <div className={styles.cardText}>
                     <p>GS.TS</p>
@@ -54,7 +51,7 @@ export const DoctorContent = () => {
               <div className={styles.cardInfo}>
                 <div className={styles.cardBody}>
                   <figure className={styles.cardImg}>
-                    <Icon name='Woman' size='100' />
+                    <Image src={Man} width={100} height={100} />
                   </figure>
                   <div className={styles.cardText}>
                     <p>GS.TS</p>

@@ -1,67 +1,69 @@
 export interface Special {
-  icon: any,
+  image: string,
   name: string
 }
 
+import * as Image from '../images'
+
 export const dataSpecial = [
   {
-    icon: "ChamSocGiamNhe",
+    image: Image.ChamSocGiamNhe,
     name: "Chăm Sóc Giảm Nhẹ"
   },
   {
-    icon: "ChanThuongChinhHinh",
+    image: Image.ChanThuongChinhHinh,
     name: "Chấn Thương Chỉnh Hình",
   },
   {
-    icon: "DaLieu",
+    image: Image.DaLieu,
     name: "Da Liễu"
   },
   {
-    icon: "HauMon",
+    image: Image.HauMon,
     name: "Hậu Môn"
   },
   {
-    icon: "Mat",
+    image: Image.Mat,
     name: "Mắt"
   },
   {
-    icon: "Nhi",
+    image: Image.Nhi,
     name: "Nhi"
   },
   {
-    icon: "NoiTiet",
+    image: Image.NoiTiet,
     name: "Nội Tiết"
   },
   {
-    icon: "Phoi",
+    image: Image.NoiTiet,
     name: "Phổi"
   },
   {
-    icon: "RangHamMat",
+    image: Image.RangHamMat,
     name: "Răng Hàm Mặt"
   },
   {
-    icon: "TaiMuiHong",
+    image: Image.RangHamMat,
     name: "Tai Mũi Họng"
   },
   {
-    icon: "ThanKinh",
+    image: Image.ThanKinh,
     name: "Thần Kinh"
   },
   {
-    icon: "TieuHoa",
+    image: Image.TieuHoa,
     name: "Tiêu Hóa"
   },
   {
-    icon: "TimMach",
+    image: Image.TimMach,
     name: "Tim Mạch"
   },
   {
-    icon: "TuVanDinhDuong",
+    image: Image.TuVanDinhDuong,
     name: "Khám và Tư Vấn Dinh Dưỡng"
   },
   {
-    icon: "XuongKhop",
+    image: Image.XuongKhop,
     name: "Xương Khớp"
   }
 ]
