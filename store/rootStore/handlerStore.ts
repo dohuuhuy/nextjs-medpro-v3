@@ -1,13 +1,13 @@
 import { NODE_ENV } from '@config/envs/env'
 import { VERSION } from '@config/version'
-import { applyMiddleware, Middleware, StoreEnhancer } from 'redux'
+import { applyMiddleware, Middleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Persistor } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
 
 export const sagaMiddleware = createSagaMiddleware()
 
-export const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
+export const bindMiddleware = (middleware: Middleware[]) => {
   if (NODE_ENV !== 'production') {
     return composeWithDevTools(applyMiddleware(...middleware))
   }

@@ -24,6 +24,7 @@ const HomePage = ({ data }: any) => {
       check(user?.listPatient) &&
       dispatch(ac.ListPatientRequest())
   })
+
   return <NewsAndEvent {...data} />
 }
 

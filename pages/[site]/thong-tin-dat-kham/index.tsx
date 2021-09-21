@@ -1,7 +1,5 @@
 import * as ac from '@actionStore/rootAction'
-import { Reserver, ThongTinDatKham } from '@componentsTest/ThongTinDatKham'
 import { check } from '@utils/checkValue'
-import { find } from 'lodash'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
@@ -20,19 +18,19 @@ const ThongTinDatKhamPage = () => {
     check(hospital?.bookingTree) &&
       dispatch(ac.getBookingTree(router.query?.site))
     check(listPatient) && dispatch(ac.ListPatientRequest())
-  }, [])
+  }, [dispatch, hospital?.bookingTree, listPatient, router.query?.site])
 
-  const { partnerId } = router.query
+  // const { partnerId } = router.query
 
-  const findHospital = find(hospital?.listHospital, { partnerId })
+  // const findHospital = find(hospital?.listHospital, { partnerId })
 
-  const methods: Reserver = {
-    listPatient,
-    bookingTree: hospital?.bookingTree,
-    info: findHospital
-  }
+  // const methods = {
+  //   listPatient,
+  //   bookingTree: hospital?.bookingTree,
+  //   info: findHospital
+  // }
 
-  return <ThongTinDatKham {...methods} />
+  return <p>Đang phát triển</p>
 }
 
 ThongTinDatKhamPage.Layout = DefaultLayout

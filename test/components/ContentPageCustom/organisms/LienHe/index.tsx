@@ -36,7 +36,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
         </Col>
 
         <Col xl={16} lg={16} md={24} sm={24} className={styles.colFormContact}>
-          <ContactDetail dataContactDetail={content.detailsContact} />
+          <ContactDetail />
         </Col>
       </Row>
 
