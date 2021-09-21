@@ -15,7 +15,7 @@ export const HeaderCustom = (Props: PropsHeader) => {
   const { dataHeader, Authencation } = Props
   const { logo, menu } = dataHeader
   return (
-    <Container fluid className={styles.header}>
+    <Container fluid fixed className={styles.header}>
       <Container className={styles.containerHeader}>
         <Row className={styles.rowGroup}>
           <Col xl={24} className={styles.colGroup}>
