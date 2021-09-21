@@ -4,31 +4,32 @@
 
   display: flex;
   flex-wrap: wrap;
-  grid-gap: 12px 12px;
 
   padding: 0 24px;
-  // margin: 0 24px;
+  margin: 0;
 
   background-color: white;
-  .cardContent{
-    max-width: calc((650px - 96px) / 4);
-    min-width: calc((650px - 96px) / 4);
-    max-height: 125px;
-    min-height: 125px;
-
-    border: 1px solid #CBD2D9;
-    border-radius: 8px;
-    padding: 11px 5px;
-    text-align: center;
-
+  li{
+    padding: 6px;
+    width: 25%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    p{
-      padding-top: 10px;
-      font-size: 14px;
-      font-weight: 600;
+    align-items: stretch;
+    .cardContent{
+      width: 100%;
+  
+      border: 1px solid #CBD2D9;
+      border-radius: 8px;
+      padding: 11px 5px;
+      text-align: center;
+  
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      p{
+        padding-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
   }
 }

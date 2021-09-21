@@ -5,7 +5,7 @@ import cx from 'classnames'
 import * as icons from './icons'
 export type Icons = typeof icons
 export type IconName = keyof Icons
-export type IconSize = '20' | '25' | '30' | '35' | '40' | '50' | '60' | '80'
+export type IconSize = '20' | '25' | '30' | '35' | '40' | '50' | '60' | '80' | '90' | '100'
 
 interface IconProps {
   name: IconName

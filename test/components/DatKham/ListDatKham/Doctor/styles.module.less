@@ -1,11 +1,74 @@
+.text(@size, @weight, @color){
+  font-size: @size;
+  font-weight: @weight;
+  color: @color;
+}
 .rowDoctor{
-  .colFilter{}
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  .colFilter{
+    
+  }
   .colListDoctor{
+    padding: 12px 24px;
     .listCard{
       list-style: none;
+      padding: 0;
       .cardContent{
-        border: 1px solid red;
-        width: 100%;
+        border: 1px solid #DEE3E7;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 24px;
+        margin-bottom: 12px;
+        .cardInfo{
+          .cardBody{
+            display: flex;
+            .cardImg{
+              margin: 0 16px 12px 0;
+            }
+            .cardText{
+              p:first-child{
+                .text(14px, 400,#323F4B)
+              }
+              p:nth-child(2){
+                .text(16px, 600, #323F4B)
+              }
+              p:nth-child(3){
+                .text(14px, 400, #00B5F1)
+              }
+              p:last-child{
+                .text(14px, 400, #7B8794);
+                span{
+                  color:#323F4B;
+                }
+              }
+            }
+          }
+          .cardFooter{
+            p:first-child{
+              .text(14px, 500, #00B5F1)
+            }
+            p:last-child{
+              .text(14px, 500, #7B8794);
+              span{
+                font-weight: 600;
+              }
+            }
+          }
+        }
+        .cardFunc{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          button{
+            border-radius: 16px;
+          }
+        }
       }
     }
   }
