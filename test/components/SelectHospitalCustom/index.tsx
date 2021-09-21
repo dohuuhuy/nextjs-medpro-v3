@@ -127,7 +127,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                           <Image
                             src={urlImage}
                             alt='icon'
-                            // onError={onError}
                             width='50'
                             height='50'
                           />
@@ -136,6 +135,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                           <p className={styles.nameHospital}>{e?.name}</p>
                           <p className={styles.address}>{e?.address}</p>
                           <Rate className={styles.rate} disabled value={3} />
+                          <p>Sắp ra mắt</p>
                         </div>
                         <div className={styles.favorite}>
                           <Icon name='yeuthich' fill='#CBD2D9' size='15' />
