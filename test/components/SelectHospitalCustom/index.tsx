@@ -1,11 +1,11 @@
-import Container from '@componentsTest/Container'
-import { Icon } from '@componentsTest/Icon'
 import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { checkData, DataFailure } from '../DataFailure'
+import Container from './../Container'
+import { Icon } from './../Icon'
 import styles from './styles.module.less'
 
 const { Option } = Select
@@ -60,7 +60,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     }
   }
   return (
-    <div className={styles.container}>
+    <Container fluid className={styles.container}>
       <Row className={styles.rowSelect}>
         <Col span='24' className={styles.colGroupInputSelect}>
           <Container className={styles.conGroup}>
@@ -135,7 +135,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                           <p className={styles.nameHospital}>{e?.name}</p>
                           <p className={styles.address}>{e?.address}</p>
                           <Rate className={styles.rate} disabled value={3} />
-                          <p>Sắp ra mắt</p>
+                          {/* <p>Sắp ra mắt</p> */}
                         </div>
                         <div className={styles.favorite}>
                           <Icon name='yeuthich' fill='#CBD2D9' size='15' />
@@ -149,7 +149,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
           </Container>
         </Col>
       </Row>
-    </div>
+    </Container>
   )
 }
 
@@ -158,13 +158,13 @@ export interface SelectHospital {
   listCity: ListCity[]
 }
 
-interface ListCity {
+export interface ListCity {
   id: string
   name: string
   code: string
 }
 
-interface ListHospital {
+export interface ListHospital {
   id: string
   name: string
   address: string

@@ -1,9 +1,7 @@
 import Container from '@componentsTest/Container'
 import { Col, Row, Space } from 'antd'
-import { Footer } from 'antd/lib/layout/layout'
 import cx from 'classnames'
 import { uniqueId } from 'lodash-es'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -15,7 +13,7 @@ export const FooterCustom = (props: FooterIF) => {
   const { menu, logo, contact, downApp, certificate } = props
 
   return (
-    <Footer className={styles.footer}>
+    <Container fluid className={styles.footer}>
       <Container className={styles.container}>
         <Row className={styles.rowMenu}>
           <Col span='24' className={styles.colMenu}>
@@ -117,6 +115,6 @@ export const FooterCustom = (props: FooterIF) => {
           </Col>
         </Row>
       </Container>
-    </Footer>
+    </Container>
   )
 }
