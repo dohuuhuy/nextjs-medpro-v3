@@ -1,7 +1,9 @@
+export { default as plus } from './plus.svg'
+export { default as minus } from './minus.svg'
+
 export { default as cskh } from './cskh.svg'
 export { default as thongbao } from './thongbao.svg'
 export { default as timkiem } from './timkiem.svg'
-export { default as yeuthich } from './yeuthich.svg'
 
 export { default as chuyenkhoa } from '@componentsTest/DatKham/icon/Specialist.svg'
 export { default as bacsi } from '@componentsTest/DatKham/icon/Doctor.svg'
