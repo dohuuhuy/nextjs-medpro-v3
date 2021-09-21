@@ -12,9 +12,6 @@ interface IconProps {
   fill?: any
 }
 
-/**
- * Icon
- */
 export const Icon: React.FC<IconProps> = ({ name, size = '20', fill }) => {
   console.log(`icons[name]`, icons[name])
 
