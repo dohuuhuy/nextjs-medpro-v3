@@ -1,0 +1,41 @@
+.background {
+  background-size: cover;
+  background: linear-gradient(to bottom right, #2fa0ec, #05e3fd);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .background();
+  .Breadcrumb {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    padding: 10px 0;
+    li {
+      display: flex;
+      align-items: flex-start;
+      padding: 0 5px;
+      a {
+        font-size: 13px;
+        color: white;
+        padding: 0 5px;
+      }
+      span {
+        fill: white;
+      }
+      &:last-child {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

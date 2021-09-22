@@ -1,182 +1,159 @@
 // css mixin
 .ListCustom {
   list-style-type: none;
-  width: 80%;
+
   padding: 0;
   margin: 0;
   text-align: left;
 }
 
-.container {
-  .conGroup,
-  .conList {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
+.dnone {
+  display: none !important;
+}
+
+.bookingType {
+  .rowSlider {
+    margin-bottom: 30px;
   }
-
-  .rowSelect {
-    .colGroupInputSelect {
-      margin-bottom: 1rem;
-      padding: 15px;
+  .rowType {
+    background-color: white;
+    border-radius: 8px;
+    .colType {
+      min-height: 280px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      background: linear-gradient(to bottom right, #2fa0ec, #05e3fd);
-      h2 {
-        text-align: center;
-        color: white;
-      }
-      .GroupInputSelect {
-        .ListCustom ();
+      align-items: flex-end;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      .wrapper {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.8) 68.34%,
+          rgba(0, 0, 0, 0.88) 100%
+        );
+        width: 100%;
         display: flex;
-        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        .card {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          min-width: 900px;
+          max-width: 900px;
+          margin: 24px 0;
 
-        li {
-          padding: 7.5px;
-          width: 50%;
-          .inputSearch {
-            max-height: 40px;
-            align-content: center;
-            align-items: center;
-            border-radius: 25px;
-            background-color: #31afdd;
-            border: none;
-            color: white;
-
-            input {
-              font-size: 13px;
-              padding-left: 7px;
-              background-color: #31afdd;
-            }
-          }
-          .inputSelect {
-            span {
+          .cardBody {
+            p,
+            a,
+            h3 {
               color: white;
             }
-            & > div {
-              height: 40px;
-              border-radius: 25px;
-              align-content: center;
-              align-items: center;
-              font-size: 13px;
-              background-color: #2abee0;
-              border: none;
+            a {
+              text-decoration: underline;
               &:hover {
-                cursor: pointer;
+                color: #00b5f1;
               }
             }
           }
-        }
-      }
-    }
-    .colListCard {
-      padding: 0 15px;
-      display: flex;
-      justify-content: center;
-      .listCard {
-        .ListCustom();
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        justify-content: flex-start;
-        li {
-          display: flex;
-          align-items: stretch;
-          padding: 10px 7.5px;
-          width: 50%;
-          .cardHospital {
-            background-color: white;
+          .groupIcon {
             display: flex;
-            align-content: center;
-            justify-content: space-evenly;
-
-            width: 100%;
-            min-height: 110px;
-            padding: 15px 10px;
-
-            border: 0.5px solid #e3e7eb;
-            box-sizing: border-box;
-            border-radius: 8px;
-
-            .cardView {
+            .btnIcon {
+              margin: 0 7.5px;
+              border: none;
+              border-radius: 100%;
               display: flex;
               justify-content: center;
               align-items: center;
-
-              max-width: 15%;
-              min-width: 15%;
-              margin-bottom: 0;
-              img {
-                max-width: 50px;
+              height: 35px;
+              width: 35px;
+              background-color: hsla(0, 0%, 100%, 0.3);
+              transition: all 0.3s ease-in-out;
+              &:hover {
+                box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+                transform: translateY(-0.5rem);
+                background-color: hsla(181, 47%, 57%, 0.3);
               }
-            }
-            .cardBody {
-              min-width: 70%;
-              max-width: 70%;
-              .nameHospital {
-                font-size: 12px;
-                font-weight: 600;
-              }
-              .address {
-                font-size: 12px;
-                color: #828282;
-                font-weight: 400;
-              }
-              .rate {
-                display: flex;
-                font-size: 15px;
-                width: 8px;
-                margin: -18px -10px -12px;
-                transform: scale(0.8);
-              }
-            }
-
-            &:hover {
-              border-color: #0352cc !important;
-              box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 9%);
-              cursor: pointer;
-              color: #0352cc;
             }
           }
         }
       }
     }
-  }
-}
+    .colTab {
+      display: flex;
+      justify-content: center;
+      .listTab {
+        .ListCustom();
+        display: flex;
+        justify-content: center;
 
-@media (max-width: 426px) {
-  .containerSelectHospitalCustom {
-    .GroupInputSelect {
-      li {
-        width: 100% !important;
+        li {
+          font-weight: 500;
+          text-align: center;
+          padding: 15px;
+          min-width: 200px;
+          &:hover,
+          &:focus {
+            border-bottom: 3px solid #00b5f1;
+            color: #00b5f1;
+          }
+        }
+        .active {
+          color: #00b5f1;
+          border-bottom: 3px solid #00b5f1;
+        }
       }
     }
   }
-}
+  .rowContent {
+    margin: 30px 0;
+    border-radius: 8px;
+    background-color: white;
+    .colContent {
+      display: flex;
+      justify-content: center;
 
-@media (max-width: 768px) {
-  .containerSelectHospitalCustom {
-    .colGroupInputSelect,
-    .colListCard {
-      padding: 0 !important;
-    }
-    .GroupInputSelect,
-    .listCard {
-      width: 100% !important;
-    }
-  }
-}
+      .tab_Type,
+      .tab_Intro,
+      .tab_Comment {
+        min-height: 312px;
+      }
 
-@media (max-width: 608px) {
-  .containerSelectHospitalCustom {
-    .colListCard {
-      .listCard {
-        li {
-          width: 100% !important;
+      .tab_Type {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .listType {
+          margin: -1px;
+          .ListCustom();
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+
+          li {
+            width: 33.3333333333%;
+            padding: 15px;
+            border: 0.5px solid #e3e7eb;
+            border-top: 0;
+            border-left: 0;
+            border-collapse: collapse;
+            .card {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              figure {
+                margin-bottom: 5px;
+              }
+            }
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+              transform: translateY(-0.1rem);
+            }
+          }
         }
       }
     }

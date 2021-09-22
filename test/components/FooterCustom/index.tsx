@@ -1,7 +1,8 @@
 import Container from '@componentsTest/Container'
 import { Col, Row, Space } from 'antd'
 import cx from 'classnames'
-import { uniqueId } from 'lodash-es'
+import { uniqueId } from 'lodash'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

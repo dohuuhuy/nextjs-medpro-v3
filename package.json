@@ -40,7 +40,6 @@
     "framer-motion": "4.1.17",
     "install": "0.13.0",
     "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
     "medpro-sdk": "git+http://gitlab+deploy-token-180303:zfRxNF8DjXzSP3489f1q@gitlab.com/medpro/medpro-sdk.git#develop",
     "moment": "^2.29.1",
     "next": "latest",
@@ -68,7 +67,6 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "11.1.2",
     "@types/lodash": "4.14.172",
-    "@types/lodash-es": "4.17.4",
     "@types/node": "16.7.10",
     "@types/react": "17.0.20",
     "@types/svg-sprite-loader": "3.9.4",

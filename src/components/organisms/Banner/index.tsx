@@ -8,7 +8,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { AppState, Information } from 'store/interface'
 
-const BannerLayout = (info: Information) => {
+const Banners = (info: Information) => {
   const router = useRouter()
   const hos = useSelector((state: AppState) => state.hospital)
   const {
@@ -20,22 +20,23 @@ const BannerLayout = (info: Information) => {
   const getBanner = find(info.banners, { key })
 
   if (check(getBanner)) {
-    const { menuHeader, insideLink, menuMobile } = info.header
-    const listMenu = [].concat(menuHeader, insideLink, menuMobile)
+    const { menu, insideLink } = info.header
+    const listMenu = [].concat(menu, insideLink)
+
     const getLink = find(listMenu, (o: any) => {
-      return o.link !== '/' && pathname.includes(o.link)
+      return o?.link !== '/' && pathname.includes(o?.link)
     })
 
     return check(getLink) ? null : <BreadcumbCustom listMenu={listMenu} />
   }
 
-  const methos: Banner = {
+  const methods: Banner = {
     getBanner,
     listFeature: hos?.listFeatureByApp,
     partnerId: info?.partnerId
   }
 
-  return <BannersCustom {...methos} />
+  return <BannersCustom {...methods} />
 }
 
-export default BannerLayout
+export default Banners

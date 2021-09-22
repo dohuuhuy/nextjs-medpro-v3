@@ -1,0 +1,128 @@
+// mixin css
+.customLine( @line) {
+  text-align: justify;
+  text-transform: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.CustomCardBody (@descNone) {
+  .title {
+    font-size: 13px;
+    font-weight: 500;
+    .customLine(2);
+    margin-bottom: 5px;
+  }
+  .author {
+    font-weight: 500;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .description {
+    font-size: 13px;
+    margin: 0;
+    .customLine(4);
+    display: @descNone;
+  }
+}
+// .hover(){
+//   color:#0056B3;
+//   cursor: pointer;
+// }
+// Css main News page
+.ContainerNews {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .rowHeader {
+    .colRight,
+    .colLeft {
+      padding: 0 15px;
+      .listNews {
+        margin: 15px 0;
+        padding: 0;
+        .cardNews {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          padding: 7.5px 0;
+          .cardView {
+            margin-bottom: 1rem;
+            div {
+              height: 100%;
+            }
+          }
+          .cardBody {
+            .CustomCardBody(block);
+          }
+        }
+      }
+    }
+  }
+  .rowContent {
+    .colContent {
+      padding: 0 15px;
+      .Pagination {
+        align-items: center;
+        text-align: center;
+      }
+      .listNews {
+        border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+        padding: 15px 0;
+        .cardNews {
+          display: flex;
+          flex-direction: revert;
+          justify-content: stretch;
+          padding: 7.5px 0;
+          .cardView {
+            width: 40%;
+            margin: 0;
+            div {
+              height: 100%;
+            }
+          }
+          .cardBody {
+            width: 60%;
+            padding-left: 15px;
+            @media (max-width: 426px) {
+              padding-left: 5px;
+            }
+            .CustomCardBody(block);
+            @media only screen and (max-width: 426px) {
+              .description {
+                display: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ContainerNews {
+    .rowHeader {
+      .colRight,
+      .colLeft {
+        padding: 0;
+      }
+    }
+    .rowContent {
+      .colContent {
+        padding: 0;
+      }
+    }
+  }
+}

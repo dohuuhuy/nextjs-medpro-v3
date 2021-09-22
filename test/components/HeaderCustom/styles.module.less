@@ -1,39 +1,8 @@
-@media (max-width: 1020px) {
-  .containerHeader {
-    display: none;
-  }
-}
 .header {
   background-color: white;
   padding: 15px 0;
-  .rowGroup {
-    .colGroup {
-      .groupBtn {
-        .listCustom();
-        li {
-          margin: 0 5px;
-          .btn {
-            font-weight: 500;
-            padding: 5px;
-            border-radius: 15px;
-            border: none;
-            display: flex;
-            align-items: center;
-            align-content: center;
-            justify-content: center;
-            background-color: white;
-            &:hover {
-              background-color: #00b5f1;
-              color: white;
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
-  }
+
   .rowHeader {
-    align-items: center;
     .colLogo {
       display: flex;
       align-items: flex-end;
@@ -50,6 +19,38 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+
+      .groupBtn {
+        .listCustom();
+        li {
+          margin: 0 5px;
+          .btn {
+            font-size: 13px;
+            color: #002e64;
+            font-weight: 500;
+            padding: 5px;
+            border-radius: 15px;
+            border: none;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+              transform: translateY(-0.3rem);
+              background-color: #00b5f1;
+              color: white;
+              cursor: pointer;
+              span {
+                fill: white;
+              }
+            }
+          }
+        }
+      }
+
       .listMenu {
         .listCustom();
         li {
@@ -57,17 +58,20 @@
           margin: 0 5px;
           border: none;
           border-radius: 15px;
+          transition: all 0.3s ease-in-out;
           &:hover {
+            box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+            transform: translateY(-0.3rem);
             background-color: #00b5f1;
             a {
               color: white;
-              cursor: pointer;
             }
           }
           a {
+            color: #002e64;
             width: 100%;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             white-space: nowrap;
             transition: unset;
           }

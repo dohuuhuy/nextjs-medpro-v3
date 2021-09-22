@@ -1,0 +1,236 @@
+.customText(@size, @line, @fw) {
+  font-size: @size !important;
+  font-weight: @fw;
+  text-align: justify;
+  text-transform: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.ListCustom {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.CustomCardBody (@descNone) {
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: justify;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+  .author {
+    font-weight: 500;
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 5px;
+  }
+  .description {
+    font-size: 13px;
+    text-align: justify;
+    display: @descNone;
+    margin-bottom: 0;
+  }
+}
+
+.dataNewsAndEvent {
+  margin-bottom: 60px !important;
+  .rowTitle {
+    h2 {
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+  }
+  .rowListNews {
+    justify-content: center;
+    .colListNewsPin {
+      .ListNewsAndEvent {
+        .ListCustom();
+        li {
+          transition: all 0.3s ease-in-out;
+          padding: 10px;
+          height: 100%;
+          &:hover {
+            border-radius: 10px;
+            box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+            transform: translateY(-0.5rem);
+          }
+          .cardNews {
+            .cardBody {
+              .CustomCardBody(block);
+            }
+          }
+        }
+      }
+    }
+    .colListNews {
+      .ListNewsAndEvent {
+        .ListCustom();
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            border-radius: 10px;
+            box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+            transform: translateY(-0.5rem);
+          }
+          padding: 10px;
+          width: 50%;
+          .cardNews {
+            .cardBody {
+              .CustomCardBody(none);
+            }
+          }
+        }
+      }
+    }
+  }
+  .rowBtnViewDetails {
+    justify-content: center;
+    padding: 15px 0;
+
+    a {
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+      letter-spacing: 3px;
+      font-weight: 500;
+      color: #627792;
+      width: unset;
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .dataNewsAndEvent {
+    .rowListNews {
+      .colListNewsPin {
+        .ListNewsAndEvent {
+          li {
+            width: 100%;
+            .cardNews {
+              display: flex;
+              flex-direction: revert;
+
+              .cardView {
+                width: 45% !important;
+                div {
+                  height: 100%;
+                }
+              }
+              .cardBody {
+                width: 55% !important;
+                margin-left: 10px;
+                .description,
+                .author {
+                  display: none !important;
+                }
+              }
+            }
+          }
+        }
+      }
+      .colListNews {
+        .ListNewsAndEvent {
+          li {
+            width: 100% !important;
+            .cardNews {
+              .cardView {
+                width: 45%;
+                div {
+                  height: 100%;
+                }
+              }
+              .cardBody {
+                width: 55%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .dataNewsAndEvent {
+    .rowListNews {
+      .colListNewsPin {
+        .ListNewsAndEvent {
+          margin: 7.5px 0;
+          li {
+            width: 100%;
+            .cardNews {
+              display: flex;
+              flex-direction: revert;
+              .cardView {
+                width: 40%;
+                margin-bottom: 0;
+              }
+              .cardBody {
+                width: 60%;
+
+                margin-left: 10px;
+                .title {
+                  font-size: 12px;
+                }
+                .time,
+                .author {
+                  display: unset;
+                }
+                .author {
+                  margin-left: 5px;
+                }
+                .description {
+                  padding-top: 5px;
+                  .customText(12, 4, none);
+                }
+              }
+            }
+          }
+        }
+      }
+      .colListNews {
+        .ListNewsAndEvent {
+          margin: 7.5px 0;
+          li {
+            width: 50%;
+            .cardNews {
+              display: flex;
+              flex-direction: revert;
+
+              .cardView {
+                width: 45%;
+                margin-bottom: 0;
+              }
+              .cardBody {
+                width: 55%;
+                margin-left: 10px;
+                .title {
+                  font-size: 12px;
+                }
+                .description,
+                .author {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
