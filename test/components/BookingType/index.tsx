@@ -1,16 +1,17 @@
-import Container from '@componentsTest/Container'
-import { Icon } from '@componentsTest/Icon'
+import Container from '../Container'
+import { Icon } from '../Icon'
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
+import Slider from 'react-slick'
+import { BookingTypeIF } from './interface'
 import styles from './styles.module.less'
+import { carousel, listTabs, settings } from './utils'
 
-export const BookingType = (props: BookingType) => {
+export const BookingType = (props: BookingTypeIF) => {
   const info = props?.getInfo || null
-
   const [act, setact] = React.useState(1)
 
   const checkTab = (e: any) => {
@@ -121,55 +122,4 @@ export const BookingType = (props: BookingType) => {
       </Row>
     </Container>
   )
-}
-
-const carousel = [
-  {
-    image: '/images/bookingType/slide.png'
-  }
-]
-
-const listTabs = [
-  {
-    id: 1,
-    title: 'Giới thiệu'
-  },
-  { id: 2, title: 'Dịch vụ' },
-  {
-    id: 3,
-    title: 'Đánh giá'
-  }
-]
-
-export const settings: Settings = {
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000
-}
-
-export interface BookingType {
-  getInfo: {
-    image: string
-    bannerImage: string
-    name: string
-    address: string
-    domain: string
-    features: {
-      children: []
-      createdAt: '2020-07-09T01:59:01.275Z'
-      disabled: false
-      id: '5f0679e5672b040019c7d4d3'
-      image: 'https://medpro-api-v2-testing.medpro.com.vn/st/feature/dv4.svg'
-      message: ''
-      mobileStatus: true
-      name: 'Thanh toán Viện phí'
-      priority: 1
-      status: true
-      type: 'payment.fee'
-      updatedAt: '2020-07-09T01:59:01.275Z'
-      webStatus: false
-    }[]
-  }
 }
