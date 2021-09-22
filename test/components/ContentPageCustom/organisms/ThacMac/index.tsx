@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
 import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
@@ -8,10 +9,6 @@ import styles from './styles.module.less'
 const { Panel } = Collapse
 
 export const ThacMacContent = ({ content }: any) => {
-  if (checkData(content)) {
-    return <DataFailure desc={'Lỗi không có data thắc mắc'} />
-  }
-
   const [Faq, setFaq] = useState({
     id: 1,
     faq: []
@@ -34,6 +31,10 @@ export const ThacMacContent = ({ content }: any) => {
   }
 
   const ContentFaq = useMemo(() => funcFaq(Faq?.faq), [Faq?.faq])
+
+  if (checkData(content)) {
+    return <DataFailure desc={'Lỗi không có data thắc mắc'} />
+  }
 
   return (
     <Container className={styles.ThacMacContent}>

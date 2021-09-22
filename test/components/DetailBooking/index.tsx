@@ -1,58 +1,56 @@
+import { CloseOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import { Button, Col, Row } from 'antd'
-import React from 'react'
-import styles from './styles.module.less'
-import Image from 'next/image'
-import Barcode from 'react-barcode'
 import { uniqueId } from 'lodash'
-import { CloseOutlined } from '@ant-design/icons'
+import React from 'react'
+import Barcode from 'react-barcode'
+import styles from './styles.module.less'
 
 export const DetailBooking = () => {
   const data = [
     {
       title: 'Hình thức khám:',
-      value: 'Dịch vụ',
+      value: 'Dịch vụ'
     },
     {
-      title: "Phòng khám",
-      value: "P.Khám Da Liễu"
+      title: 'Phòng khám',
+      value: 'P.Khám Da Liễu'
     },
     {
       title: 'Chuyên khoa:',
-      value: "Da Liễu",
+      value: 'Da Liễu'
     },
     {
       title: 'Bác sĩ:',
-      value: "Nguyễn Văn A",
+      value: 'Nguyễn Văn A'
     },
     {
-      title: "Ngày khám",
-      value: "14/07/2021"
+      title: 'Ngày khám',
+      value: '14/07/2021'
     },
     {
-      title: "Giờ khám dự kiến",
-      value: "07:30 - 08:30"
+      title: 'Giờ khám dự kiến',
+      value: '07:30 - 08:30'
     },
     {
-      title: "Giờ khám dự kiến",
-      value: "07:30 - 08:30"
+      title: 'Giờ khám dự kiến',
+      value: '07:30 - 08:30'
     },
     {
       title: 'Bệnh nhân:',
-      value: 'Huỳnh Ngọc Toàn',
+      value: 'Huỳnh Ngọc Toàn'
     },
     {
       title: 'Phí khám:',
-      value: '200.000 VNĐ',
+      value: '200.000 VNĐ'
     },
     {
       title: 'Mã phiếu:',
-      value: 'W2005069999',
-    },
+      value: 'W2005069999'
+    }
   ]
   return (
     <Container className={styles.container}>
-
       <Row className={styles.rowDetailBooking}>
         <Col xl={24} className={styles.colDetailBooking}>
           <h3>PHIẾU KHÁM BỆNH</h3>
@@ -64,7 +62,7 @@ export const DetailBooking = () => {
 
             <div className={styles.barcode}>
               <p>Mã hẹn khám</p>
-              <Barcode value="123456789" />
+              <Barcode value='123456789' />
             </div>
 
             <div className={styles.status}>
@@ -83,7 +81,10 @@ export const DetailBooking = () => {
                 return (
                   <li key={uniqueId()}>
                     <div className={styles.itemBooking}>
-                      <p>{title}<span>{value}</span></p>
+                      <p>
+                        {title}
+                        <span>{value}</span>
+                      </p>
                     </div>
                   </li>
                 )
@@ -96,13 +97,21 @@ export const DetailBooking = () => {
               <p>Lưu ý:</p>
               <ul className={styles.listNote}>
                 <li>
-                  <p>Quý bệnh nhân vui lòng đến phòng khám trước hẹn 15 phút để được hướng dẫn và khám bệnh.</p>
+                  <p>
+                    Quý bệnh nhân vui lòng đến phòng khám trước hẹn 15 phút để
+                    được hướng dẫn và khám bệnh.
+                  </p>
                 </li>
                 <li>
-                  <p>Phiếu khám bệnh chỉ có giá trị trong ngày khám từ 6h30 - 20h00.</p>
+                  <p>
+                    Phiếu khám bệnh chỉ có giá trị trong ngày khám từ 6h30 -
+                    20h00.
+                  </p>
                 </li>
                 <li>
-                  <p>Quý bệnh nhân cần hỗ trợ vui lòng liên hệ tổng đài 19002115</p>
+                  <p>
+                    Quý bệnh nhân cần hỗ trợ vui lòng liên hệ tổng đài 19002115
+                  </p>
                 </li>
                 <li>
                   <p>Thông tin hướng dẫn cần biết khi đi khám chữa bệnh.</p>
@@ -110,7 +119,10 @@ export const DetailBooking = () => {
               </ul>
             </div>
           </Container>
-          <Button className={styles.btnCancel}><CloseOutlined />Hủy phiếu</Button>
+          <Button className={styles.btnCancel}>
+            <CloseOutlined />
+            Hủy phiếu
+          </Button>
         </Col>
       </Row>
     </Container>

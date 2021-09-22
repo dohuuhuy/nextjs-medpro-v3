@@ -1,0 +1,158 @@
+.thoigian {
+  .groupGuide {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 15px 0;
+    .guide {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      .btn {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+        margin-right: 5px;
+      }
+      .empty {
+        background: #b2ecff;
+      }
+      .selected {
+        background: #ffb340;
+      }
+      .full {
+        background: #ff6666;
+      }
+    }
+  }
+  .calendar {
+    margin-bottom: 30px;
+    .header {
+      text-transform: uppercase;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 0;
+      // border: 1px solid #dfe3eb;
+
+      background: #00b5f1;
+      border-radius: 8px 8px 0px 0px;
+      color: white;
+    }
+    .weekContainer,
+    .dayContainer {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .weekContainer {
+      font-weight: 600;
+      .weekCell {
+        white-space: nowrap;
+        background: #f7f7f7;
+        &:first-child {
+          color: #fa531f;
+        }
+        &:last-child {
+          color: #faa01f;
+        }
+      }
+    }
+
+    .weekCell,
+    .dayCell {
+      flex: 0 0 calc(100% / 7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      // border: 1px solid #dfe3eb;
+      span {
+        padding: 10px;
+        min-width: 40px;
+        text-align: center;
+        &:hover {
+          background-color: #1da1f2;
+          color: #ffffff !important;
+          cursor: pointer;
+          font-weight: 500;
+        }
+      }
+    }
+    .dayCell_Faded {
+      opacity: 0.4;
+    }
+    .today {
+      span {
+        border-radius: 5px;
+        background-color: #1da1f2;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
+  }
+  .time {
+    .morning {
+      .listMorning {
+        .listTime();
+      }
+    }
+    .afternoon {
+      .listAfternoon {
+        .listTime();
+      }
+    }
+    .btnTime {
+      background: #d6f3fd;
+      border-radius: 30px;
+      border: none;
+      padding: 10px;
+      color: #00b5f1;
+    }
+  }
+
+  .hint {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    background: #fff2cc;
+    border: 0.5px solid #ffcc80;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    .phone {
+      min-width: 175px;
+      background: #00b5f1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      color: white;
+      font-size: 12px;
+      span {
+        fill: white;
+      }
+    }
+  }
+}
+
+// --------------------- css mixin
+.listTime {
+  list-style-type: none;
+
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.dnone {
+  display: none !important;
+}
