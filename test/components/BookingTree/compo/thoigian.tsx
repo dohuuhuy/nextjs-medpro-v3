@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from '../../Icon'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { range } from 'lodash'
