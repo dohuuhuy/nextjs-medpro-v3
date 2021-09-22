@@ -1,9 +1,10 @@
 import { CloseOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
-import { Col, Row } from 'antd'
+import { Button, Col, Row } from 'antd'
 import { uniqueId } from 'lodash'
 import React from 'react'
 import Barcode from 'react-barcode'
+import styles from './styles.module.less'
 
 export const DetailBooking = () => {
   const data = [
