@@ -1,0 +1,54 @@
+.dichVu {
+  .groupBtn {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li {
+      .btn {
+        border-radius: 8px;
+        // border: 0.5px solid #cbd2d9;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px;
+        color: #00b5f1;
+        background: #f2fcff;
+        min-width: 175px;
+        &:hover {
+          background: #00b5f1;
+          border: none;
+          color: white;
+        }
+      }
+      &:first-child {
+        .btn {
+          background: #00b5f1;
+          border: none;
+          color: white;
+        }
+      }
+    }
+  }
+  .questionBHYT {
+    display: flex;
+
+    .groupRadio {
+      margin-left: 15px;
+      display: flex;
+      .radio {
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import React from 'react'
 import Container from '../Container'
 import { Icon } from '../Icon'
 import { Stepper } from './stepper'
-import styles from './styles.module.less'
+import styles from './less/styles.module.less'
 import { steps } from './utils'
 
 export interface BookingTreeIF {

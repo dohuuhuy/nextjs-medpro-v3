@@ -1,6 +1,6 @@
 import Container from '../Container'
 import React from 'react'
-import styles from './styles.module.less'
+import styles from './less/stepper.module.less'
 import { Col, Row } from 'antd'
 import { steps } from './utils'
 

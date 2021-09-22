@@ -1,6 +1,8 @@
 import { Icon } from '../Icon'
 import React from 'react'
 import { Steps } from './interface'
+import { DichVu } from './compo/dichvu'
+import { ThoiGian } from './compo/thoigian'
 
 export const steps: Steps[] = [
   {
@@ -11,16 +13,16 @@ export const steps: Steps[] = [
   {
     title: 'Bác sĩ',
     icon: <Icon name='bacsi' />,
-    content: 'd dvd d'
+    content: ''
   },
   {
     title: 'Dịch vụ',
     icon: <Icon name='dichvu' />,
-    content: 'dv ddddddddddđ'
+    content: <DichVu />
   },
   {
     title: 'Ngày giờ',
     icon: <Icon name='ngaygio' />,
-    content: 'dv hhhhhhuyi'
+    content: <ThoiGian />
   }
 ]
