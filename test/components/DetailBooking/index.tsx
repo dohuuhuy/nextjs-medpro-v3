@@ -5,6 +5,7 @@ import styles from './styles.module.less'
 import Image from 'next/image'
 import Barcode from 'react-barcode'
 import { uniqueId } from 'lodash'
+import { CloseOutlined } from '@ant-design/icons'
 
 export const DetailBooking = () => {
   const data = [
@@ -109,6 +110,7 @@ export const DetailBooking = () => {
               </ul>
             </div>
           </Container>
+          <Button className={styles.btnCancel}><CloseOutlined />Hủy phiếu</Button>
         </Col>
       </Row>
     </Container>
