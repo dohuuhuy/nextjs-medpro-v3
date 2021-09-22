@@ -1,4 +1,4 @@
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from '../Icon'
 import { Col, Row } from 'antd'
 import { find } from 'lodash'
 import Link from 'next/link'
