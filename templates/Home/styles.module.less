@@ -1,13 +1,18 @@
 @import '@assets/styles/variable.less';
 
 .layout {
-  max-width: 1920px;
-  align-items: center;
-  background-color: transparent !important;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+
   margin: auto;
 
+  min-height: 0;
+  max-width: 1920px;
+  // background: #f0f2f5;
+  background-color: transparent !important;
   .content {
-    background-color: ghostwhite;
     min-height: 50vh;
+    background-color: ghostwhite;
   }
 }

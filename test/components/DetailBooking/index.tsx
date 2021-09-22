@@ -3,58 +3,25 @@ import Container from '@componentsTest/Container'
 import { Button, Col, Row } from 'antd'
 import { uniqueId } from 'lodash'
 import React from 'react'
-import Barcode from 'react-barcode'
+import { useBarcode } from 'react-barcodes'
 import styles from './styles.module.less'
 
 export const DetailBooking = () => {
-  const data = [
-    {
-      title: 'Hình thức khám:',
-      value: 'Dịch vụ'
-    },
-    {
-      title: 'Phòng khám',
-      value: 'P.Khám Da Liễu'
-    },
-    {
-      title: 'Chuyên khoa:',
-      value: 'Da Liễu'
-    },
-    {
-      title: 'Bác sĩ:',
-      value: 'Nguyễn Văn A'
-    },
-    {
-      title: 'Ngày khám',
-      value: '14/07/2021'
-    },
-    {
-      title: 'Giờ khám dự kiến',
-      value: '07:30 - 08:30'
-    },
-    {
-      title: 'Giờ khám dự kiến',
-      value: '07:30 - 08:30'
-    },
-    {
-      title: 'Bệnh nhân:',
-      value: 'Huỳnh Ngọc Toàn'
-    },
-    {
-      title: 'Phí khám:',
-      value: '200.000 VNĐ'
-    },
-    {
-      title: 'Mã phiếu:',
-      value: 'W2005069999'
+  const { inputRef } = useBarcode({
+    value: 'react-barcodes',
+    options: {
+      width: 1,
+      height: 70,
+      fontSize: 13
     }
-  ]
+  })
+
   return (
     <Container className={styles.container}>
       <Row className={styles.rowDetailBooking}>
         <Col xl={24} className={styles.colDetailBooking}>
           <h3>PHIẾU KHÁM BỆNH</h3>
-          <Container className={styles.conInfo}>
+          <section className={styles.conInfo}>
             <div className={styles.address}>
               <p>Cơ sở khám chữa bệnh</p>
               <p>Địa chỉ cơ sở khám bệnh</p>
@@ -62,7 +29,7 @@ export const DetailBooking = () => {
 
             <div className={styles.barcode}>
               <p>Mã hẹn khám</p>
-              <Barcode value='123456789' />
+              <canvas ref={inputRef} />
             </div>
 
             <div className={styles.status}>
@@ -80,12 +47,10 @@ export const DetailBooking = () => {
               {data.map(({ title, value }: any) => {
                 return (
                   <li key={uniqueId()}>
-                    <div className={styles.itemBooking}>
-                      <p>
-                        {title}
-                        <span>{value}</span>
-                      </p>
-                    </div>
+                    <p className={styles.itemBooking}>
+                      <span> {title}</span>
+                      <span>{value}</span>
+                    </p>
                   </li>
                 )
               })}
@@ -118,13 +83,63 @@ export const DetailBooking = () => {
                 </li>
               </ul>
             </div>
-          </Container>
-          <Button className={styles.btnCancel}>
-            <CloseOutlined />
-            Hủy phiếu
-          </Button>
+          </section>
+          <div>
+            <Button className={styles.btnCancel}>
+              <CloseOutlined />
+              Hủy phiếu
+            </Button>
+          </div>
         </Col>
       </Row>
     </Container>
   )
 }
+
+interface data {
+  title: string
+  value: string
+}
+
+const data: data[] = [
+  {
+    title: 'Hình thức khám:',
+    value: 'Dịch vụ'
+  },
+  {
+    title: 'Phòng khám',
+    value: 'P.Khám Da Liễu'
+  },
+  {
+    title: 'Chuyên khoa:',
+    value: 'Da Liễu'
+  },
+  {
+    title: 'Bác sĩ:',
+    value: 'Nguyễn Văn A'
+  },
+  {
+    title: 'Ngày khám',
+    value: '14/07/2021'
+  },
+  {
+    title: 'Giờ khám dự kiến',
+    value: '07:30 - 08:30'
+  },
+  {
+    title: 'Giờ khám dự kiến',
+    value: '07:30 - 08:30'
+  },
+  {
+    title: 'Bệnh nhân:',
+    value: 'Huỳnh Ngọc Toàn'
+  },
+  {
+    title: 'Phí khám:',
+    value: '200.000 VNĐ'
+  },
+  {
+    title: 'Mã phiếu:',
+    value: 'W2005069999'
+  }
+]
