@@ -3,7 +3,7 @@
   font-weight: @weight;
   color: @color;
 }
-.Address,.Barcode,.Status,.Number{
+.address,.barcode,.status,.number{
   text-align: center;
   margin-bottom: 16px;
 }
@@ -21,7 +21,7 @@
         text-align: center;
       }
       .conInfo{
-        padding: 0;
+        padding: 24px 40px 30px;
         margin: 0;
         
         display: flex;
@@ -31,7 +31,7 @@
         min-width: 60%;
         background-color: white;
 
-        .Address{
+        .address{
           p:first-child{
             .textCustom(18px, 600, #323F4B);
           }
@@ -39,12 +39,12 @@
             .textCustom(14px, 500, #323F4B);
           }
         }
-        .Barcode{
+        .barcode{
           p{
             .textCustom(14px, 500, #323F4B);
           }
         }
-        .Status{
+        .status{
           border: 1px solid #3BB54A;
           border-radius: 20px;
           background-color: #E5FFE9;
@@ -56,7 +56,11 @@
             margin: 0;
           }
         }
-        .Number{
+        .hr{
+          width: 100%;
+          border: 3px dashed #F8F8F8;
+        }
+        .number{
           p{
             .textCustom(16px, 500, #00B5F1)
           }
@@ -71,13 +75,15 @@
 
           line-height: 2.2;
           li{
-            padding: 0 40px;
+            padding: 0;
             .itemBooking{
               p{
                 display: flex;
                 justify-content: space-between;
-                font-size: 14px;
-                font-weight: 400;
+                .textCustom(14px, 400, #323F4B)
+              }
+              span{
+                .textCustom(16px, 500, #323F4B)
               }
             }
             &:nth-child(5),
@@ -85,6 +91,16 @@
               span{
                 color: red;
               }
+            }
+          }
+        }
+        .note{
+          p{
+            color: red;
+          }
+          li{
+            p{
+              .textCustom(14px, 500, #323F4B)
             }
           }
         }

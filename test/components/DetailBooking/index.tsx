@@ -56,21 +56,23 @@ export const DetailBooking = () => {
         <Col xl={24} className={styles.colDetailBooking}>
           <h3>PHIẾU KHÁM BỆNH</h3>
           <Container className={styles.conInfo}>
-            <div className={styles.Address}>
+            <div className={styles.address}>
               <p>Cơ sở khám chữa bệnh</p>
               <p>Địa chỉ cơ sở khám bệnh</p>
             </div>
 
-            <div className={styles.Barcode}>
+            <div className={styles.barcode}>
               <p>Mã hẹn khám</p>
               <Barcode value="123456789" />
             </div>
 
-            <div className={styles.Status}>
+            <div className={styles.status}>
               <p>Đã thanh toán</p>
             </div>
 
-            <div className={styles.Number}>
+            <hr className={styles.hr} />
+
+            <div className={styles.number}>
               <p>Số thứ tự tiếp nhận</p>
               <span>01</span>
             </div>
@@ -86,7 +88,10 @@ export const DetailBooking = () => {
                 )
               })}
             </ul>
-            <div className={styles.Note}>
+
+            <hr className={styles.hr} />
+
+            <div className={styles.note}>
               <p>Lưu ý:</p>
               <ul className={styles.listNote}>
                 <li>
