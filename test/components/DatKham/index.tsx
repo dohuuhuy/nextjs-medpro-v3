@@ -6,6 +6,7 @@ import { DownOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
 import { SpecialContent } from './ListDatKham/Specialist'
 import { DoctorContent } from './ListDatKham/Doctor'
+import { ServiceContent } from './ListDatKham/Service'
 
 export const DatKham = () => {
   return (
@@ -20,14 +21,14 @@ export const DatKham = () => {
             </div>
             <Input className={styles.inputView} prefix={<Icon name='yeuthich' />} placeholder="Chọn chuyên khoa" />
           </Row>
-          <Icon name='chuyenkhoa' fill="red" />
+          <Icon name='chuyenkhoa' size="20" />
           <SpecialContent />
           <Row className={styles.Doctor}>
             <div className={styles.title}>
               <p>Bác sĩ</p>
               <DownOutlined />
             </div>
-            <Input className={styles.inputView} prefix={<Icon name='bacsi' />} placeholder="Chọn bác sĩ" />
+            <Input className={styles.inputView} prefix={<Icon name='bacsi' size="20" />} placeholder="Chọn bác sĩ" />
           </Row>
           <DoctorContent />
           <Row className={styles.Service}>
@@ -35,14 +36,15 @@ export const DatKham = () => {
               <p>Dịch vụ</p>
               <DownOutlined />
             </div>
-            <Input className={styles.inputView} prefix={<Icon name='dichvu' />} placeholder="Chọn dịch vụ" />
+            <Input className={styles.inputView} prefix={<Icon name='dichvu' size="20" />} placeholder="Chọn dịch vụ" />
           </Row>
+          <ServiceContent />
           <Row className={styles.Calender}>
             <div className={styles.title}>
               <p>Ngày giờ</p>
               <DownOutlined />
             </div>
-            <Input className={styles.inputView} prefix={<Icon name='lichkham' />} placeholder="Chọn ngày giờ khám" />
+            <Input className={styles.inputView} prefix={<Icon name='lichkham' size="20" />} placeholder="Chọn ngày giờ khám" />
           </Row>
         </Col>
         <Col md={24} xl={9} className={styles.colBill}>

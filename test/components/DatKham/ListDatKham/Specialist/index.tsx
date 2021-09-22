@@ -13,7 +13,7 @@ export const SpecialContent = () => {
           return (
             <li key={uniqueId()}>
               <div className={styles.cardContent}>
-                <Image src={item.image} height={25} width={25} />
+                <Image src={item.image} alt="" height='35' width='35' />
                 <p>{item.name}</p>
               </div>
             </li>

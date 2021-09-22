@@ -40,7 +40,7 @@ export const DoctorContent = () => {
                 </div>
               </div>
               <div className={styles.cardFunc}>
-                <HeartFilled />
+                <HeartFilled color='#CBD2D9' />
                 <Button type='primary' >Đặt khám</Button>
               </div>
             </div>
