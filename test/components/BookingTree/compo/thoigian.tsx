@@ -53,6 +53,7 @@ export const ThoiGian = () => {
   return (
     <section className={styles.thoigian}>
       <p className='d-none'>{count}</p>
+      {/* ghi chú chức năng */}
       <div className={styles.groupGuide}>
         <div className={styles.guide}>
           <span className={cx(styles.btn, styles.empty)} />
@@ -68,6 +69,7 @@ export const ThoiGian = () => {
         </div>
       </div>
 
+      {/* lịch tháng */}
       <div className={styles.calendar}>
         <div className={styles.header}>
           <Space>
@@ -136,6 +138,7 @@ export const ThoiGian = () => {
         </div>
       </div>
 
+      {/* thời gian của bác sĩ */}
       <div className={styles.time}>
         <div className={styles.morning}>
           <h4>Buổi sáng</h4>
@@ -163,6 +166,7 @@ export const ThoiGian = () => {
         </div>
       </div>
 
+      {/* lưu ý gọi tổng đài */}
       <div className={styles.hint}>
         <span>
           Trong trường hợp không thể chọn được khung giờ, vui lòng gọi đến{' '}
