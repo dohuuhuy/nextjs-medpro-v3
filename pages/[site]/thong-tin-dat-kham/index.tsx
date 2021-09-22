@@ -1,4 +1,5 @@
 import * as ac from '@actionStore/rootAction'
+import { BookingTree } from '@componentsTest/BookingTree'
 import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -30,7 +31,7 @@ const ThongTinDatKhamPage = () => {
   //   info: findHospital
   // }
 
-  return <p>Đang phát triển</p>
+  return <BookingTree />
 }
 
 ThongTinDatKhamPage.Layout = DefaultLayout
