@@ -7,35 +7,52 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import styles from './../less/thoigian.module.less'
 
-const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
-
-const todayObj = moment()
-
 export const ThoiGian = () => {
-  const [dayObj, setDayObj] = useState(moment())
+  const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
-  const thisYear = dayObj.year()
-  const thisMonth = dayObj.month()
-  const daysInMonth = dayObj.daysInMonth()
+  const [count, setcount] = useState(0)
+  const todayObj = moment()
+  const [dayObj, setDayObj] = useState(moment()) // init là date hiện tại
 
-  const dayObjOf1 = moment(`${thisYear}-${thisMonth + 1}-1`)
-  const weekDayOf1 = dayObjOf1.day()
+  const thisYear = dayObj.year() // lấy năm
+  const thisMonth = dayObj.month() // lấy tháng
+  const daysInMonth = dayObj.daysInMonth() // lấy số ngày trong tháng , ví dụ như 30 ngày
 
-  const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`)
-  const weekDayOfLast = dayObjOfLast.day()
+  const dayObjOf1 = moment(`${thisYear}-${thisMonth + 1}-1`) // thời gian tháng củ
+  const weekDayOf1 = dayObjOf1.day() // lấy số ngày củ
+
+  const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
+  const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
 
   const handlePrev = () => {
+    // đi tới tháng củ
+    setcount(count - 1)
     setDayObj(dayObj.subtract(1, 'month'))
   }
 
   const handleNext = () => {
-    console.log('1 :>> ', 1)
-
+    // đi tới tháng tới
+    setcount(count + 1)
     setDayObj(dayObj.add(1, 'month'))
+  }
+
+  const hiddenNext = () => {
+    // ẩn btn tháng tới
+    if (thisMonth > todayObj.month()) {
+      return styles.hiddenNext
+    }
+  }
+
+  const hiddenPrev = () => {
+    // ẩn btn tháng củ
+    if (thisMonth <= todayObj.month()) {
+      return styles.hiddenPrev
+    }
   }
 
   return (
     <section className={styles.thoigian}>
+      <p className='d-none'>{count}</p>
       <div className={styles.groupGuide}>
         <div className={styles.guide}>
           <span className={cx(styles.btn, styles.empty)} />
@@ -56,12 +73,14 @@ export const ThoiGian = () => {
           <Space>
             <Button
               type='text'
+              className={hiddenPrev()}
               icon={<ArrowLeftOutlined />}
               onClick={handlePrev}
             />
-            <div className='datetime'>{dayObj.format(' MM - YYYY')}</div>
+            <div className='datetime'>{dayObj.format('MM - YYYY')}</div>
             <Button
               type='text'
+              className={hiddenNext()}
               icon={<ArrowRightOutlined />}
               onClick={handleNext}
             />
@@ -69,6 +88,7 @@ export const ThoiGian = () => {
         </div>
 
         <div className={styles.weekContainer}>
+          {/* thứ trong tuần */}
           {weekDays.map((d) => (
             <div className={styles.weekCell} key={d}>
               {d}
@@ -77,19 +97,23 @@ export const ThoiGian = () => {
         </div>
 
         <div className={styles.dayContainer}>
+          {/* ngày của tháng củ  */}
           {range(weekDayOf1).map((i: any) => (
             <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
+              {/* lấy ngày tháng củ trừ đi số ngày củ của tháng ==> những ngày củ */}
               {dayObjOf1.subtract(weekDayOf1 - i, 'day').date()}
             </div>
           ))}
 
+          {/* ngày trong tháng */}
           {range(daysInMonth).map((i) => {
             const today =
               i + 1 === todayObj.date() &&
-              thisMonth === todayObj.month() &&
+              thisMonth === todayObj.month() && // kiểm tra có phải ngày hiện tại
               thisYear === todayObj.year()
                 ? styles.today
                 : ''
+
             return (
               <div
                 className={cx(styles.dayCell, styles.dayCell_inMonth, today)}
@@ -100,9 +124,13 @@ export const ThoiGian = () => {
             )
           })}
 
+          {/* ngày của tháng mới */}
           {range(6 - weekDayOfLast).map((i) => (
             <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
-              <span> {dayObjOfLast.add(i + 1, 'day').date()}</span>
+              <span>
+                {/* còn 6 là ... ? lấy ngày tháng mói trừ đi số ngày mới của tháng ==> những ngày mới */}
+                {dayObjOfLast.add(i + 1, 'day').date()}
+              </span>
             </div>
           ))}
         </div>
@@ -137,8 +165,9 @@ export const ThoiGian = () => {
 
       <div className={styles.hint}>
         <span>
-          Trong trường hợp không thể chọn được khung giờ, vui lòng gọi đến Tổng
-          đài CSKH để được hỗ trợ.
+          Trong trường hợp không thể chọn được khung giờ, vui lòng gọi đến{' '}
+          <br />
+          Tổng đài CSKH để được hỗ trợ.
         </span>
         <button className={styles.phone}>
           <Icon name='timkiem' />
