@@ -17,7 +17,7 @@ export const HeaderCustom = (Props: PropsHeader) => {
       <Container fluid fixed className={styles.header}>
         <Container className={styles.containerHeader}>
           <Row className={styles.rowHeader}>
-            <Col xl={6} className={styles.colLogo}>
+            <Col xl={6} lg={6} className={styles.colLogo}>
               <figure className={styles.logo}>
                 <Link href={'/'}>
                   <a>
@@ -26,7 +26,7 @@ export const HeaderCustom = (Props: PropsHeader) => {
                 </Link>
               </figure>
             </Col>
-            <Col xl={18} className={styles.colBody}>
+            <Col xl={18} lg={18} sm={24} className={styles.colBody}>
               <ul className={styles.groupBtn}>
                 <li>
                   <button className={cx(styles.btn)}>

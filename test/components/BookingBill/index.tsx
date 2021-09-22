@@ -6,7 +6,7 @@ import React from 'react'
 import { useBarcode } from 'react-barcodes'
 import styles from './styles.module.less'
 
-export const DetailBooking = () => {
+export const BookingBill = () => {
   const { inputRef } = useBarcode({
     value: 'react-barcodes',
     options: {
