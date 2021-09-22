@@ -1,0 +1,65 @@
+.cardFee {
+  padding: 20px 15px;
+  background-color: white;
+  border-radius: 8px;
+  .luuy {
+    font-size: 12px;
+    color: #00b5f1;
+    display: flex;
+    align-content: center;
+    align-items: center;
+  }
+
+  .listFee {
+    .ListCustom();
+    margin: 15px 0;
+
+    li {
+      margin-bottom: 5px;
+      font-size: 13px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      align-content: center;
+      &:last-child {
+        font-size: 16px;
+        font-weight: 500;
+        .value {
+          color: #ffb340;
+        }
+      }
+    }
+  }
+  .groupBtn {
+    display: flex;
+    justify-content: space-around;
+    .btn {
+      width: 150px;
+      display: flex;
+      padding: 5px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #00b5f1;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+    .again {
+      background-color: white;
+    }
+    .next {
+      border: none;
+      background-color: #cbd2d9;
+    }
+  }
+}
+
+// --------------------------------------------------- css mixin
+.ListCustom {
+  list-style-type: none;
+
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
