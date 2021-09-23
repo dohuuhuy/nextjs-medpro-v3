@@ -12,6 +12,9 @@ import styles from './styles.module.less'
 export const HeaderCustom = (props: HeaderIF) => {
   const { dataHeader } = props
   const { logo, menu } = dataHeader
+
+  const glogo = logo?.desktop
+
   return (
     <header>
       <Container fluid fixed className={styles.header}>
@@ -21,12 +24,7 @@ export const HeaderCustom = (props: HeaderIF) => {
               <figure className={styles.logo}>
                 <Link href={'/'}>
                   <a>
-                    <Image
-                      src={logo?.desktop}
-                      alt=''
-                      layout='fill'
-                      objectFit='contain'
-                    />
+                    <Image src={glogo} layout='fill' objectFit='cover' alt='' />
                   </a>
                 </Link>
               </figure>
