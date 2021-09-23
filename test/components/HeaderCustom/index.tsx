@@ -6,11 +6,11 @@ import Link from 'next/link'
 import React from 'react'
 import { Icon } from '../Icon'
 import Container from './../Container'
-import { PropsHeader } from './interface.header'
+import { HeaderIF } from './interface'
 import styles from './styles.module.less'
 
-export const HeaderCustom = (Props: PropsHeader) => {
-  const { dataHeader } = Props
+export const HeaderCustom = (props: HeaderIF) => {
+  const { dataHeader } = props
   const { logo, menu } = dataHeader
   return (
     <header>
@@ -21,7 +21,12 @@ export const HeaderCustom = (Props: PropsHeader) => {
               <figure className={styles.logo}>
                 <Link href={'/'}>
                   <a>
-                    <Image src={logo?.desktop} alt='' width='250' height='75' />
+                    <Image
+                      src={logo?.desktop}
+                      alt=''
+                      layout='fill'
+                      objectFit='contain'
+                    />
                   </a>
                 </Link>
               </figure>
