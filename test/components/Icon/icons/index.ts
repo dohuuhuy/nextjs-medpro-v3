@@ -20,3 +20,8 @@ export { default as bacsi } from './bookingTree/bacsi.svg'
 export { default as chuyenkhoa } from './bookingTree/chuyenkhoa.svg'
 export { default as dichvu } from './bookingTree/dichvu.svg'
 export { default as ngaygio } from './bookingTree/ngaygio.svg'
+export { default as demo } from './bookingTree/demo.svg'
+export { default as bacsinam } from './bookingTree/bacsinam.svg'
+export { default as bacsinu } from './bookingTree/bacsinu.svg'
+
+export { default as love } from './bookingTree/love.svg'

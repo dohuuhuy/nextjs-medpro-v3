@@ -11,8 +11,8 @@ export const JSON_EXP = {
       {
         id: '',
         key: 'benh-vien',
-        link: '/chon-benh-vien',
-        url: '/chon-benh-vien',
+        link: '/benh-vien',
+        url: '/benh-vien',
         label: 'Bệnh viện',
         group: 'menuHeader',
         sortOrder: 1,
@@ -82,10 +82,30 @@ export const JSON_EXP = {
     insideLink: [
       {
         id: '',
-        key: 'chon-benh-vien',
-        link: '/chon-benh-vien',
-        url: '/chon-benh-vien',
-        label: 'Chọn bệnh viện',
+        key: 'chi-tiet-phieu-kham',
+        link: '/chi-tiet-phieu-kham',
+        url: '/chi-tiet-phieu-kham',
+        label: 'Chi tiết phiếu khám',
+        group: 'insideLink',
+        sortOrder: 5,
+        icon: 'fal fa-home'
+      },
+      {
+        id: '',
+        key: 'benh-vien',
+        link: '/benh-vien',
+        url: '/benh-vien',
+        label: 'Bệnh viện',
+        group: 'insideLink',
+        sortOrder: 5,
+        icon: 'fal fa-home'
+      },
+      {
+        id: '',
+        key: 'dat-lich-kham',
+        link: '/dat-lich-kham',
+        url: '/dat-lich-kham',
+        label: 'Thông tin đặt khám',
         group: 'insideLink',
         sortOrder: 5,
         icon: 'fal fa-home'
@@ -121,58 +141,7 @@ export const JSON_EXP = {
         icon: 'fal fa-sign-in-alt'
       }
     ],
-    menuMobile: [
-      {
-        id: '',
-        key: 'trang-chu',
-        link: '/',
-        url: '/',
-        label: 'Trang chủ',
-        group: 'menuMobile',
-        sortOrder: 1,
-        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/home.svg'
-      },
-      {
-        id: '',
-        key: 'ho-so',
-        link: '/ho-so',
-        url: '/ho-so',
-        label: 'Hồ sơ ĐK',
-        group: 'menuMobile',
-        sortOrder: 2,
-        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/guide.svg'
-      },
-      {
-        id: '',
-        key: 'phieu-kham',
-        link: '/phieu-kham',
-        url: '/phieu-kham',
-        label: 'Phiếu khám',
-        group: 'menuMobile',
-        sortOrder: 3,
-        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/bell.svg'
-      },
-      {
-        id: '',
-        key: 'thong-bao',
-        link: '/thong-bao',
-        url: '/thong-bao',
-        label: 'Thông báo',
-        group: 'menuMobile',
-        sortOrder: 4,
-        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg'
-      },
-      {
-        id: '',
-        key: 'tai-khoan',
-        link: '/tai-khoan',
-        url: '/tai-khoan',
-        label: 'Tài khoản',
-        group: 'menuMobile',
-        sortOrder: 5,
-        icon: 'https://resource-testing.medpro.com.vn/static/media/icon/hoso.svg'
-      }
-    ],
+
     support: {
       textSuport: 'Bạn cần hỗ trợ ?',
       icon: 'https://resource-testing.medpro.com.vn/static/media/synthetic/iconChat.svg',
