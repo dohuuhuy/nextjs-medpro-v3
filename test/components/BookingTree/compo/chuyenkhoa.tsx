@@ -5,6 +5,11 @@ import styles from './../less/chuyenkhoa.module.less'
 export const ChuyenKhoa = () => {
   return (
     <section className={styles.chuyenkhoa}>
+      <div className={styles.input}>
+        <Icon name='timkiem' />
+        <input placeholder='Tìm nhanh chuyên khoa' />
+      </div>
+
       <ul className={styles.listChuyenKhoa}>
         {chuyenkhoa.map((v, i) => {
           return (
