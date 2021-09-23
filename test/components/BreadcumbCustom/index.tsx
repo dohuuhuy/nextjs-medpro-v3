@@ -7,14 +7,18 @@ import React from 'react'
 import Container from '../Container'
 import styles from './styles.module.less'
 
-export const BreadcumbCustom = ({ listMenu }: any) => {
+export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
   const router = useRouter()
 
   if (!listMenu) {
     return null
   }
 
-  const { pathname } = router
+  const {
+    pathname,
+    query: { site }
+  } = router
+
   const path = pathname.replace('/[site]', '')
   const item = find(listMenu, { link: path })
   const listBreadcumb = []
@@ -22,6 +26,22 @@ export const BreadcumbCustom = ({ listMenu }: any) => {
     link: '/',
     label: 'Trang chủ'
   })
+
+  if (site) {
+    const hos = find(listHos, { partnerId: site })
+    listBreadcumb.push({
+      link: `/benh-vien`,
+      label: 'Bệnh viện'
+    })
+
+    listBreadcumb.push({
+      link: `/${site}/hinh-thuc-dat-kham`,
+      label: hos?.name
+    })
+  }
+
+  console.log('listBreadcumb :>> ', listBreadcumb)
+
   listBreadcumb.push(item)
 
   return (

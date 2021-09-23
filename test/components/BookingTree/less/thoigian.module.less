@@ -10,8 +10,8 @@
       align-content: center;
       align-items: center;
       .btn {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
         border-radius: 8px;
         margin-right: 5px;
       }
@@ -29,19 +29,25 @@
   .calendar {
     margin-bottom: 30px;
     .header {
-      text-transform: uppercase;
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+
+      color: white;
       font-size: 14px;
       font-weight: 600;
+      text-transform: uppercase;
+
       padding: 10px 0;
-      // border: 1px solid #dfe3eb;
 
       background: #00b5f1;
       border-radius: 8px 8px 0px 0px;
-      color: white;
+
+      .hiddenNext,
+      .hiddenPrev {
+        display: none;
+      }
     }
     .weekContainer,
     .dayContainer {
@@ -121,10 +127,15 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
+    justify-content: space-between;
+
+    color: #323f4b;
+    font-size: 13px;
     background: #fff2cc;
-    border: 0.5px solid #ffcc80;
     box-sizing: border-box;
     border-radius: 8px;
+    border: 0.5px solid #ffcc80;
+
     padding: 10px;
     .phone {
       min-width: 175px;

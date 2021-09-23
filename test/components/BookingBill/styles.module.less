@@ -1,0 +1,137 @@
+.container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .rowDetailBooking {
+    .colDetailBooking {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 15px;
+      margin-bottom: 1rem;
+
+      h3 {
+        text-align: center;
+      }
+      .conInfo {
+        max-width: 400px;
+        min-width: 400px;
+
+        border-radius: 10px;
+
+        padding: 40px 30px;
+        margin: 30px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background-color: white;
+
+        .address {
+          p:first-child {
+            .textCustom(18px, 600, #323f4b);
+          }
+          p {
+            .textCustom(14px, 500, #323f4b);
+          }
+        }
+        .barcode {
+          p {
+            .textCustom(14px, 500, #323f4b);
+          }
+        }
+        .status {
+          border-radius: 20px;
+          border: 0.5px solid #e6ffe9;
+          padding: 10px 20px;
+          background-color: #e6ffe9;
+          p {
+            .textCustom(14px, 500, #3bb54a);
+            margin: 0;
+          }
+        }
+        .hr {
+          width: 100%;
+          border: 3px dashed #f8f8f8;
+          margin: 29px 0;
+        }
+        .number {
+          p {
+            .textCustom(16px, 500, #00b5f1);
+          }
+          span {
+            .textCustom(48px, 700, #00b5f1);
+          }
+        }
+        .listItemBooking {
+          list-style: none;
+          padding: 0;
+          width: 100%;
+
+          line-height: 2.2;
+          li {
+            padding: 0;
+            .itemBooking {
+              display: flex;
+              justify-content: space-between;
+              .textCustom(13px, 400, #323f4b);
+
+              span {
+                .textCustom(13px, 500, #323f4b);
+              }
+            }
+            &:nth-child(5),
+            &:nth-child(6) {
+              span {
+                color: #3bb54a;
+              }
+            }
+          }
+        }
+        .note {
+          p {
+            color: red;
+          }
+          .listNote {
+            padding-left: 20px;
+            li {
+              p {
+                .textCustom(12px, 500, #323f4b);
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+      .btnCancel {
+        padding: 0 40px;
+        border: 1px solid #7b8794;
+        border-radius: 20px;
+        color: #7b8794;
+        &:hover {
+          color: white;
+          background-color: #7b8794;
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------css mixin
+
+.textCustom(@size, @weight, @color) {
+  font-size: @size;
+  font-weight: @weight;
+  color: @color;
+}
+
+.address,
+.barcode,
+.number {
+  text-align: center;
+  margin-bottom: 16px;
+}

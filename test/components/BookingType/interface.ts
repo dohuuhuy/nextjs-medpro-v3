@@ -1,5 +1,6 @@
 export interface BookingTypeIF {
   getInfo: {
+    partnerId: string
     image: string
     bannerImage: string
     name: string
@@ -19,6 +20,7 @@ export interface BookingTypeIF {
       type: string
       updatedAt: string
       webStatus: false
+      webRoute: string
     }[]
   }
 }

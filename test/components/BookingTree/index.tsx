@@ -48,7 +48,7 @@ export const BookingTree = () => {
                       </div>
 
                       <div className={cx(styles.content, checkStep(i))}>
-                        {e.content}
+                        {e?.content}
                       </div>
                     </div>
                   </li>

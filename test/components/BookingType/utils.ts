@@ -3,6 +3,12 @@ import { Settings } from 'react-slick'
 export const carousel = [
   {
     image: '/images/bookingType/slide.png'
+  },
+  {
+    image: '/images/bookingType/slide.png'
+  },
+  {
+    image: '/images/bookingType/slide.png'
   }
 ]
 
@@ -19,9 +25,9 @@ export const listTabs = [
 ]
 
 export const settings: Settings = {
-  speed: 500,
+  speed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 2000
+  autoplaySpeed: 700
 }

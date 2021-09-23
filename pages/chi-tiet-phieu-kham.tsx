@@ -1,10 +1,10 @@
-import { DetailBooking } from '@componentsTest/DetailBooking'
+import { BookingBill } from '@componentsTest/BookingBill'
 import dynamic from 'next/dynamic'
 import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const DetailBookingPage = () => {
-  return <DetailBooking />
+  return <BookingBill />
 }
 
 DetailBookingPage.Layout = DefaultLayout

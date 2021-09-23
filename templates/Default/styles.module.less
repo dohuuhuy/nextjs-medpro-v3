@@ -1,18 +1,26 @@
 @import '@assets/styles/variable.less';
 
 .layout {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+
+  min-height: 0;
   max-width: 1920px;
-  align-items: center;
-  // background-color: transparent !important;
   margin: auto;
+
+  background: #f0f2f5;
+
   .main {
-    min-height: 70vh;
-    margin-top: 110px;
-    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     align-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 70vh;
+    margin-top: 110px;
+
     @media only screen and (max-width: 768px) {
       margin-top: 60px;
     }

@@ -1,11 +1,12 @@
-import Container from '../Container'
-import { Icon } from '../Icon'
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import Slider from 'react-slick'
+import Container from '../Container'
+import { Icon } from '../Icon'
 import { BookingTypeIF } from './interface'
 import styles from './styles.module.less'
 import { carousel, listTabs, settings } from './utils'
@@ -20,11 +21,12 @@ export const BookingType = (props: BookingTypeIF) => {
 
   return (
     <Container className={styles.bookingType}>
+      {/* banner và tabs header */}
       <Row className={styles.rowType}>
         <Col
           className={styles.colType}
           span='24'
-          style={{ backgroundImage: `url(${info?.bannerImage})` }}
+          style={{ backgroundImage: `url(${banner(info?.partnerId)})` }}
         >
           <div className={styles.wrapper}>
             <div className={styles.card}>
@@ -71,7 +73,7 @@ export const BookingType = (props: BookingTypeIF) => {
           </ul>
         </Col>
       </Row>
-
+      {/* nội của tabs */}
       <Row className={styles.rowContent}>
         <Col className={styles.colContent} span='24'>
           <div className={cx(styles.tab_Intro, checkTab(0))}>
@@ -80,15 +82,28 @@ export const BookingType = (props: BookingTypeIF) => {
 
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
-              {info.features.map((e) => {
+              {info.features.map((v) => {
                 return (
                   <li key={uniqueId()}>
-                    <div className={styles.card}>
-                      <figure>
-                        <Image src={e.image} width='80' height='80' alt='' />
-                      </figure>
-                      <span>{e.name}</span>
-                    </div>
+                    <Link
+                      href={
+                        v?.webRoute ? `/${info.partnerId}/${v?.webRoute}` : '#'
+                      }
+                    >
+                      <a>
+                        <div className={styles.card}>
+                          <figure>
+                            <Image
+                              src={v?.image}
+                              width='80'
+                              height='80'
+                              alt=''
+                            />
+                          </figure>
+                          <span>{v?.name}</span>
+                        </div>
+                      </a>
+                    </Link>
                   </li>
                 )
               })}
@@ -100,7 +115,7 @@ export const BookingType = (props: BookingTypeIF) => {
           </div>
         </Col>
       </Row>
-
+      {/* carousel banner  */}
       <Row className={styles.rowSlider}>
         <Col className={styles.colSilder} span='24'>
           <Slider {...settings} className={styles.Slider}>
@@ -122,4 +137,9 @@ export const BookingType = (props: BookingTypeIF) => {
       </Row>
     </Container>
   )
+}
+
+// tạm thời dùng link này , sao này sử bannerimage trong info
+const banner = (e: string) => {
+  return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
 }

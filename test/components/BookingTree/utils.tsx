@@ -3,17 +3,19 @@ import React from 'react'
 import { Steps } from './interface'
 import { DichVu } from './compo/dichvu'
 import { ThoiGian } from './compo/thoigian'
+import { ChuyenKhoa } from './compo/chuyenkhoa'
+import { BacSi } from './compo/bacsi'
 
 export const steps: Steps[] = [
   {
     title: 'Chuyên khoa',
     icon: <Icon name='chuyenkhoa' />,
-    content: 'hello cưng'
+    content: <ChuyenKhoa />
   },
   {
     title: 'Bác sĩ',
     icon: <Icon name='bacsi' />,
-    content: ''
+    content: <BacSi />
   },
   {
     title: 'Dịch vụ',

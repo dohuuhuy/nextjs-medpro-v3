@@ -24,10 +24,12 @@ const Banners = (info: Information) => {
     const listMenu = [].concat(menu, insideLink)
 
     const getLink = find(listMenu, (o: any) => {
-      return o?.link !== '/' && pathname.includes(o?.link)
+      return pathname.includes(o?.link)
     })
 
-    return check(getLink) ? null : <BreadcumbCustom listMenu={listMenu} />
+    return check(getLink) ? null : (
+      <BreadcumbCustom listMenu={listMenu} listHos={hos.listHospital} />
+    )
   }
 
   const methods: Banner = {

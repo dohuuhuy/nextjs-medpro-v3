@@ -1,3 +1,5 @@
+@import url('./styles.module.less');
+
 .wrapper {
   background-color: white;
   .steps {
@@ -9,31 +11,38 @@
         flex-direction: column;
         justify-content: center;
         .listStep {
+          width: 100%;
           .ListCustom();
           display: flex;
-          min-width: 700px;
+          max-width: 700px;
           justify-content: space-between;
 
           li {
             display: flex;
             flex-direction: row;
-            min-width: 180px;
+
             align-items: center;
             align-content: center;
             .btnIcon {
               border: none;
               border-radius: 50%;
+              min-width: 40px;
               width: 40px;
               height: 40px;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+
               span {
                 fill: white;
                 margin: 0;
               }
             }
             hr {
-              min-width: 100px;
-              margin: 0 20px;
-              border-color: whitesmoke;
+              width: 50%;
+              border: 1px solid whitesmoke;
             }
             &:last-child {
               hr {
@@ -55,17 +64,4 @@
       }
     }
   }
-}
-
-// --------------------- css mixin
-.ListCustom {
-  list-style-type: none;
-
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.dnone {
-  display: none !important;
 }

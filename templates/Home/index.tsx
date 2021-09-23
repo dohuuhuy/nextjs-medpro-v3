@@ -1,5 +1,4 @@
 import { AnimatePage } from '@components/atoms/motion'
-import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
@@ -26,19 +25,20 @@ const HomeLayout = (props: Props) => {
   const info = appProps?.info
 
   return (
-    <Layout className={styles.layout}>
+    <section className={styles.layout}>
       <Header {...info} />
-
-      <AnimatePage>
-        <BannerPage {...info} />
-        <SliderHospital {...info} />
-        <Introduce {...info} />
-        <Download {...info} />
-        {children}
-        <SupportMethod {...info} />
-      </AnimatePage>
-      <Footer {...info} />
-    </Layout>
+      <main>
+        <AnimatePage>
+          <BannerPage {...info} />
+          <SliderHospital {...info} />
+          <Introduce {...info} />
+          <Download {...info} />
+          {children}
+          <SupportMethod {...info} />
+        </AnimatePage>
+        <Footer {...info} />
+      </main>
+    </section>
   )
 }
 export default HomeLayout

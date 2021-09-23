@@ -4,6 +4,7 @@
 
   .rowHeader {
     .colLogo {
+      border-left: 0.5px dashed whitesmoke;
       display: flex;
       align-items: flex-end;
       .logo {
@@ -16,6 +17,7 @@
       }
     }
     .colBody {
+      border-right: 0.5px dashed whitesmoke;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -91,3 +93,24 @@
   margin-bottom: 5px;
   padding: 0;
 }
+
+//  responsive
+
+@media only screen and (max-width: 1020px) {
+  .header {
+    .rowHeader {
+      .colLogo {
+        display: none;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 1024px) {
+//   .header {
+//     .rowHeader {
+//       .colLogo {
+//       }
+//     }
+//   }
+// }

@@ -1,13 +1,12 @@
 import React from 'react'
-import { checkData, DataFailure } from '../DataFailure'
 import { Banner } from './interface'
 import { BannerContact } from './organisms/BannerContact'
 import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
 
 export const BannersCustom = (props: Banner) => {
-  if (checkData(props?.getBanner)) {
-    return <DataFailure desc={'Lỗi không có data banners'} />
+  if (!props?.getBanner) {
+    return <em>Lỗi không có data banners</em>
   }
 
   switch (props.getBanner.key) {
