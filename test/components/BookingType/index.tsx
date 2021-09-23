@@ -87,7 +87,7 @@ export const BookingType = (props: BookingTypeIF) => {
                   <li key={uniqueId()}>
                     <Link
                       href={
-                        v?.webRoute ? `/${info.partnerId}/${v?.webRoute}` : '#'
+                        v?.webRoute ? `/${info.partnerId}${v?.webRoute}` : '#'
                       }
                     >
                       <a>
