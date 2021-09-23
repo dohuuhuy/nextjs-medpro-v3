@@ -1,4 +1,4 @@
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from '../../Icon'
 import React from 'react'
 import styles from './../less/bacsi.module.less'
 
