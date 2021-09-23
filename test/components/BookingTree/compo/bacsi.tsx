@@ -1,5 +1,5 @@
-import { Icon } from '../../Icon'
 import React from 'react'
+import { Icon } from '../../Icon'
 import styles from './../less/bacsi.module.less'
 
 export const BacSi = () => {

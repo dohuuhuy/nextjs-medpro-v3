@@ -13,9 +13,10 @@ export const Stepper = () => {
             <h2>Bước 1: Chọn chuyên khoa</h2>
 
             <ul className={styles.listStep}>
-              {steps.map((e, i) => {
+              {steps.map((e, i: number) => {
+                const w = (1 / steps.length) * 100
                 return (
-                  <li key={i}>
+                  <li key={i} style={{ width: w + '%' }}>
                     <button className={styles.btnIcon}>{e.icon}</button>
                     <hr />
                   </li>
