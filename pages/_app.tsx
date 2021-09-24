@@ -43,11 +43,11 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
   const x = Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
 
   return (
-    <>
+    <React.Fragment>
       <DefaultSeo {...SEO} />
       {x}
       <OnTop />
-    </>
+    </React.Fragment>
   )
 }
 
