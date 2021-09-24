@@ -1,4 +1,3 @@
-import { AnimatePage } from '@components/atoms/motion'
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
@@ -21,12 +20,10 @@ const DefaultLayout = (props: Props) => {
     <section className={styles.layout}>
       <Header {...info} />
       <main className={styles.main}>
-        <AnimatePage>
-          <BannerPage {...info} />
-          <HandlerGetContentPage {...info} />
+        <BannerPage {...info} />
+        <HandlerGetContentPage {...info} />
 
-          {children}
-        </AnimatePage>
+        {children}
       </main>
       <Footer {...info} />
     </section>
