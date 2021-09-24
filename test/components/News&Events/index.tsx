@@ -77,7 +77,9 @@ const CardNewsCustom = ({
       </figure>
       <div className={styles.cardBody}>
         <Link href={`/tin-tuc/${slug}`}>
-          <a className={styles.title}>{title}</a>
+          <a>
+            <p className={styles.title}>{title}</p>
+          </a>
         </Link>
         <Space style={{ width: '100%' }}>
           <span className={styles.time}>
