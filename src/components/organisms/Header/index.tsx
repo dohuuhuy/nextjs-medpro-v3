@@ -5,10 +5,6 @@ import { useSelector } from 'react-redux'
 import { check } from '@utils/checkValue'
 
 const Header = (info: Information) => {
-  if (check(info)) {
-    return null
-  }
-
   const userInfo = useSelector((state: AppState) => state.user.userInfo)
 
   const authen = {
@@ -19,6 +15,10 @@ const Header = (info: Information) => {
   const methods = {
     dataHeader: info?.header,
     Authencation: authen
+  }
+
+  if (check(info)) {
+    return null
   }
 
   return <HeaderCustom {...methods} />
