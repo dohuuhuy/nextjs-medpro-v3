@@ -25,3 +25,4 @@ export { default as bacsinam } from './bookingTree/bacsinam.svg'
 export { default as bacsinu } from './bookingTree/bacsinu.svg'
 
 export { default as love } from './bookingTree/love.svg'
+export { default as plus } from './bookingTree/plus.svg'

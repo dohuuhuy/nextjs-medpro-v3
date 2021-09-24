@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
 import Container from '@componentsTest/Container'
-import { Col, Row } from 'antd'
+import { Col, Row, Button } from 'antd'
 import { CloseCircleOutlined } from '@ant-design/icons'
 import { uniqueId } from 'lodash'
+import { Icon } from '../Icon'
 
 
 export const ConfirmInfo = () => {
@@ -55,21 +56,23 @@ export const ConfirmInfo = () => {
     },
   ]
   return (
-    <Container>
+    <Container className={styles.container}>
       <Row className={styles.rowInfo}>
         <h3>XÁC NHẬN THÔNG TIN</h3>
         <Col xl={16} className={styles.colInfo}>
           <div className={styles.ProfileBooking}>
-            <p>Hồ sơ đặt khám</p>
+            <h4>Hồ sơ đặt khám</h4>
             <ul className={styles.listViewProfile}>
               <li>
-                <div>
-                  abc
+                <div className={styles.viewProfile}>
+                  <Button className={styles.btnProfile} icon={<Icon name="plus" size='20' />} />
+                  <p>Tạo hồ sơ</p>
                 </div>
               </li>
               <li>
-                <div>
-                  abc
+                <div className={styles.viewProfile}>
+                  <Button className={styles.btnProfile} icon={<Icon name="bacsinam" size='55' />} />
+                  <p>Minh Anh</p>
                 </div>
               </li>
             </ul>
@@ -78,7 +81,7 @@ export const ConfirmInfo = () => {
                 {Profile.map(({ title, value }: any) => {
                   return (
                     <li key={uniqueId()}>
-                      <div>
+                      <div className={styles.cardBody}>
                         <p>{title}<span>{value}</span></p>
                       </div>
                     </li>
@@ -88,18 +91,21 @@ export const ConfirmInfo = () => {
             </div>
           </div>
           <div className={styles.InfoBooking}>
-            <p>Thông tin đặt khám</p>
+            <h4>Thông tin đặt khám</h4>
             <div className={styles.cardInfo}>
               <ul className={styles.listItem}>
                 {Info.map(({ title, value }: any) => {
                   return (
                     <li key={uniqueId()}>
-                      <p>{title}<span>{value}</span></p>
+                      <div className={styles.cardBody}>
+                        <p>{title}<span>{value}</span></p>
+                      </div>
                     </li>
                   )
                 })}
+                <CloseCircleOutlined />
               </ul>
-              <CloseCircleOutlined />
+
             </div>
           </div>
 
