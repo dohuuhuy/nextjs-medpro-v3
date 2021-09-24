@@ -1,7 +1,7 @@
 import api from 'store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {
-  const DetailsPost = ctx.params.DetailsPost
+  const DetailsPost = ctx.query.DetailsPost
 
   const detailNews = await getDetailNews(DetailsPost)
   const sameNews = await getSameNews()
@@ -11,6 +11,17 @@ export const ChiTietBaiViet = async (ctx: any) => {
     detailNews,
     sameNews,
     listNewsBanner
+  }
+}
+
+export const getDetail = async () => {
+  try {
+    const url = `https://cms.medpro.com.vn/posts`
+    const rs = await api(url)
+    return rs.data
+  } catch (error) {
+    console.error(error)
+    return null
   }
 }
 

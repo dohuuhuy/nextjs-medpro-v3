@@ -9,6 +9,8 @@ export const appCtrl = async (ctx: any) => {
 
   const partnerId = findPartnerId({ listPartners, host })
 
+  // const newsAndEvent = await getNewsAndEvent()
+
   return {
     partnerId,
     info: JSON_EXP
