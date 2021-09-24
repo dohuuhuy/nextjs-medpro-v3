@@ -52,6 +52,11 @@ export const ThoiGian = () => {
 
   return (
     <section className={styles.thoigian}>
+      <div className={styles.input}>
+        <Icon name='ngaygio' />
+        <span>Thời gian làm việc từ T2 - T7 các ngày trong tuần</span>
+      </div>
+
       <p className='d-none'>{count}</p>
       {/* ghi chú chức năng */}
       <div className={styles.groupGuide}>

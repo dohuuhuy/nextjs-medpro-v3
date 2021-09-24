@@ -5,6 +5,11 @@ import styles from './../less/bacsi.module.less'
 export const BacSi = () => {
   return (
     <section className={styles.bacSi}>
+      <div className={styles.input}>
+        <Icon name='timkiem' />
+        <input placeholder='Tìm nhanh bác sĩ' />
+      </div>
+
       <ul className={styles.listBacSi}>
         {bacsi.map((v, i) => {
           const size = '100'

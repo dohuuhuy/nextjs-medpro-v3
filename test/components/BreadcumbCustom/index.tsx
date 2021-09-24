@@ -40,8 +40,6 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
     })
   }
 
-  console.log('listBreadcumb :>> ', listBreadcumb)
-
   listBreadcumb.push(item)
 
   return (

@@ -25,8 +25,10 @@ const lessConfig = {
 }
 
 const nextConfig = {
-  inlineImageLimit: 16384,
+  // inlineImageLimit: 16384,
   images: {
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     domains: [
       'medpro.vn',
       'cms.medpro.com.vn',
@@ -36,8 +38,7 @@ const nextConfig = {
       'medpro-api-v2-testing.medpro.com.vn',
       'bo-api-testing.medpro.com.vn',
       'medpro-inside-testing.medpro.com.vn',
-      'inside-static.medpro.com.vn',
-      'api.pkh.vn'
+      'inside-static.medpro.com.vn'
     ]
   },
 

@@ -14,17 +14,25 @@ export interface BookingTreeIF {
 
 export const BookingTree = () => {
   const [id, setid] = React.useState(0)
+  const [toggle, settoggle] = React.useState(true)
 
-  const [toggle, settoggle] = React.useState(false)
-
-  const clickStep = (e: any) => {
-    const i = e.target.dataset.id
-    setid(i)
-    settoggle(!toggle)
+  const clickStep = (i: any) => {
+    if (i !== id) {
+      setid(i)
+      settoggle(false)
+    } else {
+      if (toggle) {
+        setid(i)
+        settoggle(false)
+      } else {
+        setid(-1)
+        settoggle(true)
+      }
+    }
   }
 
-  const checkStep = (e: any) => {
-    return Number(e) === Number(id) ? '' : styles.dnone
+  const checkOut = (i: any) => {
+    return Number(i) === Number(id) ? styles.out : styles.in
   }
 
   return (
@@ -34,21 +42,27 @@ export const BookingTree = () => {
         <Row className={styles.rowBody}>
           <Col xl='16' lg='16' span='16' className={styles.colLeft}>
             <ul className={styles.listTree}>
-              {steps.map((e, i) => {
-                // const active = act === i ? styles.active : ''
+              {steps.map((v, i) => {
                 return (
                   <li key={i}>
                     <div className={styles.card}>
-                      <h3 data-id={i} onClick={clickStep}>
-                        {e.title} <Icon name='arrowDown' size='15' />
+                      <h3 onClick={() => clickStep(i)}>
+                        {v.title} <Icon name='arrowDown' size='15' />
                       </h3>
-                      <div className={styles.input}>
-                        {e.icon}
-                        <input placeholder={'Chọn ' + e.title.toLowerCase()} />
+
+                      <div
+                        className={cx(
+                          styles.input,
+                          i === id ? styles.dnone : ''
+                        )}
+                        onClick={() => clickStep(i)}
+                      >
+                        {v.icon}
+                        <span>{'Chọn ' + v.title.toLowerCase()}</span>
                       </div>
 
-                      <div className={cx(styles.content, checkStep(i))}>
-                        {e?.content}
+                      <div className={cx(styles.content, checkOut(i))}>
+                        {v?.content}
                       </div>
                     </div>
                   </li>

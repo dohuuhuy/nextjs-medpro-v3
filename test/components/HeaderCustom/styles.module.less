@@ -56,26 +56,37 @@
       .listMenu {
         .listCustom();
         li {
-          padding: 5px;
-          margin: 0 5px;
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+
           border: none;
           border-radius: 15px;
           transition: all 0.3s ease-in-out;
-          &:hover {
-            box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
-            transform: translateY(-0.3rem);
-            background-color: #00b5f1;
-            a {
-              color: white;
-            }
-          }
+          margin: 0 5px;
           a {
-            color: #002e64;
             width: 100%;
+
+            padding: 5px 8px;
+
+            color: #002e64;
             font-size: 13px;
             font-weight: 500;
             white-space: nowrap;
-            transition: unset;
+          }
+          &:hover {
+            a {
+              color: white;
+            }
+            span {
+              fill: white;
+            }
+
+            background-color: #00b5f1;
+            cursor: pointer;
+            transform: translateY(-0.3rem);
+            box-shadow: 0 0px 10px rgb(0 0 0 / 10%);
           }
         }
       }
