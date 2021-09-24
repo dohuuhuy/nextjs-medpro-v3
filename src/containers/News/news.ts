@@ -9,8 +9,6 @@ export const TinTucCtrl = async (ctx: any) => {
   const listNewsContent = await getListNewsContent({ page })
   const totalPages = await getCountNewsContent()
 
-  console.log(`listNewsBanner`, listNewsBanner)
-
   return {
     listNewsBanner,
     listNewsContent,
