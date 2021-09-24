@@ -9,6 +9,10 @@ import { useSelector } from 'react-redux'
 import { AppState, Information } from 'store/interface'
 
 const Banners = (info: Information) => {
+  if (check(info)) {
+    return null
+  }
+
   const router = useRouter()
   const hos = useSelector((state: AppState) => state.hospital)
   const {

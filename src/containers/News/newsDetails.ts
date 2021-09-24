@@ -1,14 +1,12 @@
 import api from 'store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {
-  const {
-    query: { DetailsPost }
-  } = ctx
+  const DetailsPost = ctx.params.DetailsPost
 
   const detailNews = await getDetailNews(DetailsPost)
   const sameNews = await getSameNews()
   const listNewsBanner = await getListNewsBanner()
-  getSameNews
+
   return {
     detailNews,
     sameNews,

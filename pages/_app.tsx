@@ -32,28 +32,31 @@ const MyApp = ({ Component, pageProps, appProps }: Props) => {
   })
 
   const store: any = useStore()
-  const lod = (
-    <PersistGate persistor={store.persistor}>
+  const lod =
+    typeof window !== 'undefined' ? (
+      <PersistGate persistor={store.persistor}>
+        <Component {...pageProps} appProps={appProps} />
+      </PersistGate>
+    ) : (
       <Component {...pageProps} appProps={appProps} />
-    </PersistGate>
-  )
+    )
 
   const Layout = Component?.Layout
 
   const x = Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
 
   return (
-    <React.Fragment>
+    <div>
       <DefaultSeo {...SEO} />
       {x}
       <OnTop />
-    </React.Fragment>
+    </div>
   )
 }
 
-MyApp.getInitialProps = async (ctx: any) => {
-  const appProps = await appCtrl(ctx)
-  return { appProps }
-}
+// MyApp.getInitialProps = async (ctx: any) => {
+//   const appProps = await appCtrl(ctx)
+//   return { appProps }
+// }
 
 export default wrapper.withRedux(MyApp)
