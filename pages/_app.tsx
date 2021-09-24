@@ -1,3 +1,4 @@
+import { SetParnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import { OnTop } from '@components/atoms/OnTop'
 import { wrapper } from '@store/rootStore'
@@ -5,7 +6,7 @@ import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import App, { AppProps } from 'next/app'
 import React from 'react'
-import { useStore } from 'react-redux'
+import { useDispatch, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
@@ -16,6 +17,11 @@ type Props = AppProps & {
 }
 
 const MyApp = ({ Component, pageProps, app }: Props) => {
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(SetParnerId(app?.partnerId))
+  })
+
   const store: any = useStore()
   const lod =
     typeof window !== 'undefined' ? (
