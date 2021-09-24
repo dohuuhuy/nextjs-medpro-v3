@@ -31,32 +31,11 @@ const ChonBenhVienPage = ({ data }: any) => {
   return <SelectHospitalCustom {...methods} />
 }
 
-ChonBenhVienPage.Layout = DefaultLayout
-
 ChonBenhVienPage.getInitialProps = async (ctx: any) => {
   const data = await SelectHospitalCtl(ctx)
 
   return { data }
 }
 
+ChonBenhVienPage.Layout = DefaultLayout
 export default ChonBenhVienPage
-
-// export const getServerSideProps = async (ctx: any) => {
-//   const data = await SelectHospitalCtl(ctx)
-
-//   return { props: { data } }
-// }
-
-// export const getStaticProps = async (ctx: any) => {
-//   const data = await SelectHospitalCtl(ctx)
-//   return {
-//     props: { data },
-//     revalidate: 1
-//   }
-// }
-// export const getStaticPaths = async () => {
-//   return {
-//     paths: [],
-//     fallback: true
-//   }
-// }

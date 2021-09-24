@@ -2,7 +2,7 @@ import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { checkData } from '../DataFailure'
 import Container from './../Container'
 import { Icon } from './../Icon'
@@ -14,10 +14,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
   const [activeList, setactiveList] = useState(false)
-
-  useEffect(() => {
-    setlistHospitals(props?.listHospital)
-  }, [activeList, props.listHospital])
 
   function onChange(code: any) {
     setactiveList(true)

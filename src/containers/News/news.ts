@@ -1,5 +1,5 @@
+import { api } from '@config/api'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
-import { api } from '../../config/api/index'
 export const TinTucCtrl = async (ctx: any) => {
   const {
     query: { page = 1 }
@@ -8,6 +8,8 @@ export const TinTucCtrl = async (ctx: any) => {
   const listNewsBanner = await getListNewsBanner()
   const listNewsContent = await getListNewsContent({ page })
   const totalPages = await getCountNewsContent()
+
+  console.log(`listNewsBanner`, listNewsBanner)
 
   return {
     listNewsBanner,
