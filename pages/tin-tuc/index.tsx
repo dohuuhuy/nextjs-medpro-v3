@@ -11,8 +11,24 @@ const TinTucPage = ({ data }: any) => {
 TinTucPage.Layout = DefaultLayout
 export default TinTucPage
 
-export const getServerSideProps = async (ctx: any) => {
+// export const getServerSideProps = async (ctx: any) => {
+//   const data = await TinTucCtrl(ctx)
+
+//   return { props: { data } }
+// }
+
+export const getStaticProps = async (ctx: any) => {
   const data = await TinTucCtrl(ctx)
 
-  return { props: { data } }
+  return {
+    props: { data },
+    revalidate: 1
+  }
+}
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true
+  }
 }
