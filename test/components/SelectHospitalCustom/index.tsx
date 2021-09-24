@@ -16,7 +16,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   const [activeList, setactiveList] = useState(false)
 
   useEffect(() => {
-    activeList && setlistHospitals(props?.listHospital)
+    setlistHospitals(props?.listHospital)
   }, [activeList, props.listHospital])
 
   function onChange(code: any) {
@@ -75,7 +75,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         Number(e.deliveryStatus) === 1 ? (
           <p className={styles.status}>Sắp ra mắt</p>
         ) : (
-          <Rate className={styles.rate} disabled value={3} />
+          <Rate className={styles.rate} disabled={true} value={3} />
         )
 
       return (
@@ -99,7 +99,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   return (
-    <Container fluid className={styles.container}>
+    <Container fluid={true} className={styles.container}>
       <Row className={styles.rowSelect}>
         <Col span='24' className={styles.colGroupInputSelect}>
           <Container className={styles.conGroup}>

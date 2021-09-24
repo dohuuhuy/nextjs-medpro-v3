@@ -17,7 +17,7 @@ export const HeaderCustom = (props: HeaderIF) => {
 
   return (
     <header>
-      <Container fluid fixed className={styles.header}>
+      <Container fluid={true} fixed={true} className={styles.header}>
         <Container className={styles.containerHeader}>
           <Row className={styles.rowHeader}>
             <Col xl={6} lg={6} className={styles.colLogo}>

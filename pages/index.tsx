@@ -1,5 +1,4 @@
 import * as ac from '@actionStore/rootAction'
-import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,15 +14,18 @@ const HomePage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    check(hos?.listFeatureByApp) &&
-      dispatch(
-        ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
-      )
+    dispatch(
+      ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
+    )
 
-    user?.userInfo?.token &&
-      check(user?.listPatient) &&
-      dispatch(ac.ListPatientRequest())
-  })
+    dispatch(ac.ListPatientRequest())
+  }, [
+    dispatch,
+    hos?.listFeatureByApp,
+    total?.partnerId,
+    user?.listPatient,
+    user?.userInfo?.token
+  ])
 
   return <NewsAndEvent {...data} />
 }

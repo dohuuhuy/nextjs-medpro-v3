@@ -43,7 +43,7 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
   listBreadcumb.push(item)
 
   return (
-    <Container fluid className={styles.wrapper}>
+    <Container fluid={true} className={styles.wrapper}>
       <Container className={styles.container}>
         <Row className={styles.row}>
           <Col className={styles.col}>

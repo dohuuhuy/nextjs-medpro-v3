@@ -47,9 +47,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
               {listFeature.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
                 const urlImage = e.image || imageErrorSrc
-                const onError = (e: any) => {
-                  e.target.src = imageErrorSrc
-                }
+
                 if (e?.status) {
                   return (
                     <motion.li
@@ -70,7 +68,6 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                         <figure>
                           <Image
                             src={urlImage}
-                            onError={onError}
                             width='45'
                             height='45'
                             loading='eager'

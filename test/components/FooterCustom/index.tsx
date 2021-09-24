@@ -15,7 +15,7 @@ export const FooterCustom = (props: FooterIF) => {
 
   return (
     <footer>
-      <Container fluid className={styles.footer}>
+      <Container fluid={true} className={styles.footer}>
         <Container className={styles.container}>
           <Row className={styles.rowMenu}>
             <Col span='24' className={styles.colMenu}>
