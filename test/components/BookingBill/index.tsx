@@ -96,12 +96,12 @@ export const BookingBill = () => {
   )
 }
 
-interface data {
+interface Data {
   title: string
   value: string
 }
 
-const data: data[] = [
+const data: Data[] = [
   {
     title: 'Hình thức khám:',
     value: 'Dịch vụ'

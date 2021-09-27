@@ -2,7 +2,6 @@ import Container from '@componentsTest/Container'
 import { Col, Row, Space } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -10,12 +9,12 @@ import QRCode from 'react-qr-code'
 import { FooterIF } from './interface'
 import styles from './styles.module.less'
 
-export const FooterCustom = (props: FooterIF) => {
+export default function FooterCustom(props: FooterIF) {
   const { menu, logo, contact, downApp, certificate } = props
 
   return (
     <footer>
-      <Container fluid className={styles.footer}>
+      <Container fluid={true} className={styles.footer}>
         <Container className={styles.container}>
           <Row className={styles.rowMenu}>
             <Col span='24' className={styles.colMenu}>

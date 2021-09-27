@@ -9,5 +9,5 @@ export const check = (element: any) => {
     element.length < 1
   ) {
     return true
-  }
+  } else return false
 }

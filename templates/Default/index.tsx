@@ -1,7 +1,7 @@
-import { AnimatePage } from '@components/atoms/motion'
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
+import { Layout } from 'antd'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
@@ -18,18 +18,16 @@ const DefaultLayout = (props: Props) => {
 
   const info = appProps?.info
   return (
-    <section className={styles.layout}>
+    <Layout className={styles.layout}>
       <Header {...info} />
       <main className={styles.main}>
-        <AnimatePage>
-          <BannerPage {...info} />
-          <HandlerGetContentPage {...info} />
+        <BannerPage {...info} />
+        <HandlerGetContentPage {...info} />
 
-          {children}
-        </AnimatePage>
+        {children}
       </main>
       <Footer {...info} />
-    </section>
+    </Layout>
   )
 }
 

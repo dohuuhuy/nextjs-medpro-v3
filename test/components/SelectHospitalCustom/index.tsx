@@ -2,8 +2,8 @@ import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import { checkData, DataFailure } from '../DataFailure'
+import React, { useState } from 'react'
+import { checkData } from '../DataFailure'
 import Container from './../Container'
 import { Icon } from './../Icon'
 import styles from './styles.module.less'
@@ -13,15 +13,10 @@ const { Option } = Select
 export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
-  const [activeList, setactiveList] = useState(true)
-
-
-  useEffect(() => {
-    activeList && setlistHospitals(props?.listHospital)
-  }, [activeList, props.listHospital])
+  const [activeList, setactiveList] = useState(false)
 
   function onChange(code: any) {
-    setactiveList(false)
+    setactiveList(true)
     if (code === 'huyi') {
       setlistHospitals(props?.listHospital)
     } else {
@@ -31,7 +26,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   function onSearchHospital(e: any) {
-    setactiveList(false)
+    setactiveList(true)
     const { value } = e.target
     const findHospital = props?.listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
@@ -40,7 +35,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   function redirect(e: ListHospital) {
-
     if (checkData(e?.message)) {
       e?.partnerId
         ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
@@ -67,8 +61,41 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
       })
     }
   }
+
+  const handlerMap = (arr: ListHospital[]) => {
+    return arr?.map((e) => {
+      const imageErrorSrc = '/images/logo.png'
+      const urlImage = e?.image || imageErrorSrc
+
+      const rate =
+        Number(e.deliveryStatus) === 1 ? (
+          <p className={styles.status}>Sắp ra mắt</p>
+        ) : (
+          <Rate className={styles.rate} disabled={true} value={3} />
+        )
+
+      return (
+        <li key={uniqueId()} onClick={() => redirect(e)}>
+          <div className={styles.cardHospital}>
+            <figure className={styles.cardView}>
+              <Image src={urlImage} alt='' width='50' height='50' />
+            </figure>
+            <div className={styles.cardBody}>
+              <p className={styles.nameHospital}>{e?.name}</p>
+              <p className={styles.address}>{e?.address}</p>
+              {rate}
+            </div>
+            <div className={styles.favorite}>
+              <Icon name='yeuthich' fill='#CBD2D9' size='15' />
+            </div>
+          </div>
+        </li>
+      )
+    })
+  }
+
   return (
-    <Container fluid className={styles.container}>
+    <Container fluid={true} className={styles.container}>
       <Row className={styles.rowSelect}>
         <Col span='24' className={styles.colGroupInputSelect}>
           <Container className={styles.conGroup}>
@@ -117,39 +144,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         <Col span='24' className={styles.colListCard}>
           <Container className={styles.conList}>
             <ul className={styles.listCard}>
-              {checkData(listHospitals) ? (
-                <DataFailure desc='Không tìm thấy !' />
-              ) : (
-                listHospitals?.map((e) => {
-                  const imageErrorSrc = '/images/logo.png'
-                  const urlImage = e?.image || imageErrorSrc
-
-                  const rate =
-                    Number(e.deliveryStatus) === 1 ? (
-                      <p className={styles.status}>Sắp ra mắt</p>
-                    ) : (
-                      <Rate className={styles.rate} disabled value={3} />
-                    )
-
-                  return (
-                    <li key={uniqueId()} onClick={() => redirect(e)}>
-                      <div className={styles.cardHospital}>
-                        <figure className={styles.cardView}>
-                          <Image src={urlImage} alt='' width='50' height='50' />
-                        </figure>
-                        <div className={styles.cardBody}>
-                          <p className={styles.nameHospital}>{e?.name}</p>
-                          <p className={styles.address}>{e?.address}</p>
-                          {rate}
-                        </div>
-                        <div className={styles.favorite}>
-                          <Icon name='yeuthich' fill='#CBD2D9' size='15' />
-                        </div>
-                      </div>
-                    </li>
-                  )
-                })
-              )}
+              {handlerMap(activeList ? listHospitals : props?.listHospital)}
             </ul>
           </Container>
         </Col>

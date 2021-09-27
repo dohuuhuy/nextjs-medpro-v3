@@ -12,7 +12,7 @@ export interface BookingTreeIF {
   [T: string]: any
 }
 
-export const BookingTree = () => {
+export default function BookingTree() {
   const [id, setid] = React.useState(0)
   const [toggle, settoggle] = React.useState(true)
 
@@ -36,7 +36,7 @@ export const BookingTree = () => {
   }
 
   return (
-    <section>
+    <React.Fragment>
       <Stepper />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
@@ -75,6 +75,6 @@ export const BookingTree = () => {
           </Col>
         </Row>
       </Container>
-    </section>
+    </React.Fragment>
   )
 }

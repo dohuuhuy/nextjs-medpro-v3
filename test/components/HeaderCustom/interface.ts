@@ -1,21 +1,21 @@
 export interface HeaderIF {
   Authencation: Authen
-  dataHeader: listHeader
+  dataHeader: ListHeader
 }
 
-export interface listHeader {
-  logo: itemLogo
-  menu: itemMenu[]
-  menuMobile: itemMenuMobile[]
-  listSupport: itemSupport
+export interface ListHeader {
+  logo: ItemLogo
+  menu: ItemMenu[]
+  menuMobile: ItemMenuMobile[]
+  listSupport: ItemSupport
 }
 
-export interface itemLogo {
+export interface ItemLogo {
   desktop: string
   mobile: string
 }
 
-export interface itemMenu {
+export interface ItemMenu {
   id?: string
   key: string
   link: string
@@ -31,7 +31,7 @@ export interface Authen {
   nameUser: string
 }
 
-export interface itemMenuMobile {
+export interface ItemMenuMobile {
   id?: string
   key: string
   link: string
@@ -42,7 +42,7 @@ export interface itemMenuMobile {
   icon: string
 }
 
-export interface itemSupport {
+export interface ItemSupport {
   funcGroup: Funcgroup[]
   guideGroup: Guidegroup[]
   supportGroup: Supportgroup[]

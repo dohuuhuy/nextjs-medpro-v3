@@ -112,7 +112,7 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
               height='300'
               layout='responsive'
               loading='eager'
-              alt='news'
+              alt=''
             />
           </a>
         </Link>

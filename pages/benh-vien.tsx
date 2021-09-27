@@ -3,7 +3,6 @@ import {
   SelectHospital,
   SelectHospitalCustom
 } from '@componentsTest/SelectHospitalCustom'
-import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,8 +19,8 @@ const ChonBenhVienPage = ({ data }: any) => {
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
   useEffect(() => {
-    check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
-    check(listHospital) && dispatch(ac.getListHospital())
+    !listCity && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
+    !listHospital && dispatch(ac.getListHospital())
   }, [dispatch, listCity, listHospital])
 
   const methods: SelectHospital = {
@@ -32,11 +31,11 @@ const ChonBenhVienPage = ({ data }: any) => {
   return <SelectHospitalCustom {...methods} />
 }
 
-ChonBenhVienPage.Layout = DefaultLayout
-export default ChonBenhVienPage
-
-export const getServerSideProps = async (ctx: any) => {
+ChonBenhVienPage.getInitialProps = async (ctx: any) => {
   const data = await SelectHospitalCtl(ctx)
 
-  return { props: { data } }
+  return { data }
 }
+
+ChonBenhVienPage.Layout = DefaultLayout
+export default ChonBenhVienPage

@@ -26,7 +26,7 @@ const Container = ({
   id
 }: Props) => {
   return (
-    <section
+    <div
       id={id}
       style={style}
       className={cx(styles.container, classStyles, {
@@ -38,7 +38,7 @@ const Container = ({
       })}
     >
       {children}
-    </section>
+    </div>
   )
 }
 

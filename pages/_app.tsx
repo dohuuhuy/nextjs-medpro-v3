@@ -1,59 +1,55 @@
-import * as ac from '@actionStore/rootAction'
+import { SetParnerId } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
 import { OnTop } from '@components/atoms/OnTop'
-// import '@medpro/booking-libs/libs/index.css'
-import { AppState, Information } from '@store/interface'
-import { persistor, wrapper } from '@store/rootStore'
-import { checkVersion, setVersion } from '@store/rootStore/handlerStore'
-import { check } from '@utils/checkValue'
+import { wrapper } from '@store/rootStore'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
-import { AppProps } from 'next/app'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import App, { AppProps } from 'next/app'
+import React from 'react'
+import { useDispatch, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appCtrl } from 'src/containers/app'
 import { Page } from 'type/page'
 
 type Props = AppProps & {
   Component: Page
-  appProps: Information
+  app: any
 }
 
-const MyApp = ({ Component, pageProps, appProps }: Props) => {
+const MyApp = ({ Component, pageProps, app }: Props) => {
   const dispatch = useDispatch()
-
-  const partnerId = useSelector((state: AppState) => state.total.partnerId)
-
-  useEffect(() => {
-    setVersion()
-    checkVersion(persistor)
-    check(partnerId) && dispatch(ac.SetParnerId(appProps?.partnerId))
+  React.useEffect(() => {
+    dispatch(SetParnerId(app?.partnerId))
   })
 
   const store: any = useStore()
-  const lod = (
-    <PersistGate persistor={store.persistor}>
-      <Component {...pageProps} appProps={appProps} />
-    </PersistGate>
-  )
+  const lod =
+    typeof window !== 'undefined' ? (
+      <PersistGate persistor={store.persistor}>
+        <Component {...pageProps} />
+      </PersistGate>
+    ) : (
+      <Component {...pageProps} />
+    )
 
   const Layout = Component?.Layout
 
-  const x = Layout ? <Layout appProps={appProps}>{lod}</Layout> : lod
+  const x = Layout ? <Layout appProps={app}>{lod}</Layout> : lod
 
   return (
-    <React.Fragment>
+    <>
       <DefaultSeo {...SEO} />
       {x}
       <OnTop />
-    </React.Fragment>
+    </>
   )
 }
 
 MyApp.getInitialProps = async (ctx: any) => {
-  const appProps = await appCtrl(ctx)
-  return { appProps }
+  const appProps = await App.getInitialProps(ctx)
+  const app = await appCtrl(ctx)
+
+  return { ...appProps, app }
 }
 
 export default wrapper.withRedux(MyApp)

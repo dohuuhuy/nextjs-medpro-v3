@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as ac from '@actionStore/rootAction'
-import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,15 +15,13 @@ const HomePage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    check(hos?.listFeatureByApp) &&
+    !hos?.listFeatureByApp &&
       dispatch(
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
       )
 
-    user?.userInfo?.token &&
-      check(user?.listPatient) &&
-      dispatch(ac.ListPatientRequest())
-  })
+    !user?.listPatient && dispatch(ac.ListPatientRequest())
+  }, [])
 
   return <NewsAndEvent {...data} />
 }
@@ -31,8 +29,7 @@ const HomePage = ({ data }: any) => {
 HomePage.Layout = HomeLayout
 export default HomePage
 
-export const getServerSideProps = async (ctx: any) => {
+HomePage.getInitialProps = async (ctx: any) => {
   const data = await HomeCtl(ctx)
-
-  return { props: { data } }
+  return { data }
 }
