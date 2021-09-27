@@ -1,12 +1,5 @@
 export const api = (url: any) => {
-  const option: any = {
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expires: 0
-    }
-  }
-  return fetch(url, option)
+  return fetch(url)
     .then((rs) => {
       return rs ? rs.json() : null
     })
