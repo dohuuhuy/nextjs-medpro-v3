@@ -9,7 +9,7 @@ import Container from './../Container'
 import { HeaderIF } from './interface'
 import styles from './styles.module.less'
 
-export const HeaderCustom = (props: HeaderIF) => {
+export default function HeaderCustom(props: HeaderIF) {
   const { dataHeader } = props
   const { logo, menu } = dataHeader
 

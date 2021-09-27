@@ -1,8 +1,10 @@
-import { HeaderCustom } from '@componentsTest/HeaderCustom'
-import { AppState, Information } from 'store/interface'
+import { check } from '@utils/checkValue'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { check } from '@utils/checkValue'
+import { AppState, Information } from 'store/interface'
+
+const HeaderCustom = dynamic(() => import('@componentsTest/HeaderCustom'))
 
 const Header = (info: Information) => {
   const userInfo = useSelector((state: AppState) => state.user.userInfo)

@@ -14,18 +14,13 @@ const HomePage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    dispatch(
-      ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
-    )
+    !hos?.listFeatureByApp &&
+      dispatch(
+        ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
+      )
 
-    dispatch(ac.ListPatientRequest())
-  }, [
-    dispatch,
-    hos?.listFeatureByApp,
-    total?.partnerId,
-    user?.listPatient,
-    user?.userInfo?.token
-  ])
+    !user?.userInfo?.token && dispatch(ac.ListPatientRequest())
+  }, [dispatch, hos?.listFeatureByApp, total?.partnerId, user?.userInfo?.token])
 
   return <NewsAndEvent {...data} />
 }

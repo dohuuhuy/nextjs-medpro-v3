@@ -10,13 +10,14 @@ function* ListPatientRequest() {
 
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
-    const response: AxiosResponse = yield client.getPatientsByUserIdV2({
-      token: user?.userInfo?.token,
-      partnerid: total?.partnerId,
-      appid: total?.appId
-    })
-
-    yield put(ac.ListPatientRequestSuccess(response.data))
+    if (user.userInfo?.token) {
+      const response: AxiosResponse = yield client.getPatientsByUserIdV2({
+        token: user?.userInfo?.token,
+        partnerid: total?.partnerId,
+        appid: total?.appId
+      })
+      yield put(ac.ListPatientRequestSuccess(response.data))
+    }
   } catch (error) {
     console.log(error)
   }

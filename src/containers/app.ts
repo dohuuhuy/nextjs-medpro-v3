@@ -1,6 +1,6 @@
+import { api } from '@config/api'
 import { findPartnerId } from '@utils/run_local_hospitals'
 import { JSON_EXP } from 'json mẫu/bvtest'
-import { api } from './../config/api/index'
 
 export const appCtrl = async (ctx: any) => {
   const host = ctx.ctx?.req?.headers.host

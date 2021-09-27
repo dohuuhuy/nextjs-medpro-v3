@@ -37,11 +37,11 @@ const MyApp = ({ Component, pageProps, app }: Props) => {
   const x = Layout ? <Layout appProps={app}>{lod}</Layout> : lod
 
   return (
-    <div>
+    <>
       <DefaultSeo {...SEO} />
       {x}
       <OnTop />
-    </div>
+    </>
   )
 }
 
