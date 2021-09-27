@@ -7,7 +7,6 @@ import { AppState, TotalDataState, UserState, UserTypes } from 'store/interface'
 function* ListPatientRequest() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
-
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
     if (user.userInfo?.token) {

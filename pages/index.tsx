@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as ac from '@actionStore/rootAction'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
@@ -19,8 +20,8 @@ const HomePage = ({ data }: any) => {
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
       )
 
-    !user?.userInfo?.token && dispatch(ac.ListPatientRequest())
-  }, [dispatch, hos?.listFeatureByApp, total?.partnerId, user?.userInfo?.token])
+    !user?.listPatient && dispatch(ac.ListPatientRequest())
+  }, [])
 
   return <NewsAndEvent {...data} />
 }
