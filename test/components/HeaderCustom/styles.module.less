@@ -8,12 +8,8 @@
       display: flex;
       align-items: flex-end;
       .logo {
-        width: 100%;
+        width: 90%;
         margin-bottom: 0;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        align-content: center;
       }
     }
     .colBody {
@@ -117,6 +113,21 @@
     .rowHeader {
       .colLogo {
         display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .header {
+    .rowHeader {
+      .colBody {
+        padding: 0;
+        .listMenu,
+        .groupBtn {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
       }
     }
   }

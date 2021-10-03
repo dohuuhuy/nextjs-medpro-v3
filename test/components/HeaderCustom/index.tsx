@@ -24,7 +24,7 @@ export default function HeaderCustom(props: HeaderIF) {
               <figure className={styles.logo}>
                 <Link href={'/'}>
                   <a>
-                    <Image src={glogo} layout='fill' objectFit='cover' alt='' />
+                    <Image src={glogo} layout='fill' alt='' />
                   </a>
                 </Link>
               </figure>

@@ -10,6 +10,11 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
 const DetailsPostPage = ({ data }: any) => {
+  React.useEffect(() => {
+    window.localStorage.removeItem('postTitle')
+    window.localStorage.setItem('postTitle', data.detailNews[0].title)
+  })
+
   if (check(data)) {
     return <Spin indicator={antIcon} />
   }

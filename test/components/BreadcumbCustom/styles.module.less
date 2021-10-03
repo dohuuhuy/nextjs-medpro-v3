@@ -18,9 +18,14 @@
     margin: 0;
     display: flex;
     padding: 10px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
     li {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      align-content: center;
       padding-right: 5px;
       a {
         font-size: 12px;
@@ -29,6 +34,7 @@
       }
       span {
         fill: white;
+        height: unset !important;
       }
       &:last-child {
         span {

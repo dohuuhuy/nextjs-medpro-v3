@@ -27,46 +27,67 @@
     color: #002e64;
   }
   .container {
-    .colCopy {
-      padding: 0 15px;
-      color: #002e64;
-      text-align: center;
-      font-weight: 400;
-    }
-    .colLogo {
-      padding: 0 15px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-size: 24px;
-      color: #00b5f1;
-      font-weight: 500;
-    }
-    .colMenu {
-      padding: 0 15px;
-      padding: 15px 0;
-      margin-bottom: 15px;
-      display: flex;
-      justify-self: center;
+    .rowCopy {
       justify-content: center;
-      align-items: center;
-      .menu {
-        .listCustom();
+      .colCopy {
+        padding: 0 15px;
+        color: #002e64;
+        text-align: center;
+        font-weight: 400;
+      }
+    }
+    .rowLogo {
+      .colLogo {
+        margin: 15px 0;
+        text-align: center;
+        font-size: 24px;
+        color: #00b5f1;
+        font-weight: 500;
+        .glogo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          span {
+            padding-left: 15px;
+            &:first-child {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+    .rowMenu {
+      .colMenu {
+        padding: 0 15px;
+        padding: 15px 0;
+        margin-bottom: 15px;
         display: flex;
-        flex-wrap: wrap;
+        justify-self: center;
         justify-content: center;
         align-items: center;
-        align-content: center;
-        li {
-          padding: 0 25px;
-          font-weight: 500;
-          font-size: 13px;
+        .menu {
+          .listCustom();
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          li {
+            padding: 0 25px;
+            font-weight: 500;
+            font-size: 13px;
+          }
         }
       }
     }
     .rowBody {
       margin-bottom: 15px;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
       .colContact {
-        padding: 0 15px;
+        padding: 0 7.5px;
         .listContact {
           .listCustom();
           display: flex;
@@ -80,7 +101,7 @@
         }
       }
       .colDown {
-        padding: 0 15px;
+        padding: 0 7.5px;
         .title {
           text-transform: uppercase;
           font-weight: 600;
@@ -94,13 +115,43 @@
         }
       }
       .colCertifi {
-        padding: 0 15px;
+        padding: 0 7.5px;
         .listCer {
           .listCustom();
         }
         .listImg {
           .listCustom();
           display: flex;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .footer {
+    .container {
+      .rowMenu {
+        border-bottom: 0.5px dashed slategrey;
+        .colMenu {
+          padding: 0;
+          .menu {
+            li {
+              padding: 7.5px 25px;
+            }
+          }
+        }
+      }
+      .rowLogo {
+        border-bottom: 0.5px dashed slategrey;
+      }
+
+      .rowBody {
+        border-bottom: 0.5px dashed slategrey;
+        .colContact,
+        .colDown {
+          margin-bottom: 15px;
+          padding: 0;
         }
       }
     }

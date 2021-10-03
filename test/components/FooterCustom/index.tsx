@@ -17,7 +17,7 @@ export default function FooterCustom(props: FooterIF) {
       <Container fluid={true} className={styles.footer}>
         <Container className={styles.container}>
           <Row className={styles.rowMenu}>
-            <Col span='24' className={styles.colMenu}>
+            <Col span='24' sm='24' className={styles.colMenu}>
               <ul className={styles.menu}>
                 {menu.map((v) => {
                   return (
@@ -32,16 +32,18 @@ export default function FooterCustom(props: FooterIF) {
             </Col>
           </Row>
           <Row className={styles.rowLogo}>
-            <Col span='24' className={styles.colLogo}>
-              <Space>
+            <Col span='24' sm='24' className={styles.colLogo}>
+              <div className={styles.glogo}>
                 <span>{logo.name}</span>
                 <span>|</span>
-                <Image src={logo.image} width='80' height='40' alt='' />
-              </Space>
+                <span>
+                  <Image src={logo.image} width='80' height='40' alt='' />
+                </span>
+              </div>
             </Col>
           </Row>
           <Row className={styles.rowBody}>
-            <Col span='10' className={styles.colContact}>
+            <Col xl='10' sm='24' className={styles.colContact}>
               <ul className={styles.listContact}>
                 {contact?.map((v) => {
                   const under = v.setting.underline ? styles.underline : ''
@@ -58,7 +60,7 @@ export default function FooterCustom(props: FooterIF) {
                 })}
               </ul>
             </Col>
-            <Col span='7' className={styles.colDown}>
+            <Col xl='7' sm='24' className={styles.colDown}>
               <p className={styles.title}>SCAN ĐỂ TẢI APP</p>
 
               <Space size={15}>
@@ -83,7 +85,7 @@ export default function FooterCustom(props: FooterIF) {
                 </ul>
               </Space>
             </Col>
-            <Col span='7' className={styles.colCertifi}>
+            <Col xl='7' sm='24' className={styles.colCertifi}>
               <ul className={styles.listCer}>
                 {certificate.list?.map((v) => {
                   const under = v.setting.underline ? styles.underline : ''
@@ -116,7 +118,7 @@ export default function FooterCustom(props: FooterIF) {
             </Col>
           </Row>
           <Row className={styles.rowCopy}>
-            <Col span='24' className={styles.colCopy}>
+            <Col xl='24' sm='24' className={styles.colCopy}>
               <p>@2021 Medpro Copyright. All Rights Reserved.</p>
             </Col>
           </Row>

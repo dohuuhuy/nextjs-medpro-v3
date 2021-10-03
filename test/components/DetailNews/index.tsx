@@ -27,7 +27,7 @@ export const DetailNewsCustom = ({
               return (
                 <div key={index}>
                   <li className={styles.title}>
-                    <p>{item?.title}</p>
+                    <h2>{item?.title}</h2>
                   </li>
                   <li className={styles.time}>
                     <p>
@@ -43,7 +43,10 @@ export const DetailNewsCustom = ({
                     </blockquote>
                   </li>
                   <li className={styles.content}>
-                    <p dangerouslySetInnerHTML={{ __html: item?.content }} />
+                    <div
+                      className={styles.divContent}
+                      dangerouslySetInnerHTML={{ __html: item?.content }}
+                    />
                   </li>
                 </div>
               )

@@ -152,18 +152,32 @@
   }
 }
 
-@media (max-width: 426px) {
-  .containerSelectHospitalCustom {
-    .GroupInputSelect {
-      li {
-        width: 100% !important;
+@media only screen and (max-width: 426px) {
+  .container {
+    .rowSelect {
+      .colGroupInputSelect {
+        padding: 15px 0;
+        .GroupInputSelect {
+          li {
+            width: 100% !important;
+            padding: 10px 0px !important;
+          }
+        }
+      }
+    }
+    .colListCard {
+      .listCard {
+        li {
+          width: 100% !important;
+          padding: 10px 0px !important;
+        }
       }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .containerSelectHospitalCustom {
+  .container {
     .colGroupInputSelect,
     .colListCard {
       padding: 0 !important;

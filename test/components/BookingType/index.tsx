@@ -97,6 +97,7 @@ export const BookingType = (props: BookingTypeIF) => {
                               src={v?.image}
                               width='80'
                               height='80'
+                              layout='responsive'
                               alt=''
                             />
                           </figure>

@@ -8,7 +8,15 @@ import Container from '../Container'
 import styles from './styles.module.less'
 
 export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
+  const [postTitle, setpostTitle] = React.useState('')
+
   const router = useRouter()
+
+  React.useEffect(() => {
+    const postTitle = window.localStorage.getItem('postTitle') || ''
+    console.log('postTitle :>> ', postTitle)
+    setpostTitle(postTitle)
+  }, [router.query])
 
   if (!listMenu) {
     return null
@@ -48,7 +56,7 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
 
     listBreadcumb.push({
       link: '/',
-      label: 'Chi tiết bài viết'
+      label: postTitle
     })
   }
   listBreadcumb.push(item)

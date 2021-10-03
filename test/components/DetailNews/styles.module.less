@@ -18,10 +18,19 @@
 
 .CustomCardBody (@descNone) {
   .title {
-    font-size: 13px;
+    color: #002e64;
+    font-size: 14px;
     font-weight: 500;
     .customLine(2);
     margin-bottom: 5px;
+    text-transform: lowercase;
+    &::first-letter {
+      text-transform: uppercase;
+      color: red;
+    }
+    &:hover {
+      color: #3699ff;
+    }
   }
   .author {
     font-weight: 500;
@@ -79,21 +88,18 @@
 }
 // css ContainerNews -------------------------------------------
 .ContainerNews {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  background-color: white;
 
   .rowContentPost {
-    margin: 15px 0;
+    margin: 15px -15px;
     .colLeftPost {
-      padding: 0 7.5px;
+      padding: 0 15px;
       .listPost {
         list-style: none;
         padding: 0;
         margin: 0;
         .title {
-          p {
-            .text(20px, 600);
-          }
+          .text(20px, 600);
         }
         .time {
           display: flex;
@@ -115,12 +121,21 @@
           p {
             .text(14px, 400);
           }
+          .divContent {
+            figure {
+              width: 100% !important;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 35px;
+            }
+          }
         }
       }
     }
 
     .colRightPost {
-      padding: 0 7.5px;
+      padding: 0 15px;
       h2 {
         .text(20px, 600);
         text-align: center;
@@ -172,6 +187,7 @@
       }
       .listPostNew {
         padding: 0;
+        // margin: 0 -15px;
         list-style: none;
         display: flex;
         @media (max-width: 426px) {
@@ -179,7 +195,7 @@
         }
         .cardNews {
           width: (100%/3);
-          padding: 7.5px;
+          padding: 0 15px;
           display: flex;
           justify-content: stretch;
           flex-direction: column;
@@ -200,11 +216,12 @@
 
 // css reponsive ContainerNews -------------------------------------------
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .ContainerNews {
     .rowContentPost {
       .colRightPost {
-        padding: 0;
+        padding: 15px 0;
+
         .listCategory {
           .cardNews {
             width: 50%;
@@ -215,6 +232,10 @@
     }
     .rowFooterPost {
       .colBottomPost {
+        padding: 15px 0;
+        h2 {
+          text-align: center;
+        }
         .listPostNew {
           .cardNews {
             .cardNews-768px();
@@ -228,8 +249,21 @@
 @media only screen and (max-width: 426px) {
   .ContainerNews {
     .rowContentPost {
-      .colRightPost {
+      margin: 0;
+      .colLeftPost {
         padding: 0;
+        .listPost {
+          .content {
+            .divContent {
+              figure {
+                padding: 10px;
+              }
+            }
+          }
+        }
+      }
+      .colRightPost {
+        // padding: 0;
         .listCategory {
           .cardNews {
             .cardNews-426px();

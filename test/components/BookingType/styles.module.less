@@ -19,7 +19,7 @@
     background-color: white;
     border-radius: 8px;
     .colType {
-      min-height: 280px;
+      padding-top: 30%;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -38,12 +38,11 @@
         display: flex;
         justify-content: center;
         .card {
+          width: 100%;
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
-          min-width: 900px;
-          max-width: 900px;
-          margin: 24px 0;
+          justify-content: space-around;
+          margin: 25px 0;
 
           .cardBody {
             p,
@@ -87,13 +86,19 @@
       .listTab {
         .ListCustom();
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+
+        width: 80%;
 
         li {
           font-weight: 500;
           text-align: center;
           padding: 15px;
-          min-width: 200px;
+          // // margin: 0 30px;
+          min-width: 20%;
+
           &:hover,
           &:focus {
             border-bottom: 3px solid #00b5f1;
@@ -135,25 +140,62 @@
 
           li {
             width: 33.3333333333%;
-            padding: 15px;
+            padding: 5%;
             border: 0.5px solid #e3e7eb;
             border-top: 0;
             border-left: 0;
             border-collapse: collapse;
-            min-height: 156px;
-            max-height: 156px;
+
             .card {
               display: flex;
               flex-direction: column;
               align-items: center;
+              align-content: center;
               figure {
                 margin-bottom: 5px;
+                width: 30%;
+              }
+              span {
+                text-align: center;
               }
             }
             transition: all 0.3s ease-in-out;
             &:hover {
               box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
               transform: translateY(-0.1rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .bookingType {
+    .rowType {
+      .colType {
+        .wrapper {
+          .card {
+            flex-wrap: wrap;
+
+            figure {
+              width: 20%;
+            }
+            .cardBody {
+              width: 70%;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+    .rowContent {
+      .colContent {
+        .tab_Type {
+          .listType {
+            li {
+              width: 50%;
             }
           }
         }
