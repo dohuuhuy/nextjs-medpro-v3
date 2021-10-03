@@ -9,3 +9,10 @@ export const _DEVELOPMENT = ENV === 'development'
 export const _PRODUCTION = ENV === 'production'
 
 type ENV = 'development' | 'testing' | 'production'
+
+declare var process: {
+  env: {
+    NODE_ENV: ENV
+    ENV: ENV
+  }
+}

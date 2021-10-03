@@ -10,8 +10,6 @@ import styles from './styles.module.less'
 export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
   const router = useRouter()
 
-  console.log('router :>> ', router)
-
   if (!listMenu) {
     return null
   }
@@ -62,8 +60,6 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
           <Col className={styles.col}>
             <ul className={styles.Breadcrumb}>
               {listBreadcumb?.map((v, i: number) => {
-                console.log('v :>> ', v)
-
                 return (
                   v && (
                     <li className={styles.item} key={i}>

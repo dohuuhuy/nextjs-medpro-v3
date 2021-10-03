@@ -2,10 +2,11 @@ import * as development from './development'
 import * as production from './production'
 import * as testing from './testing'
 
-export interface ENVObj {
+export type ENVObj = {
   testing: typeof testing
   development: typeof development
   production: typeof production
+  // [T: string]: any
 }
 
 const exportedObject: ENVObj = {
