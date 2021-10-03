@@ -1,4 +1,5 @@
-import { currentEnv } from './../config/envs/env'
+import { currentEnv } from '@config/envs/env'
+
 export const LIMIT_PAGE_NEWS = 8
 
 export const URL_ADDRESS = currentEnv.API_BE + '/city-mongo/get-all-by-partner'
