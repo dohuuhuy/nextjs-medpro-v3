@@ -120,11 +120,11 @@
       display: flex;
       justify-content: center;
 
-      .tab_Type,
-      .tab_Intro,
-      .tab_Comment {
-        min-height: 312px;
-      }
+      // .tab_Type,
+      // .tab_Intro,
+      // .tab_Comment {
+      //   // min-height: 312px;
+      // }
 
       .tab_Type {
         width: 100%;
@@ -139,12 +139,17 @@
           flex-wrap: wrap;
 
           li {
-            width: 33.3333333333%;
+            width: calc(100% / 4);
             padding: 5%;
             border: 0.5px solid #e3e7eb;
             border-top: 0;
             border-left: 0;
             border-collapse: collapse;
+
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
 
             .card {
               display: flex;
@@ -163,6 +168,22 @@
             &:hover {
               box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
               transform: translateY(-0.1rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .bookingType {
+    .rowContent {
+      .colContent {
+        .tab_Type {
+          .listType {
+            li {
+              width: calc(100% / 3);
             }
           }
         }
@@ -195,7 +216,7 @@
         .tab_Type {
           .listType {
             li {
-              width: 50%;
+              width: calc(100% / 2);
             }
           }
         }

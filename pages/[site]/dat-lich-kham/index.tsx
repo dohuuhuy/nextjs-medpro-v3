@@ -1,4 +1,5 @@
 import * as ac from '@actionStore/rootAction'
+import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
@@ -18,8 +19,8 @@ const ThongTinDatKhamPage = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    !slug && dispatch(ac.getBookingTree(slug))
-    !user.listPatient && dispatch(ac.ListPatientRequest())
+    check(slug) && dispatch(ac.getBookingTree(slug))
+    check(user.listPatient) && dispatch(ac.ListPatientRequest())
   }, [dispatch, hos?.bookingTree, user.listPatient, slug])
 
   // const { partnerId } = router.query

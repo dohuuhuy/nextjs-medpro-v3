@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import * as ac from '@actionStore/rootAction'
+import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ const HomePage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    !hos?.listFeatureByApp &&
+    check(hos?.listFeatureByApp) &&
       dispatch(
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
       )
