@@ -3,7 +3,6 @@
     margin: 30px 0;
     justify-content: space-between;
     .colLeft {
-      min-width: 725px;
       padding-right: 15px;
       .listTree {
         width: 100%;
@@ -21,9 +20,6 @@
             .input {
               .inputCustom();
             }
-            // .content {
-            //   margin: 15px 0;
-            // }
             .in {
               display: none;
               height: 0;
@@ -35,6 +31,34 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .bookingTree {
+    .rowBody {
+      .colLeft {
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+        flex: unset;
+      }
+      .colRight {
+        max-width: 100%;
+        width: 100%;
+        flex: unset;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .bookingTree {
+    .rowBody {
+      .colLeft {
+        padding: 0;
       }
     }
   }

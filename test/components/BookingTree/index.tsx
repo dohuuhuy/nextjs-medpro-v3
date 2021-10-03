@@ -40,7 +40,7 @@ export default function BookingTree() {
       <Stepper />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
-          <Col xl='16' lg='16' span='16' className={styles.colLeft}>
+          <Col {...colLeft} className={styles.colLeft}>
             <ul className={styles.listTree}>
               {steps.map((v, i) => {
                 return (
@@ -70,7 +70,7 @@ export default function BookingTree() {
               })}
             </ul>
           </Col>
-          <Col xl='8' lg='8' span='8' className={styles.colRight}>
+          <Col {...colRight} className={styles.colRight}>
             <CardFee />
           </Col>
         </Row>
@@ -78,3 +78,13 @@ export default function BookingTree() {
     </React.Fragment>
   )
 }
+
+const colLeft = {
+  xl: 16,
+  lg: 16,
+  md: 16,
+  sm: 24,
+  xs: 24
+}
+
+const colRight = { xl: 8, lg: 8, md: 8, sm: 24, xs: 24 }

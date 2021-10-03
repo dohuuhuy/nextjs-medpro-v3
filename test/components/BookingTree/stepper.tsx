@@ -17,8 +17,9 @@ export const Stepper = () => {
                 const w = (1 / steps.length) * 100
                 return (
                   <li key={i} style={{ width: w + '%' }}>
+                    {/* <hr className={styles.hrBe} /> */}
                     <button className={styles.btnIcon}>{e.icon}</button>
-                    <hr />
+                    <hr className={styles.hrAf} />
                   </li>
                 )
               })}

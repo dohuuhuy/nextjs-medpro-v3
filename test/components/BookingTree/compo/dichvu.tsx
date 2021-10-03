@@ -21,6 +21,12 @@ export const DichVu = () => {
             <span>150.000 VND</span>
           </button>
         </li>
+        <li>
+          <button className={styles.btn}>
+            <span>Khám Linh Tinh</span>
+            <span>150.000 VND</span>
+          </button>
+        </li>
       </ul>
       <div className={styles.questionBHYT}>
         <span>Bạn có bảo hiểm y tế không?</span>
@@ -29,7 +35,7 @@ export const DichVu = () => {
             <input type='radio' value='1' /> có
           </div>
           <div className={styles.radio}>
-            <input type='radio' /> không
+            <input type='radio' value='2' /> không
           </div>
         </div>
       </div>

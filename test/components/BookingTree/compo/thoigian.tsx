@@ -146,7 +146,7 @@ export const ThoiGian = () => {
       {/* thời gian của bác sĩ */}
       <div className={styles.time}>
         <div className={styles.morning}>
-          <h4>Buổi sáng</h4>
+          <h3>Buổi sáng</h3>
           <ul className={styles.listMorning}>
             {morning.map((v, i) => {
               return (
@@ -158,7 +158,7 @@ export const ThoiGian = () => {
           </ul>
         </div>
         <div className={styles.afternoon}>
-          <h4>Buổi chiều</h4>
+          <h3>Buổi chiều</h3>
           <ul className={styles.listAfternoon}>
             {afternoon.map((v, i) => {
               return (
@@ -176,7 +176,7 @@ export const ThoiGian = () => {
         <span>
           Trong trường hợp không thể chọn được khung giờ, vui lòng gọi đến{' '}
           <br />
-          Tổng đài CSKH để được hỗ trợ.
+          Tổng đài CSKH để được hỗ trợ:
         </span>
         <button className={styles.phone}>
           <Icon name='timkiem' />
@@ -188,6 +188,15 @@ export const ThoiGian = () => {
 }
 
 const morning = [
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
   {
     time: '07:30 - 08:30'
   },
