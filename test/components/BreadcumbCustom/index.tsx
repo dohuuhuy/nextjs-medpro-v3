@@ -10,6 +10,8 @@ import styles from './styles.module.less'
 export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
   const router = useRouter()
 
+  console.log('router :>> ', router)
+
   if (!listMenu) {
     return null
   }
@@ -40,6 +42,17 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
     })
   }
 
+  if (pathname === '/tin-tuc/[DetailsPost]') {
+    listBreadcumb.push({
+      link: `/tin-tuc`,
+      label: 'Tin tức'
+    })
+
+    listBreadcumb.push({
+      link: '/',
+      label: 'Chi tiết bài viết'
+    })
+  }
   listBreadcumb.push(item)
 
   return (
@@ -48,14 +61,18 @@ export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
         <Row className={styles.row}>
           <Col className={styles.col}>
             <ul className={styles.Breadcrumb}>
-              {listBreadcumb?.map((e, i: number) => {
+              {listBreadcumb?.map((v, i: number) => {
+                console.log('v :>> ', v)
+
                 return (
-                  <li className={styles.item} key={i}>
-                    <Link href={e?.link || '#'}>
-                      <a>{e?.label}</a>
-                    </Link>
-                    <Icon name='arrowLeft' size='10' />
-                  </li>
+                  v && (
+                    <li className={styles.item} key={i}>
+                      <Link href={v?.link || '#'}>
+                        <a>{v?.label}</a>
+                      </Link>
+                      <Icon name='arrowLeft' size='10' />
+                    </li>
+                  )
                 )
               })}
             </ul>
