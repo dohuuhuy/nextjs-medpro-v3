@@ -67,12 +67,13 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
       const imageErrorSrc = '/images/logo.png'
       const urlImage = e?.image || imageErrorSrc
 
-      const rate =
-        Number(e.deliveryStatus) === 1 ? (
-          <p className={styles.status}>Sắp ra mắt</p>
-        ) : (
-          <Rate className={styles.rate} disabled={true} value={3} />
-        )
+      const rate = e.deliveryMessage ? (
+        <p className={styles.status}>
+          <i>{e.deliveryMessage}</i>
+        </p>
+      ) : (
+        <Rate className={styles.rate} disabled={true} value={3} />
+      )
 
       return (
         <li key={uniqueId()} onClick={() => redirect(e)}>
@@ -172,4 +173,5 @@ export interface ListHospital {
   message: string
   partnerId: string
   deliveryStatus: number
+  deliveryMessage: string
 }
