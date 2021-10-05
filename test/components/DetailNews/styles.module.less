@@ -11,7 +11,7 @@
   text-transform: none;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  // display: -webkit-box;
   -webkit-line-clamp: @line;
   -webkit-box-orient: vertical;
 }
@@ -24,12 +24,13 @@
     .customLine(2);
     margin-bottom: 5px;
     text-transform: lowercase;
-    &::first-letter {
-      text-transform: uppercase;
-      color: red;
-    }
+
     &:hover {
       color: #3699ff;
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
     }
   }
   .author {
