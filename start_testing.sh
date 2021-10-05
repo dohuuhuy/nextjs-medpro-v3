@@ -1,1 +1,1 @@
- pm2 start npm --name "web-srr" -- run "start:testing"  
+ pm2 start npm --name "web-srr" -- run "start" 
