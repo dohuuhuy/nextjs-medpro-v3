@@ -20,7 +20,7 @@ const HomePage = ({ data }: any) => {
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
       )
 
-    !user?.listPatient && dispatch(ac.ListPatientRequest())
+    check(user?.listPatient) && dispatch(ac.ListPatientRequest())
   }, [])
 
   return <NewsAndEvent {...data} />
