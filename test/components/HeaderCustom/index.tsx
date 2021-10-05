@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
+import router from 'next/router'
 import React from 'react'
 import { Icon } from '../Icon'
 import Container from './../Container'
@@ -14,6 +15,9 @@ export default function HeaderCustom(props: HeaderIF) {
   const { logo, menu } = dataHeader
 
   const glogo = logo?.desktop
+  const [toggleSearch, settoggleSearch] = React.useState(false)
+
+  console.log('toggleSearch :>> ', toggleSearch)
 
   return (
     <header>
@@ -53,19 +57,33 @@ export default function HeaderCustom(props: HeaderIF) {
               <ul className={styles.listMenu}>
                 {menu.map((v) => {
                   return (
-                    <li key={uniqueId()}>
+                    <li
+                      key={uniqueId()}
+                      onClick={() => router.push(v.link || '/')}
+                    >
                       <Link href={v.link || '/'}>
                         <a aria-label={v?.label}>{v?.label}</a>
                       </Link>
                     </li>
                   )
                 })}
-                <li>
+                <li onClick={() => settoggleSearch(!toggleSearch)}>
                   <a className={cx(styles.btn)}>
                     <Icon name='timkiem' />
                   </a>
                 </li>
               </ul>
+            </Col>
+          </Row>
+          <Row className={cx(styles.rowSearch, toggleSearch ? '' : 'd-none')}>
+            <Col xl={24} className={styles.colSearch}>
+              <label className={styles.groupTimKiem}>
+                <input
+                  placeholder='Tìm Bác Sĩ, Phòng Mạch, Phòng Khám, Bệnh Viện ...'
+                  className={styles.input}
+                />
+                <button className={styles.btnTim}>Tìm</button>
+              </label>
             </Col>
           </Row>
         </Container>
