@@ -36,6 +36,11 @@ const MyApp = ({ Component, pageProps, app }: Props) => {
 
   const x = Layout ? <Layout appProps={app}>{lod}</Layout> : lod
 
+  console.log(
+    '%cDừng lại, đây là tính năng của nhà phát triển! huyi ',
+    'background: red; color: white; font-size: 32px'
+  )
+
   return (
     <>
       <DefaultSeo {...SEO} />

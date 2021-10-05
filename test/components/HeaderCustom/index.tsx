@@ -17,8 +17,6 @@ export default function HeaderCustom(props: HeaderIF) {
   const glogo = logo?.desktop
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
-  console.log('toggleSearch :>> ', toggleSearch)
-
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
