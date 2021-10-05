@@ -41,10 +41,10 @@ export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
 
     const path = pathname.replace('/[site]', '')
     const item = find(listMenu, { link: path })
-    listBreadcumb.push(home)
 
     if (site) {
       const hos = find(listHos, { partnerId: site })
+      listBreadcumb.push(home)
 
       listBreadcumb.push({
         link: `/benh-vien`,
@@ -55,9 +55,15 @@ export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
         link: `/${site}/hinh-thuc-dat-kham`,
         label: hos?.name
       })
+      if (item) {
+        listBreadcumb.push(item)
+      }
+    } else {
+      if (item) {
+        listBreadcumb.push(home)
+        listBreadcumb.push(item)
+      }
     }
-
-    item && listBreadcumb.push(item)
   }
 
   if (check(listBreadcumb)) return null
