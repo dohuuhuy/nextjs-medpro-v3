@@ -7,7 +7,6 @@ export const CardFee = () => {
   const [isVisible, setIsVisible] = React.useState(false)
   React.useEffect(() => {
     const toggleVisibility = () => {
-      console.log('window.pageYOffset :>> ', window.pageYOffset)
       if (window.pageYOffset > 150) {
         setIsVisible(true)
       } else {

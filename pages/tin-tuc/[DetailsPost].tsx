@@ -1,8 +1,10 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import { DetailNewsCustom } from '@componentsTest/DetailNews'
 import { check } from '@utils/checkValue'
 import { Spin } from 'antd'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
 
@@ -10,16 +12,26 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
 const DetailsPostPage = ({ data }: any) => {
+  const router = useRouter()
   React.useEffect(() => {
-    window.localStorage.removeItem('postTitle')
     window.localStorage.setItem('postTitle', data.detailNews[0].title)
-  })
+  }, [router.query.DetailsPost])
 
   if (check(data)) {
     return <Spin indicator={antIcon} />
   }
 
-  return <DetailNewsCustom {...data} />
+  const post = {
+    title: data.detailNews[0].title,
+    slug: data.detailNews[0].slug
+  }
+
+  return (
+    <>
+      <BreadcumbCustom post={post} />
+      <DetailNewsCustom {...data} />
+    </>
+  )
 }
 
 DetailsPostPage.Layout = DefaultLayout

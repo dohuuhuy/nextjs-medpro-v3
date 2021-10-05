@@ -1,88 +1,90 @@
-import { Icon } from '../Icon'
+import { check } from '@utils/checkValue'
 import { Col, Row } from 'antd'
 import { find } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
+import { Icon } from '../Icon'
 import styles from './styles.module.less'
 
-export const BreadcumbCustom = ({ listMenu, listHos }: any) => {
-  const [postTitle, setpostTitle] = React.useState('')
-
+export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
   const router = useRouter()
-
-  React.useEffect(() => {
-    const postTitle = window.localStorage.getItem('postTitle') || ''
-    console.log('postTitle :>> ', postTitle)
-    setpostTitle(postTitle)
-  }, [router.query])
-
-  if (!listMenu) {
-    return null
-  }
-
-  const {
-    pathname,
-    query: { site }
-  } = router
-
-  const path = pathname.replace('/[site]', '')
-  const item = find(listMenu, { link: path })
   const listBreadcumb = []
-  listBreadcumb.push({
+
+  const home = {
     link: '/',
     label: 'Trang chủ'
-  })
-
-  if (site) {
-    const hos = find(listHos, { partnerId: site })
-    listBreadcumb.push({
-      link: `/benh-vien`,
-      label: 'Bệnh viện'
-    })
-
-    listBreadcumb.push({
-      link: `/${site}/hinh-thuc-dat-kham`,
-      label: hos?.name
-    })
   }
 
-  if (pathname === '/tin-tuc/[DetailsPost]') {
+  if (post) {
+    listBreadcumb.push(home)
+
     listBreadcumb.push({
       link: `/tin-tuc`,
       label: 'Tin tức'
     })
 
     listBreadcumb.push({
-      link: '/',
-      label: postTitle
+      link: post?.slug,
+      label: post?.title
     })
-  }
-  listBreadcumb.push(item)
+  } else {
+    if (!listMenu) {
+      return null
+    }
 
+    const {
+      pathname,
+      query: { site }
+    } = router
+
+    const path = pathname.replace('/[site]', '')
+    const item = find(listMenu, { link: path })
+    listBreadcumb.push(home)
+
+    if (site) {
+      const hos = find(listHos, { partnerId: site })
+
+      listBreadcumb.push({
+        link: `/benh-vien`,
+        label: 'Bệnh viện'
+      })
+
+      listBreadcumb.push({
+        link: `/${site}/hinh-thuc-dat-kham`,
+        label: hos?.name
+      })
+    }
+
+    item && listBreadcumb.push(item)
+  }
+
+  if (check(listBreadcumb)) return null
   return (
-    <Container fluid={true} className={styles.wrapper}>
-      <Container className={styles.container}>
-        <Row className={styles.row}>
-          <Col className={styles.col}>
-            <ul className={styles.Breadcrumb}>
-              {listBreadcumb?.map((v, i: number) => {
-                return (
-                  v && (
-                    <li className={styles.item} key={i}>
-                      <Link href={v?.link || '#'}>
-                        <a>{v?.label}</a>
-                      </Link>
-                      <Icon name='arrowLeft' size='10' />
-                    </li>
+    listBreadcumb && (
+      <Container fluid={true} className={styles.wrapper}>
+        <Container className={styles.container}>
+          <Row className={styles.row}>
+            <Col className={styles.col}>
+              <ul className={styles.Breadcrumb}>
+                {listBreadcumb?.map((v, i: number) => {
+                  return (
+                    v && (
+                      <li className={styles.item} key={i}>
+                        <Link href={v?.link || '#'}>
+                          <a>{v?.label}</a>
+                        </Link>
+                        <Icon name='arrowLeft' size='10' />
+                      </li>
+                    )
                   )
-                )
-              })}
-            </ul>
-          </Col>
-        </Row>
+                })}
+              </ul>
+            </Col>
+          </Row>
+        </Container>
       </Container>
-    </Container>
+    )
   )
 }
