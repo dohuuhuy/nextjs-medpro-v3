@@ -34,7 +34,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     setlistHospitals(findHospital)
   }
 
-  function redirect(e: ListHospital) {
+  const redirect = (e: ListHospital) => () => {
     if (checkData(e?.message)) {
       e?.partnerId
         ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
@@ -76,7 +76,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
       )
 
       return (
-        <li key={uniqueId()} onClick={() => redirect(e)}>
+        <li key={uniqueId()} onClick={redirect(e)}>
           <div className={styles.cardHospital}>
             <figure className={styles.cardView}>
               <Image src={urlImage} alt='' width='50' height='50' />

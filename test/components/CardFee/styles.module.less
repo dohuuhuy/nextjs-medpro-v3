@@ -58,7 +58,14 @@
 
 .scroll {
   position: fixed;
-  top: 7.5%;
+  top: 120px;
+}
+
+@media only screen and (max-width: 769px) {
+  .scroll {
+    position: unset;
+    top: unset;
+  }
 }
 
 // --------------------------------------------------- css mixin

@@ -16,7 +16,7 @@ export default function BookingTree() {
   const [id, setid] = React.useState(0)
   const [toggle, settoggle] = React.useState(true)
 
-  const clickStep = (i: any) => {
+  const clickStep = (i: any) => () => {
     if (i !== id) {
       setid(i)
       settoggle(false)
@@ -46,7 +46,7 @@ export default function BookingTree() {
                 return (
                   <li key={i}>
                     <div className={styles.card}>
-                      <h3 onClick={() => clickStep(i)}>
+                      <h3 onClick={clickStep(i)}>
                         {v.title} <Icon name='arrowDown' size='15' />
                       </h3>
 
@@ -55,7 +55,7 @@ export default function BookingTree() {
                           styles.input,
                           i === id ? styles.dnone : ''
                         )}
-                        onClick={() => clickStep(i)}
+                        onClick={clickStep(i)}
                       >
                         {v.icon}
                         <span>{'Chọn ' + v.title.toLowerCase()}</span>

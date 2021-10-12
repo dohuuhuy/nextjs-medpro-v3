@@ -15,7 +15,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
   }
   const { imageBackground } = getBanner
 
-  const SelectFeature = (type: string) => {
+  const SelectFeature = (type: string) => () => {
     if (partnerId === 'medpro' && type === 'booking.date') {
       router.push('/chon-benh-vien')
     }
@@ -53,7 +53,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                     <motion.li
                       key={i}
                       variants={mLi}
-                      onClick={() => SelectFeature(e?.type)}
+                      onClick={SelectFeature(e?.type)}
                       whileHover={{
                         scale: 1.2,
                         opacity: 1

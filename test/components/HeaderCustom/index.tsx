@@ -17,6 +17,12 @@ export default function HeaderCustom(props: HeaderIF) {
   const glogo = logo?.desktop
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
+  const onClick = () => () => settoggleSearch(!toggleSearch)
+
+  const routePush = (v: any) => () => {
+    router.push(v.link || '/')
+  }
+
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
@@ -55,17 +61,14 @@ export default function HeaderCustom(props: HeaderIF) {
               <ul className={styles.listMenu}>
                 {menu.map((v) => {
                   return (
-                    <li
-                      key={uniqueId()}
-                      onClick={() => router.push(v.link || '/')}
-                    >
+                    <li key={uniqueId()} onClick={routePush(v)}>
                       <Link href={v.link || '/'}>
                         <a aria-label={v?.label}>{v?.label}</a>
                       </Link>
                     </li>
                   )
                 })}
-                <li onClick={() => settoggleSearch(!toggleSearch)}>
+                <li onClick={onClick}>
                   <a className={cx(styles.btn)}>
                     <Icon name='timkiem' />
                   </a>
