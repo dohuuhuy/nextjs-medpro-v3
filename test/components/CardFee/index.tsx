@@ -2,8 +2,10 @@ import { Icon } from '../Icon'
 import styles from './styles.module.less'
 import React from 'react'
 import cx from 'classnames'
+import { useRouter } from 'next/router'
 
 export const CardFee = () => {
+  const router = useRouter()
   const [isVisible, setIsVisible] = React.useState(false)
   React.useEffect(() => {
     const toggleVisibility = () => {
@@ -18,6 +20,16 @@ export const CardFee = () => {
 
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
+
+  const routePush = () => {
+    const {
+      query: { site }
+    } = router
+    router.push(`/${site}/xac-nhan-thong-tin`)
+  }
+  const routerBack = () => {
+    router.back()
+  }
 
   return (
     <div className={cx(styles.cardFee, isVisible ? styles.scroll : null)}>
@@ -39,8 +51,12 @@ export const CardFee = () => {
         </li>
       </ul>
       <div className={styles.groupBtn}>
-        <button className={cx(styles.btn, styles.again)}>Trở về</button>
-        <button className={cx(styles.btn, styles.next)}>Tiếp tục</button>
+        <button className={cx(styles.btn, styles.again)} onClick={routerBack}>
+          Trở về
+        </button>
+        <button className={cx(styles.btn, styles.next)} onClick={routePush}>
+          Tiếp tục
+        </button>
       </div>
     </div>
   )
