@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { checkData } from '../DataFailure'
@@ -74,12 +75,11 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
       ) : (
         <Rate className={styles.rate} disabled={true} value={3} />
       )
-
       return (
         <li key={uniqueId()} onClick={redirect(e)}>
           <div className={styles.cardHospital}>
             <figure className={styles.cardView}>
-              <Image src={urlImage} alt='' width='50' height='50' />
+              <img src={urlImage} alt='' width='50' height='50' />
             </figure>
             <div className={styles.cardBody}>
               <p className={styles.nameHospital}>{e?.name}</p>
