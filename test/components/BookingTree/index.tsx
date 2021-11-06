@@ -13,7 +13,7 @@ export interface BookingTreeIF {
 }
 
 export default function BookingTree() {
-  const [id, setid] = React.useState(0)
+  const [id, setid] = React.useState(-1)
   const [toggle, settoggle] = React.useState(true)
 
   const clickStep = (i: any) => () => {
@@ -32,7 +32,7 @@ export default function BookingTree() {
   }
 
   const checkOut = (i: any) => {
-    return Number(i) === Number(id) ? styles.out : styles.in
+    return Number(i) === Number(id) ? styles.mo : styles.dong
   }
 
   return (
