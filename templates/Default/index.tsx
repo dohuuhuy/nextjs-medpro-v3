@@ -24,7 +24,7 @@ const DefaultLayout = (props: Props) => {
         <BannerPage {...info} />
         <HandlerGetContentPage {...info} />
 
-        {children}
+        <main>{children}</main>
       </main>
       <Footer {...info} />
     </Layout>
