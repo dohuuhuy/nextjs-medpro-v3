@@ -3,9 +3,9 @@ export const JSON_EXP = {
   header: {
     logo: {
       desktop:
-        'https://resource.medpro.com.vn/static/images/medpro/web/header_logo.svg',
+        'https://medpro-inside-testing.medpro.com.vn/static/images/medpro/web/header_logo.svg',
       mobile:
-        'https://resource.medpro.com.vn/static/images/medpro/web/logo_header_white.svg'
+        'https://medpro-inside-testing.medpro.com.vn/static/images/medpro/web/logo_header_white.svg'
     },
     menu: [
       {
@@ -200,7 +200,7 @@ export const JSON_EXP = {
       title: '',
       subTitle: '',
       imageBackground:
-        'https://resource.medpro.com.vn/static/images/medpro/web/banner_desktop.png',
+        'https://medpro-inside-testing.medpro.com.vn/static/images/medpro/web/banner_desktop.png',
       details: ''
     },
     {
@@ -451,7 +451,7 @@ export const JSON_EXP = {
       }
     ],
     imgMobile:
-      'https://resource.medpro.com.vn/static/images/medpro/web/slide.png',
+      'https://medpro-inside-testing.medpro.com.vn/static/images/medpro/web/slide.png',
     listBenefit: [
       {
         id: '',
@@ -542,7 +542,7 @@ export const JSON_EXP = {
     logo: {
       name: 'Medpro - Giải pháp tiếp cận y tế thông minh',
       image:
-        'https://inside-static.medpro.com.vn/static/upload/hospitals/medpro/footer_logo.svg'
+        'https://medpro-inside-testing.medpro.com.vn/static/images/medpro/web/footer_logo.svg'
     },
     contact: [
       {

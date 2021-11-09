@@ -12,11 +12,11 @@ export interface BookingTreeIF {
   [T: string]: any
 }
 
-export const BookingTree = () => {
-  const [id, setid] = React.useState(0)
+export default function BookingTree() {
+  const [id, setid] = React.useState(-1)
   const [toggle, settoggle] = React.useState(true)
 
-  const clickStep = (i: any) => {
+  const clickStep = (i: any) => () => {
     if (i !== id) {
       setid(i)
       settoggle(false)
@@ -32,21 +32,21 @@ export const BookingTree = () => {
   }
 
   const checkOut = (i: any) => {
-    return Number(i) === Number(id) ? styles.out : styles.in
+    return Number(i) === Number(id) ? styles.mo : styles.dong
   }
 
   return (
-    <section>
+    <React.Fragment>
       <Stepper />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
-          <Col xl='16' lg='16' span='16' className={styles.colLeft}>
+          <Col {...colLeft} className={styles.colLeft}>
             <ul className={styles.listTree}>
               {steps.map((v, i) => {
                 return (
                   <li key={i}>
                     <div className={styles.card}>
-                      <h3 onClick={() => clickStep(i)}>
+                      <h3 onClick={clickStep(i)}>
                         {v.title} <Icon name='arrowDown' size='15' />
                       </h3>
 
@@ -55,7 +55,7 @@ export const BookingTree = () => {
                           styles.input,
                           i === id ? styles.dnone : ''
                         )}
-                        onClick={() => clickStep(i)}
+                        onClick={clickStep(i)}
                       >
                         {v.icon}
                         <span>{'Chọn ' + v.title.toLowerCase()}</span>
@@ -70,11 +70,21 @@ export const BookingTree = () => {
               })}
             </ul>
           </Col>
-          <Col xl='8' lg='8' span='8' className={styles.colRight}>
+          <Col {...colRight} className={styles.colRight}>
             <CardFee />
           </Col>
         </Row>
       </Container>
-    </section>
+    </React.Fragment>
   )
 }
+
+const colLeft = {
+  xl: 16,
+  lg: 16,
+  md: 16,
+  sm: 24,
+  xs: 24
+}
+
+const colRight = { xl: 8, lg: 8, md: 8, sm: 24, xs: 24 }

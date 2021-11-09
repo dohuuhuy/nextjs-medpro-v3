@@ -40,9 +40,11 @@
 // }
 // Css main News page
 .ContainerNews {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  background-color: white;
+  padding-bottom: 30px;
+
   .rowHeader {
+    margin: 0 -15px;
     .colRight,
     .colLeft {
       padding: 0 15px;
@@ -53,7 +55,7 @@
           display: flex;
           flex-direction: column;
           justify-content: stretch;
-          padding: 7.5px 0;
+          padding: 15px 0;
           .cardView {
             margin-bottom: 1rem;
             div {
@@ -68,6 +70,7 @@
     }
   }
   .rowContent {
+    margin: 0 -15px;
     .colContent {
       padding: 0 15px;
       .Pagination {
@@ -81,7 +84,7 @@
           display: flex;
           flex-direction: revert;
           justify-content: stretch;
-          padding: 7.5px 0;
+          padding: 10px 0;
           .cardView {
             width: 40%;
             margin: 0;
@@ -114,12 +117,14 @@
 @media only screen and (max-width: 768px) {
   .ContainerNews {
     .rowHeader {
+      margin: 0;
       .colRight,
       .colLeft {
         padding: 0;
       }
     }
     .rowContent {
+      margin: 0;
       .colContent {
         padding: 0;
       }

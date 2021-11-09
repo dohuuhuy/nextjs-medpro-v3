@@ -1,5 +1,4 @@
 import * as ac from '@actionStore/rootAction'
-import { BookingTree } from '@componentsTest/BookingTree'
 import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -8,18 +7,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from 'store/interface'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
+const BookingTree = dynamic(() => import('@componentsTest/BookingTree'))
+
 const ThongTinDatKhamPage = () => {
   const router = useRouter()
 
-  const hospital = useSelector((state: AppState) => state.hospital)
-  const listPatient = useSelector((state: AppState) => state.user.listPatient)
+  const slug = router.query?.site
+
+  const hos = useSelector((state: AppState) => state.hospital)
+  const user = useSelector((state: AppState) => state.user)
 
   const dispatch = useDispatch()
   useEffect(() => {
-    check(hospital?.bookingTree) &&
-      dispatch(ac.getBookingTree(router.query?.site))
-    check(listPatient) && dispatch(ac.ListPatientRequest())
-  }, [dispatch, hospital?.bookingTree, listPatient, router.query?.site])
+    check(slug) && dispatch(ac.getBookingTree(slug))
+    check(user.listPatient) && dispatch(ac.ListPatientRequest())
+  }, [dispatch, hos?.bookingTree, user.listPatient, slug])
 
   // const { partnerId } = router.query
 

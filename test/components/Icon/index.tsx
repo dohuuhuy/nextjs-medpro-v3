@@ -31,10 +31,7 @@ export const Icon: React.FC<IconProps> = ({ name, size = '20', fill }) => {
   const { viewBox, id } = icons[name]
 
   return (
-    <span
-      className={styles.icon}
-      style={{ width: _size, height: _size, fill: fill }}
-    >
+    <span className={styles.icon} style={{ width: _size, height: _size, fill }}>
       <svg viewBox={viewBox}>
         <use xlinkHref={`#${id}`} href={`#${id}`} />
       </svg>

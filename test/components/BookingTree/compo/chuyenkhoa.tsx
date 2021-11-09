@@ -26,12 +26,12 @@ export const ChuyenKhoa = () => {
   )
 }
 
-interface chuyenkhoa {
+interface Chuyenkhoa {
   icon: JSX.Element
   label: string
 }
 
-const chuyenkhoa: chuyenkhoa[] = [
+const chuyenkhoa: Chuyenkhoa[] = [
   {
     icon: <Icon name='demo' />,
     label: 'Tai mũi hộng'

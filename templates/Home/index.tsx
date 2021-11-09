@@ -2,6 +2,7 @@ import { AnimatePage } from '@components/atoms/motion'
 import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
+
 const Header = dynamic(() => import('@components/organisms/Header'))
 const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 const SliderHospital = dynamic(
@@ -33,7 +34,7 @@ const HomeLayout = (props: Props) => {
           <SliderHospital {...info} />
           <Introduce {...info} />
           <Download {...info} />
-          {children}
+          <main>{children}</main>
           <SupportMethod {...info} />
         </AnimatePage>
         <Footer {...info} />

@@ -26,15 +26,7 @@ export const SupportMedthodCustom = ({
       </Row>
       <Row className={styles.listSupportRow}>
         {dataSupportMethod?.map((e, index: number) => (
-          <Col
-            key={index}
-            xl={6}
-            lg={6}
-            md={6}
-            sm={12}
-            xs={12}
-            className={styles.itemSupportCol}
-          >
+          <Col key={index} {...size} className={styles.itemSupportCol}>
             <div className={styles.cardSupport}>
               <Image src={e?.imgCard} width={80} height={80} alt='' />
               <div className={styles.cardContent}>
@@ -49,4 +41,12 @@ export const SupportMedthodCustom = ({
       </Row>
     </Container>
   )
+}
+
+const size = {
+  xl: 6,
+  lg: 6,
+  md: 6,
+  sm: 12,
+  xs: 12
 }

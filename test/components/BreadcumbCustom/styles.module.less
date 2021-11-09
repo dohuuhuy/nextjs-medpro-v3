@@ -1,6 +1,6 @@
 .background {
-  background-size: cover;
   background: linear-gradient(to bottom right, #2fa0ec, #05e3fd);
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -15,13 +15,17 @@
   .background();
   .Breadcrumb {
     list-style-type: none;
-    padding: 0;
     margin: 0;
     display: flex;
     padding: 10px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
     li {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      align-content: center;
       padding-right: 5px;
       a {
         font-size: 12px;
@@ -30,6 +34,7 @@
       }
       span {
         fill: white;
+        height: unset !important;
       }
       &:last-child {
         span {

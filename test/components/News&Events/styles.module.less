@@ -20,13 +20,21 @@
 
 .CustomCardBody (@descNone) {
   .title {
+    color: #002e64;
     font-size: 14px;
     font-weight: 500;
     text-align: justify;
     margin-bottom: 5px;
     line-height: 1.5;
-    text-transform: uppercase;
+    text-transform: lowercase;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    &:hover {
+      color: #3699ff;
+    }
   }
+
   .author {
     font-weight: 500;
     font-size: 12px;
@@ -48,6 +56,11 @@
 
 .dataNewsAndEvent {
   margin-bottom: 60px !important;
+
+  figure {
+    margin-bottom: 5px;
+  }
+
   .rowTitle {
     h2 {
       text-align: center;

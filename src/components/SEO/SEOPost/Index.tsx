@@ -4,7 +4,7 @@ interface Props {
   posts: any
 }
 
-const SEO_Post = ({ posts }: Props) => {
+const SEOPost = ({ posts }: Props) => {
   const {
     name,
     title,
@@ -57,4 +57,4 @@ const SEO_Post = ({ posts }: Props) => {
   )
 }
 
-export default SEO_Post
+export default SEOPost

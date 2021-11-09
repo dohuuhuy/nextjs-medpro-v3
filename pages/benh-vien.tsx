@@ -32,11 +32,11 @@ const ChonBenhVienPage = ({ data }: any) => {
   return <SelectHospitalCustom {...methods} />
 }
 
-ChonBenhVienPage.Layout = DefaultLayout
-export default ChonBenhVienPage
-
-export const getServerSideProps = async (ctx: any) => {
+ChonBenhVienPage.getInitialProps = async (ctx: any) => {
   const data = await SelectHospitalCtl(ctx)
 
-  return { props: { data } }
+  return { data }
 }
+
+ChonBenhVienPage.Layout = DefaultLayout
+export default ChonBenhVienPage

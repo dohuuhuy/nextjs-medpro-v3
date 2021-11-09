@@ -2,6 +2,7 @@
   padding: 20px 15px;
   background-color: white;
   border-radius: 8px;
+
   .luuy {
     font-size: 12px;
     color: #00b5f1;
@@ -35,7 +36,7 @@
     display: flex;
     justify-content: space-around;
     .btn {
-      width: 150px;
+      width: 40%;
       display: flex;
       padding: 5px;
       flex-direction: row;
@@ -47,18 +48,40 @@
     }
     .again {
       background-color: white;
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: #00b5f1;
+      }
     }
     .next {
       border: none;
       background-color: #cbd2d9;
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: #00b5f1;
+      }
     }
+  }
+}
+
+.scroll {
+  position: fixed;
+  top: 120px;
+  min-width: 370px;
+}
+
+@media only screen and (max-width: 769px) {
+  .scroll {
+    position: unset;
+    top: unset;
   }
 }
 
 // --------------------------------------------------- css mixin
 .ListCustom {
   list-style-type: none;
-
   padding: 0;
   margin: 0;
   text-align: left;

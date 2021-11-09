@@ -1,15 +1,21 @@
 .dichVu {
+  margin-top: 10px;
   .groupBtn {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+
+    justify-content: flex-start;
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 0 -7.5px;
+
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
     li {
+      width: calc(100% / 4);
+      padding: 0 7.5px;
       .btn {
         border-radius: 8px;
-        // border: 0.5px solid #cbd2d9;
         border: none;
         display: flex;
         flex-direction: column;
@@ -17,7 +23,8 @@
         padding: 8px;
         color: #00b5f1;
         background: #f2fcff;
-        min-width: 175px;
+        width: 100%;
+
         &:hover {
           background: #00b5f1;
           border: none;
@@ -48,6 +55,26 @@
         input {
           margin-right: 5px;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .dichVu {
+    .groupBtn {
+      li {
+        width: calc(100% / 3);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .dichVu {
+    .groupBtn {
+      li {
+        width: calc(100% / 2);
       }
     }
   }

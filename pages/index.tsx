@@ -20,19 +20,17 @@ const HomePage = ({ data }: any) => {
         ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
       )
 
-    user?.userInfo?.token &&
-      check(user?.listPatient) &&
-      dispatch(ac.ListPatientRequest())
-  })
+    check(user?.listPatient) && dispatch(ac.ListPatientRequest())
+  }, [])
 
+  // return null
   return <NewsAndEvent {...data} />
 }
 
 HomePage.Layout = HomeLayout
 export default HomePage
 
-export const getServerSideProps = async (ctx: any) => {
+HomePage.getInitialProps = async (ctx: any) => {
   const data = await HomeCtl(ctx)
-
-  return { props: { data } }
+  return { data }
 }

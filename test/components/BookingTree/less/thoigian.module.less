@@ -61,10 +61,13 @@
     .dayContainer {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
     }
 
     .weekContainer {
-      font-weight: 600;
+      font-weight: 500;
       .weekCell {
         white-space: nowrap;
         background: #f7f7f7;
@@ -84,7 +87,9 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
-      // border: 1px solid #dfe3eb;
+      @media only screen and (max-width: 426px) {
+        padding: 5px;
+      }
       span {
         padding: 10px;
         min-width: 40px;
@@ -127,6 +132,7 @@
       border: none;
       padding: 10px;
       color: #00b5f1;
+      font-size: 0.725rem;
     }
   }
 
@@ -146,6 +152,11 @@
 
     padding: 10px;
     .phone {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+
       min-width: 175px;
       background: #00b5f1;
       border: none;
@@ -157,19 +168,32 @@
         fill: white;
       }
     }
+    @media only screen and (max-width: 426px) {
+      flex-direction: column;
+      .phone {
+        margin-top: 10px;
+      }
+    }
   }
 }
 
 // --------------------- css mixin
 .listTime {
   list-style-type: none;
-
   padding: 0;
-  margin: 0;
+  margin: 10px -7.5px;
   text-align: left;
   display: flex;
-  justify-content: space-around;
-  margin: 10px 0;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  li {
+    padding: 0 7.5px;
+    @media only screen and (max-width: 426px) {
+      width: calc(100% / 3);
+    }
+  }
 }
 
 .dnone {

@@ -1,6 +1,10 @@
 import { UserTypes } from 'store/interface'
 
-export type UserActions = UserInfoAction | PatientAction | BookingByUser | NoticeByUser
+export type UserActions =
+  | UserInfoAction
+  | PatientAction
+  | BookingByUser
+  | NoticeByUser
 
 // ------------------------thông tin đăng nhập--------------------------------------
 

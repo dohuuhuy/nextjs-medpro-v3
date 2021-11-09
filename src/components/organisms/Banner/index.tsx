@@ -11,6 +11,11 @@ import { AppState, Information } from 'store/interface'
 const Banners = (info: Information) => {
   const router = useRouter()
   const hos = useSelector((state: AppState) => state.hospital)
+
+  if (check(info)) {
+    return null
+  }
+
   const {
     query: { site },
     pathname

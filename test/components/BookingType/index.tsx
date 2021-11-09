@@ -58,14 +58,13 @@ export const BookingType = (props: BookingTypeIF) => {
         <Col className={styles.colTab} span='24'>
           <ul className={styles.listTab}>
             {listTabs.map((v, i: number) => {
-              const onTab = (e: any) => {
-                const id = e.target.dataset.id
+              const onTab = (id: any) => () => {
                 setact(Number(id))
               }
               const active = act === i ? styles.active : ''
 
               return (
-                <li key={i} data-id={i} className={active} onClick={onTab}>
+                <li key={i} className={active} onClick={onTab(i)}>
                   {v.title}
                 </li>
               )
@@ -97,6 +96,7 @@ export const BookingType = (props: BookingTypeIF) => {
                               src={v?.image}
                               width='80'
                               height='80'
+                              layout='responsive'
                               alt=''
                             />
                           </figure>

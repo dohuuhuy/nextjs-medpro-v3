@@ -1,5 +1,5 @@
+import { api } from '@config/api'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
-import { api } from '../../config/api/index'
 export const TinTucCtrl = async (ctx: any) => {
   const {
     query: { page = 1 }

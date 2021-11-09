@@ -13,7 +13,7 @@ export const BannerContact = ({ getBanner }: any) => {
 
   return (
     <Container
-      fluid
+      fluid={true}
       className={styles.viewBanner}
       style={{
         backgroundImage: imageBackground && `url(${imageBackground})`

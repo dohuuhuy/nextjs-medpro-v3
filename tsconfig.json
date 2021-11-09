@@ -15,17 +15,9 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ],
-    "lib": [
-      "dom",
-      "es2017",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "lib": ["dom", "es2017", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,

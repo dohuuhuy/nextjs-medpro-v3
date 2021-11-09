@@ -6,7 +6,7 @@ import { steps } from './utils'
 
 export const Stepper = () => {
   return (
-    <Container fluid className={styles.wrapper}>
+    <Container fluid={true} className={styles.wrapper}>
       <Container className={styles.steps}>
         <Row className={styles.rowStep}>
           <Col span='24' className={styles.colStep}>
@@ -17,8 +17,9 @@ export const Stepper = () => {
                 const w = (1 / steps.length) * 100
                 return (
                   <li key={i} style={{ width: w + '%' }}>
+                    {/* <hr className={styles.hrBe} /> */}
                     <button className={styles.btnIcon}>{e.icon}</button>
-                    <hr />
+                    <hr className={styles.hrAf} />
                   </li>
                 )
               })}

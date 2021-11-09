@@ -1,10 +1,10 @@
 export interface Banner {
   getBanner: any
-  listFeature: listFeature[]
+  listFeature: ListFeature[]
   partnerId: string
 }
 
-interface listFeature {
+interface ListFeature {
   type: string
   _id: string
   parentId: string

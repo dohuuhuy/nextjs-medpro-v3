@@ -22,7 +22,8 @@ function* WatchGetHospitalDetails() {
 function* getFeatureByPartner({ partnerid, typeReser }: any) {
   try {
     const rs: AxiosResponse = yield client.getFeatureByPartner({
-      partnerid
+      partnerid,
+      version: '2'
     })
 
     switch (typeReser) {

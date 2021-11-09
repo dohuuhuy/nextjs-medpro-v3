@@ -1,87 +1,88 @@
-.Bill{
+.Bill {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 10px;
-  p{
+  p {
     margin: 0;
   }
-  span{
-    color: #0352CC;
+  span {
+    color: #0352cc;
     font-weight: bolder;
     margin-left: 20px;
     min-width: 120px;
     text-align: right;
   }
 }
-.hidden{
+.hidden {
   display: none;
 }
-.rowPayments{
+.rowPayments {
   background-color: white;
   height: fit-content;
-  .colPayments{
+  .colPayments {
     padding: 7.5px;
-    h3{
+    h3 {
       margin: 0;
     }
-    .cardView{
+    .cardView {
       padding: 20px;
       height: 100%;
-      .wallet {
-      }
     }
   }
-  .colBill{
+  .colBill {
     padding: 7.5px;
-    h3{
-      color: #0352CC;
+    h3 {
+      color: #0352cc;
       margin: 0;
     }
-    .cardView{
+    .cardView {
       padding: 20px;
       height: 100%;
-      .listBill{
+      .listBill {
         list-style: none;
         padding: 0;
-        .itemService, .itemMoney{
+        .itemService,
+        .itemMoney {
           display: flex;
-          border-bottom: 1px dashed #0352CC;
-          .itemKeys{
+          border-bottom: 1px dashed #0352cc;
+          .itemKeys {
             margin: 0;
             padding: 10px 0;
           }
-          .itemValues{
+          .itemValues {
             display: flex;
             justify-content: flex-end;
             margin: 0;
             padding: 10px 0;
           }
         }
-        .itemMoney{
+        .itemMoney {
           border-bottom: none;
-          .itemValues{
+          .itemValues {
             font-weight: 700;
           }
         }
       }
-      .listPayment{
+      .listPayment {
         list-style: none;
         padding: 0;
         li {
           display: flex;
           justify-content: flex-end;
           font-size: 13px;
-          .itemSum, .itemFee, .itemTotal{
+          .itemSum,
+          .itemFee,
+          .itemTotal {
             .Bill();
           }
-          .br{
-            border-top: 1px dashed #0352CC;
+          .br {
+            border-top: 1px dashed #0352cc;
             width: 100%;
           }
-          .itemTotal{
+          .itemTotal {
             padding-top: 10px;
-            p{
+            p {
               font-size: 14px;
               text-transform: uppercase;
             }

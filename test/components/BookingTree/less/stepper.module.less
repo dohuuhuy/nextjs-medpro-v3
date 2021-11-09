@@ -14,8 +14,7 @@
           width: 100%;
           .ListCustom();
           display: flex;
-          max-width: 700px;
-          justify-content: space-between;
+          justify-content: center;
 
           li {
             display: flex;
@@ -43,12 +42,24 @@
               }
             }
             hr {
-              width: 50%;
+              width: 100%;
               background-color: gray;
             }
-            &:last-child {
-              hr {
+
+            &:first-child {
+              // background-color: violet;
+              .hrBe {
                 display: none;
+              }
+            }
+
+            &:last-child {
+              width: 5% !important;
+              .hrAf {
+                display: none;
+              }
+              @media only screen and (max-width: 426px) {
+                width: 12% !important;
               }
             }
 

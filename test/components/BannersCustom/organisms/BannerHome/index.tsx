@@ -15,7 +15,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
   }
   const { imageBackground } = getBanner
 
-  const SelectFeature = (type: string) => {
+  const SelectFeature = (type: string) => () => {
     if (partnerId === 'medpro' && type === 'booking.date') {
       router.push('/chon-benh-vien')
     }
@@ -47,15 +47,13 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
               {listFeature.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
                 const urlImage = e.image || imageErrorSrc
-                const onError = (e: any) => {
-                  e.target.src = imageErrorSrc
-                }
+
                 if (e?.status) {
                   return (
                     <motion.li
                       key={i}
                       variants={mLi}
-                      onClick={() => SelectFeature(e?.type)}
+                      onClick={SelectFeature(e?.type)}
                       whileHover={{
                         scale: 1.2,
                         opacity: 1
@@ -70,7 +68,6 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                         <figure>
                           <Image
                             src={urlImage}
-                            onError={onError}
                             width='45'
                             height='45'
                             loading='eager'
