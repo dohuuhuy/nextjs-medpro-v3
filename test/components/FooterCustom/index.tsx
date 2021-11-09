@@ -9,10 +9,10 @@ import React from 'react'
 import QRCode from 'react-qr-code'
 import { FooterIF } from './interface'
 import styles from './styles.module.less'
+import client from 'medpro-sdk'
 
 export const FooterCustom = (props: FooterIF) => {
   const { menu, logo, contact, downApp, certificate } = props
-
   return (
     <footer>
       <Container fluid className={styles.footer}>

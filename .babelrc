@@ -1,77 +1,77 @@
-{
-  "env": {
-    "development": {
-      "presets": ["next/babel"],
-      "plugins": [
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@config": "./src/config",
-              "@components": "./src/components",
-              "@componentsTest": "./test/components",
-              "@componentStore": "./store/componentStore",
-              "@utils": "./src/utils",
-              "@store": "./store",
-              "@templates": "./templates",
-              "@assets": "./assets",
-              "@public": "./public"
-            }
-          }
-        ]
-      ]
-    },
-    "testing": {
-      "presets": ["next/babel"],
-      "plugins": [
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@config": "./src/config",
-              "@components": "./src/components",
-              "@componentStore": "./store/componentStore",
-              "@utils": "./src/utils",
-              "@store": "./store",
-              "@templates": "./templates",
-              "@assets": "./assets",
-              "@public": "./public"
-            }
-          }
-        ]
-      ]
-    },
-    "production": {
-      "presets": [
-        [
-          "next/babel",
-          {
-            "preset-env": {
-              "modules": "commonjs"
-            }
-          }
-        ]
-      ],
-      "plugins": [
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@config": "./src/config",
-              "@components": "./src/components",
-              "@componentStore": "./store/componentStore",
-              "@utils": "./src/utils",
-              "@store": "./store",
-              "@templates": "./templates",
-              "@assets": "./assets",
-              "@public": "./public"
-            }
-          }
-        ]
-      ]
-    }
-  }
-}
+// {
+//   "env": {
+//     "development": {
+//       "presets": ["next/babel"],
+//       "plugins": [
+//         [
+//           "module-resolver",
+//           {
+//             "root": ["./"],
+//             "alias": {
+//               "@config": "./src/config",
+//               "@components": "./src/components",
+//               "@componentsTest": "./test/components",
+//               "@componentStore": "./store/componentStore",
+//               "@utils": "./src/utils",
+//               "@store": "./store",
+//               "@templates": "./templates",
+//               "@assets": "./assets",
+//               "@public": "./public"
+//             }
+//           }
+//         ]
+//       ]
+//     },
+//     "testing": {
+//       "presets": ["next/babel"],
+//       "plugins": [
+//         [
+//           "module-resolver",
+//           {
+//             "root": ["./"],
+//             "alias": {
+//               "@config": "./src/config",
+//               "@components": "./src/components",
+//               "@componentStore": "./store/componentStore",
+//               "@utils": "./src/utils",
+//               "@store": "./store",
+//               "@templates": "./templates",
+//               "@assets": "./assets",
+//               "@public": "./public"
+//             }
+//           }
+//         ]
+//       ]
+//     },
+//     "production": {
+//       "presets": [
+//         [
+//           "next/babel",
+//           {
+//             "preset-env": {
+//               "modules": "commonjs"
+//             }
+//           }
+//         ]
+//       ],
+//       "plugins": [
+//         [
+//           "module-resolver",
+//           {
+//             "root": ["./"],
+//             "alias": {
+//               "@config": "./src/config",
+//               "@components": "./src/components",
+//               "@componentStore": "./store/componentStore",
+//               "@utils": "./src/utils",
+//               "@store": "./store",
+//               "@templates": "./templates",
+//               "@assets": "./assets",
+//               "@public": "./public"
+//             }
+//           }
+//         ]
+//       ]
+//     }
+//   }
+// }

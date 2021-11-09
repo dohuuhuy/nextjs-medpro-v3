@@ -1,0 +1,58 @@
+.Modal{
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+}
+.group{
+  width: 100%;
+  border-radius: 18px;
+  .Header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    .title{
+      .text(18px,600);
+      padding-bottom: 16px;
+    }
+    .subtitle{
+      .text(16px, 400);
+    }
+  }
+  .Content{
+    padding: 30px 26px 32px;
+    p{
+      .text(14px, 400);
+      color: #7B8794;
+    }
+  }
+  .Footer{
+    .btn{
+      width: 50%;
+      height: 50px;
+      font-weight: 500;
+      &:hover{
+        color: white;
+        background-color: #00B5F1;
+      }
+    }
+  }
+}
+.radio{
+  color:#323F4B;
+}
+.radio_select{
+  color: #3699FF;
+}
+
+.btn_cancel:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+//component
+
+.text(@size, @weight){
+  font-size: @size;
+  font-weight: @weight;
+}

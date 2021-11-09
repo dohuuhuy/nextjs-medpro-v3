@@ -2,8 +2,9 @@ import { CloseOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import { Button, Col, Row } from 'antd'
 import { uniqueId } from 'lodash'
-import React from 'react'
+import React, { useState } from 'react'
 import { useBarcode } from 'react-barcodes'
+import { ModalCancel } from './components/Modal_Cancel'
 import styles from './styles.module.less'
 
 export const BookingBill = () => {
@@ -15,7 +16,11 @@ export const BookingBill = () => {
       fontSize: 13
     }
   })
-
+  const [showModal, setShowModal] = useState(false)
+  const handleModal = () => {
+    setShowModal(!showModal)
+    console.log(showModal)
+  }
   return (
     <Container className={styles.container}>
       <Row className={styles.rowDetailBooking}>
@@ -85,10 +90,11 @@ export const BookingBill = () => {
             </div>
           </section>
           <div>
-            <Button className={styles.btnCancel}>
+            <Button className={styles.btnCancel} onClick={handleModal}>
               <CloseOutlined />
               Hủy phiếu
             </Button>
+            <ModalCancel showModal={showModal} setShowModal={setShowModal} />
           </div>
         </Col>
       </Row>
