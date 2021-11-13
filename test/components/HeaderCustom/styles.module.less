@@ -1,13 +1,22 @@
 .header {
   background-color: white;
   padding: 15px 0;
+  transition: 2s ease-out;
+
+  .showSearch {
+    transition: 2s ease-out;
+    opacity: 1;
+  }
+
+  .hiddenSearch {
+    transition: 2s ease-out;
+    opacity: 0;
+    height: 0;
+  }
 
   .rowSearch {
-    box-shadow: 0px 3px 2px 0px rgb(0 0 0 / 3%), 0 1px 0 0 rgb(0 0 0 / 4%),
-      0 -1px 0 0 rgb(0 0 0 / 4%);
-    opacity: 1;
-    visibility: visible;
-    background-color: #fafafa;
+    box-shadow: 2px 2px 20px 5px #bebebe33;
+    border-radius: 13px;
     .colSearch {
       padding: 0 15px;
       margin-top: 1%;
@@ -19,6 +28,7 @@
           outline: none;
           border: none;
           width: 100%;
+          box-shadow: 2px 2px 20px 5px #bebebe33;
         }
         .btnTim {
           border-radius: 8px;
@@ -82,11 +92,13 @@
             transition: all 0.3s ease-in-out;
             &:hover {
               box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
-              transform: translateY(-0.3rem);
+              transform: translateY(-0.2rem);
               background-color: #00b5f1;
               color: white;
               cursor: pointer;
+              transition: all 0.5s ease-in-out;
               span {
+                transition: all 0.5s ease-in-out;
                 fill: white;
               }
             }
@@ -107,8 +119,7 @@
 
           border: none;
           border-radius: 15px;
-          // transition: all 0.3s ease-in-out;
-          transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+          transition: all 0.5s ease-in-out;
 
           margin: 0 5px;
           a {
@@ -123,15 +134,18 @@
           }
           &:hover {
             a {
+              transition: all 0.5s ease;
               color: white;
             }
             span {
+              transition: all 0.5s ease;
               fill: white;
             }
+            transition: all 0.5s ease-in-out;
 
             background-color: #00b5f1;
             cursor: pointer;
-            transform: translateY(-0.3rem);
+            transform: translateY(-0.2rem);
             box-shadow: 0 0px 5px rgb(0 0 0 / 5%);
           }
         }

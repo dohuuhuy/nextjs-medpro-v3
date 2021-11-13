@@ -17,12 +17,13 @@ export default function HeaderCustom(props: HeaderIF) {
   const glogo = logo?.desktop
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
-  const onClick = () => () => settoggleSearch(!toggleSearch)
+  const onSearch = () => {
+    settoggleSearch(!toggleSearch)
+  }
 
   const routePush = (v: any) => () => {
     router.push(v.link || '/')
   }
-
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
@@ -68,7 +69,7 @@ export default function HeaderCustom(props: HeaderIF) {
                     </li>
                   )
                 })}
-                <li onClick={onClick}>
+                <li onClick={onSearch}>
                   <a className={cx(styles.btn)}>
                     <Icon name='timkiem' />
                   </a>
@@ -76,7 +77,12 @@ export default function HeaderCustom(props: HeaderIF) {
               </ul>
             </Col>
           </Row>
-          <Row className={cx(styles.rowSearch, toggleSearch ? '' : 'd-none')}>
+          <Row
+            className={cx(
+              styles.rowSearch,
+              toggleSearch ? styles.showSearch : styles.hiddenSearch
+            )}
+          >
             <Col xl={24} className={styles.colSearch}>
               <label className={styles.groupTimKiem}>
                 <input

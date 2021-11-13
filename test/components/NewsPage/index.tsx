@@ -20,7 +20,10 @@ export const NewsPageCustom = (props: Props) => {
 
   const router = useRouter()
 
+  const [curPage, setcurPage] = React.useState(1)
+
   const onChange = (pageNumber: any) => {
+    setcurPage(pageNumber)
     router.push(`?page=${pageNumber}`)
   }
 
@@ -73,6 +76,7 @@ export const NewsPageCustom = (props: Props) => {
             responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
+            current={curPage}
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />
@@ -98,8 +102,7 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
   return (
     <motion.li
       variants={mLi}
-      whileHover={{ scale: 1.05, originX: 0 }}
-      transition={{ stiffness: 300 }}
+      transition={{ stiffness: 900 }}
       className={styles.cardNews}
       key={title}
     >

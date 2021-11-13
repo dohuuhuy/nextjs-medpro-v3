@@ -93,16 +93,17 @@
         width: 80%;
 
         li {
+          transition: all 0.3s ease-in-out;
+
           font-weight: 500;
           text-align: center;
           padding: 15px;
-          // // margin: 0 30px;
           min-width: 20%;
 
-          &:hover,
-          &:focus {
+          &:hover {
             border-bottom: 3px solid #00b5f1;
             color: #00b5f1;
+            transform: translateY(-0.2rem);
           }
         }
         .active {
@@ -117,35 +118,40 @@
     border-radius: 8px;
     background-color: white;
     .colContent {
-      display: flex;
-      justify-content: center;
+      transition: all 0.3s ease-in-out;
+
+      // display: flex;
+      // justify-content: center;
+      min-height: 365px;
+      // padding: 0 15px;
 
       // .tab_Type,
       // .tab_Intro,
       // .tab_Comment {
       //   // min-height: 312px;
       // }
+      padding: 15px;
 
       .tab_Type {
         width: 100%;
         display: flex;
         justify-content: center;
         .listType {
-          margin: -1px;
-          .ListCustom();
+          display: grid;
+          grid-auto-rows: auto;
+          grid-template-columns: repeat(4, 1fr);
+
           width: 100%;
-          display: flex;
-          justify-content: flex-start;
-          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+          float: left;
 
           li {
-            width: calc(100% / 4);
-            padding: 5%;
-            border: 0.5px solid #e3e7eb;
-            border-top: 0;
-            border-left: 0;
+            box-shadow: 0px 8px 15px #3f51b51f;
+            padding: 15% 5%;
+            margin: 5%;
+            border-radius: 8px;
             border-collapse: collapse;
-
             display: flex;
             align-content: center;
             align-items: center;
@@ -166,7 +172,7 @@
             }
             transition: all 0.3s ease-in-out;
             &:hover {
-              box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
+              box-shadow: 0px 0px 20px 5px #5eb4ff47;
               transform: translateY(-0.1rem);
             }
           }
