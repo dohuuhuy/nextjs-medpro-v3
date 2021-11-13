@@ -1,16 +1,19 @@
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+/* eslint-disable react-hooks/rules-of-hooks */
+// import { yupResolver } from '@hookform/resolvers/yup'
+import { Space } from 'antd'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { schemaContact } from './handler'
+import { error, handlerListFrom } from './handler'
 import styles from './styles.module.less'
 
 export const ContactDetail = () => {
   const {
+    register,
     handleSubmit,
     formState: { errors },
     reset
   } = useForm<any>({
-    resolver: yupResolver(schemaContact)
+    // resolver: yupResolver(schemaContact)
   })
 
   const submit = (data: any) => {
@@ -23,7 +26,7 @@ export const ContactDetail = () => {
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
       <ul className={styles.listContact}>
-        {/* {handlerListFrom(register)?.map((el: any) => {
+        {handlerListFrom(register)?.map((el: any) => {
           const sub = el?.require ? <sup>*</sup> : ''
           return (
             <li key={el?.label}>
@@ -37,7 +40,7 @@ export const ContactDetail = () => {
               </Space>
             </li>
           )
-        })} */}
+        })}
       </ul>
 
       <button type='submit' disabled={disabled} className={styles.submit}>
