@@ -3,6 +3,7 @@ import { Col, Row, Space } from 'antd'
 import React from 'react'
 import Container from '../../../Container'
 import { ContactDetail } from './ContactDetail'
+// import { ContactDetail } from './ContactDetail'
 import styles from './styles.module.less'
 // import Image from 'next/image'
 

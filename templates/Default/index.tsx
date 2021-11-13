@@ -1,4 +1,4 @@
-// import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import Banners from '@components/organisms/Banner'
 import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
@@ -22,7 +22,7 @@ const DefaultLayout = (props: Props) => {
         <Banners {...info} />
         {/* lỗi get contentpage , đụ xị tốn thời gian tìm vl */}
 
-        {/* <HandlerGetContentPage {...info} /> */}
+        <HandlerGetContentPage {...info} />
 
         <main>{children}</main>
       </main>

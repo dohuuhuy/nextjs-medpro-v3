@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
 import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
@@ -25,8 +24,7 @@ export const ThacMacContent = ({ content }: any) => {
     setFaq(item)
   }
 
-  const Click = (e: any) => {
-    const id = e.target.dataset.id
+  const Click = (id: number) => () => {
     handlerSetFaqbyTab(Number(id))
   }
 
@@ -52,12 +50,7 @@ export const ThacMacContent = ({ content }: any) => {
               const active = Faq.id === el?.id ? styles.active : ''
 
               return (
-                <li
-                  key={el?.id}
-                  data-id={el?.id}
-                  onClick={Click}
-                  className={active}
-                >
+                <li key={el?.id} onClick={Click(el?.id)} className={active}>
                   {caret} {el?.name}
                 </li>
               )
