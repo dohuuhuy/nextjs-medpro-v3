@@ -1,8 +1,8 @@
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+// import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
+import Banners from '@components/organisms/Banner'
 import Footer from '@components/organisms/Footer'
 import Header from '@components/organisms/Header'
 import { Layout } from 'antd'
-import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
@@ -10,8 +10,6 @@ type Props = {
   children?: ReactNode
   appProps: any
 }
-
-const BannerPage = dynamic(() => import('@components/organisms/Banner'))
 
 const DefaultLayout = (props: Props) => {
   const { children, appProps } = props
@@ -21,8 +19,10 @@ const DefaultLayout = (props: Props) => {
     <Layout className={styles.layout}>
       <Header {...info} />
       <main className={styles.main}>
-        <BannerPage {...info} />
-        <HandlerGetContentPage {...info} />
+        <Banners {...info} />
+        {/* lỗi get contentpage , đụ xị tốn thời gian tìm vl */}
+
+        {/* <HandlerGetContentPage {...info} /> */}
 
         <main>{children}</main>
       </main>
