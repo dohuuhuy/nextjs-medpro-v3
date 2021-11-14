@@ -1,4 +1,5 @@
 import { NextSeo, NextSeoProps } from 'next-seo'
+import React from 'react'
 
 interface Props {
   meta: NextSeoProps

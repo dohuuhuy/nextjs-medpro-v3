@@ -1,4 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import SEOPost from '@components/SEO/SEOPost/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import { DetailNewsCustom } from '@componentsTest/DetailNews'
 import { check } from '@utils/checkValue'
@@ -28,6 +29,7 @@ const DetailsPostPage = ({ data }: any) => {
 
   return (
     <>
+      <SEOPost posts={data.detailNews[0]} />
       <BreadcumbCustom post={post} />
       <DetailNewsCustom {...data} />
     </>

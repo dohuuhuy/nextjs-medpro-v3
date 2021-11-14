@@ -1,5 +1,6 @@
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BookingType } from '@componentsTest/BookingType'
+import { currentEnv } from '@config/envs/env'
 import { find } from 'lodash'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
@@ -9,26 +10,31 @@ import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
+const time = new Date().getTime()
+
 const HinhThucDatKham = (props: any) => {
   const router = useRouter()
+  console.log('router :>> ', router)
   const { site } = router.query
   const listHospital = props.data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
+
+  React.useEffect(() => {}, [router.pathname])
 
   const methods: any = {
     getInfo
   }
 
   const meta: NextSeoProps = {
-    noindex: true,
-    nofollow: true,
+    noindex: false,
+    nofollow: false,
     robotsProps: {},
     title: 'Hình thức đặt khám',
     description: 'Hình thức đặt khám, chạy đâu k biết',
-    canonical: 'https://nextjs-testing.medpro.com.vn',
+    canonical: router.asPath,
     openGraph: {
       type: 'website',
-      url: 'https://nextjs-testing.medpro.com.vn',
+      url: router.asPath + '?t=' + time,
       title: getInfo.name,
       description: `Hình thức đặt khám \n${getInfo.name} \n${getInfo.address}`,
       images: [
@@ -36,7 +42,7 @@ const HinhThucDatKham = (props: any) => {
           url: banner(getInfo.partnerId),
           width: 800,
           height: 600,
-          alt: 'Hình thức đặt khám'
+          alt: ''
         }
       ],
       site_name: 'UMC - hình thức đặt khám'
@@ -61,8 +67,5 @@ export const getServerSideProps = async (ctx: any) => {
 }
 
 const banner = (e: string) => {
-  return (
-    `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png?t=` +
-    new Date().getUTCSeconds()
-  )
+  return `${currentEnv.API_Image}/static/images/${e}/web/banner_desktop.png?n=${time}`
 }
