@@ -1,5 +1,11 @@
 .BannerHome {
   margin-top: 110px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 105px;
+  }
+  @media only screen and (max-width: 426px) {
+    margin-top: 165px;
+  }
   margin-bottom: 60px !important;
   width: 100%;
   overflow: hidden;
@@ -36,7 +42,12 @@
         display: grid;
         grid-auto-rows: auto;
         grid-template-columns: repeat(4, 1fr);
-
+        @media only screen and (max-width: 769px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media only screen and (max-width: 426px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
         width: 100%;
         margin: 0;
         padding: 0;
@@ -95,18 +106,7 @@
       .boxService {
         margin: 2.5rem 0;
         width: 100%;
-        .listBoxService {
-          li {
-            width: 50%;
-          }
-        }
       }
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .BannerHome {
-    margin-top: 60px;
   }
 }

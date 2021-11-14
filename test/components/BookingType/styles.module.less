@@ -14,6 +14,9 @@
 .bookingType {
   .rowSlider {
     margin-bottom: 30px;
+    @media only screen and (max-width: 425px) {
+      display: none;
+    }
   }
   .rowType {
     background-color: white;
@@ -140,6 +143,12 @@
           display: grid;
           grid-auto-rows: auto;
           grid-template-columns: repeat(4, 1fr);
+          @media only screen and (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          @media only screen and (max-width: 425px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
 
           width: 100%;
           margin: 0;
@@ -182,22 +191,6 @@
   }
 }
 
-@media only screen and (max-width: 769px) {
-  .bookingType {
-    .rowContent {
-      .colContent {
-        .tab_Type {
-          .listType {
-            li {
-              width: calc(100% / 3);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: 426px) {
   .bookingType {
     .rowType {
@@ -212,17 +205,6 @@
             .cardBody {
               width: 70%;
               margin-bottom: 15px;
-            }
-          }
-        }
-      }
-    }
-    .rowContent {
-      .colContent {
-        .tab_Type {
-          .listType {
-            li {
-              width: calc(100% / 2);
             }
           }
         }

@@ -12,6 +12,7 @@ import styles from './styles.module.less'
 import { carousel, listTabs, settings } from './utils'
 
 export const BookingType = (props: BookingTypeIF) => {
+  const iconError = '/images/iconDatKham.svg'
   const info = props?.getInfo || null
   const [act, setact] = React.useState(1)
 
@@ -82,23 +83,19 @@ export const BookingType = (props: BookingTypeIF) => {
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
               {info.features.map((v) => {
+                const icon = v?.image || iconError
+
+                const direct = v?.webRoute
+                  ? `/${info.partnerId}${v?.webRoute}`
+                  : '#'
+
                 return (
                   <li key={uniqueId()}>
-                    <Link
-                      href={
-                        v?.webRoute ? `/${info.partnerId}${v?.webRoute}` : '#'
-                      }
-                    >
+                    <Link href={direct}>
                       <a>
                         <div className={styles.card}>
                           <figure>
-                            <Image
-                              src={v?.image}
-                              width='80'
-                              height='80'
-                              layout='responsive'
-                              alt=''
-                            />
+                            <Image src={icon} width='80' height='80' alt='' />
                           </figure>
                           <span>{v?.name}</span>
                         </div>
@@ -117,17 +114,17 @@ export const BookingType = (props: BookingTypeIF) => {
       </Row>
       {/* carousel banner  */}
       <Row className={styles.rowSlider}>
-        <Col className={styles.colSilder} span='24'>
+        <Col>
           <Slider {...settings} className={styles.Slider}>
             {carousel?.map((e) => {
               return (
                 <div key={uniqueId()} className={styles.card}>
                   <Image
                     src={e?.image}
-                    alt=''
                     width={1110}
                     height={335}
                     objectFit='cover'
+                    alt=''
                   />
                 </div>
               )

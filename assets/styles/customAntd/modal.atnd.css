@@ -1,3 +1,7 @@
+.ant-modal-content {
+  border-radius: 8px;
+}
+
 .ant-modal-content .ant-modal-body {
   padding: 15px;
 }
@@ -5,3 +9,12 @@
 .ant-modal-confirm-info .ant-modal-confirm-body > .anticon {
   color: #007bff !important;
 }
+
+.ant-modal-confirm-title {
+  display: flex !important;
+  margin-bottom: 15px;
+}
+
+/* .slick-track {
+  width: 200px !important;
+} */

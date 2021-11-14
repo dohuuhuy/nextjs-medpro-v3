@@ -24,6 +24,14 @@ export const listTabs = [
   }
 ]
 
+const setting = {
+  speed: 2000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 700
+}
+
 export const settings: Settings = {
   speed: 2000,
   slidesToShow: 1,
