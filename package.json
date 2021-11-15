@@ -66,19 +66,10 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@next/eslint-plugin-next": "11.1.2",
-    "@swc/cli": "^0.1.51",
-    "@swc/core": "^1.2.107",
-    "@types/lodash": "4.14.172",
-    "@types/node": "16.7.10",
-    "@types/react": "17.0.20",
-=======
     "@next/eslint-plugin-next": "12.0.3",
     "@types/lodash": "4.14.176",
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",
->>>>>>> 1fd9c165eeb4b2d77fbfa8091c043080fbd4391f
     "@types/svg-sprite-loader": "3.9.4",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
