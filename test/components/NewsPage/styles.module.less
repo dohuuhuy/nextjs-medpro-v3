@@ -9,6 +9,18 @@
   -webkit-box-orient: vertical;
 }
 
+.animationCus() {
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    a {
+      color: cornflowerblue;
+    }
+    transform: translateY(-0.1rem) translateX(0.2rem) !important;
+    box-shadow: 2px 2px 20px 5px #bebebe33;
+    border-radius: 10px;
+  }
+}
+
 .CustomCardBody (@descNone) {
   .title {
     font-size: 13px;
@@ -47,15 +59,15 @@
     margin: 0 -15px;
     .colRight,
     .colLeft {
-      padding: 0 15px;
       .listNews {
         margin: 15px 0;
         padding: 0;
         .cardNews {
+          .animationCus();
           display: flex;
           flex-direction: column;
           justify-content: stretch;
-          padding: 15px 0;
+          padding: 15px;
           .cardView {
             margin-bottom: 1rem;
             div {
@@ -81,10 +93,11 @@
         border-top: 0.5px solid rgba(0, 0, 0, 0.5);
         padding: 15px 0;
         .cardNews {
+          .animationCus();
           display: flex;
           flex-direction: revert;
           justify-content: stretch;
-          padding: 10px 0;
+          padding: 15px;
           .cardView {
             width: 40%;
             margin: 0;

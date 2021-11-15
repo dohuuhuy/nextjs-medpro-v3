@@ -20,8 +20,15 @@ export const NewsPageCustom = (props: Props) => {
 
   const router = useRouter()
 
+  const [curPage, setcurPage] = React.useState(1)
+
   const onChange = (pageNumber: any) => {
-    router.push(`?page=${pageNumber}`)
+    setcurPage(pageNumber)
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+    router.push(`?page=${pageNumber}`, undefined, { scroll: false })
   }
 
   return (
@@ -29,7 +36,6 @@ export const NewsPageCustom = (props: Props) => {
       <Row className={styles.rowHeader}>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colLeft}>
           <motion.ul
-            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -41,7 +47,6 @@ export const NewsPageCustom = (props: Props) => {
         </Col>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colRight}>
           <motion.ul
-            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -55,7 +60,6 @@ export const NewsPageCustom = (props: Props) => {
       <Row className={styles.rowContent}>
         <Col xs={24} sm={24} xl={15} className={styles.colContent}>
           <motion.ul
-            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -73,6 +77,7 @@ export const NewsPageCustom = (props: Props) => {
             responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
+            current={curPage}
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />
@@ -97,9 +102,7 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
   const imgUrl = API_CMS + image?.[0].url
   return (
     <motion.li
-      variants={mLi}
-      whileHover={{ scale: 1.05, originX: 0 }}
-      transition={{ stiffness: 300 }}
+      transition={{ stiffness: 900 }}
       className={styles.cardNews}
       key={title}
     >

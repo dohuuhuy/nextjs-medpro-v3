@@ -12,6 +12,7 @@ export const ContentPageCustom = ({ getContent }: Props) => {
   if (checkData(getContent)) {
     return null
   }
+
   const { key, content } = getContent
 
   switch (key) {

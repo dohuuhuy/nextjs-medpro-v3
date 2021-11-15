@@ -1,10 +1,14 @@
+import { currentEnv } from '@config/envs/env'
 import { NewsArticleJsonLd, NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 
 interface Props {
   posts: any
 }
 
 const SEOPost = ({ posts }: Props) => {
+  const router = useRouter()
+
   const {
     name,
     title,
@@ -23,14 +27,26 @@ const SEOPost = ({ posts }: Props) => {
       <NextSeo
         title={name || title}
         description={description}
-        canonical={'url'}
+        canonical={router.asPath}
         openGraph={{
-          url: '',
+          type: 'article',
+          article: {
+            publishedTime: '2017-06-21T23:04:13Z',
+            modifiedTime: '2018-01-21T18:04:43Z',
+            expirationTime: '2022-12-21T22:04:11Z',
+            section: 'Section II',
+            authors: [
+              'https://www.example.com/authors/@firstnameA-lastnameA',
+              'https://www.example.com/authors/@firstnameB-lastnameB'
+            ],
+            tags: ['Tag A', 'Tag B', 'Tag C']
+          },
+          url: router.asPath,
           title: name || title,
           description,
           images: [
             {
-              url: '',
+              url: `${currentEnv.API_CMS + image[0].url}`,
               width: 800,
               height: 600
             }

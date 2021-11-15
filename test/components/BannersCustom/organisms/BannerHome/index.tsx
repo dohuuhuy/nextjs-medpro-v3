@@ -55,14 +55,10 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                       variants={mLi}
                       onClick={SelectFeature(e?.type)}
                       whileHover={{
-                        scale: 1.2,
+                        scale: 1.03,
                         opacity: 1
                       }}
-                      whileFocus={{
-                        scale: 1.2,
-                        opacity: 1
-                      }}
-                      transition={{ stiffness: 300 }}
+                      transition={{ stiffness: 900 }}
                     >
                       <div className={styles.card}>
                         <figure>

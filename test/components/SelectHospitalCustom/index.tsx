@@ -16,10 +16,9 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   // const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>(props?.listHospital)
   const [activeList, setactiveList] = useState(false)
-  const [valueIn, setValueIn] = useState("")
-  const [valueInCity, setValueInCity] = useState("Chọn tỉnh thành")
-  function onChange(code: any, e: any) {
-    setValueInCity(e?.children)
+  const [keySearch, setkeySearch] = useState('')
+
+  const onChangeCity = (code: any) => {
     setactiveList(true)
     if (code === 'huyi') {
       setlistHospitals(listHospitals)
@@ -29,75 +28,15 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     }
   }
 
-  function onSearchHospital(e: any) {
+  const onSearchKey = (e: any) => {
     setactiveList(true)
     const { value } = e.target
-    setValueIn(value)
+    setkeySearch(value)
     const findHospital = props?.listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlistHospitals(findHospital)
   };
-
-  const redirect = (e: ListHospital) => () => {
-    if (checkData(e?.message)) {
-      e?.partnerId
-        ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
-        : alert('không có partnerId')
-    } else {
-      Modal.info({
-        closable: true,
-        width: 'unset',
-        centered: true,
-        className: styles.Modal,
-        icon: null,
-
-        title: (
-          <>
-            <Icon name='thongbao' fill='red' />
-            thông báo
-          </>
-        ),
-        content: e?.message,
-        okButtonProps: {
-          disabled: true,
-          style: { display: 'none' }
-        }
-      })
-    }
-  }
-
-  const handlerMap = (arr: ListHospital[]) => {
-    return arr?.map((e) => {
-      const imageErrorSrc = '/images/logo.png'
-      const urlImage = e?.image || imageErrorSrc
-
-      const rate = e.deliveryMessage ? (
-        <p className={styles.status}>
-          <i>{e.deliveryMessage}</i>
-        </p>
-      ) : (
-        <Rate className={styles.rate} disabled={true} value={3} />
-      )
-      return (
-        <li key={uniqueId()} onClick={redirect(e)}>
-          <div className={styles.cardHospital}>
-            <figure className={styles.cardView}>
-              <img src={urlImage} alt='' width='50' height='50' />
-            </figure>
-            <div className={styles.cardBody}>
-              <p className={styles.nameHospital}>{e?.name}</p>
-              <p className={styles.address}>{e?.address}</p>
-              {rate}
-            </div>
-            <div className={styles.favorite}>
-              <Icon name='yeuthich' fill='#CBD2D9' size='15' />
-            </div>
-          </div>
-        </li>
-      )
-    })
-  }
 
   return (
     <Container fluid={true} className={styles.container}>
@@ -108,10 +47,10 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
             <ul className={styles.GroupInputSelect}>
               <li>
                 <Input
-                  value={valueIn}
                   size='large'
+                  value={keySearch}
                   autoFocus={true}
-                  onChange={onSearchHospital}
+                  onChange={onSearchKey}
                   className={styles.inputSearch}
                   placeholder='Tìm nhanh bệnh viện'
                   prefix={<Icon name='timkiem' fill='white' />}
@@ -122,10 +61,10 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                 <Select
                   defaultValue='huyi'
                   className={styles.inputSelect}
-                  showSearch={true}
+                  showSearch
                   style={{ width: '100%' }}
                   optionFilterProp='children'
-                  onChange={onChange}
+                  onChange={onChangeCity}
                   filterOption={(input, option: any) =>
                     option?.children
                       .toLowerCase()
@@ -133,7 +72,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   }
                 >
                   <Option value='huyi' key={'Chọn tỉnh thành'}>
-                    {valueInCity}
                   </Option>
 
                   {props?.listCity?.map((e) =>{
@@ -151,13 +89,76 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         <Col span='24' className={styles.colListCard}>
           <Container className={styles.conList}>
             <ul className={styles.listCard}>
-              {handlerMap(activeList ? listHospitals : props?.listHospital)}
+              {handlerMap(
+                activeList ? listHospitals : props?.listHospital,
+                router
+              )}
             </ul>
           </Container>
         </Col>
       </Row>
     </Container>
   )
+}
+
+const handlerMap = (arr: ListHospital[], router: any) => {
+  return arr?.map((e) => {
+    const imageErrorSrc = '/images/logo.png'
+    const urlImage = e?.image || imageErrorSrc
+
+    const rate = e.deliveryMessage ? (
+      <p className={styles.status}>
+        <i>{e.deliveryMessage}</i>
+      </p>
+    ) : (
+      <Rate className={styles.rate} disabled={true} value={3} />
+    )
+    return (
+      <li key={uniqueId()} onClick={redirect(e, router)}>
+        <div className={styles.cardHospital}>
+          <figure className={styles.cardView}>
+            <img src={urlImage} alt='' width='50' height='50' />
+          </figure>
+          <div className={styles.cardBody}>
+            <p className={styles.nameHospital}>{e?.name}</p>
+            <p className={styles.address}>{e?.address}</p>
+            {rate}
+          </div>
+          <div className={styles.favorite}>
+            <Icon name='yeuthich' fill='#CBD2D9' size='15' />
+          </div>
+        </div>
+      </li>
+    )
+  })
+}
+
+const redirect = (e: ListHospital, router: any) => () => {
+  if (checkData(e?.message)) {
+    e?.partnerId
+      ? router.push(`${e?.partnerId}/hinh-thuc-dat-kham`)
+      : alert('không có partnerId')
+  } else {
+    Modal.info({
+      closable: true,
+      width: 'unset',
+      centered: true,
+      className: styles.Modal,
+      icon: null,
+
+      title: (
+        <>
+          <Icon name='thongbao' fill='red' />
+          thông báo
+        </>
+      ),
+      content: e?.message,
+      okButtonProps: {
+        disabled: true,
+        style: { display: 'none' }
+      }
+    })
+  }
 }
 
 export interface SelectHospital {
