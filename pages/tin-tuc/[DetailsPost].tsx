@@ -43,7 +43,7 @@ DetailsPostPage.getInitialProps = async (ctx: any) => {
   return { data }
 }
 
-// export const getStaticProps = async (ctx: any) => {
+// export const getInitialProps = async (ctx: any) => {
 //   const data = await ChiTietBaiViet(ctx)
 //   return {
 //     props: { data },

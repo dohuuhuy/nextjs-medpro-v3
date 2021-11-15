@@ -29,7 +29,7 @@ const ChonBenhVienPage = ({ data }: any) => {
     listCity
   }
 
-  return <SelectHospitalCustom {...methods} />
+  return <SelectHospitalCustom {...methods}  />
 }
 
 ChonBenhVienPage.getInitialProps = async (ctx: any) => {

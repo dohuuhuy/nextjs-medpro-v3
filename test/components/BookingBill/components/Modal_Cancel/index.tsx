@@ -22,7 +22,7 @@ export const ModalCancel = ({ showModal, setShowModal }: any) => {
         onCancel={() => setShowModal(!showModal)}
         bodyStyle={{ padding: 0 }}
         footer={false}
-        centered
+        centered={true}
         className={styles.Modal}
       >
         <Group className={styles.group} onChange={toggle}>
@@ -42,7 +42,7 @@ export const ModalCancel = ({ showModal, setShowModal }: any) => {
             </Radio>
           </Space>
           <div className={styles.Footer}>
-            <Button disabled className={styles.btn_cancel} onClick={() => setShowModal(!showModal)}>
+            <Button disabled={true} className={styles.btn_cancel} onClick={() => setShowModal(!showModal)}>
               Hủy bỏ
             </Button>
             <Button className={styles.btn_confirm} onClick={() => setShowModal(!showModal)} >

@@ -31,9 +31,7 @@ export default function HeaderCustom(props: HeaderIF) {
             <Col xl={6} lg={6} className={styles.colLogo}>
               <figure className={styles.logo}>
                 <Link href={'/'}>
-                  <a>
-                    <Image src={glogo} layout='fill' alt='' loading='lazy' />
-                  </a>
+                  <a><Image src={glogo} width="275" height="75" layout='responsive' alt='' loading='lazy' /></a>
                 </Link>
               </figure>
             </Col>

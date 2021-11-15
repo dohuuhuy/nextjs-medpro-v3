@@ -17,7 +17,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
 
   const SelectFeature = (type: string) => () => {
     if (partnerId === 'medpro' && type === 'booking.date') {
-      router.push('/chon-benh-vien')
+      router.push('/benh-vien')
     }
   }
 

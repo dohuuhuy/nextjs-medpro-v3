@@ -40,7 +40,8 @@ export const ConfirmInfo = () => {
               <ul className={styles.listItem}>
                 {Profile.map(({ title, value }: any) => {
                   return (
-                    <li key={uniqueId()}>
+                    
+                    <li key={uniqueId()}/>
 <<<<<<< HEAD
             </div>
           </div>
@@ -50,7 +51,8 @@ export const ConfirmInfo = () => {
               <ul className={styles.listItem}>
                 {Info.map(({ title, value }: any) => {
                   return (
-                    <li key={uniqueId()}>
+                    
+                    <li key={uniqueId()}/>
 <<<<<<< HEAD
                       <div className={styles.cardItem}>
                         <p>

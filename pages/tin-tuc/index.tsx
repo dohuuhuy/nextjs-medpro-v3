@@ -5,7 +5,7 @@ import { TinTucCtrl } from 'src/containers/News/news'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const TinTucPage = (props: any) => {
-  return <NewsPageCustom {...props.data} />
+  return <NewsPageCustom {...props.data}  />
 }
 
 TinTucPage.getInitialProps = async (ctx: any) => {

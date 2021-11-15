@@ -13,15 +13,18 @@ const { Option } = Select
 
 export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
-  const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
+  // const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
+  const [listHospitals, setlistHospitals] = useState<ListHospital[]>(props?.listHospital)
   const [activeList, setactiveList] = useState(false)
-
-  function onChange(code: any) {
+  const [valueIn, setValueIn] = useState("")
+  const [valueInCity, setValueInCity] = useState("Chọn tỉnh thành")
+  function onChange(code: any, e: any) {
+    setValueInCity(e?.children)
     setactiveList(true)
     if (code === 'huyi') {
-      setlistHospitals(props?.listHospital)
+      setlistHospitals(listHospitals)
     } else {
-      const findHospital: any = filter(props?.listHospital, { city: { code } })
+      const findHospital: any = filter(listHospitals, { city: { code } })
       setlistHospitals(findHospital)
     }
   }
@@ -29,11 +32,12 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   function onSearchHospital(e: any) {
     setactiveList(true)
     const { value } = e.target
+    setValueIn(value)
     const findHospital = props?.listHospital.filter(
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlistHospitals(findHospital)
-  }
+  };
 
   const redirect = (e: ListHospital) => () => {
     if (checkData(e?.message)) {
@@ -104,12 +108,14 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
             <ul className={styles.GroupInputSelect}>
               <li>
                 <Input
+                  value={valueIn}
                   size='large'
                   autoFocus={true}
                   onChange={onSearchHospital}
                   className={styles.inputSearch}
                   placeholder='Tìm nhanh bệnh viện'
                   prefix={<Icon name='timkiem' fill='white' />}
+                  allowClear
                 />
               </li>
               <li>
@@ -127,10 +133,10 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   }
                 >
                   <Option value='huyi' key={'Chọn tỉnh thành'}>
-                    Chọn tỉnh thành
+                    {valueInCity}
                   </Option>
 
-                  {props?.listCity?.map((e) => {
+                  {props?.listCity?.map((e) =>{
                     return (
                       <Option value={e?.code} key={uniqueId()}>
                         {e?.name}
