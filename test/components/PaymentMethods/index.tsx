@@ -1,5 +1,5 @@
 import Container from '@componentsTest/Container'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
 import { Col, Row, Collapse, Button } from 'antd'
@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Banner from './images/BgPayment.svg'
 import { data } from './utils/data'
 import { PartnerPayment } from './components/listPartnerPayment'
-import cx from 'classnames'
+// import cx from 'classnames'
 
 const { Panel } = Collapse
 export const PaymentMethods = () => {

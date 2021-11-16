@@ -3,12 +3,11 @@ import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Row, Button } from 'antd'
+import { CloseCircleOutlined } from '@ant-design/icons'
 import { uniqueId } from 'lodash'
 import { Icon } from '../Icon'
-import { Info, Profile } from './utils/data'
 
 export const ConfirmInfo = () => {
-  const fullData = 1
   return (
     <Container className={styles.container}>
       <Row className={styles.rowInfo}>
@@ -36,13 +35,21 @@ export const ConfirmInfo = () => {
                 </div>
               </li>
             </ul>
-            <div className={fullData ? styles.cardComplete : styles.cardIncomplete}>
+            <div className={styles.cardProfile}>
               <ul className={styles.listItem}>
                 {Profile.map(({ title, value }: any) => {
                   return (
-                    
-                    <li key={uniqueId()}/>
-<<<<<<< HEAD
+                    <li key={uniqueId()}>
+                      <div className={styles.cardBody}>
+                        <p>
+                          <span>{title}</span>
+                          <span>{value}</span>
+                        </p>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           </div>
           <div className={styles.InfoBooking}>
@@ -51,31 +58,18 @@ export const ConfirmInfo = () => {
               <ul className={styles.listItem}>
                 {Info.map(({ title, value }: any) => {
                   return (
-                    
-                    <li key={uniqueId()}/>
-<<<<<<< HEAD
-                      <div className={styles.cardItem}>
-                        <p>
-                          <span className={styles.title}>{title}</span>
-                          <span className={styles.value}>{value}</span>
-=======
+                    <li key={uniqueId()}>
                       <div className={styles.cardBody}>
                         <p>
                           {title}
                           <span>{value}</span>
->>>>>>> 1776f93640f08a22556bf8d7ed62a1c16f4fdaba
                         </p>
                       </div>
                     </li>
                   )
                 })}
+                <CloseCircleOutlined />
               </ul>
-<<<<<<< HEAD
-              <div className={styles.button}>
-                <Icon name='close' size='25' />
-              </div>
-=======
->>>>>>> 1776f93640f08a22556bf8d7ed62a1c16f4fdaba
             </div>
           </div>
         </Col>
