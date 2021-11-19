@@ -115,15 +115,15 @@ export const BookingType = (props: BookingTypeIF) => {
       {/* carousel banner  */}
       <Row className={styles.rowSlider}>
         <Col>
-          <Slider {...settings} className={styles.Slider}>
+          <Slider {...settings}>
             {carousel?.map((e) => {
+              console.log('carousel :>> ', carousel);
               return (
-                <div key={uniqueId()} className={styles.card}>
+                <div key={uniqueId()} className={styles.listImage}>
                   <Image
                     src={e?.image}
                     width={1110}
                     height={335}
-                    objectFit='cover'
                     alt=''
                   />
                 </div>

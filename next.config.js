@@ -40,7 +40,8 @@ const nextConfig = {
       'bo-api-testing.medpro.com.vn',
       'medpro-inside-testing.medpro.com.vn',
       'inside-static.medpro.com.vn'
-    ]
+    ],
+    formats: ['image/avif', 'image/webp']
   },
 
   ...lessConfig,

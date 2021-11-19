@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// import { yupResolver } from '@hookform/resolvers/yup'
+import { zodResolver } from '@hookform/resolvers/zod/dist/zod'
 import { Space } from 'antd'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { error, handlerListFrom } from './handler'
+import { error, handlerListFrom, schemaContact } from './handler'
 import styles from './styles.module.less'
 
 export const ContactDetail = () => {
@@ -13,7 +13,7 @@ export const ContactDetail = () => {
     formState: { errors },
     reset
   } = useForm<any>({
-    // resolver: yupResolver(schemaContact)
+    resolver: zodResolver(schemaContact)
   })
 
   const submit = (data: any) => {
