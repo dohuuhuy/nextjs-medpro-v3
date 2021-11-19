@@ -14,7 +14,6 @@ const time = new Date().getTime()
 
 const HinhThucDatKham = (props: any) => {
   const router = useRouter()
-  console.log('router :>> ', router)
   const { site } = router.query
   const listHospital = props.data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
