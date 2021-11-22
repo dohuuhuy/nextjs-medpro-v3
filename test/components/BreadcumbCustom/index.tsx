@@ -1,3 +1,4 @@
+import { Icon } from '@componentsTest/Icon'
 import { check } from '@utils/checkValue'
 import { Col, Row } from 'antd'
 import { find } from 'lodash'
@@ -5,7 +6,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import { Icon } from '../Icon'
 import styles from './styles.module.less'
 
 export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
