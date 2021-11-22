@@ -57,8 +57,8 @@ const HinhThucDatKham = (props: any) => {
 HinhThucDatKham.Layout = DefaultLayout
 export default HinhThucDatKham
 
-export const getServerSideProps = async (ctx: any) => {
-  const data = await SelectHospitalCtl(ctx)
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
 
   return { props: { data } }
 }

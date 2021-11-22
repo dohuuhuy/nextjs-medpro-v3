@@ -1,14 +1,24 @@
 import HeaderCustom from '@componentsTest/HeaderCustom'
-import { urlHeader } from '@utils/contants'
+import { urlHeader, urlListPartners } from '@utils/contants'
 import { fetcher } from '@utils/func'
+import { findPartnerId } from '@utils/run_local_hospitals'
 import React from 'react'
 import useSWR from 'swr'
 
 const HeaderPublic = () => {
-  const { data, error } = useSWR(urlHeader, fetcher)
+  const { data: listPartners } = useSWR(urlListPartners, fetcher)
 
-  if (error) return null
-  return <HeaderCustom dataHeader={data} />
+  const partnerId = findPartnerId({
+    listPartners,
+    host: window.location.hostname
+  })
+
+  console.log('partnerId :>> ', partnerId)
+
+  const { data: menu, error: errMenu } = useSWR(urlHeader, fetcher)
+
+  if (errMenu) return null
+  return <HeaderCustom dataHeader={menu} />
 }
 
 export default HeaderPublic

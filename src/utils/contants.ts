@@ -31,3 +31,5 @@ export const urlFooter = 'https://api.npoint.io/77d2f064ddeb78de6961'
 export const urlContent = 'https://api.npoint.io/5faf3ddf0d50e90896f8'
 
 export const urlBanners = 'https://api.npoint.io/f437f4eb6cceccf1c59a'
+
+export const urlListPartners = 'https://api.npoint.io/e4a272b45693136cded7'
