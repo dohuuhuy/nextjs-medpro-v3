@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
-import Container from '../../../Container'
-import { Banner } from './../../interface'
+import Container from '../Container'
+import { Banner } from '../BannersCustom/interface'
 import styles from './styles.module.less'
 
 export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
@@ -44,7 +44,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
               initial='hidden'
               animate='visible'
             >
-              {listFeature.map((e, i: any) => {
+              {listFeature?.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
                 const urlImage = e.image || imageErrorSrc
 
