@@ -23,3 +23,9 @@ export const urlAddress = (type: any, id: any) => {
 
   return url
 }
+
+export const urlHeader = 'https://api.npoint.io/b87961f233a5c5dd146d'
+
+export const urlFooter = 'https://api.npoint.io/77d2f064ddeb78de6961'
+
+export const urlContent = 'https://api.npoint.io/5faf3ddf0d50e90896f8'

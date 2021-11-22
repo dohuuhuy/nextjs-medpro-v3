@@ -1,16 +1,14 @@
-import { check } from '@utils/checkValue'
+import FooterCustom from '@componentsTest/FooterCustom'
+import { urlFooter } from '@utils/contants'
+import { fetcher } from '@utils/func'
 import React from 'react'
-import { Information } from 'store/interface'
+import useSWR from 'swr'
 
-import dynamic from 'next/dynamic'
-const FooterCustom = dynamic(() => import('@componentsTest/FooterCustom'))
+const FooterPublic = () => {
+  const { data, error } = useSWR(urlFooter, fetcher)
 
-const Footer = (info: Information) => {
-  if (check(info)) {
-    return null
-  }
-
-  return <FooterCustom {...info.footer} />
+  if (error) return null
+  return <FooterCustom dataFooter={data} />
 }
 
-export default Footer
+export default FooterPublic

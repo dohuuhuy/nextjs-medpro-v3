@@ -1,16 +1,19 @@
 import { ContentPageCustom } from '@componentsTest/ContentPageCustom'
-import { Information } from 'store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-const HandlerGetContentPage = (info: Information) => {
+const HandlerGetContentPage = ({ dataContent }: any) => {
   const router = useRouter()
+
+  if (!dataContent) {
+    return null
+  }
 
   const {
     query: { site }
   } = router
 
-  const getContent = find(info.contentPage, { key: site })
+  const getContent = find(dataContent, { key: site })
 
   if (!getContent) {
     return null

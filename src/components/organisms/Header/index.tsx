@@ -1,29 +1,14 @@
-import { check } from '@utils/checkValue'
-import dynamic from 'next/dynamic'
+import HeaderCustom from '@componentsTest/HeaderCustom'
+import { urlHeader } from '@utils/contants'
+import { fetcher } from '@utils/func'
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { AppState, Information } from 'store/interface'
+import useSWR from 'swr'
 
-const HeaderCustom = dynamic(() => import('@componentsTest/HeaderCustom'))
+const HeaderPublic = () => {
+  const { data, error } = useSWR(urlHeader, fetcher)
 
-const Header = (info: Information) => {
-  const userInfo = useSelector((state: AppState) => state.user.userInfo)
-
-  const authen = {
-    isAuthen: userInfo.token ? true : false,
-    nameUser: userInfo.fullName
-  }
-
-  const methods = {
-    dataHeader: info?.header,
-    Authencation: authen
-  }
-
-  if (check(info)) {
-    return null
-  }
-
-  return <HeaderCustom {...methods} />
+  if (error) return null
+  return <HeaderCustom dataHeader={data} />
 }
 
-export default Header
+export default HeaderPublic

@@ -1,8 +1,6 @@
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import Banners from '@components/organisms/Banner'
-import Footer from '@components/organisms/Footer'
-import Header from '@components/organisms/Header'
-import { Layout } from 'antd'
+import FooterPublic from '@components/organisms/Footer'
+import HeaderPublic from '@components/organisms/Header'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 
@@ -16,18 +14,14 @@ const DefaultLayout = (props: Props) => {
 
   const info = appProps?.info
   return (
-    <Layout className={styles.layout}>
-      <Header {...info} />
-      <main className={styles.main}>
+    <section className={styles.layout}>
+      <HeaderPublic />
+      <main className={styles.content}>
         <Banners {...info} />
-        {/* lỗi get contentpage , đụ xị tốn thời gian tìm vl */}
-
-        <HandlerGetContentPage {...info} />
-
-        <main>{children}</main>
+        {children}
       </main>
-      <Footer {...info} />
-    </Layout>
+      <FooterPublic />
+    </section>
   )
 }
 

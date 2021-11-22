@@ -1,11 +1,14 @@
+import FooterPublic from '@components/organisms/Footer'
+import HeaderPublic from '@components/organisms/Header'
 import React from 'react'
+import styles from './styles.module.less'
 
 const HomeLayout = ({ children }: any) => {
   return (
-    <section>
-      <header>menu</header>
-      {children}
-      <footer>footer</footer>
+    <section className={styles.layout}>
+      <HeaderPublic />
+      <main className={styles.content}>{children}</main>
+      <FooterPublic />
     </section>
   )
 }

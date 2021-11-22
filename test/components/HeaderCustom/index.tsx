@@ -7,15 +7,18 @@ import Link from 'next/link'
 import router from 'next/router'
 import React from 'react'
 import Container from './../Container'
-import { HeaderIF } from './interface'
 import styles from './styles.module.less'
 
-export default function HeaderCustom(props: HeaderIF) {
-  const { dataHeader } = props
+export default function HeaderCustom({ dataHeader }: any) {
+  const [toggleSearch, settoggleSearch] = React.useState(false)
+
+  if (!dataHeader) {
+    return null
+  }
+
   const { logo, menu } = dataHeader
 
   const glogo = logo?.desktop
-  const [toggleSearch, settoggleSearch] = React.useState(false)
 
   const onSearch = () => {
     settoggleSearch(!toggleSearch)
@@ -24,6 +27,7 @@ export default function HeaderCustom(props: HeaderIF) {
   const routePush = (v: any) => () => {
     router.push(v.link || '/')
   }
+
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
@@ -67,7 +71,7 @@ export default function HeaderCustom(props: HeaderIF) {
               </ul>
 
               <ul className={styles.listMenu}>
-                {menu.map((v) => {
+                {menu.map((v: any) => {
                   return (
                     <li key={uniqueId()} onClick={routePush(v)}>
                       <Link href={v.link || '/'}>

@@ -6,13 +6,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import QRCode from 'react-qr-code'
-import { FooterIF } from './interface'
 import styles from './styles.module.less'
 
-// import client from 'medpro-sdk'
-
-export default function FooterCustom(props: FooterIF) {
-  const { menu, logo, contact, downApp, certificate } = props
+export default function FooterCustom({ dataFooter }: any) {
+  if (!dataFooter) {
+    return null
+  }
+  const { menu, logo, contact, downApp, certificate } = dataFooter
   return (
     <footer>
       <Container fluid={true} className={styles.footer}>
@@ -20,7 +20,7 @@ export default function FooterCustom(props: FooterIF) {
           <Row className={styles.rowMenu}>
             <Col xl={24} sm={24} className={styles.colMenu}>
               <ul className={styles.menu}>
-                {menu.map((v) => {
+                {menu.map((v: any) => {
                   return (
                     <li key={uniqueId()}>
                       <Link href={v.link}>
@@ -46,7 +46,7 @@ export default function FooterCustom(props: FooterIF) {
           <Row className={styles.rowBody}>
             <Col xl={10} sm={24} className={styles.colContact}>
               <ul className={styles.listContact}>
-                {contact?.map((v) => {
+                {contact?.map((v: any) => {
                   const under = v.setting.underline ? styles.underline : ''
                   const label = v.setting?.boolLabel ? styles.bold : ''
                   const value = v.setting?.boolValue ? styles.bold : ''
@@ -67,7 +67,7 @@ export default function FooterCustom(props: FooterIF) {
               <Space size={15}>
                 <QRCode value={downApp.QRcode} size={90} />
                 <ul className={styles.listApp}>
-                  {downApp.imageDownApp.map((v) => {
+                  {downApp.imageDownApp.map((v: any) => {
                     return (
                       <li key={uniqueId()}>
                         <Link href={v.link}>
@@ -88,7 +88,7 @@ export default function FooterCustom(props: FooterIF) {
             </Col>
             <Col xl={7} sm={24} className={styles.colCertifi}>
               <ul className={styles.listCer}>
-                {certificate.list?.map((v) => {
+                {certificate.list?.map((v: any) => {
                   const under = v.setting.underline ? styles.underline : ''
                   const label = v.setting?.boolLabel ? styles.bold : ''
                   const value = v.setting?.boolValue ? styles.bold : ''
@@ -104,7 +104,7 @@ export default function FooterCustom(props: FooterIF) {
               </ul>
 
               <ul className={styles.listImg}>
-                {certificate.images.map((v) => {
+                {certificate.images.map((v: any) => {
                   return (
                     <li key={uniqueId()}>
                       <Link href={v.link}>

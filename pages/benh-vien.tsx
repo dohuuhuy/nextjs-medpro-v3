@@ -3,14 +3,12 @@ import {
   SelectHospital,
   SelectHospitalCustom
 } from '@componentsTest/SelectHospitalCustom'
+import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
-import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 import { AppState } from 'store/interface'
-
-const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ChonBenhVienPage = ({ data }: any) => {
   const dispatch = useDispatch()
@@ -29,7 +27,7 @@ const ChonBenhVienPage = ({ data }: any) => {
     listCity
   }
 
-  return <SelectHospitalCustom {...methods}  />
+  return <SelectHospitalCustom {...methods} />
 }
 
 ChonBenhVienPage.getInitialProps = async (ctx: any) => {

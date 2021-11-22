@@ -1,5 +1,5 @@
 export interface HeaderIF {
-  Authencation: Authen
+  Authencation?: Authen
   dataHeader: ListHeader
 }
 
