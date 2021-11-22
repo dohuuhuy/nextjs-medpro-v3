@@ -7,19 +7,17 @@ import React from 'react'
 import useSWR from 'swr'
 
 const Banners = () => {
-  const { data: info, error } = useSWR(urlBanners, fetcher)
-
   const router = useRouter()
-
-  if (error) return null
-
   const {
-    query: { site }
+    query: { site },
+    pathname
   } = router
 
-  const getBanner = find(info, { key: '/' + site })
+  const { data: info, error } = useSWR(urlBanners, fetcher)
+  if (error) return null
 
-  console.log('getBanner :>> ', getBanner)
+  const key = site ? '/' + site : pathname
+  const getBanner = find(info, { key })
 
   const methods: any = {
     getBanner
