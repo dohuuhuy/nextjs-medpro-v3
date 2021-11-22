@@ -9,8 +9,6 @@ import { HomeCtl } from 'src/containers/home'
 import useSWR from 'swr'
 
 const HomePage = ({ data }: any) => {
-  console.log('data :>> ', data)
-
   const { data: info, error } = useSWR(urlBanners, fetcher)
   if (error) return null
 

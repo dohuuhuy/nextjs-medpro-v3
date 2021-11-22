@@ -1,5 +1,6 @@
 import * as ac from '@actionStore/rootAction'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
+import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
@@ -7,7 +8,6 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from 'store/interface'
-const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const BookingTree = dynamic(() => import('@componentsTest/BookingTree'))
 
@@ -51,8 +51,8 @@ const ThongTinDatKhamPage = () => {
 
   return (
     <>
-      {' '}
-      <SEOHead meta={meta} /> <BookingTree />
+      <SEOHead meta={meta} />
+      <BookingTree />
     </>
   )
 }

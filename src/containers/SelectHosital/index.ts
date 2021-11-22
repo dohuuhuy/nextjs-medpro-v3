@@ -1,8 +1,7 @@
 import { client } from '@config/medproSDK'
 
-export const SelectHospitalCtl = async (_ctx: any) => {
+export const SelectHospitalCtl = async () => {
   const listHospital = await getListHospital()
-
   return {
     listHospital
   }

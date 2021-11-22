@@ -15,7 +15,7 @@ const getNewsAndEvent = async () => {
 
     const url = `https://cms.medpro.com.vn/posts?&categories.slug=tin-tuc&_limit=5&_sort=updated_at:desc`
     const news: any = await fetcher(url)
-    return newsPin.data.concat(news.data)
+    return newsPin.concat(news)
   } catch (error) {
     console.error(error)
     return null

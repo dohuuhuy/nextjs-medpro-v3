@@ -1,29 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
+import { Icon } from '@componentsTest/Icon'
 import { Col, Input, Modal, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
-// import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { checkData } from '../DataFailure'
 import Container from './../Container'
-import { Icon } from './../Icon'
 import styles from './styles.module.less'
 
 const { Option } = Select
 
 export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
-  // const [listHospitals, setlistHospitals] = useState<ListHospital[]>([])
-  const [listHospitals, setlistHospitals] = useState<ListHospital[]>(props?.listHospital)
+  const [listHospitals, setlistHospitals] = useState<ListHospital[]>(
+    props?.listHospital
+  )
+  const [nameCiti, setnameCiti] = useState('Chọn Tỉnh/thành')
   const [activeList, setactiveList] = useState(false)
   const [keySearch, setkeySearch] = useState('')
 
-  const onChangeCity = (code: any) => {
+  const onChangeCity = (code: any, v: any) => {
     setactiveList(true)
     if (code === 'huyi') {
       setlistHospitals(listHospitals)
     } else {
-      const findHospital: any = filter(listHospitals, { city: { code } })
+      setnameCiti(v.children)
+      const findHospital: any = filter(props?.listHospital, { city: { code } })
       setlistHospitals(findHospital)
     }
   }
@@ -36,7 +38,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
       ({ name }) => name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlistHospitals(findHospital)
-  };
+  }
 
   return (
     <Container fluid={true} className={styles.container}>
@@ -59,7 +61,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
               </li>
               <li>
                 <Select
-                  defaultValue='huyi'
+                  value={nameCiti}
                   className={styles.inputSelect}
                   showSearch
                   style={{ width: '100%' }}
@@ -71,10 +73,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                       .indexOf(input.toLowerCase()) >= 0
                   }
                 >
-                  <Option value='huyi' key={'Chọn tỉnh thành'}>
-                  </Option>
-
-                  {props?.listCity?.map((e) =>{
+                  {props?.listCity?.map((e) => {
                     return (
                       <Option value={e?.code} key={uniqueId()}>
                         {e?.name}
@@ -102,6 +101,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 }
 
 const handlerMap = (arr: ListHospital[], router: any) => {
+  if (arr.length < 1) return <p>Không có bệnh viện </p>
   return arr?.map((e) => {
     const imageErrorSrc = '/images/logo.png'
     const urlImage = e?.image || imageErrorSrc

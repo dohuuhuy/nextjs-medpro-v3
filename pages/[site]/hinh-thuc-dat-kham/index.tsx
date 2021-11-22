@@ -1,14 +1,12 @@
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BookingType } from '@componentsTest/BookingType'
 import { currentEnv } from '@config/envs/env'
+import DefaultLayout from '@templates/Default'
 import { find } from 'lodash'
 import { NextSeoProps } from 'next-seo'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-
-const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const time = new Date().getTime()
 
@@ -50,8 +48,8 @@ const HinhThucDatKham = (props: any) => {
 
   return (
     <>
-      {' '}
-      <SEOHead meta={meta} /> <BookingType {...methods} />
+      <SEOHead meta={meta} />
+      <BookingType {...methods} />
     </>
   )
 }
