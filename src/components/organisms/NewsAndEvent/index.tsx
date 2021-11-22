@@ -1,7 +1,7 @@
 import { NewsEventCustom } from '@componentsTest/News&Events'
 import React from 'react'
 
-const NewsEventLayout = ({ newsAndEvent }: any) => {
+const NewsAndEvent = ({ newsAndEvent }: any) => {
   return <NewsEventCustom dataNewsAndEvent={newsAndEvent} />
 }
-export default NewsEventLayout
+export default NewsAndEvent

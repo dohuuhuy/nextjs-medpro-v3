@@ -1,4 +1,3 @@
-import { checkData, DataFailure } from '@componentsTest/DataFailure'
 import { Col, Row, Space } from 'antd'
 import moment from 'moment'
 import Image from 'next/image'
@@ -10,8 +9,8 @@ import styles from './styles.module.less'
 export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
-  if (checkData(dataNewsAndEvent)) {
-    return <DataFailure desc={'Không có dataNewsEventCustom '} />
+  if (!dataNewsAndEvent) {
+    return null
   }
 
   return (

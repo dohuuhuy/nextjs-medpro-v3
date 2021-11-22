@@ -117,15 +117,9 @@ export const BookingType = (props: BookingTypeIF) => {
         <Col>
           <Slider {...settings}>
             {carousel?.map((e) => {
-              console.log('carousel :>> ', carousel);
               return (
                 <div key={uniqueId()} className={styles.listImage}>
-                  <Image
-                    src={e?.image}
-                    width={1110}
-                    height={335}
-                    alt=''
-                  />
+                  <Image src={e?.image} width={1110} height={335} alt='' />
                 </div>
               )
             })}
