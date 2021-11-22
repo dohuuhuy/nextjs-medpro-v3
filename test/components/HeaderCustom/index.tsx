@@ -1,3 +1,4 @@
+import { Icon } from '@componentsTest/Icon'
 import { Col, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -5,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import router from 'next/router'
 import React from 'react'
-import { Icon } from '../Icon'
 import Container from './../Container'
 import { HeaderIF } from './interface'
 import styles from './styles.module.less'
@@ -32,7 +32,16 @@ export default function HeaderCustom(props: HeaderIF) {
             <Col xl={6} lg={6} className={styles.colLogo}>
               <figure className={styles.logo}>
                 <Link href={'/'}>
-                  <a><Image src={glogo} width="275" height="75" layout='responsive' alt='' loading='lazy' /></a>
+                  <a>
+                    <Image
+                      src={glogo}
+                      width='275'
+                      height='75'
+                      layout='responsive'
+                      alt=''
+                      loading='lazy'
+                    />
+                  </a>
                 </Link>
               </figure>
             </Col>
