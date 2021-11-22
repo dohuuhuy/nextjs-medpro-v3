@@ -1,46 +1,28 @@
 import { BannersCustom } from '@componentsTest/BannersCustom'
-import { Banner } from '@componentsTest/BannersCustom/interface'
-import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import { check } from '@utils/checkValue'
-import { find, isUndefined } from 'lodash'
+import { urlBanners } from '@utils/contants'
+import { fetcher } from '@utils/func'
+import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { AppState, Information } from 'store/interface'
+import useSWR from 'swr'
 
-const Banners = (info: Information) => {
+const Banners = () => {
+  const { data: info, error } = useSWR(urlBanners, fetcher)
+
   const router = useRouter()
-  const hos = useSelector((state: AppState) => state.hospital)
 
-  if (check(info)) {
-    return null
-  }
+  if (error) return null
 
   const {
-    query: { site },
-    pathname
+    query: { site }
   } = router
 
-  const key = isUndefined(site) ? (pathname === '/' ? '/' : '') : `/${site}`
-  const getBanner = find(info.banners, { key })
+  const getBanner = find(info, { key: '/' + site })
 
-  if (check(getBanner)) {
-    const { menu, insideLink } = info.header
-    const listMenu = [].concat(menu, insideLink)
+  console.log('getBanner :>> ', getBanner)
 
-    const getLink = find(listMenu, (o: any) => {
-      return pathname.includes(o?.link)
-    })
-
-    return check(getLink) ? null : (
-      <BreadcumbCustom listMenu={listMenu} listHos={hos.listHospital} />
-    )
-  }
-
-  const methods: Banner = {
-    getBanner,
-    listFeature: hos?.listFeatureByApp,
-    partnerId: info?.partnerId
+  const methods: any = {
+    getBanner
   }
 
   return <BannersCustom {...methods} />

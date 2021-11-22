@@ -5,9 +5,7 @@ import { BannerDefault } from './organisms/BannerDefault'
 import { BannerHome } from './organisms/BannerHome'
 
 export const BannersCustom = (props: Banner) => {
-  if (!props?.getBanner) {
-    return <em>Lỗi không có data banners</em>
-  }
+  if (!props?.getBanner) return null
 
   switch (props.getBanner.key) {
     case '/':
