@@ -39,7 +39,7 @@ export default function HeaderCustom(props: HeaderIF) {
                       height='75'
                       layout='responsive'
                       alt=''
-                      loading='lazy'
+                      loading='eager'
                     />
                   </a>
                 </Link>

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-document-import-in-page */
 import FavIcon from '@components/organisms/Favicon'
 import { GA_TRACKING_ID } from '@utils/gtag'
 import Document, {
