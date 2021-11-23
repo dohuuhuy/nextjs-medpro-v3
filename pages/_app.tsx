@@ -1,6 +1,6 @@
 import '@assets/styles/app.less'
+import { OnTop } from '@components/atoms/OnTop'
 import { wrapper } from '@store/rootStore'
-import { BackTop } from 'antd'
 import 'antd/dist/antd.css'
 import { DefaultSeo } from 'next-seo'
 import React, { Fragment } from 'react'
@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: any) => {
       <PersistGate persistor={store.persistor}>
         <Component {...pageProps} />
       </PersistGate>
-      <BackTop />
+      <OnTop />
     </Layout>
   )
 }
