@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { useBarcode } from 'react-barcodes'
 import { ModalCancel } from './components/Modal_Cancel'
 import styles from './styles.module.less'
+import cx from 'classnames'
 
 export const BookingBill = () => {
   const { inputRef } = useBarcode({
@@ -22,85 +23,109 @@ export const BookingBill = () => {
     console.log(showModal)
   }
   return (
-    <Container className={styles.container}>
+    <Container className={styles.containerBill}>
       <Row className={styles.rowDetailBooking}>
-        <Col xl={24} className={styles.colDetailBooking}>
-          <h3>PHIẾU KHÁM BỆNH</h3>
-          <section className={styles.conInfo}>
-            <div className={styles.address}>
-              <p>Cơ sở khám chữa bệnh</p>
-              <p>Địa chỉ cơ sở khám bệnh</p>
-            </div>
+        <Col xl={24} lg={24} xs={24} className={styles.colDetailBooking}>
+          <div className={styles.billPrint}>
+            <h3>PHIẾU KHÁM BỆNH</h3>
+            <section className={styles.billInfo}>
+              <CustomLine top />
+              <div className={styles.address}>
+                <p>Cơ sở khám chữa bệnh</p>
+                <p>Địa chỉ cơ sở khám bệnh</p>
+              </div>
 
-            <div className={styles.barcode}>
-              <p>Mã hẹn khám</p>
-              <canvas ref={inputRef} />
-            </div>
+              <div className={styles.barcode}>
+                <p>Mã hẹn khám</p>
+                <canvas ref={inputRef} />
+              </div>
 
-            <div className={styles.status}>
-              <p>Đã thanh toán</p>
-            </div>
+              <div className={styles.status}>
+                <p>Đã thanh toán</p>
+              </div>
 
-            <hr className={styles.hr} />
+              <CustomLine />
 
-            <div className={styles.number}>
-              <p>Số thứ tự tiếp nhận</p>
-              <span>01</span>
-            </div>
+              <div className={styles.number}>
+                <p>Số thứ tự tiếp nhận</p>
+                <span>01</span>
+              </div>
 
-            <ul className={styles.listItemBooking}>
-              {data.map(({ title, value }: any) => {
-                return (
-                  <li key={uniqueId()}>
-                    <p className={styles.itemBooking}>
-                      <span> {title}</span>
-                      <span>{value}</span>
-                    </p>
-                  </li>
-                )
-              })}
-            </ul>
-
-            <hr className={styles.hr} />
-
-            <div className={styles.note}>
-              <p>Lưu ý:</p>
-              <ul className={styles.listNote}>
-                <li>
-                  <p>
-                    Quý bệnh nhân vui lòng đến phòng khám trước hẹn 15 phút để
-                    được hướng dẫn và khám bệnh.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Phiếu khám bệnh chỉ có giá trị trong ngày khám từ 6h30 -
-                    20h00.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Quý bệnh nhân cần hỗ trợ vui lòng liên hệ tổng đài 19002115
-                  </p>
-                </li>
-                <li>
-                  <p>Thông tin hướng dẫn cần biết khi đi khám chữa bệnh.</p>
-                </li>
+              <ul className={styles.listItemBooking}>
+                {data.map(({ title, value }: any) => {
+                  return (
+                    <li key={uniqueId()}>
+                      <p className={styles.itemBooking}>
+                        <span> {title}</span>
+                        <span>{value}</span>
+                      </p>
+                    </li>
+                  )
+                })}
               </ul>
+
+              <CustomLine />
+
+              <div className={styles.note}>
+                <p>Lưu ý:</p>
+                <ul className={styles.listNote}>
+                  {listNote.map((v, i) => {
+                    return (
+                      <li key={i}>
+                        <p>{v.value}</p>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              <CustomLine bottom />
+            </section>
+            <div className={styles.cancelBill}>
+              <Button className={styles.btnCancel} onClick={handleModal}>
+                <CloseOutlined />
+                Hủy phiếu
+              </Button>
+              <ModalCancel showModal={showModal} setShowModal={setShowModal} />
             </div>
-          </section>
-          <div>
-            <Button className={styles.btnCancel} onClick={handleModal}>
-              <CloseOutlined />
-              Hủy phiếu
-            </Button>
-            <ModalCancel showModal={showModal} setShowModal={setShowModal} />
           </div>
         </Col>
       </Row>
     </Container>
   )
 }
+
+const CustomLine = ({ top, bottom, normal = true }: any) => {
+  return (
+    <div
+      className={cx(
+        styles.line,
+        top && styles.top,
+        bottom && styles.bottom,
+        normal && styles.normal
+      )}
+    >
+      <div className={styles.circle} />
+      <div className={styles.dashed} />
+      <div className={styles.circle} />
+    </div>
+  )
+}
+
+const listNote = [
+  {
+    value:
+      'Quý bệnh nhân vui lòng đến phòng khám trước hẹn 15 phút để được hướng dẫn và khám bệnh.'
+  },
+  {
+    value: 'Phiếu khám bệnh chỉ có giá trị trong ngày khám từ 6h30 - 20h00.'
+  },
+  {
+    value: 'Quý bệnh nhân cần hỗ trợ vui lòng liên hệ tổng đài 19002115'
+  },
+  {
+    value: 'Thông tin hướng dẫn cần biết khi đi khám chữa bệnh.'
+  }
+]
 
 interface Data {
   title: string
