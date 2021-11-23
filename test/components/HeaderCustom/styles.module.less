@@ -80,7 +80,21 @@
         .listCustom();
         li {
           margin: 0 5px;
+
+          .btnLogin {
+            background-color: #00b5f1 !important;
+            color: whitesmoke !important;
+            min-width: 100px;
+            text-transform: uppercase;
+
+            &:hover {
+              // border: 0.2px solid darkblue !important;
+              background-color: white !important;
+              color: darkblue !important;
+            }
+          }
           .btn {
+            min-width: 100px;
             font-size: 13px;
             color: #002e64;
             font-weight: 500;
@@ -194,12 +208,3 @@
     }
   }
 }
-
-// @media only screen and (max-width: 1024px) {
-//   .header {
-//     .rowHeader {
-//       .colLogo {
-//       }
-//     }
-//   }
-// }

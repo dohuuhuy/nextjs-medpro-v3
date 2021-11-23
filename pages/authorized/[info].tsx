@@ -23,13 +23,14 @@ const Author = () => {
   const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
-    if (check(user?.userInfo?.token)) {
-      dispatch(ac.UserLogin(query))
-      router.push('/')
-    }
-  })
+    dispatch(ac.UserLogin(query))
+  }, [user?.userInfo])
 
   const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
+
+  if (user?.userInfo?.token) {
+    router.push('/')
+  }
 
   return (
     <div className={styles.login}>

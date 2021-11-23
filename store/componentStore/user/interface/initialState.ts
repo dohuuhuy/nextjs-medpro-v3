@@ -6,9 +6,9 @@ export interface UserState {
 }
 
 interface userInfo {
-  fullName: string
-  userName: string
-  email: string
-  token: string
-  isCS: boolean
+  fullName?: string
+  userName?: string
+  email?: string
+  token?: string
+  isCS?: boolean
 }

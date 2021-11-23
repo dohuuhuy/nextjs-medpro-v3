@@ -32,7 +32,7 @@ export default function user(
       return { ...state, noticeByUser: action.noticeByUser }
 
     case UserTypes.User.USER_RESET:
-      return { ...init }
+      return { ...init, userInfo: {} }
 
     default:
       return state

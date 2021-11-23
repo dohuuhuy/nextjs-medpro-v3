@@ -9,7 +9,7 @@ import React from 'react'
 import Container from './../Container'
 import styles from './styles.module.less'
 
-export default function HeaderCustom({ dataHeader }: any) {
+export default function HeaderCustom({ dataHeader, url, author }: any) {
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
   if (!dataHeader) {
@@ -26,6 +26,14 @@ export default function HeaderCustom({ dataHeader }: any) {
 
   const routePush = (v: any) => () => {
     router.push(v.link || '/')
+  }
+
+  const handleLogin = () => {
+    router.push(url)
+  }
+
+  const handleLogOut = () => {
+    router.push('/dang-xuat')
   }
 
   return (
@@ -63,11 +71,28 @@ export default function HeaderCustom({ dataHeader }: any) {
                     Thông báo
                   </button>
                 </li>
-                <li>
-                  <button className={cx(styles.btn)}>
-                    Đăng nhập | Đăng ký
-                  </button>
-                </li>
+                {!author.token && (
+                  <li>
+                    <button className={cx(styles.btn)} onClick={handleLogin}>
+                      Đăng nhập | Đăng ký
+                    </button>
+                  </li>
+                )}
+                {author.token && (
+                  <li>
+                    <button className={cx(styles.btn, styles.btnLogin)}>
+                      {author?.fullName}
+                    </button>
+                  </li>
+                )}
+
+                {author.token && (
+                  <li>
+                    <button className={cx(styles.btn)} onClick={handleLogOut}>
+                      Đăng xuất
+                    </button>
+                  </li>
+                )}
               </ul>
 
               <ul className={styles.listMenu}>
