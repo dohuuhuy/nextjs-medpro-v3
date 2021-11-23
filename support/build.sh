@@ -1,7 +1,7 @@
-git stash 
-git fetch 
-git pull 
+git stash
+git fetch
+git pull
 yarn
 rm -rf .next/
-yarn build 
-pm2 restart web-srr
+yarn build
+pm2 restart medpro-v3
