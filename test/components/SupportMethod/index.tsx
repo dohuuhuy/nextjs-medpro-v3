@@ -8,7 +8,7 @@ import styles from './styles.module.less'
 import { SupportMethod } from './interface'
 
 export interface SupportMedthodCustom {
-  dataSupportMethod: SupportMethod
+  dataSupportMethod?: SupportMethod
 }
 
 export const SupportMedthodCustom = ({
