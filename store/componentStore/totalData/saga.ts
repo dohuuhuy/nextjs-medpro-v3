@@ -19,6 +19,16 @@ function* getListPartners() {
     })
 
     yield put(ac.SetParnerId(partnerId))
+
+    yield put(ac.getHeader(partnerId))
+
+    yield put(
+      ac.FeatureRequest({
+        partnerId: partnerId,
+        typeReser: 'normal'
+      })
+    )
+    yield put(ac.getFooter(partnerId))
   } catch (error) {
     console.error(error)
   }

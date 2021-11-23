@@ -38,7 +38,7 @@ export const FeatureRequest = ({
 }: any): HospitalActions => {
   return {
     type: HosptailTypes.Feature.FEATURE_REQUEST,
-    partnerid: partnerId,
+    partnerId,
     typeReser
   }
 }
@@ -60,10 +60,10 @@ export const FeatureByPartnerSuccess = (
 }
 
 // lấy luồng đặt khám
-export const getBookingTree = (partnerid: any): HospitalActions => {
+export const getBookingTree = (partnerId: any): HospitalActions => {
   return {
     type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
-    partnerid
+    partnerId
   }
 }
 

@@ -40,7 +40,7 @@ export type FeatureAction =
 
 export interface FeatureRequest {
   type: HosptailTypes.Feature.FEATURE_REQUEST
-  partnerid: string
+  partnerId: string
   typeReser: string
 }
 
@@ -75,7 +75,7 @@ export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
 
 export interface BookingTreeRequest {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
-  partnerid: string
+  partnerId: string
 }
 
 export interface BookingTreeRequestSuccess {
