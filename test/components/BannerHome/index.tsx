@@ -11,8 +11,9 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
   const router = useRouter()
 
   if (!getBanner) {
-    return <em> Không có dataBannerHome</em>
+    return null
   }
+
   const { imageBackground } = getBanner
 
   const SelectFeature = (type: string) => () => {

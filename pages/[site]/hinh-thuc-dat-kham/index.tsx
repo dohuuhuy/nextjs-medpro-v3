@@ -16,13 +16,29 @@ const HinhThucDatKham = (props: any) => {
   const listHospital = props.data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
 
-  React.useEffect(() => {}, [router.pathname])
+  return (
+    <>
+      <SEOHead meta={handerMeta(getInfo, router)} />
+      <BookingType getInfo={getInfo} />
+    </>
+  )
+}
 
-  const methods: any = {
-    getInfo
-  }
+HinhThucDatKham.Layout = DefaultLayout
+export default HinhThucDatKham
 
-  const meta: NextSeoProps = {
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
+
+  return { props: { data } }
+}
+
+const banner = (e: string) => {
+  return `${currentEnv.API_Image}/static/images/${e}/web/banner_desktop.png?n=${time}`
+}
+
+const handerMeta = (getInfo: any, router: any) => {
+  return {
     noindex: false,
     nofollow: false,
     robotsProps: {},
@@ -44,25 +60,5 @@ const HinhThucDatKham = (props: any) => {
       ],
       site_name: 'UMC - hình thức đặt khám'
     }
-  }
-
-  return (
-    <>
-      <SEOHead meta={meta} />
-      <BookingType {...methods} />
-    </>
-  )
-}
-
-HinhThucDatKham.Layout = DefaultLayout
-export default HinhThucDatKham
-
-export const getServerSideProps = async () => {
-  const data = await SelectHospitalCtl()
-
-  return { props: { data } }
-}
-
-const banner = (e: string) => {
-  return `${currentEnv.API_Image}/static/images/${e}/web/banner_desktop.png?n=${time}`
+  } as NextSeoProps
 }

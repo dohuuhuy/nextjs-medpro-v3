@@ -12,24 +12,20 @@ import { HomeCtl } from 'src/containers/home'
 import useSWR from 'swr'
 
 const HomePage = ({ data }: any) => {
-  const { data: info, error } = useSWR(urlBanners, fetcher)
-
   const dispatch = useDispatch()
   const hos = useSelector((state: AppState) => state.hospital)
-  const user = useSelector((state: AppState) => state.user)
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    !hos?.listFeatureByApp &&
-      dispatch(
-        ac.FeatureRequest({
-          partnerId: total?.partnerId,
-          typeReser: 'normal'
-        })
-      )
+    dispatch(
+      ac.FeatureRequest({
+        partnerId: total?.partnerId,
+        typeReser: 'normal'
+      })
+    )
+  }, [total?.partnerId, dispatch])
 
-    !user?.listPatient && dispatch(ac.ListPatientRequest())
-  }, [])
+  const { data: info, error } = useSWR(urlBanners, fetcher)
 
   if (error) return null
 
@@ -39,7 +35,7 @@ const HomePage = ({ data }: any) => {
       <BannerHome
         getBanner={getBannerHome}
         listFeature={hos?.listFeatureByApp}
-        partnerId='medpro'
+        partnerId={total?.partnerId}
       />
       <NewsEventCustom dataNewsAndEvent={data.newsAndEvent} />
     </>

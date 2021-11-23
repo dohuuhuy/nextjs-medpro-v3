@@ -5,10 +5,10 @@ export interface Props {
 
 const localhost = {
   domain: ['localhost', 'huyi.ddns.net', 'huyi.tech', '42.116.14.170'],
-  partnerId: 'medpro'
+  partnerId: 'nhidonghcm'
 }
 
-export const findPartnerId = ({ listPartners, host }: Props) => {
+export const findPartnerId = ({ listPartners = [], host }: Props) => {
   listPartners.push(localhost)
   const res: any = listPartners?.find((i: any) =>
     i.domain.includes(domain(host))
