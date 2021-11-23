@@ -54,8 +54,13 @@ const ThongTinDatKhamPage = (props: any) => {
 
   const listHospital = props.data.listHospital
 
-  const { menu, insideLink } = hos.information.header
-  const listMenu = menu.concat(insideLink)
+  if (!hos) return null
+
+  let listMenu = []
+  if (hos.information?.header) {
+    const { menu, insideLink } = hos.information?.header
+    listMenu = menu ? menu.concat(insideLink) : []
+  }
 
   return (
     <>

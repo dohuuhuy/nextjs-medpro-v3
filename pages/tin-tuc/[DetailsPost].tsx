@@ -35,30 +35,7 @@ const DetailsPostPage = ({ data }: any) => {
 DetailsPostPage.Layout = DefaultLayout
 export default DetailsPostPage
 
-DetailsPostPage.getInitialProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: any) => {
   const data = await ChiTietBaiViet(ctx)
-
-  return { data }
+  return { props: { data } }
 }
-
-// build quá lâu
-
-// export const getStaticProps = async (ctx: any) => {
-//   const data = await ChiTietBaiViet(ctx)
-//   return {
-//     props: { data },
-//     revalidate: 1
-//   }
-// }
-// export const getStaticPaths = async () => {
-//   const data = await getDetail()
-
-//   const paths = data.map((v: any) => ({
-//     params: { DetailsPost: v.slug }
-//   }))
-
-//   return {
-//     paths: paths,
-//     fallback: true
-//   }
-// }

@@ -1,10 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
-import Container from '../Container'
 import { Banner } from '../BannersCustom/interface'
+import Container from '../Container'
 import styles from './styles.module.less'
 
 export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
@@ -25,10 +25,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
       <div
         className={styles.backgroundImage}
         style={{
-          backgroundImage: getBanner && `url(${getBanner})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: '100% 100%'
+          backgroundImage: getBanner && `url(${getBanner})`
         }}
       />
       <Container className={styles.contentBannerHome}>
@@ -45,29 +42,25 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
             >
               {listFeature?.map((e, i: any) => {
                 const imageErrorSrc = '/images/error.svg'
-                const urlImage = e.image || imageErrorSrc
+
+                const size = 45
+                const propsImg = {
+                  src: e.image || imageErrorSrc,
+                  width: size,
+                  height: size,
+                  onError: (e: any) => (e.target.src = imageErrorSrc)
+                }
 
                 if (e?.status) {
                   return (
                     <motion.li
                       key={i}
-                      variants={mLi}
+                      {...methodLi}
                       onClick={SelectFeature(e?.type)}
-                      whileHover={{
-                        scale: 1.03,
-                        opacity: 1
-                      }}
-                      transition={{ stiffness: 900 }}
                     >
                       <div className={styles.card}>
                         <figure>
-                          <Image
-                            src={urlImage}
-                            width='45'
-                            height='45'
-                            loading='eager'
-                            alt=''
-                          />
+                          <img {...propsImg} alt='' />
                         </figure>
                         <p>{e?.name}</p>
                       </div>
@@ -109,4 +102,13 @@ export const mLi = {
     y: 0,
     opacity: 1
   }
+}
+
+const methodLi = {
+  variants: mLi,
+  whileHover: {
+    scale: 1.03,
+    opacity: 1
+  },
+  transition: { stiffness: 900 }
 }

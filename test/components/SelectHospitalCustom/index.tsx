@@ -103,9 +103,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 const handlerMap = (arr: ListHospital[], router: any) => {
   if (arr.length < 1) return <p>Không có bệnh viện </p>
   return arr?.map((e) => {
-    const imageErrorSrc = '/images/logo.png'
-    const urlImage = e?.image || imageErrorSrc
-
     const rate = e.deliveryMessage ? (
       <p className={styles.status}>
         <i>{e.deliveryMessage}</i>
@@ -113,11 +110,21 @@ const handlerMap = (arr: ListHospital[], router: any) => {
     ) : (
       <Rate className={styles.rate} disabled={true} value={3} />
     )
+
+    const imgError = require('./images/logo.png')
+    const size = 50
+    const propsImage = {
+      src: e?.image,
+      width: size,
+      height: size,
+      onError: (e: any) => (e.target.src = imgError)
+    }
+
     return (
       <li key={uniqueId()} onClick={redirect(e, router)}>
         <div className={styles.cardHospital}>
           <figure className={styles.cardView}>
-            <img src={urlImage} alt='' width='50' height='50' />
+            <img alt='' {...propsImage} />
           </figure>
           <div className={styles.cardBody}>
             <p className={styles.nameHospital}>{e?.name}</p>

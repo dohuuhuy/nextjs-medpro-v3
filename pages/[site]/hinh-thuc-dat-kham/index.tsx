@@ -18,17 +18,25 @@ const HinhThucDatKham = (props: any) => {
   const getInfo = find(listHospital, { partnerId: site })
 
   const hos = useSelector((state: AppState) => state.hospital)
-  const { menu, insideLink } = hos.information.header
-  const listMenu = menu.concat(insideLink)
+
+  if (!hos) return null
+
+  let listMenu = []
+  if (hos.information?.header) {
+    const { menu, insideLink } = hos.information?.header
+    listMenu = menu ? menu.concat(insideLink) : []
+  }
 
   return (
     <>
       <SEOHead meta={handerMeta(getInfo, router)} />
+
       <BreadcumbCustom
         type='booking'
         listHos={listHospital}
         listMenu={listMenu}
       />
+
       <BookingType getInfo={getInfo} />
     </>
   )

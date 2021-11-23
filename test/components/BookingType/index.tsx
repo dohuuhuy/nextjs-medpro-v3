@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -12,7 +13,6 @@ import styles from './styles.module.less'
 import { carousel, listTabs, settings } from './utils'
 
 export const BookingType = (props: BookingTypeIF) => {
-  const iconError = '/images/iconDatKham.svg'
   const info = props?.getInfo || null
   const [act, setact] = React.useState(1)
 
@@ -83,11 +83,19 @@ export const BookingType = (props: BookingTypeIF) => {
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
               {info.features.map((v) => {
-                const icon = v?.image || iconError
-
                 const direct = v?.webRoute
                   ? `/${info.partnerId}${v?.webRoute}`
                   : '#'
+
+                const iconError = require('./images/iconDatKham.svg')
+
+                const size = 80
+                const propsImg = {
+                  src: v?.image || iconError,
+                  width: size,
+                  height: size,
+                  onError: (e: any) => (e.target.src = iconError)
+                }
 
                 return (
                   <li key={uniqueId()}>
@@ -95,7 +103,8 @@ export const BookingType = (props: BookingTypeIF) => {
                       <a>
                         <div className={styles.card}>
                           <figure>
-                            <Image src={icon} width='80' height='80' alt='' />
+                            {/* <Image src={icon} width='80' height='80' alt='' /> */}
+                            <img {...propsImg} alt='' />
                           </figure>
                           <span>{v?.name}</span>
                         </div>

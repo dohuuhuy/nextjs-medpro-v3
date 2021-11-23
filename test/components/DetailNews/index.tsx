@@ -23,9 +23,9 @@ export const DetailNewsCustom = ({
       <Row className={styles.rowContentPost}>
         <Col xs={24} xl={16} lg={16} className={styles.colLeftPost}>
           <ul className={styles.listPost}>
-            {detailNews?.map((item: any, index: number) => {
+            {detailNews?.map((item: Post) => {
               return (
-                <div key={index}>
+                <div key={item.id}>
                   <li className={styles.title}>
                     <h2>{item?.title}</h2>
                   </li>
@@ -56,8 +56,8 @@ export const DetailNewsCustom = ({
         <Col xs={24} xl={8} lg={8} className={styles.colRightPost}>
           <h2>TIN CÙNG CHUYÊN MỤC</h2>
           <ul className={styles.listCategory}>
-            {sameNews?.map((item: any, index: number) => (
-              <CardNewsCustom item={item} key={index} />
+            {sameNews?.map((item: Post) => (
+              <CardNewsCustom item={item} key={item.id} />
             ))}
           </ul>
           <div className={styles.btnViewNews}>
@@ -74,8 +74,8 @@ export const DetailNewsCustom = ({
           <h2>BÀI VIẾT MỚI NHẤT</h2>
 
           <ul className={styles.listPostNew}>
-            {listNewsBanner?.map((item: any, index: number) => (
-              <CardNewsCustom item={item} key={index} />
+            {listNewsBanner?.map((item: Post) => (
+              <CardNewsCustom item={item} key={item.id} />
             ))}
           </ul>
         </Col>
@@ -101,6 +101,7 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
               width='600'
               height='300'
               layout='responsive'
+              objectFit='cover'
               loading='eager'
               alt='news'
             />
@@ -122,4 +123,15 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
       </div>
     </div>
   )
+}
+
+export interface Post {
+  id: any
+  slug: string
+  image: any
+  content: any
+  title: string
+  created_at: string
+  description: string
+  author: string
 }

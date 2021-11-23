@@ -20,10 +20,10 @@ const Site = ({ data }: any) => {
 Site.Layout = DefaultLayout
 export default Site
 
-Site.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const data = await fetcher(urlContent)
 
-  return { data }
+  return { props: { data } }
 }
 
 const meta: NextSeoProps = {

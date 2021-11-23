@@ -27,7 +27,7 @@ HomePage.Layout = HomeLayout
 
 export default HomePage
 
-HomePage.getInitialProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: any) => {
   const data = await HomeCtl(ctx)
-  return { data }
+  return { props: { data } }
 }

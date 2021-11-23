@@ -21,7 +21,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
       <Row className={styles.rowListNews}>
         <Col xl={10} lg={10} md={24} className={styles.colListNewsPin}>
           <ul className={styles.ListNewsAndEvent}>
-            {dataNewsAndEvent?.slice(0, 1)?.map((item: any) => {
+            {dataNewsAndEvent?.slice(0, 1)?.map((item: Post) => {
               return (
                 <li key={item?.id}>
                   <CardNewsCustom {...item} />
@@ -32,7 +32,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
         </Col>
         <Col xl={14} lg={14} md={24} className={styles.colListNews}>
           <ul className={styles.ListNewsAndEvent}>
-            {dataNewsAndEvent?.slice(1, 5)?.map((item: any) => {
+            {dataNewsAndEvent?.slice(1, 5)?.map((item: Post) => {
               return (
                 <li key={item?.id}>
                   <CardNewsCustom {...item} />
@@ -53,15 +53,8 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
   )
 }
 
-const CardNewsCustom = ({
-  slug,
-  image,
-  title,
-  created_at: createdAt,
-  description,
-  author
-}: any) => {
-  const imgUrl1 = API_CMS + image?.[0].url
+const CardNewsCustom = (item: Post): JSX.Element => {
+  const imgUrl1 = API_CMS + item.image?.[0].url
   return (
     <div className={styles.cardNews}>
       <figure className={styles.cardView}>
@@ -69,25 +62,36 @@ const CardNewsCustom = ({
           src={imgUrl1}
           width='500'
           height='300'
+          objectFit='cover'
           layout='responsive'
           loading='eager'
           alt='imgUrl1'
         />
       </figure>
       <div className={styles.cardBody}>
-        <Link href={`/tin-tuc/${slug}`}>
+        <Link href={`/tin-tuc/${item?.slug}`}>
           <a>
-            <p className={styles.title}>{title}</p>
+            <p className={styles.title}>{item?.title}</p>
           </a>
         </Link>
         <Space style={{ width: '100%' }}>
           <span className={styles.time}>
-            {moment(createdAt).format('DD/MM/YYYY, h:mm')}
+            {moment(item?.created_at).format('DD/MM/YYYY, h:mm')}
           </span>
-          <span className={styles.author}>{author}</span>
+          <span className={styles.author}>{item?.author}</span>
         </Space>
-        <p className={styles.description}>{description}</p>
+        <p className={styles.description}>{item?.description}</p>
       </div>
     </div>
   )
+}
+
+export interface Post {
+  id: any
+  slug: string
+  image: any
+  title: string
+  created_at: string
+  description: string
+  author: string
 }
