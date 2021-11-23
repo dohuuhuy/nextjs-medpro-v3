@@ -1,5 +1,5 @@
 import { api } from '@config/api'
-import { findPartnerId } from '@utils/run_local_hospitals'
+import { findPartnerId } from '@utils/partner'
 import { JSON_EXP } from 'json mẫu/bvtest'
 
 export const appCtrl = async (ctx: any) => {

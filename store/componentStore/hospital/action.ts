@@ -31,21 +31,6 @@ export const ListHospitalRequestSuccess = (listHospital: any) => {
   }
 }
 
-// lấy luồng đặt khám
-export const getBookingTree = (partnerid: any): HospitalActions => {
-  return {
-    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
-    partnerid
-  }
-}
-
-export const getBookingTreeSuccess = (data: any): HospitalActions => {
-  return {
-    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS,
-    bookingTree: data
-  }
-}
-
 // lấy danh sách dịch vụ theo bệnh viện
 export const FeatureRequest = ({
   partnerId,
@@ -71,5 +56,50 @@ export const FeatureByPartnerSuccess = (
   return {
     type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
     listFeatureByPartner
+  }
+}
+
+// lấy luồng đặt khám
+export const getBookingTree = (partnerid: any): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
+    partnerid
+  }
+}
+
+export const getBookingTreeSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS,
+    bookingTree: data
+  }
+}
+
+// lấy header
+export const getHeader = (partnerId: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Header.Header_REQUEST,
+    partnerId
+  }
+}
+
+export const getHeaderSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Header.Header_REQUEST_SUCCESS,
+    header: data
+  }
+}
+
+// lấy footer
+export const getFooter = (partnerId: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Footer.Footer_REQUEST,
+    partnerId
+  }
+}
+
+export const getFooterSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Footer.Footer_REQUEST_SUCCESS,
+    footer: data
   }
 }

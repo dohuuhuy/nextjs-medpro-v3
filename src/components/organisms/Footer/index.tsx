@@ -1,14 +1,20 @@
+import { getFooter } from '@actionStore/rootAction'
 import FooterCustom from '@componentsTest/FooterCustom'
-import { urlFooter } from '@utils/contants'
-import { fetcher } from '@utils/func'
+import { AppState } from '@store/interface'
 import React from 'react'
-import useSWR from 'swr'
+import { useDispatch, useSelector } from 'react-redux'
 
 const FooterPublic = () => {
-  const { data, error } = useSWR(urlFooter, fetcher)
+  const dispatch = useDispatch()
+  const total = useSelector((state: AppState) => state.total)
+  const hos = useSelector((state: AppState) => state.hospital)
 
-  if (error) return null
-  return <FooterCustom dataFooter={data} />
+  React.useEffect(() => {
+    !hos.information.footer && dispatch(getFooter(total.partnerId))
+  }, [])
+
+  if (!hos.information.footer) return null
+  return <FooterCustom dataFooter={hos.information.footer} />
 }
 
 export default FooterPublic

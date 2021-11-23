@@ -3,18 +3,19 @@ export interface HospitalState {
   bookingTree: any[]
   listFeatureByApp: ItemFeature[]
   listFeatureByPartner: ItemFeature[]
+  information: Information
 }
 
 export interface Information {
-  partnerId: string
-  header: any
-  banners: any[]
-  deployHospital: any[]
-  introducHospital: any
-  downloadApp: any
-  supportMethods: any[]
-  footer: any
-  contentPage: any[]
+  partnerId?: string
+  header?: any
+  banners?: any[]
+  deployHospital?: any[]
+  introducHospital?: any
+  downloadApp?: any
+  supportMethods?: any[]
+  footer?: any
+  contentPage?: any[]
 }
 
 export interface ItemFeature {

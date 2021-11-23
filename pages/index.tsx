@@ -17,13 +17,14 @@ const HomePage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    dispatch(
-      ac.FeatureRequest({
-        partnerId: total?.partnerId,
-        typeReser: 'normal'
-      })
-    )
-  }, [total?.partnerId, dispatch])
+    hos?.listFeatureByApp.length < 1 &&
+      dispatch(
+        ac.FeatureRequest({
+          partnerId: total?.partnerId,
+          typeReser: 'normal'
+        })
+      )
+  }, [])
 
   const { data: info, error } = useSWR(urlBanners, fetcher)
 

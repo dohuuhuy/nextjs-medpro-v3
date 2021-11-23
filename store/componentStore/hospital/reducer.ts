@@ -5,7 +5,8 @@ const init: HospitalState = {
   listHospital: [],
   bookingTree: [],
   listFeatureByApp: [],
-  listFeatureByPartner: []
+  listFeatureByPartner: [],
+  information: {}
 }
 
 export default function hospital(
@@ -35,6 +36,18 @@ export default function hospital(
       return {
         ...state,
         listHospital: action.listHospital
+      }
+
+    case HosptailTypes.Header.Header_REQUEST_SUCCESS:
+      return {
+        ...state,
+        information: { ...state.information, header: action.header }
+      }
+
+    case HosptailTypes.Footer.Footer_REQUEST_SUCCESS:
+      return {
+        ...state,
+        information: { ...state.information, footer: action.footer }
       }
 
     default:
