@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { useBarcode } from 'react-barcodes'
 import { ModalCancel } from './components/Modal_Cancel'
 import styles from './styles.module.less'
+import cx from 'classnames'
 
 export const BookingBill = () => {
   const { inputRef } = useBarcode({
@@ -21,12 +22,29 @@ export const BookingBill = () => {
     setShowModal(!showModal)
     console.log(showModal)
   }
+
+  const CustomLine = ({ top, bottom, normal = true } : any) => {
+    return(
+      <div className={cx(
+        styles.line,
+        top && styles.top,
+        bottom && styles.bottom,
+        normal
+      )}>
+        <div className={styles.circle} />
+        <div className={styles.dashed} />
+        <div className={styles.circle} />
+      </div>
+    )
+  }
   return (
     <Container className={styles.container}>
       <Row className={styles.rowDetailBooking}>
         <Col xl={24} className={styles.colDetailBooking}>
+          {<CustomLine top />}
+
           <h3>PHIẾU KHÁM BỆNH</h3>
-          <section className={styles.conInfo}>
+          <div className={styles.conInfo}>
             <div className={styles.address}>
               <p>Cơ sở khám chữa bệnh</p>
               <p>Địa chỉ cơ sở khám bệnh</p>
@@ -41,7 +59,7 @@ export const BookingBill = () => {
               <p>Đã thanh toán</p>
             </div>
 
-            <hr className={styles.hr} />
+            {<CustomLine />}
 
             <div className={styles.number}>
               <p>Số thứ tự tiếp nhận</p>
@@ -61,7 +79,7 @@ export const BookingBill = () => {
               })}
             </ul>
 
-            <hr className={styles.hr} />
+            {<CustomLine />}
 
             <div className={styles.note}>
               <p>Lưu ý:</p>
@@ -88,7 +106,7 @@ export const BookingBill = () => {
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
           <div>
             <Button className={styles.btnCancel} onClick={handleModal}>
               <CloseOutlined />
@@ -96,6 +114,7 @@ export const BookingBill = () => {
             </Button>
             <ModalCancel showModal={showModal} setShowModal={setShowModal} />
           </div>
+          {<CustomLine bottom />}
         </Col>
       </Row>
     </Container>
