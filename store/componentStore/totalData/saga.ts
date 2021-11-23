@@ -1,4 +1,5 @@
 import * as ac from '@actionStore/rootAction'
+import { client } from '@config/medproSDK'
 import { urlAddress, urlListPartners } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { findPartnerId } from '@utils/partner'
@@ -17,17 +18,22 @@ import {
   AppState,
   HospitalState,
   TotalDataState,
-  TotalDataTypes
+  TotalDataTypes,
+  UserState
 } from 'store/interface'
 
 function* getListPartners() {
   try {
-    const response: AxiosResponse = yield fetcher(urlListPartners)
-
+    const user: UserState = yield select((state: AppState) => state.user)
     const total: TotalDataState = yield select((state: AppState) => state.total)
     const hospital: HospitalState = yield select(
       (state: AppState) => state.hospital
     )
+
+    if (!total.windows) yield put(ac.setWindow(window.location))
+    if (user.userInfo.token) yield client.setToken(user.userInfo.token)
+
+    const response: AxiosResponse = yield fetcher(urlListPartners)
 
     if (!total.partnerId) {
       yield put(ac.listPartnersRequestSuccess(response))
@@ -38,6 +44,8 @@ function* getListPartners() {
       })
 
       yield put(ac.SetParnerId(partnerId))
+
+      yield client.setPartner(partnerId)
 
       yield put(
         ac.FeatureRequest({

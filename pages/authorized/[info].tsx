@@ -1,5 +1,6 @@
 import * as ac from '@actionStore/rootAction'
 import { LoadingOutlined } from '@ant-design/icons'
+import { client } from '@config/medproSDK'
 import { AppState } from '@store/interface'
 import { Spin } from 'antd'
 import { useRouter } from 'next/router'
@@ -24,6 +25,8 @@ const Author = () => {
 
   useEffect(() => {
     !user.userInfo.token && dispatch(ac.UserLogin(query))
+
+    client.setToken(query.token)
   }, [router.query.info])
 
   const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />

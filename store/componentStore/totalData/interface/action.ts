@@ -5,6 +5,7 @@ export type TotalDataActions =
   | AddressAction
   | PartnerIdlocalAction
   | TypeReservice
+  | WindowAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -70,4 +71,13 @@ export interface WardRequestSuccess {
 
 export interface TypeReservice {
   type: TotalDataTypes.TypeReser.TYPE_RESER
+}
+
+// ----------------------------------------loại đặt khám------------------------------------------------------
+
+export type WindowAction = Set_Window
+
+export interface Set_Window {
+  type: TotalDataTypes.Window.Set_Window
+  data: any
 }

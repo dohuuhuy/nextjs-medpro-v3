@@ -20,4 +20,7 @@ export namespace TotalDataTypes {
   export enum TypeReser {
     TYPE_RESER = 'TYPE_RESER'
   }
+  export enum Window {
+    Set_Window = 'Set_Window'
+  }
 }

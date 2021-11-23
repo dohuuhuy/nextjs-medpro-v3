@@ -6,6 +6,7 @@ export interface TotalDataState {
   listCity: any[]
   listDistrict: any[]
   listWard: any[]
+  windows: any
 }
 
 export interface ItemlistPartners {

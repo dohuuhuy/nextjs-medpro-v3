@@ -12,7 +12,8 @@ const initState: TotalDataState = {
   listCity: [],
   listDistrict: [],
   listWard: [],
-  typeReser: 'normal'
+  typeReser: 'normal',
+  windows: ''
 }
 
 export default function total(
@@ -54,6 +55,12 @@ export default function total(
       return {
         ...state,
         typeReser: 'parasitic'
+      }
+    }
+    case TotalDataTypes.Window.Set_Window: {
+      return {
+        ...state,
+        windows: action.data
       }
     }
 

@@ -75,3 +75,10 @@ export const WardRequestSuccess = (listWard: any): TotalDataActions => {
     listWard
   }
 }
+
+export const setWindow = (data: any): TotalDataActions => {
+  return {
+    type: TotalDataTypes.Window.Set_Window,
+    data
+  }
+}

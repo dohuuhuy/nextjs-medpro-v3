@@ -1,6 +1,6 @@
 import { api } from '@config/api'
 import { findPartnerId } from '@utils/partner'
-import { JSON_EXP } from 'json mẫu/bvtest'
+import { JSON_EXP } from '@utils/json mẫu/bvtest'
 
 export const appCtrl = async (ctx: any) => {
   const host = ctx.ctx?.req?.headers.host

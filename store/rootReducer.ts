@@ -1,15 +1,18 @@
 import { AppState } from 'store/interface'
-import hospital from 'store/componentStore/hospital/reducer'
-import total from 'store/componentStore/totalData/reducer'
-import user from 'store/componentStore/user/reducer'
+
 import { HYDRATE } from 'next-redux-wrapper'
 import { Reducer } from 'react'
 import { AnyAction, combineReducers } from 'redux'
+import global from '@componentStore/global/reducer'
+import hospital from '@componentStore/hospital/reducer'
+import user from '@componentStore/user/reducer'
+import total from 'store/componentStore/totalData/reducer'
 
 const reducers = {
-  total,
-  user,
-  hospital
+  total: total,
+  user: user,
+  hospital: hospital,
+  global: global
 }
 
 export const combinedReducers = combineReducers(reducers)
