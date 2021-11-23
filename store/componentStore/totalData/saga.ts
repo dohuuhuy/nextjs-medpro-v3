@@ -1,34 +1,57 @@
 import * as ac from '@actionStore/rootAction'
-import { AxiosResponse } from 'axios'
-import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { getData } from 'store/api'
-import { TotalDataTypes } from 'store/interface'
 import { urlAddress, urlListPartners } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { findPartnerId } from '@utils/partner'
+import { AxiosResponse } from 'axios'
+import {
+  all,
+  call,
+  fork,
+  put,
+  select,
+  takeEvery,
+  takeLatest
+} from 'redux-saga/effects'
+import { getData } from 'store/api'
+import {
+  AppState,
+  HospitalState,
+  TotalDataState,
+  TotalDataTypes
+} from 'store/interface'
 
 function* getListPartners() {
   try {
     const response: AxiosResponse = yield fetcher(urlListPartners)
 
-    yield put(ac.listPartnersRequestSuccess(response))
-
-    const partnerId = findPartnerId({
-      listPartners: response,
-      host: window.location.hostname
-    })
-
-    yield put(ac.SetParnerId(partnerId))
-
-    yield put(ac.getHeader(partnerId))
-
-    yield put(
-      ac.FeatureRequest({
-        partnerId: partnerId,
-        typeReser: 'normal'
-      })
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+    const hospital: HospitalState = yield select(
+      (state: AppState) => state.hospital
     )
-    yield put(ac.getFooter(partnerId))
+
+    if (!total.partnerId) {
+      yield put(ac.listPartnersRequestSuccess(response))
+
+      const partnerId = findPartnerId({
+        listPartners: response,
+        host: window.location.hostname
+      })
+
+      yield put(ac.SetParnerId(partnerId))
+
+      yield put(
+        ac.FeatureRequest({
+          partnerId: partnerId,
+          typeReser: 'normal'
+        })
+      )
+
+      if (!hospital.information.header) {
+        yield put(ac.getHeader(partnerId))
+        yield put(ac.getBanners(partnerId))
+        yield put(ac.getFooter(partnerId))
+      }
+    }
   } catch (error) {
     console.error(error)
   }

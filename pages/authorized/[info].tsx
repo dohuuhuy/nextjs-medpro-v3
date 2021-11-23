@@ -1,7 +1,6 @@
 import * as ac from '@actionStore/rootAction'
 import { LoadingOutlined } from '@ant-design/icons'
 import { AppState } from '@store/interface'
-import { check } from '@utils/checkValue'
 import { Spin } from 'antd'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
@@ -19,18 +18,17 @@ const Author = () => {
   const dispatch = useDispatch()
 
   const { info } = router.query
-  const query: any = queryString.parse(info as string)
+
   const user = useSelector((state: AppState) => state.user)
+  const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    dispatch(ac.UserLogin(query))
-  }, [user?.userInfo])
+    !user.userInfo.token && dispatch(ac.UserLogin(query))
+  }, [router.query.info])
 
   const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
-  if (user?.userInfo?.token) {
-    router.push('/')
-  }
+  if (user.userInfo.token) router.push('/')
 
   return (
     <div className={styles.login}>

@@ -4,14 +4,14 @@ import React from 'react'
 import { TinTucCtrl } from 'src/containers/News/news'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const TinTucPage = (props: any) => {
-  return <NewsPageCustom {...props.data}  />
+const TinTucPage = ({ data }: any) => {
+  return <NewsPageCustom {...data} />
 }
 
-TinTucPage.getInitialProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: any) => {
   const data = await TinTucCtrl(ctx)
 
-  return { data }
+  return { props: { data } }
 }
 
 TinTucPage.Layout = DefaultLayout

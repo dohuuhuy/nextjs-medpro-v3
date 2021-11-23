@@ -4,6 +4,7 @@ import { HosptailTypes } from 'store/interface'
 
 export type HospitalActions =
   | HeaderAction
+  | BannersAction
   | FooterAction
   | InfomationAction
   | FeatureAction
@@ -110,4 +111,18 @@ export interface FooterRequest {
 export interface FooterRequestSuccess {
   type: HosptailTypes.Footer.Footer_REQUEST_SUCCESS
   footer: any[]
+}
+
+// -----------------------------Lấy thông tin footer---------------------------------------------
+
+export type BannersAction = BannersRequest | BannersRequestSuccess
+
+export interface BannersRequest {
+  type: HosptailTypes.Banners.Banners_REQUEST
+  partnerId: string
+}
+
+export interface BannersRequestSuccess {
+  type: HosptailTypes.Banners.Banners_REQUEST_SUCCESS
+  banners: any[]
 }

@@ -103,3 +103,18 @@ export const getFooterSuccess = (data: any): HospitalActions => {
     footer: data
   }
 }
+
+// lấy Banners
+export const getBanners = (partnerId: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Banners.Banners_REQUEST,
+    partnerId
+  }
+}
+
+export const getBannersSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Banners.Banners_REQUEST_SUCCESS,
+    banners: data
+  }
+}

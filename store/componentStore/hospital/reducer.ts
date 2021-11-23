@@ -44,6 +44,12 @@ export default function hospital(
         information: { ...state.information, header: action.header }
       }
 
+    case HosptailTypes.Banners.Banners_REQUEST_SUCCESS:
+      return {
+        ...state,
+        information: { ...state.information, banners: action.banners }
+      }
+
     case HosptailTypes.Footer.Footer_REQUEST_SUCCESS:
       return {
         ...state,

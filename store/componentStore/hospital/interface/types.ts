@@ -9,9 +9,15 @@ export namespace HosptailTypes {
     Header_REQUEST = 'Header_REQUEST',
     Header_REQUEST_SUCCESS = 'Header_REQUEST_SUCCESS'
   }
+
   export enum Footer {
     Footer_REQUEST = 'Footer_REQUEST',
     Footer_REQUEST_SUCCESS = 'Footer_REQUEST_SUCCESS'
+  }
+
+  export enum Banners {
+    Banners_REQUEST = 'Banners_REQUEST',
+    Banners_REQUEST_SUCCESS = 'Banners_REQUEST_SUCCESS'
   }
 
   export enum Feature {

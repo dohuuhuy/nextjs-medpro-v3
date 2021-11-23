@@ -1,23 +1,24 @@
 import { BannersCustom } from '@componentsTest/BannersCustom'
-import { urlBanners } from '@utils/contants'
-import { fetcher } from '@utils/func'
+import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-import useSWR from 'swr'
+import { useSelector } from 'react-redux'
 
-const Banners = () => {
+const BannersPublic = () => {
   const router = useRouter()
   const {
     query: { site },
     pathname
   } = router
 
-  const { data: info, error } = useSWR(urlBanners, fetcher)
-  if (error) return null
+  const hos = useSelector((state: AppState) => state.hospital)
+
+  const { banners } = hos.information
+  if (!banners) return null
 
   const key = site ? '/' + site : pathname
-  const getBanner = find(info, { key })
+  const getBanner = find(banners, { key })
 
   const methods: any = {
     getBanner
@@ -26,4 +27,4 @@ const Banners = () => {
   return <BannersCustom {...methods} />
 }
 
-export default Banners
+export default BannersPublic

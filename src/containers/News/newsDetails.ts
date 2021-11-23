@@ -1,3 +1,4 @@
+import { currentEnv } from './../../config/envs/env'
 import api from 'store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {
@@ -16,7 +17,7 @@ export const ChiTietBaiViet = async (ctx: any) => {
 
 export const getDetail = async () => {
   try {
-    const url = `https://cms.medpro.com.vn/posts`
+    const url = `${currentEnv.API_CMS}/posts`
     const rs = await api(url)
     return rs.data
   } catch (error) {
@@ -27,7 +28,7 @@ export const getDetail = async () => {
 
 const getDetailNews = async (slug: any) => {
   try {
-    const url = `https://cms.medpro.com.vn/posts?slug=${slug}`
+    const url = `${currentEnv.API_CMS}/posts?slug=${slug}`
     const rs = await api(url)
     return rs.data
   } catch (error) {
@@ -38,7 +39,7 @@ const getDetailNews = async (slug: any) => {
 
 const getSameNews = async () => {
   try {
-    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&categories.slug=tin-tuc&_limit=5`
+    const url = `${currentEnv.API_CMS}/posts?_sort=updated_at:DESC&categories.slug=tin-tuc&_limit=5`
     const rs = await api(url)
     return rs.data
   } catch (error) {
@@ -49,7 +50,7 @@ const getSameNews = async () => {
 
 const getListNewsBanner = async () => {
   try {
-    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_limit=3`
+    const url = `${currentEnv.API_CMS}/posts?_sort=updated_at:DESC&_limit=3`
     const rs = await api(url)
     return rs.data
   } catch (error) {

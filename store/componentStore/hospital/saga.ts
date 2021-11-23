@@ -4,7 +4,7 @@ import { AppState, HosptailTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 import { fetcher } from '@utils/func'
-import { urlFooter, urlHeader } from '@utils/contants'
+import { urlBanners, urlFooter, urlHeader } from '@utils/contants'
 
 function* getHospitalDetails() {
   try {
@@ -118,6 +118,20 @@ function* WatcherGetFooter() {
   yield takeLatest(HosptailTypes.Footer.Footer_REQUEST, getFooter)
 }
 
+function* getBanners({}: any) {
+  try {
+    const response: AxiosResponse = yield fetcher(urlBanners)
+
+    yield put(ac.getBannersSuccess(response))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* WatcherGetBanners() {
+  yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(WatchGetHospitalDetails),
@@ -125,6 +139,7 @@ const hospitalSagas = function* root() {
     fork(WatchGetListHospital),
     fork(WatcherGetBookingTree),
     fork(WatcherGetHeader),
+    fork(WatcherGetBanners),
     fork(WatcherGetFooter)
   ])
 }

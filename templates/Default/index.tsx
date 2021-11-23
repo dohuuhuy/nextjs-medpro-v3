@@ -1,4 +1,4 @@
-import Banners from '@components/organisms/Banner'
+import BannersPublic from '@components/organisms/Banner'
 import FooterPublic from '@components/organisms/Footer'
 import HeaderPublic from '@components/organisms/Header'
 import React from 'react'
@@ -9,7 +9,7 @@ const DefaultLayout = ({ children }: any) => {
     <section className={styles.layout}>
       <HeaderPublic />
       <main className={styles.content}>
-        <Banners />
+        <BannersPublic />
         {children}
       </main>
       <FooterPublic />
