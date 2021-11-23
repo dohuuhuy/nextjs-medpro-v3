@@ -6,7 +6,7 @@ import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
 import Image from 'next/image'
 interface Props {
-  dataDeloyHospital: DeloyHospitalItem[]
+  dataDeloyHospital?: DeloyHospitalItem[]
 }
 
 export interface DeloyHospitalItem {

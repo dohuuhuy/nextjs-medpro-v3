@@ -9,6 +9,8 @@ interface Props {
 const SEOPost = ({ posts }: Props) => {
   const router = useRouter()
 
+  if (!posts) return null
+
   const {
     name,
     title,

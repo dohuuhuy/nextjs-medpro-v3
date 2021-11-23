@@ -3,6 +3,8 @@ import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
+import { fetcher } from '@utils/func'
+import { urlFooter, urlHeader } from '@utils/contants'
 
 function* getHospitalDetails() {
   try {
@@ -19,10 +21,10 @@ function* WatchGetHospitalDetails() {
   )
 }
 
-function* getFeatureByPartner({ partnerid, typeReser }: any) {
+function* getFeatureByPartner({ partnerId, typeReser }: any) {
   try {
     const rs: AxiosResponse = yield client.getFeatureByPartner({
-      partnerid,
+      partnerid: partnerId,
       version: '2'
     })
 
@@ -83,9 +85,37 @@ function* getBookingTree({ partnerid }: any) {
 
 function* WatcherGetBookingTree() {
   yield takeLatest(
-    HosptailTypes.BookingTree.BOOKING_TREE_REQUEST as any,
+    HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
     getBookingTree
   )
+}
+
+function* getHeader({}: any) {
+  try {
+    const response: AxiosResponse = yield fetcher(urlHeader)
+
+    yield put(ac.getHeaderSuccess(response))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* WatcherGetHeader() {
+  yield takeLatest(HosptailTypes.Header.Header_REQUEST, getHeader)
+}
+
+function* getFooter({}: any) {
+  try {
+    const response: AxiosResponse = yield fetcher(urlFooter)
+
+    yield put(ac.getFooterSuccess(response))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* WatcherGetFooter() {
+  yield takeLatest(HosptailTypes.Footer.Footer_REQUEST, getFooter)
 }
 
 const hospitalSagas = function* root() {
@@ -93,7 +123,9 @@ const hospitalSagas = function* root() {
     fork(WatchGetHospitalDetails),
     fork(WatchGetFeatureByPartner),
     fork(WatchGetListHospital),
-    fork(WatcherGetBookingTree)
+    fork(WatcherGetBookingTree),
+    fork(WatcherGetHeader),
+    fork(WatcherGetFooter)
   ])
 }
 export default hospitalSagas

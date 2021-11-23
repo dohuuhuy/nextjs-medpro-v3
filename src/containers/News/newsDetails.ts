@@ -1,7 +1,7 @@
 import api from 'store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {
-  const DetailsPost = ctx.query.DetailsPost
+  const DetailsPost = ctx.params.DetailsPost
 
   const detailNews = await getDetailNews(DetailsPost)
   const sameNews = await getSameNews()

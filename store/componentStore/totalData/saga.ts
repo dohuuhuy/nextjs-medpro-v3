@@ -3,15 +3,32 @@ import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { getData } from 'store/api'
 import { TotalDataTypes } from 'store/interface'
-import { urlAddress } from '@utils/contants'
+import { urlAddress, urlListPartners } from '@utils/contants'
+import { fetcher } from '@utils/func'
+import { findPartnerId } from '@utils/partner'
 
 function* getListPartners() {
   try {
-    const url =
-      'https://resource-testing.medpro.com.vn/static/list-partner/listPartner.json'
-    const listPartners: [] = yield call(getData, url)
+    const response: AxiosResponse = yield fetcher(urlListPartners)
 
-    yield put(ac.listPartnersRequestSuccess(listPartners))
+    yield put(ac.listPartnersRequestSuccess(response))
+
+    const partnerId = findPartnerId({
+      listPartners: response,
+      host: window.location.hostname
+    })
+
+    yield put(ac.SetParnerId(partnerId))
+
+    yield put(ac.getHeader(partnerId))
+
+    yield put(
+      ac.FeatureRequest({
+        partnerId: partnerId,
+        typeReser: 'normal'
+      })
+    )
+    yield put(ac.getFooter(partnerId))
   } catch (error) {
     console.error(error)
   }

@@ -5,6 +5,15 @@ export namespace HosptailTypes {
     INFORMATION_CLEAR = 'INFORMATION_CLEAR'
   }
 
+  export enum Header {
+    Header_REQUEST = 'Header_REQUEST',
+    Header_REQUEST_SUCCESS = 'Header_REQUEST_SUCCESS'
+  }
+  export enum Footer {
+    Footer_REQUEST = 'Footer_REQUEST',
+    Footer_REQUEST_SUCCESS = 'Footer_REQUEST_SUCCESS'
+  }
+
   export enum Feature {
     FEATURE_REQUEST = 'FEATURE_REQUEST',
     FEATURE_BY_APP_REQUEST_SUCCESS = 'FEATURE_BY_APP_REQUEST_SUCCESS',

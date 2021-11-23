@@ -1,17 +1,20 @@
 import * as ac from '@actionStore/rootAction'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
+import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
+import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 import { AppState } from 'store/interface'
 
 const BookingTree = dynamic(() => import('@componentsTest/BookingTree'))
 
-const ThongTinDatKhamPage = () => {
+const ThongTinDatKhamPage = (props: any) => {
   const router = useRouter()
 
   const slug = router.query?.site
@@ -39,7 +42,7 @@ const ThongTinDatKhamPage = () => {
       description: 'Hình thức đặt khám',
       images: [
         {
-          url: banner('umc'),
+          url: banner(slug),
           width: 800,
           height: 600,
           alt: 'Hình thức đặt khám'
@@ -49,9 +52,19 @@ const ThongTinDatKhamPage = () => {
     }
   }
 
+  const listHospital = props.data.listHospital
+
+  const { menu, insideLink } = hos.information.header
+  const listMenu = menu.concat(insideLink)
+
   return (
     <>
       <SEOHead meta={meta} />
+      <BreadcumbCustom
+        type='booking'
+        listHos={listHospital}
+        listMenu={listMenu}
+      />
       <BookingTree />
     </>
   )
@@ -60,6 +73,8 @@ const ThongTinDatKhamPage = () => {
 ThongTinDatKhamPage.Layout = DefaultLayout
 export default ThongTinDatKhamPage
 
-const banner = (e: string) => {
-  return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
+
+  return { props: { data } }
 }

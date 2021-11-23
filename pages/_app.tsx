@@ -1,25 +1,34 @@
+import { getListPartners } from '@actionStore/rootAction'
 import '@assets/styles/app.less'
+import { OnTop } from '@components/atoms/OnTop'
+import { AppState } from '@store/interface'
 import { wrapper } from '@store/rootStore'
-import { BackTop } from 'antd'
 import 'antd/dist/antd.css'
 import { DefaultSeo } from 'next-seo'
-import React, { Fragment } from 'react'
-import { useStore } from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import SEO from 'support/next-seo.config'
 
 const MyApp = ({ Component, pageProps }: any) => {
   const Layout = Component?.Layout ?? Fragment
   const store: any = useStore()
+  const dispatch = useDispatch()
+
+  const total = useSelector((state: AppState) => state.total)
+
+  useEffect(() => {
+    !total.partnerId && dispatch(getListPartners())
+  }, [])
 
   return (
-    <Layout>
-      <DefaultSeo {...SEO} />
-      <PersistGate persistor={store.persistor}>
+    <PersistGate persistor={store.persistor}>
+      <Layout>
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
-      </PersistGate>
-      <BackTop />
-    </Layout>
+        <OnTop />
+      </Layout>{' '}
+    </PersistGate>
   )
 }
 

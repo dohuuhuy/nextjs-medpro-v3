@@ -3,6 +3,8 @@ import { HosptailTypes } from 'store/interface'
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
 export type HospitalActions =
+  | HeaderAction
+  | FooterAction
   | InfomationAction
   | FeatureAction
   | ListHospitalAction
@@ -38,7 +40,7 @@ export type FeatureAction =
 
 export interface FeatureRequest {
   type: HosptailTypes.Feature.FEATURE_REQUEST
-  partnerid: string
+  partnerId: string
   typeReser: string
 }
 
@@ -73,7 +75,7 @@ export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
 
 export interface BookingTreeRequest {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
-  partnerid: string
+  partnerId: string
 }
 
 export interface BookingTreeRequestSuccess {
@@ -81,3 +83,31 @@ export interface BookingTreeRequestSuccess {
   bookingTree: any[]
 }
 // --------------------------------------------------------------------------
+
+// -----------------------------Lấy thông tin header---------------------------------------------
+
+export type HeaderAction = HeaderRequest | HeaderRequestSuccess
+
+export interface HeaderRequest {
+  type: HosptailTypes.Header.Header_REQUEST
+  partnerId: string
+}
+
+export interface HeaderRequestSuccess {
+  type: HosptailTypes.Header.Header_REQUEST_SUCCESS
+  header: any[]
+}
+
+// -----------------------------Lấy thông tin footer---------------------------------------------
+
+export type FooterAction = FooterRequest | FooterRequestSuccess
+
+export interface FooterRequest {
+  type: HosptailTypes.Footer.Footer_REQUEST
+  partnerId: string
+}
+
+export interface FooterRequestSuccess {
+  type: HosptailTypes.Footer.Footer_REQUEST_SUCCESS
+  footer: any[]
+}

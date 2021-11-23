@@ -5,7 +5,7 @@ export interface Props {
 
 const localhost = {
   domain: ['localhost', 'huyi.ddns.net', 'huyi.tech', '42.116.14.170'],
-  partnerId: 'nhidonghcm'
+  partnerId: 'medpro'
 }
 
 export const findPartnerId = ({ listPartners = [], host }: Props) => {

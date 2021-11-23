@@ -14,8 +14,6 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
     return null
   }
 
-  const { imageBackground } = getBanner
-
   const SelectFeature = (type: string) => () => {
     if (partnerId === 'medpro' && type === 'booking.date') {
       router.push('/benh-vien')
@@ -27,7 +25,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
       <div
         className={styles.backgroundImage}
         style={{
-          backgroundImage: imageBackground && `url(${imageBackground})`,
+          backgroundImage: getBanner && `url(${getBanner})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           backgroundSize: '100% 100%'
@@ -68,7 +66,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                             width='45'
                             height='45'
                             loading='eager'
-                            alt='icon'
+                            alt=''
                           />
                         </figure>
                         <p>{e?.name}</p>
