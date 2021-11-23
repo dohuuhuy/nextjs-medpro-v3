@@ -12,7 +12,7 @@ export interface BookingTreeIF {
   [T: string]: any
 }
 
-export default function BookingTree({ bookingTree }: BookingTreeIF) {
+export default function BookingTree({}: BookingTreeIF): JSX.Element {
   const [id, setid] = React.useState(-1)
   const [toggle, settoggle] = React.useState(true)
 
