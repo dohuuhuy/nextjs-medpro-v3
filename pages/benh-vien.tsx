@@ -24,12 +24,10 @@ const ChonBenhVienPage = ({ data }: any) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const data = await SelectHospitalCtl()
-  return {
-    props: { data }
-  }
-}
-
 ChonBenhVienPage.Layout = DefaultLayout
 export default ChonBenhVienPage
+
+ChonBenhVienPage.getInitialProps = async () => {
+  const data = await SelectHospitalCtl()
+  return { data }
+}
