@@ -68,18 +68,15 @@ function* WatchGetListHospital() {
   )
 }
 
-function* getBookingTree({ partnerid }: any) {
+function* getBookingTree({ partnerId }: any) {
   try {
-    const response: AxiosResponse = yield client.getBookingTreeDynamic(
-      { treeId: 'DATE' },
-      {
-        partnerid,
-        appid: partnerid
-      }
-    )
+    yield client.setPartner(partnerId)
+    const response: AxiosResponse = yield client.getBookingTreeDynamic({
+      treeId: 'DATE'
+    })
     yield put(ac.getBookingTreeSuccess(response.data))
   } catch (error) {
-    console.log(error)
+    console.log('error getBookingTree :>> ', error)
   }
 }
 

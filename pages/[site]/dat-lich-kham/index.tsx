@@ -1,32 +1,26 @@
 import * as ac from '@actionStore/rootAction'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
+import BookingTree from '@componentsTest/BookingTree'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import DefaultLayout from '@templates/Default'
-import { check } from '@utils/checkValue'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 import { AppState } from 'store/interface'
 
-const BookingTree = dynamic(() => import('@componentsTest/BookingTree'))
-
 const ThongTinDatKhamPage = (props: any) => {
   const router = useRouter()
-
-  const slug = router.query?.site
+  const partnerId = router.query?.site
 
   const hos = useSelector((state: AppState) => state.hospital)
-  const user = useSelector((state: AppState) => state.user)
-
   const dispatch = useDispatch()
+
   useEffect(() => {
-    check(slug) && dispatch(ac.getBookingTree(slug))
-    check(user.listPatient) && dispatch(ac.ListPatientRequest())
-  }, [dispatch, hos?.bookingTree, user.listPatient, slug])
+    dispatch(ac.getBookingTree(partnerId))
+  }, [])
 
   const meta: NextSeoProps = {
     noindex: true,
@@ -42,7 +36,7 @@ const ThongTinDatKhamPage = (props: any) => {
       description: 'Hình thức đặt khám',
       images: [
         {
-          url: banner(slug),
+          url: banner(partnerId),
           width: 800,
           height: 600,
           alt: 'Hình thức đặt khám'
@@ -70,7 +64,7 @@ const ThongTinDatKhamPage = (props: any) => {
         listHos={listHospital}
         listMenu={listMenu}
       />
-      <BookingTree />
+      <BookingTree bookingTree={hos.bookingTree} />
     </>
   )
 }

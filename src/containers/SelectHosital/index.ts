@@ -9,9 +9,7 @@ export const SelectHospitalCtl = async () => {
 
 const getListHospital = async () => {
   try {
-    const res: any = await client.getHospitalListByAppId({
-      appid: 'medpro'
-    })
+    const res: any = await client.getHospitalListByAppId()
     return res.data
   } catch (error) {
     console.error(error)

@@ -13,11 +13,13 @@ const HomePage = ({ data }: any) => {
 
   return (
     <>
+      {/* banner lấy từ client */}
       <BannerHome
         getBanner={banner(total?.partnerId)}
         listFeature={hos?.listFeatureByApp}
         partnerId={total?.partnerId}
       />
+      {/* tin tức lấy từ server */}
       <NewsEventCustom dataNewsAndEvent={data.newsAndEvent} />
     </>
   )

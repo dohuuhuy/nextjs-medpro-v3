@@ -52,7 +52,7 @@ export const BreadcumbCustom = ({
 
       listBreadcumb.push({
         link: `/benh-vien`,
-        label: 'Bệnh viện'
+        label: 'Chọn bệnh viện'
       })
 
       listBreadcumb.push({

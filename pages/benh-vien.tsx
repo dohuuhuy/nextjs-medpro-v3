@@ -17,6 +17,8 @@ const ChonBenhVienPage = ({ data }: any) => {
   }, [dispatch, listCity])
 
   return (
+    // danh sách bệnh viện lấy từ server
+    // danh sách tỉnh thành lấy từ client
     <SelectHospitalCustom
       listHospital={data?.listHospital}
       listCity={listCity}
