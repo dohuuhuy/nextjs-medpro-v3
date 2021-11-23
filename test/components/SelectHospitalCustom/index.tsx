@@ -111,10 +111,10 @@ const handlerMap = (arr: ListHospital[], router: any) => {
       <Rate className={styles.rate} disabled={true} value={3} />
     )
 
-    const imgError = require('./images/logo.png')
+    const imgError = require('./images/logo.svg')
     const size = 50
     const propsImage = {
-      src: e?.image,
+      src: e?.image || imgError,
       width: size,
       height: size,
       onError: (e: any) => (e.target.src = imgError)

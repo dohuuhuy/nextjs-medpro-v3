@@ -41,14 +41,14 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
               animate='visible'
             >
               {listFeature?.map((e, i: any) => {
-                const imageErrorSrc = '/images/error.svg'
+                const imgError = require('./images/error.svg')
 
                 const size = 45
                 const propsImg = {
-                  src: e.image || imageErrorSrc,
+                  src: e.image || imgError,
                   width: size,
                   height: size,
-                  onError: (e: any) => (e.target.src = imageErrorSrc)
+                  onError: (e: any) => (e.target.src = imgError)
                 }
 
                 if (e?.status) {

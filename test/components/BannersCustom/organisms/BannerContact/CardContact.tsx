@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion'
 import React from 'react'
 import { ItemBanner, ItemCard } from './bannercontact.interface'
@@ -25,11 +26,11 @@ export const CardContact = ({ cardContact }: ItemBanner) => {
 
                 <figure>
                   {img?.map(({ url }) => {
-                    const imageErrorSrc = '/images/error.svg'
-                    const urlImage = url || imageErrorSrc
+                    const imgError = require('./../../images/error.svg')
+                    const urlImage = url || imgError
 
                     const onError = (e: any) => {
-                      e.target.src = imageErrorSrc
+                      e.target.src = imgError
                     }
                     return (
                       <img
