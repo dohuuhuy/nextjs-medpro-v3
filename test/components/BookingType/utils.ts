@@ -25,11 +25,11 @@ export const listTabs = [
 ]
 
 export const settings: Settings = {
-  speed: 2000,
+  speed: 3000,
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 700
-
+  dots: false,
+  arrows: false
 }

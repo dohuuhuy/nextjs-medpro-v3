@@ -68,7 +68,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                             width='45'
                             height='45'
                             loading='eager'
-                            alt='icon'
+                            alt=''
                           />
                         </figure>
                         <p>{e?.name}</p>

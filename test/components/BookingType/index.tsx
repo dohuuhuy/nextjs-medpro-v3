@@ -119,7 +119,13 @@ export const BookingType = (props: BookingTypeIF) => {
             {carousel?.map((e) => {
               return (
                 <div key={uniqueId()} className={styles.listImage}>
-                  <Image src={e?.image} width={1110} height={335} alt='' />
+                  <Image
+                    src={e?.image}
+                    width={1110}
+                    height={335}
+                    alt=''
+                    loading='eager'
+                  />
                 </div>
               )
             })}
