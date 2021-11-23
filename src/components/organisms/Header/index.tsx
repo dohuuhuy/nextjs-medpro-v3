@@ -9,13 +9,13 @@ const HeaderPublic = () => {
   const total = useSelector((state: AppState) => state.total)
   const user = useSelector((state: AppState) => state.user)
 
-  // const url = `${currentEnv.login}/url=${window.location.origin}&partnerId=${total.partnerId}&bookingFlow=`
+  const url = `${currentEnv.login}/url=${window.location.origin}&partnerId=${total.partnerId}&bookingFlow=`
 
   if (!hos.information.header) return null
   return (
     <HeaderCustom
       dataHeader={hos.information.header}
-      url={'url'}
+      url={url}
       author={user.userInfo}
     />
   )

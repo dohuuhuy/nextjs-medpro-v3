@@ -5,8 +5,8 @@ import { AppState } from '@store/interface'
 import { wrapper } from '@store/rootStore'
 import 'antd/dist/antd.css'
 import { DefaultSeo } from 'next-seo'
-import React, { Fragment, useEffect, useState } from 'react'
-import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import SEO from 'support/next-seo.config'
 
@@ -21,13 +21,6 @@ const MyApp = ({ Component, pageProps }: any) => {
     !total.partnerId && dispatch(getListPartners())
   }, [total.partnerId, dispatch])
 
-  const [isGateOpen, setIsGateOpen] = useState(false)
-  const _persist = useSelector((state: any) => state._persist)
-
-  useEffect(() => {
-    setIsGateOpen(_persist.rehydrated)
-  }, [_persist.rehydrated])
-
   const components = (
     <Layout>
       <DefaultSeo {...SEO} />
@@ -36,17 +29,13 @@ const MyApp = ({ Component, pageProps }: any) => {
     </Layout>
   )
 
-  console.log('window :>> ', typeof window)
-
   const isServer =
-    typeof window === 'undefined' ? (
-      components
-    ) : isGateOpen ? (
-      components
-    ) : (
+    typeof window !== 'undefined' ? (
       <PersistGate persistor={store.persistor} loading={null}>
         {components}
       </PersistGate>
+    ) : (
+      components
     )
 
   return isServer
