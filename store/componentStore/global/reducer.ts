@@ -1,4 +1,3 @@
-import device from 'current-device'
 const initialState = {
   device: ''
 }
