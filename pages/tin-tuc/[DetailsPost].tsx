@@ -6,7 +6,7 @@ import { check } from '@utils/checkValue'
 import { Spin } from 'antd'
 import dynamic from 'next/dynamic'
 import React from 'react'
-import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
+import { ChiTietBaiViet, getDetail } from 'src/containers/News/newsDetails'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
@@ -16,15 +16,17 @@ const DetailsPostPage = ({ data }: any) => {
     return <Spin indicator={antIcon} />
   }
 
+  if (!data) return null
+
   const post = {
-    title: data.detailNews[0].title,
-    slug: data.detailNews[0].slug
+    title: data.detailNews[0]?.title || '',
+    slug: data.detailNews[0]?.slug || ''
   }
 
   return (
     <>
       <SEOPost posts={data.detailNews[0]} />
-      <BreadcumbCustom post={post} />
+      <BreadcumbCustom post={post} type='news' />
       <DetailNewsCustom {...data} />
     </>
   )
@@ -33,28 +35,22 @@ const DetailsPostPage = ({ data }: any) => {
 DetailsPostPage.Layout = DefaultLayout
 export default DetailsPostPage
 
-DetailsPostPage.getInitialProps = async (ctx: any) => {
+export const getStaticProps = async (ctx: any) => {
   const data = await ChiTietBaiViet(ctx)
-
-  return { data }
+  return {
+    props: { data },
+    revalidate: 1
+  }
 }
+export const getStaticPaths = async () => {
+  const data = await getDetail()
 
-// export const getInitialProps = async (ctx: any) => {
-//   const data = await ChiTietBaiViet(ctx)
-//   return {
-//     props: { data },
-//     revalidate: 1
-//   }
-// }
-// export const getStaticPaths = async () => {
-//   const data = await getDetail()
+  const paths = data.map((v: any) => ({
+    params: { DetailsPost: v.slug }
+  }))
 
-//   const paths = data.map((v: any) => ({
-//     params: { DetailsPost: v.slug }
-//   }))
-
-//   return {
-//     paths: paths,
-//     fallback: true
-//   }
-// }
+  return {
+    paths: paths,
+    fallback: true
+  }
+}
