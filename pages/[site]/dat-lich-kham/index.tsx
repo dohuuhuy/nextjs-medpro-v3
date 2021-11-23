@@ -3,6 +3,7 @@ import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
+import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -41,7 +42,7 @@ const ThongTinDatKhamPage = (props: any) => {
       description: 'Hình thức đặt khám',
       images: [
         {
-          url: banner('umc'),
+          url: banner(slug),
           width: 800,
           height: 600,
           alt: 'Hình thức đặt khám'
@@ -76,7 +77,4 @@ export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()
 
   return { props: { data } }
-}
-const banner = (e: string) => {
-  return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
 }

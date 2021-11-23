@@ -21,10 +21,10 @@ function* WatchGetHospitalDetails() {
   )
 }
 
-function* getFeatureByPartner({ partnerid, typeReser }: any) {
+function* getFeatureByPartner({ partnerId, typeReser }: any) {
   try {
     const rs: AxiosResponse = yield client.getFeatureByPartner({
-      partnerid,
+      partnerid: partnerId,
       version: '2'
     })
 
