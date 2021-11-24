@@ -1,21 +1,22 @@
 import { LoadingOutlined } from '@ant-design/icons'
-import { Col, Row, Spin } from 'antd'
+import { Spin } from 'antd'
 import React from 'react'
-import Container from '../Container'
-
 import styles from './styles.module.less'
 
-const Loading = () => {
+export interface Loading {
+  text?: string
+}
+
+const Loading = ({ text = 'Vui lòng chờ trong giây lát ...' }: Loading) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 60 }} spin={true} />
 
   return (
-    <Container className={styles.containerLoading}>
-      <Row className={styles.rowLoading}>
-        <Col xl={24} className={styles.colLoading}>
-          <Spin indicator={antIcon} />
-        </Col>
-      </Row>
-    </Container>
+    <div className={styles.containerLoading}>
+      <Spin indicator={antIcon} />
+      <div className={styles.content}>
+        <p>{text}</p>
+      </div>
+    </div>
   )
 }
 

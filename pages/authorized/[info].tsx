@@ -1,12 +1,10 @@
 import * as ac from '@actionStore/rootAction'
-import { LoadingOutlined } from '@ant-design/icons'
+import Loading from '@components/atoms/Loading'
 import { client } from '@config/medproSDK'
 import { AppState } from '@store/interface'
-import { Spin } from 'antd'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './styles.module.less'
 
 const queryString = require('querystring')
 export interface Props {
@@ -29,15 +27,9 @@ const Author = () => {
     client.setToken(query.token)
   }, [router.query.info])
 
-  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
-
   if (user.userInfo.token) router.push('/')
 
-  return (
-    <div className={styles.login}>
-      <Spin indicator={antIcon} />
-    </div>
-  )
+  return <Loading />
 }
 
 export default Author

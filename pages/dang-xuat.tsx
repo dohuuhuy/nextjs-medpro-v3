@@ -1,5 +1,6 @@
+import Loading from '@components/atoms/Loading'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import * as ac from 'store/actionStore/rootAction'
 
@@ -11,7 +12,11 @@ const Logout = () => {
     dispatch(ac.UserLogout())
   }, [dispatch, router])
 
-  return null
+  return (
+    <>
+      <Loading text={'Tiến trình đang được thực hiện ...'} />
+    </>
+  )
 }
 
 export default Logout
