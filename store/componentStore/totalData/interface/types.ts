@@ -17,10 +17,17 @@ export namespace TotalDataTypes {
     LIST_DISTRICT_REQUEST_SUCCESS = 'LIST_DISTRICT_REQUEST_SUCCESS',
     LIST_WARD_REQUEST_SUCCESS = 'LIST_WARD_REQUEST_SUCCESS'
   }
+
   export enum TypeReser {
     TYPE_RESER = 'TYPE_RESER'
   }
+
   export enum Window {
     Set_Window = 'Set_Window'
+  }
+
+  export enum Loading {
+    On_Loading = 'On_Loading',
+    Off_Loading = 'Off_Loading'
   }
 }

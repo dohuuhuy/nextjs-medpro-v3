@@ -82,3 +82,15 @@ export const setWindow = (data: any): TotalDataActions => {
     data
   }
 }
+
+export const onLoading = (): TotalDataActions => {
+  return {
+    type: TotalDataTypes.Loading.On_Loading
+  }
+}
+
+export const offLoading = (): TotalDataActions => {
+  return {
+    type: TotalDataTypes.Loading.Off_Loading
+  }
+}

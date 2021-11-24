@@ -30,6 +30,8 @@ function* getListPartners() {
       (state: AppState) => state.hospital
     )
 
+    yield put(ac.onLoading())
+
     if (!total.windows) yield put(ac.setWindow(window.location))
     if (user.userInfo.token) yield client.setToken(user.userInfo.token)
 
@@ -60,6 +62,7 @@ function* getListPartners() {
         yield put(ac.getFooter(partnerId))
       }
     }
+    yield put(ac.offLoading())
   } catch (error) {
     console.error(error)
   }

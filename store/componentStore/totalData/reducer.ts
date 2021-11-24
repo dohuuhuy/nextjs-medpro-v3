@@ -13,7 +13,8 @@ const initState: TotalDataState = {
   listDistrict: [],
   listWard: [],
   typeReser: 'normal',
-  windows: ''
+  windows: '',
+  loading: false
 }
 
 export default function total(
@@ -61,6 +62,20 @@ export default function total(
       return {
         ...state,
         windows: action.data
+      }
+    }
+
+    case TotalDataTypes.Loading.On_Loading: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+
+    case TotalDataTypes.Loading.Off_Loading: {
+      return {
+        ...state,
+        loading: false
       }
     }
 

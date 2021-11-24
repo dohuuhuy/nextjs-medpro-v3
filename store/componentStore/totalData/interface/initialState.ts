@@ -7,6 +7,7 @@ export interface TotalDataState {
   listDistrict: any[]
   listWard: any[]
   windows: any
+  loading: boolean
 }
 
 export interface ItemlistPartners {

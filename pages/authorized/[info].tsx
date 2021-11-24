@@ -1,5 +1,5 @@
 import * as ac from '@actionStore/rootAction'
-import Loading from '@components/atoms/Loading'
+import Loading from '@componentsTest/Loading'
 import { client } from '@config/medproSDK'
 import { AppState } from '@store/interface'
 import { useRouter } from 'next/router'

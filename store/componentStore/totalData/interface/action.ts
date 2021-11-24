@@ -6,6 +6,7 @@ export type TotalDataActions =
   | PartnerIdlocalAction
   | TypeReservice
   | WindowAction
+  | LoadingAction
 
 // ----------------------------------------------------------------------------------------------
 
@@ -80,4 +81,14 @@ export type WindowAction = Set_Window
 export interface Set_Window {
   type: TotalDataTypes.Window.Set_Window
   data: any
+}
+
+export type LoadingAction = On_Loading | Off_Loading
+
+export interface On_Loading {
+  type: TotalDataTypes.Loading.On_Loading
+}
+
+export interface Off_Loading {
+  type: TotalDataTypes.Loading.Off_Loading
 }

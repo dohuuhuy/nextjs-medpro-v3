@@ -1,4 +1,4 @@
-import Loading from '@components/atoms/Loading'
+import Loading from '@componentsTest/Loading'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'

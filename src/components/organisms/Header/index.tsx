@@ -15,11 +15,13 @@ const HeaderPublic = () => {
 
   if (!hos.information.header) return null
   return (
-    <HeaderCustom
-      dataHeader={hos.information.header}
-      url={url}
-      author={user.userInfo}
-    />
+    <>
+      <HeaderCustom
+        dataHeader={hos.information.header}
+        url={url}
+        author={user.userInfo}
+      />
+    </>
   )
 }
 
