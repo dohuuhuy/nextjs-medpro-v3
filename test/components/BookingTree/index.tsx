@@ -1,12 +1,11 @@
 import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
-import { indexOf } from 'lodash'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
 import styles from './less/styles.module.less'
 import { Stepper } from './stepper'
-import { colLeft, colRight, Steps, steps } from './utils'
+import { colLeft, colRight, handlerStep, Steps } from './utils'
 
 export interface BookingTreeIF {
   bookingTree: any
@@ -22,11 +21,15 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     name: ''
   })
 
+  useEffect(() => {
+    setstate({ stepper: handlerStep({ bookingTree }) })
+  }, [bookingTree])
+
   if (!bookingTree) return null
   console.log('state :>> ', state)
   return (
     <section>
-      <Stepper />
+      <Stepper data={state.stepper} />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
@@ -41,13 +44,22 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                       bordered={false}
                     >
                       <Collapse.Panel
+                        style={{ width: '100%' }}
                         className={cx(styles.content)}
                         header={
                           <div className={styles.header}>
                             <h3>{v.title}</h3>
                             <div className={cx(styles.input)}>
-                              {v.icon}
-                              <span>
+                              {v.icon({
+                                item: v.selected,
+                                props: {
+                                  keys: v.key,
+                                  state
+                                }
+                              })}
+                              <span
+                                className={v.selected.name && styles.active}
+                              >
                                 {v.selected.name ||
                                   'Chọn ' + v.title.toLowerCase()}
                               </span>
@@ -55,6 +67,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           </div>
                         }
                         key={i}
+                        disabled={v.open}
                       >
                         {v?.content({
                           keys: v.key,
@@ -76,22 +89,4 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       </Container>
     </section>
   )
-}
-
-const handlerStep = ({ bookingTree }: any) => {
-  console.log('bookingTree :>> ', bookingTree)
-
-  if (!bookingTree) return []
-
-  const pathStep = bookingTree?.path?.split('_') || [] // phân giải path của booking
-  pathStep.push('time') // thêm time vào mãng trên
-  const addSortStep = steps.map((v) => {
-    const findIndex = indexOf(pathStep, v.key) // tìm ra vị trí của step
-    return { ...v, sort: findIndex } // add vị trí tìm được vào phần tử
-  })
-  const sortByStep = addSortStep.sort((a, b) => a.sort - b.sort) // sắp xếp dựa trên sort phía trên
-
-  sortByStep[0].data = bookingTree.child // mặc định add dữ liệu đầu tiên vào step đầu tiên
-
-  return sortByStep
 }

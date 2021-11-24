@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Icon } from '../../Icon'
 import { checkActive, selected } from '../utils'
 import styles from './../less/bacsi.module.less'
 
 export const BacSi = (props: any) => {
-  console.log('props BacSi :>> ', props)
+  // console.log('props BacSi :>> ', props)
+  const [list, setlist] = useState(props.data)
+  const [keySearch, setkeySearch] = useState('')
+
+  const onSearchKey = (e: any) => {
+    const { value } = e.target
+    setkeySearch(value)
+    const findItem = props?.data.filter(
+      (v: any) => v.detail.name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+    )
+    setlist(findItem)
+  }
 
   return (
     <section className={styles.bacSi}>
       <div className={styles.input}>
         <Icon name='timkiem' />
-        <input placeholder='Tìm nhanh bác sĩ' />
+        <input
+          placeholder='Tìm nhanh bác sĩ'
+          onChange={onSearchKey}
+          value={keySearch}
+        />
       </div>
 
       <ul className={styles.listBacSi}>
-        {props.data.map((v: any) => {
+        {list.map((v: any) => {
           const size = '100'
           const sex = v.detail.gender ? 'Nam' : 'Nữ'
           const img = v.detail.gender ? (

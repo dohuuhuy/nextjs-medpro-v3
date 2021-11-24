@@ -7,8 +7,8 @@ import React, { useState } from 'react'
 import { Icon } from '../../Icon'
 import styles from './../less/thoigian.module.less'
 
-export const ThoiGian = (props: any) => {
-  console.log('props ThoiGian :>> ', props)
+export const ThoiGian = (_props: any) => {
+  // console.log('props ThoiGian :>> ', props)
 
   const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 

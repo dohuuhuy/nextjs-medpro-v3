@@ -4,7 +4,7 @@ import cx from 'classnames'
 import React from 'react'
 
 export const DichVu = (props: any) => {
-  console.log('props DichVu :>> ', props)
+  // console.log('props DichVu :>> ', props)
 
   const [BHYT, setBHYT] = React.useState(false)
 
@@ -18,10 +18,10 @@ export const DichVu = (props: any) => {
         {props.data.map((v: any) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (
-            <li key={v.id}>
+            <li key={v.id} onClick={checkBHYT(v)}>
               <button
                 className={cx(styles.btn, active)}
-                onClick={(selected(v, props), checkBHYT(v))}
+                onClick={selected(v, props)}
               >
                 <span>{v.detail.name}</span>
                 <span>{v.detail.price} VND</span>
