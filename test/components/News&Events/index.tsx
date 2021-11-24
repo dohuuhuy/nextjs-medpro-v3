@@ -53,19 +53,25 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
   )
 }
 
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 const CardNewsCustom = (item: Post): JSX.Element => {
   const imgUrl1 = API_CMS + item.image?.[0].url
   return (
     <div className={styles.cardNews}>
       <figure className={styles.cardView}>
         <Image
+          loader={myLoader}
           src={imgUrl1}
           width='500'
           height='300'
           objectFit='cover'
           layout='responsive'
           loading='eager'
-          alt='imgUrl1'
+          alt=''
+          priority
         />
       </figure>
       <div className={styles.cardBody}>

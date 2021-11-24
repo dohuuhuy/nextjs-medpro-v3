@@ -89,6 +89,10 @@ interface PropsCard {
   obsImg?: boolean
 }
 
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
   const imgUrl = API_CMS + item?.image?.[0].url
   return (
@@ -97,13 +101,15 @@ const CardNewsCustom = ({ item, obsImg = false }: PropsCard) => {
         <Link href={`/tin-tuc/${item?.slug}`}>
           <a>
             <Image
+              loader={myLoader}
               src={imgUrl}
               width='600'
               height='300'
               layout='responsive'
               objectFit='cover'
               loading='eager'
-              alt='news'
+              alt=''
+              priority
             />
           </a>
         </Link>

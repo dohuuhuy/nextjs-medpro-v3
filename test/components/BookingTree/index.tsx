@@ -1,90 +1,91 @@
-import { CardFee } from '../CardFee'
-import { Col, Row } from 'antd'
+import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
-import React from 'react'
+import { indexOf } from 'lodash'
+import React, { useState } from 'react'
+import { CardFee } from '../CardFee'
 import Container from '../Container'
-import { Icon } from '../Icon'
-import { Stepper } from './stepper'
 import styles from './less/styles.module.less'
-import { steps } from './utils'
+import { Stepper } from './stepper'
+import { colLeft, colRight, Steps, steps } from './utils'
 
 export interface BookingTreeIF {
-  [T: string]: any
+  bookingTree: any
 }
 
-export default function BookingTree({}: BookingTreeIF): JSX.Element {
-  const [id, setid] = React.useState(-1)
-  const [toggle, settoggle] = React.useState(true)
+export interface State {
+  stepper: Steps[]
+}
 
-  const clickStep = (i: any) => () => {
-    if (i !== id) {
-      setid(i)
-      settoggle(false)
-    } else {
-      if (toggle) {
-        setid(i)
-        settoggle(false)
-      } else {
-        setid(-1)
-        settoggle(true)
-      }
-    }
+const handlerStep = ({ bookingTree }: any) => {
+  console.log('bookingTree :>> ', bookingTree)
+
+  if (!bookingTree) return []
+
+  const pathStep = bookingTree?.path?.split('_') || []
+  pathStep.push('time')
+  const addSortStep = steps.map((v) => {
+    const findIndex = indexOf(pathStep, v.key)
+    return { ...v, sort: findIndex }
+  })
+  const sortByStep = addSortStep.sort((a, b) => a.sort - b.sort)
+
+  sortByStep[0].data = bookingTree.child
+
+  return sortByStep
+}
+
+export default function BookingTree({ bookingTree }: BookingTreeIF) {
+  const [state, setstate] = useState<any>({
+    stepper: handlerStep({ bookingTree })
+  })
+
+  if (!bookingTree) {
+    return null
   }
 
-  const checkOut = (i: any) => {
-    return Number(i) === Number(id) ? styles.mo : styles.dong
-  }
-
+  console.log('state.stepper :>> ', state.stepper)
   return (
-    <React.Fragment>
+    <section>
       <Stepper />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
-            <ul className={styles.listTree}>
-              {steps.map((v, i) => {
+            <Space direction='vertical' className={styles.listTree}>
+              {state.stepper.map((v: Steps, i: any) => {
                 return (
-                  <li key={i}>
-                    <div className={styles.card}>
-                      <h3 onClick={clickStep(i)}>
-                        {v.title} <Icon name='arrowDown' size='15' />
-                      </h3>
-
-                      <div
-                        className={cx(
-                          styles.input,
-                          i === id ? styles.dnone : ''
-                        )}
-                        onClick={clickStep(i)}
+                  v.sort >= 0 && (
+                    <Collapse
+                      key={i}
+                      className={styles.card}
+                      expandIconPosition='right'
+                      bordered={false}
+                    >
+                      <Collapse.Panel
+                        className={cx(styles.content)}
+                        header={
+                          <div className={styles.header}>
+                            <h3>{v.title}</h3>
+                            <div className={cx(styles.input)}>
+                              {v.icon}
+                              <span>{'Chọn ' + v.title.toLowerCase()}</span>
+                            </div>
+                          </div>
+                        }
+                        key={i}
                       >
-                        {v.icon}
-                        <span>{'Chọn ' + v.title.toLowerCase()}</span>
-                      </div>
-
-                      <div className={cx(styles.content, checkOut(i))}>
                         {v?.content}
-                      </div>
-                    </div>
-                  </li>
+                      </Collapse.Panel>
+                    </Collapse>
+                  )
                 )
               })}
-            </ul>
+            </Space>
           </Col>
           <Col {...colRight} className={styles.colRight}>
             <CardFee />
           </Col>
         </Row>
       </Container>
-    </React.Fragment>
+    </section>
   )
 }
-
-const colLeft = {
-  xl: 16,
-  lg: 16,
-  md: 16,
-  sm: 24,
-  xs: 24
-}
-
-const colRight = { xl: 8, lg: 8, md: 8, sm: 24, xs: 24 }

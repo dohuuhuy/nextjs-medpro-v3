@@ -2,7 +2,9 @@ import { Icon } from '../../Icon'
 import React from 'react'
 import styles from './../less/chuyenkhoa.module.less'
 
-export const ChuyenKhoa = () => {
+export const ChuyenKhoa = (props: any) => {
+  console.log('props :>> ', props)
+
   return (
     <section className={styles.chuyenkhoa}>
       <div className={styles.input}>

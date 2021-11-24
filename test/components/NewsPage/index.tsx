@@ -100,6 +100,11 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
     author
   }: any = item
   const imgUrl = API_CMS + image?.[0].url
+
+  const myLoader = ({ src, width, quality }: any): string => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  }
+
   return (
     <motion.li
       transition={{ stiffness: 900 }}
@@ -110,12 +115,15 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
         <Link href={`/tin-tuc/${slug}`}>
           <a>
             <Image
+              loader={myLoader}
               src={imgUrl}
               width='600'
               height='300'
               layout='responsive'
               loading='eager'
+              objectFit='cover'
               alt=''
+              // priority
             />
           </a>
         </Link>

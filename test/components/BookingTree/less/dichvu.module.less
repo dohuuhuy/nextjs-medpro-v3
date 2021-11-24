@@ -1,19 +1,21 @@
+@import url('./styles.module.less');
+
 .dichVu {
   margin-top: 10px;
   .groupBtn {
-    display: flex;
+    .ListCustom();
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: 425px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-    justify-content: flex-start;
-    list-style-type: none;
-    padding: 0;
-    margin: 0 -7.5px;
-
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
     li {
-      width: calc(100% / 4);
-      padding: 0 7.5px;
+      padding: 7.5px;
+
       .btn {
         border-radius: 8px;
         border: none;
@@ -42,6 +44,7 @@
   }
   .questionBHYT {
     display: flex;
+    margin-top: 20px;
 
     .groupRadio {
       margin-left: 15px;
@@ -55,26 +58,6 @@
         input {
           margin-right: 5px;
         }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 769px) {
-  .dichVu {
-    .groupBtn {
-      li {
-        width: calc(100% / 3);
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 426px) {
-  .dichVu {
-    .groupBtn {
-      li {
-        width: calc(100% / 2);
       }
     }
   }
