@@ -1,9 +1,11 @@
-import { Icon } from '../../Icon'
 import React from 'react'
+import { Icon } from '../../Icon'
+import { checkActive, selected } from '../utils'
 import styles from './../less/chuyenkhoa.module.less'
+import cx from 'classnames'
 
 export const ChuyenKhoa = (props: any) => {
-  console.log('props :>> ', props)
+  console.log('props ChuyenKhoa :>> ', props)
 
   return (
     <section className={styles.chuyenkhoa}>
@@ -13,12 +15,15 @@ export const ChuyenKhoa = (props: any) => {
       </div>
 
       <ul className={styles.listChuyenKhoa}>
-        {chuyenkhoa.map((v, i) => {
+        {props.data.map((v: any) => {
+          const active = checkActive(v, props) ? styles.active : ''
           return (
-            <li key={i}>
-              <div className={styles.card}>
-                <figure>{v.icon}</figure>
-                <span>{v.label}</span>
+            <li key={v.id} onClick={selected(v, props)}>
+              <div className={cx(styles.card, active)}>
+                <figure>
+                  <Icon name='demo' />
+                </figure>
+                <span>{v.detail.name}</span>
               </div>
             </li>
           )
@@ -27,39 +32,3 @@ export const ChuyenKhoa = (props: any) => {
     </section>
   )
 }
-
-interface Chuyenkhoa {
-  icon: JSX.Element
-  label: string
-}
-
-const chuyenkhoa: Chuyenkhoa[] = [
-  {
-    icon: <Icon name='demo' />,
-    label: 'Tai mũi hộng'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Mắt'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Răng hàm mặt'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Da liễu'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Chán thương chỉnh hình'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Tim mạch'
-  },
-  {
-    icon: <Icon name='demo' />,
-    label: 'Tiêu hóa'
-  }
-]

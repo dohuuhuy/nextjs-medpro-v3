@@ -1,8 +1,11 @@
 import React from 'react'
 import { Icon } from '../../Icon'
+import { checkActive, selected } from '../utils'
 import styles from './../less/bacsi.module.less'
 
-export const BacSi = () => {
+export const BacSi = (props: any) => {
+  console.log('props BacSi :>> ', props)
+
   return (
     <section className={styles.bacSi}>
       <div className={styles.input}>
@@ -11,22 +14,23 @@ export const BacSi = () => {
       </div>
 
       <ul className={styles.listBacSi}>
-        {bacsi.map((v, i) => {
+        {props.data.map((v: any) => {
           const size = '100'
-          const sex = v.gioitinh ? 'Nam' : 'Nữ'
-          const img = v.gioitinh ? (
+          const sex = v.detail.gender ? 'Nam' : 'Nữ'
+          const img = v.detail.gender ? (
             <Icon name='bacsinam' size={size} />
           ) : (
             <Icon name='bacsinu' size={size} />
           )
+          const active = checkActive(v, props) ? styles.active : ''
           return (
-            <li key={i}>
+            <li key={v.id} className={active}>
               <div className={styles.card}>
                 <figure>{img}</figure>
                 <div className={styles.bodyCard}>
                   <p>{v.hocvi}</p>
-                  <p className='bold'>{v.ten}</p>
-                  <p className={styles.txtCK}>{v.chuyenkhoa}</p>
+                  <p className='bold'>{v.detail.name}</p>
+                  <p className={styles.txtCK}>{v.detail.subject}</p>
                   <p>Giới tính: {sex}</p>
                 </div>
                 <Icon name='love' fill={'#CBD2D9'} size='30' />
@@ -37,7 +41,9 @@ export const BacSi = () => {
                   <br />
                   <span>{v.giocan}</span>
                 </p>
-                <button className={styles.btnDat}>Đặt khám</button>
+                <button className={styles.btn} onClick={selected(v, props)}>
+                  Đặt khám
+                </button>
               </div>
             </li>
           )
@@ -46,27 +52,3 @@ export const BacSi = () => {
     </section>
   )
 }
-
-const bacsi = [
-  {
-    hocvi: 'GS.TS',
-    ten: 'Nguyen Van A',
-    gioitinh: 1,
-    chuyenkhoa: 'Y học gia đình - Nhi',
-    giocan: '19:00 - 13/07'
-  },
-  {
-    hocvi: 'GS.TS',
-    ten: 'Tu Van B',
-    gioitinh: 0,
-    chuyenkhoa: 'Y học gia đình - Nhi',
-    giocan: '15:30 - 14/07'
-  },
-  {
-    hocvi: 'GS.TS',
-    ten: 'La Hoan Chi',
-    gioitinh: 1,
-    chuyenkhoa: 'Y học gia đình - Nhi',
-    giocan: '05:00 - 13/07'
-  }
-]

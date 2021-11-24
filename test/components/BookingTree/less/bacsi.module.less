@@ -7,7 +7,37 @@
 
   .listBacSi {
     .ListCustom();
+
+    .active {
+      border-color: #00b5f1;
+      color: #00b5f1;
+      .card {
+        .bodyCard {
+          .txtCK {
+            color: blue;
+          }
+        }
+      }
+      .datkham {
+        .btn {
+          background: #00b5f1;
+        }
+      }
+    }
+
     li {
+      &:hover,
+      &:focus {
+        border-color: #00b5f1;
+        color: #00b5f1;
+        .card {
+          .bodyCard {
+            .txtCK {
+              color: blue;
+            }
+          }
+        }
+      }
       margin-bottom: 15px;
       background: #ffffff;
       border: 0.5px solid #cbd2d9;
@@ -38,11 +68,11 @@
         display: flex;
         align-content: center;
         align-items: center;
-        .btnDat {
+        .btn {
           border: none;
           color: white;
           font-weight: 500;
-          background: #00b5f1;
+          background: #bfbfbfb5;
           border-radius: 20px;
           display: flex;
           flex-direction: row;
@@ -53,6 +83,10 @@
           max-height: 35px;
           width: 35%;
           max-width: 100px;
+          &:hover,
+          &:focus {
+            background: #00b5f1;
+          }
         }
       }
     }

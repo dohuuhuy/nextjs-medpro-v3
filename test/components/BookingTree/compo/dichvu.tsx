@@ -1,44 +1,48 @@
+import { checkActive, selected } from '../utils'
 import styles from './../less/dichvu.module.less'
-export const DichVu = () => {
+import cx from 'classnames'
+import React from 'react'
+
+export const DichVu = (props: any) => {
+  console.log('props DichVu :>> ', props)
+
+  const [BHYT, setBHYT] = React.useState(false)
+
+  const checkBHYT = (v: any) => () => {
+    setBHYT(v.detail.serviceType === 'INSURANCE_ONLY')
+  }
+
   return (
     <section className={styles.dichVu}>
       <ul className={styles.groupBtn}>
-        <li>
-          <button className={styles.btn}>
-            <span>Khám thường</span>
-            <span>0 VND</span>
-          </button>
-        </li>
-        <li>
-          <button className={styles.btn}>
-            <span>Khám dịch vụ</span>
-            <span>80.000 VND</span>
-          </button>
-        </li>
-        <li>
-          <button className={styles.btn}>
-            <span>Khám V.I.P</span>
-            <span>150.000 VND</span>
-          </button>
-        </li>
-        <li>
-          <button className={styles.btn}>
-            <span>Khám Linh Tinh</span>
-            <span>150.000 VND</span>
-          </button>
-        </li>
+        {props.data.map((v: any) => {
+          const active = checkActive(v, props) ? styles.active : ''
+          return (
+            <li key={v.id}>
+              <button
+                className={cx(styles.btn, active)}
+                onClick={(selected(v, props), checkBHYT(v))}
+              >
+                <span>{v.detail.name}</span>
+                <span>{v.detail.price} VND</span>
+              </button>
+            </li>
+          )
+        })}
       </ul>
-      <div className={styles.questionBHYT}>
-        <span>Bạn có bảo hiểm y tế không?</span>
-        <div className={styles.groupRadio}>
-          <div className={styles.radio}>
-            <input type='radio' value='1' /> có
-          </div>
-          <div className={styles.radio}>
-            <input type='radio' value='2' /> không
+      {BHYT && (
+        <div className={styles.questionBHYT}>
+          <span>Bạn có bảo hiểm y tế không?</span>
+          <div className={styles.groupRadio}>
+            <div className={styles.radio}>
+              <input type='radio' value='1' /> có
+            </div>
+            <div className={styles.radio}>
+              <input type='radio' value='2' /> không
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }

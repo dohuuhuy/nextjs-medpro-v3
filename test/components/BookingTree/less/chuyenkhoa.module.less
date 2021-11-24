@@ -22,7 +22,17 @@
       display: flex;
       align-items: stretch;
 
+      .active {
+        color: #1890ff;
+        box-shadow: 2px 2px 4px 0px #00b5f16b;
+      }
+
       .card {
+        &:hover {
+          color: #1890ff;
+          box-shadow: 2px 2px 4px 0px #00b5f16b;
+        }
+
         margin: 5px;
         width: 100%;
         min-height: 120px;

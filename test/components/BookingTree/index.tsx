@@ -16,34 +16,14 @@ export interface State {
   stepper: Steps[]
 }
 
-const handlerStep = ({ bookingTree }: any) => {
-  console.log('bookingTree :>> ', bookingTree)
-
-  if (!bookingTree) return []
-
-  const pathStep = bookingTree?.path?.split('_') || []
-  pathStep.push('time')
-  const addSortStep = steps.map((v) => {
-    const findIndex = indexOf(pathStep, v.key)
-    return { ...v, sort: findIndex }
-  })
-  const sortByStep = addSortStep.sort((a, b) => a.sort - b.sort)
-
-  sortByStep[0].data = bookingTree.child
-
-  return sortByStep
-}
-
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const [state, setstate] = useState<any>({
-    stepper: handlerStep({ bookingTree })
+    stepper: handlerStep({ bookingTree }),
+    name: ''
   })
 
-  if (!bookingTree) {
-    return null
-  }
-
-  console.log('state.stepper :>> ', state.stepper)
+  if (!bookingTree) return null
+  console.log('state :>> ', state)
   return (
     <section>
       <Stepper />
@@ -67,13 +47,21 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                             <h3>{v.title}</h3>
                             <div className={cx(styles.input)}>
                               {v.icon}
-                              <span>{'Chọn ' + v.title.toLowerCase()}</span>
+                              <span>
+                                {v.selected.name ||
+                                  'Chọn ' + v.title.toLowerCase()}
+                              </span>
                             </div>
                           </div>
                         }
                         key={i}
                       >
-                        {v?.content}
+                        {v?.content({
+                          keys: v.key,
+                          state,
+                          setstate,
+                          data: v.data
+                        })}
                       </Collapse.Panel>
                     </Collapse>
                   )
@@ -88,4 +76,22 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       </Container>
     </section>
   )
+}
+
+const handlerStep = ({ bookingTree }: any) => {
+  console.log('bookingTree :>> ', bookingTree)
+
+  if (!bookingTree) return []
+
+  const pathStep = bookingTree?.path?.split('_') || [] // phân giải path của booking
+  pathStep.push('time') // thêm time vào mãng trên
+  const addSortStep = steps.map((v) => {
+    const findIndex = indexOf(pathStep, v.key) // tìm ra vị trí của step
+    return { ...v, sort: findIndex } // add vị trí tìm được vào phần tử
+  })
+  const sortByStep = addSortStep.sort((a, b) => a.sort - b.sort) // sắp xếp dựa trên sort phía trên
+
+  sortByStep[0].data = bookingTree.child // mặc định add dữ liệu đầu tiên vào step đầu tiên
+
+  return sortByStep
 }
