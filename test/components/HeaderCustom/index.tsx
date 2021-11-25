@@ -1,10 +1,6 @@
-import {
-  DownOutlined,
-  MailOutlined,
-  NotificationOutlined
-} from '@ant-design/icons'
+import { MailOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { Card, Col, Dropdown, Menu, Row, Space } from 'antd'
+import { Card, Col, Dropdown, Menu, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
@@ -51,7 +47,7 @@ export default function HeaderCustom({
   const menus = (
     <Card title='Danh sách thông báo' bordered={false} style={{ width: 500 }}>
       <Menu className={styles.listNoti}>
-        {noti.slice(0, 5).map((v: any) => {
+        {noti?.slice(0, 5)?.map((v: any) => {
           return (
             <Menu.Item key={v.id} icon={<MailOutlined />}>
               <Link

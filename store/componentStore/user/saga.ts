@@ -1,5 +1,5 @@
-import { currentEnv } from '@config/envs/env'
 import * as ac from '@actionStore/rootAction'
+import { currentEnv } from '@config/envs/env'
 import { client } from '@config/medproSDK'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
@@ -52,7 +52,7 @@ function* watcher_getBookingByUser() {
   )
 }
 
-function* getNoticeByUser() {
+function* getNoti() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
 
@@ -63,17 +63,14 @@ function* getNoticeByUser() {
       partnerid: total?.partnerId,
       appid: total?.appId
     })
-    yield put(ac.getNoticeByUserSuccess(response.data))
+    yield put(ac.getNotiSuccess(response.data))
   } catch (error) {
-    console.log('error getNoticeByUser:>> ', error)
+    console.log('error getNoti:>> ', error)
   }
 }
 
-function* watcher_getNoticeByUser() {
-  yield takeLatest(
-    UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST,
-    getNoticeByUser
-  )
+function* watcher_getNoti() {
+  yield takeLatest(UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST, getNoti)
 }
 
 function* loginMedproId() {
@@ -108,13 +105,33 @@ function* watcher_userLogout() {
   yield takeLatest(UserTypes.User.USER_RESET, userLogout)
 }
 
+function* getBillInfo({ transactionId }: any) {
+  try {
+    const post = {
+      transactionId
+    }
+
+    const response: AxiosResponse = yield client.getBookingWithTransactionCode(
+      post
+    )
+    console.log('response :>> ', response)
+  } catch (error) {
+    console.log(' error getBillInfo :>> ', error)
+  }
+}
+
+function* watcher_getBillInfo() {
+  yield takeLatest(UserTypes.Bill.BILL_INFO_REQUEST, getBillInfo)
+}
+
 const userSagas = function* root() {
   yield all([
     fork(watcher_listPatientRequest),
     fork(watcher_getBookingByUser),
-    fork(watcher_getNoticeByUser),
+    fork(watcher_getNoti),
     fork(watcher_loginMedproId),
-    fork(watcher_userLogout)
+    fork(watcher_userLogout),
+    fork(watcher_getBillInfo)
   ])
 }
 export default userSagas

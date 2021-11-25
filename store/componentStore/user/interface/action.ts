@@ -1,11 +1,24 @@
 import { UserTypes } from 'store/interface'
 
 export type UserActions =
+  | BillAction
   | LoginAction
   | UserInfoAction
   | PatientAction
   | BookingByUser
-  | NoticeByUser
+  | NotiAction
+
+export type BillAction = BILL_INFO_REQUEST | BILL_INFO_REQUEST_SUCCESS
+
+export interface BILL_INFO_REQUEST {
+  type: UserTypes.Bill.BILL_INFO_REQUEST
+  transactionId: string
+}
+
+export interface BILL_INFO_REQUEST_SUCCESS {
+  type: UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS
+  billInfo: any
+}
 
 export type LoginAction = Login_medproID | login_At
 
@@ -59,13 +72,13 @@ export interface RequestSuccess {
 
 // -------------------------Danh sách Notice theo user--------------------------------------
 
-export type NoticeByUser = NoticeRequest | NoticeRequestSuccess
+export type NotiAction = NoticeRequest | NoticeRequestSuccess
 
 export interface NoticeRequest {
-  type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST
+  type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST
 }
 
 export interface NoticeRequestSuccess {
-  type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST_SUCCESS
-  noticeByUser: any[]
+  type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST_SUCCESS
+  noti: any[]
 }

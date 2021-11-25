@@ -1,4 +1,9 @@
 export namespace UserTypes {
+  export enum Bill {
+    BILL_INFO_REQUEST = 'BILL_INFO_REQUEST',
+    BILL_INFO_REQUEST_SUCCESS = 'BILL_INFO_REQUEST_SUCCESS'
+  }
+
   export enum Login {
     Login_medproID = 'Login_medproID',
     login_At = 'login_At'
@@ -18,7 +23,7 @@ export namespace UserTypes {
     LIST_BOOKING_BY_USER_REQUEST_SUCCESS = 'LIST_BOOKING_BY_USER_REQUEST_SUCCESS'
   }
 
-  export enum NoticeByUser {
+  export enum Noti {
     LIST_NOTICE_BY_USER_REQUEST = 'LIST_NOTICE_BY_USER_REQUEST',
     LIST_NOTICE_BY_USER_REQUEST_SUCCESS = 'LIST_NOTICE_BY_USER_REQUEST_SUCCESS'
   }

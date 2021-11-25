@@ -10,7 +10,7 @@ const HeaderPublic = () => {
   const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
-    dispatch(a.getNoticeByUser())
+    dispatch(a.getNoti())
   }, [])
 
   if (!hos.information.header) return null
@@ -20,7 +20,7 @@ const HeaderPublic = () => {
         loginMedproId={a.loginMedproId}
         dataHeader={hos.information.header}
         author={user.userInfo}
-        noti={user.noticeByUser}
+        noti={user.noti}
       />
     </>
   )

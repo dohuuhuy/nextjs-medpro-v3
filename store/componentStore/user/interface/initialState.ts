@@ -2,8 +2,9 @@ export interface UserState {
   userInfo: userInfo
   listPatient: Array<any>
   bookingByUser: Array<any>
-  noticeByUser: Array<any>
+  noti: Array<any>
   loginAt: string
+  billInfo: any
 }
 
 interface userInfo {

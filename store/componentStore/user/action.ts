@@ -1,5 +1,19 @@
 import { UserTypes, UserActions } from 'store/interface'
 
+export const getBillInfo = (transactionId: any): UserActions => {
+  return {
+    type: UserTypes.Bill.BILL_INFO_REQUEST,
+    transactionId
+  }
+}
+
+export const getBillInfoSuccess = (billInfo: any): UserActions => {
+  return {
+    type: UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS,
+    billInfo
+  }
+}
+
 export const loginMedproId = (): UserActions => {
   return {
     type: UserTypes.Login.Login_medproID
@@ -53,15 +67,15 @@ export const getBookingByUserSuccess = (bookingByUser: any): UserActions => {
 }
 
 // --------------------------Notice-----------------------//
-export const getNoticeByUser = (): UserActions => {
+export const getNoti = (): UserActions => {
   return {
-    type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST
+    type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST
   }
 }
 
-export const getNoticeByUserSuccess = (noticeByUser: any): UserActions => {
+export const getNotiSuccess = (noti: any): UserActions => {
   return {
-    type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST_SUCCESS,
-    noticeByUser
+    type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST_SUCCESS,
+    noti
   }
 }

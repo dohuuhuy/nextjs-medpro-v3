@@ -1,5 +1,5 @@
-import FooterPublic from '@components/organisms/Footer'
-import HeaderPublic from '@components/organisms/Header'
+import FooterPublic from '@components/organisms/FooterPublic'
+import HeaderPublic from '@components/organisms/HeaderPublic'
 import React from 'react'
 import styles from './styles.module.less'
 
