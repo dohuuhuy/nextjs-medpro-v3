@@ -7,14 +7,10 @@ import useSWR from 'swr'
 
 const HuongDan = () => {
   React.useEffect(() => {}, [])
-
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
+  const { data, error } = useSWR(url, fetcherGuide)
 
-  const { data } = useSWR(url, fetcherGuide)
-
-  console.log('data :>> ', data)
-
-  return <HuongDanCustom data={data} />
+  return error ? null : <HuongDanCustom data={data} />
 }
 
 HuongDan.Layout = DefaultLayout

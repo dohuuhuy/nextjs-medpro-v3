@@ -1,15 +1,20 @@
-import { MailOutlined } from '@ant-design/icons'
+import {
+  BellOutlined,
+  MailOutlined,
+  UnorderedListOutlined
+} from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { Card, Col, Dropdown, Menu, Row } from 'antd'
+import { Badge, Card, Col, Dropdown, Menu, Row, Space } from 'antd'
 import cx from 'classnames'
-import { uniqueId } from 'lodash'
+import { filter, find, uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import Container from './../Container'
 import styles from './styles.module.less'
+import { FaAdn, FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
 
 export default function HeaderCustom({
   dataHeader,
@@ -17,6 +22,7 @@ export default function HeaderCustom({
   author,
   noti
 }: any) {
+  const router = useRouter()
   const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
@@ -45,11 +51,30 @@ export default function HeaderCustom({
   }
 
   const menus = (
-    <Card title='Danh sách thông báo' bordered={false} style={{ width: 500 }}>
+    <Card
+      title={
+        <h3 className={styles.cardTitle}>
+          <FaBell />
+          <span>Danh sách thông báo</span>
+        </h3>
+      }
+      bordered={false}
+      style={{ width: 500 }}
+    >
       <Menu className={styles.listNoti}>
         {noti?.slice(0, 5)?.map((v: any) => {
+          console.log('v :>> ', v)
           return (
-            <Menu.Item key={v.id} icon={<MailOutlined />}>
+            <Menu.Item
+              key={v.id}
+              icon={
+                v.isRead ? (
+                  <FaEnvelopeOpen size='18' color='gray' />
+                ) : (
+                  <FaEnvelope size='18' color='orangered' />
+                )
+              }
+            >
               <Link
                 href={`/chi-tiet-phieu-kham?transactionId=${v.eventData.transactionId}`}
               >
@@ -62,10 +87,15 @@ export default function HeaderCustom({
     </Card>
   )
 
+  const noRep = filter(noti, { isRead: false })
+
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
-        <Container className={styles.containerHeader}>
+        <Container
+          className={styles.containerHeader}
+          style={{ maxWidth: '1280px' }}
+        >
           <Row className={styles.rowHeader}>
             <Col xl={6} lg={6} className={styles.colLogo}>
               <figure className={styles.logo}>
@@ -94,10 +124,15 @@ export default function HeaderCustom({
                 {author.token && (
                   <li>
                     <Dropdown overlay={menus}>
-                      <button className={cx(styles.btn)}>
-                        <Icon name='thongbao' />
-                        Thông báo
-                      </button>
+                      <Badge count={noRep.length}>
+                        <button className={cx(styles.btn)}>
+                          <Icon
+                            name='thongbao'
+                            fill={noRep.length > 0 && 'red'}
+                          />
+                          Thông báo
+                        </button>
+                      </Badge>
                     </Dropdown>
                   </li>
                 )}
@@ -126,9 +161,15 @@ export default function HeaderCustom({
               </ul>
 
               <ul className={styles.listMenu}>
-                {menu.map((v: any) => {
+                {menu?.map((v: any) => {
                   return (
-                    <li key={uniqueId()} onClick={routePush(v)}>
+                    <li
+                      key={uniqueId()}
+                      onClick={routePush(v)}
+                      className={
+                        router.asPath.includes(v.link) ? styles.active : ''
+                      }
+                    >
                       <Link href={v.link || '/'}>
                         <a aria-label={v?.label}>{v?.label}</a>
                       </Link>

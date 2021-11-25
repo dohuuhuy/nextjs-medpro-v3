@@ -16,7 +16,7 @@ export default function FooterCustom({ dataFooter }: any) {
   return (
     <footer>
       <Container fluid={true} className={styles.footer}>
-        <Container className={styles.container}>
+        <Container className={styles.container} style={{ maxWidth: '1280px' }}>
           <Row className={styles.rowMenu}>
             <Col xl={24} sm={24} className={styles.colMenu}>
               <ul className={styles.menu}>

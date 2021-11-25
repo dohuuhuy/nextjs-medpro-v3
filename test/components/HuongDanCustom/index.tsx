@@ -24,6 +24,7 @@ export const HuongDanCustom = ({ data }: any) => {
                   />
                   <figure>
                     <Image
+                      loader={myLoader}
                       src={v.imageUrl}
                       alt=''
                       loading='eager'
@@ -41,6 +42,10 @@ export const HuongDanCustom = ({ data }: any) => {
       </Row>
     </Container>
   )
+}
+
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }
 
 interface Item {

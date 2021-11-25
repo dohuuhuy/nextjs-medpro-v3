@@ -76,7 +76,7 @@ export const BreadcumbCustom = ({
       appId &&
         listBreadcumb.push({
           link: `/benh-vien`,
-          label: 'bệnh viện'
+          label: 'Bệnh viện'
         })
 
       partner &&

@@ -8,7 +8,7 @@ import { DefaultSeo } from 'next-seo'
 import React, { Fragment, useEffect } from 'react'
 import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import SEO from 'support/next-seo.config'
+import SEO from '@components/SEO/next-seo.config'
 import NextNProgress from 'nextjs-progressbar'
 
 const MyApp = ({ Component, pageProps }: any) => {
