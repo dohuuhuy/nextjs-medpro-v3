@@ -4,3 +4,5 @@ declare module './*.module.less' {
 }
 
 declare module '/node_modules/@medpro/booking-libs'
+
+declare module 'react-barcode'

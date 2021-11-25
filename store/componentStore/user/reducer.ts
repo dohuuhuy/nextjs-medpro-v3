@@ -37,7 +37,7 @@ export default function user(
     case UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS:
       return { ...state, bookingByUser: action.bookingByUser }
 
-    case UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST_SUCCESS:
+    case UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS:
       return { ...state, noti: action.noti }
 
     case UserTypes.User.USER_RESET:

@@ -70,7 +70,7 @@ function* getNoti() {
 }
 
 function* watcher_getNoti() {
-  yield takeLatest(UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST, getNoti)
+  yield takeLatest(UserTypes.Noti.LIST_NOTI_REQUEST, getNoti)
 }
 
 function* loginMedproId() {
@@ -114,7 +114,7 @@ function* getBillInfo({ transactionId }: any) {
     const response: AxiosResponse = yield client.getBookingWithTransactionCode(
       post
     )
-    console.log('response :>> ', response)
+    yield put(ac.getBillInfoSuccess(response.data))
   } catch (error) {
     console.log(' error getBillInfo :>> ', error)
   }

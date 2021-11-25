@@ -75,10 +75,10 @@ export interface RequestSuccess {
 export type NotiAction = NoticeRequest | NoticeRequestSuccess
 
 export interface NoticeRequest {
-  type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST
+  type: UserTypes.Noti.LIST_NOTI_REQUEST
 }
 
 export interface NoticeRequestSuccess {
-  type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST_SUCCESS
+  type: UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS
   noti: any[]
 }

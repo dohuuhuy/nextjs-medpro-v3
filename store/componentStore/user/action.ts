@@ -69,13 +69,13 @@ export const getBookingByUserSuccess = (bookingByUser: any): UserActions => {
 // --------------------------Notice-----------------------//
 export const getNoti = (): UserActions => {
   return {
-    type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST
+    type: UserTypes.Noti.LIST_NOTI_REQUEST
   }
 }
 
 export const getNotiSuccess = (noti: any): UserActions => {
   return {
-    type: UserTypes.Noti.LIST_NOTICE_BY_USER_REQUEST_SUCCESS,
+    type: UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS,
     noti
   }
 }
