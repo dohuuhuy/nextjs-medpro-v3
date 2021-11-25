@@ -138,6 +138,7 @@
         border-bottom: 0.5px dashed slategrey;
         .colMenu {
           padding: 0;
+          margin: 15px 0;
           .menu {
             li {
               padding: 7.5px 25px;
@@ -147,13 +148,21 @@
       }
       .rowLogo {
         border-bottom: 0.5px dashed slategrey;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .colLogo {
+          margin-top: 15px;
+        }
       }
 
       .rowBody {
         border-bottom: 0.5px dashed slategrey;
         .colContact,
         .colDown {
-          margin-bottom: 15px;
+          margin: 15px 0;
+
           padding: 0;
         }
       }
