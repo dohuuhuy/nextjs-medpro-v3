@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 import Container from '../Container'
 import styles from './less/stepper.module.less'
-import { steps } from './utils'
+import { checkActive, steps } from './utils'
 
 export const Stepper = ({ data }: any) => {
   return (
@@ -13,12 +13,18 @@ export const Stepper = ({ data }: any) => {
             <h2>Bước 1: Chọn chuyên khoa</h2>
 
             <ul className={styles.listStep}>
-              {data.map((e: any, i: number) => {
+              {data.stepper?.map((v: any, i: number) => {
                 const w = (1 / steps.length) * 100
+                const active = checkActive(v.selected, {
+                  keys: v.key,
+                  state: data
+                })
+                  ? styles.active
+                  : ''
                 return (
-                  <li key={i} style={{ width: w + '%' }}>
+                  <li key={i} style={{ width: w + '%' }} className={active}>
                     {/* <hr className={styles.hrBe} /> */}
-                    <button className={styles.btnIcon}>{e.icon()}</button>
+                    <button className={styles.btnIcon}>{v.icon()}</button>
                     <hr className={styles.hrAf} />
                   </li>
                 )

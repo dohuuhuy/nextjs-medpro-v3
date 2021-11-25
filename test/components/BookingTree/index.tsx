@@ -29,7 +29,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   console.log('state :>> ', state)
   return (
     <section>
-      <Stepper data={state.stepper} />
+      <Stepper data={state} />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>

@@ -17,6 +17,19 @@
           display: flex;
           justify-content: center;
 
+          .active {
+            hr {
+              border-color: #26b4e8;
+            }
+            .btnIcon {
+              background: linear-gradient(
+                143.86deg,
+                #008cff 6.49%,
+                #26b4e8 96.83%
+              );
+            }
+          }
+
           li {
             display: flex;
             flex-direction: row;
@@ -44,11 +57,9 @@
             }
             hr {
               width: 100%;
-              background-color: gray;
             }
 
             &:first-child {
-              // background-color: violet;
               .hrBe {
                 display: none;
               }
@@ -64,7 +75,7 @@
               }
             }
 
-            &:first-child {
+            &:hover {
               .btnIcon {
                 background: linear-gradient(
                   143.86deg,

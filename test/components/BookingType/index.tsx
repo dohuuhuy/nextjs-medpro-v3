@@ -10,7 +10,7 @@ import Container from '../Container'
 import { Icon } from '../Icon'
 import { BookingTypeIF } from './interface'
 import styles from './styles.module.less'
-import { carousel, listTabs, settings } from './utils'
+import { listTabs, settings, carousel } from './utils'
 
 export const BookingType = (props: BookingTypeIF) => {
   const info = props?.getInfo || null
@@ -125,15 +125,17 @@ export const BookingType = (props: BookingTypeIF) => {
       <Row className={styles.rowSlider}>
         <Col>
           <Slider {...settings}>
-            {carousel?.map((e) => {
+            {carousel?.map((v) => {
               return (
                 <div key={uniqueId()} className={styles.listImage}>
                   <Image
-                    src={e?.image}
+                    src={v.image}
                     width={1110}
                     height={335}
                     alt=''
                     loading='eager'
+                    objectFit='cover'
+                    priority
                   />
                 </div>
               )

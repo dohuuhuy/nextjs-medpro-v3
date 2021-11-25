@@ -40,7 +40,7 @@ export const BacSi = (props: any) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (
             <li key={v.id} className={active}>
-              <div className={styles.card}>
+              <div className={styles.card} onClick={selected(v, props)}>
                 <figure>{img}</figure>
                 <div className={styles.bodyCard}>
                   <p>{v.hocvi}</p>
