@@ -3,9 +3,11 @@ import { AppState } from '@store/interface'
 import { find } from 'lodash'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import * as a from '@actionStore/rootAction'
 
 const BannersPublic = () => {
+  const dispatch = useDispatch()
   const router = useRouter()
   const {
     query: { site },
@@ -13,9 +15,12 @@ const BannersPublic = () => {
   } = router
 
   const hos = useSelector((state: AppState) => state.hospital)
-
+  const total = useSelector((state: AppState) => state.total)
   const { banners } = hos.information
-  if (!banners) return null
+  if (!banners) {
+    dispatch(a.getBanners(total.partnerId))
+    return null
+  }
 
   const key = site ? '/' + site : pathname
   const getBanner = find(banners, { key })

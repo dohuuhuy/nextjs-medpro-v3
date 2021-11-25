@@ -1,24 +1,37 @@
 import { UserTypes, UserActions } from 'store/interface'
 
-export const UserLogin = (userInfo: any): UserActions => {
+export const loginMedproId = (): UserActions => {
+  return {
+    type: UserTypes.Login.Login_medproID
+  }
+}
+
+export const loginAt = (loginAt: string): UserActions => {
+  return {
+    type: UserTypes.Login.login_At,
+    loginAt
+  }
+}
+
+export const userSave = (userInfo: any): UserActions => {
   return {
     type: UserTypes.User.USER_SAVE,
     userInfo
   }
 }
 
-export const UserLogout = (): UserActions => {
+export const userLogout = (): UserActions => {
   return {
     type: UserTypes.User.USER_RESET
   }
 }
 
 //----------------- Danh sách Patient----------------------//
-export const ListPatientRequest = (): UserActions => {
+export const listPatientRequest = (): UserActions => {
   return { type: UserTypes.Patient.LIST_PATIENT_REQUEST }
 }
 
-export const ListPatientRequestSuccess = (listPatient: any[]): UserActions => {
+export const listPatientRequestSuccess = (listPatient: any[]): UserActions => {
   return {
     type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS,
     listPatient
@@ -26,13 +39,13 @@ export const ListPatientRequestSuccess = (listPatient: any[]): UserActions => {
 }
 
 // --------------------------Booking---------------------//
-export const GetBookingByUser = (): UserActions => {
+export const getBookingByUser = (): UserActions => {
   return {
     type: UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST
   }
 }
 
-export const GetBookingByUserSuccess = (bookingByUser: any): UserActions => {
+export const getBookingByUserSuccess = (bookingByUser: any): UserActions => {
   return {
     type: UserTypes.BookingByUser.LIST_BOOKING_BY_USER_REQUEST_SUCCESS,
     bookingByUser
@@ -40,13 +53,13 @@ export const GetBookingByUserSuccess = (bookingByUser: any): UserActions => {
 }
 
 // --------------------------Notice-----------------------//
-export const GetNoticeByUser = (): UserActions => {
+export const getNoticeByUser = (): UserActions => {
   return {
     type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST
   }
 }
 
-export const GetNoticeByUserSuccess = (noticeByUser: any): UserActions => {
+export const getNoticeByUserSuccess = (noticeByUser: any): UserActions => {
   return {
     type: UserTypes.NoticeByUser.LIST_NOTICE_BY_USER_REQUEST_SUCCESS,
     noticeByUser

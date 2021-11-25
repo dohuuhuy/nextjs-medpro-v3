@@ -56,7 +56,7 @@ function* getListPartners() {
         })
       )
 
-      if (!hospital.information.header) {
+      if (Object.keys(hospital.information).length < 1) {
         yield put(ac.getHeader(partnerId))
         yield put(ac.getBanners(partnerId))
         yield put(ac.getFooter(partnerId))
@@ -68,7 +68,7 @@ function* getListPartners() {
   }
 }
 
-function* WatchListPartners() {
+function* watcher_getListPartners() {
   yield takeEvery(
     TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST,
     getListPartners
@@ -97,11 +97,11 @@ function* handlerAddress({ payload }: any) {
   }
 }
 
-function* WatchAddress() {
+function* watcher_address() {
   yield takeLatest(TotalDataTypes.Address.ADDRESS_REQUEST, handlerAddress)
 }
 
 const totalDataSagas = function* root() {
-  yield all([fork(WatchListPartners), fork(WatchAddress)])
+  yield all([fork(watcher_getListPartners), fork(watcher_address)])
 }
 export default totalDataSagas

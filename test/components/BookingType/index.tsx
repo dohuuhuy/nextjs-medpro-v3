@@ -129,6 +129,7 @@ export const BookingType = (props: BookingTypeIF) => {
               return (
                 <div key={uniqueId()} className={styles.listImage}>
                   <Image
+                    loader={myLoader}
                     src={v.image}
                     width={1110}
                     height={335}
@@ -150,4 +151,8 @@ export const BookingType = (props: BookingTypeIF) => {
 // tạm thời dùng link này , sao này sử bannerimage trong info
 const banner = (e: string) => {
   return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
+}
+
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }

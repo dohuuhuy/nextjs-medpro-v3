@@ -1,10 +1,22 @@
 import { UserTypes } from 'store/interface'
 
 export type UserActions =
+  | LoginAction
   | UserInfoAction
   | PatientAction
   | BookingByUser
   | NoticeByUser
+
+export type LoginAction = Login_medproID | login_At
+
+export interface Login_medproID {
+  type: UserTypes.Login.Login_medproID
+}
+
+export interface login_At {
+  type: UserTypes.Login.login_At
+  loginAt: string
+}
 
 // ------------------------thông tin đăng nhập--------------------------------------
 
@@ -21,13 +33,13 @@ export interface UserClear {
 
 // -------------------------hồ sơ bệnh nhân-------------------------------------
 
-export type PatientAction = ListPatientRequest | ListPatientRequestSuccess
+export type PatientAction = listPatientRequest | listPatientRequestSuccess
 
-export interface ListPatientRequest {
+export interface listPatientRequest {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST
 }
 
-export interface ListPatientRequestSuccess {
+export interface listPatientRequestSuccess {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS
   listPatient: any[]
 }

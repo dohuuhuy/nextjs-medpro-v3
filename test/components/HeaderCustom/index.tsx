@@ -1,15 +1,27 @@
+import {
+  DownOutlined,
+  MailOutlined,
+  NotificationOutlined
+} from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { Col, Row } from 'antd'
+import { Card, Col, Dropdown, Menu, Row, Space } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import router from 'next/router'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import Container from './../Container'
 import styles from './styles.module.less'
 
-export default function HeaderCustom({ dataHeader, url, author }: any) {
+export default function HeaderCustom({
+  dataHeader,
+  loginMedproId,
+  author,
+  noti
+}: any) {
+  const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
   if (!dataHeader) {
@@ -29,12 +41,30 @@ export default function HeaderCustom({ dataHeader, url, author }: any) {
   }
 
   const handleLogin = () => {
-    router.push(url)
+    dispatch(loginMedproId())
   }
 
   const handleLogOut = () => {
     router.push('/dang-xuat')
   }
+
+  const menus = (
+    <Card title='Danh sách thông báo' bordered={false} style={{ width: 500 }}>
+      <Menu className={styles.listNoti}>
+        {noti.slice(0, 5).map((v: any) => {
+          return (
+            <Menu.Item key={v.id} icon={<MailOutlined />}>
+              <Link
+                href={`/chi-tiet-phieu-kham?transactionId=${v.eventData.transactionId}`}
+              >
+                <a>{v.title}</a>
+              </Link>
+            </Menu.Item>
+          )
+        })}
+      </Menu>
+    </Card>
+  )
 
   return (
     <header>
@@ -65,12 +95,16 @@ export default function HeaderCustom({ dataHeader, url, author }: any) {
                     Chăm sóc khách hàng
                   </button>
                 </li>
-                <li>
-                  <button className={cx(styles.btn)}>
-                    <Icon name='thongbao' />
-                    Thông báo
-                  </button>
-                </li>
+                {author.token && (
+                  <li>
+                    <Dropdown overlay={menus}>
+                      <button className={cx(styles.btn)}>
+                        <Icon name='thongbao' />
+                        Thông báo
+                      </button>
+                    </Dropdown>
+                  </li>
+                )}
                 {!author.token && (
                   <li>
                     <button className={cx(styles.btn)} onClick={handleLogin}>

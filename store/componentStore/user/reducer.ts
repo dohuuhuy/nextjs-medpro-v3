@@ -11,7 +11,8 @@ const init: UserState = {
   },
   listPatient: [],
   bookingByUser: [],
-  noticeByUser: []
+  noticeByUser: [],
+  loginAt: '/'
 }
 
 export default function user(
@@ -19,6 +20,9 @@ export default function user(
   action: UserActions | { type: typeof HYDRATE; payload: UserState }
 ) {
   switch (action.type) {
+    case UserTypes.Login.login_At: {
+      return { ...state, loginAt: action.loginAt }
+    }
     case UserTypes.User.USER_SAVE:
       return { ...state, userInfo: { ...action.userInfo } }
 

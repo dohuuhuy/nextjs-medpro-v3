@@ -22,12 +22,11 @@ const Author = () => {
   const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    !user.userInfo.token && dispatch(ac.UserLogin(query))
-
+    !user.userInfo.token && dispatch(ac.userSave(query))
     client.setToken(query.token)
   }, [router.query.info])
 
-  if (user.userInfo.token) router.push('/')
+  if (user.userInfo.token) router.push(user.loginAt)
 
   return <Loading />
 }

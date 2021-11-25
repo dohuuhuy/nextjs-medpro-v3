@@ -70,7 +70,7 @@ export const DetailNewsCustom = ({
         </Col>
       </Row>
       <Row className={styles.rowFooterPost}>
-        <Col className={styles.colBottomPost}>
+        <Col span={24} className={styles.colBottomPost}>
           <h2>BÀI VIẾT MỚI NHẤT</h2>
 
           <ul className={styles.listPostNew}>

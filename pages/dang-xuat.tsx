@@ -1,15 +1,19 @@
 import Loading from '@componentsTest/Loading'
+import { AppState } from '@store/interface'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as ac from 'store/actionStore/rootAction'
 
 const Logout = () => {
   const dispatch = useDispatch()
   const router = useRouter()
+  const user = useSelector((state: AppState) => state.user)
+
   useEffect(() => {
-    router.push('/')
-    dispatch(ac.UserLogout())
+    dispatch(ac.userLogout())
+
+    router.push(user.loginAt)
   }, [dispatch, router])
 
   return (

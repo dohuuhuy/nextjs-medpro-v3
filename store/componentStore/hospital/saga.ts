@@ -14,7 +14,7 @@ function* getHospitalDetails() {
   }
 }
 
-function* WatchGetHospitalDetails() {
+function* watcher_getHospitalDetails() {
   yield takeLatest(
     HosptailTypes.Information.INFORMATION_REQUEST,
     getHospitalDetails
@@ -43,7 +43,7 @@ function* getFeatureByPartner({ partnerId, typeReser }: any) {
   }
 }
 
-function* WatchGetFeatureByPartner() {
+function* watcher_getFeatureByPartner() {
   yield takeLatest(HosptailTypes.Feature.FEATURE_REQUEST, getFeatureByPartner)
 }
 
@@ -61,7 +61,7 @@ function* getListHospital() {
   }
 }
 
-function* WatchGetListHospital() {
+function* watcher_getListHospital() {
   yield takeLatest(
     HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST,
     getListHospital
@@ -80,7 +80,7 @@ function* getBookingTree({ partnerId }: any) {
   }
 }
 
-function* WatcherGetBookingTree() {
+function* watcher_getBookingTree() {
   yield takeLatest(
     HosptailTypes.BookingTree.BOOKING_TREE_REQUEST,
     getBookingTree
@@ -97,7 +97,7 @@ function* getHeader({}: any) {
   }
 }
 
-function* WatcherGetHeader() {
+function* watcher_getHeader() {
   yield takeLatest(HosptailTypes.Header.Header_REQUEST, getHeader)
 }
 
@@ -111,7 +111,7 @@ function* getFooter({}: any) {
   }
 }
 
-function* WatcherGetFooter() {
+function* watcher_getFooter() {
   yield takeLatest(HosptailTypes.Footer.Footer_REQUEST, getFooter)
 }
 
@@ -125,19 +125,19 @@ function* getBanners({}: any) {
   }
 }
 
-function* WatcherGetBanners() {
+function* watcher_getBanners() {
   yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
 }
 
 const hospitalSagas = function* root() {
   yield all([
-    fork(WatchGetHospitalDetails),
-    fork(WatchGetFeatureByPartner),
-    fork(WatchGetListHospital),
-    fork(WatcherGetBookingTree),
-    fork(WatcherGetHeader),
-    fork(WatcherGetBanners),
-    fork(WatcherGetFooter)
+    fork(watcher_getHospitalDetails),
+    fork(watcher_getFeatureByPartner),
+    fork(watcher_getListHospital),
+    fork(watcher_getBookingTree),
+    fork(watcher_getHeader),
+    fork(watcher_getBanners),
+    fork(watcher_getFooter)
   ])
 }
 export default hospitalSagas

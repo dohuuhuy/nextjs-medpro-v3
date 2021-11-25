@@ -7,9 +7,10 @@ import { banner } from '@utils/func'
 import { find } from 'lodash'
 import { NextSeoProps } from 'next-seo'
 import { useRouter } from 'next/router'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
+import * as ac from '@actionStore/rootAction'
 
 const HinhThucDatKham = (props: any) => {
   const router = useRouter()
@@ -18,6 +19,16 @@ const HinhThucDatKham = (props: any) => {
   const getInfo = find(listHospital, { partnerId: site })
 
   const hos = useSelector((state: AppState) => state.hospital)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(ac.onLoading())
+
+    setTimeout(() => {
+      dispatch(ac.offLoading())
+    }, 1000)
+  }, [router])
 
   if (!hos) return null
 

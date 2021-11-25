@@ -1,4 +1,8 @@
 export namespace UserTypes {
+  export enum Login {
+    Login_medproID = 'Login_medproID',
+    login_At = 'login_At'
+  }
   export enum User {
     USER_SAVE = 'USER_SAVE',
     USER_RESET = 'USER_RESET'

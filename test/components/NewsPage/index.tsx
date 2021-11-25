@@ -123,7 +123,7 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
               loading='eager'
               objectFit='cover'
               alt=''
-              // priority
+              priority
             />
           </a>
         </Link>
