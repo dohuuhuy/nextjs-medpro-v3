@@ -117,6 +117,12 @@
               color: darkblue !important;
             }
           }
+          .ringBell {
+            span {
+              animation: ring 1.5s ease infinite;
+              transition: all 0.3s ease i;
+            }
+          }
           .btn {
             text-align: center;
             min-width: 100px;
@@ -140,8 +146,9 @@
               cursor: pointer;
               transition: all 0.5s ease-in-out;
               span {
-                transition: all 0.5s ease-in-out;
-                fill: white;
+                fill: white !important;
+                animation: ring 1.5s ease infinite;
+                transition: all 0.3s ease;
               }
             }
           }
@@ -251,4 +258,39 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+@keyframes ring {
+  0% {
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+  12.5% {
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
+  25% {
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg);
+  }
+  37.5% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+  }
+  50% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  62.5% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  75% {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
 }

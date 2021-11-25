@@ -1,20 +1,15 @@
-import {
-  BellOutlined,
-  MailOutlined,
-  UnorderedListOutlined
-} from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { Badge, Card, Col, Dropdown, Menu, Row, Space } from 'antd'
+import { Badge, Card, Col, Dropdown, Menu, Row } from 'antd'
 import cx from 'classnames'
-import { filter, find, uniqueId } from 'lodash'
+import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import Container from './../Container'
 import styles from './styles.module.less'
-import { FaAdn, FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
 
 export default function HeaderCustom({
   dataHeader,
@@ -25,6 +20,8 @@ export default function HeaderCustom({
   const router = useRouter()
   const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
+
+  const noRep = filter(noti, { isRead: false })
 
   if (!dataHeader) {
     return null
@@ -63,7 +60,6 @@ export default function HeaderCustom({
     >
       <Menu className={styles.listNoti}>
         {noti?.slice(0, 5)?.map((v: any) => {
-          console.log('v :>> ', v)
           return (
             <Menu.Item
               key={v.id}
@@ -86,8 +82,6 @@ export default function HeaderCustom({
       </Menu>
     </Card>
   )
-
-  const noRep = filter(noti, { isRead: false })
 
   return (
     <header>
@@ -125,7 +119,12 @@ export default function HeaderCustom({
                   <li>
                     <Dropdown overlay={menus}>
                       <Badge count={noRep.length}>
-                        <button className={cx(styles.btn)}>
+                        <button
+                          className={cx(
+                            styles.btn,
+                            noRep.length > 0 && styles.ringBell
+                          )}
+                        >
                           <Icon
                             name='thongbao'
                             fill={noRep.length > 0 && 'red'}

@@ -1,4 +1,4 @@
-import { find, findIndex, indexOf } from 'lodash'
+import { find, findIndex, indexOf, slice } from 'lodash'
 import React from 'react'
 import { Icon } from '../Icon'
 import { BacSi } from './compo/bacsi'
@@ -130,8 +130,6 @@ export interface Steps {
 }
 
 export const handlerStep = ({ bookingTree }: any) => {
-  console.log('bookingTree :>> ', bookingTree)
-
   if (!bookingTree) return []
 
   const pathStep = bookingTree?.path?.split('_') || [] // phân giải path của booking
@@ -153,22 +151,44 @@ export const handlerStep = ({ bookingTree }: any) => {
 export const selected = (item: any, props: any) => () => {
   const { state, setstate, keys } = props
 
-  // console.log('item :>> ', item)
-
-  // bắt buộc phải có key
+  const findStep = find(state.stepper, { key: keys })
   const index = findIndex(state.stepper, { key: keys })
-  state.stepper[index].selected = item.detail
-
-  // subType không có cũng được
   const indexSub = findIndex(state.stepper, { key: item.subType })
-  indexSub > 0 &&
-    (state.stepper[indexSub].data = item.child) &&
-    (state.stepper[indexSub].open = false)
 
-  if (item.subType === null) {
-    state.stepper.at(-1).open = false
+  if (Object.keys(findStep.selected).length) {
+    console.log('reset mảng và chọn lại từng bước :>> ', 1)
+
+    state.stepper[index].selected = item.detail
+
+    if (indexSub > 0) {
+      for (let i = indexSub; i < state.stepper.length; i++) {
+        state.stepper[i].selected = {}
+        state.stepper[i].open = true
+      }
+
+      state.stepper[indexSub].data = item.child
+      state.stepper[indexSub].open = false
+    }
+
+    setstate((v: any) => ({
+      ...v,
+      stepper: state.stepper
+    }))
+  } else {
+    state.stepper[index].selected = item.detail
+
+    if (indexSub > 0) {
+      state.stepper[indexSub].data = item.child
+      state.stepper[indexSub].open = false
+    }
+
+    if (item.subType === null) {
+      state.stepper.at(-1).open = false
+    }
+    setstate((v: any) => ({
+      ...v
+    }))
   }
-  setstate((v: any) => ({ ...v, name: 'huyi' }))
 }
 
 export const checkActive = (item: any, props: any) => {

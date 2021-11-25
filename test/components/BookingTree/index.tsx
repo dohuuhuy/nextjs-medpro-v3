@@ -27,6 +27,14 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   if (!bookingTree) return null
   console.log('state :>> ', state)
+
+  var object = state.stepper.reduce(
+    (obj: any, item: { key: any; selected: any }) =>
+      Object.assign(obj, { [item.key]: item.selected }),
+    {}
+  )
+
+  console.log(object)
   return (
     <section>
       <Stepper data={state} />
@@ -34,7 +42,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
             <Space direction='vertical' className={styles.listTree}>
-              {state.stepper.map((v: Steps, i: any) => {
+              {state?.stepper?.map((v: Steps, i: any) => {
                 return (
                   v.sort >= 0 && (
                     <Collapse
