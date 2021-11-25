@@ -1,4 +1,5 @@
 import { BannerHome } from '@componentsTest/BannerHome'
+import Loading from '@componentsTest/Loading'
 import { NewsEventCustom } from '@componentsTest/News&Events'
 import { AppState } from '@store/interface'
 import HomeLayout from '@templates/Home'
@@ -10,6 +11,8 @@ import { HomeCtl } from 'src/containers/home'
 const HomePage = ({ data }: any) => {
   const hos = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
+
+  if (total.loading) return <Loading />
 
   return (
     <>

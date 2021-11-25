@@ -107,14 +107,24 @@ function* watcher_userLogout() {
 
 function* getBillInfo({ transactionId }: any) {
   try {
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+
+    yield put(ac.onLoading())
+    yield put(ac.setWindow(window.location))
+
     const post = {
       transactionId
     }
 
     const response: AxiosResponse = yield client.getBookingWithTransactionCode(
-      post
+      post,
+      {
+        partnerid: total.partnerId,
+        appid: total.appId
+      }
     )
     yield put(ac.getBillInfoSuccess(response.data))
+    yield put(ac.offLoading())
   } catch (error) {
     console.log(' error getBillInfo :>> ', error)
   }

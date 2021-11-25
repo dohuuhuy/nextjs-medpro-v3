@@ -15,9 +15,11 @@
         padding: 15px;
         margin-bottom: 1rem;
 
-        h3 {
+        .titleBill {
           text-align: center;
+          margin-bottom: 15px;
         }
+
         .billInfo {
           min-width: 360px;
           box-shadow: inset 0px 0px 0px 2px #f0f0f0;
@@ -36,13 +38,18 @@
           background-color: white;
 
           .hospital {
-            img {
-              object-fit: contain;
-              max-width: 250px;
+            text-align: center;
+            margin-bottom: 15px;
+            figure {
+              img {
+                object-fit: contain;
+                max-width: 250px;
+              }
+              margin-bottom: 25px;
             }
             .nameHos {
-              font-size: 16px;
-              font-weight: bold;
+              font-size: 15px;
+              font-weight: 500;
               margin-bottom: 5px;
             }
             .addressHos {
@@ -52,7 +59,9 @@
           }
 
           .barcode {
+            text-align: center;
             .title {
+              font-weight: 500;
               margin-bottom: 5px;
             }
           }
@@ -119,6 +128,7 @@
             }
             .number {
               .text {
+                font-weight: 500;
                 margin-bottom: 5px;
               }
               .num {
@@ -147,11 +157,8 @@
               .itemBooking {
                 display: flex;
                 justify-content: space-between;
-                .textCustom(13px, 400, #323f4b);
-
-                span {
-                  .textCustom(13px, 500, #323f4b);
-                }
+                font-size: 13px;
+                font-weight: 500;
               }
             }
           }
@@ -170,6 +177,8 @@
               justify-content: center;
 
               p {
+                font-size: 12px;
+                font-style: italic;
                 margin-right: 5px;
                 margin-bottom: 0;
               }
@@ -193,19 +202,4 @@
       }
     }
   }
-}
-
-// ----------------------------css mixin
-
-.textCustom(@size, @weight, @color) {
-  font-size: @size;
-  font-weight: @weight;
-  color: @color;
-}
-
-.hospital,
-.barcode,
-.number {
-  text-align: center;
-  margin-bottom: 16px;
 }

@@ -8,17 +8,22 @@ import Container from '../Container'
 import styles from './styles.module.less'
 
 export interface Breadcumb {
+  window?: any
+  appId?: string
+  partner?: any
   listMenu?: any
   listHos?: any
   post?: any
-  type: 'news' | 'booking' | 'normal'
+  type: 'news' | 'booking' | 'normal' | 'bills'
 }
 
 export const BreadcumbCustom = ({
   post,
   listHos,
   type,
-  listMenu
+  listMenu,
+  partner,
+  appId
 }: Breadcumb) => {
   const router = useRouter()
   const listBreadcumb = []
@@ -65,6 +70,27 @@ export const BreadcumbCustom = ({
       }
       break
 
+    case 'bills':
+      listBreadcumb.push(home)
+
+      appId &&
+        listBreadcumb.push({
+          link: `/benh-vien`,
+          label: 'bệnh viện'
+        })
+
+      partner &&
+        listBreadcumb.push({
+          link: `/${partner.partnerId}/hinh-thuc-dat-kham`,
+          label: partner?.name
+        })
+
+      listBreadcumb.push({
+        link: `#`,
+        label: 'Chi tiết phiếu khám'
+      })
+
+      break
     default:
       break
   }

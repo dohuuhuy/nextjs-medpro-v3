@@ -16,18 +16,11 @@ export interface Props {
 export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = (props: Props) => {
-  const { listNewsBanner, listNewsContent, totalPages } = props
-
   const router = useRouter()
 
-  const [curPage, setcurPage] = React.useState(1)
+  const { listNewsBanner, listNewsContent, totalPages } = props
 
-  const onChange = (pageNumber: any) => {
-    setcurPage(pageNumber)
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+  const onChange = (pageNumber: number) => {
     router.push(`?page=${pageNumber}`, undefined, { scroll: false })
   }
 
@@ -77,7 +70,7 @@ export const NewsPageCustom = (props: Props) => {
             responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
-            current={curPage}
+            current={Number(router.query.page)}
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />

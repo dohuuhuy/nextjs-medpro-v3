@@ -1,20 +1,27 @@
-import { LoadingOutlined } from '@ant-design/icons'
 import SEOPost from '@components/SEO/SEOPost/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import { DetailNewsCustom } from '@componentsTest/DetailNews'
-import { check } from '@utils/checkValue'
-import { Spin } from 'antd'
+import Loading from '@componentsTest/Loading'
 import dynamic from 'next/dynamic'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 import { ChiTietBaiViet } from 'src/containers/News/newsDetails'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
-const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
 
 const DetailsPostPage = ({ data }: any) => {
-  if (check(data)) {
-    return <Spin indicator={antIcon} />
-  }
+  const router = useRouter()
+
+  const [loading, setloading] = useState(true)
+
+  useEffect(() => {
+    setloading(true)
+    setTimeout(() => {
+      setloading(false)
+    }, 400)
+  }, [router.query.DetailsPost])
+
+  if (loading) return <Loading component text='Đang cập nhật bài viết ...' />
 
   if (!data) return null
 

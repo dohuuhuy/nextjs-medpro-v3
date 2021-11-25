@@ -10,7 +10,6 @@ import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import SEO from 'support/next-seo.config'
 import NextNProgress from 'nextjs-progressbar'
-import Loading from '@componentsTest/Loading'
 
 const MyApp = ({ Component, pageProps }: any) => {
   const Layout = Component?.Layout ?? Fragment
@@ -27,7 +26,6 @@ const MyApp = ({ Component, pageProps }: any) => {
     <Layout>
       <DefaultSeo {...SEO} />
       <NextNProgress color='#00b5f1' height={1} />
-      {total.loading && <Loading />}
       <Component {...pageProps} />
       <OnTop />
     </Layout>

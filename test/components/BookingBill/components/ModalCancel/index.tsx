@@ -74,7 +74,6 @@ export const ModalCancel = ({ showModal, setShowModal }: any) => {
         <div className={styles.Footer}>
           <Space>
             <Button
-              disabled={true}
               className={styles.btn_cancel}
               onClick={() => setShowModal(!showModal)}
             >

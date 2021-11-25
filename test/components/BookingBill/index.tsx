@@ -6,13 +6,12 @@ import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
-import Barcode from 'react-barcode'
+import { CardDownload } from './components/CardDownload'
 import { CustomLine } from './components/CustomLine'
-import { ModalCancel } from './components/Modal_Cancel'
+import { ModalCancel } from './components/ModalCancel'
+import { statusBill, typeCode } from './components/common'
 import styles from './styles.module.less'
 import { check, listItemBooking } from './utils/func'
-
-const QRCode = require('qrcode.react')
 
 export const BookingBill = ({ bill }: any) => {
   let bookingTimeBig
@@ -46,9 +45,12 @@ export const BookingBill = ({ bill }: any) => {
   return (
     <Container className={styles.containerBill}>
       <Row className={styles.rowDetailBooking}>
-        <Col xl={24} lg={24} xs={24} className={styles.colDetailBooking}>
+        <Col span={24} className={styles.colDetailBooking}>
           <div className={styles.billPrint}>
-            <h3>PHIẾU KHÁM BỆNH</h3>
+            <h3 className={styles.titleBill}>PHIẾU KHÁM BỆNH</h3>
+
+            {status === 1 && <CardDownload />}
+
             <section className={styles.billInfo}>
               <CustomLine top />
 
@@ -176,49 +178,5 @@ export const BookingBill = ({ bill }: any) => {
         </Col>
       </Row>
     </Container>
-  )
-}
-
-const typeCode = (e: any) => {
-  if (!e.value) return null
-
-  let code
-  switch (e?.type) {
-    case 'barcode':
-      code = (
-        <Barcode
-          value={e.value}
-          format='CODE128'
-          height={50}
-          width={1}
-          fontSize={14}
-        />
-      )
-      break
-    case 'qrcode':
-      code = <QRCode fgColor='#000000' size={90} value={e.value} />
-      break
-    default:
-      break
-  }
-
-  return (
-    <div className={styles.barcode}>
-      <p className={styles.title}>{e.title}</p>
-      {code}
-    </div>
-  )
-}
-
-const statusBill = (info: any) => {
-  const { status } = info
-
-  const classTimeNote = cx({
-    [styles.statusSuccess]: status === 1,
-    [styles.statusDanger]: status === 0 || status === 6,
-    [styles.statusDisable]: status === -2
-  })
-  return (
-    <div className={cx(styles.status, classTimeNote)}>{info.description}</div>
   )
 }

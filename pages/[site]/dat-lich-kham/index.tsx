@@ -2,6 +2,7 @@ import * as ac from '@actionStore/rootAction'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import BookingTree from '@componentsTest/BookingTree'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
+import Loading from '@componentsTest/Loading'
 import DefaultLayout from '@templates/Default'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
@@ -11,18 +12,54 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 import { AppState } from 'store/interface'
 
-const ThongTinDatKhamPage = (props: any) => {
+const ThongTinDatKhamPage = ({ data }: any) => {
+  const dispatch = useDispatch()
   const router = useRouter()
   const partnerId = router.query?.site
 
   const hos = useSelector((state: AppState) => state.hospital)
-  const dispatch = useDispatch()
+  const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
     dispatch(ac.getBookingTree(partnerId))
   }, [])
 
-  const meta: NextSeoProps = {
+  if (!data) return null
+  const listHospital = data.listHospital
+  if (!hos || !data.listHospital) return null
+
+  let listMenu = []
+  if (hos.information?.header) {
+    const { menu, insideLink } = hos.information?.header
+    listMenu = menu ? menu.concat(insideLink) : []
+  }
+
+  if (total.loading) return <Loading component />
+
+  return (
+    <>
+      <SEOHead meta={handleMeta(total.partnerId)} />
+      <BreadcumbCustom
+        type='booking'
+        listHos={listHospital}
+        listMenu={listMenu}
+      />
+      <BookingTree bookingTree={hos.bookingTree} />
+    </>
+  )
+}
+
+ThongTinDatKhamPage.Layout = DefaultLayout
+export default ThongTinDatKhamPage
+
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
+
+  return { props: { data } }
+}
+
+const handleMeta = (partnerId: string) => {
+  return {
     noindex: true,
     nofollow: true,
     robotsProps: {},
@@ -44,36 +81,5 @@ const ThongTinDatKhamPage = (props: any) => {
       ],
       site_name: 'UMC - hình thức đặt khám'
     }
-  }
-
-  const listHospital = props.data.listHospital
-
-  if (!hos) return null
-
-  let listMenu = []
-  if (hos.information?.header) {
-    const { menu, insideLink } = hos.information?.header
-    listMenu = menu ? menu.concat(insideLink) : []
-  }
-
-  return (
-    <>
-      <SEOHead meta={meta} />
-      <BreadcumbCustom
-        type='booking'
-        listHos={listHospital}
-        listMenu={listMenu}
-      />
-      <BookingTree bookingTree={hos.bookingTree} />
-    </>
-  )
-}
-
-ThongTinDatKhamPage.Layout = DefaultLayout
-export default ThongTinDatKhamPage
-
-export const getServerSideProps = async () => {
-  const data = await SelectHospitalCtl()
-
-  return { props: { data } }
+  } as NextSeoProps
 }

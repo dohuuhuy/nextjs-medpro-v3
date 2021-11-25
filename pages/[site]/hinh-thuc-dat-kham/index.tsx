@@ -11,16 +11,18 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 import * as ac from '@actionStore/rootAction'
+import Loading from '@componentsTest/Loading'
 
 const HinhThucDatKham = (props: any) => {
+  const dispatch = useDispatch()
+  const hos = useSelector((state: AppState) => state.hospital)
+  const total = useSelector((state: AppState) => state.total)
+
   const router = useRouter()
   const { site } = router.query
+
   const listHospital = props.data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
-
-  const hos = useSelector((state: AppState) => state.hospital)
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(ac.onLoading())
@@ -37,6 +39,8 @@ const HinhThucDatKham = (props: any) => {
     const { menu, insideLink } = hos.information?.header
     listMenu = menu ? menu.concat(insideLink) : []
   }
+
+  if (total.loading) return <Loading component />
 
   return (
     <>

@@ -32,22 +32,23 @@ function* getListPartners() {
 
     yield put(ac.onLoading())
 
-    if (!total.windows) yield put(ac.setWindow(window.location))
+    yield put(ac.setWindow(window.location))
+
     if (user.userInfo.token) yield client.setToken(user.userInfo.token)
 
     const response: AxiosResponse = yield fetcher(urlListPartners)
 
+    const partnerId = findPartnerId({
+      listPartners: response,
+      host: window.location.hostname
+    })
+
+    yield client.setPartner(partnerId)
+
     if (!total.partnerId) {
       yield put(ac.listPartnersRequestSuccess(response))
 
-      const partnerId = findPartnerId({
-        listPartners: response,
-        host: window.location.hostname
-      })
-
       yield put(ac.SetParnerId(partnerId))
-
-      yield client.setPartner(partnerId)
 
       yield put(
         ac.FeatureRequest({

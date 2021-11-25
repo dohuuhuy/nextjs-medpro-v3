@@ -71,10 +71,14 @@ function* watcher_getListHospital() {
 function* getBookingTree({ partnerId }: any) {
   try {
     yield client.setPartner(partnerId)
+    yield put(ac.onLoading())
+
     const response: AxiosResponse = yield client.getBookingTreeDynamic({
       treeId: 'DATE'
     })
+
     yield put(ac.getBookingTreeSuccess(response.data))
+    yield put(ac.offLoading())
   } catch (error) {
     console.log('error getBookingTree :>> ', error)
   }
