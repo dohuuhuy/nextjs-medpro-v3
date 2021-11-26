@@ -16,7 +16,7 @@ export const HuongDanCustom = ({ data }: any) => {
             {data?.map((v: Item) => {
               return (
                 <Timeline.Item key={uniqueId()}>
-                  <p className={styles.stepName}> {v.stepName}</p>
+                  <h2 className={styles.stepName}> {v.stepName}</h2>
                   <p className={styles.name}> {v.name}</p>
                   <div
                     className={styles.content}

@@ -4,20 +4,27 @@ import DefaultLayout from '@templates/Default'
 import { urlContent } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 const Site = ({ data }: any) => {
-  if (!data) return null
+  const router = useRouter()
 
+  useEffect(() => {
+    if (router.asPath.includes('phong-mach')) {
+      window.open('https://medpro.vn/clinic', '_blank')
+    }
+  }, [router.asPath])
+
+  if (!data) return null
   return (
-    <>
+    <DefaultLayout>
       <SEOHead meta={meta} />
       <HandlerGetContentPage dataContent={data} />
-    </>
+    </DefaultLayout>
   )
 }
 
-Site.Layout = DefaultLayout
 export default Site
 
 export const getServerSideProps = async () => {

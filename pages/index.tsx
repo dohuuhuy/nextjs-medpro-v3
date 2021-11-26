@@ -15,7 +15,7 @@ const HomePage = ({ data }: any) => {
   if (total.loading) return <Loading />
 
   return (
-    <>
+    <HomeLayout>
       {/* banner lấy từ client */}
       <BannerHome
         getBanner={banner(total?.partnerId)}
@@ -24,11 +24,9 @@ const HomePage = ({ data }: any) => {
       />
       {/* tin tức lấy từ server */}
       <NewsEventCustom dataNewsAndEvent={data.newsAndEvent} />
-    </>
+    </HomeLayout>
   )
 }
-
-HomePage.Layout = HomeLayout
 
 export default HomePage
 

@@ -1,7 +1,7 @@
 import { isEmpty, isNull, isUndefined } from 'lodash'
 import moment from 'moment'
 import React from 'react'
-import { CustomLine } from '../components/CustomLine'
+import { CustomLine } from '../common/CustomLine'
 
 export const listItemBooking = (info: any) => {
   if (!info) return []
@@ -63,6 +63,12 @@ export const listItemBooking = (info: any) => {
     },
     {
       color: '',
+      disable: check(info?.service?.priceText),
+      title: 'Phí khám:',
+      value: info?.service?.priceText
+    },
+    {
+      color: '',
       disable: false,
       dash: <CustomLine />,
       title: '',
@@ -76,7 +82,7 @@ export const listItemBooking = (info: any) => {
     },
     {
       color: '',
-      disable: check(info?.patient?.sex),
+      disable: check(info?.patient),
       title: 'Giới tính:',
       value: info?.patient?.sex ? 'Nam' : 'Nữ'
     },
@@ -88,9 +94,9 @@ export const listItemBooking = (info: any) => {
     },
     {
       color: '',
-      disable: check(info?.service?.priceText),
-      title: 'Phí khám:',
-      value: info?.service?.priceText
+      disable: check(info?.patient?.city.name),
+      title: 'Tỉnh/thành:',
+      value: info?.patient?.city.name
     },
     {
       color: '',

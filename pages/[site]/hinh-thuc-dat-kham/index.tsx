@@ -43,7 +43,7 @@ const HinhThucDatKham = (props: any) => {
   if (total.loading) return <Loading component />
 
   return (
-    <>
+    <DefaultLayout>
       <SEOHead meta={handerMeta(getInfo, router)} />
 
       <BreadcumbCustom
@@ -53,11 +53,10 @@ const HinhThucDatKham = (props: any) => {
       />
 
       <BookingType getInfo={getInfo} />
-    </>
+    </DefaultLayout>
   )
 }
 
-HinhThucDatKham.Layout = DefaultLayout
 export default HinhThucDatKham
 
 export const getServerSideProps = async () => {

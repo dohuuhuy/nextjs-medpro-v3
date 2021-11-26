@@ -1,19 +1,22 @@
 import { Icon } from '@componentsTest/Icon'
-import { Badge, Card, Col, Dropdown, Menu, Row } from 'antd'
+import { Badge, Col, Dropdown, Row } from 'antd'
 import cx from 'classnames'
 import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import Container from './../Container'
+import { Infomation } from './infomation'
+import { ListNoti } from './listNoti'
 import styles from './styles.module.less'
+import { CgUserlane } from 'react-icons/cg'
 
 export default function HeaderCustom({
   dataHeader,
   loginMedproId,
+  loginAt,
   author,
   noti
 }: any) {
@@ -21,14 +24,11 @@ export default function HeaderCustom({
   const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
-  const noRep = filter(noti, { isRead: false })
-
   if (!dataHeader) {
     return null
   }
 
   const { logo, menu } = dataHeader
-
   const glogo = logo?.desktop
 
   const onSearch = () => {
@@ -44,44 +44,11 @@ export default function HeaderCustom({
   }
 
   const handleLogOut = () => {
+    dispatch(loginAt(router.asPath))
     router.push('/dang-xuat')
   }
 
-  const menus = (
-    <Card
-      title={
-        <h3 className={styles.cardTitle}>
-          <FaBell />
-          <span>Danh sách thông báo</span>
-        </h3>
-      }
-      bordered={false}
-      style={{ width: 500 }}
-    >
-      <Menu className={styles.listNoti}>
-        {noti?.slice(0, 5)?.map((v: any) => {
-          return (
-            <Menu.Item
-              key={v.id}
-              icon={
-                v.isRead ? (
-                  <FaEnvelopeOpen size='18' color='gray' />
-                ) : (
-                  <FaEnvelope size='18' color='orangered' />
-                )
-              }
-            >
-              <Link
-                href={`/chi-tiet-phieu-kham?transactionId=${v.eventData.transactionId}`}
-              >
-                <a>{v.title}</a>
-              </Link>
-            </Menu.Item>
-          )
-        })}
-      </Menu>
-    </Card>
-  )
+  const noRep = filter(noti, { isRead: false })
 
   return (
     <header>
@@ -117,7 +84,7 @@ export default function HeaderCustom({
                 </li>
                 {author.token && (
                   <li>
-                    <Dropdown overlay={menus}>
+                    <Dropdown overlay={<ListNoti list={noti} />}>
                       <Badge count={noRep.length}>
                         <button
                           className={cx(
@@ -144,17 +111,14 @@ export default function HeaderCustom({
                 )}
                 {author.token && (
                   <li>
-                    <button className={cx(styles.btn, styles.btnLogin)}>
-                      {author?.fullName}
-                    </button>
-                  </li>
-                )}
-
-                {author.token && (
-                  <li>
-                    <button className={cx(styles.btn)} onClick={handleLogOut}>
-                      Đăng xuất
-                    </button>
+                    <Dropdown
+                      overlay={<Infomation handleLogOut={handleLogOut} />}
+                    >
+                      <button className={cx(styles.btn, styles.btnLogin)}>
+                        <CgUserlane />
+                        <span>{author?.fullName}</span>
+                      </button>
+                    </Dropdown>
                   </li>
                 )}
               </ul>

@@ -26,16 +26,15 @@ const DetailBookingPage = () => {
     return <Loading component text='Đang cập nhật thông tin phiếu khám ...' />
 
   return (
-    <>
+    <DefaultLayout>
       <BreadcumbCustom
         type='bills'
         appId={total.appId}
         partner={user.billInfo?.bookingInfo?.partner}
       />
       <BookingBill bill={user.billInfo} />
-    </>
+    </DefaultLayout>
   )
 }
 
-DetailBookingPage.Layout = DefaultLayout
 export default DetailBookingPage

@@ -37,7 +37,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   if (total.loading) return <Loading component />
 
   return (
-    <>
+    <DefaultLayout>
       <SEOHead meta={handleMeta(total.partnerId)} />
       <BreadcumbCustom
         type='booking'
@@ -45,11 +45,10 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listMenu={listMenu}
       />
       <BookingTree bookingTree={hos.bookingTree} />
-    </>
+    </DefaultLayout>
   )
 }
 
-ThongTinDatKhamPage.Layout = DefaultLayout
 export default ThongTinDatKhamPage
 
 export const getServerSideProps = async () => {

@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { CloseOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
-import { Button, Col, Row } from 'antd'
+import { Button, Col, Row, Spin } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
-import { CardDownload } from './components/CardDownload'
-import { CustomLine } from './components/CustomLine'
-import { ModalCancel } from './components/ModalCancel'
-import { statusBill, typeCode } from './components/common'
+import { CardDownload } from './common/CardDownload'
+import { CustomLine } from './common/CustomLine'
+import { ModalCancel } from './common/ModalCancel'
+import { statusBill, typeCode } from './common/common'
 import styles from './styles.module.less'
 import { check, listItemBooking } from './utils/func'
 
@@ -86,6 +86,7 @@ export const BookingBill = ({ bill }: any) => {
                   {!check(awaitMessage) ? (
                     <div className={styles.awaitMessage}>
                       <p>{awaitMessage}</p>
+                      <Spin size='large' />
                     </div>
                   ) : (
                     <div className={styles.number}>
@@ -167,13 +168,18 @@ export const BookingBill = ({ bill }: any) => {
               </div>
               <CustomLine bottom />
             </section>
-            <div className={styles.cancelBill}>
-              <Button className={styles.btnCancel} onClick={handleModal}>
-                <CloseOutlined />
-                Hủy phiếu
-              </Button>
-              <ModalCancel showModal={showModal} setShowModal={setShowModal} />
-            </div>
+            {status === 1 && (
+              <div className={styles.cancelBill}>
+                <Button className={styles.btnCancel} onClick={handleModal}>
+                  <CloseOutlined />
+                  Hủy phiếu
+                </Button>
+                <ModalCancel
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                />
+              </div>
+            )}
           </div>
         </Col>
       </Row>

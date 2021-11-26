@@ -20,17 +20,14 @@ const HeaderPublic = () => {
     const audio = new Audio(
       'https://resource-testing.medpro.com.vn/static/upload/noti.mp3'
     )
-
-    noRep.length > 0 &&
-      setInterval(() => {
-        audio.play()
-      }, 6000000)
-  }, [noRep.length])
+    audio.play()
+  }, [noRep.length > 1])
 
   if (!hos.information.header) return null
   return (
     <>
       <HeaderCustom
+        loginAt={a.loginAt}
         loginMedproId={a.loginMedproId}
         dataHeader={hos.information.header}
         author={user.userInfo}

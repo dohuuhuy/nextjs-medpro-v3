@@ -31,15 +31,14 @@ const DetailsPostPage = ({ data }: any) => {
   }
 
   return (
-    <>
+    <DefaultLayout>
       <SEOPost posts={data.detailNews[0]} />
       <BreadcumbCustom post={post} type='news' />
       <DetailNewsCustom {...data} />
-    </>
+    </DefaultLayout>
   )
 }
 
-DetailsPostPage.Layout = DefaultLayout
 export default DetailsPostPage
 
 export const getServerSideProps = async (ctx: any) => {

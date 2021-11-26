@@ -4,8 +4,11 @@ import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const PaymentMethodsPage = () => {
-  return <PaymentMethods />
+  return (
+    <DefaultLayout>
+      <PaymentMethods />
+    </DefaultLayout>
+  )
 }
 
-PaymentMethodsPage.Layout = DefaultLayout
 export default PaymentMethodsPage

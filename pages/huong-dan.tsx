@@ -10,9 +10,11 @@ const HuongDan = () => {
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
   const { data, error } = useSWR(url, fetcherGuide)
 
-  return error ? null : <HuongDanCustom data={data} />
+  return (
+    <DefaultLayout>
+      <HuongDanCustom data={data} />
+    </DefaultLayout>
+  )
 }
-
-HuongDan.Layout = DefaultLayout
 
 export default HuongDan

@@ -91,20 +91,6 @@ function* watcher_loginMedproId() {
   yield takeLatest(UserTypes.Login.Login_medproID, loginMedproId)
 }
 
-function* userLogout() {
-  try {
-    const { pathname } = window.location
-
-    yield put(ac.loginAt(pathname))
-  } catch (error) {
-    console.log(' error userLogout :>> ', error)
-  }
-}
-
-function* watcher_userLogout() {
-  yield takeLatest(UserTypes.User.USER_RESET, userLogout)
-}
-
 function* getBillInfo({ transactionId }: any) {
   try {
     const total: TotalDataState = yield select((state: AppState) => state.total)
@@ -140,7 +126,6 @@ const userSagas = function* root() {
     fork(watcher_getBookingByUser),
     fork(watcher_getNoti),
     fork(watcher_loginMedproId),
-    fork(watcher_userLogout),
     fork(watcher_getBillInfo)
   ])
 }

@@ -27,7 +27,11 @@ const TinTucPage = ({ data }: any) => {
   if (loading) return <Loading component />
 
   if (!data) return null
-  return <NewsPageCustom {...data} />
+  return (
+    <DefaultLayout>
+      <NewsPageCustom {...data} />
+    </DefaultLayout>
+  )
 }
 
 export const getServerSideProps = async (ctx: any) => {
@@ -36,5 +40,4 @@ export const getServerSideProps = async (ctx: any) => {
   return { props: { data } }
 }
 
-TinTucPage.Layout = DefaultLayout
 export default TinTucPage
