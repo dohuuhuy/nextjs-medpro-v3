@@ -1,6 +1,6 @@
 import * as ac from '@actionStore/rootAction'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
-import BookingTree from '@componentsTest/BookingTree'
+import BookingTree from '@components/organisms/BookingTree'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import Loading from '@componentsTest/Loading'
 import DefaultLayout from '@templates/Default'

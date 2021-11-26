@@ -1,11 +1,11 @@
+import { CardFee } from '@componentsTest/CardFee'
+import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
-import { CardFee } from '../CardFee'
-import Container from '../Container'
+import { Stepper } from './common/stepper'
+import { colLeft, colRight, handlerStep, Steps } from './common/utils'
 import styles from './less/styles.module.less'
-import { Stepper } from './stepper'
-import { colLeft, colRight, handlerStep, Steps } from './utils'
 
 export interface BookingTreeIF {
   bookingTree: any

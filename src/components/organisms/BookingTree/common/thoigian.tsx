@@ -1,10 +1,10 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { Icon } from '@componentsTest/Icon'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { range } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
-import { Icon } from '../../Icon'
 import styles from './../less/thoigian.module.less'
 
 export const ThoiGian = (_props: any) => {

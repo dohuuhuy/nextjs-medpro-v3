@@ -1,6 +1,6 @@
+import Container from '@componentsTest/Container'
 import { Col, Row } from 'antd'
 import React from 'react'
-import Container from '../Container'
 import styles from './less/stepper.module.less'
 import { checkActive, steps } from './utils'
 

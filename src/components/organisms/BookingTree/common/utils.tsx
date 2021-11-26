@@ -1,10 +1,10 @@
-import { find, findIndex, indexOf, slice } from 'lodash'
+import { Icon } from '@componentsTest/Icon'
+import { find, findIndex, indexOf } from 'lodash'
 import React from 'react'
-import { Icon } from '../Icon'
-import { BacSi } from './compo/bacsi'
-import { ChuyenKhoa } from './compo/chuyenkhoa'
-import { DichVu } from './compo/dichvu'
-import { ThoiGian } from './compo/thoigian'
+import { BacSi } from './bacsi'
+import { ChuyenKhoa } from './chuyenkhoa'
+import { DichVu } from './dichvu'
+import { ThoiGian } from './thoigian'
 
 export const steps = [
   {

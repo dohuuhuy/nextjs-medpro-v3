@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Icon } from '../../Icon'
-import { checkActive, selected } from '../utils'
+import { checkActive, selected } from './utils'
 import styles from './../less/chuyenkhoa.module.less'
 import cx from 'classnames'
+import { Icon } from '@componentsTest/Icon'
 
 export const ChuyenKhoa = (props: any) => {
   // console.log('props ChuyenKhoa :>> ', props)

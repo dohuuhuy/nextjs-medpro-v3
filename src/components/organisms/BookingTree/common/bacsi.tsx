@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Icon } from '../../Icon'
-import { checkActive, selected } from '../utils'
+import { checkActive, selected } from './utils'
 import styles from './../less/bacsi.module.less'
+import { Icon } from '@componentsTest/Icon'
 
 export const BacSi = (props: any) => {
   // console.log('props BacSi :>> ', props)
