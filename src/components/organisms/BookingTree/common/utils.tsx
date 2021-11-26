@@ -184,6 +184,14 @@ export const selected = (item: any, props: any) => () => {
 
     if (item.subType === null) {
       state.stepper.at(-1).open = false
+
+      const object = state.stepper.reduce(
+        (obj: any, item: { key: any; selected: any }) =>
+          Object.assign(obj, { [item.key]: item.selected }),
+        {}
+      )
+
+      console.log(object)
     }
     setstate((v: any) => ({
       ...v

@@ -28,13 +28,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   if (!bookingTree) return null
   console.log('state :>> ', state)
 
-  var object = state.stepper.reduce(
-    (obj: any, item: { key: any; selected: any }) =>
-      Object.assign(obj, { [item.key]: item.selected }),
-    {}
-  )
-
-  console.log(object)
   return (
     <section>
       <Stepper data={state} />
@@ -50,6 +43,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
+                      collapsible={v.open ? 'disabled' : 'header'}
                     >
                       <Collapse.Panel
                         style={{ width: '100%' }}
@@ -75,7 +69,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           </div>
                         }
                         key={i}
-                        disabled={v.open}
                       >
                         {v?.content({
                           keys: v.key,

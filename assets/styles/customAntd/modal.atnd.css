@@ -21,3 +21,7 @@
 /* .slick-track {
   width: 200px !important;
 } */
+
+.ant-collapse-header-text {
+  width: 100%;
+}

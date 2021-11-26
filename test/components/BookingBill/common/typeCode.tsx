@@ -1,7 +1,7 @@
 import { default as React } from 'react'
 /* eslint-disable @next/next/no-img-element */
 import Barcode from 'react-barcode'
-import styles from './../../styles.module.less'
+import styles from './../styles.module.less'
 import cx from 'classnames'
 
 const QRCode = require('qrcode.react')
@@ -17,8 +17,8 @@ export const typeCode = (e: any) => {
           value={e.value}
           format='CODE128'
           height={50}
-          width={1}
           fontSize={14}
+          width={1}
         />
       )
       break

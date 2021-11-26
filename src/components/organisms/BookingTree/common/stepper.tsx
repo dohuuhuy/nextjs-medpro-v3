@@ -1,7 +1,7 @@
 import Container from '@componentsTest/Container'
 import { Col, Row } from 'antd'
 import React from 'react'
-import styles from './less/stepper.module.less'
+import styles from './../less/stepper.module.less'
 import { checkActive, steps } from './utils'
 
 export const Stepper = ({ data }: any) => {

@@ -14,6 +14,6 @@ export const check = (element: any) => {
     isUndefined(element) ||
     element.length < 1
   ) {
-    return true
-  } else return false
+    return false
+  } else return true
 }

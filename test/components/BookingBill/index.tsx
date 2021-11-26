@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { CardDownload } from './common/CardDownload'
 import { CustomLine } from './common/CustomLine'
 import { ModalCancel } from './common/ModalCancel'
-import { statusBill, typeCode } from './common/common'
+import { statusBill, typeCode } from './common/typeCode'
 import styles from './styles.module.less'
 import { check, listItemBooking } from './utils/func'
 
@@ -83,7 +83,7 @@ export const BookingBill = ({ bill }: any) => {
               {/* Sô thứ tự, thời gian dự kiến hoặc đợi */}
               {status !== 0 && (
                 <div className={styles.numberBill}>
-                  {!check(awaitMessage) ? (
+                  {check(awaitMessage) ? (
                     <div className={styles.awaitMessage}>
                       <p>{awaitMessage}</p>
                       <Spin size='large' />
@@ -97,8 +97,8 @@ export const BookingBill = ({ bill }: any) => {
                         )}
                       >
                         {check(sequenceNumber)
-                          ? 'Số thứ tự tiếp nhận'
-                          : 'Giờ tiếp nhận dự kiến'}
+                          ? 'Giờ tiếp nhận dự kiến'
+                          : 'Số thứ tự tiếp nhận'}
                       </p>
                       <p
                         className={cx(
@@ -117,7 +117,7 @@ export const BookingBill = ({ bill }: any) => {
                 {listItemBooking(info).map(
                   ({ title, value, dash, disable, color }: any) => {
                     return (
-                      !disable && (
+                      disable && (
                         <li key={uniqueId()}>
                           {dash ? (
                             dash

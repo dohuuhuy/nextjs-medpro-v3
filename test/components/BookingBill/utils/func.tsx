@@ -69,7 +69,7 @@ export const listItemBooking = (info: any) => {
     },
     {
       color: '',
-      disable: false,
+      disable: true,
       dash: <CustomLine />,
       title: '',
       value: ''
@@ -100,8 +100,11 @@ export const listItemBooking = (info: any) => {
     },
     {
       color: '',
-      disable:
-        info?.displayCodeBooking.type === 'barcode' || check(info?.bookingCode),
+      disable: check(info?.bookingCode)
+        ? info?.displayCodeBooking.type === 'barcode'
+          ? false
+          : true
+        : false,
       title: 'Mã phiếu:',
       value: info?.bookingCode
     }
@@ -122,6 +125,6 @@ export const check = (element: any) => {
     isUndefined(element) ||
     element.length < 1
   ) {
-    return true
-  } else return false
+    return false
+  } else return true
 }

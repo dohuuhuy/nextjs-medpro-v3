@@ -1,4 +1,5 @@
 import { Card, Menu } from 'antd'
+import { uniqueId } from 'lodash'
 import Link from 'next/link'
 import React from 'react'
 import { FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
@@ -20,7 +21,7 @@ export const ListNoti = ({ list }: any) => {
         {list?.slice(0, 5)?.map((v: any) => {
           return (
             <Menu.Item
-              key={v.id}
+              key={uniqueId()}
               icon={
                 v.isRead ? (
                   <FaEnvelopeOpen size='18' color='gray' />

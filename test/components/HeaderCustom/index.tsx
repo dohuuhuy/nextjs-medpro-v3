@@ -53,10 +53,7 @@ export default function HeaderCustom({
   return (
     <header>
       <Container fluid={true} fixed={true} className={styles.header}>
-        <Container
-          className={styles.containerHeader}
-          style={{ maxWidth: '1280px' }}
-        >
+        <Container className={styles.containerHeader}>
           <Row className={styles.rowHeader}>
             <Col xl={6} lg={6} className={styles.colLogo}>
               <figure className={styles.logo}>
