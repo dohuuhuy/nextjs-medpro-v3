@@ -149,7 +149,15 @@ export const handlerStep = ({ bookingTree }: any) => {
 }
 
 export const selected = (item: any, props: any) => () => {
-  const { state, setstate, keys } = props
+  const {
+    state,
+    setstate,
+    keys,
+    saveInfoStep,
+    dispatch,
+    saveSchedule,
+    getBookingTreeCurrent
+  } = props
 
   const findStep = find(state.stepper, { key: keys })
   const index = findIndex(state.stepper, { key: keys })
@@ -170,6 +178,13 @@ export const selected = (item: any, props: any) => () => {
       state.stepper[indexSub].open = false
     }
 
+    const object = state.stepper.reduce(
+      (obj: any, item: { key: any; selected: any }) =>
+        Object.assign(obj, { [item.key]: item.selected }),
+      {}
+    )
+    dispatch(saveSchedule(object))
+
     setstate((v: any) => ({
       ...v,
       stepper: state.stepper
@@ -182,16 +197,16 @@ export const selected = (item: any, props: any) => () => {
       state.stepper[indexSub].open = false
     }
 
+    const object = state.stepper.reduce(
+      (obj: any, item: { key: any; selected: any }) =>
+        Object.assign(obj, { [item.key]: item.selected }),
+      {}
+    )
+    dispatch(saveSchedule(object))
+
     if (item.subType === null) {
       state.stepper.at(-1).open = false
-
-      const object = state.stepper.reduce(
-        (obj: any, item: { key: any; selected: any }) =>
-          Object.assign(obj, { [item.key]: item.selected }),
-        {}
-      )
-
-      console.log(object)
+      dispatch(getBookingTreeCurrent())
     }
     setstate((v: any) => ({
       ...v

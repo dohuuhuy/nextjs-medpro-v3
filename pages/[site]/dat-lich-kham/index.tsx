@@ -21,6 +21,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
+    dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
   }, [])
 

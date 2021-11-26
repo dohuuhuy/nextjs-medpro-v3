@@ -1,5 +1,26 @@
 import { HospitalActions, HosptailTypes } from '@store/interface'
 
+export const setParnerIdHospital = (partnerId: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Information.SET_PARTNERID_HOSPITAL,
+    partnerId
+  }
+}
+
+export const saveInfoStep = (steps: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Stepper.SAVE_INFO_STEP,
+    steps
+  }
+}
+
+export const saveSchedule = (schedule: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Stepper.SAVE_SCHEDULE,
+    schedule
+  }
+}
+
 // lấy json thông tin bệnh viện
 export const getHospitalDetails = (host: any): HospitalActions => {
   return {
@@ -71,6 +92,19 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
   return {
     type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS,
     bookingTree: data
+  }
+}
+
+export const getBookingTreeCurrent = (): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST
+  }
+}
+
+export const getBookingTreeCurrentSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS,
+    bookingTreeCurrent: data
   }
 }
 

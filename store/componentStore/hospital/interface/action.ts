@@ -10,6 +10,18 @@ export type HospitalActions =
   | FeatureAction
   | ListHospitalAction
   | BookingTreeAction
+  | StepAction
+
+export type StepAction = SaveStep | Schedule
+
+export interface SaveStep {
+  type: HosptailTypes.Stepper.SAVE_INFO_STEP
+  steps: any
+}
+export interface Schedule {
+  type: HosptailTypes.Stepper.SAVE_SCHEDULE
+  schedule: any
+}
 
 // -----------------------------thông tin bệnh viện---------------------------------------------
 
@@ -17,6 +29,12 @@ export type InfomationAction =
   | InformationRequest
   | InformationRequestSuccess
   | HospitalClearDetails
+  | SetParnerIdHospital
+
+export interface SetParnerIdHospital {
+  type: HosptailTypes.Information.SET_PARTNERID_HOSPITAL
+  partnerId: any
+}
 
 export interface InformationRequest {
   type: HosptailTypes.Information.INFORMATION_REQUEST
@@ -72,7 +90,11 @@ export interface ListHospitalRequestSuccess {
 
 // -----------------------------luồng đặt khám---------------------------------------------
 
-export type BookingTreeAction = BookingTreeRequest | BookingTreeRequestSuccess
+export type BookingTreeAction =
+  | BookingTreeRequest
+  | BookingTreeRequestSuccess
+  | BookingTreeCurrentRequest
+  | BookingTreeCurrentRequestSuccess
 
 export interface BookingTreeRequest {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
@@ -83,8 +105,15 @@ export interface BookingTreeRequestSuccess {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS
   bookingTree: any[]
 }
-// --------------------------------------------------------------------------
 
+export interface BookingTreeCurrentRequest {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST
+}
+
+export interface BookingTreeCurrentRequestSuccess {
+  type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS
+  bookingTreeCurrent: any[]
+}
 // -----------------------------Lấy thông tin header---------------------------------------------
 
 export type HeaderAction = HeaderRequest | HeaderRequestSuccess

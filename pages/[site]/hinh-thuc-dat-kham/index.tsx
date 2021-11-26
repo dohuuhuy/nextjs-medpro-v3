@@ -26,6 +26,7 @@ const HinhThucDatKham = (props: any) => {
 
   useEffect(() => {
     dispatch(ac.onLoading())
+    dispatch(ac.setParnerIdHospital(site))
 
     setTimeout(() => {
       dispatch(ac.offLoading())

@@ -1,12 +1,16 @@
-import { HospitalActions, HospitalState, HosptailTypes } from 'store/interface'
 import { HYDRATE } from 'next-redux-wrapper'
+import { HospitalActions, HospitalState, HosptailTypes } from 'store/interface'
 
 const init: HospitalState = {
+  partnerId: '',
   listHospital: [],
   bookingTree: [],
+  bookingTreeCurrent: [],
   listFeatureByApp: [],
   listFeatureByPartner: [],
-  information: {}
+  information: {},
+  schedule: {},
+  steps: []
 }
 
 export default function hospital(
@@ -14,10 +18,32 @@ export default function hospital(
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ) {
   switch (action.type) {
+    case HosptailTypes.Information.SET_PARTNERID_HOSPITAL:
+      return {
+        ...state,
+        partnerId: action.partnerId
+      }
+    case HosptailTypes.Stepper.SAVE_SCHEDULE:
+      return {
+        ...state,
+        schedule: { ...action.schedule }
+      }
+    case HosptailTypes.Stepper.SAVE_INFO_STEP:
+      return {
+        ...state,
+        steps: action.steps
+      }
+
     case HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS:
       return {
         ...state,
         bookingTree: action.bookingTree
+      }
+
+    case HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS:
+      return {
+        ...state,
+        bookingTreeCurrent: action.bookingTreeCurrent
       }
 
     case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:

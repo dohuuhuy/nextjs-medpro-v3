@@ -1,3 +1,4 @@
+import { HospitalState } from './interface/initialState'
 import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
 import { AppState, HosptailTypes } from 'store/interface'
@@ -133,6 +134,35 @@ function* watcher_getBanners() {
   yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
 }
 
+function* getBookingTreeCurrentNode({}: any) {
+  try {
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+
+    const schedule = hos.schedule
+
+    console.log('schedule :>> ', schedule)
+
+    const response: AxiosResponse = yield client.getBookingTreeCurrentNode({
+      treeId: 'DATE',
+      serviceId: schedule?.serive?.id,
+      doctorId: schedule?.doctor?.id,
+      subjectId: schedule?.subject?.id,
+      date: ''
+    })
+
+    console.log('response :>> ', response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* watcher_getBookingTreeCurrentNode() {
+  yield takeLatest(
+    HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST,
+    getBookingTreeCurrentNode
+  )
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(watcher_getHospitalDetails),
@@ -141,7 +171,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getBookingTree),
     fork(watcher_getHeader),
     fork(watcher_getBanners),
-    fork(watcher_getFooter)
+    fork(watcher_getFooter),
+    fork(watcher_getBookingTreeCurrentNode)
   ])
 }
 export default hospitalSagas

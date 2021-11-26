@@ -6,6 +6,9 @@ import React, { useEffect, useState } from 'react'
 import { Stepper } from './common/stepper'
 import { colLeft, colRight, handlerStep, Steps } from './common/utils'
 import styles from './less/styles.module.less'
+import * as ac from '@actionStore/rootAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppState } from '@store/interface'
 
 export interface BookingTreeIF {
   bookingTree: any
@@ -16,9 +19,10 @@ export interface State {
 }
 
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
+  const dispatch = useDispatch()
+
   const [state, setstate] = useState<any>({
-    stepper: handlerStep({ bookingTree }),
-    name: ''
+    stepper: handlerStep({ bookingTree })
   })
 
   useEffect(() => {
@@ -26,7 +30,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   }, [bookingTree])
 
   if (!bookingTree) return null
-  console.log('state :>> ', state)
 
   return (
     <section>
@@ -52,7 +55,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           <div className={styles.header}>
                             <h3>{v.title}</h3>
                             <div className={cx(styles.input)}>
-                              {v.icon({
+                              {v?.icon({
                                 item: v.selected,
                                 props: {
                                   keys: v.key,
@@ -74,7 +77,11 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           keys: v.key,
                           state,
                           setstate,
-                          data: v.data
+                          data: v.data,
+                          saveInfoStep: ac.saveInfoStep,
+                          saveSchedule: ac.saveSchedule,
+                          getBookingTreeCurrent: ac.getBookingTreeCurrent,
+                          dispatch
                         })}
                       </Collapse.Panel>
                     </Collapse>
