@@ -14,7 +14,7 @@ export const Infomation = ({ handleLogOut }: any) => {
         </h3>
       }
       bordered={false}
-      style={{ width: 300 }}
+      style={{ maxWidth: 300 }}
     >
       <Menu className={styles.listInfo}>
         <Menu.Item>helo chị hà</Menu.Item>

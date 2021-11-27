@@ -12,9 +12,11 @@ const { Option } = Select
 
 export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
+
   const [listHospitals, setlistHospitals] = useState<ListHospital[]>(
     props?.listHospital
   )
+
   const [nameCiti, setnameCiti] = useState('Chọn Tỉnh/thành')
   const [activeList, setactiveList] = useState(false)
   const [keySearch, setkeySearch] = useState('')

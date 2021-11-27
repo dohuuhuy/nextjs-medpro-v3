@@ -61,7 +61,7 @@ export default function FooterCustom({ dataFooter }: any) {
                 })}
               </ul>
             </Col>
-            <Col xl={7} sm={24} className={styles.colDown}>
+            <Col xl={7} lg={12} md={12} sm={24} className={styles.colDown}>
               <p className={styles.title}>SCAN ĐỂ TẢI APP</p>
 
               <Space size={15}>
@@ -86,7 +86,7 @@ export default function FooterCustom({ dataFooter }: any) {
                 </ul>
               </Space>
             </Col>
-            <Col xl={7} sm={24} className={styles.colCertifi}>
+            <Col xl={7} lg={12} md={12} sm={24} className={styles.colCertifi}>
               <ul className={styles.listCer}>
                 {certificate.list?.map((v: any) => {
                   const under = v.setting.underline ? styles.underline : ''

@@ -153,7 +153,7 @@ export const selected = (item: any, props: any) => () => {
     state,
     setstate,
     keys,
-    saveInfoStep,
+    // saveInfoStep,
     dispatch,
     saveSchedule,
     getBookingTreeCurrent

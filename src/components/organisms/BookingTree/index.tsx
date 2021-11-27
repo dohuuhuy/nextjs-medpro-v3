@@ -1,14 +1,13 @@
+import * as ac from '@actionStore/rootAction'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Stepper } from './common/stepper'
 import { colLeft, colRight, handlerStep, Steps } from './common/utils'
 import styles from './less/styles.module.less'
-import * as ac from '@actionStore/rootAction'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppState } from '@store/interface'
 
 export interface BookingTreeIF {
   bookingTree: any

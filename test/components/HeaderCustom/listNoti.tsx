@@ -15,7 +15,7 @@ export const ListNoti = ({ list }: any) => {
         </h3>
       }
       bordered={false}
-      style={{ width: 500 }}
+      style={{ maxWidth: 500 }}
     >
       <Menu className={styles.listNoti}>
         {list?.slice(0, 5)?.map((v: any) => {

@@ -12,9 +12,10 @@ const ChonBenhVienPage = ({ data }: any) => {
 
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
+  console.log('listCity :>> ', listCity)
   useEffect(() => {
-    check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
-  }, [dispatch, listCity])
+    !check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
+  }, [])
 
   return (
     <DefaultLayout>

@@ -1,22 +1,20 @@
-import Container from '@componentsTest/Container'
+import XYZ from '@components/atoms/DemoDetail'
 import DefaultLayout from '@templates/Default'
-import { fetcher } from '@utils/func'
 import React from 'react'
-import useSWR from 'swr'
 
-const Demo = () => {
-  const url =
-    'https://resource-testing.medpro.com.vn/static/upload/hospitals/medpro/content.json#'
-  const { data, error } = useSWR(url, fetcher)
+const Demo = (props: any) => {
+  const [bantay, setbantay] = React.useState(4)
 
-  console.log('error :>> ', error)
+  const medthods = {
+    bantay,
+    setbantay
+  }
 
-  console.log('data :>> ', data)
   return (
     <DefaultLayout>
-      <Container>
-        <p>hello cungw </p>
-      </Container>
+      <p>cha {bantay}</p>
+      <XYZ {...medthods} />
+      <h1> truyền cháu</h1>
     </DefaultLayout>
   )
 }

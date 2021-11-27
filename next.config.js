@@ -47,6 +47,7 @@ const nextConfig = {
   ...lessConfig,
 
   exclude: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
+
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 

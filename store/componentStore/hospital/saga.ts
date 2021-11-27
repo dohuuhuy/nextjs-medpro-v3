@@ -1,7 +1,6 @@
-import { HospitalState } from './interface/initialState'
 import * as ac from '@actionStore/rootAction'
 import { client } from '@config/medproSDK'
-import { AppState, HosptailTypes } from 'store/interface'
+import { AppState, HospitalState, HosptailTypes } from 'store/interface'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 import { fetcher } from '@utils/func'
@@ -135,20 +134,25 @@ function* watcher_getBanners() {
 }
 
 function* getBookingTreeCurrentNode({}: any) {
+  const hos: HospitalState = yield select((state: AppState) => state.hospital)
+
+  const schedule = hos.schedule
+
+  console.log('schedule :>> ', schedule)
+
   try {
-    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+    console.log('schedule?.serive?.id :>> ', schedule?.serive?.id)
 
-    const schedule = hos.schedule
-
-    console.log('schedule :>> ', schedule)
-
-    const response: AxiosResponse = yield client.getBookingTreeCurrentNode({
-      treeId: 'DATE',
-      serviceId: schedule?.serive?.id,
-      doctorId: schedule?.doctor?.id,
-      subjectId: schedule?.subject?.id,
-      date: ''
-    })
+    const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
+      {
+        treeId: 'DATE',
+        serviceId: schedule?.serive?.id || '',
+        doctorId: schedule?.doctor?.id || '',
+        subjectId: schedule?.subject?.id || '',
+        date: ''
+      },
+      { partnerid: hos.partnerId }
+    )
 
     console.log('response :>> ', response)
   } catch (error) {
