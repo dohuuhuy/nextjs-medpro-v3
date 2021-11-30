@@ -1,5 +1,6 @@
 import { HuongDanCustom } from '@componentsTest/HuongDanCustom'
 import { currentEnv } from '@config/envs/env'
+import BannersPublic from '@src/components/organisms/BannersPublic'
 import { fetcherGuide } from '@utils/func'
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -13,6 +14,7 @@ const HuongDan = () => {
   if (error) return null
   return (
     <>
+      <BannersPublic />
       <HuongDanCustom data={data} />
     </>
   )

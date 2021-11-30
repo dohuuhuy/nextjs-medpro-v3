@@ -1,5 +1,6 @@
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
+import BannersPublic from '@src/components/organisms/BannersPublic'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 import { urlContent } from '@utils/contants'
 import { fetcher } from '@utils/func'
@@ -21,6 +22,7 @@ const Site = ({ data }: any) => {
   return (
     <>
       <SEOHead meta={meta} />
+      <BannersPublic />
       <HandlerGetContentPage dataContent={data} />
     </>
   )
