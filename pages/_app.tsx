@@ -13,7 +13,8 @@ import NextNProgress from 'nextjs-progressbar'
 import { persistStore } from 'redux-persist'
 
 const MyApp = ({ Component, pageProps }: any) => {
-  const store: any = useStore(pageProps.initialReduxState)
+  const store: any = useStore()
+  console.log(`store`, store)
   const persistor: any = persistStore(store, {}, function () {
     persistor.persist()
   })
