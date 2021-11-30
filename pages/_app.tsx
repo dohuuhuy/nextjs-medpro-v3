@@ -10,14 +10,9 @@ import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import SEO from '@components/SEO/next-seo.config'
 import NextNProgress from 'nextjs-progressbar'
-import { persistStore } from 'redux-persist'
 
 const MyApp = ({ Component, pageProps }: any) => {
   const store: any = useStore()
-  console.log(`store`, store)
-  const persistor: any = persistStore(store, {}, function () {
-    persistor.persist()
-  })
 
   const Layout = Component?.Layout ?? Fragment
 
@@ -41,7 +36,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   const isServer =
     typeof window !== 'undefined' ? (
       <Provider store={store}>
-        <PersistGate persistor={persistor} loading={null}>
+        <PersistGate persistor={store.persistor} loading={null}>
           {components}
         </PersistGate>
       </Provider>

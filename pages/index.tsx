@@ -23,7 +23,9 @@ const HomePage = ({ data }: any) => {
         partnerId={total?.partnerId}
       />
       {/* tin tức lấy từ server */}
-      <NewsEventCustom dataNewsAndEvent={data.newsAndEvent} />
+      {data?.newsAndEvent && (
+        <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />
+      )}
     </HomeLayout>
   )
 }
@@ -34,3 +36,19 @@ export const getServerSideProps = async (ctx: any) => {
   const data = await HomeCtl(ctx)
   return { props: { data } }
 }
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) => async () => {
+//     await store.dispatch(getNewsAndEvent())
+
+//     store.dispatch(END)
+
+//     await (store as SagaStore)?.sagaTask?.toPromise()
+
+//     const state = store.getState()
+
+//     console.log('state :>> ', state)
+
+//     return { props: { custom: 'custom' } }
+//   }
+// )
