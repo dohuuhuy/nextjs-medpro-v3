@@ -1,9 +1,10 @@
 import { HuongDanCustom } from '@componentsTest/HuongDanCustom'
 import { currentEnv } from '@config/envs/env'
-import DefaultLayout from '@templates/Default'
 import { fetcherGuide } from '@utils/func'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import useSWR from 'swr'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const HuongDan = () => {
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
@@ -11,10 +12,11 @@ const HuongDan = () => {
 
   if (error) return null
   return (
-    <DefaultLayout>
+    <>
       <HuongDanCustom data={data} />
-    </DefaultLayout>
+    </>
   )
 }
+HuongDan.layout = DefaultLayout
 
 export default HuongDan

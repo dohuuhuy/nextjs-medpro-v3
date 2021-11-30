@@ -1,9 +1,10 @@
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
-import DefaultLayout from '@templates/Default'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 import { urlContent } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
@@ -18,12 +19,14 @@ const Site = ({ data }: any) => {
 
   if (!data) return null
   return (
-    <DefaultLayout>
+    <>
       <SEOHead meta={meta} />
       <HandlerGetContentPage dataContent={data} />
-    </DefaultLayout>
+    </>
   )
 }
+
+Site.layout = DefaultLayout
 
 export default Site
 

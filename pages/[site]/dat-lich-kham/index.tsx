@@ -1,16 +1,17 @@
 import * as ac from '@actionStore'
-import { SEOHead } from '@components/SEO/SEOHead/Index'
 import BookingTree from '@components/organisms/BookingTree'
+import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import Loading from '@componentsTest/Loading'
-import DefaultLayout from '@templates/Default'
+import { AppState } from '@src/store/interface'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import { AppState } from '@src/store/interface'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ThongTinDatKhamPage = ({ data }: any) => {
   const dispatch = useDispatch()
@@ -38,7 +39,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   if (total.loading) return <Loading component />
 
   return (
-    <DefaultLayout>
+    <>
       <SEOHead meta={handleMeta(total.partnerId)} />
       <BreadcumbCustom
         type='booking'
@@ -46,10 +47,11 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listMenu={listMenu}
       />
       <BookingTree bookingTree={hos.bookingTree} />
-    </DefaultLayout>
+    </>
   )
 }
 
+ThongTinDatKhamPage.layout = DefaultLayout
 export default ThongTinDatKhamPage
 
 export const getServerSideProps = async () => {

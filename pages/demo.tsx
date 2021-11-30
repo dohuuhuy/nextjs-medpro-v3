@@ -1,5 +1,7 @@
-import DefaultLayout from '@templates/Default'
+import dynamic from 'next/dynamic'
 import React from 'react'
+
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const Demo = (_props: any) => {
   return (

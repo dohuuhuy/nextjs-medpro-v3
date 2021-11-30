@@ -1,17 +1,18 @@
+import * as ac from '@actionStore'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BookingType } from '@componentsTest/BookingType'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
+import Loading from '@componentsTest/Loading'
 import { AppState } from '@store/interface'
-import DefaultLayout from '@templates/Default'
 import { banner } from '@utils/func'
 import { find } from 'lodash'
 import { NextSeoProps } from 'next-seo'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import * as ac from '@actionStore'
-import Loading from '@componentsTest/Loading'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const HinhThucDatKham = (props: any) => {
   const dispatch = useDispatch()
@@ -44,7 +45,7 @@ const HinhThucDatKham = (props: any) => {
   if (total.loading) return <Loading component />
 
   return (
-    <DefaultLayout>
+    <>
       <SEOHead meta={handerMeta(getInfo, router)} />
 
       <BreadcumbCustom
@@ -54,9 +55,11 @@ const HinhThucDatKham = (props: any) => {
       />
 
       <BookingType getInfo={getInfo} />
-    </DefaultLayout>
+    </>
   )
 }
+
+HinhThucDatKham.layout = DefaultLayout
 
 export default HinhThucDatKham
 

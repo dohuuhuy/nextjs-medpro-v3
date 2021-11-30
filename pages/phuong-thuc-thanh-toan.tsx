@@ -5,10 +5,12 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const PaymentMethodsPage = () => {
   return (
-    <DefaultLayout>
+    <>
       <PaymentMethods />
-    </DefaultLayout>
+    </>
   )
 }
+
+PaymentMethodsPage.layout = DefaultLayout
 
 export default PaymentMethodsPage
