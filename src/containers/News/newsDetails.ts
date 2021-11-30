@@ -1,5 +1,5 @@
 import { currentEnv } from './../../config/envs/env'
-import api from 'store/api'
+import api from '@src/store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {
   const DetailsPost = ctx.query.DetailsPost

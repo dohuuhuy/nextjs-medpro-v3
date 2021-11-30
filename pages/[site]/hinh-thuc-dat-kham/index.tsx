@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
 import Loading from '@componentsTest/Loading'
 
 const HinhThucDatKham = (props: any) => {

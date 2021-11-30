@@ -1,11 +1,11 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
 import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
+import { AppState } from '@src/store/interface'
 import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import { AppState } from 'store/interface'
 
 const ChonBenhVienPage = ({ data }: any) => {
   const dispatch = useDispatch()

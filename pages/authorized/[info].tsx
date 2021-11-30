@@ -1,4 +1,4 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
 import Loading from '@componentsTest/Loading'
 import { client } from '@config/medproSDK'
 import { AppState } from '@store/interface'

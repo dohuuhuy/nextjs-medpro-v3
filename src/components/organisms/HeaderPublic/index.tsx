@@ -1,4 +1,4 @@
-import * as a from '@actionStore/rootAction'
+import * as a from '@actionStore'
 import HeaderCustom from '@componentsTest/HeaderCustom'
 import { AppState } from '@store/interface'
 import { check } from '@utils/checkValue'

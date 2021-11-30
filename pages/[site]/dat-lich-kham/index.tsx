@@ -1,4 +1,4 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import BookingTree from '@components/organisms/BookingTree'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import { AppState } from 'store/interface'
+import { AppState } from '@src/store/interface'
 
 const ThongTinDatKhamPage = ({ data }: any) => {
   const dispatch = useDispatch()

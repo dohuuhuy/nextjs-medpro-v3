@@ -1,4 +1,4 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
