@@ -6,10 +6,10 @@ import React from 'react'
 import useSWR from 'swr'
 
 const HuongDan = () => {
-  React.useEffect(() => {}, [])
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
   const { data, error } = useSWR(url, fetcherGuide)
 
+  if (error) return null
   return (
     <DefaultLayout>
       <HuongDanCustom data={data} />

@@ -70,7 +70,7 @@ export const NewsPageCustom = (props: Props) => {
             responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
-            current={Number(router.query.page)}
+            current={Number(router.query?.page || 1)}
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />

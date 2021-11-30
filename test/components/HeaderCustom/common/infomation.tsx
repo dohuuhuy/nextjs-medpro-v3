@@ -2,7 +2,7 @@ import { Card, Menu } from 'antd'
 import React from 'react'
 import { FaUser } from 'react-icons/fa'
 import { MdOutlineLogout } from 'react-icons/md'
-import styles from './styles.module.less'
+import styles from './../styles.module.less'
 
 export const Infomation = ({ handleLogOut }: any) => {
   return (

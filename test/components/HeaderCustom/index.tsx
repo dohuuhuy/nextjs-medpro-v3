@@ -8,10 +8,10 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import Container from './../Container'
-import { Infomation } from './infomation'
-import { ListNoti } from './listNoti'
+import { Infomation } from './common/infomation'
 import styles from './styles.module.less'
 import { CgUserlane } from 'react-icons/cg'
+import { ListNoti } from './common/listNoti'
 
 export default function HeaderCustom({
   dataHeader,

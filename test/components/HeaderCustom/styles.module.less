@@ -74,7 +74,7 @@
 
   .rowHeader {
     min-height: 110px;
-    padding: 15px;
+    padding: 15px 0;
     justify-content: flex-end;
     .colLogo {
       display: flex;
@@ -160,6 +160,7 @@
 
       .listMenu {
         .listCustom();
+        flex-wrap: wrap;
 
         .active {
           .hoverCus();
@@ -207,6 +208,14 @@
 }
 
 //  responsive
+
+@media only screen and (max-width: 1024px) {
+  .header {
+    .rowHeader {
+      padding: 15px 0;
+    }
+  }
+}
 
 @media only screen and (max-width: 1020px) {
   .header {

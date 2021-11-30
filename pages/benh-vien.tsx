@@ -1,5 +1,5 @@
 import * as ac from '@actionStore/rootAction'
-import { SelectHospitalCustom } from '@componentsTest/SelectHospitalCustom'
+import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
 import DefaultLayout from '@templates/Default'
 import { check } from '@utils/checkValue'
 import React, { useEffect } from 'react'
@@ -12,7 +12,8 @@ const ChonBenhVienPage = ({ data }: any) => {
 
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
-  console.log('listCity :>> ', listCity)
+  //  fetching data from client
+  // component
   useEffect(() => {
     !check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
   }, [])
@@ -28,6 +29,8 @@ const ChonBenhVienPage = ({ data }: any) => {
 }
 
 export default ChonBenhVienPage
+
+// cú pháp fetching data form server of nextjs ,
 
 export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()

@@ -3,7 +3,7 @@ import { uniqueId } from 'lodash'
 import Link from 'next/link'
 import React from 'react'
 import { FaBell, FaEnvelope, FaEnvelopeOpen } from 'react-icons/fa'
-import styles from './styles.module.less'
+import styles from './../styles.module.less'
 
 export const ListNoti = ({ list }: any) => {
   return (

@@ -34,8 +34,8 @@ export const getServerSideProps = async () => {
 }
 
 const meta: NextSeoProps = {
-  noindex: true,
-  nofollow: true,
+  noindex: false,
+  nofollow: false,
   robotsProps: {},
   title: 'Giới thiệu',
   description: 'Giới thiệu medpro',
