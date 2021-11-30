@@ -1,5 +1,4 @@
 import { default as React } from 'react'
-/* eslint-disable @next/next/no-img-element */
 import Barcode from 'react-barcode'
 import styles from './../styles.module.less'
 import cx from 'classnames'

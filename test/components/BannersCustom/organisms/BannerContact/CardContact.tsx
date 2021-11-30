@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion'
 import React from 'react'
 import { ItemBanner, ItemCard } from './bannercontact.interface'

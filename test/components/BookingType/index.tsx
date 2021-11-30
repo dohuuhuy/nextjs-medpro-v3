@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'

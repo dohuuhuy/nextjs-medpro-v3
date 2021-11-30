@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { Icon } from '@componentsTest/Icon'
-import { Rate, Result } from 'antd'
+import { Result } from 'antd'
 import { uniqueId } from 'lodash'
 import React from 'react'
 import styles from './../styles.module.less'

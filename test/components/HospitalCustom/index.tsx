@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Icon } from '@componentsTest/Icon'
 import { Col, Input, Rate, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'

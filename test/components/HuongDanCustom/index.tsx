@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Container from '@componentsTest/Container'
 import { Col, Row, Timeline } from 'antd'
 import { uniqueId } from 'lodash'

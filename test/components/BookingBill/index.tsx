@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { CloseOutlined } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import { Button, Col, Row, Spin } from 'antd'

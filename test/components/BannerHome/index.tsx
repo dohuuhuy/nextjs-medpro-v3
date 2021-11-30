@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Col, Row } from 'antd'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
