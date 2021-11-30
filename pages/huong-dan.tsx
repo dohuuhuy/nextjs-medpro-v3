@@ -1,6 +1,6 @@
 import { HuongDanCustom } from '@componentsTest/HuongDanCustom'
-import { currentEnv } from '@config/envs/env'
 import BannersPublic from '@src/components/organisms/BannersPublic'
+import { currentEnv } from '@src/config/envs'
 import { fetcherGuide } from '@utils/func'
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -11,11 +11,10 @@ const HuongDan = () => {
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
   const { data, error } = useSWR(url, fetcherGuide)
 
-  if (error) return null
   return (
     <>
       <BannersPublic />
-      <HuongDanCustom data={data} />
+      {error ? null : <HuongDanCustom data={data} />}
     </>
   )
 }

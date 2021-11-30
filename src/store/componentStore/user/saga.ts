@@ -1,5 +1,5 @@
 import * as ac from '@actionStore'
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 import { client } from '@config/medproSDK'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'

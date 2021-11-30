@@ -1,4 +1,4 @@
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 
 export const LIMIT_PAGE_NEWS = 8
 

@@ -1,6 +1,6 @@
 import { setPartnerIdLocal } from '@src/store/actionStore'
 import { ArrowUpOutlined } from '@ant-design/icons'
-import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
+import { _DEVELOPMENT, _TESTING } from '@src/config/envs'
 import { AppState } from '@src/store/interface'
 import { check } from '@utils/checkValue'
 import { BackTop, Button, Modal, Select } from 'antd'

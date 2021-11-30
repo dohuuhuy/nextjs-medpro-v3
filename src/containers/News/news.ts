@@ -1,5 +1,5 @@
 import { api } from '@config/api'
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 import { LIMIT_PAGE_NEWS } from '@utils/contants'
 export const TinTucCtrl = async (ctx: any) => {
   const {

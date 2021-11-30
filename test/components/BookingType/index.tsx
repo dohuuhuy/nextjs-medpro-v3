@@ -7,9 +7,9 @@ import React from 'react'
 import Slider from 'react-slick'
 import Container from '../Container'
 import { Icon } from '../Icon'
-import { BookingTypeIF } from './interface'
+import { BookingTypeIF } from './common/interface'
 import styles from './styles.module.less'
-import { listTabs, settings, carousel } from './utils'
+import { listTabs, settings, carousel } from './common/utils'
 
 export const BookingType = (props: BookingTypeIF) => {
   const info = props?.getInfo || null
@@ -36,7 +36,7 @@ export const BookingType = (props: BookingTypeIF) => {
               <div className={styles.cardBody}>
                 <h3 className={styles.nameHospital}>{info?.name}</h3>
                 <p className={styles.address}>Địa chỉ: {info?.address}</p>
-                <p>
+                <p className={styles.website}>
                   Website: <a>{info.domain}</a>
                 </p>
                 <Rate />
@@ -86,7 +86,7 @@ export const BookingType = (props: BookingTypeIF) => {
                   ? `/${info.partnerId}${v?.webRoute}`
                   : '#'
 
-                const iconError = require('./images/iconDatKham.svg')
+                const iconError = require('./common/images/iconDatKham.svg')
 
                 const size = 80
                 const propsImg = {
