@@ -35,7 +35,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 
   const onSearchKey = (e: any) => {
     setactiveList(true)
-    console.log('e :>> ', e)
     const { value } = e.target
     setkeySearch(value)
     const findHospital = props?.listHospital.filter(({ name }) => {

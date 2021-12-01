@@ -138,8 +138,6 @@ function* getBookingTreeCurrentNode({}: any) {
 
   const schedule = hos.schedule
 
-  console.log('schedule :>> ', schedule)
-
   try {
     console.log('schedule?.serive?.id :>> ', schedule?.serive?.id)
 

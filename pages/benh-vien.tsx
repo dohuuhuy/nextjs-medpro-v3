@@ -1,14 +1,22 @@
 import * as ac from '@actionStore'
 import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
+import { SEOHead } from '@src/components/SEO/SEOHead/Index'
 import { SelectHospitalCtl } from '@src/containers/SelectHosital'
 import { AppState } from '@src/store/interface'
+import { urlSEOPage } from '@src/utils/contants'
+import { fetcher } from '@src/utils/func'
 import { check } from '@utils/checkValue'
+import { find } from 'lodash'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const ChonBenhVienPage = ({ data }: any) => {
+const ChonBenhVienPage = ({ data, meta }: any) => {
+  const router = useRouter()
+  const findMeta = find(meta, { key: router.asPath.replace('/', '') })
+
   const dispatch = useDispatch()
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
@@ -18,6 +26,7 @@ const ChonBenhVienPage = ({ data }: any) => {
 
   return (
     <>
+      <SEOHead meta={findMeta} />
       <SelectHospitalCustom
         listHospital={data?.listHospital || []}
         listCity={listCity}
@@ -32,5 +41,6 @@ export default ChonBenhVienPage
 
 export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()
-  return { props: { data } }
+  const meta = await fetcher(urlSEOPage)
+  return { props: { data, meta } }
 }
