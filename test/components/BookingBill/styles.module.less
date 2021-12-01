@@ -1,4 +1,4 @@
-.container {
+.containerBill {
   padding: 0;
   display: flex;
   justify-content: center;
@@ -6,164 +6,202 @@
   background-color: grey;
   .rowDetailBooking {
     .colDetailBooking {
-      // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-
-      padding: 15px;
-      margin-bottom: 1rem;
-
-      background-color: white;
-      margin: 25px 0;
-      h3 {
-        text-align: center;
-      }
-      .conInfo {
-        max-width: 400px;
-        min-width: 400px;
-
-        border-radius: 10px;
-        margin: 30px 0;
-
+      padding: 0 15px;
+      .billPrint {
         display: flex;
-        flex-direction: column;
         align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
-        background-color: white;
+        padding: 15px;
+        margin-bottom: 1rem;
 
-        .address {
-          p:first-child {
-            .textCustom(18px, 600, #323f4b);
-          }
-          p {
-            .textCustom(14px, 500, #323f4b);
-          }
+        .titleBill {
+          text-align: center;
+          margin-bottom: 15px;
         }
-        .barcode {
-          p {
-            .textCustom(14px, 500, #323f4b);
-          }
-        }
-        .status {
-          border-radius: 20px;
-          border: 0.5px solid #e6ffe9;
-          padding: 10px 20px;
-          background-color: #e6ffe9;
-          p {
-            .textCustom(14px, 500, #3bb54a);
-            margin: 0;
-          }
-        }
-        .number {
-          p {
-            .textCustom(16px, 500, #00b5f1);
-          }
-          span {
-            .textCustom(48px, 700, #00b5f1);
-          }
-        }
-        .listItemBooking {
-          list-style: none;
-          padding: 0 30px;
-          width: 100%;
 
-          line-height: 2.2;
-          li {
-            padding: 0;
-            .itemBooking {
+        .billInfo {
+          min-width: 360px;
+          box-shadow: inset 0px 0px 0px 2px #f0f0f0;
+          overflow: hidden;
+          max-width: 360px;
+
+          border-radius: 10px;
+
+          padding: 40px 20px;
+          margin: 30px 0;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          background-color: white;
+
+          .hospital {
+            text-align: center;
+            margin-bottom: 15px;
+            figure {
+              img {
+                object-fit: contain;
+                max-width: 250px;
+              }
+              margin-bottom: 25px;
+            }
+            .nameHos {
+              font-size: 15px;
+              font-weight: 500;
+              margin-bottom: 5px;
+            }
+            .addressHos {
+              font-weight: 400;
+              margin-bottom: 5px;
+            }
+          }
+
+          .barcode {
+            text-align: center;
+            .title {
+              font-weight: 500;
+              margin-bottom: 5px;
+            }
+          }
+
+          .status {
+            min-width: 120px;
+            text-align: center;
+            border-radius: 20px;
+            padding: 5px 15px;
+            border: 0.5px solid;
+            color: white;
+            &.statusDanger {
+              border-color: orangered;
+              background-color: orangered;
+            }
+            &.statusSuccess {
+              border-color: #6dec7b;
+              background-color: #6dec7b;
+            }
+            &.statusDisable {
+              border-color: #c6cace;
+              background-color: #c6cace;
+            }
+          }
+
+          .thanhToanLai {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+
+            .txtUnpay {
+              text-align: center;
+              color: red;
+              margin: 15px 0;
+            }
+            .button {
+              color: #01b5f1;
+              border: 1px solid #01b5f1;
+              border-radius: 15px;
+              padding: 5px 35px;
+              background-color: transparent;
+              box-shadow: none;
               display: flex;
-              justify-content: space-between;
-              .textCustom(13px, 400, #323f4b);
+              align-items: center;
+            }
+          }
 
-              span {
-                .textCustom(13px, 500, #323f4b);
-              }
-            }
-            &:nth-child(5),
-            &:nth-child(6) {
-              span {
-                color: #3bb54a;
-              }
-            }
-          }
-        }
-        .note {
-          p {
-            color: red;
-          }
-          .listNote {
-            padding-left: 20px;
-            li {
+          .numberBill {
+            .awaitMessage {
+              color: #ffb340;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              flex-direction: column;
+              margin-bottom: 15px;
               p {
-                .textCustom(12px, 500, #323f4b);
+                padding: 0 35px;
+              }
+            }
+            .number {
+              .text {
+                font-weight: 500;
+                margin-bottom: 5px;
+              }
+              .num {
+                font-size: 60px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 5px;
+              }
+              .number {
+                color: #00b5f1;
+              }
+              .gray {
+                color: #c6cace;
+              }
+            }
+          }
+
+          .listItemBooking {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+
+            line-height: 2.2;
+            li {
+              padding: 0;
+              .itemBooking {
+                display: flex;
+                justify-content: space-between;
+                font-size: 13px;
+                font-weight: 500;
+              }
+            }
+          }
+
+          .attention {
+            color: orangered;
+          }
+
+          .organization {
+            margin-bottom: 15px;
+            a {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              align-content: center;
+              justify-content: center;
+
+              p {
+                font-size: 12px;
                 font-style: italic;
+                margin-right: 5px;
+                margin-bottom: 0;
+              }
+              img {
+                width: 80px;
               }
             }
           }
         }
-      }
-      .btnCancel {
-        padding: 0 40px;
-        border: 1px solid #7b8794;
-        border-radius: 20px;
-        color: #7b8794;
-        &:hover {
-          color: white;
-          background-color: #7b8794;
+
+        .btnCancel {
+          padding: 0 40px;
+
+          border: none;
+          color: #7b8794;
+          &:hover {
+            color: #0352cc !important;
+            box-shadow: 0 3px 6px #3b404533;
+            border-radius: 3px;
+          }
         }
       }
     }
   }
-}
-
-// ----------------------------css mixin
-
-.textCustom(@size, @weight, @color) {
-  font-size: @size;
-  font-weight: @weight;
-  color: @color;
-}
-
-.line {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-  border: 0;
-  .circle {
-    width: 35px;
-    height: 35px;
-    background-color: grey;
-    border-radius: 50%;
-    margin: 0 -35px;
-  }
-  .dashed {
-    width: 90%;
-    border-top: 3px dashed grey;
-  }
-}
-.top {
-  padding: 0;
-  margin-top: -30px;
-  .dashed {
-    display: none;
-  }
-}
-.bottom {
-  padding: 0;
-  margin-bottom: -30px;
-  .dashed {
-    display: none;
-  }
-}
-
-.address,
-.barcode,
-.number {
-  text-align: center;
-  margin-bottom: 16px;
 }

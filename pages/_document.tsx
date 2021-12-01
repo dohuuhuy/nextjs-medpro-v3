@@ -1,5 +1,4 @@
 import FavIcon from '@components/organisms/Favicon'
-import { GA_TRACKING_ID } from '@utils/gtag'
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -54,12 +53,6 @@ class CustomDocument extends Document<CustomDocumentProps> {
         </Head>
 
         <body>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GA_TRACKING_ID}"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>`
-            }}
-          />
           <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
           <Main />
           <NextScript />

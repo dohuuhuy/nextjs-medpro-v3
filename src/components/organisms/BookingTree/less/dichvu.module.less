@@ -1,0 +1,63 @@
+@import url('./styles.module.less');
+
+.dichVu {
+  margin-top: 10px;
+  .groupBtn {
+    .ListCustom();
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: 425px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    li {
+      padding: 7.5px;
+
+      .active {
+        background: #00b5f1 !important;
+        border: none !important;
+        color: white !important;
+      }
+
+      .btn {
+        border-radius: 8px;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px;
+        color: #00b5f1;
+        background: #f2fcff;
+        width: 100%;
+
+        &:hover {
+          background: #00b5f1;
+          border: none;
+          color: white;
+        }
+      }
+    }
+  }
+  .questionBHYT {
+    display: flex;
+    margin-top: 20px;
+
+    .groupRadio {
+      margin-left: 15px;
+      display: flex;
+      .radio {
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

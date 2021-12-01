@@ -1,12 +1,10 @@
-import * as ac from '@actionStore/rootAction'
-import { LoadingOutlined } from '@ant-design/icons'
+import * as ac from '@actionStore'
+import Loading from '@componentsTest/Loading'
+import { client } from '@config/medproSDK'
 import { AppState } from '@store/interface'
-import { check } from '@utils/checkValue'
-import { Spin } from 'antd'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './styles.module.less'
 
 const queryString = require('querystring')
 export interface Props {
@@ -19,23 +17,18 @@ const Author = () => {
   const dispatch = useDispatch()
 
   const { info } = router.query
-  const query: any = queryString.parse(info as string)
+
   const user = useSelector((state: AppState) => state.user)
+  const query: any = queryString.parse(info as string)
 
   useEffect(() => {
-    if (check(user?.userInfo?.token)) {
-      dispatch(ac.UserLogin(query))
-      router.push('/')
-    }
-  })
+    !user.userInfo.token && dispatch(ac.userSave(query))
+    client.setToken(query.token)
+  }, [router.query.info])
 
-  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin={true} />
+  if (user.userInfo.token) router.push(user.loginAt)
 
-  return (
-    <div className={styles.login}>
-      <Spin indicator={antIcon} />
-    </div>
-  )
+  return <Loading />
 }
 
 export default Author

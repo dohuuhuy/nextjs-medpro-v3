@@ -1,15 +1,27 @@
 import { Icon } from '@componentsTest/Icon'
-import { Col, Row } from 'antd'
+import { Badge, Col, Dropdown, Row } from 'antd'
 import cx from 'classnames'
-import { uniqueId } from 'lodash'
+import { filter, uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import Container from './../Container'
+import { Infomation } from './common/infomation'
 import styles from './styles.module.less'
+import { CgUserlane } from 'react-icons/cg'
+import { ListNoti } from './common/listNoti'
 
-export default function HeaderCustom({ dataHeader }: any) {
+export default function HeaderCustom({
+  dataHeader,
+  loginMedproId,
+  loginAt,
+  author,
+  noti
+}: any) {
+  const router = useRouter()
+  const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
 
   if (!dataHeader) {
@@ -17,7 +29,6 @@ export default function HeaderCustom({ dataHeader }: any) {
   }
 
   const { logo, menu } = dataHeader
-
   const glogo = logo?.desktop
 
   const onSearch = () => {
@@ -27,6 +38,17 @@ export default function HeaderCustom({ dataHeader }: any) {
   const routePush = (v: any) => () => {
     router.push(v.link || '/')
   }
+
+  const handleLogin = () => {
+    dispatch(loginMedproId())
+  }
+
+  const handleLogOut = () => {
+    dispatch(loginAt(router.asPath))
+    router.push('/dang-xuat')
+  }
+
+  const noRep = filter(noti, { isRead: false })
 
   return (
     <header>
@@ -57,23 +79,57 @@ export default function HeaderCustom({ dataHeader }: any) {
                     Chăm sóc khách hàng
                   </button>
                 </li>
-                <li>
-                  <button className={cx(styles.btn)}>
-                    <Icon name='thongbao' />
-                    Thông báo
-                  </button>
-                </li>
-                <li>
-                  <button className={cx(styles.btn)}>
-                    Đăng nhập | Đăng ký
-                  </button>
-                </li>
+                {author.token && (
+                  <li>
+                    <Dropdown overlay={<ListNoti list={noti} />}>
+                      <Badge count={noRep.length}>
+                        <button
+                          className={cx(
+                            styles.btn,
+                            noRep.length > 0 && styles.ringBell
+                          )}
+                        >
+                          <Icon
+                            name='thongbao'
+                            fill={noRep.length > 0 && 'red'}
+                          />
+                          Thông báo
+                        </button>
+                      </Badge>
+                    </Dropdown>
+                  </li>
+                )}
+                {!author.token && (
+                  <li>
+                    <button className={cx(styles.btn)} onClick={handleLogin}>
+                      Đăng nhập | Đăng ký
+                    </button>
+                  </li>
+                )}
+                {author.token && (
+                  <li>
+                    <Dropdown
+                      overlay={<Infomation handleLogOut={handleLogOut} />}
+                    >
+                      <button className={cx(styles.btn, styles.btnLogin)}>
+                        <CgUserlane />
+                        <span>{author?.fullName}</span>
+                      </button>
+                    </Dropdown>
+                  </li>
+                )}
               </ul>
 
               <ul className={styles.listMenu}>
-                {menu.map((v: any) => {
+                {menu?.map((v: any) => {
                   return (
-                    <li key={uniqueId()} onClick={routePush(v)}>
+                    <li
+                      key={uniqueId()}
+                      onClick={routePush(v)}
+                      className={
+                        router.asPath.includes(v.link) ? styles.active : ''
+                      }
+                    >
                       <Link href={v.link || '/'}>
                         <a aria-label={v?.label}>{v?.label}</a>
                       </Link>

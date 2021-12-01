@@ -11,7 +11,7 @@ const withLess = require('next-with-less')
 
 const themeVariables = lessToJS(
   fs.readFileSync(
-    path.resolve(__dirname, 'assets/styles/variable.less'),
+    path.resolve(__dirname, 'public/assets/styles/variable.less'),
     'utf8'
   )
 )
@@ -47,6 +47,7 @@ const nextConfig = {
   ...lessConfig,
 
   exclude: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
+
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 

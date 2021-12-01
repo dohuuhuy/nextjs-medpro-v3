@@ -1,0 +1,208 @@
+@import url('./styles.module.less');
+
+.thoigian {
+  .input {
+    .inputCustom();
+    margin-bottom: 15px;
+    background: #fff2cc;
+  }
+
+  .groupGuide {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 15px 0;
+    .guide {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      .btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        margin-right: 5px;
+      }
+      .empty {
+        background: #b2ecff;
+      }
+      .selected {
+        background: #ffb340;
+      }
+      .full {
+        background: #ff6666;
+      }
+    }
+  }
+  .calendar {
+    margin-bottom: 30px;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      padding: 10px 0;
+
+      background: #00b5f1;
+      border-radius: 8px 8px 0px 0px;
+
+      .hiddenNext,
+      .hiddenPrev {
+        display: none;
+      }
+    }
+    .weekContainer,
+    .dayContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .weekContainer {
+      font-weight: 500;
+      .weekCell {
+        white-space: nowrap;
+        background: #f7f7f7;
+        &:first-child {
+          color: #fa531f;
+        }
+        &:last-child {
+          color: #faa01f;
+        }
+      }
+    }
+
+    .weekCell,
+    .dayCell {
+      flex: 0 0 calc(100% / 7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      @media only screen and (max-width: 426px) {
+        padding: 5px;
+      }
+      span {
+        padding: 10px;
+        min-width: 40px;
+        text-align: center;
+        &:hover {
+          border-radius: 5px;
+          background-color: #1da1f2;
+          color: #ffffff !important;
+          cursor: pointer;
+          font-weight: 500;
+        }
+      }
+    }
+    .dayCell_Faded {
+      opacity: 0.4;
+    }
+    .today {
+      span {
+        border-radius: 5px;
+        background-color: #1da1f2;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
+  }
+  .time {
+    .morning {
+      .listMorning {
+        .listTime();
+      }
+    }
+    .afternoon {
+      .listAfternoon {
+        .listTime();
+      }
+    }
+    .btnTime {
+      background: #d6f3fd;
+      border-radius: 30px;
+      border: none;
+      padding: 10px;
+      color: #00b5f1;
+      font-size: 0.725rem;
+    }
+  }
+
+  .hint {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #323f4b;
+    font-size: 13px;
+    background: #fff2cc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 0.5px solid #ffcc80;
+
+    padding: 10px;
+    .phone {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+
+      min-width: 175px;
+      background: #00b5f1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      color: white;
+      font-size: 12px;
+      span {
+        fill: white;
+      }
+    }
+    @media only screen and (max-width: 426px) {
+      flex-direction: column;
+      .phone {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+// --------------------- css mixin
+.listTime {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media only screen and (max-width: 700px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (max-width: 500px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  li {
+    padding: 0 7.5px;
+    margin-bottom: 1rem;
+  }
+}
+
+.dnone {
+  display: none !important;
+}

@@ -1,34 +1,46 @@
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
-import DefaultLayout from '@templates/Default'
+import BannersPublic from '@src/components/organisms/BannersPublic'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 import { urlContent } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
-import React from 'react'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 const Site = ({ data }: any) => {
-  if (!data) return null
+  const router = useRouter()
 
+  useEffect(() => {
+    if (router.asPath.includes('phong-mach')) {
+      window.open('https://medpro.vn/clinic', '_blank')
+    }
+  }, [router.asPath])
+
+  if (!data) return null
   return (
     <>
       <SEOHead meta={meta} />
+      <BannersPublic />
       <HandlerGetContentPage dataContent={data} />
     </>
   )
 }
 
-Site.Layout = DefaultLayout
+Site.layout = DefaultLayout
+
 export default Site
 
-Site.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const data = await fetcher(urlContent)
 
-  return { data }
+  return { props: { data } }
 }
 
 const meta: NextSeoProps = {
-  noindex: true,
-  nofollow: true,
+  noindex: false,
+  nofollow: false,
   robotsProps: {},
   title: 'Giới thiệu',
   description: 'Giới thiệu medpro',

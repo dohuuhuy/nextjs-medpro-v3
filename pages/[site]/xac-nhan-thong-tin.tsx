@@ -4,8 +4,11 @@ import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ConfirmInfoPage = () => {
-  return <ConfirmInfo />
+  return (
+    <DefaultLayout>
+      <ConfirmInfo />
+    </DefaultLayout>
+  )
 }
 
-ConfirmInfoPage.Layout = DefaultLayout
 export default ConfirmInfoPage

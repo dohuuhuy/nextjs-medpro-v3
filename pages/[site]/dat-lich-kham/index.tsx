@@ -1,8 +1,9 @@
-import * as ac from '@actionStore/rootAction'
+import * as ac from '@actionStore'
+import BookingTree from '@components/organisms/BookingTree'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import DefaultLayout from '@templates/Default'
-import { check } from '@utils/checkValue'
+import Loading from '@componentsTest/Loading'
+import { AppState } from '@src/store/interface'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
@@ -10,25 +11,57 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import { AppState } from 'store/interface'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const BookingTree = dynamic(() => import('@componentsTest/BookingTree'))
-
-const ThongTinDatKhamPage = (props: any) => {
+const ThongTinDatKhamPage = ({ data }: any) => {
+  const dispatch = useDispatch()
   const router = useRouter()
-
-  const slug = router.query?.site
+  const partnerId = router.query?.site
 
   const hos = useSelector((state: AppState) => state.hospital)
-  const user = useSelector((state: AppState) => state.user)
+  const total = useSelector((state: AppState) => state.total)
 
-  const dispatch = useDispatch()
   useEffect(() => {
-    check(slug) && dispatch(ac.getBookingTree(slug))
-    check(user.listPatient) && dispatch(ac.ListPatientRequest())
-  }, [dispatch, hos?.bookingTree, user.listPatient, slug])
+    dispatch(ac.setParnerIdHospital(partnerId))
+    dispatch(ac.getBookingTree(partnerId))
+  }, [])
 
-  const meta: NextSeoProps = {
+  if (!data) return null
+  const listHospital = data.listHospital
+  if (!hos || !data.listHospital) return null
+
+  let listMenu = []
+  if (hos.information?.header) {
+    const { menu, insideLink } = hos.information?.header
+    listMenu = menu ? menu.concat(insideLink) : []
+  }
+
+  if (total.loading) return <Loading component />
+
+  return (
+    <>
+      <SEOHead meta={handleMeta(total.partnerId)} />
+      <BreadcumbCustom
+        type='booking'
+        listHos={listHospital}
+        listMenu={listMenu}
+      />
+      <BookingTree bookingTree={hos.bookingTree} />
+    </>
+  )
+}
+
+ThongTinDatKhamPage.layout = DefaultLayout
+export default ThongTinDatKhamPage
+
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
+
+  return { props: { data } }
+}
+
+const handleMeta = (partnerId: string) => {
+  return {
     noindex: true,
     nofollow: true,
     robotsProps: {},
@@ -42,7 +75,7 @@ const ThongTinDatKhamPage = (props: any) => {
       description: 'Hình thức đặt khám',
       images: [
         {
-          url: banner(slug),
+          url: banner(partnerId),
           width: 800,
           height: 600,
           alt: 'Hình thức đặt khám'
@@ -50,31 +83,5 @@ const ThongTinDatKhamPage = (props: any) => {
       ],
       site_name: 'UMC - hình thức đặt khám'
     }
-  }
-
-  const listHospital = props.data.listHospital
-
-  const { menu, insideLink } = hos.information.header
-  const listMenu = menu.concat(insideLink)
-
-  return (
-    <>
-      <SEOHead meta={meta} />
-      <BreadcumbCustom
-        type='booking'
-        listHos={listHospital}
-        listMenu={listMenu}
-      />
-      <BookingTree />
-    </>
-  )
-}
-
-ThongTinDatKhamPage.Layout = DefaultLayout
-export default ThongTinDatKhamPage
-
-export const getServerSideProps = async () => {
-  const data = await SelectHospitalCtl()
-
-  return { props: { data } }
+  } as NextSeoProps
 }

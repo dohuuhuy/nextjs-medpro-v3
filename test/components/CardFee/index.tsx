@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 export const CardFee = () => {
   const router = useRouter()
-  const [_isVisible, setIsVisible] = React.useState(false)
+  const [isVisible, setIsVisible] = React.useState(false)
   React.useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 150) {
@@ -32,7 +32,7 @@ export const CardFee = () => {
   }
 
   return (
-    <div className={cx(styles.cardFee)}>
+    <div className={cx(styles.cardFee, isVisible ? styles.scroll : null)}>
       <p className={styles.luuy}>
         <Icon name='luuy' /> Vui lòng kiểm tra lại thông tin trước khi đặt lịch
       </p>

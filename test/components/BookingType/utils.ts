@@ -1,14 +1,24 @@
 import { Settings } from 'react-slick'
 
+export const settings: Settings = {
+  speed: 3000,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  dots: true,
+  arrows: false
+}
+
 export const carousel = [
   {
-    image: '/images/bookingType/slide.png'
+    image: require('./images/slider.svg')
   },
   {
-    image: '/images/bookingType/slide.png'
+    image: require('./images/slider.svg')
   },
   {
-    image: '/images/bookingType/slide.png'
+    image: require('./images/slider.svg')
   }
 ]
 
@@ -23,13 +33,3 @@ export const listTabs = [
     title: 'Đánh giá'
   }
 ]
-
-export const settings: Settings = {
-  speed: 3000,
-  infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  dots: false,
-  arrows: false
-}

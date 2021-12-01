@@ -9,10 +9,9 @@ import Container from '../Container'
 import { Icon } from '../Icon'
 import { BookingTypeIF } from './interface'
 import styles from './styles.module.less'
-import { carousel, listTabs, settings } from './utils'
+import { listTabs, settings, carousel } from './utils'
 
 export const BookingType = (props: BookingTypeIF) => {
-  const iconError = '/images/iconDatKham.svg'
   const info = props?.getInfo || null
   const [act, setact] = React.useState(1)
 
@@ -83,11 +82,19 @@ export const BookingType = (props: BookingTypeIF) => {
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
               {info.features.map((v) => {
-                const icon = v?.image || iconError
-
                 const direct = v?.webRoute
                   ? `/${info.partnerId}${v?.webRoute}`
                   : '#'
+
+                const iconError = require('./images/iconDatKham.svg')
+
+                const size = 80
+                const propsImg = {
+                  src: v?.image || iconError,
+                  width: size,
+                  height: size,
+                  onError: (e: any) => (e.target.src = iconError)
+                }
 
                 return (
                   <li key={uniqueId()}>
@@ -95,7 +102,8 @@ export const BookingType = (props: BookingTypeIF) => {
                       <a>
                         <div className={styles.card}>
                           <figure>
-                            <Image src={icon} width='80' height='80' alt='' />
+                            {/* <Image src={icon} width='80' height='80' alt='' /> */}
+                            <img {...propsImg} alt='' />
                           </figure>
                           <span>{v?.name}</span>
                         </div>
@@ -116,15 +124,18 @@ export const BookingType = (props: BookingTypeIF) => {
       <Row className={styles.rowSlider}>
         <Col>
           <Slider {...settings}>
-            {carousel?.map((e) => {
+            {carousel?.map((v) => {
               return (
                 <div key={uniqueId()} className={styles.listImage}>
                   <Image
-                    src={e?.image}
+                    loader={myLoader}
+                    src={v.image}
                     width={1110}
                     height={335}
                     alt=''
                     loading='eager'
+                    objectFit='cover'
+                    priority
                   />
                 </div>
               )
@@ -139,4 +150,8 @@ export const BookingType = (props: BookingTypeIF) => {
 // tạm thời dùng link này , sao này sử bannerimage trong info
 const banner = (e: string) => {
   return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
+}
+
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }

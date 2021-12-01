@@ -16,51 +16,24 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "baseUrl": "./",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ],
-    "lib": [
-      "dom",
-      "es2017",
-      "dom.iterable",
-      "esnext"
-    ],
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "lib": ["dom", "es2017", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@config/*": [
-        "./src/config/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@componentsTest/*": [
-        "./test/components/*"
-      ],
-      "@componentStore/*": [
-        "./store/componentStore/*"
-      ],
-      "@actionStore/*": [
-        "./store/actionStore/*"
-      ],
-      "@store/*": [
-        "./store/*"
-      ],
-      "@templates/*": [
-        "./templates/*"
-      ],
-      "@assets/*": [
-        "./assets/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ]
+      "@src/*": ["./src/*"],
+      "@config/*": ["./src/config/*"],
+      "@components/*": ["./src/components/*"],
+      "@componentsTest/*": ["./test/components/*"],
+      "@componentStore/*": ["./src/store/componentStore/*"],
+      "@actionStore": ["src/store/actionStore"],
+      "@store/*": ["./src/store/*"],
+      "@templates/*": ["./src/components/templates/*"],
+      "@assets/*": ["./public/assets/*"],
+      "@public/*": ["./public/*"],
+      "@utils/*": ["./src/utils/*"]
     },
     "incremental": true
   },
@@ -69,13 +42,7 @@
     "**/*.ts",
     "**/*.tsx",
     "assets/js/wechat.js",
-    "json mẫu/bvtest.ts"
+    "src/utils/json mẫu/bvtest.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".next",
-    "out",
-    "next.config.js"
-  ]
+  "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"]
 }

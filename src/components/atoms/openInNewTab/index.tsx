@@ -24,9 +24,9 @@ export const openInNewTab = (url: any, w = 1200, h = 700) => {
     `toolbar=0,
       location=0,
       menubar=0,
-      width=${w / systemZoom}, 
-      height=${h / systemZoom}, 
-      top=${top}, 
+      width=${w / systemZoom},
+      height=${h / systemZoom},
+      top=${top},
       left=${left}`
   )
 
