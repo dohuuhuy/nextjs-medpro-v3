@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { checkData } from '../DataFailure'
 import { LienHeContent } from './organisms/LienHe'
 import { DefaultContent } from './organisms/MacDinh'
@@ -9,6 +9,13 @@ interface Props {
 }
 
 export const ContentPageCustom = ({ getContent }: Props) => {
+  useEffect(() => {
+    const element = document.querySelector('.viewBanner')
+    var testElement = document.getElementsByClassName('viewBanner')
+    console.log('element :>> ', element)
+    console.log('testElement :>> ', testElement)
+  }, [])
+
   if (checkData(getContent)) {
     return null
   }
