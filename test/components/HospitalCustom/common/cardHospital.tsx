@@ -1,5 +1,5 @@
 import { Icon } from '@componentsTest/Icon'
-import { Result } from 'antd'
+import { Rate, Result } from 'antd'
 import { uniqueId } from 'lodash'
 import React from 'react'
 import styles from './../styles.module.less'
@@ -20,7 +20,9 @@ export const cardHospital = (arr: ListHospital[], router: any) => {
       <p className={styles.status}>
         <i>{e.deliveryMessage}</i>
       </p>
-    ) : null
+    ) : (
+      <Rate value={3} className={styles.rate} />
+    )
 
     const imgError = require('./images/logo.svg')
     const size = 50
@@ -32,7 +34,11 @@ export const cardHospital = (arr: ListHospital[], router: any) => {
     }
 
     return (
-      <li key={uniqueId()} onClick={redirect(e, router)}>
+      <li
+        key={uniqueId()}
+        onClick={redirect(e, router)}
+        className={styles.item}
+      >
         <div className={styles.cardHospital}>
           <figure className={styles.cardView}>
             <img alt='' {...propsImage} />

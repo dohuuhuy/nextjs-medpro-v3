@@ -4,7 +4,13 @@ export interface Props {
 }
 
 const localhost = {
-  domain: ['localhost', 'huyi.ddns.net', 'huyi.tech', '42.116.14.170'],
+  domain: [
+    'localhost',
+    'huyi.ddns.net',
+    'huyi.tech',
+    '42.116.14.170',
+    'huyi.viewdns.net'
+  ],
   partnerId: 'medpro'
 }
 
@@ -13,7 +19,7 @@ export const findPartnerId = ({ listPartners = [], host }: Props) => {
   const res: any = listPartners?.find((i: any) =>
     i.domain.includes(domain(host))
   )
-  if (!res) return 'error'
+  if (!res) return 'error partnerid không có trong list'
   return res?.partnerId
 }
 

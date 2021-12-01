@@ -92,8 +92,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         </Col>
         <Col span='24' className={styles.colListCard}>
           <Container className={styles.conList}>
-            <Rate value={3} />
-
             <ul className={styles.listCard}>
               {cardHospital(
                 activeList ? listHospitals : props?.listHospital,
