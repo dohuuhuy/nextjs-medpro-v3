@@ -37,7 +37,7 @@ export interface AppState {
   [T: string]: any
   total: TotalDataState
   hospital: HospitalState
-  newsReducer: NewsState
+  news: NewsState
   user: UserState
 }
 
