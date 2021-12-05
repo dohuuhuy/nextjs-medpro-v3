@@ -52,7 +52,7 @@ const nextConfig = {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.(svg|png|jpg)$/,
       include: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
       use: [
         'svg-sprite-loader',

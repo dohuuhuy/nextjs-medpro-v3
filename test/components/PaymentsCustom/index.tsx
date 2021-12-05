@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col, Space, Radio, Tooltip } from 'antd'
 import styles from './styles.module.less'
 import { LineChartOutlined, MoneyCollectFilled } from '@ant-design/icons'
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 
 export const HinhThucThanhToan = () => {
   const [values, setValues] = useState(0)

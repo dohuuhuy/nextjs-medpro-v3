@@ -1,4 +1,3 @@
-import Container from './../Container'
 import { Col, Row, Space } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -6,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import QRCode from 'react-qr-code'
+import Container from './../Container'
 import styles from './styles.module.less'
 
 export default function FooterCustom({ dataFooter }: any) {

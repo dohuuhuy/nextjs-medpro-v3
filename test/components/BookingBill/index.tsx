@@ -1,5 +1,5 @@
 import { CloseOutlined } from '@ant-design/icons'
-import Container from '@componentsTest/Container'
+import Container from './../Container'
 import { Button, Col, Row, Spin } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'

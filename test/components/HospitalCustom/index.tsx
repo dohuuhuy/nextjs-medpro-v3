@@ -1,5 +1,5 @@
-import { Icon } from '@componentsTest/Icon'
-import { Col, Input, Rate, Row, Select } from 'antd'
+import { Icon } from '../Icon'
+import { Col, Input, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'

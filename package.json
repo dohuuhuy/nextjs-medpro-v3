@@ -4,7 +4,7 @@
   "private": true,
   "author": "Huyi",
   "scripts": {
-    "dev:testing": "cross-env NODE_ENV=development ENV=testing PORT=3006 next dev",
+    "dev:testing": "cross-env NODE_ENV=development ENV=testing PORT=2053 next dev",
     "dev:production": "cross-env NODE_ENV=development ENV=production PORT=3009 nodemon",
     "build": "cross-env NODE_ENV=production ENV=testing next build",
     "build:production": "cross-env NODE_ENV=production ENV=production next build && tsc --project tsconfig.server.json",

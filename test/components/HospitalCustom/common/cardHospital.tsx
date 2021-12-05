@@ -1,4 +1,4 @@
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from './../../Icon'
 import { Rate, Result } from 'antd'
 import { uniqueId } from 'lodash'
 import React from 'react'

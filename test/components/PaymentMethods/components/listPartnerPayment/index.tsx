@@ -1,5 +1,5 @@
 // import Container from '@componentsTest/Container'
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from './../../../Icon'
 import React from 'react'
 import styles from './styles.module.less'
 import { uniqueId } from 'lodash'
@@ -17,9 +17,7 @@ export const PartnerPayment = () => {
           return (
             <li key={uniqueId()}>
               <div className={styles.partner}>
-                <figure className={styles.icons}>
-                  {img}
-                </figure>
+                <figure className={styles.icons}>{img}</figure>
               </div>
             </li>
           )
