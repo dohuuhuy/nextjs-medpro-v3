@@ -20,7 +20,7 @@ const initState: TotalDataState = {
 export default function total(
   state = initState,
   action: TotalDataActions | { type: typeof HYDRATE; payload: TotalDataState }
-) {
+): TotalDataState {
   switch (action.type) {
     case TotalDataTypes.ListPartners.LIST_PARTNERS_REQUEST_SUCCESS:
       return {

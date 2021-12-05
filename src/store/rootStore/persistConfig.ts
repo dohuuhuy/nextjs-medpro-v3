@@ -33,7 +33,4 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2
 }
 
-export const persistedReducer = persistReducer(
-  persistConfig,
-  rootReducer as any
-)
+export const persistedReducer = persistReducer(persistConfig, rootReducer)

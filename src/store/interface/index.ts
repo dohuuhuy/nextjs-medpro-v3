@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux'
 // demo
 export * from '@componentStore/demo/interface/action'
 export * from '@componentStore/demo/interface/types'
@@ -25,6 +26,10 @@ export * from '@componentStore/totalData/interface/types'
 export * from '@componentStore/totalData/interface/initialState'
 export * from '@componentStore/totalData/interface/params'
 
+import { HospitalActions } from '@componentStore/hospital/interface/action'
+import { NewsActions } from '@componentStore/news/interface/action'
+import { TotalDataActions } from '@componentStore/totalData/interface/action'
+import { UserActions } from '@componentStore/user/interface/action'
 import {
   HospitalState,
   NewsState,
@@ -39,6 +44,14 @@ export interface AppState {
   hospital: HospitalState
   news: NewsState
   user: UserState
+}
+
+export interface AppAction extends AnyAction {
+  [T: string]: any
+  TotalDataActions: TotalDataActions
+  hosplDataActions: HospitalActions
+  NewsActions: NewsActions
+  UserActions: UserActions
 }
 
 export type AppStates = ReturnType<typeof combinedReducers>

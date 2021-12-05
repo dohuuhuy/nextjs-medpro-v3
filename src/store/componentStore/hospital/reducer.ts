@@ -20,7 +20,7 @@ const init: HospitalState = {
 export default function hospital(
   state = init,
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
-) {
+): HospitalState {
   switch (action.type) {
     case HosptailTypes.Information.SET_PARTNERID_HOSPITAL:
       return {
