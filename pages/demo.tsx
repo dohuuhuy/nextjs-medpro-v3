@@ -3,12 +3,21 @@ import React from 'react'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const Demo = (_props: any) => {
+const Demo = (_props: Props) => {
   return (
-    <DefaultLayout>
-      <h1> truyền cháu</h1>
-    </DefaultLayout>
+    <>
+      <h1> truyền 1</h1>
+      <h2> truyền 2</h2>
+      <h3> truyền 3</h3>
+      <h4> truyền 4</h4>
+      <h5> truyền 5</h5>
+      <h6> truyền 6</h6>
+    </>
   )
 }
 
+Demo.layout = DefaultLayout
+
 export default Demo
+
+interface Props {}
