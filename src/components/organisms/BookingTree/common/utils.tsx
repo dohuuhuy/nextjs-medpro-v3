@@ -156,7 +156,7 @@ export const selected = (item: any, props: any) => () => {
     // saveInfoStep,
     dispatch,
     saveSchedule
-    // getBookingTreeCurrent
+    // getbookingCur
   } = props
 
   const findStep = find(state.stepper, { key: keys })

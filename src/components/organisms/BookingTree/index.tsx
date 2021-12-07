@@ -27,19 +27,23 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')
       const data = window.localStorage.getItem('selected')
-      const selecteds = JSON.parse(data || '')
-      dispatch(saveSchedule(selecteds))
+      if (data) {
+        const selecteds = JSON.parse(data || '')
+        dispatch(saveSchedule(selecteds))
 
-      const stepper = state.stepper.map((v: any) => {
-        return {
-          ...v,
-          selected: selecteds[v.key].selected,
-          data: selecteds[v.key].data,
-          open: Object.keys(selecteds[v.key]).length ? false : true
-        }
-      })
+        const stepper = state.stepper.map((v: any) => {
+          return {
+            ...v,
+            selected: selecteds[v.key].selected,
+            data: selecteds[v.key].data,
+            open: Object.keys(selecteds[v.key]).length ? false : true
+          }
+        })
 
-      setstate({ stepper: stepper })
+        setstate({ stepper: stepper })
+      } else {
+        setstate({ stepper: handlerStep({ bookingTree }) })
+      }
     } else {
       console.info('This page is not reloaded')
     }

@@ -24,7 +24,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   useEffect(() => {
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
-  }, [dispatch, partnerId])
+  }, [router.query?.site])
 
   if (!data) return null
   const listHospital = data.listHospital
@@ -40,13 +40,13 @@ const ThongTinDatKhamPage = ({ data }: any) => {
 
   return (
     <>
-      <SEOHead meta={handleMeta(total.partnerId)} />
+      <SEOHead meta={handleMeta(total?.partnerId)} />
       <BreadcumbCustom
         type='booking'
         listHos={listHospital}
         listMenu={listMenu}
       />
-      <BookingTree bookingTree={hos.bookingTree} />
+      <BookingTree bookingTree={hos?.bookingTree} />
     </>
   )
 }
@@ -65,20 +65,20 @@ const handleMeta = (partnerId: string) => {
     noindex: true,
     nofollow: true,
     robotsProps: {},
-    title: 'Hình thức đặt khám',
-    description: 'Hình thức đặt khám',
+    title: 'Đặt lịch khám',
+    description: 'Đặt lịch khám',
     canonical: 'https://nextjs-testing.medpro.com.vn',
     openGraph: {
       type: 'website',
       url: 'https://nextjs-testing.medpro.com.vn',
-      title: 'Hình thức đặt khám',
-      description: 'Hình thức đặt khám',
+      title: 'Đặt lịch khám',
+      description: 'Đặt lịch khám',
       images: [
         {
           url: banner(partnerId),
           width: 800,
           height: 600,
-          alt: 'Hình thức đặt khám'
+          alt: 'Đặt lịch khám'
         }
       ],
       site_name: 'UMC - hình thức đặt khám'

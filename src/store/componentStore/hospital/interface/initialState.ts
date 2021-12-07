@@ -2,7 +2,7 @@ export interface HospitalState {
   partnerId: string
   listHospital: any
   bookingTree: any[]
-  bookingTreeCurrent: any
+  bookingCur: any
   listFeatureByApp: ItemFeature[]
   listFeatureByPartner: ItemFeature[]
   information: Information

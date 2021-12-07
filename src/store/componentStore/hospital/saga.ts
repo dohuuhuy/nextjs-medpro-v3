@@ -133,7 +133,7 @@ function* watcher_getBanners() {
   yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
 }
 
-function* getBookingTreeCurrentNode({}: any) {
+function* getbookingCurNode({}: any) {
   try {
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const schedule = hos.schedule
@@ -150,16 +150,16 @@ function* getBookingTreeCurrentNode({}: any) {
 
     console.log('response :>> ', response.data)
 
-    // yield put(ac.getBookingTreeCurrentSuccess(response.data))
+    yield put(ac.getbookingCurSuccess(response.data))
   } catch (error) {
-    console.log('error getBookingTreeCurrentNode :>> ', error)
+    console.log('error getbookingCurNode :>> ', error)
   }
 }
 
-function* watcher_getBookingTreeCurrentNode() {
+function* watcher_getbookingCurNode() {
   yield takeLatest(
-    HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST,
-    getBookingTreeCurrentNode
+    HosptailTypes.BookingTree.CurrentBooking_Request,
+    getbookingCurNode
   )
 }
 
@@ -172,7 +172,7 @@ const hospitalSagas = function* root() {
     fork(watcher_getHeader),
     fork(watcher_getBanners),
     fork(watcher_getFooter),
-    fork(watcher_getBookingTreeCurrentNode)
+    fork(watcher_getbookingCurNode)
   ])
 }
 export default hospitalSagas

@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { getBookingTreeCurrent, getDemo } from '@src/store/actionStore'
+import { getbookingCur } from '@src/store/actionStore'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { range } from 'lodash'
@@ -13,7 +13,7 @@ import { afternoon, morning } from './utils'
 export const ThoiGian = (props: any) => {
   const dispatch = useDispatch()
 
-  dispatch(getBookingTreeCurrent())
+  dispatch(getbookingCur())
 
   console.log('props ThoiGian :>> ', props)
 
