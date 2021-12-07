@@ -3,6 +3,8 @@ import React from 'react'
 import { FaUser } from 'react-icons/fa'
 import { MdOutlineLogout } from 'react-icons/md'
 import styles from './../styles.module.less'
+import Link from 'next/link'
+import { Icon } from '@componentsTest/Icon'
 
 export const Infomation = ({ handleLogOut }: any) => {
   return (
@@ -18,6 +20,33 @@ export const Infomation = ({ handleLogOut }: any) => {
     >
       <Menu className={styles.listInfo}>
         <Menu.Item>helo chị hà</Menu.Item>
+        <Menu.Item>
+          <Link href={{
+            pathname: "/thong-tin-tai-khoan",
+            query: { activeItem: 1 }
+          }}>
+            Hồ sơ bệnh nhân
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href={{
+            pathname: "/thong-tin-tai-khoan",
+            query: { activeItem: 2 }
+          }}>
+            Phiếu khám bệnh
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href={{
+            pathname: "/thong-tin-tai-khoan",
+            query: { activeItem: 3 }
+          }} passHref>
+            <a>
+              <Icon name="thongbao" />
+              Thông báo
+            </a>
+          </Link>
+        </Menu.Item>
         <Menu.Item icon={<MdOutlineLogout />} onClick={() => handleLogOut()}>
           Đăng xuất
         </Menu.Item>
