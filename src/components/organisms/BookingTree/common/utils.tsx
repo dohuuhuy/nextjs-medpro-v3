@@ -149,15 +149,7 @@ export const handlerStep = ({ bookingTree }: any) => {
 }
 
 export const selected = (item: any, props: any) => () => {
-  const {
-    state,
-    setstate,
-    keys,
-    // saveInfoStep,
-    dispatch,
-    saveSchedule
-    // getbookingCur
-  } = props
+  const { state, setstate, keys, dispatch, saveSchedule } = props
 
   const findStep = find(state.stepper, { key: keys })
   const index = findIndex(state.stepper, { key: keys })
@@ -209,7 +201,7 @@ export const selected = (item: any, props: any) => () => {
 
   // save lại cái step đã chọn lưu vào store
   const object = state.stepper.reduce(
-    (obj: any, item: { key: any; selected: any; data: any }) =>
+    (obj: any, item: any) =>
       Object.assign(obj, {
         [item.key]: { selected: item.selected, data: item.data }
       }),
@@ -234,39 +226,3 @@ export const checkActive = (item: any, props: any) => {
     return true
   } else return false
 }
-
-export const morning = [
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  }
-]
-
-export const afternoon = [
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  }
-]

@@ -1,21 +1,39 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { getbookingCur } from '@src/store/actionStore'
+import { getbookingCur, saveSchedule } from '@src/store/actionStore'
+import { AppState } from '@src/store/interface'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
-import { range } from 'lodash'
+import { find, range } from 'lodash'
 import moment from 'moment'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
-import { afternoon, morning } from './utils'
 
 export const ThoiGian = (props: any) => {
   const dispatch = useDispatch()
 
-  dispatch(getbookingCur())
+  const booking = useSelector((state: AppState) => state.booking)
 
   console.log('props ThoiGian :>> ', props)
+
+  const { state, keys } = props
+
+  const [stateTime, setstateTime] = useState<any>({
+    chonNgay: {
+      shifts: []
+    },
+    chonGio: {}
+  })
+
+  useEffect(() => {
+    dispatch(getbookingCur())
+    state.stepper.at(-1).data = booking.bookingCurrent.days
+  }, [])
+
+  //  ----------------------------INFO DATA --------------------------------------------------------
+
+  const findStep = find(state.stepper, { key: keys })
 
   const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
@@ -33,6 +51,8 @@ export const ThoiGian = (props: any) => {
 
   const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
   const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
+
+  //  ----------------------------ACTION --------------------------------------------------------
 
   const handlePrev = () => {
     // đi tới tháng củ
@@ -61,6 +81,43 @@ export const ThoiGian = (props: any) => {
     }
     return true
   }
+
+  const ngayTrong = (i: any) => {
+    if (!findStep.data) return false
+
+    const x = moment(`${todayObj.year()}-${thisMonth + 1}-${i}`).format(
+      'DD-MM-YYYY'
+    )
+
+    return findStep.data?.find((v: any) => {
+      const n = moment(v.date).format('DD-MM-YYYY')
+      return n === x
+    })
+  }
+
+  const chonNgay = (item: any) => () => {
+    setstateTime((v: any) => ({ ...v, chonNgay: item }))
+    state.stepper.at(-1).selected = { ...stateTime, chonNgay: item }
+  }
+
+  const chonGio = (item: any) => () => {
+    setstateTime((v: any) => ({ ...v, chonGio: item }))
+    state.stepper.at(-1).selected = { ...stateTime, chonGio: item }
+
+    const object = state.stepper.reduce(
+      (obj: any, item: any) =>
+        Object.assign(obj, {
+          [item.key]: { selected: item.selected, data: item.data }
+        }),
+      {}
+    )
+    dispatch(saveSchedule(object))
+  }
+
+  //  ----------------------------RENDER PAGE --------------------------------------------------------
+
+  console.log('stateTime :>> ', stateTime)
+  console.log('state :>> ', state)
 
   return (
     <section className={styles.thoigian}>
@@ -127,17 +184,26 @@ export const ThoiGian = (props: any) => {
 
           {/* ngày trong tháng */}
           {range(daysInMonth).map((i) => {
-            const today =
-              i + 1 === todayObj.date() &&
-              thisMonth === todayObj.month() && // kiểm tra có phải ngày hiện tại
-              thisYear === todayObj.year()
-                ? styles.today
-                : ''
+            const trong = ngayTrong(i + 1) ? styles.trong : ''
+            const l = moment(
+              `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
+            ).format('DD-MM-YYYY')
+
+            const p = moment(findStep.selected.chonNgay?.date).format(
+              'DD-MM-YYYY'
+            )
+            const activeDay = l === p ? styles.activeDay : ''
 
             return (
               <div
-                className={cx(styles.dayCell, styles.dayCell_inMonth, today)}
+                className={cx(
+                  styles.dayCell,
+                  styles.dayCell_inMonth,
+                  trong,
+                  activeDay
+                )}
                 key={i}
+                onClick={chonNgay(ngayTrong(i + 1))}
               >
                 <span>{i + 1}</span>
               </div>
@@ -158,30 +224,28 @@ export const ThoiGian = (props: any) => {
 
       {/* thời gian của bác sĩ */}
       <div className={styles.time}>
-        <div className={styles.morning}>
-          <h3>Buổi sáng</h3>
-          <ul className={styles.listMorning}>
-            {morning.map((v, i) => {
-              return (
-                <li key={i}>
-                  <button className={styles.btnTime}>{v.time}</button>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-        <div className={styles.afternoon}>
-          <h3>Buổi chiều</h3>
-          <ul className={styles.listAfternoon}>
-            {afternoon.map((v, i) => {
-              return (
-                <li key={i}>
-                  <button className={styles.btnTime}>{v.time}</button>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        {findStep.selected?.chonNgay?.shifts?.map((v: any) => {
+          return (
+            <div className={styles.shifts} key={v.id}>
+              <h3>{v.shiftName}</h3>
+              <ul className={styles.listShifts}>
+                {v.timeSlotInDay?.map((e: any) => {
+                  const activeGio =
+                    e.timeId === findStep.selected.chonGio.timeId
+                      ? styles.activeGio
+                      : ''
+                  return (
+                    <li key={e.timeId} onClick={chonGio(e)}>
+                      <button className={cx(styles.btnTime, activeGio)}>
+                        {`${e.startTime} - ${e.endTime}  (${e.maxSlot}) `}
+                      </button>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })}
       </div>
 
       {/* lưu ý gọi tổng đài */}
@@ -209,3 +273,10 @@ export const ThoiGian = (props: any) => {
 // const x = moment(dayCur).isAfter(todayObj, 'month')
 
 // console.log('x :>> ', x)
+
+// const today =
+//   i + 1 === todayObj.date() &&
+//   thisMonth === todayObj.month() &&
+//   thisYear === todayObj.year()
+//     ? styles.today
+//     : ''

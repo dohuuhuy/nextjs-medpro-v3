@@ -14,7 +14,7 @@ const reducers = {
   user: user,
   hospital: hospital,
   news: newsReducer,
-  demo: DemoReducer
+  booking: DemoReducer
 }
 
 export const combinedReducers = combineReducers(reducers)

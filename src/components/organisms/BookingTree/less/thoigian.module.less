@@ -118,25 +118,43 @@
         font-weight: 500;
       }
     }
+    .trong {
+      span {
+        border-radius: 5px;
+        background-color: #b2ecff;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
+    .activeDay {
+      span {
+        border-radius: 5px;
+        background-color: #fa531f;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
   }
   .time {
-    .morning {
-      .listMorning {
+    .shifts {
+      .listShifts {
         .listTime();
+
+        .btnTime {
+          background: #d6f3fd;
+          border-radius: 30px;
+          border: none;
+          padding: 10px;
+          color: #00b5f1;
+          font-size: 0.725rem;
+        }
+        .activeGio {
+          color: white;
+          background-color: #fa531f;
+        }
       }
-    }
-    .afternoon {
-      .listAfternoon {
-        .listTime();
-      }
-    }
-    .btnTime {
-      background: #d6f3fd;
-      border-radius: 30px;
-      border: none;
-      padding: 10px;
-      color: #00b5f1;
-      font-size: 0.725rem;
     }
   }
 
@@ -189,7 +207,7 @@
   text-align: left;
 
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   @media only screen and (max-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
   }
