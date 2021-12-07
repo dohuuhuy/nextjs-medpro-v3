@@ -31,7 +31,7 @@
       "@actionStore": ["src/store/actionStore"],
       "@store/*": ["./src/store/*"],
       "@templates/*": ["./src/components/templates/*"],
-      "@assets/*": ["./public/assets/*"],
+      "@assets/*": ["./src/common/assets/*"],
       "@public/*": ["./public/*"],
       "@utils/*": ["./src/utils/*"]
     },

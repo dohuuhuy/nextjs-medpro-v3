@@ -1,4 +1,4 @@
-import { Icon } from '@componentsTest/Icon'
+import { Icon } from './../../Icon'
 import { Modal } from 'antd'
 import React from 'react'
 import { ListHospital } from './interface'

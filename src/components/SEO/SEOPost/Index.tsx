@@ -1,4 +1,4 @@
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 import { NewsArticleJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 

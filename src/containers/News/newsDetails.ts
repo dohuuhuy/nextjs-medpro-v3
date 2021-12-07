@@ -1,4 +1,4 @@
-import { currentEnv } from './../../config/envs/env'
+import { currentEnv } from '@src/config/envs'
 import api from '@src/store/api'
 
 export const ChiTietBaiViet = async (ctx: any) => {

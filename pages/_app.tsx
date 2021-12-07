@@ -1,5 +1,5 @@
 import { getListPartners } from '@actionStore'
-import '@assets/styles/app.less'
+import '@src/common/assets/styles/app.less'
 import { OnTop } from '@components/atoms/OnTop'
 import SEO from '@components/SEO/next-seo.config'
 import Loading from '@componentsTest/Loading'

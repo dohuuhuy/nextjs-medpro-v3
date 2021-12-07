@@ -11,7 +11,7 @@ const withLess = require('next-with-less')
 
 const themeVariables = lessToJS(
   fs.readFileSync(
-    path.resolve(__dirname, 'public/assets/styles/variable.less'),
+    path.resolve(__dirname, './src/common/assets/styles/variable.less'),
     'utf8'
   )
 )
@@ -52,7 +52,7 @@ const nextConfig = {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.(svg|png|jpg)$/,
       include: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
       use: [
         'svg-sprite-loader',

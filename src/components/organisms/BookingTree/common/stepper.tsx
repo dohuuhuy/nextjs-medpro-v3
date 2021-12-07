@@ -1,5 +1,5 @@
 import Container from '@componentsTest/Container'
-import { Col, Row } from 'antd'
+import { Col, Row, Tooltip } from 'antd'
 import React from 'react'
 import styles from './../less/stepper.module.less'
 import { checkActive, steps } from './utils'
@@ -23,8 +23,9 @@ export const Stepper = ({ data }: any) => {
                   : ''
                 return (
                   <li key={i} style={{ width: w + '%' }} className={active}>
-                    {/* <hr className={styles.hrBe} /> */}
-                    <button className={styles.btnIcon}>{v.icon()}</button>
+                    <Tooltip title={v.title} color={'#2db7f5'}>
+                      <button className={styles.btnIcon}>{v.icon()}</button>
+                    </Tooltip>
                     <hr className={styles.hrAf} />
                   </li>
                 )

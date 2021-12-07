@@ -8,7 +8,7 @@
     "dev:production": "cross-env NODE_ENV=development ENV=production PORT=3009 nodemon",
     "build": "cross-env NODE_ENV=production ENV=testing next build",
     "build:production": "cross-env NODE_ENV=production ENV=production next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production ENV=testing PORT=3007 next start",
+    "start": "cross-env NODE_ENV=production ENV=testing PORT=3006 next start",
     "start:production": "cross-env NODE_ENV=production ENV=production PORT=3009 node dist/index.js",
     "export": "next build && next export",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",

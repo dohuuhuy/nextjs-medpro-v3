@@ -26,17 +26,17 @@ export const ContactDetail = () => {
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
       <ul className={styles.listContact}>
-        {handlerListFrom(register)?.map((el: any) => {
-          const sub = el?.require ? <sup>*</sup> : ''
+        {handlerListFrom(register)?.map((v, i) => {
+          const sub = v?.require ? <sup>*</sup> : ''
           return (
-            <li key={el?.label}>
+            <li key={i}>
               <Space direction='vertical' className={styles.enter}>
                 <label>
-                  {el?.label} {sub}
+                  {v?.label} {sub}
                 </label>
-                {el?.enter ? el?.enter(el) : ''}
+                {v?.enter ? v?.enter(v) : ''}
 
-                {error(el?.name, errors)}
+                {error(v?.name, errors)}
               </Space>
             </li>
           )

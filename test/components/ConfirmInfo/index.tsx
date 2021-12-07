@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 import { Col, Row, Button } from 'antd'
 import { CloseCircleOutlined } from '@ant-design/icons'
 import { uniqueId } from 'lodash'

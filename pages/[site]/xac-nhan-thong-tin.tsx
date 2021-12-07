@@ -5,10 +5,10 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ConfirmInfoPage = () => {
   return (
-    <DefaultLayout>
+    <>
       <ConfirmInfo />
-    </DefaultLayout>
+    </>
   )
 }
-
+ConfirmInfoPage.layout = DefaultLayout
 export default ConfirmInfoPage

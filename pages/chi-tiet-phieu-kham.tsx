@@ -18,7 +18,6 @@ const DetailBookingPage = () => {
 
   useEffect(() => {
     const { transactionId } = router.query
-    // khi nào có transactionId thì chạy
     transactionId && dispatch(ac.getBillInfo(transactionId))
   }, [router.query.transactionId])
 

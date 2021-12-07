@@ -2,15 +2,16 @@ import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import BannersPublic from '@src/components/organisms/BannersPublic'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
-import { urlContent } from '@utils/contants'
+import { urlContent, urlSEOPage } from '@utils/contants'
 import { fetcher } from '@utils/func'
-import { NextSeoProps } from 'next-seo'
+import { find } from 'lodash'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
-const Site = ({ data }: any) => {
+const Site = ({ data, meta }: any) => {
   const router = useRouter()
+  const findMeta = find(meta, { key: router.asPath.replace('/', '') })
 
   useEffect(() => {
     if (router.asPath.includes('phong-mach')) {
@@ -21,7 +22,7 @@ const Site = ({ data }: any) => {
   if (!data) return null
   return (
     <>
-      <SEOHead meta={meta} />
+      <SEOHead meta={findMeta} />
       <BannersPublic />
       <HandlerGetContentPage dataContent={data} />
     </>
@@ -34,30 +35,7 @@ export default Site
 
 export const getServerSideProps = async () => {
   const data = await fetcher(urlContent)
+  const meta = await fetcher(urlSEOPage)
 
-  return { props: { data } }
-}
-
-const meta: NextSeoProps = {
-  noindex: false,
-  nofollow: false,
-  robotsProps: {},
-  title: 'Giới thiệu',
-  description: 'Giới thiệu medpro',
-  canonical: 'https://nextjs-testing.medpro.com.vn',
-  openGraph: {
-    type: 'website',
-    url: 'https://nextjs-testing.medpro.com.vn',
-    title: 'Giới thiệu',
-    description: 'Giới thiệu medpro',
-    images: [
-      {
-        url: `https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg`,
-        width: 800,
-        height: 600,
-        alt: 'giới thiệu'
-      }
-    ],
-    site_name: 'Trang Giới thiệu'
-  }
+  return { props: { data, meta } }
 }

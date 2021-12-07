@@ -1,4 +1,4 @@
-import Container from '@componentsTest/Container'
+import Container from '../Container'
 import { Col, Row, Timeline } from 'antd'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'

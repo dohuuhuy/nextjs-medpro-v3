@@ -2,11 +2,12 @@ import global from '@componentStore/global/reducer'
 import hospital from '@componentStore/hospital/reducer'
 import newsReducer from '@componentStore/news/reducer'
 import user from '@componentStore/user/reducer'
-import { HYDRATE } from 'next-redux-wrapper'
-import { Reducer } from 'react'
-import { AnyAction, combineReducers } from 'redux'
 import total from '@src/store/componentStore/totalData/reducer'
 import { AppState } from '@src/store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
+import { Reducer } from 'react'
+import { combineReducers } from 'redux'
+import { AnyAction } from 'redux'
 
 const reducers = {
   total: total,
@@ -27,6 +28,6 @@ export const rootReducer: Reducer<AppState, AnyAction> = (state, action) => {
       }
 
     default:
-      return combinedReducers(state as any, action)
+      return combinedReducers(state, action)
   }
 }

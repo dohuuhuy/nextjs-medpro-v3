@@ -19,7 +19,7 @@ const init: UserState = {
 export default function user(
   state = init,
   action: UserActions | { type: typeof HYDRATE; payload: UserState }
-) {
+): UserState {
   switch (action.type) {
     case UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS: {
       return { ...state, billInfo: action.billInfo }

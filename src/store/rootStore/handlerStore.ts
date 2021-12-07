@@ -1,4 +1,4 @@
-import { NODE_ENV } from '@config/envs/env'
+import { NODE_ENV } from '@src/config/envs'
 import { VERSION } from '@config/version'
 import { applyMiddleware, Middleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'

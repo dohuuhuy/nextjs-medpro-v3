@@ -1,16 +1,18 @@
 // import * as yup from 'yup'
-import {z} from 'zod'
+import { z } from 'zod'
 
 const phoneRegExp = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g
 
 export const schemaContact = z.object({
-  fullname: z.string().nonempty("Vui lòng nhập họ tên !"),
-  email: z.string().email("Vui nhập đúng định dạng email !"),
-  phone: z.string().nonempty("Vui lòng nhập số điện thoại !").regex(phoneRegExp, 'Số điện thoại không dúng định dạng !'),
-  problem: z.string().nonempty("Vui lòng chọn vấn đề !"),
-  content: z.string().nonempty("Vui lòng nhập nội dung cần trợ giúp !")
-
-});
+  fullname: z.string().nonempty('Vui lòng nhập họ tên !'),
+  email: z.string().email('Vui nhập đúng định dạng email !'),
+  phone: z
+    .string()
+    .nonempty('Vui lòng nhập số điện thoại !')
+    .regex(phoneRegExp, 'Số điện thoại không dúng định dạng !'),
+  problem: z.string().nonempty('Vui lòng chọn vấn đề !'),
+  content: z.string().nonempty('Vui lòng nhập nội dung cần trợ giúp !')
+})
 // export const schemaContact = z.object().shape({
 //   fullname: zod
 //     .string()
@@ -41,38 +43,36 @@ export const handlerListFrom = (register: any) => {
       name: 'fullname',
       type: 'text',
       label: 'Họ và tên',
-      place: 'Vui lòng nhập họ và tên',
+      placeholder: 'Vui lòng nhập họ và tên',
       require: true,
-      enter: ({ name, place, type }: any) => {
-        return <input {...register(name)} placeholder={place} type={type} />
-      }
+      autoComplete: 'off',
+      enter: (props) => <input {...props} />
     },
     {
       name: 'email',
       type: 'email',
       label: 'Địa chỉ Email',
-      place: 'Vui lòng nhập email..',
+      placeholder: 'Vui lòng nhập email..',
       require: false,
-      enter: ({ name, place, type }: any) => {
-        return <input {...register(name)} placeholder={place} type={type} />
-      }
+      autoComplete: 'off',
+      enter: (props) => <input {...props} />
     },
     {
       name: 'phone',
       type: 'number',
       label: 'Số điện thoại',
-      place: 'Vui lòng nhập số điện thoại',
+      placeholder: 'Vui lòng nhập số điện thoại',
       require: true,
-      enter: ({ name, place, type }: any) => {
-        return <input {...register(name)} placeholder={place} type={type} />
-      }
+      autoComplete: 'off',
+      enter: (props) => <input {...props} />
     },
     {
       name: 'problem',
       type: 'select',
       label: 'Chọn vấn đề',
-      place: 'Vấn đề của bạn',
+      placeholder: 'Vấn đề của bạn',
       require: true,
+      autoComplete: 'off',
       enter: ({ name }: any) => {
         return <select {...register(name)}>{option}</select>
       }
@@ -81,22 +81,14 @@ export const handlerListFrom = (register: any) => {
       name: 'content',
       type: 'textarea',
       label: 'Nhập nội dung cần trợ giúp',
-      place: 'Vui lòng nhập nội dung cần hỗ trợ...',
+      placeholder: 'Vui lòng nhập nội dung cần hỗ trợ...',
       require: true,
       maxLength: 500,
       rows: 5,
-      enter: ({ maxLength, rows, name, place }: any) => {
-        return (
-          <textarea
-            {...register(name)}
-            placeholder={place}
-            maxLength={maxLength}
-            rows={rows}
-          />
-        )
-      }
+      autoComplete: 'off',
+      enter: (props) => <textarea {...props} />
     }
-  ]
+  ] as FormInput[]
 }
 
 const opt = [
@@ -125,3 +117,15 @@ const option = opt.map(({ code, label }) => {
     </option>
   )
 })
+
+export interface FormInput {
+  name: string
+  type: string
+  label: string
+  placeholder: string
+  require: boolean
+  autoComplete?: string
+  enter: (props: FormInput) => JSX.Element
+  maxLength?: any
+  rows?: any
+}

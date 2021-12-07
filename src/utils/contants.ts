@@ -1,4 +1,4 @@
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 
 export const LIMIT_PAGE_NEWS = 8
 
@@ -33,3 +33,5 @@ export const urlContent = 'https://api.npoint.io/5faf3ddf0d50e90896f8'
 export const urlBanners = 'https://api.npoint.io/f437f4eb6cceccf1c59a'
 
 export const urlListPartners = 'https://api.npoint.io/e4a272b45693136cded7'
+
+export const urlSEOPage = 'https://api.npoint.io/245979853aae833092e1'

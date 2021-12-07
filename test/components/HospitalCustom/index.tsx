@@ -1,5 +1,5 @@
-import { Icon } from '@componentsTest/Icon'
-import { Col, Input, Rate, Row, Select } from 'antd'
+import { Icon } from '../Icon'
+import { Col, Input, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
@@ -35,7 +35,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
 
   const onSearchKey = (e: any) => {
     setactiveList(true)
-    console.log('e :>> ', e)
     const { value } = e.target
     setkeySearch(value)
     const findHospital = props?.listHospital.filter(({ name }) => {
@@ -93,8 +92,6 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         </Col>
         <Col span='24' className={styles.colListCard}>
           <Container className={styles.conList}>
-            <Rate value={3} />
-
             <ul className={styles.listCard}>
               {cardHospital(
                 activeList ? listHospitals : props?.listHospital,
