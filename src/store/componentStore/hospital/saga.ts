@@ -29,10 +29,10 @@ function* getFeatureByPartner({ partnerId, typeReser }: any) {
     })
 
     switch (typeReser) {
-      case 'parasitic':
+      case 'partner':
         yield put(ac.FeatureByPartnerSuccess(rs?.data))
         break
-      case 'normal':
+      case 'app':
         yield put(ac.FeatureByAppSuccess(rs?.data))
         break
       default:
@@ -134,27 +134,25 @@ function* watcher_getBanners() {
 }
 
 function* getBookingTreeCurrentNode({}: any) {
-  const hos: HospitalState = yield select((state: AppState) => state.hospital)
-
-  const schedule = hos.schedule
-
   try {
-    console.log('schedule?.serive?.id :>> ', schedule?.serive?.id)
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+    const schedule = hos.schedule
 
     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
       {
         treeId: 'DATE',
-        serviceId: schedule?.serive?.id || '',
-        doctorId: schedule?.doctor?.id || '',
-        subjectId: schedule?.subject?.id || '',
-        date: ''
+        serviceId: schedule?.service?.selected.id || '',
+        doctorId: schedule?.doctor?.selected.id || '',
+        subjectId: schedule?.subject?.selected.id || ''
       },
       { partnerid: hos.partnerId }
     )
 
-    console.log('response :>> ', response)
+    console.log('response :>> ', response.data)
+
+    // yield put(ac.getBookingTreeCurrentSuccess(response.data))
   } catch (error) {
-    console.log(error)
+    console.log('error getBookingTreeCurrentNode :>> ', error)
   }
 }
 

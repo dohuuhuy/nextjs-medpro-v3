@@ -1,24 +1,32 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
+import { getBookingTreeCurrent, getDemo } from '@src/store/actionStore'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { range } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styles from './../less/thoigian.module.less'
+import { afternoon, morning } from './utils'
 
-export const ThoiGian = (_props: any) => {
-  // console.log('props ThoiGian :>> ', props)
+export const ThoiGian = (props: any) => {
+  const dispatch = useDispatch()
+
+  dispatch(getBookingTreeCurrent())
+
+  console.log('props ThoiGian :>> ', props)
 
   const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
-  const [count, setcount] = useState(0)
   const todayObj = moment()
-  const [dayObj, setDayObj] = useState(moment()) // init là date hiện tại
+  const [count, setcount] = useState(0) // kiểm tra hoạt động của hàm tới lui
 
-  const thisYear = dayObj.year() // lấy năm
-  const thisMonth = dayObj.month() // lấy tháng
-  const daysInMonth = dayObj.daysInMonth() // lấy số ngày trong tháng , ví dụ như 30 ngày
+  const [dayCur, setdayCur] = useState(moment())
+
+  const thisYear = dayCur.year() // lấy năm hiện tại
+  const thisMonth = dayCur.month() // lấy tháng hiện tại
+  const daysInMonth = dayCur.daysInMonth() // lấy số ngày trong tháng , ví dụ như 30 ngày
 
   const dayObjOf1 = moment(`${thisYear}-${thisMonth + 1}-1`) // thời gian tháng củ
   const weekDayOf1 = dayObjOf1.day() // lấy số ngày củ
@@ -29,27 +37,29 @@ export const ThoiGian = (_props: any) => {
   const handlePrev = () => {
     // đi tới tháng củ
     setcount(count - 1)
-    setDayObj(dayObj.subtract(1, 'month'))
+    setdayCur(dayCur.subtract(1, 'month'))
   }
 
   const handleNext = () => {
     // đi tới tháng tới
     setcount(count + 1)
-    setDayObj(dayObj.add(1, 'month'))
+    setdayCur(dayCur.add(1, 'month'))
   }
 
   const hiddenNext = () => {
-    // ẩn btn tháng tới
-    if (thisMonth > todayObj.month()) {
-      return styles.hiddenNext
+    // nếu tháng đang chọn lớn tháng hiện tại thì ẩn nút tới
+    if (moment(dayCur).isAfter(todayObj, 'month')) {
+      return false
     }
+    return true
   }
 
   const hiddenPrev = () => {
-    // ẩn btn tháng củ
-    if (thisMonth <= todayObj.month()) {
-      return styles.hiddenPrev
+    // nếu tháng đang chọn nhỏ hoặc bằng tháng hiện tại từ ẩn nút lùi
+    if (moment(dayCur).isSameOrBefore(todayObj, 'month')) {
+      return false
     }
+    return true
   }
 
   return (
@@ -58,7 +68,6 @@ export const ThoiGian = (_props: any) => {
         <Icon name='ngaygio' />
         <span>Thời gian làm việc từ T2 - T7 các ngày trong tuần</span>
       </div>
-
       <p className='d-none'>{count}</p>
       {/* ghi chú chức năng */}
       <div className={styles.groupGuide}>
@@ -80,19 +89,21 @@ export const ThoiGian = (_props: any) => {
       <div className={styles.calendar}>
         <div className={styles.header}>
           <Space>
-            <Button
-              type='text'
-              className={hiddenPrev()}
-              icon={<ArrowLeftOutlined />}
-              onClick={handlePrev}
-            />
-            <div className='datetime'>{dayObj.format('MM - YYYY')}</div>
-            <Button
-              type='text'
-              className={hiddenNext()}
-              icon={<ArrowRightOutlined />}
-              onClick={handleNext}
-            />
+            {hiddenPrev() && (
+              <Button
+                type='text'
+                icon={<ArrowLeftOutlined />}
+                onClick={handlePrev}
+              />
+            )}
+            <div className={styles.datetime}>{dayCur.format('MM - YYYY')}</div>
+            {hiddenNext() && (
+              <Button
+                type='text'
+                icon={<ArrowRightOutlined />}
+                onClick={handleNext}
+              />
+            )}
           </Space>
         </div>
 
@@ -189,38 +200,12 @@ export const ThoiGian = (_props: any) => {
   )
 }
 
-const morning = [
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  }
-]
+// console.log(
+//   'Number(thisMonth + 1) & Number(todayObj.month() + 1) :>> ',
+//   Number(thisMonth + 1),
+//   Number(todayObj.month() + 1)
+// )
 
-const afternoon = [
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  },
-  {
-    time: '07:30 - 08:30'
-  }
-]
+// const x = moment(dayCur).isAfter(todayObj, 'month')
+
+// console.log('x :>> ', x)

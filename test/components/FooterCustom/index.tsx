@@ -71,7 +71,12 @@ export default function FooterCustom({ dataFooter }: any) {
                     <li key={uniqueId()}>
                       <Link href={v.link}>
                         <a target='_blank'>
-                          <Image src={v.image} width='140' height='44' alt='' />
+                          <Image
+                            src={v?.image}
+                            width='140'
+                            height='44'
+                            alt=''
+                          />
                         </a>
                       </Link>
                     </li>
@@ -103,7 +108,7 @@ export default function FooterCustom({ dataFooter }: any) {
                   <li key={uniqueId()}>
                     <Link href={v.link}>
                       <a target='_blank'>
-                        <Image src={v.image} width='135' height='45' alt='' />
+                        <Image src={v?.image} width='135' height='45' alt='' />
                       </a>
                     </Link>
                   </li>

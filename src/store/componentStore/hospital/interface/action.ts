@@ -60,7 +60,7 @@ export type FeatureAction =
 export interface FeatureRequest {
   type: HosptailTypes.Feature.FEATURE_REQUEST
   partnerId: string
-  typeReser: string
+  typeReser: 'app' | 'partner'
 }
 
 export interface FeatureByPartnertSuccess {

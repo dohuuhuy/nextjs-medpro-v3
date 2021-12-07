@@ -1,4 +1,5 @@
 import * as ac from '@actionStore'
+import { saveSchedule } from '@actionStore'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
@@ -9,14 +10,6 @@ import { Stepper } from './common/stepper'
 import { colLeft, colRight, handlerStep, Steps } from './common/utils'
 import styles from './less/styles.module.less'
 
-export interface BookingTreeIF {
-  bookingTree: any
-}
-
-export interface State {
-  stepper: Steps[]
-}
-
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const dispatch = useDispatch()
 
@@ -25,11 +18,36 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   })
 
   useEffect(() => {
-    setstate({ stepper: handlerStep({ bookingTree }) })
+    const { type, TYPE_RELOAD } = (performance as any).navigation
+
+    if (window.performance) {
+      console.info('window.performance works fine on this browser')
+      setstate({ stepper: handlerStep({ bookingTree }) })
+    }
+    if (type === TYPE_RELOAD) {
+      console.info('This page is reloaded')
+      const data = window.localStorage.getItem('selected')
+      const selecteds = JSON.parse(data || '')
+      dispatch(saveSchedule(selecteds))
+
+      const stepper = state.stepper.map((v: any) => {
+        return {
+          ...v,
+          selected: selecteds[v.key].selected,
+          data: selecteds[v.key].data,
+          open: Object.keys(selecteds[v.key]).length ? false : true
+        }
+      })
+
+      setstate({ stepper: stepper })
+    } else {
+      console.info('This page is not reloaded')
+    }
   }, [bookingTree])
 
   if (!bookingTree) return null
 
+  console.log('state :>> ', state)
   return (
     <section>
       <Stepper data={state} />
@@ -38,14 +56,35 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
           <Col {...colLeft} className={styles.colLeft}>
             <Space direction='vertical' className={styles.listTree}>
               {state?.stepper?.map((v: Steps, i: any) => {
+                // return null
+                const icon = v?.icon({
+                  item: v.selected,
+                  props: {
+                    keys: v.key,
+                    state
+                  }
+                })
+
+                const name =
+                  v?.selected?.name || 'Chọn ' + v?.title.toLowerCase()
+
+                const content = v?.content({
+                  keys: v.key,
+                  state,
+                  setstate,
+                  data: v.data,
+                  saveSchedule: ac.saveSchedule,
+                  dispatch
+                })
+
                 return (
-                  v.sort >= 0 && (
+                  v?.sort >= 0 && (
                     <Collapse
                       key={i}
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
-                      collapsible={v.open ? 'disabled' : 'header'}
+                      // collapsible={v.open ? 'disabled' : 'header'}
                     >
                       <Collapse.Panel
                         style={{ width: '100%' }}
@@ -54,34 +93,18 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           <div className={styles.header}>
                             <h3>{v.title}</h3>
                             <div className={cx(styles.input)}>
-                              {v?.icon({
-                                item: v.selected,
-                                props: {
-                                  keys: v.key,
-                                  state
-                                }
-                              })}
+                              {icon}
                               <span
                                 className={v.selected.name && styles.active}
                               >
-                                {v.selected.name ||
-                                  'Chọn ' + v.title.toLowerCase()}
+                                {name}
                               </span>
                             </div>
                           </div>
                         }
                         key={i}
                       >
-                        {v?.content({
-                          keys: v.key,
-                          state,
-                          setstate,
-                          data: v.data,
-                          saveInfoStep: ac.saveInfoStep,
-                          saveSchedule: ac.saveSchedule,
-                          getBookingTreeCurrent: ac.getBookingTreeCurrent,
-                          dispatch
-                        })}
+                        {content}
                       </Collapse.Panel>
                     </Collapse>
                   )
@@ -96,4 +119,12 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       </Container>
     </section>
   )
+}
+
+export interface BookingTreeIF {
+  bookingTree: any
+}
+
+export interface State {
+  stepper: Steps[]
 }

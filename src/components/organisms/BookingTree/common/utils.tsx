@@ -155,19 +155,21 @@ export const selected = (item: any, props: any) => () => {
     keys,
     // saveInfoStep,
     dispatch,
-    saveSchedule,
-    getBookingTreeCurrent
+    saveSchedule
+    // getBookingTreeCurrent
   } = props
 
   const findStep = find(state.stepper, { key: keys })
   const index = findIndex(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item.subType })
 
+  // kiêm tra step có selected chưa , nếu có thì reset mãng về sau và chọn lại data
   if (Object.keys(findStep.selected).length) {
     console.log('reset mảng và chọn lại từng bước :>> ', 1)
 
     state.stepper[index].selected = item.detail
 
+    // kiểm tra có bước kế tiếp không , thực hiện xóa data từ bước kế tiếp đến cuối
     if (indexSub > 0) {
       for (let i = indexSub; i < state.stepper.length; i++) {
         state.stepper[i].selected = {}
@@ -178,40 +180,44 @@ export const selected = (item: any, props: any) => () => {
       state.stepper[indexSub].open = false
     }
 
-    const object = state.stepper.reduce(
-      (obj: any, item: { key: any; selected: any }) =>
-        Object.assign(obj, { [item.key]: item.selected }),
-      {}
-    )
-    dispatch(saveSchedule(object))
-
+    // sau đó cập nhật lại state
     setstate((v: any) => ({
       ...v,
       stepper: state.stepper
     }))
-  } else {
+  }
+  //  nếu có rồi thì chọn step đi bình thường
+  else {
     state.stepper[index].selected = item.detail
 
+    // nếu có bước kế thì gán data và mở collasp cho bước kế đó
     if (indexSub > 0) {
       state.stepper[indexSub].data = item.child
       state.stepper[indexSub].open = false
     }
 
-    const object = state.stepper.reduce(
-      (obj: any, item: { key: any; selected: any }) =>
-        Object.assign(obj, { [item.key]: item.selected }),
-      {}
-    )
-    dispatch(saveSchedule(object))
-
+    // nếu bước kế = null thì mở collasp
     if (item.subType === null) {
       state.stepper.at(-1).open = false
-      dispatch(getBookingTreeCurrent())
     }
+
+    //  cuối cùng là cập nhật lại state
     setstate((v: any) => ({
       ...v
     }))
   }
+
+  // save lại cái step đã chọn lưu vào store
+  const object = state.stepper.reduce(
+    (obj: any, item: { key: any; selected: any; data: any }) =>
+      Object.assign(obj, {
+        [item.key]: { selected: item.selected, data: item.data }
+      }),
+    {}
+  )
+  dispatch(saveSchedule(object))
+
+  window.localStorage.setItem('selected', JSON.stringify(object))
 }
 
 export const checkActive = (item: any, props: any) => {
@@ -228,3 +234,39 @@ export const checkActive = (item: any, props: any) => {
     return true
   } else return false
 }
+
+export const morning = [
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  }
+]
+
+export const afternoon = [
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  },
+  {
+    time: '07:30 - 08:30'
+  }
+]

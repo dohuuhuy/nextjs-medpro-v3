@@ -24,7 +24,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   useEffect(() => {
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
-  }, [])
+  }, [dispatch, partnerId])
 
   if (!data) return null
   const listHospital = data.listHospital
