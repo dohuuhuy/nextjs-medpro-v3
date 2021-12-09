@@ -155,49 +155,23 @@ export const selected = (item: any, props: any) => () => {
   const index = findIndex(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item.subType })
 
-  // kiêm tra step có selected chưa , nếu có thì reset mãng về sau và chọn lại data
-  if (Object.keys(findStep.selected).length) {
-    console.log('reset mảng và chọn lại từng bước :>> ', 1)
+  state.stepper[index].selected = item.detail
 
-    state.stepper[index].selected = item.detail
-
-    // kiểm tra có bước kế tiếp không , thực hiện xóa data từ bước kế tiếp đến cuối
-    if (indexSub > 0) {
-      for (let i = indexSub; i < state.stepper.length; i++) {
-        state.stepper[i].selected = {}
-        state.stepper[i].open = true
-      }
-
-      state.stepper[indexSub].data = item.child
-      state.stepper[indexSub].open = false
-    }
-
-    // sau đó cập nhật lại state
-    setstate((v: any) => ({
-      ...v,
-      stepper: state.stepper
-    }))
+  // nếu có bước kế thì gán data và mở collasp cho bước kế đó
+  if (indexSub > 0) {
+    state.stepper[indexSub].data = item.child
+    state.stepper[indexSub].open = false
   }
-  //  nếu có rồi thì chọn step đi bình thường
-  else {
-    state.stepper[index].selected = item.detail
 
-    // nếu có bước kế thì gán data và mở collasp cho bước kế đó
-    if (indexSub > 0) {
-      state.stepper[indexSub].data = item.child
-      state.stepper[indexSub].open = false
-    }
-
-    // nếu bước kế = null thì mở collasp
-    if (item.subType === null) {
-      state.stepper.at(-1).open = false
-    }
-
-    //  cuối cùng là cập nhật lại state
-    setstate((v: any) => ({
-      ...v
-    }))
+  // nếu bước kế = null thì mở collasp
+  if (item.subType === null) {
+    state.stepper.at(-1).open = false
   }
+
+  //  cuối cùng là cập nhật lại state
+  setstate((v: any) => ({
+    ...v
+  }))
 
   // save lại cái step đã chọn lưu vào store
   const object = state.stepper.reduce(
@@ -207,7 +181,7 @@ export const selected = (item: any, props: any) => () => {
       }),
     {}
   )
-  dispatch(saveSchedule(object))
+  // dispatch(saveSchedule(object))
 
   window.localStorage.setItem('selected', JSON.stringify(object))
 }

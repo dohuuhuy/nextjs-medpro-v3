@@ -29,7 +29,7 @@ export default HuongDan
 export const getServerSideProps = async (_ctx: any) => {
   const url = currentEnv.BO_API + '/quy-trinh/get-by-partner'
   const data = await fetcherGuide(url)
-  const meta = {} // await fetcher(urlSEOPage)
+  const meta = await fetcher(urlSEOPage)
 
   return { props: { data, meta } }
 }

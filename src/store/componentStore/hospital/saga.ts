@@ -169,8 +169,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getBookingTree),
     fork(watcher_getHeader),
     fork(watcher_getBanners),
-    fork(watcher_getFooter),
-    fork(watcher_getbookingCurNode)
+    fork(watcher_getFooter)
+    // fork(watcher_getbookingCurNode)
   ])
 }
 export default hospitalSagas

@@ -9,9 +9,9 @@ import styles from './styles.module.less'
 export const HuongDanCustom = ({ data }: any) => {
   return (
     <Container className={styles.conHuongDan}>
-      <Row>
+      <Row className={styles.rowHuongDan}>
         <Col xl={24} className={styles.colHuongDan}>
-          <Timeline>
+          <Timeline className={styles.Timeline}>
             {data?.map((v: Item) => {
               return (
                 <Timeline.Item key={uniqueId()}>

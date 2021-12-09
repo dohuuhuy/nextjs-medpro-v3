@@ -17,7 +17,7 @@ export const ThoiGian = (props: any) => {
 
   console.log('props ThoiGian :>> ', props)
 
-  const { state, keys } = props
+  const { state, keys, setstate } = props
 
   const [stateTime, setstateTime] = useState<any>({
     chonNgay: {
@@ -28,8 +28,9 @@ export const ThoiGian = (props: any) => {
 
   useEffect(() => {
     dispatch(getbookingCur())
-    state.stepper.at(-1).data = booking.bookingCurrent.days
-  }, [])
+  }, [dispatch])
+
+  state.stepper.at(-1).data = booking.bookingCurrent.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
 
@@ -97,12 +98,20 @@ export const ThoiGian = (props: any) => {
 
   const chonNgay = (item: any) => () => {
     setstateTime((v: any) => ({ ...v, chonNgay: item }))
-    state.stepper.at(-1).selected = { ...stateTime, chonNgay: item }
+    state.stepper.at(-1).selected = {
+      ...stateTime,
+      chonNgay: item
+    }
   }
 
   const chonGio = (item: any) => () => {
     setstateTime((v: any) => ({ ...v, chonGio: item }))
-    state.stepper.at(-1).selected = { ...stateTime, chonGio: item }
+
+    state.stepper.at(-1).selected = {
+      ...stateTime,
+      chonGio: item
+    }
+    setstate((v: any) => ({ ...v }))
 
     const object = state.stepper.reduce(
       (obj: any, item: any) =>
@@ -231,7 +240,7 @@ export const ThoiGian = (props: any) => {
               <ul className={styles.listShifts}>
                 {v.timeSlotInDay?.map((e: any) => {
                   const activeGio =
-                    e.timeId === findStep.selected.chonGio.timeId
+                    e.timeId === findStep.selected?.chonGio?.timeId
                       ? styles.activeGio
                       : ''
                   return (
