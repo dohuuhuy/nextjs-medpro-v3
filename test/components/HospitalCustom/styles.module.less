@@ -9,13 +9,6 @@
 
 .container {
   padding: 0;
-  .conGroup,
-  .conList {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    padding-bottom: 30px;
-  }
 
   .rowSelect {
     width: 100%;
@@ -27,52 +20,57 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(to bottom right, #2fa0ec, #05e3fd);
-      h2 {
-        text-align: center;
-        color: white;
-      }
-      .GroupInputSelect {
-        .ListCustom ();
+      .conGroup {
+        flex-direction: column;
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
+        h2 {
+          text-align: center;
+          color: white;
+        }
+        .GroupInputSelect {
+          .ListCustom ();
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
 
-        li {
-          padding: 7.5px;
-          width: 50%;
-          .inputSearch {
-            max-height: 40px;
-            align-content: center;
-            align-items: center;
-            border-radius: 25px;
-            background-color: #31afdd;
-            border: none;
-            color: white;
-
-            input {
-              font-size: 13px;
-              padding-left: 7px;
-              background-color: #31afdd;
-            }
-            &::placeholder {
-              color: white;
-            }
-          }
-          .inputSelect {
-            span {
-              color: white;
-            }
-            & > div {
-              height: 40px;
-              border-radius: 25px;
+          li {
+            padding: 7.5px;
+            width: 50%;
+            .inputSearch {
+              max-height: 40px;
               align-content: center;
               align-items: center;
-              font-size: 13px;
-              background-color: #2abee0;
+              border-radius: 25px;
+              background-color: #31afdd;
               border: none;
-              &:hover {
-                cursor: pointer;
+              color: white;
+
+              input {
+                font-size: 13px;
+                padding-left: 7px;
+                background-color: #31afdd;
+              }
+              &::placeholder {
+                color: white;
+              }
+            }
+            .inputSelect {
+              span {
+                color: white;
+              }
+              & > div {
+                height: 40px;
+                border-radius: 25px;
+                align-content: center;
+                align-items: center;
+                font-size: 13px;
+                background-color: #2abee0;
+                border: none;
+                &:hover {
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -83,72 +81,82 @@
       padding: 0 15px;
       display: flex;
       justify-content: center;
-      .listCard {
-        .ListCustom();
+      max-height: 100vh;
+      overflow: scroll;
+
+      .conList {
+        flex-direction: column;
         display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        // justify-content: flex-start;
-        justify-content: center;
-        .item {
+        align-items: center;
+        margin-bottom: 30px;
+
+        .listCard {
+          .ListCustom();
           display: flex;
+          flex-wrap: wrap;
           align-items: stretch;
-          padding: 10px 7.5px;
-          width: 50%;
-          .cardHospital {
-            transition: all 0.3s ease-in-out;
-
-            background-color: white;
+          // justify-content: flex-start;
+          justify-content: center;
+          .item {
             display: flex;
-            align-content: center;
-            justify-content: space-evenly;
+            align-items: stretch;
+            padding: 10px 7.5px;
+            width: 50%;
+            .cardHospital {
+              transition: all 0.3s ease-in-out;
 
-            width: 100%;
-            min-height: 110px;
-            padding: 15px 10px;
-
-            box-shadow: 0px 8px 15px #3f51b51f;
-            box-sizing: border-box;
-            border-radius: 8px;
-
-            .cardView {
+              background-color: white;
               display: flex;
-              justify-content: center;
-              align-items: center;
+              align-content: center;
+              justify-content: space-evenly;
 
-              max-width: 15%;
-              min-width: 15%;
-              margin-bottom: 0;
-              img {
-                max-width: 50px;
+              width: 100%;
+              min-height: 110px;
+              padding: 15px 10px;
+
+              box-shadow: 0px 8px 15px #3f51b51f;
+              box-sizing: border-box;
+              border-radius: 8px;
+
+              .cardView {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                max-width: 15%;
+                min-width: 15%;
+                margin-bottom: 0;
+                img {
+                  max-width: 50px;
+                }
               }
-            }
-            .cardBody {
-              min-width: 70%;
-              max-width: 70%;
-              .nameHospital {
-                font-size: 12px;
-                font-weight: 600;
-              }
-              .address {
-                font-size: 12px;
-                color: #828282;
-                font-weight: 400;
+              .cardBody {
+                min-width: 70%;
+                max-width: 70%;
+                .nameHospital {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+                .address {
+                  font-size: 12px;
+                  color: #828282;
+                  font-weight: 400;
+                }
+
+                .status {
+                  color: #ffb340;
+                }
+                .rate {
+                  font-size: 13px;
+                }
               }
 
-              .status {
-                color: #ffb340;
+              &:hover {
+                box-shadow: 0px 0px 20px 5px #5eb4ff47;
+                transform: translateY(-0.2rem);
+                cursor: pointer;
+                color: cornflowerblue;
               }
-              .rate {
-                font-size: 13px;
-              }
-            }
-
-            &:hover {
-              box-shadow: 0px 0px 20px 5px #5eb4ff47;
-              transform: translateY(-0.2rem);
-              cursor: pointer;
-              color: cornflowerblue;
             }
           }
         }

@@ -38,9 +38,9 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     const { value } = e.target
     setkeySearch(value)
     const findHospital = props?.listHospital.filter(({ name }) => {
-      return (
-        name.toUpperCase().indexOf(validateCharUTF8(value.toUpperCase())) >= 0
-      )
+      const _name = validateCharUTF8(name).toLowerCase()
+      const _value = validateCharUTF8(value).toLowerCase()
+      return _name.includes(_value)
     })
     setlistHospitals(findHospital)
   }
