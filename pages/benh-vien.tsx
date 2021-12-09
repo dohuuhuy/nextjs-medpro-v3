@@ -41,6 +41,6 @@ export default ChonBenhVienPage
 
 export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()
-  const meta = null // await fetcher(urlSEOPage)
+  const meta = await fetcher(urlSEOPage)
   return { props: { data, meta } }
 }
