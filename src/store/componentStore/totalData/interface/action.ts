@@ -83,12 +83,9 @@ export interface Set_Window {
   data: any
 }
 
-export type LoadingAction = On_Loading | Off_Loading
+export type LoadingAction = Set_Loading
 
-export interface On_Loading {
-  type: TotalDataTypes.Loading.On_Loading
-}
-
-export interface Off_Loading {
-  type: TotalDataTypes.Loading.Off_Loading
+export interface Set_Loading {
+  type: TotalDataTypes.Loading.Set_Loading
+  status: boolean
 }

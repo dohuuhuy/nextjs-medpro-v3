@@ -1,3 +1,4 @@
+import { huyi } from './../../../utils/clog'
 import { client } from '@config/medproSDK'
 import { AppState, HospitalState, HosptailTypes } from '@store/interface'
 import { AxiosResponse } from 'axios'
@@ -71,16 +72,17 @@ function* watcher_getListHospital() {
 function* getBookingTree({ partnerId }: any) {
   try {
     yield client.setPartner(partnerId)
-    yield put(ac.onLoading())
+    yield put(ac.setLoading())
 
     const response: AxiosResponse = yield client.getBookingTreeDynamic({
       treeId: 'DATE'
     })
 
     yield put(ac.getBookingTreeSuccess(response.data))
-    yield put(ac.offLoading())
+    yield put(ac.setLoading(false))
   } catch (error) {
-    console.log('error getBookingTree :>> ', error)
+    yield put(ac.setLoading(false))
+    huyi({ name: 'getBookingTree', child: error, type: 'error' })
   }
 }
 
@@ -97,7 +99,7 @@ function* getHeader({}: any) {
 
     yield put(ac.getHeaderSuccess(response))
   } catch (error) {
-    console.log(error)
+    huyi({ name: 'getHeader', child: error, type: 'error' })
   }
 }
 
@@ -112,6 +114,7 @@ function* getFooter({}: any) {
     yield put(ac.getFooterSuccess(response))
   } catch (error) {
     console.log(error)
+    huyi({ name: 'getFooter', child: error, type: 'error' })
   }
 }
 
@@ -126,6 +129,7 @@ function* getBanners({}: any) {
     yield put(ac.getBannersSuccess(response))
   } catch (error) {
     console.log(error)
+    huyi({ name: 'getBanners', child: error, type: 'error' })
   }
 }
 

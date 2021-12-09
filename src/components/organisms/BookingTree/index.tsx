@@ -51,7 +51,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   if (!bookingTree) return null
 
-  console.log('state :>> ', state)
+  // console.log('state :>> ', state)
   return (
     <section>
       <Stepper data={state} />

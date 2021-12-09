@@ -26,11 +26,11 @@ const HinhThucDatKham = (props: any) => {
   const getInfo = find(listHospital, { partnerId: site })
 
   useEffect(() => {
-    dispatch(ac.onLoading())
+    dispatch(ac.setLoading())
     dispatch(ac.setParnerIdHospital(site))
 
     setTimeout(() => {
-      dispatch(ac.offLoading())
+      dispatch(ac.setLoading(false))
     }, 1000)
   }, [router])
 

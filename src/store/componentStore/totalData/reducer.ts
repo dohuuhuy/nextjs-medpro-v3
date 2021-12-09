@@ -65,17 +65,10 @@ export default function total(
       }
     }
 
-    case TotalDataTypes.Loading.On_Loading: {
+    case TotalDataTypes.Loading.Set_Loading: {
       return {
         ...state,
-        loading: true
-      }
-    }
-
-    case TotalDataTypes.Loading.Off_Loading: {
-      return {
-        ...state,
-        loading: false
+        loading: action.status
       }
     }
 

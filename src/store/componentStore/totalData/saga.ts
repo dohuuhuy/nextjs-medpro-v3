@@ -1,5 +1,12 @@
 import * as ac from '@actionStore'
 import { client } from '@config/medproSDK'
+import { getData } from '@src/store/api'
+import {
+  AppState,
+  TotalDataState,
+  TotalDataTypes,
+  UserState
+} from '@src/store/interface'
 import { urlAddress, urlListPartners } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { findPartnerId } from '@utils/partner'
@@ -13,24 +20,11 @@ import {
   takeEvery,
   takeLatest
 } from 'redux-saga/effects'
-import { getData } from '@src/store/api'
-import {
-  AppState,
-  HospitalState,
-  TotalDataState,
-  TotalDataTypes,
-  UserState
-} from '@src/store/interface'
 
 function* getListPartners() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
     const total: TotalDataState = yield select((state: AppState) => state.total)
-    const hospital: HospitalState = yield select(
-      (state: AppState) => state.hospital
-    )
-
-    // yield put(ac.onLoading())
 
     yield put(ac.setWindow(window.location))
 
@@ -57,11 +51,11 @@ function* getListPartners() {
       )
     }
 
-    if (!hospital.information.header) yield put(ac.getHeader(partnerId))
-    if (!hospital.information.banners) yield put(ac.getBanners(partnerId))
-    if (!hospital.information.footer) yield put(ac.getFooter(partnerId))
+    yield put(ac.getHeader(partnerId))
+    yield put(ac.getBanners(partnerId))
+    yield put(ac.getFooter(partnerId))
 
-    // yield put(ac.offLoading())
+    // yield put(ac.setLoading(false))
   } catch (error) {
     console.error(error)
   }
