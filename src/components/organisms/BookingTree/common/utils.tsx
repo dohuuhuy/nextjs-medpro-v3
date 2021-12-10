@@ -145,7 +145,7 @@ export const clickItem = ({ item, props }: ClickItem) => {
 
   if (findStep) {
     if (Object.keys(findStep?.selected).length) {
-      for (let i = indexSub; i <= state.stepper.length; i++) {
+      for (let i = indexSub; i < state.stepper.length; i++) {
         state.stepper[i].selected = {}
         state.stepper[i].open = true
       }
