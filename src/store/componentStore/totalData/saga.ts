@@ -7,8 +7,8 @@ import {
   TotalDataTypes,
   UserState
 } from '@src/store/interface'
-import { urlAddress, urlListPartners } from '@utils/contants'
-import { fetcher } from '@utils/func'
+import { urlJson } from '@utils/contants'
+import { fetcher, urlAddressType } from '@utils/func'
 import { findPartnerId } from '@utils/partner'
 import { AxiosResponse } from 'axios'
 import {
@@ -30,7 +30,7 @@ function* getListPartners() {
 
     if (user.userInfo.token) yield client.setToken(user.userInfo.token)
 
-    const response: AxiosResponse = yield fetcher(urlListPartners)
+    const response: AxiosResponse = yield fetcher(urlJson.urlListPartners)
 
     const partnerId = findPartnerId({
       listPartners: response,
@@ -72,7 +72,7 @@ function* handlerAddress({ payload }: any) {
   try {
     const { type, id } = payload
 
-    const respone: AxiosResponse = yield call(getData, urlAddress(type, id))
+    const respone: AxiosResponse = yield call(getData, urlAddressType(type, id))
 
     switch (type) {
       case 'city':

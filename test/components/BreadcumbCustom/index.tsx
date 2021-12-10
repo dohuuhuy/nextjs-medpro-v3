@@ -11,17 +11,17 @@ export interface Breadcumb {
   window?: any
   appId?: string
   partner?: any
-  listMenu?: any
-  listHos?: any
+  listMenu?: any[]
+  listHos?: any[]
   post?: any
   type: 'news' | 'booking' | 'normal' | 'bills'
 }
 
 export const BreadcumbCustom = ({
   post,
-  listHos,
+  listHos = [],
   type,
-  listMenu,
+  listMenu = [],
   partner,
   appId
 }: Breadcumb) => {
@@ -41,10 +41,11 @@ export const BreadcumbCustom = ({
         label: 'Tin tức'
       })
 
-      listBreadcumb.push({
-        link: post?.slug,
-        label: post?.title
-      })
+      post &&
+        listBreadcumb.push({
+          link: post?.slug,
+          label: post?.title
+        })
       break
 
     case 'booking':
@@ -60,10 +61,11 @@ export const BreadcumbCustom = ({
         label: 'Chọn bệnh viện'
       })
 
-      listBreadcumb.push({
-        link: `/${site}/hinh-thuc-dat-kham`,
-        label: findHospital?.name
-      })
+      findHospital > 0 &&
+        listBreadcumb.push({
+          link: `/${site}/hinh-thuc-dat-kham`,
+          label: findHospital?.name
+        })
 
       if (item) {
         listBreadcumb.push(item)

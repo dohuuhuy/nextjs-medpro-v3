@@ -4,6 +4,7 @@ import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import Loading from '@componentsTest/Loading'
 import { AppState } from '@src/store/interface'
+import { check } from '@src/utils/checkValue'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
@@ -46,7 +47,14 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listHos={listHospital}
         listMenu={listMenu}
       />
-      <BookingTree bookingTree={hos?.bookingTree} />
+      {check(hos?.bookingTree) ? (
+        <BookingTree bookingTree={hos?.bookingTree} />
+      ) : (
+        <Loading
+          component
+          text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
+        />
+      )}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import * as ac from '@actionStore'
 import { countData, getData } from '@src/store/api'
 import { NewsTypes } from '@src/store/interface'
-import { LIMIT_PAGE_NEWS } from '@utils/contants'
+import { news } from '@utils/contants'
 import { AxiosResponse } from 'axios'
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 
@@ -46,8 +46,8 @@ function* WatchGetListNewsBanner() {
 
 function* getListNewsContent({ page = 1 }) {
   try {
-    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS || 1
-    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
+    const start = +page === 1 ? 0 : (+page - 1) * news.LIMIT_PAGE || 1
+    const url = `https://cms.medpro.com.vn/posts?_sort=updated_at:DESC&_start=${start}&_limit=${news.LIMIT_PAGE}`
     const response: AxiosResponse = yield call(getData, url)
 
     yield put(ac.ListNewsContentRequestSuccess(response))

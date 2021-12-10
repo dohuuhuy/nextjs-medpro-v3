@@ -4,13 +4,7 @@ export interface Props {
 }
 
 const localhost = {
-  domain: [
-    'localhost',
-    'huyi.ddns.net',
-    'huyi.tech',
-    '42.116.14.170',
-    'huyi.viewdns.net'
-  ],
+  domain: ['localhost', 'huyi.ddns.net'],
   partnerId: 'medpro'
 }
 

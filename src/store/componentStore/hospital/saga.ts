@@ -1,11 +1,11 @@
-import { huyi } from './../../../utils/clog'
 import { client } from '@config/medproSDK'
-import { AppState, HospitalState, HosptailTypes } from '@store/interface'
+import * as ac from '@store/actionStore'
+import { AppState, HosptailTypes } from '@store/interface'
+import { urlJson } from '@utils/contants'
+import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
-import { fetcher } from '@utils/func'
-import { urlBanners, urlFooter, urlHeader } from '@utils/contants'
-import * as ac from '@store/actionStore'
+import { huyi } from './../../../utils/clog'
 
 function* getHospitalDetails() {
   try {
@@ -95,7 +95,7 @@ function* watcher_getBookingTree() {
 
 function* getHeader({}: any) {
   try {
-    const response: AxiosResponse = yield fetcher(urlHeader)
+    const response: AxiosResponse = yield fetcher(urlJson.urlHeader)
 
     yield put(ac.getHeaderSuccess(response))
   } catch (error) {
@@ -109,7 +109,7 @@ function* watcher_getHeader() {
 
 function* getFooter({}: any) {
   try {
-    const response: AxiosResponse = yield fetcher(urlFooter)
+    const response: AxiosResponse = yield fetcher(urlJson.urlFooter)
 
     yield put(ac.getFooterSuccess(response))
   } catch (error) {
@@ -124,7 +124,7 @@ function* watcher_getFooter() {
 
 function* getBanners({}: any) {
   try {
-    const response: AxiosResponse = yield fetcher(urlBanners)
+    const response: AxiosResponse = yield fetcher(urlJson.urlBanners)
 
     yield put(ac.getBannersSuccess(response))
   } catch (error) {
@@ -137,33 +137,33 @@ function* watcher_getBanners() {
   yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
 }
 
-function* getbookingCurNode({}: any) {
-  try {
-    const hos: HospitalState = yield select((state: AppState) => state.hospital)
-    const schedule = hos.schedule
+// function* getbookingCurNode({}: any) {
+//   try {
+//     const hos: HospitalState = yield select((state: AppState) => state.hospital)
+//     const schedule = hos.schedule
 
-    const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
-      {
-        treeId: 'DATE',
-        serviceId: schedule?.service?.selected.id || '',
-        doctorId: schedule?.doctor?.selected.id || '',
-        subjectId: schedule?.subject?.selected.id || ''
-      },
-      { partnerid: hos.partnerId }
-    )
+//     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
+//       {
+//         treeId: 'DATE',
+//         serviceId: schedule?.service?.selected.id || '',
+//         doctorId: schedule?.doctor?.selected.id || '',
+//         subjectId: schedule?.subject?.selected.id || ''
+//       },
+//       { partnerid: hos.partnerId }
+//     )
 
-    yield put(ac.getDemo({ bookingCurrent: response.data }))
-  } catch (error) {
-    console.log('error getbookingCurNode :>> ', error)
-  }
-}
+//     yield put(ac.getDemo({ bookingCurrent: response.data }))
+//   } catch (error) {
+//     console.log('error getbookingCurNode :>> ', error)
+//   }
+// }
 
-function* watcher_getbookingCurNode() {
-  yield takeLatest(
-    HosptailTypes.BookingTree.CurrentBooking_Request,
-    getbookingCurNode
-  )
-}
+// function* watcher_getbookingCurNode() {
+//   yield takeLatest(
+//     HosptailTypes.BookingTree.CurrentBooking_Request,
+//     getbookingCurNode
+//   )
+// }
 
 const hospitalSagas = function* root() {
   yield all([
