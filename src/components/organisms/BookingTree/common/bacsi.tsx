@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { checkActive, selected } from './utils'
-import styles from './../less/bacsi.module.less'
 import { Icon } from '@componentsTest/Icon'
+import React, { useState } from 'react'
+import styles from './../less/bacsi.module.less'
+import { Props } from './interface'
+import { checkActive, clickItem } from './utils'
 
-export const BacSi = (props: any) => {
-  // console.log('props BacSi :>> ', props)
+export const BacSi = (props: Props) => {
+  console.log('props BacSi :>> ', props)
   const [list, setlist] = useState(props.data)
   const [keySearch, setkeySearch] = useState('')
 
@@ -12,7 +13,7 @@ export const BacSi = (props: any) => {
     const { value } = e.target
     setkeySearch(value)
     const findItem = props?.data.filter(
-      (v: any) => v.detail.name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+      (v) => v.detail.name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlist(findItem)
   }
@@ -29,7 +30,7 @@ export const BacSi = (props: any) => {
       </div>
 
       <ul className={styles.listBacSi}>
-        {list.map((v: any) => {
+        {list.map((v) => {
           const size = '100'
           const sex = v.detail.gender ? 'Nam' : 'Nữ'
           const img = v.detail.gender ? (
@@ -40,7 +41,7 @@ export const BacSi = (props: any) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (
             <li key={v.id} className={active}>
-              <div className={styles.card} onClick={selected(v, props)}>
+              <div className={styles.card}>
                 <figure>{img}</figure>
                 <div className={styles.bodyCard}>
                   <p>{v.hocvi}</p>
@@ -56,7 +57,10 @@ export const BacSi = (props: any) => {
                   <br />
                   <span>{v.giocan}</span>
                 </p>
-                <button className={styles.btn} onClick={selected(v, props)}>
+                <button
+                  className={styles.btn}
+                  onClick={() => clickItem({ item: v, props })}
+                >
                   Đặt khám
                 </button>
               </div>

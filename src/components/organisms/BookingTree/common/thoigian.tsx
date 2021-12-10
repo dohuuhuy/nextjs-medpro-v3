@@ -1,40 +1,32 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
-import { getbookingCur, saveSchedule } from '@src/store/actionStore'
-import { AppState } from '@src/store/interface'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { find, range } from 'lodash'
 import moment from 'moment'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
 import styles from './../less/thoigian.module.less'
+import { Props, Steps } from './interface'
 
-export const ThoiGian = (props: any) => {
-  const dispatch = useDispatch()
+export const ThoiGian = (props: Props) => {
+  console.log('props ThoiGian:>> ', props)
 
-  const booking = useSelector((state: AppState) => state.booking)
+  // const booking = useSelector((state: AppState) => state.booking)
 
-  console.log('props ThoiGian :>> ', props)
+  const { state, keys } = props
 
-  const { state, keys, setstate } = props
-
-  const [stateTime, setstateTime] = useState<any>({
+  const [_stateTime, setstateTime] = useState<any>({
     chonNgay: {
       shifts: []
     },
     chonGio: {}
   })
 
-  useEffect(() => {
-    dispatch(getbookingCur())
-  }, [dispatch])
-
-  state.stepper.at(-1).data = booking.bookingCurrent.days
+  // state.stepper.at(-1).data = booking.bookingCurrent.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
 
-  const findStep = find(state.stepper, { key: keys })
+  const findStep: Steps | any = find(state.stepper, { key: keys })
 
   const weekDays = ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy']
 
@@ -98,35 +90,13 @@ export const ThoiGian = (props: any) => {
 
   const chonNgay = (item: any) => () => {
     setstateTime((v: any) => ({ ...v, chonNgay: item }))
-    state.stepper.at(-1).selected = {
-      ...stateTime,
-      chonNgay: item
-    }
   }
 
   const chonGio = (item: any) => () => {
     setstateTime((v: any) => ({ ...v, chonGio: item }))
-
-    state.stepper.at(-1).selected = {
-      ...stateTime,
-      chonGio: item
-    }
-    setstate((v: any) => ({ ...v }))
-
-    const object = state.stepper.reduce(
-      (obj: any, item: any) =>
-        Object.assign(obj, {
-          [item.key]: { selected: item.selected, data: item.data }
-        }),
-      {}
-    )
-    dispatch(saveSchedule(object))
   }
 
   //  ----------------------------RENDER PAGE --------------------------------------------------------
-
-  console.log('stateTime :>> ', stateTime)
-  console.log('state :>> ', state)
 
   return (
     <section className={styles.thoigian}>

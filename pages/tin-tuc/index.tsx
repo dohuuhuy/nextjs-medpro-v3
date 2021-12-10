@@ -1,6 +1,6 @@
 import { NewsPageCustom } from '@componentsTest/NewsPage'
 import { SEOHead } from '@src/components/SEO/SEOHead/Index'
-import { urlSEOPage } from '@src/utils/contants'
+import { urlJson } from '@src/utils/contants'
 import { fetcher } from '@src/utils/func'
 import { find } from 'lodash'
 import dynamic from 'next/dynamic'
@@ -25,7 +25,7 @@ TinTucPage.layout = DefaultLayout
 
 export const getServerSideProps = async (ctx: any) => {
   const data = await TinTucCtrl(ctx)
-  const meta = await fetcher(urlSEOPage)
+  const meta = await fetcher(urlJson.urlSEOPage)
   return { props: { data, meta } }
 }
 

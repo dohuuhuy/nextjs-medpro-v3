@@ -95,9 +95,10 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
   }
 }
 
-export const getbookingCur = (): HospitalActions => {
+export const getbookingCur = (schedules: any): HospitalActions => {
   return {
-    type: HosptailTypes.BookingTree.CurrentBooking_Request
+    type: HosptailTypes.BookingTree.CurrentBooking_Request,
+    schedules
   }
 }
 

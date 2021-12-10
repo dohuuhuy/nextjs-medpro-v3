@@ -1,6 +1,7 @@
+import { bookingCurRequestSuccess } from './interface/action'
 import { client } from '@config/medproSDK'
 import * as ac from '@store/actionStore'
-import { AppState, HosptailTypes } from '@store/interface'
+import { AppState, HospitalState, HosptailTypes } from '@store/interface'
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
@@ -137,33 +138,36 @@ function* watcher_getBanners() {
   yield takeLatest(HosptailTypes.Banners.Banners_REQUEST, getBanners)
 }
 
-// function* getbookingCurNode({}: any) {
-//   try {
-//     const hos: HospitalState = yield select((state: AppState) => state.hospital)
-//     const schedule = hos.schedule
+function* getbookingCurNode({ schedules }: any) {
+  try {
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
 
-//     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
-//       {
-//         treeId: 'DATE',
-//         serviceId: schedule?.service?.selected.id || '',
-//         doctorId: schedule?.doctor?.selected.id || '',
-//         subjectId: schedule?.subject?.selected.id || ''
-//       },
-//       { partnerid: hos.partnerId }
-//     )
+    const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
+      {
+        treeId: 'DATE',
+        serviceId: schedules?.service?.selected.id || '',
+        doctorId: schedules?.doctor?.selected.id || '',
+        subjectId: schedules?.subject?.selected.id || ''
+      },
+      { partnerid: hos.partnerId }
+    )
 
-//     yield put(ac.getDemo({ bookingCurrent: response.data }))
-//   } catch (error) {
-//     console.log('error getbookingCurNode :>> ', error)
-//   }
-// }
+    console.log('response :>> ', response)
 
-// function* watcher_getbookingCurNode() {
-//   yield takeLatest(
-//     HosptailTypes.BookingTree.CurrentBooking_Request,
-//     getbookingCurNode
-//   )
-// }
+    yield put(ac.getbookingCurSuccess(response.data))
+
+    yield put(ac.getDemo({ bookingCurrent: response.data }))
+  } catch (error) {
+    console.log('error getbookingCurNode :>> ', error)
+  }
+}
+
+function* watcher_getbookingCurNode() {
+  yield takeLatest(
+    HosptailTypes.BookingTree.CurrentBooking_Request,
+    getbookingCurNode
+  )
+}
 
 const hospitalSagas = function* root() {
   yield all([
@@ -173,8 +177,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getBookingTree),
     fork(watcher_getHeader),
     fork(watcher_getBanners),
-    fork(watcher_getFooter)
-    // fork(watcher_getbookingCurNode)
+    fork(watcher_getFooter),
+    fork(watcher_getbookingCurNode)
   ])
 }
 export default hospitalSagas

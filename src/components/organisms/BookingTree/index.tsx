@@ -1,20 +1,21 @@
-import * as ac from '@actionStore'
-import { saveSchedule } from '@actionStore'
+import { getbookingCur, saveSchedule } from '@actionStore'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { BookingTreeIF, StateBooking } from './common/interface'
 import { Stepper } from './common/stepper'
-import { colLeft, colRight, handlerStep, Steps } from './common/utils'
+import { colLeft, colRight, handlerStep } from './common/utils'
 import styles from './less/styles.module.less'
 
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const dispatch = useDispatch()
 
-  const [state, setstate] = useState<any>({
-    stepper: handlerStep({ bookingTree })
+  const [state, setstate] = useState<StateBooking>({
+    stepper: handlerStep({ bookingTree }),
+    schedules: {}
   })
 
   useEffect(() => {
@@ -49,6 +50,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     }
   }, [bookingTree])
 
+  // useEffect(() => {
+  //   dispatch(getbookingCur(state.schedules))
+  // }, [state.stepper.length > 2])
+
   if (!bookingTree) return null
 
   // console.log('state :>> ', state)
@@ -59,7 +64,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
             <Space direction='vertical' className={styles.listTree}>
-              {state?.stepper?.map((v: Steps, i: any) => {
+              {state?.stepper?.map((v, i) => {
                 // return null
                 const icon = v?.icon({
                   item: v.selected,
@@ -75,9 +80,9 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 const content = v?.content({
                   keys: v.key,
                   state,
-                  setstate,
                   data: v.data,
-                  saveSchedule: ac.saveSchedule,
+                  setstate,
+                  getbookingCur: getbookingCur,
                   dispatch
                 })
 
@@ -88,9 +93,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
-                      // collapsible={v.open ? 'disabled' : 'header'}
+                      collapsible={v.open ? 'disabled' : 'header'}
                     >
                       <Collapse.Panel
+                        key={i}
                         style={{ width: '100%' }}
                         className={cx(styles.content)}
                         header={
@@ -106,7 +112,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                             </div>
                           </div>
                         }
-                        key={i}
                       >
                         {content}
                       </Collapse.Panel>
@@ -123,12 +128,4 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       </Container>
     </section>
   )
-}
-
-export interface BookingTreeIF {
-  bookingTree: any
-}
-
-export interface State {
-  stepper: Steps[]
 }

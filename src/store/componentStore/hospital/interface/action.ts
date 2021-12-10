@@ -108,6 +108,7 @@ export interface BookingTreeRequestSuccess {
 
 export interface bookingCurRequest {
   type: HosptailTypes.BookingTree.CurrentBooking_Request
+  schedules: any
 }
 
 export interface bookingCurRequestSuccess {

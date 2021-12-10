@@ -1,9 +1,10 @@
 import { Icon } from '@componentsTest/Icon'
-import { find, findIndex, indexOf } from 'lodash'
+import { find, findIndex, indexOf, last } from 'lodash'
 import React from 'react'
 import { BacSi } from './bacsi'
 import { ChuyenKhoa } from './chuyenkhoa'
 import { DichVu } from './dichvu'
+import { ClickItem, Props, StateBooking, Steps } from './interface'
 import { ThoiGian } from './thoigian'
 
 export const steps = [
@@ -22,7 +23,7 @@ export const steps = [
         }
       />
     ),
-    content: (props: any) => <BacSi {...props} />,
+    content: (props: Props) => <BacSi {...props} />,
     after: {
       icon: <Icon name='timkiem' />
     },
@@ -45,7 +46,7 @@ export const steps = [
         }
       />
     ),
-    content: (props: any) => <DichVu {...props} />,
+    content: (props: Props) => <DichVu {...props} />,
     after: {
       icon: <Icon name='timkiem' />
     },
@@ -68,7 +69,7 @@ export const steps = [
         }
       />
     ),
-    content: (props: any) => <ChuyenKhoa {...props} />,
+    content: (props: Props) => <ChuyenKhoa {...props} />,
     after: {
       icon: <Icon name='timkiem' />,
       place: 'Tìm nhanh chuyên khoa',
@@ -94,7 +95,7 @@ export const steps = [
         }
       />
     ),
-    content: (props: any) => <ThoiGian {...props} />,
+    content: (props: Props) => <ThoiGian {...props} />,
     after: {
       icon: <Icon name='timkiem' />
     },
@@ -113,21 +114,6 @@ export const colLeft = {
 }
 
 export const colRight = { xl: 8, lg: 8, md: 8, sm: 24, xs: 24 }
-
-export interface Steps {
-  key: 'subject' | 'doctor' | 'service' | 'time'
-  title: string
-  icon: any
-  content: any
-  after?: {
-    icon: JSX.Element
-    input?: boolean
-  }
-  selected: any
-  open: boolean
-  sort: number
-  data: any
-}
 
 export const handlerStep = ({ bookingTree }: any) => {
   if (!bookingTree) return []
@@ -148,42 +134,59 @@ export const handlerStep = ({ bookingTree }: any) => {
   return sortByStep
 }
 
-export const selected = (item: any, props: any) => () => {
-  const { state, setstate, keys, dispatch, saveSchedule } = props
+export const clickItem = ({ item, props }: ClickItem) => {
+  const { state, setstate, keys } = props
 
-  const findStep = find(state.stepper, { key: keys })
+  // 1. lấy được index trong mảng arr stepper từ keys gửi xuống
   const index = findIndex(state.stepper, { key: keys })
+
+  const findStep: Steps | any = find(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item.subType })
 
+  if (findStep) {
+    if (Object.keys(findStep?.selected).length) {
+      for (let i = indexSub; i <= state.stepper.length; i++) {
+        state.stepper[i].selected = {}
+        state.stepper[i].open = true
+      }
+
+      state.stepper[indexSub].data = item.child
+      state.stepper[indexSub].open = false
+    }
+  }
+
+  // 2. tại vị trí index gán seleted = detail của item đang chọn
   state.stepper[index].selected = item.detail
 
+  // 3. tìm vị trí của step kế tiếp mảng
   // nếu có bước kế thì gán data và mở collasp cho bước kế đó
   if (indexSub > 0) {
     state.stepper[indexSub].data = item.child
     state.stepper[indexSub].open = false
   }
 
-  // nếu bước kế = null thì mở collasp
+  // // nếu bước kế = null thì mở collasp
   if (item.subType === null) {
-    state.stepper.at(-1).open = false
+    ;(last(state.stepper) as any).open = false
   }
 
-  //  cuối cùng là cập nhật lại state
-  setstate((v: any) => ({
-    ...v
-  }))
+  // -----------------------cuối cùng là cập nhật lại state--------------------------------------
 
-  // save lại cái step đã chọn lưu vào store
-  const object = state.stepper.reduce(
-    (obj: any, item: any) =>
+  // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data
+  const schedules = state.stepper.reduce(
+    (obj: any, item) =>
       Object.assign(obj, {
-        [item.key]: { selected: item.selected, data: item.data }
+        [item.key as string]: { selected: item.selected, data: item.data }
       }),
     {}
   )
-  // dispatch(saveSchedule(object))
 
-  window.localStorage.setItem('selected', JSON.stringify(object))
+  setstate((v: StateBooking) => ({
+    ...v,
+    schedules
+  }))
+
+  window.localStorage.setItem('selected', JSON.stringify(schedules))
 }
 
 export const checkActive = (item: any, props: any) => {
