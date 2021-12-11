@@ -50,13 +50,18 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     }
   }, [bookingTree])
 
+  if (!bookingTree) return null
+
   // useEffect(() => {
   //   dispatch(getbookingCur(state.schedules))
   // }, [state.stepper.length > 2])
 
-  if (!bookingTree) return null
+  const onChange = (key: any) => {
+    if (key === 'time') {
+      setstate((v) => ({ ...v, run: true }))
+    }
+  }
 
-  // console.log('state :>> ', state)
   return (
     <section>
       <Stepper data={state} />
@@ -89,14 +94,16 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 return (
                   v?.sort >= 0 && (
                     <Collapse
-                      key={i}
+                      key={v.key}
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
                       collapsible={v.open ? 'disabled' : 'header'}
+                      onChange={() => onChange(v.key)}
                     >
                       <Collapse.Panel
                         key={i}
+                        forceRender
                         style={{ width: '100%' }}
                         className={cx(styles.content)}
                         header={

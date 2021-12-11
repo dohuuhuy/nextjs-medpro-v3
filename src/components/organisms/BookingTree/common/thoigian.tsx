@@ -1,28 +1,30 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
+import { AppState } from '@src/store/interface'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
-import { find, range } from 'lodash'
+import { find, last, range } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
 import { Props, Steps } from './interface'
 
 export const ThoiGian = (props: Props) => {
   console.log('props ThoiGian:>> ', props)
 
-  // const booking = useSelector((state: AppState) => state.booking)
+  const booking = useSelector((state: AppState) => state.booking)
 
-  const { state, keys } = props
+  const { state, keys, setstate } = props
 
-  const [_stateTime, setstateTime] = useState<any>({
+  const [stateTime, setstateTime] = useState<any>({
     chonNgay: {
       shifts: []
     },
     chonGio: {}
   })
 
-  // state.stepper.at(-1).data = booking.bookingCurrent.days
+  ;(last(state.stepper) as any).data = booking.bookingCurrent.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
 
@@ -44,6 +46,8 @@ export const ThoiGian = (props: Props) => {
 
   const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
   const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
+
+  console.log('stateTime :>> ', stateTime)
 
   //  ----------------------------ACTION --------------------------------------------------------
 
@@ -88,16 +92,21 @@ export const ThoiGian = (props: Props) => {
     })
   }
 
-  const chonNgay = (item: any) => () => {
-    setstateTime((v: any) => ({ ...v, chonNgay: item }))
+  const chonNgay = (item: any) => {
+    setstateTime({ chonNgay: item })
   }
 
-  const chonGio = (item: any) => () => {
-    setstateTime((v: any) => ({ ...v, chonGio: item }))
+  const chonGio = (item: any) => {
+    ;(last(state.stepper) as any).selected = {
+      chonNgay: stateTime.chonNgay,
+      chonGio: item
+    }
+    setstate((v: any) => ({ ...v }))
   }
 
   //  ----------------------------RENDER PAGE --------------------------------------------------------
 
+  console.log('findStep :>> ', findStep)
   return (
     <section className={styles.thoigian}>
       <div className={styles.input}>
@@ -168,9 +177,10 @@ export const ThoiGian = (props: Props) => {
               `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
             ).format('DD-MM-YYYY')
 
-            const p = moment(findStep.selected.chonNgay?.date).format(
-              'DD-MM-YYYY'
-            )
+            const p = findStep.selected.chonNgay?.date
+              ? moment(findStep.selected.chonNgay?.date).format('DD-MM-YYYY')
+              : -1
+
             const activeDay = l === p ? styles.activeDay : ''
 
             return (
@@ -182,7 +192,7 @@ export const ThoiGian = (props: Props) => {
                   activeDay
                 )}
                 key={i}
-                onClick={chonNgay(ngayTrong(i + 1))}
+                onClick={() => chonNgay(ngayTrong(i + 1))}
               >
                 <span>{i + 1}</span>
               </div>
@@ -203,7 +213,7 @@ export const ThoiGian = (props: Props) => {
 
       {/* thời gian của bác sĩ */}
       <div className={styles.time}>
-        {findStep.selected?.chonNgay?.shifts?.map((v: any) => {
+        {findStep.selected.chonNgay?.shifts?.map((v: any) => {
           return (
             <div className={styles.shifts} key={v.id}>
               <h3>{v.shiftName}</h3>
@@ -214,7 +224,7 @@ export const ThoiGian = (props: Props) => {
                       ? styles.activeGio
                       : ''
                   return (
-                    <li key={e.timeId} onClick={chonGio(e)}>
+                    <li key={e.timeId} onClick={() => chonGio(e)}>
                       <button className={cx(styles.btnTime, activeGio)}>
                         {`${e.startTime} - ${e.endTime}  (${e.maxSlot}) `}
                       </button>

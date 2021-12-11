@@ -4,7 +4,7 @@ import React from 'react'
 import { BacSi } from './bacsi'
 import { ChuyenKhoa } from './chuyenkhoa'
 import { DichVu } from './dichvu'
-import { ClickItem, Props, StateBooking, Steps } from './interface'
+import { ClickItem, Props, StateBooking } from './interface'
 import { ThoiGian } from './thoigian'
 
 export const steps = [
@@ -140,20 +140,23 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // 1. lấy được index trong mảng arr stepper từ keys gửi xuống
   const index = findIndex(state.stepper, { key: keys })
 
-  const findStep: Steps | any = find(state.stepper, { key: keys })
+  // const findStep: Steps | any = find(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item.subType })
 
-  if (findStep) {
-    if (Object.keys(findStep?.selected).length) {
-      for (let i = indexSub; i < state.stepper.length; i++) {
-        state.stepper[i].selected = {}
-        state.stepper[i].open = true
-      }
+  // if (findStep) {
+  //   if (Object.keys(findStep?.selected).length) {
+  //     for (let i = indexSub; i < state.stepper.length; i++) {
+  //       console.log('state.stepper[i] :>> ', state.stepper[i])
+  //       if (state.stepper[i]) {
+  //         state.stepper[i].selected = {}
+  //         state.stepper[i].open = true
+  //       }
+  //     }
 
-      state.stepper[indexSub].data = item.child
-      state.stepper[indexSub].open = false
-    }
-  }
+  //     state.stepper[indexSub].data = item.child
+  //     state.stepper[indexSub].open = false
+  //   }
+  // }
 
   // 2. tại vị trí index gán seleted = detail của item đang chọn
   state.stepper[index].selected = item.detail
