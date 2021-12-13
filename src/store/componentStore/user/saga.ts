@@ -21,6 +21,7 @@ function* listPatientRequest() {
         partnerid: total?.partnerId,
         appid: total?.appId
       })
+      console.log('response.data :>> ', response.data);
       yield put(ac.listPatientRequestSuccess(response.data))
     }
   } catch (error) {

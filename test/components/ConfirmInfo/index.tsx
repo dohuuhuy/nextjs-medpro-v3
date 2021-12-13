@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
 import { Col, Row, Button } from 'antd'
-import { CloseCircleOutlined } from '@ant-design/icons'
-import { uniqueId } from 'lodash'
+import { CloseCircleOutlined, ExclamationCircleFilled } from '@ant-design/icons'
+import { uniqueId, get } from 'lodash'
 import { Icon } from '../Icon'
+import { Info, Profile } from './utils/data'
 
-export const ConfirmInfo = () => {
+interface user {
+  fullName: string,
+  userName: string,
+  email: string
+}
+
+export const ConfirmInfo = ( user: any ) => {
+
+  const [listPatient, setListPatient] = useState(Object.values(user))
+  const [ patient, setPatient ] = useState(listPatient[0])
+  const [indexSelect, setIndexSelect] = useState(0)
+
+  const SelectProfile = (index: number) => {
+    listPatient?.filter( (item: any, vitri) => {
+      if (index === vitri){
+        setPatient(item)
+        setIndexSelect(vitri)
+      }
+    })
+  }
+
   return (
     <Container className={styles.container}>
       <Row className={styles.rowInfo}>
@@ -25,30 +46,37 @@ export const ConfirmInfo = () => {
                   <p>Tạo hồ sơ</p>
                 </div>
               </li>
-              <li>
-                <div className={styles.viewProfile}>
-                  <Button
-                    className={styles.btnProfile}
-                    icon={<Icon name='bacsinam' size='55' />}
-                  />
-                  <p>Minh Anh</p>
-                </div>
-              </li>
+              { listPatient.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <div className={styles.viewProfile}>
+                      <Button
+                        className={index === indexSelect ? styles.btnProfileActive : styles.btnProfile}
+                        onClick={()=>SelectProfile(index)}
+                      >
+                        <Icon name='bacsinam' size='55' />
+                      </Button>
+
+                      <p>{get(item,"fullname")}</p>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
-            <div className={styles.cardProfile}>
+            <div className={styles.cardComplete}> {/* styles.cardInComplete */}
               <ul className={styles.listItem}>
-                {Profile.map(({ title, value }: any) => {
+                { Profile(patient)?.map(({title, value}: any) => {
                   return (
                     <li key={uniqueId()}>
-                      <div className={styles.cardBody}>
+                      <div className={styles.cardItem}>
                         <p>
-                          <span>{title}</span>
-                          <span>{value}</span>
+                          <span className={styles.title}>{title}</span>
+                          <span className={styles.value}>{value}</span>
                         </p>
                       </div>
                     </li>
                   )
-                })}
+                }) }
               </ul>
             </div>
           </div>
@@ -56,20 +84,23 @@ export const ConfirmInfo = () => {
             <h4>Thông tin đặt khám</h4>
             <div className={styles.cardInfo}>
               <ul className={styles.listItem}>
-                {Info.map(({ title, value }: any) => {
+                {Info?.map(({ title, value }: any) => {
                   return (
                     <li key={uniqueId()}>
-                      <div className={styles.cardBody}>
+                      <div className={styles.cardItem}>
                         <p>
-                          {title}
-                          <span>{value}</span>
+                          <span className={styles.title}>{title}</span>
+                          <span className={styles.value}>{value}</span>
                         </p>
                       </div>
                     </li>
                   )
                 })}
-                <CloseCircleOutlined />
               </ul>
+              <div className={styles.btnClose}>
+                <CloseCircleOutlined />
+              </div>
+
             </div>
           </div>
         </Col>
@@ -80,50 +111,3 @@ export const ConfirmInfo = () => {
     </Container>
   )
 }
-
-const HandleModile = (text: string) => {
-  const str1 = text.slice(0, 4)
-  const str2 = text.slice(4, 7)
-  const str3 = text.slice(7, 10)
-  return str1.concat(' ' + str2 + ' ' + str3)
-}
-const Profile = [
-  {
-    title: '',
-    value: 'Huỳnh Ngọc Toàn (Bạn)'
-  },
-  {
-    title: 'Giới tính:',
-    value: 'Nam'
-  },
-  {
-    title: 'Ngày sinh:',
-    value: '24/12/2021'
-  },
-  {
-    title: 'Số điện thoại:',
-    value: HandleModile('0903232223')
-  }
-]
-const Info = [
-  {
-    title: 'Hình thức khám:',
-    value: 'Dịch vụ'
-  },
-  {
-    title: 'Bác sĩ:',
-    value: 'Nguyễn Văn A'
-  },
-  {
-    title: 'Chuyên khoa:',
-    value: 'Răng Hàm Mặt'
-  },
-  {
-    title: 'Ngày khám:',
-    value: '12/12/2022'
-  },
-  {
-    title: 'Giờ khám:',
-    value: '07:30'
-  }
-]

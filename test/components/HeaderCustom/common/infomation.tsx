@@ -19,10 +19,9 @@ export const Infomation = ({ handleLogOut }: any) => {
       style={{ maxWidth: 300 }}
     >
       <Menu className={styles.listInfo}>
-        <Menu.Item>helo chị hà</Menu.Item>
         <Menu.Item>
           <Link href={{
-            pathname: "/thong-tin-tai-khoan",
+            pathname: "/thong-tin-ho-so",
             query: { activeItem: 1 }
           }}>
             Hồ sơ bệnh nhân
@@ -30,7 +29,7 @@ export const Infomation = ({ handleLogOut }: any) => {
         </Menu.Item>
         <Menu.Item>
           <Link href={{
-            pathname: "/thong-tin-tai-khoan",
+            pathname: "/thong-tin-ho-so",
             query: { activeItem: 2 }
           }}>
             Phiếu khám bệnh
@@ -38,7 +37,7 @@ export const Infomation = ({ handleLogOut }: any) => {
         </Menu.Item>
         <Menu.Item>
           <Link href={{
-            pathname: "/thong-tin-tai-khoan",
+            pathname: "/thong-tin-ho-so",
             query: { activeItem: 3 }
           }} passHref>
             <a>

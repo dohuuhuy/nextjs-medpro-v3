@@ -1,46 +1,45 @@
-const HandleModile = (text: string) => {
-  const str1 = text.slice(0, 4)
-  const str2 = text.slice(4, 7)
-  const str3 = text.slice(7, 10)
-  return str1.concat(" " + str2 + " " + str3)
-}
-export const Profile = [
+import * as func from '@utils/func'
+
+export const Profile = (item: any) => [
   {
     title: '',
-    value: 'Huỳnh Ngọc Toàn (Bạn)'
+    value: item.fullname
   },
   {
-    title: 'Giới tính:',
-    value: 'Nam'
+    title: 'Giới tính: ',
+    value: func.changeSex(item.sex)
   },
   {
-    title: 'Ngày sinh:',
-    value: '24/12/2021'
+    title: 'Ngày sinh: ',
+    value: item.birthdate
   },
   {
-    title: 'Số điện thoại:',
-    value: HandleModile('0903232223')
-  },
+    title: 'Số điện thoại: ',
+    value: func.HandleModile(item.mobile)
+  }
 ]
+
+
+
 export const Info = [
   {
-    title: 'Hình thức khám:',
+    title: 'Hình thức khám: ',
     value: 'Dịch vụ'
   },
   {
-    title: 'Bác sĩ:',
+    title: 'Bác sĩ: ',
     value: 'Nguyễn Văn A'
   },
   {
-    title: 'Chuyên khoa:',
+    title: 'Chuyên khoa: ',
     value: 'Răng Hàm Mặt'
   },
   {
-    title: 'Ngày khám:',
+    title: 'Ngày khám: ',
     value: '12/12/2022'
   },
   {
-    title: 'Giờ khám:',
+    title: 'Giờ khám: ',
     value: '07:30'
   },
 ]

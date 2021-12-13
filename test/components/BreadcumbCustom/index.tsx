@@ -14,7 +14,7 @@ export interface Breadcumb {
   listMenu?: any
   listHos?: any
   post?: any
-  type: 'news' | 'booking' | 'normal' | 'bills'
+  type: 'news' | 'booking' | 'normal' | 'bills' | 'user'
 }
 
 export const BreadcumbCustom = ({
@@ -91,6 +91,16 @@ export const BreadcumbCustom = ({
       })
 
       break
+
+    case 'user' :
+      listBreadcumb.push(home)
+
+      listBreadcumb.push({
+        link: "/thong-tin-ho-so",
+        label: 'thông tin tài khoản'
+      })
+      break
+
     default:
       break
   }
