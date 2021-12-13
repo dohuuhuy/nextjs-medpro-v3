@@ -1,10 +1,10 @@
 import { demoActionTypes, demoParams } from '@src/store/interface'
 import { all, fork, put, takeLatest } from 'redux-saga/effects'
 
-function* demoSaga({ nameColor }: demoParams.GetDemoParams) {
+function* demoSaga({ bookingCurrent }: demoParams.GetDemoParams) {
   yield put({
     type: demoActionTypes.DEMO_SUCCESS,
-    nameColor
+    bookingCurrent
   })
 }
 

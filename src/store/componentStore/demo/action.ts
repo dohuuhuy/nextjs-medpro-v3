@@ -1,11 +1,11 @@
 import { demoAction, demoActionTypes, demoParams } from '@src/store/interface'
 
 export const getDemo = ({
-  nameColor
+  bookingCurrent
 }: demoParams.GetDemoParams): demoAction => {
   return {
     type: demoActionTypes.GET_DEMO,
-    nameColor
+    bookingCurrent
   }
 }
 

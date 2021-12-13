@@ -1,3 +1,3 @@
 export interface DemoState {
-  nameColor: string
+  bookingCurrent: any
 }

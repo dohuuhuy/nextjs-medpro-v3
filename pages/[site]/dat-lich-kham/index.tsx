@@ -4,6 +4,7 @@ import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import Loading from '@componentsTest/Loading'
 import { AppState } from '@src/store/interface'
+import { check } from '@src/utils/checkValue'
 import { banner } from '@utils/func'
 import { NextSeoProps } from 'next-seo'
 import dynamic from 'next/dynamic'
@@ -24,7 +25,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   useEffect(() => {
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
-  }, [])
+  }, [router.query?.site])
 
   if (!data) return null
   const listHospital = data.listHospital
@@ -40,13 +41,20 @@ const ThongTinDatKhamPage = ({ data }: any) => {
 
   return (
     <>
-      <SEOHead meta={handleMeta(total.partnerId)} />
+      <SEOHead meta={handleMeta(total?.partnerId)} />
       <BreadcumbCustom
         type='booking'
         listHos={listHospital}
         listMenu={listMenu}
       />
-      <BookingTree bookingTree={hos.bookingTree} />
+      {check(hos?.bookingTree) ? (
+        <BookingTree bookingTree={hos?.bookingTree} />
+      ) : (
+        <Loading
+          component
+          text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
+        />
+      )}
     </>
   )
 }
@@ -65,20 +73,20 @@ const handleMeta = (partnerId: string) => {
     noindex: true,
     nofollow: true,
     robotsProps: {},
-    title: 'Hình thức đặt khám',
-    description: 'Hình thức đặt khám',
+    title: 'Đặt lịch khám',
+    description: 'Đặt lịch khám',
     canonical: 'https://nextjs-testing.medpro.com.vn',
     openGraph: {
       type: 'website',
       url: 'https://nextjs-testing.medpro.com.vn',
-      title: 'Hình thức đặt khám',
-      description: 'Hình thức đặt khám',
+      title: 'Đặt lịch khám',
+      description: 'Đặt lịch khám',
       images: [
         {
           url: banner(partnerId),
           width: 800,
           height: 600,
-          alt: 'Hình thức đặt khám'
+          alt: 'Đặt lịch khám'
         }
       ],
       site_name: 'UMC - hình thức đặt khám'

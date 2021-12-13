@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { checkActive, selected } from './utils'
-import styles from './../less/chuyenkhoa.module.less'
-import cx from 'classnames'
 import { Icon } from '@componentsTest/Icon'
+import cx from 'classnames'
+import React, { useState } from 'react'
+import styles from './../less/chuyenkhoa.module.less'
+import { Props } from './interface'
+import { checkActive, clickItem } from './utils'
 
-export const ChuyenKhoa = (props: any) => {
-  // console.log('props ChuyenKhoa :>> ', props)
+export const ChuyenKhoa = (props: Props) => {
+  console.log('props ChuyenKhoa :>> ', props)
 
   const [list, setlist] = useState(props.data)
   const [keySearch, setkeySearch] = useState('')
@@ -14,7 +15,7 @@ export const ChuyenKhoa = (props: any) => {
     const { value } = e.target
     setkeySearch(value)
     const findItem = props?.data.filter(
-      (v: any) => v.detail.name.toUpperCase().indexOf(value.toUpperCase()) >= 0
+      (v) => v.detail.name.toUpperCase().indexOf(value.toUpperCase()) >= 0
     )
     setlist(findItem)
   }
@@ -31,10 +32,10 @@ export const ChuyenKhoa = (props: any) => {
       </div>
 
       <ul className={styles.listChuyenKhoa}>
-        {list.map((v: any) => {
+        {list.map((v) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (
-            <li key={v.id} onClick={selected(v, props)}>
+            <li key={v.id} onClick={() => clickItem({ item: v, props })}>
               <div className={cx(styles.card, active)}>
                 <figure>
                   <Icon name='demo' />

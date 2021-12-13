@@ -34,7 +34,8 @@ import {
   HospitalState,
   NewsState,
   TotalDataState,
-  UserState
+  UserState,
+  DemoState
 } from '@store/interface'
 import { combinedReducers } from '@store/rootReducer'
 
@@ -44,6 +45,7 @@ export interface AppState {
   hospital: HospitalState
   news: NewsState
   user: UserState
+  booking: DemoState
 }
 
 export interface AppAction extends AnyAction {

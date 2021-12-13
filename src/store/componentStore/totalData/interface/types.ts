@@ -27,7 +27,6 @@ export namespace TotalDataTypes {
   }
 
   export enum Loading {
-    On_Loading = 'On_Loading',
-    Off_Loading = 'Off_Loading'
+    Set_Loading = 'Set_Loading'
   }
 }

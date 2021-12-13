@@ -3,6 +3,7 @@ import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BookingType } from '@componentsTest/BookingType'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import Loading from '@componentsTest/Loading'
+import { check } from '@src/utils/checkValue'
 import { AppState } from '@store/interface'
 import { banner } from '@utils/func'
 import { find } from 'lodash'
@@ -14,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SelectHospitalCtl } from 'src/containers/SelectHosital'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const HinhThucDatKham = (props: any) => {
+const HinhThucDatKham = ({ data }: any) => {
   const dispatch = useDispatch()
   const hos = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
@@ -22,15 +23,12 @@ const HinhThucDatKham = (props: any) => {
   const router = useRouter()
   const { site } = router.query
 
-  const listHospital = props.data.listHospital
-  const getInfo = find(listHospital, { partnerId: site })
-
   useEffect(() => {
-    dispatch(ac.onLoading())
+    dispatch(ac.setLoading())
     dispatch(ac.setParnerIdHospital(site))
 
     setTimeout(() => {
-      dispatch(ac.offLoading())
+      dispatch(ac.setLoading(false))
     }, 1000)
   }, [router])
 
@@ -43,10 +41,14 @@ const HinhThucDatKham = (props: any) => {
   }
 
   if (total.loading) return <Loading component />
+  if (!data.listHospital) return
+
+  const listHospital = data.listHospital
+  const getInfo = find(listHospital, { partnerId: site })
 
   return (
     <>
-      <SEOHead meta={handerMeta(getInfo, router)} />
+      {getInfo > 0 && <SEOHead meta={handerMeta(getInfo, router)} />}
 
       <BreadcumbCustom
         type='booking'
@@ -54,7 +56,11 @@ const HinhThucDatKham = (props: any) => {
         listMenu={listMenu}
       />
 
-      <BookingType getInfo={getInfo} />
+      {check(data.listHospital) ? (
+        <BookingType getInfo={getInfo} />
+      ) : (
+        <Loading component />
+      )}
     </>
   )
 }

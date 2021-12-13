@@ -22,9 +22,9 @@ const HeaderPublic = () => {
       const audio = new Audio(
         'https://resource-testing.medpro.com.vn/static/upload/noti.mp3'
       )
-      audio.play()
+      Number(noRep?.length) > 1 && audio.play()
     }
-  }, [noRep.length > 1])
+  }, [Number(noRep?.length) > 1])
 
   if (!hos.information.header) return null
   return (

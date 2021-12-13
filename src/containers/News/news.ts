@@ -1,6 +1,6 @@
 import { api } from '@config/api'
 import { currentEnv } from '@src/config/envs'
-import { LIMIT_PAGE_NEWS } from '@utils/contants'
+import { news } from '@utils/contants'
 export const TinTucCtrl = async (ctx: any) => {
   const {
     query: { page = 1 }
@@ -41,8 +41,8 @@ const getCountNewsContent = async () => {
 
 const getListNewsContent = async ({ page = 1 }) => {
   try {
-    const start = +page === 1 ? 0 : (+page - 1) * LIMIT_PAGE_NEWS || 1
-    const url = `${currentEnv.API_CMS}/posts?_sort=updated_at:DESC&_start=${start}&_limit=${LIMIT_PAGE_NEWS}`
+    const start = +page === 1 ? 0 : (+page - 1) * news.LIMIT_PAGE || 1
+    const url = `${currentEnv.API_CMS}/posts?_sort=updated_at:DESC&_start=${start}&_limit=${news.LIMIT_PAGE}`
     const rs = await api(url)
     return rs
   } catch (error) {

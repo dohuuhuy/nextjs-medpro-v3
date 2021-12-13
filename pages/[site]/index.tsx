@@ -1,13 +1,13 @@
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import BannersPublic from '@src/components/organisms/BannersPublic'
-const DefaultLayout = dynamic(() => import('@templates/Default'))
-import { urlContent, urlSEOPage } from '@utils/contants'
+import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { find } from 'lodash'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
+const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const Site = ({ data, meta }: any) => {
   const router = useRouter()
@@ -34,8 +34,8 @@ Site.layout = DefaultLayout
 export default Site
 
 export const getServerSideProps = async () => {
-  const data = await fetcher(urlContent)
-  const meta = await fetcher(urlSEOPage)
+  const data = await fetcher(urlJson.urlContent)
+  const meta = await fetcher(urlJson.urlSEOPage)
 
   return { props: { data, meta } }
 }

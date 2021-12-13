@@ -3,7 +3,7 @@ import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
 import { SEOHead } from '@src/components/SEO/SEOHead/Index'
 import { SelectHospitalCtl } from '@src/containers/SelectHosital'
 import { AppState } from '@src/store/interface'
-import { urlSEOPage } from '@src/utils/contants'
+import { urlJson } from '@src/utils/contants'
 import { fetcher } from '@src/utils/func'
 import { check } from '@utils/checkValue'
 import { find } from 'lodash'
@@ -41,6 +41,6 @@ export default ChonBenhVienPage
 
 export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()
-  const meta = await fetcher(urlSEOPage)
+  const meta = await fetcher(urlJson.urlSEOPage)
   return { props: { data, meta } }
 }

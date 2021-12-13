@@ -2,7 +2,7 @@ import { demoAction, demoActionTypes, DemoState } from '@src/store/interface'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const DemoInitialState: DemoState = {
-  nameColor: 'primary'
+  bookingCurrent: 'primary'
 }
 
 export default function DemoReducer(
@@ -11,10 +11,10 @@ export default function DemoReducer(
 ) {
   switch (action.type) {
     case demoActionTypes.DEMO_SUCCESS:
-      return { ...state, nameColor: action.nameColor }
+      return { ...state, bookingCurrent: action.bookingCurrent }
 
     case demoActionTypes.DELETE_COLOR:
-      if (state.nameColor === 'primary') {
+      if (state.bookingCurrent === 'primary') {
         alert('đã xóa rồi')
       }
       return { ...DemoInitialState }

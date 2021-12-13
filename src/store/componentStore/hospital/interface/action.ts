@@ -60,7 +60,7 @@ export type FeatureAction =
 export interface FeatureRequest {
   type: HosptailTypes.Feature.FEATURE_REQUEST
   partnerId: string
-  typeReser: string
+  typeReser: 'app' | 'partner'
 }
 
 export interface FeatureByPartnertSuccess {
@@ -93,8 +93,8 @@ export interface ListHospitalRequestSuccess {
 export type BookingTreeAction =
   | BookingTreeRequest
   | BookingTreeRequestSuccess
-  | BookingTreeCurrentRequest
-  | BookingTreeCurrentRequestSuccess
+  | bookingCurRequest
+  | bookingCurRequestSuccess
 
 export interface BookingTreeRequest {
   type: HosptailTypes.BookingTree.BOOKING_TREE_REQUEST
@@ -106,13 +106,14 @@ export interface BookingTreeRequestSuccess {
   bookingTree: any[]
 }
 
-export interface BookingTreeCurrentRequest {
-  type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST
+export interface bookingCurRequest {
+  type: HosptailTypes.BookingTree.CurrentBooking_Request
+  schedules: any
 }
 
-export interface BookingTreeCurrentRequestSuccess {
-  type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS
-  bookingTreeCurrent: any[]
+export interface bookingCurRequestSuccess {
+  type: HosptailTypes.BookingTree.CurrentBooking_Success
+  bookingCur: any[]
 }
 // -----------------------------Lấy thông tin header---------------------------------------------
 

@@ -1,15 +1,41 @@
-import { checkActive, selected } from './utils'
-import styles from './../less/dichvu.module.less'
+import { Radio } from 'antd'
 import cx from 'classnames'
 import React from 'react'
+import styles from './../less/dichvu.module.less'
+import { Item, Props, StateDichVu } from './interface'
+import { checkActive, clickItem } from './utils'
 
-export const DichVu = (props: any) => {
-  // console.log('props DichVu :>> ', props)
+export const DichVu = (props: Props) => {
+  console.log('props DichVu :>> ', props)
 
-  const [BHYT, setBHYT] = React.useState(false)
+  const [stateDichVu, setstateDichVu] = React.useState<StateDichVu>({
+    checkBHYT: false,
+    selectedItem: null,
+    selectedBHYT: null
+  })
 
-  const checkBHYT = (v: any) => () => {
-    setBHYT(v.detail.serviceType === 'INSURANCE_ONLY')
+  const checkBHYT = (item: Item) => () => {
+    if (item.detail.serviceType === 'INSURANCE_ONLY') {
+      setstateDichVu({
+        checkBHYT: true,
+        selectedItem: item
+      })
+    } else {
+      setstateDichVu({
+        checkBHYT: false,
+        selectedItem: item
+      })
+      clickItem({ item, props })
+    }
+  }
+
+  const onSelectBHYT = (e: any) => {
+    const { value } = e.target
+    setstateDichVu({
+      checkBHYT: true,
+      selectedBHYT: value
+    })
+    clickItem({ item: stateDichVu.selectedItem, props })
   }
 
   return (
@@ -18,11 +44,8 @@ export const DichVu = (props: any) => {
         {props.data.map((v: any) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (
-            <li key={v.id} onClick={checkBHYT(v)}>
-              <button
-                className={cx(styles.btn, active)}
-                onClick={selected(v, props)}
-              >
+            <li key={v.id}>
+              <button className={cx(styles.btn, active)} onClick={checkBHYT(v)}>
                 <span>{v.detail.name}</span>
                 <span>{v.detail.price} VND</span>
               </button>
@@ -30,17 +53,19 @@ export const DichVu = (props: any) => {
           )
         })}
       </ul>
-      {BHYT && (
+
+      {stateDichVu.checkBHYT && (
         <div className={styles.questionBHYT}>
           <span>Bạn có bảo hiểm y tế không?</span>
-          <div className={styles.groupRadio}>
-            <div className={styles.radio}>
-              <input type='radio' value='1' /> có
-            </div>
-            <div className={styles.radio}>
-              <input type='radio' value='2' /> không
-            </div>
-          </div>
+
+          <Radio.Group
+            onChange={onSelectBHYT}
+            value={stateDichVu.selectedBHYT}
+            className={styles.groupRadio}
+          >
+            <Radio value={1}>Có</Radio>
+            <Radio value={2}>Không</Radio>
+          </Radio.Group>
         </div>
       )}
     </section>

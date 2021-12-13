@@ -95,16 +95,17 @@ export const getBookingTreeSuccess = (data: any): HospitalActions => {
   }
 }
 
-export const getBookingTreeCurrent = (): HospitalActions => {
+export const getbookingCur = (schedules: any): HospitalActions => {
   return {
-    type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST
+    type: HosptailTypes.BookingTree.CurrentBooking_Request,
+    schedules
   }
 }
 
-export const getBookingTreeCurrentSuccess = (data: any): HospitalActions => {
+export const getbookingCurSuccess = (data: any): HospitalActions => {
   return {
-    type: HosptailTypes.BookingTree.BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS,
-    bookingTreeCurrent: data
+    type: HosptailTypes.BookingTree.CurrentBooking_Success,
+    bookingCur: data
   }
 }
 

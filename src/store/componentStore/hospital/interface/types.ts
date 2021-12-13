@@ -39,7 +39,7 @@ export namespace HosptailTypes {
   export enum BookingTree {
     BOOKING_TREE_REQUEST = 'BOOKING_TREE_REQUEST',
     BOOKING_TREE_REQUEST_SUCCESS = 'BOOKING_TREE_REQUEST_SUCCESS',
-    BOOKING_TREE_CURRENT_NODE_REQUEST = 'BOOKING_TREE_CURRENT_NODE_REQUEST',
-    BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS = 'BOOKING_TREE_CURRENT_NODE_REQUEST_SUCCESS'
+    CurrentBooking_Request = 'CurrentBooking_Request',
+    CurrentBooking_Success = 'CurrentBooking_Success'
   }
 }

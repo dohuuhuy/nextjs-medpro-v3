@@ -5,7 +5,7 @@ export type demoAction = GetDemo | DemoSuccess | DemoFailure | DeleteColor
 
 export interface GetDemo {
   type: demoActionTypes.GET_DEMO
-  nameColor: string
+  bookingCurrent: string
 }
 
 export interface DeleteColor {
@@ -14,7 +14,7 @@ export interface DeleteColor {
 
 export interface DemoSuccess {
   type: demoActionTypes.DEMO_SUCCESS
-  nameColor: string
+  bookingCurrent: string
 }
 
 export interface DemoFailure {

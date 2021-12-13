@@ -101,7 +101,7 @@ function* getBillInfo({ transactionId }: any) {
   try {
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
-    yield put(ac.onLoading())
+    yield put(ac.setLoading())
     yield put(ac.setWindow(window.location))
 
     const post = {
@@ -116,7 +116,7 @@ function* getBillInfo({ transactionId }: any) {
       }
     )
     yield put(ac.getBillInfoSuccess(response.data))
-    yield put(ac.offLoading())
+    yield put(ac.setLoading(false))
   } catch (error) {
     console.log(' error getBillInfo :>> ', error)
   }
