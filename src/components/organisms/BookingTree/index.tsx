@@ -52,7 +52,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     }
 
     return () => {
-      window.localStorage.removeItem('selected')
+      // window.localStorage.removeItem('selected')
       setstate({
         stepper: [],
         schedules: {}

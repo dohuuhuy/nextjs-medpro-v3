@@ -151,8 +151,6 @@ function* getbookingCurNode({ schedules }: any) {
       { partnerid: hos.partnerId }
     )
 
-    console.log('response :>> ', response)
-
     yield put(ac.getbookingCurSuccess(response.data))
   } catch (error) {
     console.log('error getbookingCurNode :>> ', error)
