@@ -28,7 +28,7 @@ const ChonBenhVienPage = ({ data, meta }: any) => {
   return (
     <>
       <SEOHead meta={findMeta} />
-      {check(data?.listHospital) ? (
+      {!check(data?.listHospital) ? (
         <SelectHospitalCustom
           listHospital={data?.listHospital}
           listCity={listCity}

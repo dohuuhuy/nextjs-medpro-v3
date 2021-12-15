@@ -48,12 +48,12 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listMenu={listMenu}
       />
       {check(hos?.bookingTree) ? (
-        <BookingTree bookingTree={hos?.bookingTree} />
-      ) : (
         <Loading
           component
           text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
         />
+      ) : (
+        <BookingTree bookingTree={hos?.bookingTree} />
       )}
     </>
   )

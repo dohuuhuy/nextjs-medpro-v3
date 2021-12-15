@@ -26,9 +26,9 @@ const Site = ({ data, meta }: any) => {
       <SEOHead meta={findMeta} />
       <BannersPublic />
       {check(data) ? (
-        <HandlerGetContentPage dataContent={data} />
-      ) : (
         <Loading component text='Đang cập nhật dữ liệu ........' />
+      ) : (
+        <HandlerGetContentPage dataContent={data} />
       )}
     </>
   )
