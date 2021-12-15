@@ -1,3 +1,4 @@
+import { SettingFilled } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@src/config/envs'
 import { setPartnerIdLocal } from '@src/store/actionStore'
 import { AppState } from '@src/store/interface'
@@ -74,7 +75,7 @@ const SelectedHospital = () => {
           placement='topLeft'
         >
           <Button shape='round' size='large'>
-            Setting
+            <SettingFilled />
           </Button>
         </Dropdown>
       ) : null}

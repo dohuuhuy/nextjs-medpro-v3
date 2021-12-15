@@ -35,6 +35,9 @@ export const DeloyHospitalCustom = ({ data }: Props) => {
                 <div key={nameHospital} className={styles.card}>
                   <figure className={styles.view}>
                     <Image
+                      loading='eager'
+                      property='true'
+                      loader={myLoader}
                       src={image}
                       alt={image}
                       width={355}
@@ -56,6 +59,10 @@ export const DeloyHospitalCustom = ({ data }: Props) => {
       </Row>
     </Container>
   )
+}
+
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }
 
 export const cssstyle = `
