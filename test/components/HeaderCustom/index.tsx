@@ -111,8 +111,10 @@ export default function HeaderCustom({
                     overlay={<Infomation handleLogOut={handleLogOut} />}
                   >
                     <button className={cx(styles.btn, styles.btnLogin)}>
-                      <CgUserlane />
-                      <span>{author?.fullName}</span>
+                      <span>
+                        <CgUserlane size={17} />
+                      </span>
+                      <p>{author?.fullName}</p>
                     </button>
                   </Dropdown>
                 </li>
