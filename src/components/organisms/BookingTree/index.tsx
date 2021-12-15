@@ -50,15 +50,17 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     } else {
       console.info('This page is not reloaded')
     }
+
+    return () => {
+      window.localStorage.removeItem('selected')
+      setstate({
+        stepper: [],
+        schedules: {}
+      })
+    }
   }, [bookingTree])
 
   if (!bookingTree) return null
-
-  const onChange = (key: any) => {
-    if (key === 'time') {
-      dispatch(getbookingCur(state.schedules))
-    }
-  }
 
   console.log('state :>> ', state.stepper)
 
@@ -112,7 +114,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
-                      onChange={() => onChange(v.key)}
                       accordion={v.open}
                     >
                       <Collapse.Panel

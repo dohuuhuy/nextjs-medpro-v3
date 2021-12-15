@@ -4,7 +4,7 @@ import React from 'react'
 import { BacSi } from './bacsi'
 import { ChuyenKhoa } from './chuyenkhoa'
 import { DichVu } from './dichvu'
-import { ClickItem, Props, StateBooking } from './interface'
+import { ClickItem, Props, StateBooking, Steps } from './interface'
 import { ThoiGian } from './thoigian'
 
 export const steps = [
@@ -139,42 +139,38 @@ export const clickItem = ({ item, props }: ClickItem) => {
 
   // 1. lấy được index trong mảng arr stepper từ keys gửi xuống
   const index = findIndex(state.stepper, { key: keys })
-
-  // const findStep: Steps | any = find(state.stepper, { key: keys })
-  const indexSub = findIndex(state.stepper, { key: item.subType })
-
-  // if (findStep) {
-  //   if (Object.keys(findStep?.selected).length) {
-  //     for (let i = indexSub; i < state.stepper.length; i++) {
-  //       console.log('state.stepper[i] :>> ', state.stepper[i])
-  //       if (state.stepper[i]) {
-  //         state.stepper[i].selected = {}
-  //         state.stepper[i].open = true
-  //       }
-  //     }
-
-  //     state.stepper[indexSub].data = item.child
-  //     state.stepper[indexSub].open = false
-  //   }
-  // }
+  const findStep: Steps | any = find(state.stepper, { key: keys })
+  const indexSub = findIndex(state.stepper, { key: item?.subType })
 
   // 2. tại vị trí index gán seleted = detail của item đang chọn
   state.stepper[index].open = true
+  state.stepper[index].selected = item?.detail || []
 
-  state.stepper[index].selected = item.detail
+  if (Object.keys(findStep?.selected).length) {
+    if (indexSub > 0) {
+      for (let i = indexSub; i <= state.stepper.length; i++) {
+        if (state.stepper[i]) {
+          state.stepper[i].data = []
+          state.stepper[i].selected = {}
+          state.stepper[i].open = true
+        }
+      }
+      state.stepper[indexSub].data = item?.child || []
+      state.stepper[indexSub].open = false
+    }
+  } else {
+    // 3. tìm vị trí của step kế tiếp mảng
+    // nếu có bước kế thì gán data và mở collasp cho bước kế đó
+    if (indexSub > 0) {
+      state.stepper[indexSub].data = item?.child || []
+      state.stepper[indexSub].open = false
+    }
 
-  // 3. tìm vị trí của step kế tiếp mảng
-  // nếu có bước kế thì gán data và mở collasp cho bước kế đó
-  if (indexSub > 0) {
-    state.stepper[indexSub].data = item.child
-    state.stepper[indexSub].open = false
+    // // nếu bước kế = null thì mở collasp
+    if (item?.subType === null) {
+      ;(last(state.stepper) as any).open = false
+    }
   }
-
-  // // nếu bước kế = null thì mở collasp
-  if (item.subType === null) {
-    ;(last(state.stepper) as any).open = false
-  }
-
   // -----------------------cuối cùng là cập nhật lại state--------------------------------------
 
   // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data

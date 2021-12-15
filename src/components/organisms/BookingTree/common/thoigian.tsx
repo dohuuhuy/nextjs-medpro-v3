@@ -1,3 +1,4 @@
+import { getbookingCur, saveSchedule } from '@actionStore'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
 import { AppState } from '@src/store/interface'
@@ -5,18 +6,23 @@ import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { find, last, range } from 'lodash'
 import moment from 'moment'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
 import { Props, Steps } from './interface'
 
 export const ThoiGian = (props: Props) => {
   // console.log('props ThoiGian:>> ', props)
 
+  const dispatch = useDispatch()
+
   const hospital = useSelector((state: AppState) => state.hospital)
 
   const { state, keys, setstate } = props
 
+  useEffect(() => {
+    dispatch(getbookingCur(state.schedules))
+  }, [state])
   ;(last(state.stepper) as any).data = hospital.bookingCurrent.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
@@ -97,6 +103,7 @@ export const ThoiGian = (props: Props) => {
     )
     setstate((v: any) => ({ ...v }))
     window.localStorage.setItem('selected', JSON.stringify(schedules))
+    dispatch(saveSchedule(schedules))
   }
 
   //  ----------------------------RENDER PAGE --------------------------------------------------------
