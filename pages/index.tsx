@@ -1,5 +1,6 @@
 import { BannerHome } from '@componentsTest/BannerHome'
 import { NewsEventCustom } from '@componentsTest/News&Events'
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
 import { AppState } from '@store/interface'
 import HomeLayout from '@templates/Home'
 import { banner } from '@utils/func'
@@ -19,6 +20,9 @@ const HomePage = ({ data }: any) => {
         listFeature={hos?.listFeatureByApp}
         partnerId={total?.partnerId}
       />
+
+      <DeloyHospitalCustom data={data.deployHospital} />
+
       {/* tin tức lấy từ server */}
       {data?.newsAndEvent && (
         <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />
