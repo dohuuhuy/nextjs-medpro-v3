@@ -1,5 +1,6 @@
 import * as ac from '@actionStore'
 import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
+import Loading from '@componentsTest/Loading'
 import { SEOHead } from '@src/components/SEO/SEOHead/Index'
 import { SelectHospitalCtl } from '@src/containers/SelectHosital'
 import { AppState } from '@src/store/interface'
@@ -21,16 +22,20 @@ const ChonBenhVienPage = ({ data, meta }: any) => {
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
   useEffect(() => {
-    !check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
+    check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
   }, [])
 
   return (
     <>
       <SEOHead meta={findMeta} />
-      <SelectHospitalCustom
-        listHospital={data?.listHospital || []}
-        listCity={listCity}
-      />
+      {check(data?.listHospital) ? (
+        <SelectHospitalCustom
+          listHospital={data?.listHospital}
+          listCity={listCity}
+        />
+      ) : (
+        <Loading component text='Đang cập nhật danh sách bệnh viện' />
+      )}
     </>
   )
 }

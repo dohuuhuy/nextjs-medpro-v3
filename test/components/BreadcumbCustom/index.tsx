@@ -99,7 +99,7 @@ export const BreadcumbCustom = ({
 
   return (
     listBreadcumb && (
-      <Container fluid={true} className={styles.wrapper}>
+      <Container tag='section' fluid={true} className={styles.wrapper}>
         <Container className={styles.container}>
           <Row className={styles.row}>
             <Col className={styles.col}>

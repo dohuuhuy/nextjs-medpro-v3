@@ -112,7 +112,7 @@ export default function HeaderCustom({
                   >
                     <button className={cx(styles.btn, styles.btnLogin)}>
                       <span>
-                        <CgUserlane size={17} />
+                        <CgUserlane />
                       </span>
                       <p>{author?.fullName}</p>
                     </button>

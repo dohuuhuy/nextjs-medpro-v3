@@ -6,7 +6,7 @@ import { Item, Props, StateDichVu } from './interface'
 import { checkActive, clickItem } from './utils'
 
 export const DichVu = (props: Props) => {
-  console.log('props DichVu :>> ', props)
+  // console.log('props DichVu :>> ', props)
 
   const [stateDichVu, setstateDichVu] = React.useState<StateDichVu>({
     checkBHYT: false,

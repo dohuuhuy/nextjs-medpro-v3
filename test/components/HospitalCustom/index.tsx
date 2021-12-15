@@ -46,7 +46,7 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
   }
 
   return (
-    <Container fluid={true} className={styles.container}>
+    <Container tag={'section'} fluid={true} className={styles.container}>
       <Row className={styles.rowSelect}>
         <Col span='24' className={styles.colGroupInputSelect}>
           <Container className={styles.conGroup}>

@@ -159,6 +159,8 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // }
 
   // 2. tại vị trí index gán seleted = detail của item đang chọn
+  state.stepper[index].open = true
+
   state.stepper[index].selected = item.detail
 
   // 3. tìm vị trí của step kế tiếp mảng
@@ -199,6 +201,12 @@ export const checkActive = (item: any, props: any) => {
   const findItem = find(state.stepper, { key: keys })
 
   if (findItem < 1) return false
+
+  if (findItem.key === 'time') {
+    if (Object.keys(findItem.selected).length) {
+      return true
+    }
+  }
 
   if (!findItem.selected.id) return false
 

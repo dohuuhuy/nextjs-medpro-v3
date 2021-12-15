@@ -154,8 +154,6 @@ function* getbookingCurNode({ schedules }: any) {
     console.log('response :>> ', response)
 
     yield put(ac.getbookingCurSuccess(response.data))
-
-    yield put(ac.getDemo({ bookingCurrent: response.data }))
   } catch (error) {
     console.log('error getbookingCurNode :>> ', error)
   }

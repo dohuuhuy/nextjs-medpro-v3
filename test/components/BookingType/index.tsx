@@ -1,3 +1,4 @@
+import Container from './../Container'
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -19,7 +20,7 @@ export const BookingType = (props: BookingTypeIF) => {
   }
 
   return (
-    <div className={styles.bookingType}>
+    <Container tag='section' className={styles.bookingType}>
       {/* banner và tabs header */}
       <Row className={styles.rowType}>
         <Col
@@ -142,7 +143,7 @@ export const BookingType = (props: BookingTypeIF) => {
           </Slider>
         </Col>
       </Row>
-    </div>
+    </Container>
   )
 }
 
