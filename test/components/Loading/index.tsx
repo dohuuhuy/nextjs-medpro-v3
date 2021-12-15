@@ -26,7 +26,7 @@ const Loading = ({
     >
       <Spin indicator={antIcon} />
       <div className={styles.content}>
-        <p>{text}</p>
+        <p className={styles.typing}>{text}</p>
       </div>
     </div>
   )

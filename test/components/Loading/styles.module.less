@@ -36,13 +36,28 @@
   min-height: 100vh;
   text-align: center;
   .content {
-    width: 100%;
     padding: 15px;
     margin-top: 20px;
     color: #00000087;
+    .typing {
+      overflow: hidden;
+      border-right: 0.15em solid orange;
+      white-space: nowrap;
+      animation: typing 5s steps(30, end) forwards infinite;
+      width: 0px;
+    }
   }
 }
 
 .top {
   justify-content: flex-start !important;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

@@ -6,7 +6,15 @@ export const fetcherGuide = (url: string) =>
     headers: { type: 'guide-booking', partnerid: 'medpro' }
   }).then((res) => res.json())
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json())
+export const fetcher = (url: string) => {
+  try {
+    return fetch(url)
+      .then((res) => res.json())
+      .catch(() => null)
+  } catch (error) {
+    return null
+  }
+}
 
 const time = new Date().getTime()
 

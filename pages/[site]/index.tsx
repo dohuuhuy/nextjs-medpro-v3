@@ -1,6 +1,8 @@
 import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
+import Loading from '@componentsTest/Loading'
 import BannersPublic from '@src/components/organisms/BannersPublic'
+import { check } from '@src/utils/checkValue'
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { find } from 'lodash'
@@ -19,12 +21,15 @@ const Site = ({ data, meta }: any) => {
     }
   }, [router.asPath])
 
-  if (!data) return null
   return (
     <>
       <SEOHead meta={findMeta} />
       <BannersPublic />
-      <HandlerGetContentPage dataContent={data} />
+      {check(data) ? (
+        <HandlerGetContentPage dataContent={data} />
+      ) : (
+        <Loading component text='Đang cập nhật dữ liệu ........' />
+      )}
     </>
   )
 }

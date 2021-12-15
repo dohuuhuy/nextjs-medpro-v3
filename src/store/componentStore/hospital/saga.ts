@@ -1,4 +1,3 @@
-import { bookingCurRequestSuccess } from './interface/action'
 import { client } from '@config/medproSDK'
 import * as ac from '@store/actionStore'
 import { AppState, HospitalState, HosptailTypes } from '@store/interface'
