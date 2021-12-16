@@ -180,7 +180,6 @@ export const BookingBill = ({ bill }: any) => {
               </div>
             )}
           </div>
-          {<CustomLine bottom />}
         </Col>
       </Row>
     </Container>
