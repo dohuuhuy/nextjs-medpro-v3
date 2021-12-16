@@ -11,15 +11,19 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const ConfirmInfoPage = () => {
   const dispatch = useDispatch()
   const user = useSelector((state: AppState) => state.user)
-
+  const hospital = useSelector((state: AppState) => state.hospital)
   useEffect(() => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
     dispatch(ac.listPatientRequest())
   }, [])
-  console.log('user :>> ', user.listPatient);
+  console.log('user :>> ', user.listPatient)
+
   return (
     <>
-      <ConfirmInfo {...user.listPatient} />
+      <ConfirmInfo
+        listPatient={user.listPatient}
+        schedule={hospital.schedule}
+      />
     </>
   )
 }

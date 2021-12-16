@@ -1,31 +1,36 @@
 import { CloseCircleOutlined } from '@ant-design/icons'
 import { Button, Col, Row } from 'antd'
 import { get, uniqueId } from 'lodash'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
 import { Icon } from '../Icon'
 import styles from './styles.module.less'
 import { Info, Profile } from './utils/data'
+import { ConfirmInfoIF, StateConfirm } from './utils/interface'
 
-export interface user {
-  fullName: string
-  userName: string
-  email: string
-}
+export const ConfirmInfo = (props: ConfirmInfoIF) => {
+  const [stateConfirm, setstateConfirm] = useState<StateConfirm>({
+    listPatient: props.listPatient,
+    patient: [],
+    indexSelect: 0,
+    itemSelected: {}
+  })
 
-export const ConfirmInfo = (user: any) => {
-  const [listPatient, _setListPatient] = useState(Object.values(user))
-  const [patient, setPatient] = useState(listPatient[0])
-  const [indexSelect, setIndexSelect] = useState(0)
+  useEffect(() => {
+    setstateConfirm((v) => ({
+      ...v,
+      itemSelected: props.listPatient[0]
+    }))
+  }, [])
 
-  const SelectProfile = (index: number) => {
-    listPatient?.filter((item: any, vitri) => {
-      if (index === vitri) {
-        setPatient(item)
-        setIndexSelect(vitri)
-      }
-    })
+  console.log('props :>> ', props.schedule)
+  const selectItem = (item: any) => {
+    console.log('item :>> ', item)
+    setstateConfirm((v) => ({
+      ...v,
+      itemSelected: item
+    }))
   }
 
   return (
@@ -45,17 +50,17 @@ export const ConfirmInfo = (user: any) => {
                   <p>Tạo hồ sơ</p>
                 </div>
               </li>
-              {listPatient.map((item, index) => {
+              {stateConfirm.listPatient?.map((item, index) => {
+                const activeSlect =
+                  item.id === stateConfirm.itemSelected.id
+                    ? styles.btnProfileActive
+                    : styles.btnProfile
                 return (
                   <li key={index}>
                     <div className={styles.viewProfile}>
                       <Button
-                        className={
-                          index === indexSelect
-                            ? styles.btnProfileActive
-                            : styles.btnProfile
-                        }
-                        onClick={() => SelectProfile(index)}
+                        className={activeSlect}
+                        onClick={() => selectItem(item)}
                       >
                         <Icon name='bacsinam' size='55' />
                       </Button>
@@ -70,18 +75,20 @@ export const ConfirmInfo = (user: any) => {
               {' '}
               {/* styles.cardInComplete */}
               <ul className={styles.listItem}>
-                {Profile(patient)?.map(({ title, value }: any) => {
-                  return (
-                    <li key={uniqueId()}>
-                      <div className={styles.cardItem}>
-                        <p>
-                          <span className={styles.title}>{title}</span>
-                          <span className={styles.value}>{value}</span>
-                        </p>
-                      </div>
-                    </li>
-                  )
-                })}
+                {Profile(stateConfirm.itemSelected)?.map(
+                  ({ title, value }: any) => {
+                    return (
+                      <li key={uniqueId()}>
+                        <div className={styles.cardItem}>
+                          <p>
+                            <span className={styles.title}>{title}</span>
+                            <span className={styles.value}>{value}</span>
+                          </p>
+                        </div>
+                      </li>
+                    )
+                  }
+                )}
               </ul>
             </div>
           </div>
