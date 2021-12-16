@@ -15,7 +15,6 @@ const PaymentMethodsPage = () => {
   const hospital = useSelector((state: AppState) => state.hospital)
   useEffect(() => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
-    dispatch(ac.listPatientRequest())
     check(hospital.listHospital) && dispatch(ac.getListHospital())
   }, [])
   return (

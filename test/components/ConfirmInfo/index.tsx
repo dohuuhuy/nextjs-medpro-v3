@@ -144,9 +144,9 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     children={
                       <div className={styles.actionLoading}>
                         <p className={styles.txtLoading}>
-                          Vui chọn lòng hoàn thành{' '}
-                          <b>chọn thông tin đặt khám</b> để tiếp tục chức năng
-                          này !
+                          Vui lòng chọn <b>Đặt khám</b> và hoàn thành nhập đủ
+                          <b> Thông tin đặt khám</b> <br />
+                          để tiếp tục chức năng này !
                         </p>
                         <Button
                           shape='round'

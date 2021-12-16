@@ -1,6 +1,7 @@
 import * as ac from '@actionStore'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 import { ConfirmInfo } from '@componentsTest/ConfirmInfo'
+import Loading from '@componentsTest/Loading'
 import { AppState } from '@src/store/interface'
 import { check } from '@src/utils/checkValue'
 import dynamic from 'next/dynamic'
@@ -28,11 +29,15 @@ const ConfirmInfoPage = () => {
         header={hospital.information.header}
       />
 
-      <ConfirmInfo
-        listPatient={user.listPatient}
-        schedule={hospital.schedule}
-        loading={total.loading}
-      />
+      {total.loading ? (
+        <Loading component />
+      ) : (
+        <ConfirmInfo
+          listPatient={user.listPatient}
+          schedule={hospital.schedule}
+          loading={total.loading}
+        />
+      )}
     </>
   )
 }
