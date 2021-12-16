@@ -12,7 +12,7 @@ const ConfirmInfoPage = () => {
   const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
-    check(user.userInfo.token) && dispatch(ac.loginMedproId()),
+    check(user.userInfo.token) && dispatch(ac.loginMedproId())
     dispatch(ac.listPatientRequest())
   }, [])
 
