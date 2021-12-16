@@ -1,18 +1,17 @@
-import Container from '../Container'
-import React, { useState } from 'react'
-import styles from './styles.module.less'
-import { CardFee } from '../CardFee'
-import { Col, Row, Collapse, Button } from 'antd'
-import { Icon } from '../Icon'
+import { Col, Collapse, Row } from 'antd'
 import Image from 'next/image'
-import Banner from './images/BgPayment.svg'
-import { data } from './utils/data'
-import { PartnerPayment } from './components/listPartnerPayment'
+import React, { useState } from 'react'
+import { CardFee } from '../CardFee'
+import Container from '../Container'
+import { Data } from './common/interface'
+import { PartnerPayment } from './common/listPartnerPayment'
+import { data } from './common/utils/data'
+import Banner from './common/images/BgPayment.svg'
+import styles from './styles.module.less'
 // import cx from 'classnames'
 
-const { Panel } = Collapse
 export const PaymentMethods = () => {
-  const [idKey, setIDKey] = useState({
+  const [_idKey, setIDKey] = useState({
     collapseID: ' '
   })
   const onChange = (key: any) => {
@@ -21,77 +20,56 @@ export const PaymentMethods = () => {
       collapseID: key
     }))
   }
-  const Header = (id: any, title: string, subtitle: string, icon: any) => {
+  const Header = (item: Data) => {
     return (
-      <div className={styles.Header}>
-        <figure
-          className={
-            idKey.collapseID === id ? styles.icons_select : styles.icons
-          }
-        >
-          {icon}
-        </figure>
-        <p>
-          <span
-            className={
-              subtitle
-                ? idKey.collapseID === id
-                  ? styles.title_select
-                  : styles.title
-                : styles.title_alone
-            }
-          >
-            {title}
-          </span>
-          <span className={styles.subtitle}>{subtitle}</span>
-        </p>
+      <div className={styles.headerCollaps}>
+        <figure className={styles.viewIcon}>{item.icon}</figure>
+        <div className={styles.contenTitle}>
+          <span className={styles.title}>{item.title}</span>
+          <span className={styles.subtitle}>{item.subtitle}</span>
+        </div>
       </div>
     )
   }
   return (
-    <Container>
+    <Container tag={'section'} className={styles.PaymentMethods}>
       <Row className={styles.rowMethods}>
-        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+        <Col span={24} className={styles.colTitle}>
+          <h3 className={styles.titlePayment}>PHƯƠNG THỨC THANH TOÁN</h3>
+        </Col>
         <Col xl={16} className={styles.colMethods}>
-          <figure className={styles.Banner}>
-            <Image src={Banner} width={720} height={291} alt='' />
+          <figure className={styles.bannerMethods}>
+            <Image
+              src={Banner}
+              width={720}
+              height={290}
+              alt=''
+              loading='eager'
+              property='true'
+            />
           </figure>
-          <div className={styles.Call}>
-            <figure className={styles.icons}>
-              <Icon name='Goitongdai' size='32' />
-            </figure>
-            <p className={styles.title}>Thanh toán qua tổng đài</p>
-            <Button type='primary'>Nhấn để gọi</Button>
-          </div>
-          <div className={styles.MedicalCard}>
-            <figure className={styles.icons}>
-              <Icon name='ViDienTu' size='32' />
-            </figure>
-            <p className={styles.title}>Thẻ khám bệnh</p>
-          </div>
-          <ul className={styles.listPayment}>
-            {data.map(({ id, title, subtitle, icon }: any) => {
+
+          <Collapse
+            className={styles.listPayment}
+            expandIconPosition='right'
+            accordion
+            onChange={onChange}
+            bordered={false}
+          >
+            {data.map((item, i) => {
               return (
-                <li key={id}>
-                  <Collapse
-                    className={styles.cardPayment}
-                    expandIconPosition='right'
-                    accordion
-                    onChange={onChange}
-                  >
-                    <Panel
-                      className={styles.panel}
-                      header={Header(id, title, subtitle, icon)}
-                      key={id}
-                    >
-                      <PartnerPayment />
-                    </Panel>
-                  </Collapse>
-                </li>
+                <Collapse.Panel
+                  className={styles.panel}
+                  header={Header(item)}
+                  key={i}
+                >
+                  <PartnerPayment />
+                </Collapse.Panel>
               )
             })}
-          </ul>
+          </Collapse>
         </Col>
+
         <Col xl={8}>
           <CardFee />
         </Col>
