@@ -1,28 +1,27 @@
+import { CloseCircleOutlined } from '@ant-design/icons'
+import { Button, Col, Row } from 'antd'
+import { get, uniqueId } from 'lodash'
 import React, { useState } from 'react'
-import styles from './styles.module.less'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
-import { Col, Row, Button } from 'antd'
-import { CloseCircleOutlined, ExclamationCircleFilled } from '@ant-design/icons'
-import { uniqueId, get } from 'lodash'
 import { Icon } from '../Icon'
+import styles from './styles.module.less'
 import { Info, Profile } from './utils/data'
 
-interface user {
-  fullName: string,
-  userName: string,
+export interface user {
+  fullName: string
+  userName: string
   email: string
 }
 
-export const ConfirmInfo = ( user: any ) => {
-
-  const [listPatient, setListPatient] = useState(Object.values(user))
-  const [ patient, setPatient ] = useState(listPatient[0])
+export const ConfirmInfo = (user: any) => {
+  const [listPatient, _setListPatient] = useState(Object.values(user))
+  const [patient, setPatient] = useState(listPatient[0])
   const [indexSelect, setIndexSelect] = useState(0)
 
   const SelectProfile = (index: number) => {
-    listPatient?.filter( (item: any, vitri) => {
-      if (index === vitri){
+    listPatient?.filter((item: any, vitri) => {
+      if (index === vitri) {
         setPatient(item)
         setIndexSelect(vitri)
       }
@@ -46,26 +45,32 @@ export const ConfirmInfo = ( user: any ) => {
                   <p>Tạo hồ sơ</p>
                 </div>
               </li>
-              { listPatient.map((item, index) => {
+              {listPatient.map((item, index) => {
                 return (
                   <li key={index}>
                     <div className={styles.viewProfile}>
                       <Button
-                        className={index === indexSelect ? styles.btnProfileActive : styles.btnProfile}
-                        onClick={()=>SelectProfile(index)}
+                        className={
+                          index === indexSelect
+                            ? styles.btnProfileActive
+                            : styles.btnProfile
+                        }
+                        onClick={() => SelectProfile(index)}
                       >
                         <Icon name='bacsinam' size='55' />
                       </Button>
 
-                      <p>{get(item,"fullname")}</p>
+                      <p>{get(item, 'fullname')}</p>
                     </div>
                   </li>
                 )
               })}
             </ul>
-            <div className={styles.cardComplete}> {/* styles.cardInComplete */}
+            <div className={styles.cardComplete}>
+              {' '}
+              {/* styles.cardInComplete */}
               <ul className={styles.listItem}>
-                { Profile(patient)?.map(({title, value}: any) => {
+                {Profile(patient)?.map(({ title, value }: any) => {
                   return (
                     <li key={uniqueId()}>
                       <div className={styles.cardItem}>
@@ -76,7 +81,7 @@ export const ConfirmInfo = ( user: any ) => {
                       </div>
                     </li>
                   )
-                }) }
+                })}
               </ul>
             </div>
           </div>
@@ -100,7 +105,6 @@ export const ConfirmInfo = ( user: any ) => {
               <div className={styles.btnClose}>
                 <CloseCircleOutlined />
               </div>
-
             </div>
           </div>
         </Col>
