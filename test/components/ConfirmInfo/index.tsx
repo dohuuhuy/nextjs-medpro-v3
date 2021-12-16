@@ -82,11 +82,12 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                   })}
                 </Slider>
                 <div className={styles.cardComplete}>
-                  {/* styles.cardInComplete */}
                   <ul className={styles.listItem}>
                     {Profile(stateConfirm.itemSelected)
                       ?.sort((a, b) => a.sort - b.sort)
                       .map((item, i) => {
+                        const t = getSetting(item, TITLE)
+                        const v = getSetting(item, VALUE)
                         return (
                           item.status &&
                           item.visible && (
@@ -95,27 +96,27 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                                 <p className={styles.contentItem}>
                                   <span
                                     style={{
-                                      color: getSetting(item, TITLE).color
+                                      color: t.color
                                     }}
                                     className={cx(
                                       styles.title,
-                                      getSetting(item, TITLE).bold,
-                                      getSetting(item, TITLE).under
+                                      t.bold,
+                                      t.under
                                     )}
                                   >
                                     {item.title}
                                   </span>
                                   <span
                                     style={{
-                                      color: getSetting(item, VALUE).color
+                                      color: v.color
                                     }}
                                     className={cx(
                                       styles.value,
-                                      getSetting(item, VALUE).bold,
-                                      getSetting(item, VALUE).under
+                                      v.bold,
+                                      v.under
                                     )}
                                   >
-                                    {item.value} {/* biến ở đây */}
+                                    {item.value}
                                   </span>
                                 </p>
                               </div>

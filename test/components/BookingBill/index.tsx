@@ -10,7 +10,8 @@ import { CustomLine } from './common/CustomLine'
 import { ModalCancel } from './common/ModalCancel'
 import { statusBill, typeCode } from './common/typeCode'
 import styles from './styles.module.less'
-import { check, listItemBooking } from './utils/func'
+import { check, getSetting, listItemBooking } from './utils/func'
+import { TITLE, VALUE } from './utils/contanst'
 
 export const BookingBill = ({ bill }: any) => {
   let bookingTimeBig
@@ -113,27 +114,34 @@ export const BookingBill = ({ bill }: any) => {
               )}
 
               <ul className={styles.listItemBooking}>
-                {listItemBooking(info).map(
-                  ({ title, value, dash, disable, color }: any) => {
-                    return (
-                      disable && (
-                        <li key={uniqueId()}>
-                          {dash ? (
-                            dash
-                          ) : (
-                            <p
-                              className={styles.itemBooking}
-                              style={{ color: color }}
+                {listItemBooking(info).map((item) => {
+                  const t = getSetting(item, TITLE)
+                  const v = getSetting(item, VALUE)
+                  return (
+                    item.disable && (
+                      <li key={uniqueId()}>
+                        {item.dash ? (
+                          item.dash
+                        ) : (
+                          <p className={styles.itemBooking}>
+                            <span
+                              style={{ color: t.color }}
+                              className={cx(styles.title, t.bold, t.under)}
                             >
-                              <span> {title}</span>
-                              <span>{value}</span>
-                            </p>
-                          )}
-                        </li>
-                      )
+                              {item.title}
+                            </span>
+                            <span
+                              style={{ color: v.color }}
+                              className={cx(styles.value, v.bold, v.under)}
+                            >
+                              {item.value}
+                            </span>
+                          </p>
+                        )}
+                      </li>
                     )
-                  }
-                )}
+                  )
+                })}
               </ul>
 
               <CustomLine />
