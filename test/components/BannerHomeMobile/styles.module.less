@@ -7,20 +7,30 @@
   height: 500px;
   .rowBanner {
     width: 100%;
-    height: 100%;
+    height: 50%;
 
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
     .colAccount {
-      background-image: url('/images/BannerPattern.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
-      width: 50%;
-      height: 50%;
+      background-size: contain;
 
       display: flex;
-      align-items: center;
+      .account {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        .hello {
+          font-size: 20px;
+          font-weight: 500;
+        }
+        .name {
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
     }
     .colLogo {
       width: 50%;
@@ -29,6 +39,30 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+    }
+  }
+  .rowSearch {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    .colSearch {
+      width: 85%;
+      .inputSearch {
+        max-height: 40px;
+        border-radius: 25px;
+        background-color: #33abdc;
+        border: none;
+        color: white;
+
+        input {
+          width: 100%;
+          font-size: 13px;
+          padding-left: 7px;
+          background-color: #33abdc;
+        }
+      }
     }
   }
 }
