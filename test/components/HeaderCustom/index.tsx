@@ -108,11 +108,16 @@ export default function HeaderCustom({
               {author.token && (
                 <li>
                   <Dropdown
-                    overlay={<Infomation handleLogOut={handleLogOut} data={author?.fullName} />}
+                    overlay={
+                      <Infomation
+                        handleLogOut={handleLogOut}
+                        data={author?.fullName}
+                      />
+                    }
                   >
                     <button className={cx(styles.btn, styles.btnLogin)}>
                       <BiSmile size={20} />
-                      <span>{author?.fullName}</span>
+                      <p>{author?.fullName}</p>
                     </button>
                   </Dropdown>
                 </li>
