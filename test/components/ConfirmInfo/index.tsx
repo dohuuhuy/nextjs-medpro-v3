@@ -10,10 +10,10 @@ import Container from '../Container'
 import { Icon } from '../Icon'
 import { ConfirmInfoIF, StateConfirm } from './common/interface'
 import styles from './styles.module.less'
-import { getSetting, Info, Profile, TITLE, VALUE } from './utils/data'
+import { getSetting, Info, Profile, TITLE, VALUE } from './utils/func'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
-  const [stateConfirm, setstateConfirm] = useState<StateConfirm>({
+  const [state, setstate] = useState<StateConfirm>({
     listPatient: props.listPatient,
     patient: [],
     indexSelect: 0,
@@ -21,14 +21,14 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   })
 
   useEffect(() => {
-    setstateConfirm((v) => ({
+    setstate((v) => ({
       ...v,
       itemSelected: props.listPatient[0]
     }))
   }, [])
 
   const selectItem = (item: any) => () => {
-    setstateConfirm((v) => ({
+    setstate((v) => ({
       ...v,
       itemSelected: item
     }))
@@ -43,6 +43,9 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
     console.log(e)
     message.error('Click on No')
   }
+
+  const { listPatient, itemSelected } = state
+
   return (
     <Container className={styles.container}>
       <Row className={styles.rowInfo}>
@@ -62,9 +65,9 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     />
                     <p>Tạo hồ sơ</p>
                   </div>
-                  {stateConfirm.listPatient?.map((item, index) => {
+                  {listPatient?.map((item, index) => {
                     const activeSlect =
-                      item.id === stateConfirm.itemSelected.id
+                      item.id === itemSelected.id
                         ? styles.btnProfileActive
                         : styles.btnProfile
                     return (
@@ -83,47 +86,30 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                 </Slider>
                 <div className={styles.cardComplete}>
                   <ul className={styles.listItem}>
-                    {Profile(stateConfirm.itemSelected)
-                      ?.sort((a, b) => a.sort - b.sort)
-                      .map((item, i) => {
-                        const t = getSetting(item, TITLE)
-                        const v = getSetting(item, VALUE)
-                        return (
-                          item.status &&
-                          item.visible && (
-                            <li key={i}>
-                              <div className={styles.cardItem}>
-                                <p className={styles.contentItem}>
-                                  <span
-                                    style={{
-                                      color: t.color
-                                    }}
-                                    className={cx(
-                                      styles.title,
-                                      t.bold,
-                                      t.under
-                                    )}
-                                  >
-                                    {item.title}
-                                  </span>
-                                  <span
-                                    style={{
-                                      color: v.color
-                                    }}
-                                    className={cx(
-                                      styles.value,
-                                      v.bold,
-                                      v.under
-                                    )}
-                                  >
-                                    {item.value}
-                                  </span>
-                                </p>
-                              </div>
-                            </li>
-                          )
+                    {Profile(itemSelected).map((el, i) => {
+                      const t = getSetting(el, TITLE)
+                      const v = getSetting(el, VALUE)
+                      return (
+                        el.visible && (
+                          <li key={i}>
+                            <p className={styles.cardItem}>
+                              <span
+                                style={{ color: t.color }}
+                                className={cx(styles.title, t.bold, t.under)}
+                              >
+                                {el.title}
+                              </span>
+                              <span
+                                style={{ color: v.color }}
+                                className={cx(styles.value, v.bold, v.under)}
+                              >
+                                {el.value}
+                              </span>
+                            </p>
+                          </li>
                         )
-                      })}
+                      )
+                    })}
                   </ul>
                 </div>
               </div>
@@ -141,15 +127,25 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     text='Đang tải ...'
                   />
                 ) : (
-                  Info(props.schedule)?.map(({ title, value }, i) => {
+                  Info(props.schedule)?.map((el, i) => {
+                    const t = getSetting(el, TITLE)
+                    const v = getSetting(el, VALUE)
                     return (
                       <li key={i}>
-                        <div className={styles.cardItem}>
-                          <p className={styles.contentInfo}>
-                            <span className={styles.title}>{title}</span>
-                            <span className={styles.value}>{value}</span>
-                          </p>
-                        </div>
+                        <p className={styles.cardItem}>
+                          <span
+                            style={{ color: t.color }}
+                            className={cx(styles.title, t.bold, t.under)}
+                          >
+                            {el.title}
+                          </span>
+                          <span
+                            style={{ color: v.color }}
+                            className={cx(styles.value, v.bold, v.under)}
+                          >
+                            {el.value}
+                          </span>
+                        </p>
                       </li>
                     )
                   })

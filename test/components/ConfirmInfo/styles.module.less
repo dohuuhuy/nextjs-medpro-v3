@@ -51,17 +51,20 @@
             }
           }
         }
-        .cardIncomplete {
-          .listCarditem(#FFFAF2, #FFB340);
-          .button {
-            display: none;
-          }
-          .firstItem();
-        }
+
         .cardComplete {
           .listCarditem(#F2FCFF,#00b5f1);
           display: flex;
-          .firstItem();
+          .listItem {
+            width: 100%;
+            margin-bottom: 0;
+            /* border: 1px #00b5f1 solid; */
+            .cardItem {
+              .value {
+                margin-left: 5px;
+              }
+            }
+          }
         }
       }
       .InfoBooking {
@@ -78,6 +81,11 @@
             width: 100%;
             margin-bottom: 0;
             /* border: 1px #00b5f1 solid; */
+            .cardItem {
+              .value {
+                margin-left: 5px;
+              }
+            }
           }
         }
         .btnClose {
@@ -98,7 +106,7 @@
   border-radius: 8px;
   .listItem {
     list-style: none;
-    padding: 16px 0 16px 16px;
+    padding: 15px;
     margin-left: 8px;
     width: 100%;
     margin-bottom: 0;
