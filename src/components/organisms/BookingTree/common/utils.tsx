@@ -165,12 +165,13 @@ export const clickItem = ({ item, props }: ClickItem) => {
       state.stepper[indexSub].data = item?.child || []
       state.stepper[indexSub].open = false
     }
-
-    // // nếu bước kế = null thì mở collasp
-    if (item?.subType === null) {
-      ;(last(state.stepper) as any).open = false
-    }
   }
+
+  // // nếu bước kế = null thì mở collasp
+  if (item?.subType === null) {
+    ;(last(state.stepper) as any).open = false
+  }
+
   // -----------------------cuối cùng là cập nhật lại state--------------------------------------
 
   // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data

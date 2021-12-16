@@ -10,7 +10,7 @@ export const Stepper = ({ data }: any) => {
       <Container className={styles.steps}>
         <Row className={styles.rowStep}>
           <Col span='24' className={styles.colStep}>
-            <h2>Bước 1: Chọn chuyên khoa</h2>
+            {/* <h2 className={styles.titleStep}>Bước 1: Chọn chuyên khoa</h2> */}
 
             <ul className={styles.listStep}>
               {data.stepper?.map((v: any, i: number) => {
