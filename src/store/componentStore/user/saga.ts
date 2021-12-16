@@ -1,17 +1,18 @@
 import * as ac from '@actionStore'
-import { currentEnv } from '@src/config/envs'
 import { client } from '@config/medproSDK'
-import { AxiosResponse } from 'axios'
-import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
+import { currentEnv } from '@src/config/envs'
 import {
   AppState,
   TotalDataState,
   UserState,
   UserTypes
 } from '@src/store/interface'
+import { AxiosResponse } from 'axios'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* listPatientRequest() {
   try {
+    yield put(ac.setLoading(true))
     const user: UserState = yield select((state: AppState) => state.user)
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
@@ -23,9 +24,14 @@ function* listPatientRequest() {
       })
       console.log('response.data :>> ', response.data);
       yield put(ac.listPatientRequestSuccess(response.data))
+
     }
+    yield put(ac.setLoading(false))
+
   } catch (error) {
     console.log(error)
+    yield put(ac.setLoading(false))
+
   }
 }
 
