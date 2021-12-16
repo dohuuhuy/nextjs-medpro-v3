@@ -1,23 +1,42 @@
-import { Col, Row } from 'antd'
+import { Col, Input, Row } from 'antd'
 import React from 'react'
 import styles from './styles.module.less'
 import Image from 'next/image'
+import Container from '@componentsTest/Container'
+import { Icon } from '../Icon'
 
 export const BannerHomeMobile = () => {
   return (
-    <div className={styles.container}>
+    <Container className={styles.container}>
       <Row className={styles.rowBanner}>
         <Col className={styles.colAccount}>
-          <p>
-            <strong>Medpro</strong> xin chào,
-            <br />PHAN HAI SON
+          <p className={styles.account}>
+            <span className={styles.hello}>
+              <b>Medpro </b>
+              xin chào,
+            </span>
+            <span className={styles.name}>
+              PHAN HAI SON
+            </span>
           </p>
         </Col>
         <Col className={styles.colLogo}>
-          <Image src="/images/LogoMedpro.svg" alt='' width={180} height={180} />
+          <Image src="/images/LogoMedpro.svg" alt='' width={150} height={150} />
         </Col>
       </Row>
-    </div>
+      <Row className={styles.rowSearch}>
+        <Col className={styles.colSearch}>
+          <Input
+            size='large'
+            autoFocus={true}
+            className={styles.inputSearch}
+            placeholder='Tìm nhanh bệnh viện'
+            prefix={<Icon name='timkiem' fill='white' />}
+            allowClear
+          />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

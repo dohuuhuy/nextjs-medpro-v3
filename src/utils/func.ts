@@ -12,7 +12,7 @@ export const HandleModile = (text = '') => {
   return str1.concat(' ' + str2 + ' ' + str3)
 }
 
-export const changeSex = (sex: number) => {
+export const changeSex = (sex: any) => {
   return sex ? 'Nam' : 'Nữ'
 }
 export const fetcherGuide = (url: string) =>

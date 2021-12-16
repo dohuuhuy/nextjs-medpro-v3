@@ -14,15 +14,14 @@ const ThongTinHoSo = () => {
   useEffect(() => {
     dispatch(ac.listPatientRequest())
     dispatch(ac.getBookingByUser())
-    dispatch(ac.getNoti())
+    /* check(user.userInfo.token) && dispatch(ac.getNoti()) */
   }, [])
-  console.log('user :>> ', user);
   const medthod: any = {
     listUser: user?.listPatient,
     listBooking: user?.bookingByUser,
     listNotice: user?.noti
   }
-  console.log('method :>> ', medthod);
+  console.log('method :>> ', medthod)
   return <ThongTinHoSoCustom {...medthod} />
 }
 
