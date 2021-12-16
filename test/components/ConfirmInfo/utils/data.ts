@@ -3,19 +3,19 @@ import * as func from '@utils/func'
 export const Profile = (item: any) => [
   {
     title: '',
-    value: item.fullname
+    value: item?.fullname
   },
   {
     title: 'Giới tính: ',
-    value: func.changeSex(item.sex)
+    value: func.changeSex(item?.sex)
   },
   {
     title: 'Ngày sinh: ',
-    value: item.birthdate
+    value: item?.birthdate
   },
   {
     title: 'Số điện thoại: ',
-    value: func.HandleModile(item.mobile)
+    value: func.HandleModile(item?.mobile)
   }
 ]
 
