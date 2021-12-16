@@ -1,13 +1,13 @@
 export interface HospitalState {
   partnerId: string
   listHospital: any
-  bookingTree: any[]
-  bookingCur: any
+  bookingTree: any
+  bookingCurrent: any
   listFeatureByApp: ItemFeature[]
   listFeatureByPartner: ItemFeature[]
   information: Information
   schedule: any
-  steps: any
+  steps: any[]
 }
 
 export interface Information {

@@ -41,7 +41,7 @@ const HinhThucDatKham = ({ data }: any) => {
   }
 
   if (total.loading) return <Loading component />
-  if (!data.listHospital) return
+  // if (!data.listHospsital) return
 
   const listHospital = data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
@@ -57,9 +57,9 @@ const HinhThucDatKham = ({ data }: any) => {
       />
 
       {check(data.listHospital) ? (
-        <BookingType getInfo={getInfo} />
-      ) : (
         <Loading component />
+      ) : (
+        <BookingType getInfo={getInfo} />
       )}
     </>
   )

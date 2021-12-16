@@ -13,6 +13,7 @@ import NextNProgress from 'nextjs-progressbar'
 import React, { Fragment, useEffect } from 'react'
 import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import RunLocal from '@src/components/molecules/RunLocal'
 
 const MyApp = ({ Component, pageProps }: any) => {
   const store: any = useStore()
@@ -50,6 +51,7 @@ const MyApp = ({ Component, pageProps }: any) => {
       <DefaultSeo {...SEO} />
       <NextNProgress color='#00b5f1' height={1} />
       {loading ? <Loading component /> : <Component {...pageProps} />}
+      <RunLocal />
       <OnTop />
     </Layout>
   )

@@ -20,6 +20,9 @@ const HomePage = ({ data }: any) => {
         listFeature={hos?.listFeatureByApp}
         partnerId={total?.partnerId}
       />
+
+      <DeloyHospitalCustom data={data.deployHospital} />
+
       {/* tin tức lấy từ server */}
       {data?.newsAndEvent && (
         <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />

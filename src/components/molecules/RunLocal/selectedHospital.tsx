@@ -1,9 +1,9 @@
-import { setPartnerIdLocal } from '@src/store/actionStore'
-import { ArrowUpOutlined } from '@ant-design/icons'
+import { SettingFilled } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@src/config/envs'
+import { setPartnerIdLocal } from '@src/store/actionStore'
 import { AppState } from '@src/store/interface'
 import { check } from '@utils/checkValue'
-import { BackTop, Button, Modal, Select } from 'antd'
+import { Button, Dropdown, message, Modal, Select, Space } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
@@ -40,39 +40,50 @@ const SelectedHospital = () => {
     return option?.children
   }
 
+  const onDeletePersist = () => {
+    window.localStorage.clear()
+    reload()
+    message.success('Del all localStorage success !', 10)
+  }
+
+  const reload = () => {
+    window.location.reload()
+  }
+
   return (
     <div>
-      <BackTop>
-        <div
-          style={{
-            height: 40,
-            width: 40,
-            lineHeight: '40px',
-            borderRadius: 4,
-            backgroundColor: '#1088e9',
-            color: '#fff',
-            textAlign: 'center',
-            fontSize: 14
-          }}
-        >
-          <ArrowUpOutlined />
-        </div>
-      </BackTop>
-
       {_DEVELOPMENT || _TESTING ? (
-        <Button
-          type='primary'
-          onClick={toggle}
-          className={styles.Btn_local_hospital}
+        <Dropdown
+          className={styles.Setting}
+          overlay={
+            <div className={styles.dropdownSetting}>
+              <Space direction='vertical'>
+                <Button type='primary' onClick={reload}>
+                  Refresh page
+                </Button>
+
+                <Button type='primary' onClick={onDeletePersist}>
+                  Del persist
+                </Button>
+
+                <Button type='primary' onClick={toggle}>
+                  Choice parner hospital
+                </Button>
+              </Space>
+            </div>
+          }
+          placement='topLeft'
         >
-          Chọn bệnh viện trên localhost
-        </Button>
+          <Button shape='round' size='large'>
+            <SettingFilled />
+          </Button>
+        </Dropdown>
       ) : null}
       <Modal
         footer={false}
         onOk={toggle}
         onCancel={toggle}
-        title=' Nhập partnerId bệnh viện để hiển thị trên localhost'
+        title=' Nhập partnerId bệnh viện để test nhanh'
         visible={isModalVisible}
         closable={isModalVisible}
       >

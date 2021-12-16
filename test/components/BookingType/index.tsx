@@ -1,3 +1,4 @@
+import Container from './../Container'
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
@@ -5,11 +6,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Slider from 'react-slick'
-import Container from '../Container'
 import { Icon } from '../Icon'
 import { BookingTypeIF } from './common/interface'
+import { carousel, listTabs, settings } from './common/utils'
 import styles from './styles.module.less'
-import { listTabs, settings, carousel } from './common/utils'
 
 export const BookingType = (props: BookingTypeIF) => {
   const info = props?.getInfo || null
@@ -20,7 +20,7 @@ export const BookingType = (props: BookingTypeIF) => {
   }
 
   return (
-    <Container className={styles.bookingType}>
+    <Container tag='section' className={styles.bookingType}>
       {/* banner và tabs header */}
       <Row className={styles.rowType}>
         <Col

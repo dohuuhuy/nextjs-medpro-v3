@@ -1,22 +1,20 @@
 import { ConfirmInfo } from '@componentsTest/ConfirmInfo'
-import dynamic from 'next/dynamic'
-import React, {useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { loginMedproId } from '@src/store/actionStore'
 import { AppState } from '@src/store/interface'
-import * as ac from '@actionStore'
-
+import { check } from '@src/utils/checkValue'
+import dynamic from 'next/dynamic'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ConfirmInfoPage = () => {
-  const user = useSelector((state: AppState) => state.user)
-  console.log('user :>> ', user);
-
   const dispatch = useDispatch()
+  const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
-    dispatch(ac.listPatientRequest())
+    check(user.userInfo.token) && dispatch(loginMedproId())
   }, [])
-  console.log('user.listPatient :>> ', user.listPatient);
+
   return (
     <>
       <ConfirmInfo {...user.listPatient} />

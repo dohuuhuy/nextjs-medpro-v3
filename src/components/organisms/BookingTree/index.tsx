@@ -3,6 +3,8 @@ import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { Col, Collapse, Row, Space } from 'antd'
 import cx from 'classnames'
+import moment from 'moment'
+import 'moment/locale/vi'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { BookingTreeIF, StateBooking } from './common/interface'
@@ -41,26 +43,26 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
           }
         })
 
-        setstate({ stepper: stepper })
+        setstate({ stepper: stepper, schedules: selecteds })
       } else {
         setstate({ stepper: handlerStep({ bookingTree }) })
       }
     } else {
       console.info('This page is not reloaded')
     }
+
+    return () => {
+      // window.localStorage.removeItem('selected')
+      setstate({
+        stepper: [],
+        schedules: {}
+      })
+    }
   }, [bookingTree])
 
   if (!bookingTree) return null
 
-  // useEffect(() => {
-  //   dispatch(getbookingCur(state.schedules))
-  // }, [state.stepper.length > 2])
-
-  const onChange = (key: any) => {
-    if (key === 'time') {
-      setstate((v) => ({ ...v, run: true }))
-    }
-  }
+  console.log('state :>> ', state.stepper)
 
   return (
     <section>
@@ -79,8 +81,22 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                   }
                 })
 
-                const name =
-                  v?.selected?.name || 'Chọn ' + v?.title.toLowerCase()
+                const name = () => {
+                  if (v.key === 'time') {
+                    if (Object.keys(v.selected).length > 1) {
+                      const ngay = moment(v.selected?.chonNgay?.date)
+                        .locale('vi')
+                        .format('dddd, DD MMMM YYYY')
+                      const { startTime, endTime }: any = v.selected.chonGio
+                      return `${ngay}, từ ${startTime} đến ${endTime} `
+                    }
+                  } else {
+                    if (v?.selected?.name) {
+                      return v?.selected?.name
+                    }
+                  }
+                  return 'Chọn ' + v?.title.toLowerCase()
+                }
 
                 const content = v?.content({
                   keys: v.key,
@@ -98,12 +114,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
-                      collapsible={v.open ? 'disabled' : 'header'}
-                      onChange={() => onChange(v.key)}
+                      accordion={v.open}
                     >
                       <Collapse.Panel
                         key={i}
-                        forceRender
                         style={{ width: '100%' }}
                         className={cx(styles.content)}
                         header={
@@ -112,9 +126,13 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                             <div className={cx(styles.input)}>
                               {icon}
                               <span
-                                className={v.selected.name && styles.active}
+                                className={
+                                  Object.keys(v.selected).length
+                                    ? styles.active
+                                    : ''
+                                }
                               >
-                                {name}
+                                {name()}
                               </span>
                             </div>
                           </div>

@@ -1,13 +1,16 @@
 import { Icon } from '@componentsTest/Icon'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './../less/bacsi.module.less'
 import { Props } from './interface'
 import { checkActive, clickItem } from './utils'
 
 export const BacSi = (props: Props) => {
-  console.log('props BacSi :>> ', props)
   const [list, setlist] = useState(props.data)
   const [keySearch, setkeySearch] = useState('')
+
+  useEffect(() => {
+    setlist(props.data)
+  }, [props.data])
 
   const onSearchKey = (e: any) => {
     const { value } = e.target

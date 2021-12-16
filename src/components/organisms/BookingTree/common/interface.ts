@@ -23,6 +23,7 @@ export interface StateBooking {
 }
 
 export interface StateDichVu {
+  list?: any
   checkBHYT?: boolean
   selectedItem?: any
   selectedBHYT?: any

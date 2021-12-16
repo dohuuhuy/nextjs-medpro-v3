@@ -1,5 +1,7 @@
+import { DemoHuyi } from '@src/components/atoms/demo'
+import { random } from 'lodash'
 import dynamic from 'next/dynamic'
-import React from 'react'
+import React, { useState } from 'react'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
@@ -12,6 +14,7 @@ const Demo = (_props: Props) => {
       <h4> truyền 4</h4>
       <h5> truyền 5</h5>
       <h6> truyền 6</h6>
+      <DemoHuyi />
     </>
   )
 }

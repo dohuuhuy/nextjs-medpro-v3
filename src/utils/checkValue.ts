@@ -3,7 +3,6 @@ import { isEmpty, isNull, isUndefined } from 'lodash'
 export const check = (element: any) => {
   if (
     element < 1 ||
-    Object.keys(element).length < 1 ||
     element === 0 ||
     element === ' ' ||
     element === null ||
@@ -14,6 +13,6 @@ export const check = (element: any) => {
     isUndefined(element) ||
     element.length < 1
   ) {
-    return false
-  } else return true
+    return true
+  } else return false
 }

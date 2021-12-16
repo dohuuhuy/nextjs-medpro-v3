@@ -1,11 +1,12 @@
+import { urlJson } from '@src/utils/contants'
 import { fetcher } from '@utils/func'
 
 export const HomeCtl = async (_ctx: any) => {
   const newsAndEvent = await getNewsAndEvent()
 
-  return {
-    newsAndEvent
-  }
+  const deployHospital = await fetcher(urlJson.urldeployHospital)
+
+  return { deployHospital, newsAndEvent }
 }
 
 const getNewsAndEvent = async () => {

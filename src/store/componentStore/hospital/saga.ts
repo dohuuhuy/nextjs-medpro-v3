@@ -1,4 +1,3 @@
-import { bookingCurRequestSuccess } from './interface/action'
 import { client } from '@config/medproSDK'
 import * as ac from '@store/actionStore'
 import { AppState, HospitalState, HosptailTypes } from '@store/interface'
@@ -152,11 +151,7 @@ function* getbookingCurNode({ schedules }: any) {
       { partnerid: hos.partnerId }
     )
 
-    console.log('response :>> ', response)
-
     yield put(ac.getbookingCurSuccess(response.data))
-
-    yield put(ac.getDemo({ bookingCurrent: response.data }))
   } catch (error) {
     console.log('error getbookingCurNode :>> ', error)
   }

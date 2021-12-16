@@ -6,7 +6,7 @@ import { Props } from './interface'
 import { checkActive, clickItem } from './utils'
 
 export const ChuyenKhoa = (props: Props) => {
-  console.log('props ChuyenKhoa :>> ', props)
+  // console.log('props ChuyenKhoa :>> ', props)
 
   const [list, setlist] = useState(props.data)
   const [keySearch, setkeySearch] = useState('')

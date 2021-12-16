@@ -1,3 +1,4 @@
+import { getbookingCur, saveSchedule } from '@actionStore'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
 import { AppState } from '@src/store/interface'
@@ -5,26 +6,24 @@ import { Button, Space } from 'antd'
 import cx from 'classnames'
 import { find, last, range } from 'lodash'
 import moment from 'moment'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
 import { Props, Steps } from './interface'
 
 export const ThoiGian = (props: Props) => {
-  console.log('props ThoiGian:>> ', props)
+  // console.log('props ThoiGian:>> ', props)
 
-  const booking = useSelector((state: AppState) => state.booking)
+  const dispatch = useDispatch()
+
+  const hospital = useSelector((state: AppState) => state.hospital)
 
   const { state, keys, setstate } = props
 
-  const [stateTime, setstateTime] = useState<any>({
-    chonNgay: {
-      shifts: []
-    },
-    chonGio: {}
-  })
-
-  ;(last(state.stepper) as any).data = booking.bookingCurrent.days
+  useEffect(() => {
+    dispatch(getbookingCur(state.schedules))
+  }, [state])
+  ;(last(state.stepper) as any).data = hospital.bookingCurrent.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
 
@@ -47,7 +46,7 @@ export const ThoiGian = (props: Props) => {
   const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
   const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
 
-  console.log('stateTime :>> ', stateTime)
+  // console.log('stateTime :>> ', stateTime)
 
   //  ----------------------------ACTION --------------------------------------------------------
 
@@ -92,21 +91,23 @@ export const ThoiGian = (props: Props) => {
     })
   }
 
-  const chonNgay = (item: any) => {
-    setstateTime({ chonNgay: item })
-  }
+  const onselectTime = (item: any, name: 'chonNgay' | 'chonGio') => {
+    ;(last(state.stepper) as any).selected[name] = item
 
-  const chonGio = (item: any) => {
-    ;(last(state.stepper) as any).selected = {
-      chonNgay: stateTime.chonNgay,
-      chonGio: item
-    }
+    const schedules = state.stepper.reduce(
+      (obj: any, item) =>
+        Object.assign(obj, {
+          [item.key as string]: { selected: item.selected, data: item.data }
+        }),
+      {}
+    )
     setstate((v: any) => ({ ...v }))
+    window.localStorage.setItem('selected', JSON.stringify(schedules))
+    dispatch(saveSchedule(schedules))
   }
 
   //  ----------------------------RENDER PAGE --------------------------------------------------------
 
-  console.log('findStep :>> ', findStep)
   return (
     <section className={styles.thoigian}>
       <div className={styles.input}>
@@ -192,7 +193,7 @@ export const ThoiGian = (props: Props) => {
                   activeDay
                 )}
                 key={i}
-                onClick={() => chonNgay(ngayTrong(i + 1))}
+                onClick={() => onselectTime(ngayTrong(i + 1), 'chonNgay')}
               >
                 <span>{i + 1}</span>
               </div>
@@ -224,7 +225,10 @@ export const ThoiGian = (props: Props) => {
                       ? styles.activeGio
                       : ''
                   return (
-                    <li key={e.timeId} onClick={() => chonGio(e)}>
+                    <li
+                      key={e.timeId}
+                      onClick={() => onselectTime(e, 'chonGio')}
+                    >
                       <button className={cx(styles.btnTime, activeGio)}>
                         {`${e.startTime} - ${e.endTime}  (${e.maxSlot}) `}
                       </button>

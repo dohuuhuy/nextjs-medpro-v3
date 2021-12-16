@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import { uniqueId } from 'lodash'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 type Props = {
@@ -31,8 +30,8 @@ const Container = ({
   const Tag = `${tag}` as keyof JSX.IntrinsicElements
   return (
     <Tag
-      key={uniqueId()}
-      id={id}
+      key={classStyles}
+      id={id || classStyles}
       style={style}
       className={cx(styles.container, classStyles, {
         [styles.container_fluid]: fluid,

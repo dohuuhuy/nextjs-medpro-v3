@@ -12,7 +12,8 @@ export const urlJson = {
   urlContent: `${api}5faf3ddf0d50e90896f8`,
   urlBanners: `${api}f437f4eb6cceccf1c59a`,
   urlListPartners: `${api}e4a272b45693136cded7`,
-  urlSEOPage: `${api}245979853aae833092e1`
+  urlSEOPage: `${api}245979853aae833092e1`,
+  urldeployHospital: `${api}f0fab4421642544f37bd`
 }
 
 export const urlApi = {

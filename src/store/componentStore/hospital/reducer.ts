@@ -9,7 +9,7 @@ const init: HospitalState = {
   partnerId: '',
   listHospital: [],
   bookingTree: [],
-  bookingCur: [],
+  bookingCurrent: [],
   listFeatureByApp: [],
   listFeatureByPartner: [],
   information: {},
@@ -47,7 +47,7 @@ export default function hospital(
     case HosptailTypes.BookingTree.CurrentBooking_Success:
       return {
         ...state,
-        steps: action.bookingCur
+        bookingCurrent: action.bookingCur
       }
 
     case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:
