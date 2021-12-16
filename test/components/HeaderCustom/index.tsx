@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 import Container from './../Container'
 import { Infomation } from './common/infomation'
 import styles from './styles.module.less'
-import { CgUserlane } from 'react-icons/cg'
+import { BiSmile } from 'react-icons/bi'
 import { ListNoti } from './common/listNoti'
 
 export default function HeaderCustom({
@@ -108,10 +108,10 @@ export default function HeaderCustom({
               {author.token && (
                 <li>
                   <Dropdown
-                    overlay={<Infomation handleLogOut={handleLogOut} />}
+                    overlay={<Infomation handleLogOut={handleLogOut} data={author?.fullName} />}
                   >
                     <button className={cx(styles.btn, styles.btnLogin)}>
-                      <CgUserlane />
+                      <BiSmile size={20} />
                       <span>{author?.fullName}</span>
                     </button>
                   </Dropdown>

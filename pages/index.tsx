@@ -1,5 +1,6 @@
 import { BannerHome } from '@componentsTest/BannerHome'
 import { NewsEventCustom } from '@componentsTest/News&Events'
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
 import { AppState } from '@store/interface'
 import HomeLayout from '@templates/Home'
 import { banner } from '@utils/func'
@@ -23,6 +24,7 @@ const HomePage = ({ data }: any) => {
       {data?.newsAndEvent && (
         <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />
       )}
+      <DeloyHospitalCustom />
     </>
   )
 }
