@@ -1,7 +1,7 @@
 import { getbookingCur, saveSchedule } from '@actionStore'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
-import { Col, Collapse, Row, Space } from 'antd'
+import { Col, Collapse, Row } from 'antd'
 import cx from 'classnames'
 import moment from 'moment'
 import 'moment/locale/vi'
@@ -70,7 +70,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
-            <Space direction='vertical' className={styles.listTree}>
+            <div className={styles.listTree}>
               <Collapse
                 expandIconPosition='right'
                 bordered={false}
@@ -141,7 +141,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                   )
                 })}
               </Collapse>
-            </Space>
+            </div>
           </Col>
           <Col {...colRight} className={styles.colRight}>
             <CardFee />

@@ -1,9 +1,9 @@
 // import Container from '@componentsTest/Container'
-import { Icon } from './../../../Icon'
+import { Icon } from '../../../Icon'
 import React from 'react'
 import styles from './styles.module.less'
 import { uniqueId } from 'lodash'
-import { dataPartner } from '@componentsTest/PaymentMethods/utils/data'
+import { dataPartner } from '@componentsTest/PaymentMethods/common/utils/data'
 
 export const PartnerPayment = () => {
   return (
