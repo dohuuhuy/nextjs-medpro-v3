@@ -12,6 +12,8 @@ import { Stepper } from './common/stepper'
 import { colLeft, colRight, handlerStep } from './common/utils'
 import styles from './less/styles.module.less'
 
+const Panel = Collapse.Panel
+
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const dispatch = useDispatch()
 
@@ -20,10 +22,30 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     schedules: {}
   })
 
+  const handleGetDataLocal = () => {
+    const data = window.localStorage.getItem('selected')
+
+    if (data) {
+      const selecteds = JSON.parse(data || '')
+      dispatch(saveSchedule(selecteds))
+
+      const stepper = state.stepper.map((v: any) => {
+        return {
+          ...v,
+          selected: selecteds[v.key].selected,
+          data: selecteds[v.key].data,
+          open: Object.keys(selecteds[v.key]).length ? false : true
+        }
+      })
+
+      setstate({ stepper: stepper, schedules: selecteds })
+    } else {
+      setstate({ stepper: handlerStep({ bookingTree }) })
+    }
+  }
+
   useEffect(() => {
     const { type, TYPE_RELOAD } = (performance as any).navigation
-
-    const data = window.localStorage.getItem('selected')
 
     if (window.performance) {
       console.info('window.performance works fine on this browser')
@@ -31,47 +53,16 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     }
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')
-      if (data) {
-        const selecteds = JSON.parse(data || '')
-        dispatch(saveSchedule(selecteds))
-
-        const stepper = state.stepper.map((v: any) => {
-          return {
-            ...v,
-            selected: selecteds[v.key].selected,
-            data: selecteds[v.key].data,
-            open: Object.keys(selecteds[v.key]).length ? false : true
-          }
-        })
-
-        setstate({ stepper: stepper, schedules: selecteds })
-      } else {
-        setstate({ stepper: handlerStep({ bookingTree }) })
-      }
+      handleGetDataLocal()
     } else {
       console.info('This page is not reloaded')
-      if (data) {
-        const selecteds = JSON.parse(data || '')
-
-        const stepper = state.stepper.map((v: any) => {
-          return {
-            ...v,
-            selected: selecteds[v.key].selected,
-            data: selecteds[v.key].data,
-            open: Object.keys(selecteds[v.key]).length ? false : true
-          }
-        })
-
-        setstate({ stepper: stepper, schedules: selecteds })
-      } else {
-        setstate({ stepper: handlerStep({ bookingTree }) })
-      }
+      handleGetDataLocal()
     }
   }, [bookingTree])
 
   if (!bookingTree) return null
 
-  console.log('state :>> ', state.stepper)
+  // console.log('state :>> ', state.stepper)
 
   return (
     <section>
@@ -80,81 +71,76 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
             <Space direction='vertical' className={styles.listTree}>
-              {state?.stepper?.map((v, i) => {
-                const icon = v?.icon({
-                  item: v.selected,
-                  props: {
+              <Collapse
+                expandIconPosition='right'
+                bordered={false}
+                accordion
+                destroyInactivePanel
+                defaultActiveKey={0}
+              >
+                {state?.stepper?.map((v, index) => {
+                  const icon = v?.icon({
+                    item: v.selected,
+                    props: {
+                      keys: v.key,
+                      state
+                    }
+                  })
+
+                  const name = () => {
+                    if (v.key === 'time') {
+                      if (Object.keys(v.selected).length > 1) {
+                        const ngay = moment(v.selected?.chonNgay?.date)
+                          .locale('vi')
+                          .format('dddd, DD MMMM YYYY')
+                        const { startTime, endTime }: any = v.selected.chonGio
+                        return `${ngay}, từ ${startTime} đến ${endTime} `
+                      }
+                    } else {
+                      if (v?.selected?.name) {
+                        return v?.selected?.name
+                      }
+                    }
+                    return 'Chọn ' + v?.title.toLowerCase()
+                  }
+
+                  const content = v?.content({
                     keys: v.key,
-                    state
-                  }
-                })
+                    state,
+                    data: v.data,
+                    setstate,
+                    getbookingCur: getbookingCur,
+                    dispatch
+                  })
 
-                const name = () => {
-                  if (v.key === 'time') {
-                    if (Object.keys(v.selected).length > 1) {
-                      const ngay = moment(v.selected?.chonNgay?.date)
-                        .locale('vi')
-                        .format('dddd, DD MMMM YYYY')
-                      const { startTime, endTime }: any = v.selected.chonGio
-                      return `${ngay}, từ ${startTime} đến ${endTime} `
-                    }
-                  } else {
-                    if (v?.selected?.name) {
-                      return v?.selected?.name
-                    }
-                  }
-                  return 'Chọn ' + v?.title.toLowerCase()
-                }
-
-                const content = v?.content({
-                  keys: v.key,
-                  state,
-                  data: v.data,
-                  setstate,
-                  getbookingCur: getbookingCur,
-                  dispatch
-                })
-
-                return (
-                  v?.sort >= 0 && (
-                    <Collapse
-                      key={i}
-                      className={styles.card}
-                      expandIconPosition='right'
-                      bordered={false}
-                      accordion
-                      destroyInactivePanel
-                      defaultActiveKey={0}
-                    >
-                      <Collapse.Panel
-                        // collapsible={v.open ? 'disabled' : 'header'}
-                        key={i}
-                        style={{ width: '100%' }}
-                        className={cx(styles.content)}
-                        header={
-                          <div className={styles.header}>
-                            <h3>{v.title}</h3>
-                            <div className={cx(styles.input)}>
-                              {icon}
-                              <span
-                                className={
-                                  Object.keys(v.selected).length
-                                    ? styles.active
-                                    : ''
-                                }
-                              >
-                                {name()}
-                              </span>
-                            </div>
+                  return (
+                    <Panel
+                      // disabled={v.open}
+                      header={
+                        <div className={styles.header}>
+                          <h3>{v.title}</h3>
+                          <div className={cx(styles.input)}>
+                            {icon}
+                            <span
+                              className={
+                                Object.keys(v.selected).length
+                                  ? styles.active
+                                  : ''
+                              }
+                            >
+                              {name()}
+                            </span>
                           </div>
-                        }
-                      >
-                        {content}
-                      </Collapse.Panel>
-                    </Collapse>
+                        </div>
+                      }
+                      key={index}
+                      className={styles.card}
+                    >
+                      {content}
+                    </Panel>
                   )
-                )
-              })}
+                })}
+              </Collapse>
             </Space>
           </Col>
           <Col {...colRight} className={styles.colRight}>

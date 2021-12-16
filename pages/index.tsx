@@ -27,7 +27,6 @@ const HomePage = ({ data }: any) => {
       {data?.newsAndEvent && (
         <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />
       )}
-      <DeloyHospitalCustom />
     </>
   )
 }

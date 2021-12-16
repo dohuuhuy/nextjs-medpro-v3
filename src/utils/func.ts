@@ -1,15 +1,19 @@
 import { currentEnv } from '@src/config/envs'
 import { urlApi } from './contants'
 
-export const HandleModile = (text: string) => {
+export const HandleModile = (text = '') => {
+  if (!text) {
+    return ''
+  }
+
   const str1 = text.slice(0, 4)
   const str2 = text.slice(4, 7)
   const str3 = text.slice(7, 10)
-  return str1.concat(" " + str2 + " " + str3)
+  return str1.concat(' ' + str2 + ' ' + str3)
 }
 
 export const changeSex = (sex: number) => {
-  return sex ? "Nam" : "Nữ"
+  return sex ? 'Nam' : 'Nữ'
 }
 export const fetcherGuide = (url: string) =>
   fetch(url, {
