@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 import Container from './../Container'
 import { Infomation } from './common/infomation'
 import styles from './styles.module.less'
-import { BiSmile } from 'react-icons/bi'
+import { BiSmile, BiUserCircle } from 'react-icons/bi'
 import { ListNoti } from './common/listNoti'
 
 export default function HeaderCustom({
@@ -116,7 +116,7 @@ export default function HeaderCustom({
                     }
                   >
                     <button className={cx(styles.btn, styles.btnLogin)}>
-                      <BiSmile size={20} />
+                      <BiUserCircle size={20} />
                       <p>{author?.fullName}</p>
                     </button>
                   </Dropdown>
