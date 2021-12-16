@@ -15,7 +15,7 @@ interface user {
 }
 
 export const ConfirmInfo = ( user: any ) => {
-
+  console.log('user2 :>> ', user);
   const [listPatient, setListPatient] = useState(Object.values(user))
   const [ patient, setPatient ] = useState(listPatient[0])
   const [indexSelect, setIndexSelect] = useState(0)

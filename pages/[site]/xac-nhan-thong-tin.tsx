@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as ac from '@actionStore'
+
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ConfirmInfoPage = () => {
@@ -15,7 +16,7 @@ const ConfirmInfoPage = () => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
     dispatch(ac.listPatientRequest())
   }, [])
-
+  console.log('user :>> ', user.listPatient);
   return (
     <>
       <ConfirmInfo {...user.listPatient} />
