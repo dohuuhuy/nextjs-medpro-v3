@@ -17,7 +17,7 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const HinhThucDatKham = ({ data }: any) => {
   const dispatch = useDispatch()
-  const hos = useSelector((state: AppState) => state.hospital)
+  const hospital = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
 
   const router = useRouter()
@@ -26,22 +26,17 @@ const HinhThucDatKham = ({ data }: any) => {
   useEffect(() => {
     dispatch(ac.setLoading())
     dispatch(ac.setParnerIdHospital(site))
+    check(hospital.listHospital) && dispatch(ac.getListHospital())
+    window.localStorage.removeItem('selected')
 
     setTimeout(() => {
       dispatch(ac.setLoading(false))
     }, 1000)
   }, [router])
 
-  if (!hos) return null
-
-  let listMenu = []
-  if (hos.information?.header) {
-    const { menu, insideLink } = hos.information?.header
-    listMenu = menu ? menu.concat(insideLink) : []
-  }
+  if (!hospital) return null
 
   if (total.loading) return <Loading component />
-  // if (!data.listHospsital) return
 
   const listHospital = data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
@@ -53,7 +48,7 @@ const HinhThucDatKham = ({ data }: any) => {
       <BreadcumbCustom
         type='booking'
         listHos={listHospital}
-        listMenu={listMenu}
+        header={hospital.information?.header}
       />
 
       {check(data.listHospital) ? (

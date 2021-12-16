@@ -19,23 +19,17 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   const router = useRouter()
   const partnerId = router.query?.site
 
-  const hos = useSelector((state: AppState) => state.hospital)
+  const hospital = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
+    check(hospital.listHospital) && dispatch(ac.getListHospital())
   }, [router.query?.site])
 
   if (!data) return null
   const listHospital = data.listHospital
-  if (!hos || !data.listHospital) return null
-
-  let listMenu = []
-  if (hos.information?.header) {
-    const { menu, insideLink } = hos.information?.header
-    listMenu = menu ? menu.concat(insideLink) : []
-  }
 
   if (total.loading) return <Loading component />
 
@@ -45,15 +39,15 @@ const ThongTinDatKhamPage = ({ data }: any) => {
       <BreadcumbCustom
         type='booking'
         listHos={listHospital}
-        listMenu={listMenu}
+        header={hospital.information.header}
       />
-      {check(hos?.bookingTree) ? (
+      {check(hospital?.bookingTree) ? (
         <Loading
           component
           text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
         />
       ) : (
-        <BookingTree bookingTree={hos?.bookingTree} />
+        <BookingTree bookingTree={hospital?.bookingTree} />
       )}
     </>
   )

@@ -11,7 +11,7 @@ export interface Breadcumb {
   window?: any
   appId?: string
   partner?: any
-  listMenu?: any[]
+  header?: any
   listHos?: any[]
   post?: any
   type: 'news' | 'booking' | 'normal' | 'bills' | 'user'
@@ -21,7 +21,7 @@ export const BreadcumbCustom = ({
   post,
   listHos = [],
   type,
-  listMenu = [],
+  header,
   partner,
   appId
 }: Breadcumb) => {
@@ -50,8 +50,12 @@ export const BreadcumbCustom = ({
 
     case 'booking':
       const { site } = router.query
+
       const findHospital = find(listHos, { partnerId: site })
+
       const path = router.pathname.replace('/[site]', '')
+
+      const listMenu = header?.menu.concat(header?.insideLink) || []
 
       const item = find(listMenu, { link: path })
       listBreadcumb.push(home)
@@ -61,7 +65,7 @@ export const BreadcumbCustom = ({
         label: 'Chọn bệnh viện'
       })
 
-      findHospital > 0 &&
+      findHospital &&
         listBreadcumb.push({
           link: `/${site}/hinh-thuc-dat-kham`,
           label: findHospital?.name
@@ -94,11 +98,11 @@ export const BreadcumbCustom = ({
 
       break
 
-    case 'user' :
+    case 'user':
       listBreadcumb.push(home)
 
       listBreadcumb.push({
-        link: "/thong-tin-ho-so",
+        link: '/thong-tin-ho-so',
         label: 'thông tin tài khoản'
       })
       break

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import { CloseCircleOutlined } from '@ant-design/icons'
 import Loading from '@componentsTest/Loading'
 import { Button, Col, message, Popconfirm, Row } from 'antd'
@@ -11,8 +12,16 @@ import { Icon } from '../Icon'
 import { ConfirmInfoIF, StateConfirm } from './common/interface'
 import styles from './styles.module.less'
 import { getSetting, Info, Profile, TITLE, VALUE } from './utils/func'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
+  const router = useRouter()
+
+  const {
+    query: { site }
+  } = router
+
   const [state, setstate] = useState<StateConfirm>({
     listPatient: props.listPatient,
     patient: [],
@@ -49,12 +58,19 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   return (
     <Container className={styles.container}>
       <Row className={styles.rowInfo}>
-        <h3>XÁC NHẬN THÔNG TIN</h3>
+        <Col xl={24} className={styles.colTitleInfo}>
+          <h3 className={styles.titleConfirm}>XÁC NHẬN THÔNG TIN</h3>
+        </Col>
         <Col xl={16} className={styles.colInfo}>
           <div className={styles.ProfileBooking}>
             <h4 className={styles.titlePatient}>Hồ sơ đặt khám</h4>
             {props.loading ? (
-              <Loading component minHeight='15' size={25} text='Đang tải ...' />
+              <Loading
+                component
+                minHeight='400px'
+                size={40}
+                text='Đang tải ...'
+              />
             ) : (
               <div>
                 <Slider {...settings} className={styles.sliderPatient}>
@@ -119,12 +135,30 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
             <h4 className={styles.titleInfoBooking}>Thông tin đặt khám</h4>
             <div className={styles.cardInfo}>
               <ul className={styles.listItem}>
-                {props.schedule.length < 1 ? (
+                {Object.keys(props.schedule).length < 1 ? (
                   <Loading
                     component
-                    minHeight='15'
-                    size={25}
-                    text='Đang tải ...'
+                    minHeight='200px'
+                    size={40}
+                    text={false}
+                    children={
+                      <div className={styles.actionLoading}>
+                        <p className={styles.txtLoading}>
+                          Vui chọn lòng hoàn thành{' '}
+                          <b>chọn thông tin đặt khám</b> để tiếp tục chức năng
+                          này !
+                        </p>
+                        <Button
+                          shape='round'
+                          type='primary'
+                          className={styles.btnRedirect}
+                        >
+                          <Link href={`/${site}/hinh-thuc-dat-kham`}>
+                            <a>Hình thức đặt khám</a>
+                          </Link>
+                        </Button>
+                      </div>
+                    }
                   />
                 ) : (
                   Info(props.schedule)?.map((el, i) => {

@@ -3,6 +3,7 @@ import styles from './styles.module.less'
 import React from 'react'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
+import { urlGo } from './common/utils/contants'
 
 export const CardFee = () => {
   const router = useRouter()
@@ -23,9 +24,29 @@ export const CardFee = () => {
 
   const routePush = () => {
     const {
-      query: { site }
+      query: { site },
+      pathname
     } = router
-    router.push(`/${site}/xac-nhan-thong-tin`)
+
+    if (site) {
+      const name = pathname.replace('/[site]/', '')
+
+      let willGo = ''
+      switch (name) {
+        case urlGo.DAT_LICH_KHAM:
+          willGo = urlGo.XAC_NHAN_THONG_TIN
+          break
+
+        case urlGo.XAC_NHAN_THONG_TIN:
+          willGo = urlGo.PHUONG_THUC_THANH_TOAN
+          break
+
+        default:
+          break
+      }
+
+      router.push(`/${site}/${willGo}`)
+    }
   }
   const routerBack = () => {
     router.back()

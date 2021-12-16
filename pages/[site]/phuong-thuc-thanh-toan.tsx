@@ -1,25 +1,23 @@
-import * as ac from '@actionStore'
-import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import { ConfirmInfo } from '@componentsTest/ConfirmInfo'
+import { PaymentMethods } from '@componentsTest/PaymentMethods'
 import { AppState } from '@src/store/interface'
-import { check } from '@src/utils/checkValue'
 import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import * as ac from '@actionStore'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { check } from '@src/utils/checkValue'
+import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const ConfirmInfoPage = () => {
+const PaymentMethodsPage = () => {
   const dispatch = useDispatch()
   const user = useSelector((state: AppState) => state.user)
   const hospital = useSelector((state: AppState) => state.hospital)
-  const total = useSelector((state: AppState) => state.total)
   useEffect(() => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
     dispatch(ac.listPatientRequest())
     check(hospital.listHospital) && dispatch(ac.getListHospital())
   }, [])
-
   return (
     <>
       <BreadcumbCustom
@@ -28,13 +26,11 @@ const ConfirmInfoPage = () => {
         header={hospital.information.header}
       />
 
-      <ConfirmInfo
-        listPatient={user.listPatient}
-        schedule={hospital.schedule}
-        loading={total.loading}
-      />
+      <PaymentMethods />
     </>
   )
 }
-ConfirmInfoPage.layout = DefaultLayout
-export default ConfirmInfoPage
+
+PaymentMethodsPage.layout = DefaultLayout
+
+export default PaymentMethodsPage

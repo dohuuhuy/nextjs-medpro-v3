@@ -5,36 +5,41 @@ import React from 'react'
 import styles from './styles.module.less'
 
 export interface Loading {
-  text?: string
+  text?: string | boolean
   component?: boolean
   top?: boolean
   size?: 14 | 25 | 40 | 60 | undefined
   minHeight?: string
+  children?: ChildNode | JSX.Element | undefined | null
 }
 
-const Loading = ({
-  text = 'Vui lòng chờ trong giây lát ...',
-  component = false,
-  top,
-  size = 60,
-  minHeight = '100'
-}: Loading) => {
+const Loading = (props: Loading) => {
+  const {
+    text = 'Vui lòng chờ trong giây lát ...',
+    component = false,
+    top,
+    size = 60,
+    minHeight = '100vh',
+    children
+  } = props
+
   const antIcon = <LoadingOutlined style={{ fontSize: size }} spin={true} />
 
   return (
     <div
-      style={{ minHeight: minHeight + 'vh' }}
+      style={{ minHeight: minHeight }}
       className={cx(
         component ? styles.componentLoading : styles.pageLoading,
         top && styles.top
       )}
     >
       <Spin indicator={antIcon} />
-      {text !== '' && (
+      {text && (
         <div className={styles.content}>
           <p className={styles.typing}>{text}</p>
         </div>
       )}
+      {children}
     </div>
   )
 }
