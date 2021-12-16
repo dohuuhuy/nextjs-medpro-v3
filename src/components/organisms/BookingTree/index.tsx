@@ -23,13 +23,14 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   useEffect(() => {
     const { type, TYPE_RELOAD } = (performance as any).navigation
 
+    const data = window.localStorage.getItem('selected')
+
     if (window.performance) {
       console.info('window.performance works fine on this browser')
       setstate({ stepper: handlerStep({ bookingTree }) })
     }
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')
-      const data = window.localStorage.getItem('selected')
       if (data) {
         const selecteds = JSON.parse(data || '')
         dispatch(saveSchedule(selecteds))
@@ -49,14 +50,22 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       }
     } else {
       console.info('This page is not reloaded')
-    }
+      if (data) {
+        const selecteds = JSON.parse(data || '')
 
-    return () => {
-      // window.localStorage.removeItem('selected')
-      setstate({
-        stepper: [],
-        schedules: {}
-      })
+        const stepper = state.stepper.map((v: any) => {
+          return {
+            ...v,
+            selected: selecteds[v.key].selected,
+            data: selecteds[v.key].data,
+            open: Object.keys(selecteds[v.key]).length ? false : true
+          }
+        })
+
+        setstate({ stepper: stepper, schedules: selecteds })
+      } else {
+        setstate({ stepper: handlerStep({ bookingTree }) })
+      }
     }
   }, [bookingTree])
 
@@ -72,7 +81,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
           <Col {...colLeft} className={styles.colLeft}>
             <Space direction='vertical' className={styles.listTree}>
               {state?.stepper?.map((v, i) => {
-                // return null
                 const icon = v?.icon({
                   item: v.selected,
                   props: {
@@ -110,13 +118,16 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 return (
                   v?.sort >= 0 && (
                     <Collapse
-                      key={v.key}
+                      key={i}
                       className={styles.card}
                       expandIconPosition='right'
                       bordered={false}
-                      accordion={v.open}
+                      accordion
+                      destroyInactivePanel
+                      defaultActiveKey={0}
                     >
                       <Collapse.Panel
+                        // collapsible={v.open ? 'disabled' : 'header'}
                         key={i}
                         style={{ width: '100%' }}
                         className={cx(styles.content)}
