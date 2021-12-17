@@ -1,9 +1,9 @@
 import { CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
+import Container from '@componentsTest/Container'
+import { check } from '@src/utils/checkValue'
 import { Col, Collapse, Row, Space } from 'antd'
 import { find, isArray } from 'lodash'
 import React, { useEffect, useMemo, useState } from 'react'
-import Container from '../../../Container'
-import { checkData, DataFailure } from '../../../DataFailure'
 import styles from './styles.module.less'
 const { Panel } = Collapse
 
@@ -30,8 +30,8 @@ export const ThacMacContent = ({ content }: any) => {
 
   const ContentFaq = useMemo(() => funcFaq(Faq?.faq), [Faq?.faq])
 
-  if (checkData(content)) {
-    return <DataFailure desc={'Lỗi không có data thắc mắc'} />
+  if (check(content)) {
+    return null
   }
 
   return (

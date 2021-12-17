@@ -1,15 +1,23 @@
+import { check } from '@src/utils/checkValue'
+import { find } from 'lodash'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { checkData } from '../DataFailure'
 import { LienHeContent } from './organisms/LienHe'
 import { DefaultContent } from './organisms/MacDinh'
 import { QuyTrinhContent } from './organisms/QuyTrinh'
 import { ThacMacContent } from './organisms/ThacMac'
 interface Props {
-  getContent: any
+  listContent: any
 }
 
-export const ContentPageCustom = ({ getContent }: Props) => {
-  if (checkData(getContent)) {
+export const ContentPageCustom = ({ listContent }: Props) => {
+  const router = useRouter()
+
+  if (!listContent) return null
+  const { site } = router.query
+  const getContent = find(listContent, { key: site })
+
+  if (check(getContent)) {
     return null
   }
 

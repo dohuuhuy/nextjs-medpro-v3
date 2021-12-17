@@ -1,11 +1,11 @@
-import { checkData } from '../../../DataFailure'
+import Container from '@componentsTest/Container'
+import { check } from '@src/utils/checkValue'
 import { Row } from 'antd'
 import React from 'react'
-import Container from '../../../Container'
 import styles from './styles.module.less'
 
 export const QuyTrinhContent = ({ content }: PropsProduce) => {
-  if (checkData(content)) {
+  if (check(content)) {
     return <em>Lỗi không có content ...</em>
   }
 

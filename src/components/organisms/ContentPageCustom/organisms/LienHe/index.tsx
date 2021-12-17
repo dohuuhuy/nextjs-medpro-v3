@@ -1,7 +1,6 @@
+import Container from '@componentsTest/Container'
 import { Col, Row, Space } from 'antd'
 import React from 'react'
-import Container from '../../../Container'
-import { ContactDetail } from './ContactDetail'
 import styles from './styles.module.less'
 // import Image from 'next/image'
 
@@ -15,7 +14,7 @@ export const LienHeContent = ({ content }: PropsProduce) => {
   return (
     <Container className={styles.containerContact}>
       <Row className={styles.rowDetails}>
-        <Col xl={8} lg={8} md={24} sm={24} className={styles.colDetails}>
+        <Col xl={8} lg={8} md={24} className={styles.colDetails}>
           <h2 className={styles.title}>Thông tin chi tiết</h2>
           <ul className={styles.listInfo}>
             {detailsContact?.map(
@@ -34,8 +33,8 @@ export const LienHeContent = ({ content }: PropsProduce) => {
           </ul>
         </Col>
 
-        <Col xl={16} lg={16} md={24} sm={24} className={styles.colFormContact}>
-          <ContactDetail />
+        <Col xl={16} lg={16} md={24} className={styles.colFormContact}>
+          {/* <ContactDetail /> */}
         </Col>
       </Row>
 

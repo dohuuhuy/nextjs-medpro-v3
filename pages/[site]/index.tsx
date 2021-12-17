@@ -1,7 +1,7 @@
-import HandlerGetContentPage from '@components/molecules/HandlerGetContentPage'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import Loading from '@componentsTest/Loading'
 import BannersPublic from '@src/components/organisms/BannersPublic'
+import { ContentPageCustom } from '@src/components/organisms/ContentPageCustom'
 import { check } from '@src/utils/checkValue'
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
@@ -28,7 +28,7 @@ const Site = ({ data, meta }: any) => {
       {check(data) ? (
         <Loading component text='Đang cập nhật dữ liệu ........' />
       ) : (
-        <HandlerGetContentPage dataContent={data} />
+        <ContentPageCustom listContent={data} />
       )}
     </>
   )
