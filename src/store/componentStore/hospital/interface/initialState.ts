@@ -15,6 +15,7 @@ export interface HospitalState {
     subTotal: 0
     grandTotal: 0
   }
+  passSchedules: boolean
 }
 
 export interface Information {

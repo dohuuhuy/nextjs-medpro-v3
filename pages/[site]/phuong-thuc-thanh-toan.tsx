@@ -7,11 +7,13 @@ import * as ac from '@actionStore'
 import { useDispatch, useSelector } from 'react-redux'
 import { check } from '@src/utils/checkValue'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
+import Loading from '@componentsTest/Loading'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const PaymentMethodsPage = () => {
   const dispatch = useDispatch()
   const user = useSelector((state: AppState) => state.user)
+  const total = useSelector((state: AppState) => state.total)
   const hospital = useSelector((state: AppState) => state.hospital)
   useEffect(() => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
@@ -25,14 +27,15 @@ const PaymentMethodsPage = () => {
         listHos={hospital.listHospital}
         header={hospital.information.header}
       />
-
-      <PaymentMethods
-        selectedPaymentFee={hospital.selectedPaymentFee}
-        paymentFee={hospital.paymentFee}
-        listPayment={hospital.listPayment}
-        dispatch={dispatch}
-        onSelectedPaymentFee={ac.selectedPaymentFee}
-      />
+      {total.loading ? (
+        <Loading component />
+      ) : (
+        <PaymentMethods
+          hospital={hospital}
+          dispatch={dispatch}
+          onSelectedPaymentFee={ac.selectedPaymentFee}
+        />
+      )}
     </>
   )
 }

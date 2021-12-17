@@ -46,7 +46,10 @@ export const BacSi = (props: Props) => {
             <li key={v.id} className={active}>
               <div className={styles.card}>
                 <figure>{img}</figure>
-                <div className={styles.bodyCard}>
+                <div
+                  className={styles.bodyCard}
+                  onClick={() => clickItem({ item: v, props })}
+                >
                   <p>{v.hocvi}</p>
                   <p className='bold'>{v.detail.name}</p>
                   <p className={styles.txtCK}>{v.detail.subject}</p>

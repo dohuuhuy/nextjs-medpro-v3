@@ -197,7 +197,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
           </div>
         </Col>
         <Col xl={8}>
-          <CardFee />
+          <CardFee hospital={props.hospital} />
         </Col>
       </Row>
     </Container>

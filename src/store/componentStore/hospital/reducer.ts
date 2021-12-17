@@ -21,7 +21,8 @@ const init: HospitalState = {
     totalFee: 0,
     subTotal: 0,
     grandTotal: 0
-  }
+  },
+  passSchedules: false
 }
 
 export default function hospital(
@@ -35,8 +36,19 @@ export default function hospital(
         partnerId: action.partnerId
       }
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
+      const lastTime: any = action.schedule?.time
+      console.log('lastItem :>> ', lastTime)
+      if (lastTime) {
+        if (Object.keys(lastTime?.selected).length > 1)
+          return {
+            ...state,
+            schedule: { ...action.schedule },
+            passSchedules: true
+          }
+      }
       return {
         ...state,
+        passSchedules: false,
         schedule: { ...action.schedule }
       }
     case HosptailTypes.Stepper.RESET_SCHEDULE:

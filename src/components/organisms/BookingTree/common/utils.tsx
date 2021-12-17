@@ -1,5 +1,5 @@
 import { Icon } from '@componentsTest/Icon'
-import { find, findIndex, indexOf, last } from 'lodash'
+import { find, findIndex, indexOf } from 'lodash'
 import React from 'react'
 import { BacSi } from './bacsi'
 import { ChuyenKhoa } from './chuyenkhoa'
@@ -129,7 +129,7 @@ export const handlerStep = ({ bookingTree }: any) => {
     .filter((v) => v.sort >= 0) // sắp xếp dựa trên sort phía trên
 
   sortByStep[0].data = bookingTree.child // mặc định add dữ liệu đầu tiên vào step đầu tiên
-  sortByStep[0].open = false
+  // sortByStep[0].open = 0
 
   return sortByStep
 }
@@ -141,9 +141,9 @@ export const clickItem = ({ item, props }: ClickItem) => {
   const index = findIndex(state.stepper, { key: keys })
   const findStep: Steps | any = find(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item?.subType })
+  // const indexTime = findIndex(state.stepper, { key: 'time' })
 
   // 2. tại vị trí index gán seleted = detail của item đang chọn
-  state.stepper[index].open = true
   state.stepper[index].selected = item?.detail || []
 
   if (Object.keys(findStep?.selected).length) {
@@ -152,24 +152,16 @@ export const clickItem = ({ item, props }: ClickItem) => {
         if (state.stepper[i]) {
           state.stepper[i].data = []
           state.stepper[i].selected = {}
-          state.stepper[i].open = true
         }
       }
       state.stepper[indexSub].data = item?.child || []
-      state.stepper[indexSub].open = false
     }
   } else {
     // 3. tìm vị trí của step kế tiếp mảng
     // nếu có bước kế thì gán data và mở collasp cho bước kế đó
     if (indexSub > 0) {
       state.stepper[indexSub].data = item?.child || []
-      state.stepper[indexSub].open = false
     }
-  }
-
-  // // nếu bước kế = null thì mở collasp
-  if (item?.subType === null) {
-    ;(last(state.stepper) as any).open = false
   }
 
   // -----------------------cuối cùng là cập nhật lại state--------------------------------------
@@ -185,7 +177,8 @@ export const clickItem = ({ item, props }: ClickItem) => {
 
   setstate((v: StateBooking) => ({
     ...v,
-    schedules
+    schedules,
+    cKey: index + 1
   }))
 
   dispatch(saveSchedule())

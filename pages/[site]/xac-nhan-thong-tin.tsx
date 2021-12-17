@@ -43,6 +43,7 @@ const ConfirmInfoPage = () => {
           listPatient={user.listPatient}
           schedule={hospital.schedule}
           loading={total.loading}
+          hospital={hospital}
         />
       )}
     </>

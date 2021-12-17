@@ -147,6 +147,7 @@ function* watcher_getBanners() {
 
 function* getbookingCurNode({ schedules }: any) {
   try {
+    yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
       {
@@ -159,7 +160,9 @@ function* getbookingCurNode({ schedules }: any) {
     )
 
     yield put(ac.getbookingCurSuccess(response.data))
+    yield put(ac.setLoading(false))
   } catch (error) {
+    yield put(ac.setLoading(false))
     console.log('error getbookingCurNode :>> ', error)
   }
 }
@@ -171,8 +174,9 @@ function* watcher_getbookingCurNode() {
   )
 }
 
-function* getAllPayment({}: any) {
+function* getAllPayment() {
   try {
+    yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
     /*     const total: TotalDataState = yield select((state: AppState) => state.total)
@@ -199,13 +203,15 @@ function* getAllPayment({}: any) {
     )
 
     yield put(ac.getAllPaymentSuccess(response.data))
+    yield put(ac.setLoading(false))
   } catch (error) {
+    yield put(ac.setLoading(false))
     huyi({ name: 'getAllPayment', child: error, type: 'error' })
   }
 }
 
 function* watcher_getAllPayment() {
-  yield takeLatest(HosptailTypes.Header.Header_REQUEST, getAllPayment)
+  yield takeLatest(HosptailTypes.Payment.PAYMENT_REQUEST, getAllPayment)
 }
 
 const hospitalSagas = function* root() {

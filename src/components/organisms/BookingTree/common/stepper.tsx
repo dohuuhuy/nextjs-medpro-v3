@@ -4,7 +4,11 @@ import React from 'react'
 import styles from './../less/stepper.module.less'
 import { checkActive, steps } from './utils'
 
-export const Stepper = ({ data }: any) => {
+export const Stepper = ({ data, setstate }: any) => {
+  const onClickStep = (i: number) => () => {
+    setstate((v: any) => ({ ...v, cKey: i }))
+  }
+
   return (
     <Container fluid={true} className={styles.wrapper}>
       <Container className={styles.steps}>
@@ -22,7 +26,12 @@ export const Stepper = ({ data }: any) => {
                   ? styles.active
                   : ''
                 return (
-                  <li key={i} style={{ width: w + '%' }} className={active}>
+                  <li
+                    key={i}
+                    style={{ width: w + '%' }}
+                    className={active}
+                    onClick={onClickStep(i)}
+                  >
                     <Tooltip title={v.title} color={'#2db7f5'}>
                       <button className={styles.btnIcon}>{v.icon()}</button>
                     </Tooltip>

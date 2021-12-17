@@ -5,9 +5,11 @@ export interface Data {
 }
 
 export interface PaymentMedthodIF {
-  listPayment: any[]
   dispatch: any
   onSelectedPaymentFee?: any
-  paymentFee: any
-  selectedPaymentFee: any
+  hospital: {
+    paymentFee: any
+    selectedPaymentFee: any
+    listPayment: any[]
+  }
 }

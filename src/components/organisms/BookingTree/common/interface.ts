@@ -12,7 +12,7 @@ export interface Steps {
     input?: boolean
   }
   selected: any
-  open: boolean
+  open: any
   sort: number
   data: any
 }
@@ -20,6 +20,7 @@ export interface Steps {
 export interface StateBooking {
   stepper: Array<Steps>
   schedules?: any
+  cKey?: number
 }
 
 export interface StateDichVu {

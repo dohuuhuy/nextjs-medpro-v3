@@ -4,6 +4,7 @@ export interface ConfirmInfoIF {
   loading?: boolean
   dispatch: any
   selectedPatient?: any
+  hospital: any
 }
 
 export interface StateConfirm {

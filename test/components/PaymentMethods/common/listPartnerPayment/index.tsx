@@ -8,7 +8,7 @@ import cx from 'classnames'
 
 export const PartnerPayment = ({
   list,
-  selectedPaymentFee,
+  hospital,
   onSelectedPaymentFee,
   dispatch
 }: any) => {
@@ -27,7 +27,7 @@ export const PartnerPayment = ({
       <ul className={styles.listPartner}>
         {list.map((item: any) => {
           const active =
-            selectedPaymentFee.name === item.name ? styles.active : ''
+            hospital.selectedPaymentFee.name === item.name ? styles.active : ''
           return (
             <li key={uniqueId()}>
               <div className={styles.partner}>

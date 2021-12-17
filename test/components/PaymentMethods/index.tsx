@@ -33,6 +33,9 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
       </div>
     )
   }
+
+  const { listPayment } = props.hospital
+
   return (
     <Container tag={'section'} className={styles.PaymentMethods}>
       <Row className={styles.rowMethods}>
@@ -58,7 +61,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
             onChange={onChange}
             bordered={false}
           >
-            {props.listPayment.map((item, i) => {
+            {listPayment.map((item, i) => {
               return (
                 <Collapse.Panel
                   className={styles.panel}
@@ -73,10 +76,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
         </Col>
 
         <Col xl={8}>
-          <CardFee
-            paymentFee={props.paymentFee}
-            selectedPaymentFee={props.selectedPaymentFee}
-          />
+          <CardFee hospital={props.hospital} />
         </Col>
       </Row>
     </Container>

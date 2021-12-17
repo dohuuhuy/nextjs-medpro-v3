@@ -5,7 +5,17 @@ import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { urlGo } from './common/utils/contants'
 
-export const CardFee = ({ paymentFee, selectedPaymentFee }: any) => {
+export interface CardFeeIF {
+  hospital: {
+    paymentFee: any
+    selectedPaymentFee: any
+    passSchedules?: any
+  }
+}
+
+export const CardFee = (props: CardFeeIF) => {
+  const { paymentFee, selectedPaymentFee, passSchedules } = props.hospital
+
   const router = useRouter()
   const [isVisible, setIsVisible] = React.useState(false)
   React.useEffect(() => {
@@ -81,8 +91,16 @@ export const CardFee = ({ paymentFee, selectedPaymentFee }: any) => {
         <button className={cx(styles.btn, styles.again)} onClick={routerBack}>
           Trở về
         </button>
-        <button className={cx(styles.btn, styles.next)} onClick={routePush}>
-          Tiếp tục
+        <button
+          className={cx(
+            styles.btn,
+            styles.next,
+            passSchedules ? styles.active : ''
+          )}
+          onClick={routePush}
+          disabled={!passSchedules}
+        >
+          {passSchedules ? 'Tiếp tục' : 'Chưa thể tiếp tục'}
         </button>
       </div>
     </div>

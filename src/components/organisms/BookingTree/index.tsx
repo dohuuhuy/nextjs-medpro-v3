@@ -1,12 +1,13 @@
 import { getbookingCur, saveSchedule } from '@actionStore'
 import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
+import { AppState } from '@src/store/interface'
 import { Col, Collapse, Row } from 'antd'
 import cx from 'classnames'
 import moment from 'moment'
 import 'moment/locale/vi'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BookingTreeIF, StateBooking } from './common/interface'
 import { Stepper } from './common/stepper'
 import { colLeft, colRight, handlerStep } from './common/utils'
@@ -17,10 +18,15 @@ const Panel = Collapse.Panel
 export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const dispatch = useDispatch()
 
+  const hospital = useSelector((state: AppState) => state.hospital)
+
   const [state, setstate] = useState<StateBooking>({
     stepper: handlerStep({ bookingTree }),
-    schedules: {}
+    schedules: {},
+    cKey: 0
   })
+
+  console.log('state :>> ', state)
 
   const handleGetDataLocal = () => {
     const data = window.localStorage.getItem('selected')
@@ -33,14 +39,13 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         return {
           ...v,
           selected: selecteds[v.key].selected,
-          data: selecteds[v.key].data,
-          open: Object.keys(selecteds[v.key]).length ? false : true
+          data: selecteds[v.key].data
         }
       })
 
-      setstate({ stepper: stepper, schedules: selecteds })
+      setstate((v) => ({ ...v, stepper: stepper, schedules: selecteds }))
     } else {
-      setstate({ stepper: handlerStep({ bookingTree }) })
+      setstate((v) => ({ ...v, stepper: handlerStep({ bookingTree }) }))
     }
   }
 
@@ -49,7 +54,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
     if (window.performance) {
       console.info('window.performance works fine on this browser')
-      setstate({ stepper: handlerStep({ bookingTree }) })
+      setstate((v) => ({ ...v, stepper: handlerStep({ bookingTree }) }))
     }
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')
@@ -66,7 +71,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   return (
     <section>
-      <Stepper data={state} />
+      <Stepper data={state} setstate={setstate} />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
           <Col {...colLeft} className={styles.colLeft}>
@@ -75,8 +80,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 expandIconPosition='right'
                 bordered={false}
                 accordion
-                destroyInactivePanel
-                defaultActiveKey={0}
+                activeKey={state.cKey}
               >
                 {state?.stepper?.map((v, index) => {
                   const icon = v?.icon({
@@ -134,7 +138,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           </div>
                         </div>
                       }
-                      key={index}
+                      key={Number(index)}
                       className={styles.card}
                     >
                       {content}
@@ -145,7 +149,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
             </div>
           </Col>
           <Col {...colRight} className={styles.colRight}>
-            <CardFee />
+            <CardFee hospital={hospital} />
           </Col>
         </Row>
       </Container>
