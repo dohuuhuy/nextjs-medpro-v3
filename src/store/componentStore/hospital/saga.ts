@@ -147,7 +147,6 @@ function* watcher_getBanners() {
 
 function* getbookingCurNode({ schedules }: any) {
   try {
-    yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
       {
@@ -160,9 +159,7 @@ function* getbookingCurNode({ schedules }: any) {
     )
 
     yield put(ac.getbookingCurSuccess(response.data))
-    yield put(ac.setLoading(false))
   } catch (error) {
-    yield put(ac.setLoading(false))
     console.log('error getbookingCurNode :>> ', error)
   }
 }

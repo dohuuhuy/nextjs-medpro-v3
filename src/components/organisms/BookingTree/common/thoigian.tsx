@@ -1,6 +1,7 @@
 import { getbookingCur, saveSchedule } from '@actionStore'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Icon } from '@componentsTest/Icon'
+import Loading from '@componentsTest/Loading'
 import { AppState } from '@src/store/interface'
 import { Button, Space } from 'antd'
 import cx from 'classnames'
@@ -167,54 +168,63 @@ export const ThoiGian = (props: Props) => {
           ))}
         </div>
 
-        <div className={styles.dayContainer}>
-          {/* ngày của tháng củ  */}
-          {range(weekDayOf1).map((i: any) => (
-            <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
-              {/* lấy ngày tháng củ trừ đi số ngày củ của tháng ==> những ngày củ */}
-              {dayObjOf1.subtract(weekDayOf1 - i, 'day').date()}
-            </div>
-          ))}
-
-          {/* ngày trong tháng */}
-          {range(daysInMonth).map((i) => {
-            const trong = ngayTrong(i + 1) ? styles.trong : ''
-            const l = moment(
-              `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
-            ).format('DD-MM-YYYY')
-
-            const p = findStep.selected.chonNgay?.date
-              ? moment(findStep.selected.chonNgay?.date).format('DD-MM-YYYY')
-              : -1
-
-            const activeDay = l === p ? styles.activeDay : ''
-
-            return (
-              <div
-                className={cx(
-                  styles.dayCell,
-                  styles.dayCell_inMonth,
-                  trong,
-                  activeDay
-                )}
-                key={i}
-                onClick={() => onselectTime(ngayTrong(i + 1), 'chonNgay')}
-              >
-                <span>{i + 1}</span>
+        {Object.keys(hospital.bookingCurrent).length < 2 ? (
+          <Loading
+            component
+            text='Đang tải lịch tháng...'
+            size={40}
+            minHeight='400px'
+          />
+        ) : (
+          <div className={styles.dayContainer}>
+            {/* ngày của tháng củ  */}
+            {range(weekDayOf1).map((i: any) => (
+              <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
+                {/* lấy ngày tháng củ trừ đi số ngày củ của tháng ==> những ngày củ */}
+                {dayObjOf1.subtract(weekDayOf1 - i, 'day').date()}
               </div>
-            )
-          })}
+            ))}
 
-          {/* ngày của tháng mới */}
-          {range(6 - weekDayOfLast).map((i) => (
-            <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
-              <span>
-                {/* còn 6 là ... ? lấy ngày tháng mói trừ đi số ngày mới của tháng ==> những ngày mới */}
-                {dayObjOfLast.add(i + 1, 'day').date()}
-              </span>
-            </div>
-          ))}
-        </div>
+            {/* ngày trong tháng */}
+            {range(daysInMonth).map((i) => {
+              const trong = ngayTrong(i + 1) ? styles.trong : ''
+              const l = moment(
+                `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
+              ).format('DD-MM-YYYY')
+
+              const p = findStep.selected.chonNgay?.date
+                ? moment(findStep.selected.chonNgay?.date).format('DD-MM-YYYY')
+                : -1
+
+              const activeDay = l === p ? styles.activeDay : ''
+
+              return (
+                <div
+                  className={cx(
+                    styles.dayCell,
+                    styles.dayCell_inMonth,
+                    trong,
+                    activeDay
+                  )}
+                  key={i}
+                  onClick={() => onselectTime(ngayTrong(i + 1), 'chonNgay')}
+                >
+                  <span>{i + 1}</span>
+                </div>
+              )
+            })}
+
+            {/* ngày của tháng mới */}
+            {range(6 - weekDayOfLast).map((i) => (
+              <div className={cx(styles.dayCell, styles.dayCell_Faded)} key={i}>
+                <span>
+                  {/* còn 6 là ... ? lấy ngày tháng mói trừ đi số ngày mới của tháng ==> những ngày mới */}
+                  {dayObjOfLast.add(i + 1, 'day').date()}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* thời gian của bác sĩ */}
