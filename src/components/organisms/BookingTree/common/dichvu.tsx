@@ -52,13 +52,16 @@ export const DichVu = (props: Props) => {
           stateDichVu.list.length > 2 ? styles.groupBtnMuti : styles.groupBtnNor
         )}
       >
-        {stateDichVu.list?.map((v: any) => {
-          const active = checkActive(v, props) ? styles.active : ''
+        {stateDichVu.list?.map((item: any) => {
+          const active = checkActive(item, props) ? styles.active : ''
           return (
-            <li key={v.id}>
-              <button className={cx(styles.btn, active)} onClick={checkBHYT(v)}>
-                <span>{v.detail.name}</span>
-                <span>{v.detail.price} VND</span>
+            <li key={item.id}>
+              <button
+                className={cx(styles.btn, active)}
+                onClick={checkBHYT(item)}
+              >
+                <span>{item.detail.name}</span>
+                <span>{item.detail.price} VND</span>
               </button>
             </li>
           )

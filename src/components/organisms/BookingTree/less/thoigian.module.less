@@ -83,12 +83,9 @@
       }
     }
 
-    .dayCell {
-      opacity: 0.7;
-    }
-
     .weekCell,
     .dayCell {
+      pointer-events: none;
       flex: 0 0 calc(100% / 7);
       display: flex;
       justify-content: center;
@@ -125,9 +122,9 @@
       }
     }
     .trong {
+      pointer-events: unset;
       opacity: 1;
       span {
-        opacity: 1;
         border-radius: 5px;
         background-color: #b2ecff;
         color: #ffffff !important;

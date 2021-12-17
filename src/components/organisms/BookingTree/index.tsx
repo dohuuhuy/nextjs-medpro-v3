@@ -124,7 +124,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           .locale('vi')
                           .format('dddd, DD MMMM YYYY')
                         const { startTime, endTime }: any = v.selected.chonGio
-                        return `${ngay}, ${startTime} - ${endTime} `
+                        return `${ngay}, ${startTime} - ${endTime}`
                       }
                     } else {
                       if (v?.selected?.name) {

@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
 import { Props, Steps } from './interface'
+import { F_DATE } from './utils'
 
 export const ThoiGian = (props: Props) => {
   // console.log('props ThoiGian:>> ', props)
@@ -82,10 +83,10 @@ export const ThoiGian = (props: Props) => {
   const ngayTrong = (i: any) => {
     if (!findStep.data) return false
 
-    const x = moment(`${thisYear}-${thisMonth + 1}-${i}`).format('DD-MM-YYYY')
+    const x = moment(`${thisYear}-${thisMonth + 1}-${i}`).format(F_DATE)
 
     return findStep.data?.find((v: any) => {
-      const n = moment(v.date).format('DD-MM-YYYY')
+      const n = moment(v.date).format(F_DATE)
       return n === x
     })
   }
@@ -195,12 +196,12 @@ export const ThoiGian = (props: Props) => {
             {range(daysInMonth).map((i) => {
               const trong = ngayTrong(i + 1) ? styles.trong : ''
 
-              const l = moment(
-                `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
-              ).format('DD-MM-YYYY')
+              const l = moment(`${thisYear}-${thisMonth + 1}-${i + 1}`).format(
+                F_DATE
+              )
 
               const p = findStep.selected.chonNgay?.date
-                ? moment(findStep.selected.chonNgay?.date).format('DD-MM-YYYY')
+                ? moment(findStep.selected.chonNgay?.date).format(F_DATE)
                 : -1
 
               const activeDay = l === p ? styles.activeDay : ''
