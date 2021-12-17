@@ -10,6 +10,7 @@ const init: UserState = {
     isCS: false
   },
   listPatient: [],
+  selectedPatient: {},
   bookingByUser: [],
   noti: [],
   loginAt: '/',
@@ -24,7 +25,6 @@ export default function user(
     case UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS: {
       return { ...state, billInfo: action.billInfo }
     }
-
     case UserTypes.Login.login_At: {
       return { ...state, loginAt: action.loginAt }
     }
@@ -42,6 +42,9 @@ export default function user(
 
     case UserTypes.User.USER_RESET:
       return { ...init, userInfo: {} }
+
+    case UserTypes.Patient.SELECTED_PATIENT:
+      return { ...init, selectedPatient: action.selectedPatient}
 
     default:
       return state

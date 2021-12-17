@@ -14,9 +14,12 @@ import styles from './styles.module.less'
 import { getSetting, Info, Profile, TITLE, VALUE } from './utils/func'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import * as ac from '@actionStore'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const {
     query: { site }
@@ -41,6 +44,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
       ...v,
       itemSelected: item
     }))
+    dispatch(ac.selectedPatient(state.itemSelected))
   }
 
   function confirm(e: any) {

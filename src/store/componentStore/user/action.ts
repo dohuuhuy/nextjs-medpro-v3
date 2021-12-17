@@ -52,6 +52,13 @@ export const listPatientRequestSuccess = (listPatient: any[]): UserActions => {
   }
 }
 
+export const selectedPatient = (selectedPatient: any): UserActions => {
+  return {
+    type: UserTypes.Patient.SELECTED_PATIENT,
+    selectedPatient
+  }
+}
+
 // --------------------------Booking---------------------//
 export const getBookingByUser = (): UserActions => {
   return {

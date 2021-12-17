@@ -46,7 +46,7 @@ export interface UserClear {
 
 // -------------------------hồ sơ bệnh nhân-------------------------------------
 
-export type PatientAction = listPatientRequest | listPatientRequestSuccess
+export type PatientAction = listPatientRequest | listPatientRequestSuccess | SelectedPatient
 
 export interface listPatientRequest {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST
@@ -55,6 +55,10 @@ export interface listPatientRequest {
 export interface listPatientRequestSuccess {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST_SUCCESS
   listPatient: any[]
+}
+export interface SelectedPatient {
+  type: UserTypes.Patient.SELECTED_PATIENT
+  selectedPatient: {}
 }
 
 // -------------------------Danh sách booking theo user-------------------------------------
@@ -82,3 +86,4 @@ export interface NoticeRequestSuccess {
   type: UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS
   noti: any[]
 }
+

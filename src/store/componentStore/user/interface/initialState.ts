@@ -5,6 +5,7 @@ export interface UserState {
   noti: Array<any>
   loginAt: string
   billInfo: any
+  selectedPatient: Object
 }
 
 interface userInfo {
