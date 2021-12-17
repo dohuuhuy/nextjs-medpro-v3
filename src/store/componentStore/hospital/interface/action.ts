@@ -12,10 +12,10 @@ export type HospitalActions =
   | BookingTreeAction
   | StepAction
 
-export type StepAction = SaveStep | Schedule
+export type StepAction = ResetSchedule | Schedule
 
-export interface SaveStep {
-  type: HosptailTypes.Stepper.SAVE_INFO_STEP
+export interface ResetSchedule {
+  type: HosptailTypes.Stepper.RESET_SCHEDULE
   steps: any
 }
 export interface Schedule {

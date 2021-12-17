@@ -1,6 +1,6 @@
 export namespace HosptailTypes {
   export enum Stepper {
-    SAVE_INFO_STEP = 'SAVE_INFO_STEP',
+    RESET_SCHEDULE = 'RESET_SCHEDULE',
     SAVE_SCHEDULE = 'SAVE_SCHEDULE'
   }
 

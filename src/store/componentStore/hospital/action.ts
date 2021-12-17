@@ -7,9 +7,9 @@ export const setParnerIdHospital = (partnerId: any): HospitalActions => {
   }
 }
 
-export const saveInfoStep = (steps: any): HospitalActions => {
+export const resetSchedule = (steps?: any): HospitalActions => {
   return {
-    type: HosptailTypes.Stepper.SAVE_INFO_STEP,
+    type: HosptailTypes.Stepper.RESET_SCHEDULE,
     steps
   }
 }

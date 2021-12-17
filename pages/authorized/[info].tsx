@@ -26,7 +26,10 @@ const Author = () => {
     client.setToken(query.token)
   }, [router.query.info])
 
-  if (user.userInfo.token) router.push(user.loginAt)
+  if (user.userInfo.token) {
+    const loginAt = window.localStorage.getItem('loginAt') || '/'
+    router.push(loginAt)
+  }
 
   return <Loading />
 }

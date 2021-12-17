@@ -110,6 +110,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                     data: v.data,
                     setstate,
                     getbookingCur: getbookingCur,
+                    saveSchedule,
                     dispatch
                   })
 

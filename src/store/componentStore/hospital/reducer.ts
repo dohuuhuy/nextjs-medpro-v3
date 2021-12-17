@@ -32,10 +32,10 @@ export default function hospital(
         ...state,
         schedule: { ...action.schedule }
       }
-    case HosptailTypes.Stepper.SAVE_INFO_STEP:
+    case HosptailTypes.Stepper.RESET_SCHEDULE:
       return {
         ...state,
-        steps: action.steps
+        schedule: {}
       }
 
     case HosptailTypes.BookingTree.BOOKING_TREE_REQUEST_SUCCESS:
