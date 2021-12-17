@@ -1,23 +1,51 @@
 // import Container from '@componentsTest/Container'
-import { Icon } from '../../../Icon'
-import React from 'react'
-import styles from './styles.module.less'
 import { uniqueId } from 'lodash'
-import { dataPartner } from '@componentsTest/PaymentMethods/common/utils/data'
+import React from 'react'
+import { Icon } from '../../../Icon'
+import styles from './styles.module.less'
 
-export const PartnerPayment = () => {
+import cx from 'classnames'
+
+export const PartnerPayment = ({
+  list,
+  selectedPaymentFee,
+  onSelectedPaymentFee,
+  dispatch
+}: any) => {
+  const onSelectpayment = (item: any) => () => {
+    dispatch(onSelectedPaymentFee(item))
+  }
+
   return (
     <section className={styles.PartnerPayment}>
-      <div className={styles.input}>
-        <Icon name='timkiem' />
-        <input placeholder='Tìm nhanh ngân hàng' />
-      </div>
+      {list.length > 3 && (
+        <div className={styles.input}>
+          <Icon name='timkiem' />
+          <input placeholder='Tìm nhanh ngân hàng' />
+        </div>
+      )}
       <ul className={styles.listPartner}>
-        {dataPartner.map(({ img }: any) => {
+        {list.map((item: any) => {
+          const active =
+            selectedPaymentFee.name === item.name ? styles.active : ''
           return (
             <li key={uniqueId()}>
               <div className={styles.partner}>
-                <figure className={styles.icons}>{img}</figure>
+                <figure
+                  className={styles.icons}
+                  onClick={onSelectpayment(item)}
+                >
+                  <img
+                    className={cx(styles.imageIcon, active)}
+                    src={
+                      item.paymentIcon.path ||
+                      require('./../images/payment.gif')
+                    }
+                    alt=''
+                    width='auto'
+                    height={40}
+                  />
+                </figure>
               </div>
             </li>
           )

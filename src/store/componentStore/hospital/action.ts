@@ -153,3 +153,28 @@ export const getBannersSuccess = (data: any): HospitalActions => {
     banners: data
   }
 }
+
+// payment
+export const getAllPayment = (): HospitalActions => {
+  return {
+    type: HosptailTypes.Payment.PAYMENT_REQUEST
+  }
+}
+export const getAllPaymentSuccess = (listPayment: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS,
+    listPayment
+  }
+}
+export const paymentReset = (): HospitalActions => {
+  return {
+    type: HosptailTypes.Payment.PAYMENT_RESET
+  }
+}
+
+export const selectedPaymentFee = (paymentFee: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE,
+    paymentFee
+  }
+}

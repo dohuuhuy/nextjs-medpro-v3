@@ -2,6 +2,8 @@ export interface ConfirmInfoIF {
   listPatient: any
   schedule?: any
   loading?: boolean
+  dispatch: any
+  selectedPatient?: any
 }
 
 export interface StateConfirm {

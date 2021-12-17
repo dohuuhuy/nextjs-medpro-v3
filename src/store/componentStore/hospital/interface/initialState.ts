@@ -8,6 +8,13 @@ export interface HospitalState {
   information: Information
   schedule: any
   steps: any[]
+  listPayment: any[]
+  selectedPaymentFee: {}
+  paymentFee: {
+    totalFee: 0
+    subTotal: 0
+    grandTotal: 0
+  }
 }
 
 export interface Information {

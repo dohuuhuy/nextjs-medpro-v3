@@ -42,4 +42,11 @@ export namespace HosptailTypes {
     CurrentBooking_Request = 'CurrentBooking_Request',
     CurrentBooking_Success = 'CurrentBooking_Success'
   }
+  export enum Payment {
+    PAYMENT_REQUEST = 'PAYMENT_REQUEST',
+    PAYMENT_REQUEST_SUCCESS = 'PAYMENT_REQUEST_SUCCESS',
+    PAYMENT_RESET = 'PAYMENT_RESET',
+    SELECTED_PAYMENT_FEE = 'SELECTED_PAYMENT_FEE',
+    RESET_SELECTED_PAYMENT_FEE = 'RESET_SELECTED_PAYMENT_FEE'
+  }
 }

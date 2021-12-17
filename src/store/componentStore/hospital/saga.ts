@@ -1,15 +1,23 @@
 import { client } from '@config/medproSDK'
 import * as ac from '@store/actionStore'
-import { AppState, HospitalState, HosptailTypes } from '@store/interface'
+import {
+  AppState,
+  HospitalState,
+  HosptailTypes,
+  UserState
+} from '@store/interface'
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
+import moment from 'moment'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 import { huyi } from './../../../utils/clog'
+import {} from './../totalData/interface/initialState'
 
 function* getHospitalDetails() {
   try {
     yield put(ac.getListPartners())
+    client.getAllPaymentMethod
   } catch (error) {
     console.error(error)
   }
@@ -140,7 +148,6 @@ function* watcher_getBanners() {
 function* getbookingCurNode({ schedules }: any) {
   try {
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
-
     const response: AxiosResponse = yield client.getBookingTreeCurrentNode(
       {
         treeId: 'DATE',
@@ -164,6 +171,43 @@ function* watcher_getbookingCurNode() {
   )
 }
 
+function* getAllPayment({}: any) {
+  try {
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+    const user: UserState = yield select((state: AppState) => state.user)
+    /*     const total: TotalDataState = yield select((state: AppState) => state.total)
+     */
+    const response: AxiosResponse = yield client.getAllPaymentMethod(
+      {
+        bookingId: 'undefined',
+        patientId: user.selectedPatient.id,
+        price: Number(hos.schedule?.service?.selected.price),
+        groupId: 1,
+        treeId: 'DATE',
+        serviceId: hos.schedule?.service?.selected.id,
+        subjectId: hos.schedule?.subject?.selected.id,
+        roomId: '',
+        doctorId: hos.schedule?.doctor?.selected.id,
+        bookingDate: moment(
+          hos.schedule.time?.selected?.chonNgay.date
+        ).toISOString()
+      },
+      {
+        partnerid: hos.partnerId,
+        token: user.userInfo.token
+      }
+    )
+
+    yield put(ac.getAllPaymentSuccess(response.data))
+  } catch (error) {
+    huyi({ name: 'getAllPayment', child: error, type: 'error' })
+  }
+}
+
+function* watcher_getAllPayment() {
+  yield takeLatest(HosptailTypes.Header.Header_REQUEST, getAllPayment)
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(watcher_getHospitalDetails),
@@ -173,7 +217,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getHeader),
     fork(watcher_getBanners),
     fork(watcher_getFooter),
-    fork(watcher_getbookingCurNode)
+    fork(watcher_getbookingCurNode),
+    fork(watcher_getAllPayment)
   ])
 }
 export default hospitalSagas

@@ -122,6 +122,7 @@ function* getBillInfo({ transactionId }: any) {
       }
     )
     yield put(ac.getBillInfoSuccess(response.data))
+
     yield put(ac.setLoading(false))
   } catch (error) {
     console.log(' error getBillInfo :>> ', error)
@@ -132,22 +133,13 @@ function* watcher_getBillInfo() {
   yield takeLatest(UserTypes.Bill.BILL_INFO_REQUEST, getBillInfo)
 }
 
-function* selectedPatient({selectPatient}: any) {
-  yield put(ac.selectedPatient(selectPatient))
-}
-
-function* watcher_selectedPatient() {
-  yield takeLatest(UserTypes.Patient.SELECTED_PATIENT, selectedPatient)
-}
-
 const userSagas = function* root() {
   yield all([
     fork(watcher_listPatientRequest),
     fork(watcher_getBookingByUser),
     fork(watcher_getNoti),
     fork(watcher_loginMedproId),
-    fork(watcher_getBillInfo),
-    fork(watcher_selectedPatient)
+    fork(watcher_getBillInfo)
   ])
 }
 export default userSagas

@@ -4,6 +4,8 @@ import Loading from '@componentsTest/Loading'
 import { Button, Col, message, Popconfirm, Row } from 'antd'
 import cx from 'classnames'
 import { get } from 'lodash'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import { CardFee } from '../CardFee'
@@ -12,14 +14,9 @@ import { Icon } from '../Icon'
 import { ConfirmInfoIF, StateConfirm } from './common/interface'
 import styles from './styles.module.less'
 import { getSetting, Info, Profile, TITLE, VALUE } from './utils/func'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import * as ac from '@actionStore'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
   const router = useRouter()
-  const dispatch = useDispatch()
 
   const {
     query: { site }
@@ -29,22 +26,18 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
     listPatient: props.listPatient,
     patient: [],
     indexSelect: 0,
-    itemSelected: {}
+    itemSelected: props.listPatient[0]
   })
 
   useEffect(() => {
-    setstate((v) => ({
-      ...v,
-      itemSelected: props.listPatient[0]
-    }))
-  }, [])
+    props.dispatch(props.selectedPatient(state.itemSelected))
+  }, [state.itemSelected])
 
   const selectItem = (item: any) => () => {
     setstate((v) => ({
       ...v,
       itemSelected: item
     }))
-    dispatch(ac.selectedPatient(state.itemSelected))
   }
 
   function confirm(e: any) {
@@ -158,7 +151,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                           className={styles.btnRedirect}
                         >
                           <Link href={`/${site}/hinh-thuc-dat-kham`}>
-                            <a>Hình thức đặt khám</a>
+                            <a>Quay lại Đặt khám</a>
                           </Link>
                         </Button>
                       </div>

@@ -5,7 +5,7 @@ import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { urlGo } from './common/utils/contants'
 
-export const CardFee = () => {
+export const CardFee = ({ paymentFee, selectedPaymentFee }: any) => {
   const router = useRouter()
   const [isVisible, setIsVisible] = React.useState(false)
   React.useEffect(() => {
@@ -59,16 +59,20 @@ export const CardFee = () => {
       </p>
       <ul className={styles.listFee}>
         <li>
+          <span className={styles.label}>Phương thức thanh toán</span>
+          <span className={styles.value}>{selectedPaymentFee.name}</span>
+        </li>
+        <li>
           <span className={styles.label}>Phí khám bệnh</span>
-          <span className={styles.value}>0 VND</span>
+          <span className={styles.value}>{paymentFee.subTotal} VND</span>
         </li>
         <li>
           <span className={styles.label}>Phí tiện ích</span>
-          <span className={styles.value}>0 VND</span>
+          <span className={styles.value}>{paymentFee.totalFee} VND</span>
         </li>
         <li>
           <span className={styles.label}>Tổng tiền</span>
-          <span className={styles.value}>0 VND</span>
+          <span className={styles.value}>{paymentFee.grandTotal} VND</span>
         </li>
       </ul>
       <div className={styles.groupBtn}>

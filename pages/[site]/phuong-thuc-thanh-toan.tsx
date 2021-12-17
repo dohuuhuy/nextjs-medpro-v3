@@ -16,6 +16,7 @@ const PaymentMethodsPage = () => {
   useEffect(() => {
     check(user.userInfo.token) && dispatch(ac.loginMedproId())
     check(hospital.listHospital) && dispatch(ac.getListHospital())
+    dispatch(ac.getAllPayment())
   }, [])
   return (
     <>
@@ -25,7 +26,13 @@ const PaymentMethodsPage = () => {
         header={hospital.information.header}
       />
 
-      <PaymentMethods />
+      <PaymentMethods
+        selectedPaymentFee={hospital.selectedPaymentFee}
+        paymentFee={hospital.paymentFee}
+        listPayment={hospital.listPayment}
+        dispatch={dispatch}
+        onSelectedPaymentFee={ac.selectedPaymentFee}
+      />
     </>
   )
 }

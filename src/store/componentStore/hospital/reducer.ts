@@ -1,9 +1,9 @@
-import { HYDRATE } from 'next-redux-wrapper'
 import {
   HospitalActions,
   HospitalState,
   HosptailTypes
 } from '@src/store/interface'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
   partnerId: '',
@@ -14,7 +14,14 @@ const init: HospitalState = {
   listFeatureByPartner: [],
   information: {},
   schedule: {},
-  steps: []
+  steps: [],
+  listPayment: [],
+  selectedPaymentFee: {},
+  paymentFee: {
+    totalFee: 0,
+    subTotal: 0,
+    grandTotal: 0
+  }
 }
 
 export default function hospital(
@@ -84,6 +91,24 @@ export default function hospital(
       return {
         ...state,
         information: { ...state.information, footer: action.footer }
+      }
+
+    case HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listPayment: action.listPayment
+      }
+
+    case HosptailTypes.Payment.SELECTED_PAYMENT_FEE:
+      const { totalFee, subTotal, grandTotal }: any = action.paymentFee
+      return {
+        ...state,
+        selectedPaymentFee: action.paymentFee,
+        paymentFee: {
+          totalFee,
+          subTotal,
+          grandTotal
+        }
       }
 
     default:

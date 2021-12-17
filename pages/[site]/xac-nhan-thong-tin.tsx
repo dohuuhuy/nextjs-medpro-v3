@@ -38,6 +38,8 @@ const ConfirmInfoPage = () => {
         <Loading component />
       ) : (
         <ConfirmInfo
+          dispatch={dispatch}
+          selectedPatient={ac.selectedPatient}
           listPatient={user.listPatient}
           schedule={hospital.schedule}
           loading={total.loading}

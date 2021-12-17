@@ -41,10 +41,10 @@ export default function user(
       return { ...state, noti: action.noti }
 
     case UserTypes.User.USER_RESET:
-      return { ...init, userInfo: {} }
+      return { ...state, userInfo: {} }
 
     case UserTypes.Patient.SELECTED_PATIENT:
-      return { ...init, selectedPatient: action.selectedPatient}
+      return { ...state, selectedPatient: action.selectedPatient }
 
     default:
       return state

@@ -11,6 +11,7 @@ export type HospitalActions =
   | ListHospitalAction
   | BookingTreeAction
   | StepAction
+  | PaymentAction
 
 export type StepAction = ResetSchedule | Schedule
 
@@ -155,4 +156,30 @@ export interface BannersRequest {
 export interface BannersRequestSuccess {
   type: HosptailTypes.Banners.Banners_REQUEST_SUCCESS
   banners: any[]
+}
+
+// ------------------------------- Phương thức thanh toán ------------------------------
+
+export type PaymentAction =
+  | PaymentRequest
+  | PaymentRequestSuccess
+  | PaymentReset
+  | SelectedPaymentFee
+
+export interface PaymentRequest {
+  type: HosptailTypes.Payment.PAYMENT_REQUEST
+}
+
+export interface PaymentRequestSuccess {
+  type: HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS
+  listPayment: any[]
+}
+
+export interface PaymentReset {
+  type: HosptailTypes.Payment.PAYMENT_RESET
+}
+
+export interface SelectedPaymentFee {
+  type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE
+  paymentFee: {}
 }

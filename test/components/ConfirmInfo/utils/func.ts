@@ -65,7 +65,7 @@ export const Profile = (item: User) => {
     {
       visible: !!item?.mobile,
       title: 'Số điện thoại: ',
-      value: func.HandleModile(item?.mobile),
+      value: item?.mobile && func.HandleModile(item?.mobile),
       status: true,
       sort: 3,
       setting: {
