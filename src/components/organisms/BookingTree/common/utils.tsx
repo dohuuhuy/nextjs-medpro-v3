@@ -135,7 +135,7 @@ export const handlerStep = ({ bookingTree }: any) => {
 }
 
 export const clickItem = ({ item, props }: ClickItem) => {
-  const { state, setstate, keys } = props
+  const { state, setstate, keys, dispatch, saveSchedule } = props
 
   // 1. lấy được index trong mảng arr stepper từ keys gửi xuống
   const index = findIndex(state.stepper, { key: keys })
@@ -187,6 +187,8 @@ export const clickItem = ({ item, props }: ClickItem) => {
     ...v,
     schedules
   }))
+
+  dispatch(saveSchedule())
 
   window.localStorage.setItem('selected', JSON.stringify(schedules))
 }

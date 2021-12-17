@@ -27,6 +27,7 @@ const HinhThucDatKham = ({ data }: any) => {
     dispatch(ac.setLoading())
     dispatch(ac.setParnerIdHospital(site))
     check(hospital.listHospital) && dispatch(ac.getListHospital())
+    dispatch(ac.resetSchedule())
     window.localStorage.removeItem('selected')
 
     setTimeout(() => {

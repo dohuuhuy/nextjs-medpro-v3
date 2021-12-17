@@ -22,16 +22,12 @@ function* listPatientRequest() {
         partnerid: total?.partnerId,
         appid: total?.appId
       })
-      console.log('response.data :>> ', response.data);
       yield put(ac.listPatientRequestSuccess(response.data))
-
     }
     yield put(ac.setLoading(false))
-
   } catch (error) {
     console.log(error)
     yield put(ac.setLoading(false))
-
   }
 }
 
@@ -70,12 +66,14 @@ function* getNoti() {
 
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
-    const response: AxiosResponse = yield client.getAllNotifByUser({
-      token: user?.userInfo?.token,
-      partnerid: total?.partnerId,
-      appid: total?.appId
-    })
-    yield put(ac.getNotiSuccess(response.data))
+    if (user?.userInfo?.token) {
+      const response: AxiosResponse = yield client.getAllNotifByUser({
+        token: user?.userInfo?.token,
+        partnerid: total?.partnerId,
+        appid: total?.appId
+      })
+      yield put(ac.getNotiSuccess(response.data))
+    }
   } catch (error) {
     console.log('error getNoti:>> ', error)
   }
@@ -89,6 +87,8 @@ function* loginMedproId() {
   try {
     const total: TotalDataState = yield select((state: AppState) => state.total)
     const { origin, pathname } = window.location
+
+    window.localStorage.setItem('loginAt', pathname)
 
     yield put(ac.loginAt(pathname))
     window.location.href = `${currentEnv.login}/url=${origin}&partnerId=${

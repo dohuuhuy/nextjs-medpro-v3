@@ -50,6 +50,18 @@ const SelectedHospital = () => {
     window.location.reload()
   }
 
+  function clearData() {
+    const list = ['loginAt', 'huyi', 'hello']
+
+    list.map((v) => {
+      window.localStorage.removeItem(v)
+    })
+
+    window.location.reload()
+
+    // window.localStorage.clear('loginAt')
+  }
+
   return (
     <div>
       {_DEVELOPMENT || _TESTING ? (
@@ -58,6 +70,10 @@ const SelectedHospital = () => {
           overlay={
             <div className={styles.dropdownSetting}>
               <Space direction='vertical'>
+                <Button type='primary' onClick={clearData}>
+                  clears data
+                </Button>
+
                 <Button type='primary' onClick={reload}>
                   Refresh page
                 </Button>
