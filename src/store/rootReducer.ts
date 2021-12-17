@@ -3,15 +3,14 @@ import { HYDRATE } from 'next-redux-wrapper'
 import { Reducer } from 'react'
 import { AnyAction, combineReducers } from 'redux'
 import hospital from './componentStore/hospital/reducer'
-import newsReducer from './componentStore/news/reducer'
 import total from './componentStore/totalData/reducer'
 import user from './componentStore/user/reducer'
 
 const reducers = {
   total: total,
   user: user,
-  hospital: hospital,
-  news: newsReducer
+  hospital: hospital
+  // news: newsReducer
   // booking: DemoReducer
 }
 

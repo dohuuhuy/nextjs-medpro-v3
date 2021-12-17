@@ -51,7 +51,8 @@ export const CardFee = (props: CardFeeIF) => {
         case urlGo.XAC_NHAN_THONG_TIN:
           willGo = urlGo.PHUONG_THUC_THANH_TOAN
           break
-
+        case urlGo.PHUONG_THUC_THANH_TOAN:
+          willGo = '/chi-tiet-phieu-kham?transactionId=VPDev2112173LIK1NP7HK7Y'
         default:
           break
       }

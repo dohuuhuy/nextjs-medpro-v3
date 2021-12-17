@@ -30,7 +30,7 @@ export const DichVu = (props: Props) => {
       checkBHYT: item.detail.serviceType === 'INSURANCE_ONLY',
       selectedItem: item
     }))
-    clickItem({ item, props })
+    item.detail.serviceType !== 'INSURANCE_ONLY' && clickItem({ item, props })
   }
 
   const onSelectBHYT = (e: any) => {
