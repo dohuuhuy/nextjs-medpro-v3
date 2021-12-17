@@ -123,6 +123,13 @@ export default function hospital(
         }
       }
 
+    case HosptailTypes.Payment.PAYMENT_RESET:
+      return {
+        ...state,
+        selectedPaymentFee: {},
+        paymentFee: { ...init.paymentFee }
+      }
+
     default:
       return state
   }

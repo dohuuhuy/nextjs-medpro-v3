@@ -105,7 +105,7 @@ export const ThoiGian = (props: Props) => {
     setstate((v: any) => ({ ...v }))
 
     if (name === 'chonGio') {
-      setstate((v: any) => ({ ...v, cKey: 5 }))
+      setstate((v: any) => ({ ...v, cKey: 4 }))
     }
 
     window.localStorage.setItem('selected', JSON.stringify(schedules))

@@ -3,7 +3,8 @@ import styles from './styles.module.less'
 import React from 'react'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
-import { urlGo } from './common/utils/contants'
+import { TITLE, urlGo, VALUE } from './common/contants'
+import { getSetting, handleList } from './common/utils'
 
 export interface CardFeeIF {
   hospital: {
@@ -14,7 +15,7 @@ export interface CardFeeIF {
 }
 
 export const CardFee = (props: CardFeeIF) => {
-  const { paymentFee, selectedPaymentFee, passSchedules } = props.hospital
+  const { passSchedules } = props.hospital
 
   const router = useRouter()
   const [isVisible, setIsVisible] = React.useState(false)
@@ -68,24 +69,26 @@ export const CardFee = (props: CardFeeIF) => {
         <Icon name='luuy' /> Vui lòng kiểm tra lại thông tin trước khi đặt lịch
       </p>
       <ul className={styles.listFee}>
-        <li>
-          <span className={styles.label}>Phương thức thanh toán</span>
-          <span className={styles.value}>{selectedPaymentFee?.name}</span>
-        </li>
-        <li>
-          <span className={styles.label}>Phí khám bệnh</span>
-          <span className={styles.value}>{paymentFee?.subTotal || 0} VND</span>
-        </li>
-        <li>
-          <span className={styles.label}>Phí tiện ích</span>
-          <span className={styles.value}>{paymentFee?.totalFee || 0} VND</span>
-        </li>
-        <li>
-          <span className={styles.label}>Tổng tiền</span>
-          <span className={styles.value}>
-            {paymentFee?.grandTotal || 0} VND
-          </span>
-        </li>
+        {handleList(props.hospital).map((item, i) => {
+          const t = getSetting(item, TITLE)
+          const v = getSetting(item, VALUE)
+          return (
+            <li key={i}>
+              <span
+                className={cx(styles.title, t.bold, t.under)}
+                style={{ color: t.color, fontSize: t.fontSize }}
+              >
+                {item.title}{' '}
+              </span>
+              <span
+                className={cx(styles.value, t.bold, t.under)}
+                style={{ color: v.color, fontSize: v.fontSize }}
+              >
+                {item?.value}
+              </span>
+            </li>
+          )
+        })}
       </ul>
       <div className={styles.groupBtn}>
         <button className={cx(styles.btn, styles.again)} onClick={routerBack}>

@@ -3,3 +3,6 @@ export const urlGo = {
   DAT_LICH_KHAM: 'dat-lich-kham',
   PHUONG_THUC_THANH_TOAN: 'phuong-thuc-thanh-toan'
 }
+
+export const TITLE = 'title'
+export const VALUE = 'value'

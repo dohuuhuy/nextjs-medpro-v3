@@ -18,6 +18,8 @@ const ConfirmInfoPage = () => {
   const hospital = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
   useEffect(() => {
+    dispatch(ac.paymentReset())
+
     if (check(user.userInfo.token)) {
       dispatch(ac.loginAt(router.asPath))
       dispatch(ac.loginMedproId())

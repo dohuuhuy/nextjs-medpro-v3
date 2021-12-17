@@ -23,6 +23,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
+    dispatch(ac.paymentReset())
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
     dispatch(ac.listPatientRequest())
