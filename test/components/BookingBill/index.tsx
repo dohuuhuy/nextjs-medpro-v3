@@ -52,7 +52,7 @@ export const BookingBill = ({ bill }: any) => {
             {status === 1 && <CardDownload />}
 
             <section className={styles.billInfo}>
-              <CustomLine top />
+              <CustomLine top={true} />
 
               {/* thông tin của bệnh viện */}
               <div className={styles.hospital}>
@@ -173,7 +173,7 @@ export const BookingBill = ({ bill }: any) => {
                   />
                 </a>
               </div>
-              <CustomLine bottom />
+              <CustomLine bottom={true} />
             </section>
             {status === 1 && (
               <div className={styles.cancelBill}>

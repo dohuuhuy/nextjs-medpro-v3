@@ -7,7 +7,7 @@ import { redirect } from './func'
 import { ListHospital } from './interface'
 
 export const cardHospital = (arr: ListHospital[], router: any) => {
-  if (arr.length < 1)
+  if (arr.length < 1) {
     return (
       <Result
         status='404'
@@ -15,6 +15,7 @@ export const cardHospital = (arr: ListHospital[], router: any) => {
         subTitle='Xin lỗi, chúng tôi không tìm thấy bệnh viện bạn cần tìm !'
       />
     )
+  }
   return arr?.map((e) => {
     const isRate = e.deliveryMessage ? (
       <p className={styles.status}>

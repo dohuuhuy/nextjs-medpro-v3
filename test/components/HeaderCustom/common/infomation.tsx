@@ -35,7 +35,7 @@ export const Infomation = ({ handleLogOut, data }: any) => {
               pathname: '/thong-tin-ho-so',
               query: { activeItem: 1 }
             }}
-            replace
+            replace={true}
           >
             Hồ sơ bệnh nhân
           </Link>
@@ -50,7 +50,7 @@ export const Infomation = ({ handleLogOut, data }: any) => {
               pathname: '/thong-tin-ho-so',
               query: { activeItem: 2 }
             }}
-            replace
+            replace={true}
           >
             Phiếu khám bệnh
           </Link>
@@ -65,7 +65,7 @@ export const Infomation = ({ handleLogOut, data }: any) => {
               pathname: '/thong-tin-ho-so',
               query: { activeItem: 3 }
             }}
-            replace
+            replace={true}
           >
             Thông báo
           </Link>

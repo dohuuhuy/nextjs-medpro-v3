@@ -61,14 +61,14 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
                   className={styles.inputSearch}
                   placeholder='Tìm nhanh bệnh viện'
                   prefix={<Icon name='timkiem' fill='white' />}
-                  allowClear
+                  allowClear={true}
                 />
               </li>
               <li>
                 <Select
                   value={nameCiti}
                   className={styles.inputSelect}
-                  showSearch
+                  showSearch={true}
                   style={{ width: '100%' }}
                   optionFilterProp='children'
                   onChange={onChangeCity}

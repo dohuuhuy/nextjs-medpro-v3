@@ -29,7 +29,7 @@ const ChonBenhVienPage = ({ data, meta }: any) => {
     <>
       <SEOHead meta={findMeta} />
       {check(data?.listHospital) ? (
-        <Loading component text='Đang cập nhật danh sách bệnh viện' />
+        <Loading component={true} text='Đang cập nhật danh sách bệnh viện' />
       ) : (
         <SelectHospitalCustom
           listHospital={data?.listHospital}

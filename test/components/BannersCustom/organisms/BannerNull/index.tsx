@@ -15,7 +15,7 @@ export const BannerNUll = () => {
       <Container>
         <Row>
           <motion.h1 variants={fadeInUp} className={styles.title}>
-            <span className={styles.textTitle}></span>
+            <span className={styles.textTitle}/>
           </motion.h1>
 
           <motion.p

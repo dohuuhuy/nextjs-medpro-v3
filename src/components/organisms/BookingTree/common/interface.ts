@@ -18,7 +18,7 @@ export interface Steps {
 }
 
 export interface StateBooking {
-  stepper: Array<Steps>
+  stepper: Steps[]
   schedules?: any
   stepCurrent: {
     key: number

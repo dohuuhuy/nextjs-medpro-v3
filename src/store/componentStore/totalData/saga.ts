@@ -45,7 +45,7 @@ function* getListPartners() {
 
       yield put(
         ac.FeatureRequest({
-          partnerId: partnerId,
+          partnerId,
           typeReser: 'app'
         })
       )

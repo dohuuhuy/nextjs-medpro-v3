@@ -27,7 +27,7 @@ const Loading = (props: Loading) => {
 
   return (
     <div
-      style={{ minHeight: minHeight }}
+      style={{ minHeight }}
       className={cx(
         component ? styles.componentLoading : styles.pageLoading,
         top && styles.top

@@ -29,7 +29,7 @@ const persistConfig = {
   key: 'nextjs',
   version: VERSION,
   whitelist: listPersists,
-  storage: storage,
+  storage,
   stateReconciler: autoMergeLevel2
 }
 

@@ -154,7 +154,7 @@ export interface OpenGraphVideoActors {
 
 //  ví dụ mẫu thui, chưa đủ
 
-export const SEOPage: Array<NextSeoProps> = [
+export const SEOPage: NextSeoProps[] = [
   {
     key: 'gioi-thieu',
     title: 'Giới thiệu',

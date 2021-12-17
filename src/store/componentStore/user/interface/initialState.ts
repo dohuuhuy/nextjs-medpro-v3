@@ -1,8 +1,8 @@
 export interface UserState {
   userInfo: userInfo
-  listPatient: Array<any>
-  bookingByUser: Array<any>
-  noti: Array<any>
+  listPatient: any[]
+  bookingByUser: any[]
+  noti: any[]
   loginAt: string
   billInfo: any
   selectedPatient: any

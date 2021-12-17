@@ -71,7 +71,7 @@ const CardNewsCustom = (item: Post): JSX.Element => {
           layout='responsive'
           loading='eager'
           alt=''
-          priority
+          priority={true}
         />
       </figure>
       <div className={styles.cardBody}>

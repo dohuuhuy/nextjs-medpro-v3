@@ -156,9 +156,8 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data
   const schedules = state.stepper.reduce(
     (obj: any, item) =>
-      Object.assign(obj, {
-        [item.key as string]: { selected: item.selected, data: item.data }
-      }),
+      ({...obj, 
+        [item.key as string]: { selected: item.selected, data: item.data }}),
     {}
   )
 

@@ -33,7 +33,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   if (!data) return null
   const listHospital = data.listHospital
 
-  if (total.loading) return <Loading component />
+  if (total.loading) return <Loading component={true} />
 
   return (
     <>
@@ -45,7 +45,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
       />
       {check(hospital?.bookingTree) ? (
         <Loading
-          component
+          component={true}
           text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
         />
       ) : (

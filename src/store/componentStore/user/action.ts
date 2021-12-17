@@ -40,7 +40,7 @@ export const userLogout = (): UserActions => {
   }
 }
 
-//----------------- Danh sách Patient----------------------//
+// ----------------- Danh sách Patient----------------------//
 export const listPatientRequest = (): UserActions => {
   return { type: UserTypes.Patient.LIST_PATIENT_REQUEST }
 }

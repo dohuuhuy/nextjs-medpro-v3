@@ -46,12 +46,13 @@ export default function hospital(
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
       const lastTime: any = action.schedule?.time
       if (lastTime) {
-        if (Object.keys(lastTime?.selected).length > 1)
+        if (Object.keys(lastTime?.selected).length > 1) {
           return {
             ...state,
             schedule: { ...action.schedule },
             passSchedules: true
           }
+        }
       }
       return {
         ...state,

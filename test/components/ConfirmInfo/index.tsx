@@ -63,7 +63,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
             <h4 className={styles.titlePatient}>Hồ sơ đặt khám</h4>
             {props.loading ? (
               <Loading
-                component
+                component={true}
                 minHeight='400px'
                 size={40}
                 text='Đang tải ...'
@@ -134,7 +134,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
               <ul className={styles.listItem}>
                 {Object.keys(props.schedule).length < 1 ? (
                   <Loading
-                    component
+                    component={true}
                     minHeight='200px'
                     size={40}
                     text={false}

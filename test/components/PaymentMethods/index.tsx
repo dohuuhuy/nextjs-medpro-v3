@@ -55,10 +55,10 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
           </figure>
 
           <Collapse
-            ghost
+            ghost={true}
             className={styles.listPayment}
             expandIconPosition='right'
-            accordion
+            accordion={true}
             onChange={onChange}
             bordered={false}
           >

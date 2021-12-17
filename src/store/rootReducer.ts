@@ -7,9 +7,9 @@ import total from './componentStore/totalData/reducer'
 import user from './componentStore/user/reducer'
 
 const reducers = {
-  total: total,
-  user: user,
-  hospital: hospital
+  total,
+  user,
+  hospital
   // news: newsReducer
   // booking: DemoReducer
 }

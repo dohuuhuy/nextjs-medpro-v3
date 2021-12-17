@@ -135,7 +135,7 @@ export const BookingType = (props: BookingTypeIF) => {
                     alt=''
                     loading='eager'
                     objectFit='cover'
-                    priority
+                    priority={true}
                   />
                 </div>
               )

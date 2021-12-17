@@ -27,7 +27,7 @@ export const HuongDanCustom = ({ data }: any) => {
                       src={v.imageUrl}
                       alt=''
                       loading='eager'
-                      priority
+                      priority={true}
                       width={527}
                       height={915}
                       objectFit='cover'

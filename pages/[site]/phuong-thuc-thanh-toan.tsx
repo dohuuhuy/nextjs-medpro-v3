@@ -28,7 +28,7 @@ const PaymentMethodsPage = () => {
         header={hospital.information.header}
       />
       {total.loading ? (
-        <Loading component />
+        <Loading component={true} />
       ) : (
         <PaymentMethods
           hospital={hospital}

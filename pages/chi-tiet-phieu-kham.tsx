@@ -21,8 +21,9 @@ const DetailBookingPage = () => {
     transactionId && dispatch(ac.getBillInfo(transactionId))
   }, [router.query.transactionId])
 
-  if (total.loading)
-    return <Loading component text='Đang cập nhật thông tin phiếu khám ...' />
+  if (total.loading) {
+    return <Loading component={true} text='Đang cập nhật thông tin phiếu khám ...' />
+  }
 
   return (
     <>

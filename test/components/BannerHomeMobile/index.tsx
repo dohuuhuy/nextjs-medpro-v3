@@ -32,7 +32,7 @@ export const BannerHomeMobile = () => {
             className={styles.inputSearch}
             placeholder='Tìm nhanh bệnh viện'
             prefix={<Icon name='timkiem' fill='white' />}
-            allowClear
+            allowClear={true}
           />
         </Col>
       </Row>

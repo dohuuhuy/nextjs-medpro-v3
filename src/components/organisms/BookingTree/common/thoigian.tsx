@@ -96,9 +96,8 @@ export const ThoiGian = (props: Props) => {
 
     const schedules = state.stepper.reduce(
       (obj: any, item) =>
-        Object.assign(obj, {
-          [item.key as string]: { selected: item.selected, data: item.data }
-        }),
+        ({...obj, 
+          [item.key as string]: { selected: item.selected, data: item.data }}),
       {}
     )
     setstate((v: any) => ({ ...v }))
@@ -177,7 +176,7 @@ export const ThoiGian = (props: Props) => {
 
         {Object.keys(hospital.bookingCurrent).length < 2 ? (
           <Loading
-            component
+            component={true}
             text='Đang tải lịch tháng...'
             size={40}
             minHeight='400px'

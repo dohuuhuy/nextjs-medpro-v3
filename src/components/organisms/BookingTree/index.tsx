@@ -45,7 +45,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         }
       })
 
-      setstate((v) => ({ ...v, stepper: stepper, schedules: selecteds }))
+      setstate((v) => ({ ...v, stepper, schedules: selecteds }))
     } else {
       setstate((v) => ({ ...v, stepper: handlerStep({ bookingTree }) }))
     }
@@ -76,7 +76,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       setstate((v) => ({
         ...v,
         stepCurrent: {
-          key: key,
+          key,
           name: willStep?.title || '',
           index: willStep?.sort + 1
         }
@@ -87,7 +87,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
         stepCurrent: {
           name: curStep?.title || '',
           index: curStep?.sort + 1,
-          key: key
+          key
         }
       }))
     }
@@ -102,10 +102,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
             <div className={styles.listTree}>
               <Collapse
                 onChange={onChangeCollapse}
-                ghost
+                ghost={true}
                 expandIconPosition='right'
                 bordered={false}
-                accordion
+                accordion={true}
                 activeKey={state.stepCurrent.key}
               >
                 {state?.stepper?.map((v, index) => {
@@ -139,7 +139,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                     state,
                     data: v.data,
                     setstate,
-                    getbookingCur: getbookingCur,
+                    getbookingCur,
                     saveSchedule,
                     dispatch
                   })

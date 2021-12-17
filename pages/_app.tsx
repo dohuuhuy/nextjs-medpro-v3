@@ -50,7 +50,7 @@ const MyApp = ({ Component, pageProps }: any) => {
     <Layout>
       <DefaultSeo {...SEO} />
       <NextNProgress color='#00b5f1' height={1} />
-      {loading ? <Loading component /> : <Component {...pageProps} />}
+      {loading ? <Loading component={true} /> : <Component {...pageProps} />}
       <RunLocal />
       <OnTop />
     </Layout>
