@@ -2,12 +2,12 @@ import styles from './../styles.module.less'
 import { Item } from './interface'
 
 export const handleList = (data: any) => {
-  const { paymentFee, selectedPaymentFee } = data
+  const { paymentFee, selectedPaymentFee, schedule } = data
 
   return [
     {
       title: 'Phương thức thanh toán: ',
-      value: selectedPaymentFee?.name,
+      value: selectedPaymentFee?.name || 'Chưa xác định',
       setting: {
         title: {
           bold: 1,
@@ -25,7 +25,10 @@ export const handleList = (data: any) => {
     },
     {
       title: 'Phí khám bệnh: ',
-      value: money(paymentFee?.totalFee),
+      value:
+        paymentFee?.subTotal === -1
+          ? money(schedule?.service?.selected?.price)
+          : money(paymentFee?.subTotal),
       setting: {
         title: {
           bold: 1,
@@ -43,7 +46,7 @@ export const handleList = (data: any) => {
     },
     {
       title: 'Phí tiện ích: ',
-      value: money(paymentFee?.grandTotal),
+      value: money(paymentFee?.totalFee),
       setting: {
         title: {
           bold: 1,
@@ -61,7 +64,7 @@ export const handleList = (data: any) => {
     },
     {
       title: 'Tổng tiền: ',
-      value: money(paymentFee?.subTotal),
+      value: money(paymentFee?.grandTotal),
       setting: {
         title: {
           bold: 1,

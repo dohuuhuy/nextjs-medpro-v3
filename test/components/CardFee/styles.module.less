@@ -17,13 +17,21 @@
     margin: 15px 0;
 
     li {
-      margin-bottom: 5px;
+      margin-bottom: 12px;
       font-size: 13px;
 
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      align-content: center;
+      align-content: flex-start;
+
+      .title {
+        text-align: left;
+        min-width: 170px;
+      }
+      .value {
+        text-align: right;
+      }
     }
   }
   .groupBtn {

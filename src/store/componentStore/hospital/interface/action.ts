@@ -114,7 +114,7 @@ export interface bookingCurRequest {
 
 export interface bookingCurRequestSuccess {
   type: HosptailTypes.BookingTree.CurrentBooking_Success
-  bookingCur: any[]
+  bookingCurrent: any[]
 }
 // -----------------------------Lấy thông tin header---------------------------------------------
 

@@ -20,7 +20,11 @@ export interface Steps {
 export interface StateBooking {
   stepper: Array<Steps>
   schedules?: any
-  cKey?: number
+  stepCurrent: {
+    key: number
+    name: string
+    index: number
+  }
 }
 
 export interface StateDichVu {

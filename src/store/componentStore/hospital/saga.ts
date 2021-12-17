@@ -1,4 +1,5 @@
 import { client } from '@config/medproSDK'
+import { huyi } from '@src/utils/clog'
 import * as ac from '@store/actionStore'
 import {
   AppState,
@@ -9,10 +10,9 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
+import { get } from 'lodash'
 import moment from 'moment'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
-import { huyi } from './../../../utils/clog'
-import {} from './../totalData/interface/initialState'
 
 function* getHospitalDetails() {
   try {
@@ -90,6 +90,9 @@ function* getBookingTree({ partnerId }: any) {
     yield put(ac.setLoading(false))
   } catch (error) {
     yield put(ac.setLoading(false))
+    const e = get(error, 'response.data', '')
+
+    yield put(ac.getBookingTreeSuccess(e))
     huyi({ name: 'getBookingTree', child: error, type: 'error' })
   }
 }

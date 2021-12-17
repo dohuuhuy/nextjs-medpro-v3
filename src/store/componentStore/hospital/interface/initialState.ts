@@ -1,19 +1,18 @@
 export interface HospitalState {
   partnerId: string
+  information: Information
   listHospital: any
   bookingTree: any
   bookingCurrent: any
   listFeatureByApp: ItemFeature[]
   listFeatureByPartner: ItemFeature[]
-  information: Information
   schedule: any
-  steps: any[]
   listPayment: any[]
   selectedPaymentFee: {}
   paymentFee: {
-    totalFee: 0
-    subTotal: 0
-    grandTotal: 0
+    totalFee: number
+    subTotal: number
+    grandTotal: number
   }
   passSchedules: boolean
 }

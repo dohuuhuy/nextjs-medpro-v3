@@ -105,7 +105,7 @@ export const getbookingCur = (schedules: any): HospitalActions => {
 export const getbookingCurSuccess = (data: any): HospitalActions => {
   return {
     type: HosptailTypes.BookingTree.CurrentBooking_Success,
-    bookingCur: data
+    bookingCurrent: data
   }
 }
 

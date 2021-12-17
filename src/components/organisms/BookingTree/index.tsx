@@ -23,10 +23,12 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
   const [state, setstate] = useState<StateBooking>({
     stepper: handlerStep({ bookingTree }),
     schedules: {},
-    cKey: 0
+    stepCurrent: {
+      key: 0,
+      name: handlerStep({ bookingTree })[0].title,
+      index: handlerStep({ bookingTree })[0].sort + 1
+    }
   })
-
-  console.log('state :>> ', state)
 
   const handleGetDataLocal = () => {
     const data = window.localStorage.getItem('selected')
@@ -67,8 +69,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   if (!bookingTree) return null
 
-  // console.log('state :>> ', state.stepper)
-
   return (
     <section>
       <Stepper data={state} setstate={setstate} />
@@ -80,7 +80,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 expandIconPosition='right'
                 bordered={false}
                 accordion
-                activeKey={state.cKey}
+                activeKey={state.stepCurrent.key}
               >
                 {state?.stepper?.map((v, index) => {
                   const icon = v?.icon({
@@ -120,7 +120,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
                   return (
                     <Panel
-                      // disabled={v.open}
                       header={
                         <div className={styles.header}>
                           <h3>{v.title}</h3>

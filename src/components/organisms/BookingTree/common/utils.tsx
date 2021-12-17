@@ -129,7 +129,6 @@ export const handlerStep = ({ bookingTree }: any) => {
     .filter((v) => v.sort >= 0) // sắp xếp dựa trên sort phía trên
 
   sortByStep[0].data = bookingTree.child // mặc định add dữ liệu đầu tiên vào step đầu tiên
-  // sortByStep[0].open = 0
 
   return sortByStep
 }
@@ -141,7 +140,6 @@ export const clickItem = ({ item, props }: ClickItem) => {
   const index = findIndex(state.stepper, { key: keys })
   const findStep: Steps | any = find(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item?.subType })
-  // const indexTime = findIndex(state.stepper, { key: 'time' })
 
   // 2. tại vị trí index gán seleted = detail của item đang chọn
   state.stepper[index].selected = item?.detail || []
@@ -158,7 +156,6 @@ export const clickItem = ({ item, props }: ClickItem) => {
     }
   } else {
     // 3. tìm vị trí của step kế tiếp mảng
-    // nếu có bước kế thì gán data và mở collasp cho bước kế đó
     if (indexSub > 0) {
       state.stepper[indexSub].data = item?.child || []
     }
@@ -175,10 +172,16 @@ export const clickItem = ({ item, props }: ClickItem) => {
     {}
   )
 
+  const willStep = state.stepper[index + 1]
+
   setstate((v: StateBooking) => ({
     ...v,
     schedules,
-    cKey: index + 1
+    stepCurrent: {
+      key: index + 1,
+      name: willStep?.title || '',
+      index: willStep?.sort + 1
+    }
   }))
 
   dispatch(saveSchedule())

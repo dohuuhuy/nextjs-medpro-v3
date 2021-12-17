@@ -6,23 +6,31 @@ import {
 import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
+  // --> info -->
   partnerId: '',
   listHospital: [],
+  information: {},
+
+  // --> booking -->
   bookingTree: [],
   bookingCurrent: [],
+
+  // --> feature -->
   listFeatureByApp: [],
   listFeatureByPartner: [],
-  information: {},
+
+  // --> schedule -->
   schedule: {},
-  steps: [],
+  passSchedules: false,
+
+  // --> payment -->
   listPayment: [],
   selectedPaymentFee: {},
   paymentFee: {
+    subTotal: -1,
     totalFee: 0,
-    subTotal: 0,
     grandTotal: 0
-  },
-  passSchedules: false
+  }
 }
 
 export default function hospital(
@@ -37,7 +45,6 @@ export default function hospital(
       }
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
       const lastTime: any = action.schedule?.time
-      console.log('lastItem :>> ', lastTime)
       if (lastTime) {
         if (Object.keys(lastTime?.selected).length > 1)
           return {
@@ -66,7 +73,7 @@ export default function hospital(
     case HosptailTypes.BookingTree.CurrentBooking_Success:
       return {
         ...state,
-        bookingCurrent: action.bookingCur
+        bookingCurrent: action.bookingCurrent
       }
 
     case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:
@@ -117,8 +124,8 @@ export default function hospital(
         ...state,
         selectedPaymentFee: action.paymentFee,
         paymentFee: {
-          totalFee,
           subTotal,
+          totalFee,
           grandTotal
         }
       }

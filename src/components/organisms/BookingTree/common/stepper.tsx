@@ -2,11 +2,20 @@ import Container from '@componentsTest/Container'
 import { Col, Row, Tooltip } from 'antd'
 import React from 'react'
 import styles from './../less/stepper.module.less'
+import { StateBooking } from './interface'
 import { checkActive, steps } from './utils'
 
-export const Stepper = ({ data, setstate }: any) => {
+export interface StepsIF {
+  data: StateBooking
+  setstate: any
+}
+
+export const Stepper = ({ data, setstate }: StepsIF) => {
   const onClickStep = (i: number) => () => {
-    setstate((v: any) => ({ ...v, cKey: i }))
+    setstate((v: StateBooking) => ({
+      ...v,
+      stepCurrent: { ...v.stepCurrent, key: i }
+    }))
   }
 
   return (
@@ -14,7 +23,9 @@ export const Stepper = ({ data, setstate }: any) => {
       <Container className={styles.steps}>
         <Row className={styles.rowStep}>
           <Col span='24' className={styles.colStep}>
-            {/* <h2 className={styles.titleStep}>Bước 1: Chọn chuyên khoa</h2> */}
+            <h2 className={styles.titleStep}>
+              {`Bước ${data.stepCurrent.index}: Chọn ${data.stepCurrent.name}`}
+            </h2>
 
             <ul className={styles.listStep}>
               {data.stepper?.map((v: any, i: number) => {
