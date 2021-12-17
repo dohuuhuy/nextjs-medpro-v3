@@ -82,9 +82,7 @@ export const ThoiGian = (props: Props) => {
   const ngayTrong = (i: any) => {
     if (!findStep.data) return false
 
-    const x = moment(`${todayObj.year()}-${thisMonth + 1}-${i}`).format(
-      'DD-MM-YYYY'
-    )
+    const x = moment(`${thisYear}-${thisMonth + 1}-${i}`).format('DD-MM-YYYY')
 
     return findStep.data?.find((v: any) => {
       const n = moment(v.date).format('DD-MM-YYYY')
@@ -105,7 +103,15 @@ export const ThoiGian = (props: Props) => {
     setstate((v: any) => ({ ...v }))
 
     if (name === 'chonGio') {
-      setstate((v: any) => ({ ...v, cKey: 4 }))
+      setstate((v: any) => ({
+        ...v,
+
+        stepCurrent: {
+          name: findStep?.title || '',
+          index: findStep?.sort + 1,
+          key: 4
+        }
+      }))
     }
 
     window.localStorage.setItem('selected', JSON.stringify(schedules))
@@ -188,6 +194,7 @@ export const ThoiGian = (props: Props) => {
             {/* ngày trong tháng */}
             {range(daysInMonth).map((i) => {
               const trong = ngayTrong(i + 1) ? styles.trong : ''
+
               const l = moment(
                 `${todayObj.year()}-${thisMonth + 1}-${i + 1}`
               ).format('DD-MM-YYYY')

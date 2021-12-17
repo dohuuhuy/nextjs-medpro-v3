@@ -23,7 +23,11 @@ export const huyi = ({ name, child, type }: Log) => {
           - Message :>> ${e.message},
         `
         )
-        console.log('- %cChi tiết lỗi :>> ', `color: #dc3545; ${size}`, e)
+        console.log(
+          `- %cChi tiết lỗi ${name} :>> `,
+          `color: #dc3545; ${size}`,
+          e
+        )
       } else {
         console.info(`%cLỗi - ${name} :>> `, `color: #dc3545; ${size}`, child)
       }

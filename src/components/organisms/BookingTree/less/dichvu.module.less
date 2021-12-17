@@ -2,10 +2,20 @@
 
 .dichVu {
   margin-top: 10px;
+
   .groupBtn {
+    &,
+    .groupBtnMuti {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    &,
+    .groupBtnNor {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     .ListCustom();
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
     @media only screen and (max-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
     }

@@ -10,7 +10,6 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
-import { get } from 'lodash'
 import moment from 'moment'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -90,9 +89,9 @@ function* getBookingTree({ partnerId }: any) {
     yield put(ac.setLoading(false))
   } catch (error) {
     yield put(ac.setLoading(false))
-    const e = get(error, 'response.data', '')
+    // const e = get(error, 'response.data', '')
 
-    yield put(ac.getBookingTreeSuccess(e))
+    yield put(ac.getBookingTreeSuccess(null))
     huyi({ name: 'getBookingTree', child: error, type: 'error' })
   }
 }

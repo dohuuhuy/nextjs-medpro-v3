@@ -7,13 +7,13 @@ import { get } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Slider from 'react-slick'
+import Slider, { Settings } from 'react-slick'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
 import { Icon } from '../Icon'
 import { ConfirmInfoIF, StateConfirm } from './common/interface'
+import { getSetting, Info, Profile, TITLE, VALUE } from './common/utils'
 import styles from './styles.module.less'
-import { getSetting, Info, Profile, TITLE, VALUE } from './utils/func'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
   const router = useRouter()
@@ -55,10 +55,10 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   return (
     <Container className={styles.container}>
       <Row className={styles.rowInfo}>
-        <Col xl={24} className={styles.colTitleInfo}>
+        <Col xl={24} span={24} className={styles.colTitleInfo}>
           <h3 className={styles.titleConfirm}>XÁC NHẬN THÔNG TIN</h3>
         </Col>
-        <Col xl={16} className={styles.colInfo}>
+        <Col xl={16} lg={16} md={24} className={styles.colInfo}>
           <div className={styles.ProfileBooking}>
             <h4 className={styles.titlePatient}>Hồ sơ đặt khám</h4>
             {props.loading ? (
@@ -162,22 +162,24 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     const t = getSetting(el, TITLE)
                     const v = getSetting(el, VALUE)
                     return (
-                      <li key={i}>
-                        <p className={styles.cardItem}>
-                          <span
-                            style={{ color: t.color }}
-                            className={cx(styles.title, t.bold, t.under)}
-                          >
-                            {el.title}
-                          </span>
-                          <span
-                            style={{ color: v.color }}
-                            className={cx(styles.value, v.bold, v.under)}
-                          >
-                            {el.value}
-                          </span>
-                        </p>
-                      </li>
+                      el.visible && (
+                        <li key={i}>
+                          <p className={styles.cardItem}>
+                            <span
+                              style={{ color: t.color }}
+                              className={cx(styles.title, t.bold, t.under)}
+                            >
+                              {el.title}
+                            </span>
+                            <span
+                              style={{ color: v.color }}
+                              className={cx(styles.value, v.bold, v.under)}
+                            >
+                              {el.value}
+                            </span>
+                          </p>
+                        </li>
+                      )
                     )
                   })
                 )}
@@ -196,7 +198,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
             </div>
           </div>
         </Col>
-        <Col xl={8}>
+        <Col xl={8} lg={8} md={24} sm={24} xs={24}>
           <CardFee hospital={props.hospital} />
         </Col>
       </Row>
@@ -204,9 +206,19 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   )
 }
 
-const settings = {
+const settings: Settings = {
   infinite: false,
   speed: 500,
   slidesToShow: 5,
-  slidesToScroll: 5
+  slidesToScroll: 5,
+  responsive: [
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 3
+      }
+    }
+  ]
 }

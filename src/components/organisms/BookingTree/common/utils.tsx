@@ -105,16 +105,6 @@ export const steps = [
   }
 ]
 
-export const colLeft = {
-  xl: 16,
-  lg: 16,
-  md: 16,
-  sm: 24,
-  xs: 24
-}
-
-export const colRight = { xl: 8, lg: 8, md: 8, sm: 24, xs: 24 }
-
 export const handlerStep = ({ bookingTree }: any) => {
   if (!bookingTree) return []
 

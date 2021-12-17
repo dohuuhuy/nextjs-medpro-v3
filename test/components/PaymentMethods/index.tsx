@@ -42,7 +42,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
         <Col span={24} className={styles.colTitle}>
           <h3 className={styles.titlePayment}>PHƯƠNG THỨC THANH TOÁN</h3>
         </Col>
-        <Col xl={16} className={styles.colMethods}>
+        <Col xl={16} lg={16} md={24} className={styles.colMethods}>
           <figure className={styles.bannerMethods}>
             <Image
               src={Banner}
@@ -75,7 +75,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
           </Collapse>
         </Col>
 
-        <Col xl={8}>
+        <Col xl={8} lg={8} md={24} sm={24} xs={24}>
           <CardFee hospital={props.hospital} />
         </Col>
       </Row>

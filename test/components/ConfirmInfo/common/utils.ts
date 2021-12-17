@@ -1,6 +1,6 @@
 import * as func from '@utils/func'
 import moment from 'moment'
-import { ItemInfo, User } from '../common/interface'
+import { ItemInfo, User } from './interface'
 import styles from './../styles.module.less'
 
 export const Profile = (item: User) => {
@@ -123,6 +123,11 @@ export const Profile = (item: User) => {
 }
 
 export const Info = (item: any) => {
+  console.log(
+    '!!item?.doctor?.selected?.name :>> ',
+    !!item?.doctor?.selected?.name
+  )
+
   return [
     {
       visible: true,
@@ -142,7 +147,7 @@ export const Info = (item: any) => {
       }
     },
     {
-      visible: true,
+      visible: !!item?.doctor?.selected?.name,
       title: 'Bác sĩ: ',
       value: item?.doctor?.selected?.name,
       setting: {
@@ -159,7 +164,7 @@ export const Info = (item: any) => {
       }
     },
     {
-      visible: true,
+      visible: !!item?.subject?.selected?.name,
       title: 'Chuyên khoa: ',
       value: item?.subject?.selected?.name,
       setting: {
@@ -176,7 +181,7 @@ export const Info = (item: any) => {
       }
     },
     {
-      visible: true,
+      visible: !!item?.time?.selected?.chonNgay,
       title: 'Ngày khám: ',
       value: moment(item?.time?.selected?.chonNgay?.date).format('DD/MM/YYYY'),
       setting: {
@@ -193,7 +198,7 @@ export const Info = (item: any) => {
       }
     },
     {
-      visible: true,
+      visible: !!item?.time?.selected?.chonGio,
       title: 'Giờ khám: ',
       value: `${item?.time?.selected?.chonGio?.startTime} - ${item?.time?.selected?.chonGio?.endTime}`,
       setting: {

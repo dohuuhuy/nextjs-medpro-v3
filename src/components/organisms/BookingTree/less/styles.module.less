@@ -4,6 +4,7 @@
     justify-content: space-between;
     .colLeft {
       padding-right: 15px;
+
       .listTree {
         width: 100%;
 
@@ -16,6 +17,9 @@
           }
           border: none;
           margin-bottom: 20px;
+          @media only screen and (max-width: 426px) {
+            padding: 0;
+          }
           padding: 20px;
           background-color: white;
           border-radius: 8px;
@@ -102,5 +106,8 @@
   }
   span {
     margin: 0 10px;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }

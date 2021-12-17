@@ -46,7 +46,12 @@ export const DichVu = (props: Props) => {
 
   return (
     <section className={styles.dichVu}>
-      <ul className={styles.groupBtn}>
+      <ul
+        className={cx(
+          styles.groupBtn,
+          stateDichVu.list.length > 2 ? styles.groupBtnMuti : styles.groupBtnNor
+        )}
+      >
         {stateDichVu.list?.map((v: any) => {
           const active = checkActive(v, props) ? styles.active : ''
           return (

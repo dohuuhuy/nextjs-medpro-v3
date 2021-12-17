@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BookingTreeIF, StateBooking } from './common/interface'
 import { Stepper } from './common/stepper'
-import { colLeft, colRight, handlerStep } from './common/utils'
+import { handlerStep } from './common/utils'
 import styles from './less/styles.module.less'
 
 const Panel = Collapse.Panel
@@ -69,14 +69,40 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   if (!bookingTree) return null
 
+  const onChangeCollapse = (key: any) => {
+    const curStep = state.stepper[key]
+    const willStep = state.stepper[state.stepCurrent.index - 1]
+    if (!key) {
+      setstate((v) => ({
+        ...v,
+        stepCurrent: {
+          key: key,
+          name: willStep?.title || '',
+          index: willStep?.sort + 1
+        }
+      }))
+    } else {
+      setstate((v) => ({
+        ...v,
+        stepCurrent: {
+          name: curStep?.title || '',
+          index: curStep?.sort + 1,
+          key: key
+        }
+      }))
+    }
+  }
+
   return (
     <section>
       <Stepper data={state} setstate={setstate} />
       <Container className={styles.bookingTree}>
         <Row className={styles.rowBody}>
-          <Col {...colLeft} className={styles.colLeft}>
+          <Col xl={16} lg={16} md={24} className={styles.colLeft}>
             <div className={styles.listTree}>
               <Collapse
+                onChange={onChangeCollapse}
+                ghost
                 expandIconPosition='right'
                 bordered={false}
                 accordion
@@ -98,7 +124,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                           .locale('vi')
                           .format('dddd, DD MMMM YYYY')
                         const { startTime, endTime }: any = v.selected.chonGio
-                        return `${ngay}, từ ${startTime} đến ${endTime} `
+                        return `${ngay}, ${startTime} - ${endTime} `
                       }
                     } else {
                       if (v?.selected?.name) {
@@ -147,7 +173,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
               </Collapse>
             </div>
           </Col>
-          <Col {...colRight} className={styles.colRight}>
+          <Col className={styles.colRight} xl={8} lg={8} md={24}>
             <CardFee hospital={hospital} />
           </Col>
         </Row>
