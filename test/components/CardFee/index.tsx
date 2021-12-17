@@ -60,19 +60,21 @@ export const CardFee = ({ paymentFee, selectedPaymentFee }: any) => {
       <ul className={styles.listFee}>
         <li>
           <span className={styles.label}>Phương thức thanh toán</span>
-          <span className={styles.value}>{selectedPaymentFee.name}</span>
+          <span className={styles.value}>{selectedPaymentFee?.name}</span>
         </li>
         <li>
           <span className={styles.label}>Phí khám bệnh</span>
-          <span className={styles.value}>{paymentFee.subTotal} VND</span>
+          <span className={styles.value}>{paymentFee?.subTotal || 0} VND</span>
         </li>
         <li>
           <span className={styles.label}>Phí tiện ích</span>
-          <span className={styles.value}>{paymentFee.totalFee} VND</span>
+          <span className={styles.value}>{paymentFee?.totalFee || 0} VND</span>
         </li>
         <li>
           <span className={styles.label}>Tổng tiền</span>
-          <span className={styles.value}>{paymentFee.grandTotal} VND</span>
+          <span className={styles.value}>
+            {paymentFee?.grandTotal || 0} VND
+          </span>
         </li>
       </ul>
       <div className={styles.groupBtn}>
