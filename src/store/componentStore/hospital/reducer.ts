@@ -104,8 +104,6 @@ export default function hospital(
     case HosptailTypes.Feature.SELECTED_FEATURE:
       const infoPartner = action.selectedFeature
 
-      console.log('infoPartner :>> ', infoPartner)
-
       let flow, treeId
 
       if (infoPartner.type) {

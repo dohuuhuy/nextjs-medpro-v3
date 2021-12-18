@@ -55,4 +55,8 @@ export namespace HosptailTypes {
     ReserveBooking_REQUEST = 'ReserveBooking_REQUEST',
     ReserveBooking_REQUEST_SUCCESS = 'ReserveBooking_REQUEST_SUCCESS'
   }
+  export enum CancelBooking {
+    CancelBooking_REQUEST = 'CancelBooking_REQUEST',
+    CancelBooking_REQUEST_SUCCESS = 'CancelBooking_REQUEST_SUCCESS'
+  }
 }

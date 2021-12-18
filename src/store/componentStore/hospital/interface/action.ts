@@ -192,6 +192,22 @@ export interface ReserveBookingRequestSuccess {
   ReserveBooking: any[]
 }
 
+// ------------------------------- Thực hiện hủy phiếu khám ------------------------------
+
+export type CancelBookingAction =
+  | CancelBookingRequest
+  | CancelBookingRequestSuccess
+
+export interface CancelBookingRequest {
+  type: HosptailTypes.CancelBooking.CancelBooking_REQUEST
+  id: string
+}
+
+export interface CancelBookingRequestSuccess {
+  type: HosptailTypes.CancelBooking.CancelBooking_REQUEST_SUCCESS
+  CancelBooking: any
+}
+
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
 export type HospitalActions =
@@ -205,3 +221,4 @@ export type HospitalActions =
   | StepAction
   | PaymentAction
   | ReserveBookingAction
+  | CancelBookingAction

@@ -199,3 +199,18 @@ export const getReserveBookingSuccess = (data: any): HospitalActions => {
     ReserveBooking: data
   }
 }
+
+// reserve Booking
+export const cancelBooking = ({ id }: any): HospitalActions => {
+  return {
+    type: HosptailTypes.CancelBooking.CancelBooking_REQUEST,
+    id: id
+  }
+}
+
+export const cancelBookingSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.CancelBooking.CancelBooking_REQUEST_SUCCESS,
+    CancelBooking: data
+  }
+}

@@ -35,7 +35,7 @@ const DetailBookingPage = () => {
         appId={total.appId}
         partner={user.billInfo?.bookingInfo?.partner}
       />
-      <BookingBill bill={user.billInfo} />
+      <BookingBill bill={user.billInfo} cancelBooking={ac.cancelBooking} />
     </>
   )
 }

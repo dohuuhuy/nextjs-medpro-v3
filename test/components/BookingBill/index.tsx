@@ -1,23 +1,33 @@
 import { CloseOutlined } from '@ant-design/icons'
-import Container from './../Container'
 import { Button, Col, Row, Spin } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import moment from 'moment'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Container from './../Container'
 import { CardDownload } from './common/CardDownload'
 import { CustomLine } from './common/CustomLine'
 import { ModalCancel } from './common/ModalCancel'
 import { statusBill, typeCode } from './common/typeCode'
 import styles from './styles.module.less'
-import { check, getSetting, listItemBooking } from './utils/func'
 import { TITLE, VALUE } from './utils/contanst'
+import { check, getSetting, listItemBooking } from './utils/func'
 
-export const BookingBill = ({ bill }: any) => {
+export interface BookingBillIF {
+  bill: any
+  cancelBooking: any
+}
+
+export const BookingBill = (props: BookingBillIF) => {
+  const dispatch = useDispatch()
+  const { bill } = props
+
   let bookingTimeBig
 
   const [showModal, setShowModal] = useState(false)
-  const handleModal = () => {
+
+  const handleToggleModal = () => {
     setShowModal(!showModal)
   }
 
@@ -25,6 +35,7 @@ export const BookingBill = ({ bill }: any) => {
 
   const { bookingInfo: info } = bill
   const {
+    id,
     partner: hos,
     status,
     canRepayment,
@@ -39,6 +50,11 @@ export const BookingBill = ({ bill }: any) => {
     bookingTimeBig = moment(date).format('HH:mm')
   } else {
     bookingTimeBig = ''
+  }
+
+  const onOkeCancelBill = () => {
+    dispatch(props.cancelBooking({ id: id }))
+    handleToggleModal()
   }
 
   return (
@@ -176,13 +192,18 @@ export const BookingBill = ({ bill }: any) => {
             </section>
             {status === 1 && (
               <div className={styles.cancelBill}>
-                <Button className={styles.btnCancel} onClick={handleModal}>
+                <Button
+                  className={styles.btnCancel}
+                  onClick={handleToggleModal}
+                >
                   <CloseOutlined />
                   Hủy phiếu
                 </Button>
+
                 <ModalCancel
                   showModal={showModal}
-                  setShowModal={setShowModal}
+                  onOke={onOkeCancelBill}
+                  onCancel={handleToggleModal}
                 />
               </div>
             )}

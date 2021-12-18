@@ -1,32 +1,44 @@
+import { Button, Input, Modal, Radio, Space } from 'antd'
 import React, { useState } from 'react'
 import styles from './styles.module.less'
-import { Modal, Button, Radio, Space, Input } from 'antd'
+import cx from 'classnames'
 
 const { Group } = Radio
-export const ModalCancel = ({ showModal, setShowModal }: any) => {
+
+export interface ModalCancelIF {
+  showModal: any
+  onOke: any
+  onCancel: any
+}
+
+export const ModalCancel = (props: ModalCancelIF) => {
   const [radio, setRadio] = useState({
-    checkRadio: null
+    checkRadio: 1
   })
 
-  const toggle = (key: any) => {
+  const onChangeGroup = (e: any) => {
     setRadio((prevState) => ({
       ...prevState,
-      checkRadio: key.target.value
+      checkRadio: e.target.value
     }))
+  }
+
+  const checkActiveRadio = (key: number) => {
+    return radio.checkRadio === key ? styles.radio_select : styles.radio
   }
 
   return (
     <Modal
       title=''
-      visible={showModal}
-      onOk={() => setShowModal(!showModal)}
-      onCancel={() => setShowModal(!showModal)}
+      visible={props.showModal}
+      onOk={props.onOke}
+      onCancel={props.onCancel}
       bodyStyle={{ padding: 0 }}
       footer={false}
       centered={true}
       className={styles.Modal}
     >
-      <Group className={styles.group} onChange={toggle}>
+      <Group defaultValue={1} className={styles.group} onChange={onChangeGroup}>
         <p className={styles.Header}>
           <span className={styles.title}>Thông báo</span>
           <span className={styles.subtitle}>
@@ -35,36 +47,16 @@ export const ModalCancel = ({ showModal, setShowModal }: any) => {
         </p>
         <Space direction='vertical' className={styles.Content}>
           <p>Vui lòng chọn lý do bên dưới hủy phiếu của bạn:</p>
-          <Radio
-            value={1}
-            className={
-              radio.checkRadio === 1 ? styles.radio_select : styles.radio
-            }
-          >
+          <Radio value={1} className={cx(checkActiveRadio(1))}>
             Tôi có việc bận đột xuất
           </Radio>
-          <Radio
-            value={2}
-            className={
-              radio.checkRadio === 2 ? styles.radio_select : styles.radio
-            }
-          >
+          <Radio value={2} className={cx(checkActiveRadio(2))}>
             Bác sĩ thay đổi lịch khám
           </Radio>
-          <Radio
-            value={3}
-            className={
-              radio.checkRadio === 3 ? styles.radio_select : styles.radio
-            }
-          >
+          <Radio value={3} className={cx(checkActiveRadio(3))}>
             Bệnh viện tạm ngưng khám chữa bệnh
           </Radio>
-          <Radio
-            value={4}
-            className={
-              radio.checkRadio === 4 ? styles.radio_select : styles.radio
-            }
-          >
+          <Radio value={4} className={cx(checkActiveRadio(4))}>
             <Space>
               Lý do khác:
               <Input placeholder='Nhập lý do của bạn' />
@@ -73,16 +65,10 @@ export const ModalCancel = ({ showModal, setShowModal }: any) => {
         </Space>
         <div className={styles.Footer}>
           <Space>
-            <Button
-              className={styles.btn_cancel}
-              onClick={() => setShowModal(!showModal)}
-            >
+            <Button className={styles.btn_cancel} onClick={props.onCancel}>
               Hủy bỏ
             </Button>
-            <Button
-              className={styles.btn_confirm}
-              onClick={() => setShowModal(!showModal)}
-            >
+            <Button className={styles.btn_confirm} onClick={props.onOke}>
               Xác nhận
             </Button>
           </Space>

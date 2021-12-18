@@ -1,3 +1,4 @@
+import { TotalDataState } from './../totalData/interface/initialState'
 import { client } from '@config/medproSDK'
 import { huyi } from '@src/utils/clog'
 import * as ac from '@store/actionStore'
@@ -213,7 +214,7 @@ function* watcher_getAllPayment() {
 
 function* reserveBooking() {
   try {
-    // yield put(ac.s/etLoading())
+    yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
 
@@ -294,7 +295,7 @@ function* reserveBooking() {
       }
     }
 
-    // yield put(ac.setLoading(false))
+    yield put(ac.setLoading(false))
   } catch (error) {
     yield put(ac.setLoading(false))
     huyi({ name: 'reserveBooking', child: error, type: 'error' })
@@ -305,6 +306,32 @@ function* watcher_reserveBooking() {
   yield takeLatest(
     HosptailTypes.ReserveBooking.ReserveBooking_REQUEST,
     reserveBooking
+  )
+}
+
+function* cancelBooking({ id }: any) {
+  try {
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+    const user: UserState = yield select((state: AppState) => state.user)
+
+    const response: AxiosResponse = yield client.cancelBooking(
+      { id },
+      {
+        partnerid: total.partnerId,
+        token: user.userInfo.token
+      }
+    )
+
+    yield put(ac.cancelBookingSuccess(response))
+  } catch (error) {
+    huyi({ name: 'cancelBooking', child: error, type: 'error' })
+  }
+}
+
+function* watcher_cancelBooking() {
+  yield takeLatest(
+    HosptailTypes.CancelBooking.CancelBooking_REQUEST,
+    cancelBooking
   )
 }
 
@@ -319,7 +346,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getFooter),
     fork(watcher_getbookingCurNode),
     fork(watcher_getAllPayment),
-    fork(watcher_reserveBooking)
+    fork(watcher_reserveBooking),
+    fork(watcher_cancelBooking)
   ])
 }
 export default hospitalSagas
