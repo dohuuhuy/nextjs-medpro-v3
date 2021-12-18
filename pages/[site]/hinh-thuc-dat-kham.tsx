@@ -55,7 +55,7 @@ const HinhThucDatKham = ({ data }: any) => {
       {check(data.listHospital) ? (
         <Loading component={true} />
       ) : (
-        <BookingType getInfo={getInfo} />
+        <BookingType getInfo={getInfo} selectedFeature={ac.selectedFeature} />
       )}
     </>
   )

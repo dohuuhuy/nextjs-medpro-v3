@@ -10,6 +10,7 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
+import { ReserveBooking } from 'medpro-sdk/lib/types'
 import moment from 'moment'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
@@ -186,10 +187,9 @@ function* getAllPayment() {
         patientId: user.selectedPatient.id,
         price: Number(hos.schedule?.service?.selected.price),
         groupId: 1,
-        treeId: 'DATE',
+        treeId: hos.treeId,
         serviceId: hos.schedule?.service?.selected.id,
         subjectId: hos.schedule?.subject?.selected.id,
-        roomId: '',
         doctorId: hos.schedule?.doctor?.selected.id,
         bookingDate: moment(
           hos.schedule.time?.selected?.chonNgay.date
@@ -213,6 +213,43 @@ function* watcher_getAllPayment() {
   yield takeLatest(HosptailTypes.Payment.PAYMENT_REQUEST, getAllPayment)
 }
 
+function* reserveBooking() {
+  try {
+    yield put(ac.setLoading())
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+    const user: UserState = yield select((state: AppState) => state.user)
+    /*     const total: TotalDataState = yield select((state: AppState) => state.total)
+     */
+    const response: AxiosResponse = yield client.reserveBooking(
+      {
+        patientId: user.selectedPatient.id,
+        groupId: 1,
+        treeId: hos.treeId,
+        serviceId: hos.schedule?.service?.selected.id,
+        subjectId: hos.schedule?.subject?.selected.id,
+        doctorId: hos.schedule?.doctor?.selected.id,
+        platform: 'pc'
+      } as ReserveBooking,
+      {
+        partnerid: hos.partnerId,
+        token: user.userInfo.token
+      }
+    )
+
+    console.log('response reserveBooking :>> ', response)
+
+    // yield put(ac.reserveBookingSuccess(response.data))
+    yield put(ac.setLoading(false))
+  } catch (error) {
+    yield put(ac.setLoading(false))
+    huyi({ name: 'reserveBooking', child: error, type: 'error' })
+  }
+}
+
+function* watcher_reserveBooking() {
+  yield takeLatest(HosptailTypes.Payment.PAYMENT_REQUEST, reserveBooking)
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(watcher_getHospitalDetails),
@@ -223,7 +260,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getBanners),
     fork(watcher_getFooter),
     fork(watcher_getbookingCurNode),
-    fork(watcher_getAllPayment)
+    fork(watcher_getAllPayment),
+    fork(watcher_reserveBooking)
   ])
 }
 export default hospitalSagas

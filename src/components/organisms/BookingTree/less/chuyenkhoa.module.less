@@ -5,13 +5,14 @@
     .inputCustom();
     width: unset;
     margin-right: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
   }
 
   .listChuyenKhoa {
     .ListCustom();
     max-height: 700px;
     overflow: scroll;
+    padding: 15px 0;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -27,14 +28,21 @@
       align-items: stretch;
 
       .active {
-        color: #1890ff;
-        box-shadow: 0px 0px 9px 1px #40a9ff;
+        color: #00b5f1;
+        // box-shadow: 0px 0px 9px 1px #40a9ff;
+        border-color: #00b5f1 !important;
+        box-shadow: 0px 2px 10px 8px #f7f7f7;
+        transform: translateY(-0.2rem);
       }
 
       .card {
+        transition: all 0.5s ease-in-out;
+
         &:hover {
-          color: #1890ff;
-          box-shadow: 0px 0px 9px 1px #40a9ff;
+          cursor: pointer;
+          box-shadow: 0px 2px 10px 8px #f7f7f7;
+          transform: translateY(-0.2rem);
+          color: #00b5f1;
         }
 
         margin: 5px;

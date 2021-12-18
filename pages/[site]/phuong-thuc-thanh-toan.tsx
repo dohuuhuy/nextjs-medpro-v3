@@ -32,7 +32,6 @@ const PaymentMethodsPage = () => {
       ) : (
         <PaymentMethods
           hospital={hospital}
-          dispatch={dispatch}
           onSelectedPaymentFee={ac.selectedPaymentFee}
         />
       )}

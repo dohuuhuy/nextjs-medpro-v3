@@ -130,6 +130,13 @@
         color: #ffffff !important;
         cursor: pointer;
         font-weight: 500;
+        transition: all 0.5s ease-in-out;
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          box-shadow: 0px 2px 10px 8px #f7f7f7;
+          transform: translateY(-0.2rem);
+        }
       }
     }
     .activeDay {
@@ -154,10 +161,19 @@
           padding: 10px;
           color: #00b5f1;
           font-size: 0.725rem;
+          transition: all 0.5s ease-in-out;
+          &:hover,
+          &:focus {
+            background-color: #1da1f2;
+            color: #ffffff !important;
+            cursor: pointer;
+            box-shadow: 0px 2px 10px 8px #f7f7f7;
+            transform: translateY(-0.2rem);
+          }
         }
         .activeGio {
           color: white;
-          background-color: #fa531f;
+          background-color: #ffb340;
         }
       }
     }

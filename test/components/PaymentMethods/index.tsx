@@ -1,14 +1,14 @@
+import { Icon } from '@componentsTest/Icon'
+import Loading from '@componentsTest/Loading'
 import { Col, Collapse, Row } from 'antd'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
-import { PaymentMedthodIF } from './common/interface'
-import { PartnerPayment } from './common/listPartnerPayment'
 import Banner from './common/images/BgPayment.svg'
+import { PaymentMedthodIF } from './common/interface'
+import { CardPaymentFee } from './common/listPartnerPayment'
 import styles from './styles.module.less'
-import { Icon } from '@componentsTest/Icon'
-// import cx from 'classnames'
 
 export const PaymentMethods = (props: PaymentMedthodIF) => {
   const [_idKey, setIDKey] = useState({
@@ -62,17 +62,26 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
             onChange={onChange}
             bordered={false}
           >
-            {listPayment.map((item, i) => {
-              return (
-                <Collapse.Panel
-                  className={styles.panel}
-                  header={Header(item)}
-                  key={i}
-                >
-                  <PartnerPayment list={item.paymentTypes} {...props} />
-                </Collapse.Panel>
-              )
-            })}
+            {listPayment.length < 1 ? (
+              <Loading
+                component
+                typing={false}
+                minHeight='600px'
+                text='Đang tải phướng thúc thanh toán ! ...'
+              />
+            ) : (
+              listPayment?.map((item, i) => {
+                return (
+                  <Collapse.Panel
+                    className={styles.panel}
+                    header={Header(item)}
+                    key={i}
+                  >
+                    <CardPaymentFee list={item.paymentTypes} {...props} />
+                  </Collapse.Panel>
+                )
+              })
+            )}
           </Collapse>
         </Col>
 

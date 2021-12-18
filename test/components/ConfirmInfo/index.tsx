@@ -7,6 +7,7 @@ import { get } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Slider, { Settings } from 'react-slick'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
@@ -16,6 +17,7 @@ import { getSetting, Info, Profile, TITLE, VALUE } from './common/utils'
 import styles from './styles.module.less'
 
 export const ConfirmInfo = (props: ConfirmInfoIF) => {
+  const dispatch = useDispatch()
   const router = useRouter()
 
   const {
@@ -30,7 +32,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   })
 
   useEffect(() => {
-    props.dispatch(props.selectedPatient(state.itemSelected))
+    dispatch(props.selectedPatient(state.itemSelected))
   }, [state.itemSelected])
 
   const selectItem = (item: any) => () => {

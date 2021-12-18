@@ -1,22 +1,28 @@
-import Container from './../Container'
 import { Col, Rate, Row } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import Slider from 'react-slick'
 import { Icon } from '../Icon'
+import Container from './../Container'
 import { BookingTypeIF } from './common/interface'
 import { carousel, listTabs, settings } from './common/utils'
 import styles from './styles.module.less'
 
 export const BookingType = (props: BookingTypeIF) => {
-  const info = props?.getInfo || null
+  const dispatch = useDispatch()
+  const info = props?.getInfo
   const [act, setact] = React.useState(1)
 
   const checkTab = (e: any) => {
     return Number(e) === Number(act) ? '' : styles.dnone
+  }
+
+  const onclickFeature = (item: any) => () => {
+    dispatch(props.selectedFeature(item))
   }
 
   return (
@@ -57,7 +63,7 @@ export const BookingType = (props: BookingTypeIF) => {
         </Col>
         <Col className={styles.colTab} span='24'>
           <ul className={styles.listTab}>
-            {listTabs.map((v, i: number) => {
+            {listTabs.map((item, i) => {
               const onTab = (id: any) => () => {
                 setact(Number(id))
               }
@@ -65,7 +71,7 @@ export const BookingType = (props: BookingTypeIF) => {
 
               return (
                 <li key={i} className={active} onClick={onTab(i)}>
-                  {v.title}
+                  {item?.title}
                 </li>
               )
             })}
@@ -81,37 +87,38 @@ export const BookingType = (props: BookingTypeIF) => {
 
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
-              {info.features.map((v) => {
-                const direct = v?.webRoute
-                  ? `/${info.partnerId}${v?.webRoute}`
-                  : '#'
+              {info.features
+                .sort((a, b) => a.priority - b.priority)
+                .map((item) => {
+                  const direct = item?.webRoute
+                    ? `/${info.partnerId}${item?.webRoute}`
+                    : '#'
 
-                const iconError = require('./common/images/iconDatKham.svg')
+                  const iconError = require('./common/images/iconDatKham.svg')
 
-                const size = 80
-                const propsImg = {
-                  src: v?.image || iconError,
-                  width: size,
-                  height: size,
-                  onError: (e: any) => (e.target.src = iconError)
-                }
+                  const size = 80
+                  const propsImg = {
+                    src: item?.image || iconError,
+                    width: size,
+                    height: size,
+                    onError: (e: any) => (e.target.src = iconError)
+                  }
 
-                return (
-                  <li key={uniqueId()}>
-                    <Link href={direct}>
-                      <a>
-                        <div className={styles.card}>
-                          <figure>
-                            {/* <Image src={icon} width='80' height='80' alt='' /> */}
-                            <img {...propsImg} alt='' />
-                          </figure>
-                          <span>{v?.name}</span>
-                        </div>
-                      </a>
-                    </Link>
-                  </li>
-                )
-              })}
+                  return (
+                    <li key={uniqueId()} onClick={onclickFeature(item)}>
+                      <Link href={direct}>
+                        <a>
+                          <div className={styles.card}>
+                            <figure>
+                              <img {...propsImg} alt='' />
+                            </figure>
+                            <span>{item?.name}</span>
+                          </div>
+                        </a>
+                      </Link>
+                    </li>
+                  )
+                })}
             </ul>
           </div>
 

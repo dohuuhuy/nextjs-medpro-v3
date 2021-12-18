@@ -6,9 +6,12 @@ export interface HospitalState {
   bookingCurrent: any
   listFeatureByApp: ItemFeature[]
   listFeatureByPartner: ItemFeature[]
+  selectedFeature: InfoPartner | any
+  flow: string
+  treeId: string
   schedule: any
   listPayment: any[]
-  selectedPaymentFee: {}
+  selectedPaymentFee: any
   paymentFee: {
     totalFee: number
     subTotal: number
@@ -38,4 +41,31 @@ export interface ItemFeature {
   priority: number
   status: boolean
   mobileStatus: boolean
+}
+
+export interface InfoPartner {
+  partnerId: string
+  image: string
+  bannerImage: string
+  name: string
+  address: string
+  domain: string
+  features: ItemFeature[]
+}
+
+export interface ItemFeature {
+  children: []
+  createdAt: string
+  disabled: false
+  id: string
+  image: string
+  message: string
+  mobileStatus: boolean
+  name: string
+  priority: number
+  status: boolean
+  type: string
+  updatedAt: string
+  webStatus: false
+  webRoute: string
 }

@@ -5,7 +5,6 @@ export interface Data {
 }
 
 export interface PaymentMedthodIF {
-  dispatch: any
   onSelectedPaymentFee?: any
   hospital: {
     paymentFee: any

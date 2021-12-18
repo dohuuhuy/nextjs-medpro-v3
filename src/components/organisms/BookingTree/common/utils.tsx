@@ -17,7 +17,7 @@ export const steps = [
         fill={
           props
             ? checkActive(props.item, props.props)
-              ? '#1890ff'
+              ? '#00b5f1'
               : '#000000d9'
             : null
         }
@@ -40,7 +40,7 @@ export const steps = [
         fill={
           props
             ? checkActive(props.item, props.props)
-              ? '#1890ff'
+              ? '#00b5f1'
               : '#000000d9'
             : null
         }
@@ -63,7 +63,7 @@ export const steps = [
         fill={
           props
             ? checkActive(props.item, props.props)
-              ? '#1890ff'
+              ? '#00b5f1'
               : '#000000d9'
             : null
         }
@@ -89,7 +89,7 @@ export const steps = [
         fill={
           props
             ? checkActive(props.item, props.props)
-              ? '#1890ff'
+              ? '#00b5f1'
               : '#000000d9'
             : null
         }
@@ -155,9 +155,10 @@ export const clickItem = ({ item, props }: ClickItem) => {
 
   // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data
   const schedules = state.stepper.reduce(
-    (obj: any, item) =>
-      ({...obj, 
-        [item.key as string]: { selected: item.selected, data: item.data }}),
+    (obj: any, item) => ({
+      ...obj,
+      [item.key as string]: { selected: item.selected, data: item.data }
+    }),
     {}
   )
 

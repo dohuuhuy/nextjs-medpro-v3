@@ -25,7 +25,7 @@ export const ThoiGian = (props: Props) => {
   useEffect(() => {
     dispatch(getbookingCur(state.schedules))
   }, [state])
-  ;(last(state.stepper) as any).data = hospital.bookingCurrent.days
+  ;(last(state.stepper) as any).data = hospital.bookingCurrent?.days
 
   //  ----------------------------INFO DATA --------------------------------------------------------
 
@@ -95,9 +95,10 @@ export const ThoiGian = (props: Props) => {
     ;(last(state.stepper) as any).selected[name] = item
 
     const schedules = state.stepper.reduce(
-      (obj: any, item) =>
-        ({...obj, 
-          [item.key as string]: { selected: item.selected, data: item.data }}),
+      (obj: any, item) => ({
+        ...obj,
+        [item.key as string]: { selected: item.selected, data: item.data }
+      }),
       {}
     )
     setstate((v: any) => ({ ...v }))

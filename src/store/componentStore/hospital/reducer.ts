@@ -18,6 +18,9 @@ const init: HospitalState = {
   // --> feature -->
   listFeatureByApp: [],
   listFeatureByPartner: [],
+  selectedFeature: {},
+  flow: '',
+  treeId: '',
 
   // --> schedule -->
   schedule: {},
@@ -89,6 +92,32 @@ export default function hospital(
         listFeatureByApp: action.listFeatureByApp
       }
 
+    case HosptailTypes.Feature.SELECTED_FEATURE:
+      const infoPartner = action.selectedFeature
+
+      const flow = infoPartner.type
+      const treeId = flow.split('.')[1].toUpperCase()
+
+      const reset = {
+        passSchedules: false,
+        listPayment: [],
+        paymentFee: {
+          ...init.paymentFee
+        },
+        selectedPaymentFee: {},
+        bookingCurrent: {},
+        bookingTree: {},
+        schedule: {}
+      }
+
+      return {
+        ...state,
+        selectedFeature: action.selectedFeature,
+        flow: flow,
+        treeId: treeId,
+        ...reset //--> reset lai data khi chọn feature khác
+      }
+
     case HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS:
       return {
         ...state,
@@ -135,7 +164,8 @@ export default function hospital(
       return {
         ...state,
         selectedPaymentFee: {},
-        paymentFee: { ...init.paymentFee }
+        paymentFee: { ...init.paymentFee },
+        listPayment: []
       }
 
     default:

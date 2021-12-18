@@ -26,7 +26,7 @@ const ConfirmInfoPage = () => {
     }
     dispatch(ac.listPatientRequest())
     check(hospital.listHospital) && dispatch(ac.getListHospital())
-  }, [])
+  }, [router.asPath])
 
   return (
     <>
@@ -40,7 +40,6 @@ const ConfirmInfoPage = () => {
         <Loading component={true} />
       ) : (
         <ConfirmInfo
-          dispatch={dispatch}
           selectedPatient={ac.selectedPatient}
           listPatient={user.listPatient}
           schedule={hospital.schedule}

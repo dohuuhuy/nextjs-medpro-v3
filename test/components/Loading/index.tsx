@@ -11,6 +11,7 @@ export interface Loading {
   size?: 14 | 25 | 40 | 60 | undefined
   minHeight?: string
   children?: ChildNode | JSX.Element | undefined | null
+  typing?: boolean
 }
 
 const Loading = (props: Loading) => {
@@ -20,7 +21,8 @@ const Loading = (props: Loading) => {
     top,
     size = 60,
     minHeight = '100vh',
-    children
+    children,
+    typing = true
   } = props
 
   const antIcon = <LoadingOutlined style={{ fontSize: size }} spin={true} />
@@ -36,7 +38,7 @@ const Loading = (props: Loading) => {
       <Spin indicator={antIcon} />
       {text && (
         <div className={styles.content}>
-          <p className={styles.typing}>{text}</p>
+          <p className={typing ? styles.typing : ''}>{text}</p>
         </div>
       )}
       {children}

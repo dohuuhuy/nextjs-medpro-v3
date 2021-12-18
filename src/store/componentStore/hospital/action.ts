@@ -178,3 +178,10 @@ export const selectedPaymentFee = (paymentFee: any): HospitalActions => {
     paymentFee
   }
 }
+
+export const selectedFeature = (item: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Feature.SELECTED_FEATURE,
+    selectedFeature: item
+  }
+}

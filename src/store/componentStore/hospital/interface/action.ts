@@ -1,4 +1,4 @@
-import { HosptailTypes } from '@src/store/interface'
+import { HosptailTypes, ItemFeature } from '@src/store/interface'
 
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
@@ -57,6 +57,12 @@ export type FeatureAction =
   | FeatureRequest
   | FeatureByPartnertSuccess
   | FeatureByAppSuccess
+  | selectedFeature
+
+export interface selectedFeature {
+  type: HosptailTypes.Feature.SELECTED_FEATURE
+  selectedFeature: ItemFeature
+}
 
 export interface FeatureRequest {
   type: HosptailTypes.Feature.FEATURE_REQUEST
