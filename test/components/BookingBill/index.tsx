@@ -93,6 +93,15 @@ export const BookingBill = (props: BookingBillIF) => {
                 </div>
               )}
 
+              <div className={styles.totalMessage}>
+                <p className={styles.totalPaymentMessage}>
+                  {info.totalPaymentMessage}
+                </p>
+                <p className={styles.totalMessageExtra}>
+                  {info.totalMessageExtra}
+                </p>
+              </div>
+
               <CustomLine />
 
               {/* Sô thứ tự, thời gian dự kiến hoặc đợi */}

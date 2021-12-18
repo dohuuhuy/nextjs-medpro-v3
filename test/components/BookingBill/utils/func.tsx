@@ -47,7 +47,7 @@ export const listItemBooking = (info: any) => {
         },
         value: {
           color: '',
-          bold: true,
+          bold: 0,
           underline: false
         }
       }
@@ -55,7 +55,7 @@ export const listItemBooking = (info: any) => {
     {
       color: '',
       disable: check(info?.room?.name),
-      title: 'Khu vực - Phòng khám :',
+      title: 'Khu vực/Phòng khám :',
       value: info?.room?.name,
       setting: {
         title: {
@@ -65,7 +65,7 @@ export const listItemBooking = (info: any) => {
         },
         value: {
           color: '',
-          bold: true,
+          bold: 0,
           underline: false
         }
       }

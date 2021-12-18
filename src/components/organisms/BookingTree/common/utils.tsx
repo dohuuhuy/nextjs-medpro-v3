@@ -304,3 +304,7 @@ export const onChangeCollapse = (
     }))
   }
 }
+
+export const money = (text = 0) => {
+  return text.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })
+}

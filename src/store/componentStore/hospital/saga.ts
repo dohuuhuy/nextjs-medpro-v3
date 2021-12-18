@@ -284,7 +284,7 @@ function* reserveBooking() {
     } else if (data.isGateway === 0) {
       // trả về phiếu khám
       if (postData.methodId === 'SHARE_PAYMENT') {
-        router.push(`/chi-tiet-phieu-kham/${data.transactionId}`)
+        router.push(`/chi-tiet-phieu-kham?mpTransaction=${data.transactionId}`)
       } else {
         router.push(`/chi-tiet-phieu-kham?mpTransaction=${data.transactionId}`)
         // yield put({

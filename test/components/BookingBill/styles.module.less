@@ -12,7 +12,7 @@
         flex-direction: column;
         justify-content: center;
 
-        padding: 15px;
+        padding: 15px 0;
         margin-bottom: 1rem;
 
         .titleBill {
@@ -24,7 +24,7 @@
           min-width: 360px;
           box-shadow: inset 0px 0px 0px 2px #f0f0f0;
           overflow: hidden;
-          max-width: 360px;
+          max-width: 395px;
 
           border-radius: 10px;
 
@@ -43,12 +43,12 @@
             figure {
               img {
                 object-fit: contain;
-                max-width: 250px;
+                max-width: 70%;
               }
               margin-bottom: 25px;
             }
             .nameHos {
-              font-size: 15px;
+              font-size: 0.938rem;
               font-weight: 500;
               margin-bottom: 5px;
             }
@@ -84,6 +84,19 @@
             &.statusDisable {
               border-color: #c6cace;
               background-color: #c6cace;
+            }
+          }
+
+          .totalMessage {
+            margin-top: 1rem;
+            text-align: center;
+            .totalPaymentMessage {
+              color: orangered;
+              font-weight: 600;
+            }
+            .totalMessageExtra {
+              color: orangered;
+              font-size: 0.75rem;
             }
           }
 
@@ -157,7 +170,18 @@
               .itemBooking {
                 display: flex;
                 justify-content: space-between;
-                font-size: 13px;
+                font-size: 0.813rem;
+                word-spacing: -0.5px;
+                width: 100%;
+
+                .value {
+                  text-align: right;
+                  min-width: 60%;
+                }
+                .title {
+                  text-align: left;
+                  min-width: 40%;
+                }
               }
             }
           }
@@ -176,7 +200,7 @@
               justify-content: center;
 
               p {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-style: italic;
                 margin-right: 5px;
                 margin-bottom: 0;

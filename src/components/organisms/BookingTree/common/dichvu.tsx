@@ -4,7 +4,7 @@ import { find, findIndex } from 'lodash'
 import React, { useEffect } from 'react'
 import styles from './../less/dichvu.module.less'
 import { Item, Props, StateDichVu } from './interface'
-import { checkActive, clickItem } from './utils'
+import { checkActive, clickItem, money } from './utils'
 
 export const DichVu = (props: Props) => {
   const { state, keys, setstate } = props
@@ -68,7 +68,7 @@ export const DichVu = (props: Props) => {
                 onClick={checkBHYT(item)}
               >
                 <span>{item.detail.name}</span>
-                <span>{item.detail.price} VND</span>
+                <span>{money(item.detail.price)}</span>
               </button>
             </li>
           )

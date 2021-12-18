@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 
-const size = 'font-size: 13px'
+const size = 'font-size: 0.813rem;'
 
 interface Log {
   name: string

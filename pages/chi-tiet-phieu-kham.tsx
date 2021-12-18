@@ -20,7 +20,7 @@ const DetailBookingPage = () => {
     const { transactionId, mpTransaction } = router.query
     transactionId && dispatch(ac.getBillInfo(transactionId))
     mpTransaction && dispatch(ac.getPaymentInfo(mpTransaction))
-  }, [router.query.transactionId])
+  }, [router.query])
 
   if (total.loading) {
     return (
