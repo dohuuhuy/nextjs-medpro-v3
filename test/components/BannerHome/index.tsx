@@ -1,13 +1,70 @@
 import { Col, Row } from 'antd'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { Banner } from '../BannersCustom/interface'
 import Container from '../Container'
 import styles from './styles.module.less'
 
-export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
+export interface BannerHomeIF {
+  getBanner: any
+  listFeature: ListFeature[]
+  partnerId: string
+}
+
+interface ListFeature {
+  type: string
+  _id: string
+  parentId: string
+  name: string
+  image: string
+  priority: number
+  status: boolean
+  mobileStatus: boolean
+}
+
+export const BannerHome = ({
+  getBanner,
+  listFeature,
+  partnerId
+}: BannerHomeIF) => {
   const router = useRouter()
+
+  const [state, setstate] = React.useState({
+    list: listFeature,
+    activeTab: 1
+  })
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      let missItem = 0
+      const width = window.innerWidth
+      const numColumn = width > 425 ? 4 : 3
+      const lengthItem = listFeature.length
+      if ((lengthItem + 1) % numColumn === 0) {
+        missItem = 1
+      }
+      if ((lengthItem + 2) % numColumn === 0) {
+        missItem = 2
+      }
+      if ((lengthItem + 3) % numColumn === 0) {
+        missItem = 3
+      }
+
+      const missItemArr: any = [...Array(missItem).keys()]
+
+      const list = listFeature
+        .sort((a, b) => a.priority - b.priority)
+        .concat(missItemArr)
+
+      setstate((prev) => ({ ...prev, list: list }))
+    }
+
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   if (!getBanner) {
     return null
@@ -20,7 +77,7 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
   }
 
   return (
-    <div className={styles.BannerHome}>
+    <section className={styles.BannerHome}>
       <div
         className={styles.backgroundImage}
         style={{
@@ -28,18 +85,13 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
         }}
       />
       <Container className={styles.contentBannerHome}>
-        <Row className={styles.boxService}>
-          <Col span={24} className={styles.ColTitle}>
-            <h1>CHỌN DỊCH VỤ</h1>
+        <Row className={styles.rowboxService}>
+          <Col span={24} className={styles.colTitle}>
+            <h1 className={styles.title}>CHỌN DỊCH VỤ</h1>
           </Col>
-          <Col span={24} className={styles.ColBoxServic}>
-            <motion.ul
-              className={styles.listBoxService}
-              variants={mUl}
-              initial='hidden'
-              animate='visible'
-            >
-              {listFeature?.map((item, i: any) => {
+          <Col span={24} className={styles.colBoxService}>
+            <ul className={styles.listBoxService}>
+              {state.list?.map((item, i) => {
                 const imgError = require('./images/error.svg')
 
                 const size = 45
@@ -50,26 +102,31 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
                   onError: (e: any) => (e.target.src = imgError)
                 }
 
+                const checkItem =
+                  Object.keys(item).length < 1 ? styles.nonHover : ''
+
                 return (
-                  <motion.li
+                  <li
                     key={i}
-                    {...methodLi}
                     onClick={SelectFeature(item?.type)}
+                    className={checkItem}
                   >
                     <div className={styles.card}>
-                      <figure>
-                        <img {...propsImg} alt='' />
-                      </figure>
+                      {item.image && (
+                        <figure>
+                          <img {...propsImg} alt='' />
+                        </figure>
+                      )}
                       <p className={styles.name}>{item?.name}</p>
                     </div>
-                  </motion.li>
+                  </li>
                 )
               })}
-            </motion.ul>
+            </ul>
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   )
 }
 
@@ -101,7 +158,7 @@ export const mLi = {
   }
 }
 
-const methodLi = {
+export const methodLi = {
   variants: mLi,
   whileHover: {
     scale: 1.03,
