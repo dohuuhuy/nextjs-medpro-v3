@@ -1,21 +1,20 @@
 import { Radio } from 'antd'
 import cx from 'classnames'
+import { find, findIndex } from 'lodash'
 import React, { useEffect } from 'react'
 import styles from './../less/dichvu.module.less'
 import { Item, Props, StateDichVu } from './interface'
 import { checkActive, clickItem } from './utils'
 
 export const DichVu = (props: Props) => {
-  // console.log('props DichVu :>> ', props)
+  const { state, keys, setstate } = props
 
-  const init = {
+  const [stateDichVu, setstateDichVu] = React.useState<StateDichVu>({
     list: props.data,
     checkBHYT: false,
     selectedItem: null,
-    selectedBHYT: null
-  }
-
-  const [stateDichVu, setstateDichVu] = React.useState<StateDichVu>(init)
+    selectedBHYT: 0
+  })
 
   useEffect(() => {
     setstateDichVu({
@@ -25,6 +24,14 @@ export const DichVu = (props: Props) => {
   }, [props.data])
 
   const checkBHYT = (item: Item) => () => {
+    const findItem = find(state.stepper, { key: keys })
+
+    if (Object.keys(findItem?.selected).length > 1) {
+      const indexItem = findIndex(state.stepper, { key: keys })
+      state.stepper[indexItem].selected = {}
+      setstate((prev: any) => ({ ...prev }))
+    }
+
     setstateDichVu((v) => ({
       ...v,
       checkBHYT: item.detail.serviceType === 'INSURANCE_ONLY',
@@ -78,7 +85,7 @@ export const DichVu = (props: Props) => {
             className={styles.groupRadio}
           >
             <Radio value={1}>Có</Radio>
-            <Radio value={2}>Không</Radio>
+            <Radio value={0}>Không</Radio>
           </Radio.Group>
         </div>
       )}

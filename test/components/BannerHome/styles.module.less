@@ -21,8 +21,10 @@
       margin-top: -100px;
       padding: 0 15px;
       color: #12263f;
-      background-color: hsla(0, 0%, 100%, 0.9);
-      box-shadow: 0 8px 8px 0 #6797ff1c, 0 12px 18px 0 #6797ff1c;
+      // background-color: hsla(0, 0%, 100%, 0.9);
+      // box-shadow: 0 8px 8px 0 #6797ff1c, 0 12px 18px 0 #6797ff1c;
+      background-color: #f8fafd;
+      box-shadow: 0 8px 15px rgb(63 81 181 / 12%);
       border-radius: 10px;
       .ColTitle {
         h1 {
@@ -37,18 +39,32 @@
         list-style-type: none;
         display: grid;
         grid-auto-rows: auto;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         @media only screen and (max-width: 769px) {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
         }
         @media only screen and (max-width: 426px) {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
         width: 100%;
         margin: 0;
-        padding: 0;
+        padding: 15px 0;
         float: left;
         li {
+          @media only screen and (max-width: 426px) {
+            padding: 15px 0;
+            // border: 1px solid black;
+            .card {
+              .name {
+                // display: none;
+                font-size: 10px !important;
+              }
+              figure {
+                margin-bottom: 5px;
+              }
+            }
+            // box-shadow: none;
+          }
           &:hover {
             color: cornflowerblue;
             box-shadow: 0 5px 35px #3699ff33;
@@ -74,7 +90,7 @@
                 max-height: 45px;
               }
             }
-            p {
+            .name {
               font-weight: 500;
               padding: 0px 20px;
             }

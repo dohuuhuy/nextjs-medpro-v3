@@ -30,6 +30,8 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     }
   })
 
+  console.log('state :>> ', state)
+
   const handleGetDataLocal = () => {
     const data = window.localStorage.getItem('selected')
 

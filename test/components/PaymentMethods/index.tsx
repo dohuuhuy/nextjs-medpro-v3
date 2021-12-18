@@ -3,6 +3,7 @@ import Loading from '@componentsTest/Loading'
 import { Col, Collapse, Row } from 'antd'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { CardFee } from '../CardFee'
 import Container from '../Container'
 import Banner from './common/images/BgPayment.svg'
@@ -11,14 +12,27 @@ import { CardPaymentFee } from './common/listPartnerPayment'
 import styles from './styles.module.less'
 
 export const PaymentMethods = (props: PaymentMedthodIF) => {
-  const [_idKey, setIDKey] = useState({
-    collapseID: ' '
+  const { listPayment } = props.hospital
+  const dispatch = useDispatch()
+
+  console.log('listPayment :>> ', listPayment)
+
+  const [state, setstate] = useState({
+    currentCollapse: {
+      key: 0
+    }
   })
+
   const onChange = (key: any) => {
-    setIDKey((prevState) => ({
-      ...prevState,
-      collapseID: key
+    setstate((prev) => ({
+      ...prev,
+      currentCollapse: {
+        key: key
+      }
     }))
+    if (listPayment[key]?.paymentTypes.length < 2) {
+      dispatch(props.onSelectedPaymentFee(listPayment[key]?.paymentTypes[0]))
+    }
   }
   const Header = (item: any) => {
     return (
@@ -33,8 +47,6 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
       </div>
     )
   }
-
-  const { listPayment } = props.hospital
 
   return (
     <Container tag={'section'} className={styles.PaymentMethods}>
@@ -56,6 +68,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
 
           <Collapse
             ghost={true}
+            activeKey={state.currentCollapse.key}
             className={styles.listPayment}
             expandIconPosition='right'
             accordion={true}

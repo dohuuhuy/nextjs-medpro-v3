@@ -39,33 +39,31 @@ export const BannerHome = ({ getBanner, listFeature, partnerId }: Banner) => {
               initial='hidden'
               animate='visible'
             >
-              {listFeature?.map((e, i: any) => {
+              {listFeature?.map((item, i: any) => {
                 const imgError = require('./images/error.svg')
 
                 const size = 45
                 const propsImg = {
-                  src: e.image || imgError,
+                  src: item.image || imgError,
                   width: size,
                   height: size,
                   onError: (e: any) => (e.target.src = imgError)
                 }
 
-                if (e?.status) {
-                  return (
-                    <motion.li
-                      key={i}
-                      {...methodLi}
-                      onClick={SelectFeature(e?.type)}
-                    >
-                      <div className={styles.card}>
-                        <figure>
-                          <img {...propsImg} alt='' />
-                        </figure>
-                        <p>{e?.name}</p>
-                      </div>
-                    </motion.li>
-                  )
-                }
+                return (
+                  <motion.li
+                    key={i}
+                    {...methodLi}
+                    onClick={SelectFeature(item?.type)}
+                  >
+                    <div className={styles.card}>
+                      <figure>
+                        <img {...propsImg} alt='' />
+                      </figure>
+                      <p className={styles.name}>{item?.name}</p>
+                    </div>
+                  </motion.li>
+                )
               })}
             </motion.ul>
           </Col>

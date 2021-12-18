@@ -15,14 +15,53 @@ import styles from './styles.module.less'
 export const BookingType = (props: BookingTypeIF) => {
   const dispatch = useDispatch()
   const info = props?.getInfo
-  const [act, setact] = React.useState(1)
+
+  const [state, setstate] = React.useState({
+    list: info.features,
+    activeTab: 1
+  })
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      let missItem = 0
+      const width = window.innerWidth
+      const numColumn = width > 425 ? 4 : 3
+      const lengthItem = info.features.length
+      if ((lengthItem + 1) % numColumn === 0) {
+        missItem = 1
+      }
+      if ((lengthItem + 2) % numColumn === 0) {
+        missItem = 2
+      }
+      if ((lengthItem + 3) % numColumn === 0) {
+        missItem = 3
+      }
+
+      const missItemArr: any = [...Array(missItem).keys()]
+
+      const list = info.features
+        .sort((a, b) => a.priority - b.priority)
+        .concat(missItemArr)
+
+      setstate((prev) => ({ ...prev, list: list }))
+    }
+
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const checkTab = (e: any) => {
-    return Number(e) === Number(act) ? '' : styles.dnone
+    return Number(e) === Number(state.activeTab) ? '' : styles.dnone
   }
 
   const onclickFeature = (item: any) => () => {
     dispatch(props.selectedFeature(item))
+  }
+  const onSelectTab = (id: any) => () => {
+    setstate((prev) => ({ ...prev, activeTab: Number(id) }))
   }
 
   return (
@@ -64,13 +103,10 @@ export const BookingType = (props: BookingTypeIF) => {
         <Col className={styles.colTab} span='24'>
           <ul className={styles.listTab}>
             {listTabs.map((item, i) => {
-              const onTab = (id: any) => () => {
-                setact(Number(id))
-              }
-              const active = act === i ? styles.active : ''
+              const active = state.activeTab === i ? styles.active : ''
 
               return (
-                <li key={i} className={active} onClick={onTab(i)}>
+                <li key={i} className={active} onClick={onSelectTab(i)}>
                   {item?.title}
                 </li>
               )
@@ -87,38 +123,45 @@ export const BookingType = (props: BookingTypeIF) => {
 
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
-              {info.features
-                .sort((a, b) => a.priority - b.priority)
-                .map((item) => {
-                  const direct = item?.webRoute
-                    ? `/${info.partnerId}${item?.webRoute}`
-                    : '#'
+              {state.list.map((item) => {
+                const direct = item?.webRoute
+                  ? `/${info.partnerId}${item?.webRoute}`
+                  : '#'
 
-                  const iconError = require('./common/images/iconDatKham.svg')
+                const iconError = require('./common/images/iconDatKham.svg')
 
-                  const size = 80
-                  const propsImg = {
-                    src: item?.image || iconError,
-                    width: size,
-                    height: size,
-                    onError: (e: any) => (e.target.src = iconError)
-                  }
+                const size = 80
+                const propsImg = {
+                  src: item?.image || iconError,
+                  width: size,
+                  height: size,
+                  onError: (e: any) => (e.target.src = iconError)
+                }
 
-                  return (
-                    <li key={uniqueId()} onClick={onclickFeature(item)}>
-                      <Link href={direct}>
-                        <a>
-                          <div className={styles.card}>
+                const checkItem =
+                  Object.keys(item).length < 1 ? styles.nonHover : ''
+
+                return (
+                  <li
+                    key={uniqueId()}
+                    onClick={onclickFeature(item)}
+                    className={cx(styles.child, checkItem)}
+                  >
+                    <Link href={direct}>
+                      <a>
+                        <div className={styles.card}>
+                          {item?.image && (
                             <figure>
                               <img {...propsImg} alt='' />
                             </figure>
-                            <span>{item?.name}</span>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                  )
-                })}
+                          )}{' '}
+                          <span>{item?.name}</span>
+                        </div>
+                      </a>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 

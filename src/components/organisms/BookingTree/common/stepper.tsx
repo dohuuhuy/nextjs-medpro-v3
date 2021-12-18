@@ -12,9 +12,14 @@ export interface StepsIF {
 
 export const Stepper = ({ data, setstate }: StepsIF) => {
   const onClickStep = (i: number) => () => {
+    const curStep = data.stepper[i]
     setstate((v: StateBooking) => ({
       ...v,
-      stepCurrent: { ...v.stepCurrent, key: i }
+      stepCurrent: {
+        name: curStep.title,
+        index: curStep.sort + 1,
+        key: i
+      }
     }))
   }
 

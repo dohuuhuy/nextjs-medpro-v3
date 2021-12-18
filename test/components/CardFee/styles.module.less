@@ -85,15 +85,18 @@
 }
 
 .scroll {
+  scroll-behavior: smooth;
   position: fixed;
   top: 140px;
   min-width: 370px;
+  max-width: 370px;
 }
 
 @media only screen and (max-width: 1024px) {
   .scroll {
     top: 160px;
     min-width: 330px;
+    max-width: 330px;
   }
 }
 
@@ -101,6 +104,7 @@
   .scroll {
     position: unset;
     top: unset;
+    max-width: unset;
   }
 }
 

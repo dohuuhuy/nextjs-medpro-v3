@@ -147,7 +147,7 @@
 
     .colContent {
       transition: all 0.3s ease-in-out;
-      min-height: 425px;
+      // min-height: 425px;
       padding: 15px;
 
       .tab_Type {
@@ -155,30 +155,48 @@
         display: flex;
         justify-content: center;
         .listType {
+          // height: 500px;
           display: grid;
-          grid-auto-rows: auto;
-          grid-template-columns: repeat(5, 1fr);
+          background-color: whitesmoke;
+
+          // --> không được xóa, còn dùng lại
+
+          // grid-/auto-rows: auto;
+          // grid-template-columns: repeat(5, 1fr);
           @media only screen and (max-width: 768px) {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, calc(100% / 4));
           }
           @media only screen and (max-width: 425px) {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, calc(100% / 3));
           }
+
+          grid-template-columns: repeat(4, calc(100% / 4));
+          grid-gap: 1px;
 
           width: 100%;
           margin: 0;
           padding: 0;
           float: left;
 
-          li {
-            box-shadow: 0px 8px 15px #3f51b51f;
-            padding: 10% 5%;
-            margin: 5%;
-            border-radius: 8px;
+          .nonHover {
+            pointer-events: none;
+          }
+
+          .child {
+            background-color: white;
+            font-size: 2.5rem;
+
+            // --> không được xóa, còn dùng lại
+
+            // box-shadow: 0px 8px 15px #3f51b51f;
+            // padding: 10% 5%;
+            // margin: 5%;
+            // border-radius: 8px;
+            padding: 2rem 1rem;
             border-collapse: collapse;
             display: flex;
-            align-content: center;
-            align-items: center;
+            align-content: flex-start;
+            align-items: flex-start;
             justify-content: center;
 
             .card {
@@ -186,11 +204,13 @@
               flex-direction: column;
               align-items: center;
               align-content: center;
+
               figure {
                 margin-bottom: 5px;
-                // width: 30%;
-                max-width: 80px;
-                max-height: 80px;
+                img {
+                  max-width: 45px;
+                  max-height: 45px;
+                }
               }
               span {
                 text-align: center;
@@ -198,7 +218,7 @@
             }
             transition: all 0.3s ease-in-out;
             &:hover {
-              box-shadow: 0px 0px 20px 5px #5eb4ff47;
+              box-shadow: 0px 0px 20px 5px #bdc6ce47;
               transform: translateY(-0.1rem);
             }
           }
