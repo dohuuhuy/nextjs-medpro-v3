@@ -1,4 +1,3 @@
-import { TotalDataState } from './../totalData/interface/initialState'
 import { client } from '@config/medproSDK'
 import { huyi } from '@src/utils/clog'
 import * as ac from '@store/actionStore'
@@ -6,6 +5,7 @@ import {
   AppState,
   HospitalState,
   HosptailTypes,
+  TotalDataState,
   UserState
 } from '@store/interface'
 import { urlJson } from '@utils/contants'
@@ -204,6 +204,7 @@ function* getAllPayment() {
     yield put(ac.setLoading(false))
   } catch (error) {
     yield put(ac.setLoading(false))
+
     huyi({ name: 'getAllPayment', child: error, type: 'error' })
   }
 }
@@ -287,10 +288,7 @@ function* reserveBooking() {
         router.push(`/chi-tiet-phieu-kham?mpTransaction=${data.transactionId}`)
       } else {
         router.push(`/chi-tiet-phieu-kham?mpTransaction=${data.transactionId}`)
-        // yield put({
-        //   type: types.GET_PAYMENT_INFO_SUCCESS,
-        //   payload: response.data
-        // })
+
         yield put(ac.getReserveBookingSuccess(response.data))
       }
     }
@@ -340,10 +338,12 @@ const hospitalSagas = function* root() {
     fork(watcher_getHospitalDetails),
     fork(watcher_getFeatureByPartner),
     fork(watcher_getListHospital),
-    fork(watcher_getBookingTree),
+
     fork(watcher_getHeader),
     fork(watcher_getBanners),
     fork(watcher_getFooter),
+
+    fork(watcher_getBookingTree),
     fork(watcher_getbookingCurNode),
     fork(watcher_getAllPayment),
     fork(watcher_reserveBooking),

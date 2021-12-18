@@ -1,4 +1,5 @@
 import { get } from 'lodash'
+import { openToast } from './Notification'
 
 const size = 'font-size: 0.813rem;'
 
@@ -31,6 +32,14 @@ export const huyi = ({ name, child, type }: Log) => {
       } else {
         console.info(`%cLỗi - ${name} :>> `, `color: #dc3545; ${size}`, child)
       }
+
+      openToast({
+        type: 'error',
+        message: 'Thông báo lỗi ' + e.statusCode,
+        description: e.message,
+        duration: 20
+      })
+
       break
     case 1:
     case 'warning':
