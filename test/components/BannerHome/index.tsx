@@ -31,32 +31,48 @@ export const BannerHome = ({
 
   const [state, setstate] = React.useState({
     list: listFeature,
-    activeTab: 1
+    activeTab: 1,
+    isMobile: false,
+    limitfeature: true
   })
 
   React.useEffect(() => {
     const handleResize = () => {
       let missItem = 0
+      const limitfeature = state.limitfeature ? 5 : -1
+
+      console.log('limitfeature :>> ', limitfeature)
       const width = window.innerWidth
-      const numColumn = width > 425 ? 4 : 3
-      const lengthItem = listFeature.length
-      if ((lengthItem + 1) % numColumn === 0) {
-        missItem = 1
+      const widthMobile = width < 768
+      const numColumn = Number(width < 768 ? 3 : 4)
+      const compareNum = listFeature.length > limitfeature
+
+      const listSlice = compareNum
+        ? listFeature.slice(0, widthMobile ? limitfeature : -1)
+        : listFeature
+      const lengthItem = Number(listSlice.length)
+
+      console.log('listSlice :>> ', listSlice)
+
+      const numXemthem = compareNum && widthMobile ? 1 : 0
+
+      for (let i = 1; i <= 3; i++) {
+        if ((lengthItem + i) % numColumn === 0) {
+          missItem = i - numXemthem
+        }
       }
-      if ((lengthItem + 2) % numColumn === 0) {
-        missItem = 2
-      }
-      if ((lengthItem + 3) % numColumn === 0) {
-        missItem = 3
-      }
+
+      console.log('missItem :>> ', missItem)
 
       const missItemArr: any = [...Array(missItem).keys()]
 
-      const list = listFeature
-        .sort((a, b) => a.priority - b.priority)
-        .concat(missItemArr)
+      const y = listSlice.concat(missItemArr)
 
-      setstate((prev) => ({ ...prev, list: list }))
+      setstate((prev) => ({
+        ...prev,
+        list: y,
+        isMobile: compareNum && widthMobile
+      }))
     }
 
     handleResize()
@@ -64,7 +80,7 @@ export const BannerHome = ({
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [state.limitfeature])
 
   if (!getBanner) {
     return null
@@ -74,6 +90,14 @@ export const BannerHome = ({
     if (partnerId === 'medpro' && type === 'booking.date') {
       router.push('/benh-vien')
     }
+  }
+
+  const onClickXemThem = () => {
+    console.log('1  dcece:>> ', 1)
+    setstate((prev) => ({
+      ...prev,
+      limitfeature: !prev.limitfeature
+    }))
   }
 
   return (
@@ -122,6 +146,19 @@ export const BannerHome = ({
                   </li>
                 )
               })}
+              {state.isMobile && (
+                <li onClick={onClickXemThem}>
+                  <div className={styles.card}>
+                    <figure>
+                      <img src={require('./images/xemthem.svg')} alt='' />
+                    </figure>
+
+                    <p className={styles.name}>
+                      {state.limitfeature ? 'Xem thêm' : 'Thu gọn'}
+                    </p>
+                  </div>
+                </li>
+              )}
             </ul>
           </Col>
         </Row>

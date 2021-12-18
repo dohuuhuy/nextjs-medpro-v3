@@ -95,8 +95,14 @@ export default function hospital(
     case HosptailTypes.Feature.SELECTED_FEATURE:
       const infoPartner = action.selectedFeature
 
-      const flow = infoPartner.type
-      const treeId = flow.split('.')[1].toUpperCase()
+      console.log('infoPartner :>> ', infoPartner)
+
+      let flow, treeId
+
+      if (infoPartner.type) {
+        flow = infoPartner?.type
+        treeId = flow ? flow.split('.')[1]?.toUpperCase() : ''
+      }
 
       const reset = {
         passSchedules: false,
@@ -112,9 +118,9 @@ export default function hospital(
 
       return {
         ...state,
-        selectedFeature: action.selectedFeature,
-        flow: flow,
-        treeId: treeId,
+        selectedFeature: infoPartner,
+        flow: flow || '',
+        treeId: treeId || '',
         ...reset //--> reset lai data khi chọn feature khác
       }
 

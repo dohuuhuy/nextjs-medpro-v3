@@ -25,31 +25,25 @@ export const BookingType = (props: BookingTypeIF) => {
     const handleResize = () => {
       let missItem = 0
       const width = window.innerWidth
-      const numColumn = width > 425 ? 4 : 3
+      const numColumn = width < 760 ? 3 : 4
       const lengthItem = info.features.length
-      if ((lengthItem + 1) % numColumn === 0) {
-        missItem = 1
-      }
-      if ((lengthItem + 2) % numColumn === 0) {
-        missItem = 2
-      }
-      if ((lengthItem + 3) % numColumn === 0) {
-        missItem = 3
+      const list = info.features
+
+      for (let i = 1; i <= 3; i++) {
+        if ((lengthItem + i) % numColumn === 0) {
+          missItem = i
+        }
       }
 
       const missItemArr: any = [...Array(missItem).keys()]
-
-      const list = info.features
-        .sort((a, b) => a.priority - b.priority)
-        .concat(missItemArr)
-
-      setstate((prev) => ({ ...prev, list: list }))
+      const y = list.concat(missItemArr)
+      const x = width > 760 && y.length < 8 ? 8 - y.length : 0
+      const z: any = [...Array(x).keys()]
+      setstate((prev) => ({ ...prev, list: y.concat(z) }))
     }
 
     handleResize()
-
     window.addEventListener('resize', handleResize)
-
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 

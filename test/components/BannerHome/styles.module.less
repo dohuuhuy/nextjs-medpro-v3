@@ -17,7 +17,7 @@
     .rowboxService {
       align-content: flex-start;
       width: 100%;
-      min-height: 400px;
+      // min-height: 400px;
       margin-top: -100px;
       padding: 0 15px;
       color: #12263f;
@@ -41,11 +41,11 @@
         list-style-type: none;
 
         display: grid;
-        grid-gap: 1px;
+        grid-gap: 2px;
         background-color: whitesmoke;
         grid-template-columns: repeat(4, 1fr);
-        @media only screen and (max-width: 768px) {
-          grid-template-columns: repeat(4, 1fr);
+        @media only screen and (max-width: 760px) {
+          grid-template-columns: repeat(3, 1fr);
         }
         @media only screen and (max-width: 425px) {
           grid-template-columns: repeat(3, 1fr);
@@ -70,12 +70,14 @@
           }
 
           .card {
+            min-height: 70px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-content: center;
             align-items: center;
             figure {
+              margin-bottom: 5px;
               img {
                 max-width: 45px;
                 max-height: 45px;
@@ -84,6 +86,7 @@
             .name {
               font-weight: 500;
               padding: 0px 20px;
+              margin: 0;
             }
           }
         }
@@ -126,7 +129,7 @@
                   padding: 0 5px;
                 }
                 figure {
-                  @size: 35px;
+                  @size: 40px;
                   img {
                     max-width: @size;
                     max-height: @size;
