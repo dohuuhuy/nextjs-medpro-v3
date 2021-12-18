@@ -23,10 +23,11 @@
   list-style-type: none;
   padding: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   align-content: center;
+  flex-wrap: wrap;
 
   li {
     padding: 7.5px;
@@ -54,8 +55,11 @@
           background-color: hsla(208, 84%, 45%, 0.068);
         }
         .imageIcon {
-          max-width: 120px;
-          min-width: 120px;
+          @size: 100px;
+
+          max-width: @size;
+          min-width: @size;
+
           border: 1px dashed #cdd8ea;
           margin: 0;
           padding: 5px;
@@ -71,6 +75,24 @@
             border: 1px dashed #00b5f1;
             box-shadow: 0px 2px 10px 8px #f7f7f7;
             transform: translateY(-0.2rem);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  @sizeiconsm: 90px;
+  .listMethods {
+    justify-content: space-between;
+    li {
+      width: calc(100% / 3);
+      .card {
+        figure {
+          .imageIcon {
+            max-width: @sizeiconsm;
+            min-width: @sizeiconsm;
           }
         }
       }

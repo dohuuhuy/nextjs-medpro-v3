@@ -1,11 +1,9 @@
-// import Container from '@componentsTest/Container'
+import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Icon } from '../../../Icon'
 import styles from './styles.module.less'
-
-import cx from 'classnames'
-import { useDispatch } from 'react-redux'
 
 export const CardPaymentFee = ({
   list,
@@ -42,8 +40,6 @@ export const CardPaymentFee = ({
                   <img
                     className={cx(styles.imageIcon, active)}
                     src={urlImg}
-                    width='auto'
-                    height={40}
                     alt=''
                   />
                 </figure>

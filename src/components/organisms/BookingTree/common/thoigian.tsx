@@ -101,10 +101,10 @@ export const ThoiGian = (props: Props) => {
       }),
       {}
     )
-    setstate((v: any) => ({ ...v }))
+    setstate((v) => ({ ...v }))
 
     if (name === 'chonGio') {
-      setstate((v: any) => ({
+      setstate((v) => ({
         ...v,
 
         stepCurrent: {

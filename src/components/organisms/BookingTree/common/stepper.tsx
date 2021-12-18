@@ -7,14 +7,14 @@ import { checkActive, steps } from './utils'
 
 export interface StepsIF {
   data: StateBooking
-  setstate: any
+  setstate: React.Dispatch<React.SetStateAction<StateBooking>>
 }
 
 export const Stepper = ({ data, setstate }: StepsIF) => {
   const onClickStep = (i: number) => () => {
     const curStep = data.stepper[i]
-    setstate((v: StateBooking) => ({
-      ...v,
+    setstate((prev) => ({
+      ...prev,
       stepCurrent: {
         name: curStep.title,
         index: curStep.sort + 1,
@@ -33,7 +33,7 @@ export const Stepper = ({ data, setstate }: StepsIF) => {
             </h2>
 
             <ul className={styles.listStep}>
-              {data.stepper?.map((v: any, i: number) => {
+              {data.stepper?.map((v, i) => {
                 const w = (1 / steps.length) * 100
                 const active = checkActive(v.selected, {
                   keys: v.key,

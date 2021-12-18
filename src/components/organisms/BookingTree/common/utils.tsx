@@ -6,6 +6,9 @@ import { ChuyenKhoa } from './chuyenkhoa'
 import { DichVu } from './dichvu'
 import { ClickItem, Props, StateBooking, Steps } from './interface'
 import { ThoiGian } from './thoigian'
+import styles from './../less/styles.module.less'
+import moment from 'moment'
+import cx from 'classnames'
 
 export const steps = [
   {
@@ -235,3 +238,69 @@ export const onSearchKey = (
 }
 
 export const F_DATE = 'DD-MM-YYYY'
+
+export const handleHeader = ({ item, state }: any) => {
+  const icon = item?.icon({
+    item: item.selected,
+    props: {
+      keys: item.key,
+      state
+    }
+  })
+
+  const name = () => {
+    if (item.key === 'time') {
+      if (Object.keys(item.selected).length > 1) {
+        const ngay = moment(item.selected?.chonNgay?.date)
+          .locale('vi')
+          .format('dddd, DD MMMM YYYY')
+        const { startTime, endTime }: any = item.selected.chonGio
+        return `${ngay}, ${startTime} - ${endTime}`
+      }
+    } else {
+      if (item?.selected?.name) {
+        return item?.selected?.name
+      }
+    }
+    return 'Chọn ' + item?.title.toLowerCase()
+  }
+
+  const activeName = Object.keys(item.selected).length ? styles.active : ''
+  return (
+    <div className={styles.header}>
+      <h3>{item.title}</h3>
+      <div className={cx(styles.input)}>
+        {icon}
+        <span className={activeName}>{name()}</span>
+      </div>
+    </div>
+  )
+}
+
+export const onChangeCollapse = (
+  key: any,
+  state: StateBooking,
+  setstate: React.Dispatch<React.SetStateAction<StateBooking>>
+) => {
+  const curStep = state.stepper[key]
+  const willStep = state.stepper[state.stepCurrent.index - 1]
+  if (!key) {
+    setstate((v) => ({
+      ...v,
+      stepCurrent: {
+        key,
+        name: willStep?.title || '',
+        index: willStep?.sort + 1
+      }
+    }))
+  } else {
+    setstate((v) => ({
+      ...v,
+      stepCurrent: {
+        name: curStep?.title || '',
+        index: curStep?.sort + 1,
+        key
+      }
+    }))
+  }
+}

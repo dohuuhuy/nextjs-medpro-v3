@@ -1,4 +1,3 @@
-import { Icon } from '@componentsTest/Icon'
 import Loading from '@componentsTest/Loading'
 import { Col, Collapse, Row } from 'antd'
 import Image from 'next/image'
@@ -9,6 +8,7 @@ import Container from '../Container'
 import Banner from './common/images/BgPayment.svg'
 import { PaymentMedthodIF } from './common/interface'
 import { CardPaymentFee } from './common/listPartnerPayment'
+import { handleHeader } from './common/utils'
 import styles from './styles.module.less'
 
 export const PaymentMethods = (props: PaymentMedthodIF) => {
@@ -33,19 +33,6 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
     if (listPayment[key]?.paymentTypes.length < 2) {
       dispatch(props.onSelectedPaymentFee(listPayment[key]?.paymentTypes[0]))
     }
-  }
-  const Header = (item: any) => {
-    return (
-      <div className={styles.headerCollaps}>
-        <figure className={styles.viewIcon}>
-          <Icon name='TheATM' size='30' />
-        </figure>
-        <div className={styles.contenTitle}>
-          <span className={styles.title}>{item.name}</span>
-          <span className={styles.subtitle}>{item.subtitle}</span>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -87,7 +74,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
                 return (
                   <Collapse.Panel
                     className={styles.panel}
-                    header={Header(item)}
+                    header={handleHeader(item)}
                     key={i}
                   >
                     <CardPaymentFee list={item.paymentTypes} {...props} />
@@ -98,7 +85,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
           </Collapse>
         </Col>
 
-        <Col xl={8} lg={8} md={24}>
+        <Col xl={8} lg={8} md={24} xs={24}>
           <CardFee hospital={props.hospital} />
         </Col>
       </Row>

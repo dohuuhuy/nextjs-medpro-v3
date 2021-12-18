@@ -3,14 +3,12 @@ import { CardFee } from '@componentsTest/CardFee'
 import Container from '@componentsTest/Container'
 import { AppState } from '@src/store/interface'
 import { Col, Collapse, Row } from 'antd'
-import cx from 'classnames'
-import moment from 'moment'
 import 'moment/locale/vi'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BookingTreeIF, StateBooking } from './common/interface'
 import { Stepper } from './common/stepper'
-import { handlerStep } from './common/utils'
+import { handleHeader, handlerStep, onChangeCollapse } from './common/utils'
 import styles from './less/styles.module.less'
 
 const Panel = Collapse.Panel
@@ -71,30 +69,6 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
   if (!bookingTree) return null
 
-  const onChangeCollapse = (key: any) => {
-    const curStep = state.stepper[key]
-    const willStep = state.stepper[state.stepCurrent.index - 1]
-    if (!key) {
-      setstate((v) => ({
-        ...v,
-        stepCurrent: {
-          key,
-          name: willStep?.title || '',
-          index: willStep?.sort + 1
-        }
-      }))
-    } else {
-      setstate((v) => ({
-        ...v,
-        stepCurrent: {
-          name: curStep?.title || '',
-          index: curStep?.sort + 1,
-          key
-        }
-      }))
-    }
-  }
-
   return (
     <section>
       <Stepper data={state} setstate={setstate} />
@@ -103,43 +77,18 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
           <Col xl={16} lg={16} md={24} className={styles.colLeft}>
             <div className={styles.listTree}>
               <Collapse
-                onChange={onChangeCollapse}
+                onChange={(key) => onChangeCollapse(key, state, setstate)}
                 ghost={true}
                 expandIconPosition='right'
                 bordered={false}
                 accordion={true}
                 activeKey={state.stepCurrent.key}
               >
-                {state?.stepper?.map((v, index) => {
-                  const icon = v?.icon({
-                    item: v.selected,
-                    props: {
-                      keys: v.key,
-                      state
-                    }
-                  })
-
-                  const name = () => {
-                    if (v.key === 'time') {
-                      if (Object.keys(v.selected).length > 1) {
-                        const ngay = moment(v.selected?.chonNgay?.date)
-                          .locale('vi')
-                          .format('dddd, DD MMMM YYYY')
-                        const { startTime, endTime }: any = v.selected.chonGio
-                        return `${ngay}, ${startTime} - ${endTime}`
-                      }
-                    } else {
-                      if (v?.selected?.name) {
-                        return v?.selected?.name
-                      }
-                    }
-                    return 'Chọn ' + v?.title.toLowerCase()
-                  }
-
-                  const content = v?.content({
-                    keys: v.key,
+                {state?.stepper?.map((item, index) => {
+                  const content = item?.content({
+                    keys: item.key,
                     state,
-                    data: v.data,
+                    data: item.data,
                     setstate,
                     getbookingCur,
                     saveSchedule,
@@ -148,23 +97,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
                   return (
                     <Panel
-                      header={
-                        <div className={styles.header}>
-                          <h3>{v.title}</h3>
-                          <div className={cx(styles.input)}>
-                            {icon}
-                            <span
-                              className={
-                                Object.keys(v.selected).length
-                                  ? styles.active
-                                  : ''
-                              }
-                            >
-                              {name()}
-                            </span>
-                          </div>
-                        </div>
-                      }
+                      header={handleHeader({ item, state })}
                       key={Number(index)}
                       className={styles.card}
                     >

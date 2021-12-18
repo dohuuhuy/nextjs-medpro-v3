@@ -45,7 +45,7 @@ export type Keys =
 export interface Props {
   keys: Keys
   state: StateBooking
-  setstate: any
+  setstate: React.Dispatch<React.SetStateAction<StateBooking>>
   data: Item[]
   saveSchedule: any
   dispatch: any
