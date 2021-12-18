@@ -9,22 +9,28 @@ import { fadeInUp, stagger } from '../utils/motion'
 import Link from 'next/link'
 
 export const ThongBao = (Props: Personal) => {
-
-  const handleTransTime = (time: any) => (
-    "NGÀY " + moment(time).format(`DD`) + " THÁNG " + moment(time).format(`MM, YYYY`)
-  )
+  const handleTransTime = (time: any) =>
+    'NGÀY ' +
+    moment(time).format(`DD`) +
+    ' THÁNG ' +
+    moment(time).format(`MM, YYYY`)
   return (
-    <motion.div exit={{ opacity: 0 }} initial='initial' animate="animate">
+    <motion.div exit={{ opacity: 0 }} initial='initial' animate='animate'>
       <h2>Danh sách thông báo</h2>
       <Row className={styles.rowProduce}>
         <motion.ul className={styles.step} variants={stagger}>
           {Props.listNotice.map((item) => {
-            console.log('kiểm tra notic :>> ', item);
             return (
-              <motion.li key={uniqueId()} className={styles.rowStep} variants={fadeInUp}>
+              <motion.li
+                key={uniqueId()}
+                className={styles.rowStep}
+                variants={fadeInUp}
+              >
                 <div className={styles.dot} />
                 <div className={styles.colContent}>
-                  <b className={styles.titleStep}>{handleTransTime(item.createdAt)}</b>
+                  <b className={styles.titleStep}>
+                    {handleTransTime(item.createdAt)}
+                  </b>
                   <p className={styles.view_content}>{item.title}</p>
                   <Link
                     href={`/chi-tiet-phieu-kham?transactionId=${item?.eventData.transactionId}`}

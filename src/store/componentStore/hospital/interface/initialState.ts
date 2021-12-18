@@ -18,6 +18,7 @@ export interface HospitalState {
     grandTotal: number
   }
   passSchedules: boolean
+  reserveBooking: any[]
 }
 
 export interface Information {

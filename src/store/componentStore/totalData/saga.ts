@@ -40,6 +40,7 @@ function* getListPartners() {
     yield client.setPartner(partnerId)
 
     if (!total.partnerId) {
+      yield put(ac.getNoti())
       yield put(ac.listPartnersRequestSuccess(response))
       yield put(ac.SetParnerId(partnerId))
 

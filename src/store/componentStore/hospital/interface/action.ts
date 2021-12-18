@@ -1,18 +1,5 @@
 import { HosptailTypes, ItemFeature } from '@src/store/interface'
 
-// Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
-
-export type HospitalActions =
-  | HeaderAction
-  | BannersAction
-  | FooterAction
-  | InfomationAction
-  | FeatureAction
-  | ListHospitalAction
-  | BookingTreeAction
-  | StepAction
-  | PaymentAction
-
 export type StepAction = ResetSchedule | Schedule
 
 export interface ResetSchedule {
@@ -189,3 +176,32 @@ export interface SelectedPaymentFee {
   type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE
   paymentFee: {}
 }
+
+// ------------------------------- Thực hiện đặt khám ------------------------------
+
+export type ReserveBookingAction =
+  | ReserveBookingRequest
+  | ReserveBookingRequestSuccess
+
+export interface ReserveBookingRequest {
+  type: HosptailTypes.ReserveBooking.ReserveBooking_REQUEST
+}
+
+export interface ReserveBookingRequestSuccess {
+  type: HosptailTypes.ReserveBooking.ReserveBooking_REQUEST_SUCCESS
+  ReserveBooking: any[]
+}
+
+// Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
+
+export type HospitalActions =
+  | HeaderAction
+  | BannersAction
+  | FooterAction
+  | InfomationAction
+  | FeatureAction
+  | ListHospitalAction
+  | BookingTreeAction
+  | StepAction
+  | PaymentAction
+  | ReserveBookingAction

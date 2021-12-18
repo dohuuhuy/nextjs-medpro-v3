@@ -1,4 +1,3 @@
-import { Icon } from '../Icon'
 import { Badge, Col, Dropdown, Row } from 'antd'
 import cx from 'classnames'
 import { filter, uniqueId } from 'lodash'
@@ -6,12 +5,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { BiUserCircle } from 'react-icons/bi'
 import { useDispatch } from 'react-redux'
+import { Icon } from '../Icon'
 import Container from './../Container'
 import { Infomation } from './common/infomation'
-import styles from './styles.module.less'
-import { BiSmile, BiUserCircle } from 'react-icons/bi'
 import { ListNoti } from './common/listNoti'
+import styles from './styles.module.less'
 
 export default function HeaderCustom({
   dataHeader,

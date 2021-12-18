@@ -7,6 +7,13 @@ export const getBillInfo = (transactionId: any): UserActions => {
   }
 }
 
+export const getPaymentInfo = (mpTransaction: any): UserActions => {
+  return {
+    type: UserTypes.Bill.PAYMENT_INFO_REQUEST,
+    mpTransaction
+  }
+}
+
 export const getBillInfoSuccess = (billInfo: any): UserActions => {
   return {
     type: UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS,

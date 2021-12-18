@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Container from '@componentsTest/Container'
-import { error ,handleFormPatient, schemaContact } from './handler'
+import { error, handleFormPatient, schemaContact } from './handler'
 import { Space } from 'antd'
 import styles from './styles.module.less'
 import cx from 'classnames'
@@ -16,19 +16,25 @@ export const CreateForm = () => {
   } = useForm<any>({
     resolver: zodResolver(schemaContact)
   })
-  const submit = (data: any) => {
-    console.log({ data })
+  const submit = () => {
     reset()
   }
   return (
     <Container>
-      <form onSubmit={handleSubmit(submit)} className={styles.formContact} >
+      <form onSubmit={handleSubmit(submit)} className={styles.formContact}>
         <ul className={styles.listContact}>
           {handleFormPatient(register)?.map((el: any) => {
             const sub = el?.require ? <sup>*</sup> : ''
             return (
               <li key={el?.label}>
-                <Space direction='vertical' className={ el.name === "birthday" ? cx(styles.birthday, styles.enter) : styles.enter}>
+                <Space
+                  direction='vertical'
+                  className={
+                    el.name === 'birthday'
+                      ? cx(styles.birthday, styles.enter)
+                      : styles.enter
+                  }
+                >
                   <label>
                     {el?.label} {sub}
                   </label>
@@ -41,8 +47,8 @@ export const CreateForm = () => {
           })}
         </ul>
         <button type='submit' className={styles.submit}>
-        Gửi hỗ trợ
-      </button>
+          Gửi hỗ trợ
+        </button>
       </form>
     </Container>
   )

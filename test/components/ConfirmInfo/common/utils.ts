@@ -123,11 +123,6 @@ export const Profile = (item: User) => {
 }
 
 export const Info = (item: any) => {
-  console.log(
-    '!!item?.doctor?.selected?.name :>> ',
-    !!item?.doctor?.selected?.name
-  )
-
   return [
     {
       visible: true,

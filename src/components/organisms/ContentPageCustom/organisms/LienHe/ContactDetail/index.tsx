@@ -16,8 +16,7 @@ export const ContactDetail = () => {
     resolver: zodResolver(schemaContact)
   })
 
-  const submit = (data: any) => {
-    console.log({ data })
+  const submit = () => {
     reset()
   }
 

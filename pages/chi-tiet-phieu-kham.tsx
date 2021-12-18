@@ -17,12 +17,15 @@ const DetailBookingPage = () => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    const { transactionId } = router.query
+    const { transactionId, mpTransaction } = router.query
     transactionId && dispatch(ac.getBillInfo(transactionId))
+    mpTransaction && dispatch(ac.getPaymentInfo(mpTransaction))
   }, [router.query.transactionId])
 
   if (total.loading) {
-    return <Loading component={true} text='Đang cập nhật thông tin phiếu khám ...' />
+    return (
+      <Loading component={true} text='Đang cập nhật thông tin phiếu khám ...' />
+    )
   }
 
   return (

@@ -14,7 +14,6 @@ import { Props, Steps } from './interface'
 import { F_DATE } from './utils'
 
 export const ThoiGian = (props: Props) => {
-  // console.log('props ThoiGian:>> ', props)
 
   const dispatch = useDispatch()
 
@@ -48,7 +47,6 @@ export const ThoiGian = (props: Props) => {
   const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
   const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
 
-  // console.log('stateTime :>> ', stateTime)
 
   //  ----------------------------ACTION --------------------------------------------------------
 

@@ -5,10 +5,11 @@ export interface Data {
 }
 
 export interface PaymentMedthodIF {
-  onSelectedPaymentFee?: any
+  onSelectedPaymentFee: any
   hospital: {
     paymentFee: any
     selectedPaymentFee: any
     listPayment: any[]
   }
+  onReserveBooking: any
 }

@@ -5,6 +5,7 @@ import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { TITLE, urlGo, VALUE } from './common/contants'
 import { getSetting, handleList } from './common/utils'
+import { useDispatch } from 'react-redux'
 
 export interface CardFeeIF {
   hospital: {
@@ -12,9 +13,12 @@ export interface CardFeeIF {
     selectedPaymentFee: any
     passSchedules?: any
   }
+  onReserveBooking?: any
+  willPayment?: boolean
 }
 
 export const CardFee = (props: CardFeeIF) => {
+  const dispatch = useDispatch()
   const { passSchedules } = props.hospital
 
   const router = useRouter()
@@ -39,25 +43,28 @@ export const CardFee = (props: CardFeeIF) => {
       pathname
     } = router
 
-    if (site) {
-      const name = pathname.replace('/[site]/', '')
+    if (props.willPayment) {
+      dispatch(props.onReserveBooking())
+    } else {
+      if (site) {
+        const name = pathname.replace('/[site]/', '')
 
-      let willGo = ''
-      switch (name) {
-        case urlGo.DAT_LICH_KHAM:
-          willGo = urlGo.XAC_NHAN_THONG_TIN
-          break
+        let willGo = ''
+        switch (name) {
+          case urlGo.DAT_LICH_KHAM:
+            willGo = urlGo.XAC_NHAN_THONG_TIN
+            break
 
-        case urlGo.XAC_NHAN_THONG_TIN:
-          willGo = urlGo.PHUONG_THUC_THANH_TOAN
-          break
-        case urlGo.PHUONG_THUC_THANH_TOAN:
-          willGo = '/chi-tiet-phieu-kham?transactionId=VPDev2112173LIK1NP7HK7Y'
-        default:
-          break
+          case urlGo.XAC_NHAN_THONG_TIN:
+            willGo = urlGo.PHUONG_THUC_THANH_TOAN
+            break
+
+          default:
+            break
+        }
+
+        router.push(`/${site}/${willGo}`)
       }
-
-      router.push(`/${site}/${willGo}`)
     }
   }
   const routerBack = () => {

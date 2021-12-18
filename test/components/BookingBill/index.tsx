@@ -19,7 +19,6 @@ export const BookingBill = ({ bill }: any) => {
   const [showModal, setShowModal] = useState(false)
   const handleModal = () => {
     setShowModal(!showModal)
-    console.log(showModal)
   }
 
   if (!bill) return null

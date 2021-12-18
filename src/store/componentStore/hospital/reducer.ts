@@ -33,7 +33,10 @@ const init: HospitalState = {
     subTotal: -1,
     totalFee: 0,
     grandTotal: 0
-  }
+  },
+
+  // --> sau khi thanh toán xong
+  reserveBooking: []
 }
 
 export default function hospital(
@@ -41,6 +44,12 @@ export default function hospital(
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ): HospitalState {
   switch (action.type) {
+    case HosptailTypes.ReserveBooking.ReserveBooking_REQUEST_SUCCESS:
+      return {
+        ...state,
+        reserveBooking: action.ReserveBooking
+      }
+
     case HosptailTypes.Information.SET_PARTNERID_HOSPITAL:
       return {
         ...state,

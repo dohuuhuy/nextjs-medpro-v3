@@ -5,24 +5,26 @@ import {
 } from '@ant-design/icons'
 import Container from '@componentsTest/Container'
 import { Col, Row, Tabs } from 'antd'
+import { useRouter } from 'next/router'
 import React from 'react'
-import styles from './styles.module.less'
 import { HoSo } from './HoSo'
 import { PhieuKhamBenh } from './PhieuKhamBenh'
+import styles from './styles.module.less'
 import { ThongBao } from './ThongBao'
 import { Personal } from './utils/interface'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useRouter } from 'next/router'
 const { TabPane } = Tabs
 
 export const ThongTinHoSoCustom = (props: Personal) => {
   const router = useRouter()
-  console.log('props :>> ', props);
   return (
     <Container>
       <Row className={styles.rowInfomation}>
         <Col span='24'>
-          <Tabs defaultActiveKey={`${router.query.activeItem}`} tabPosition='left' className={styles.tabs}>
+          <Tabs
+            defaultActiveKey={`${router.query.activeItem}`}
+            tabPosition='left'
+            className={styles.tabs}
+          >
             <TabPane
               className={styles.item}
               key='1'

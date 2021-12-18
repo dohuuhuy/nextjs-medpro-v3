@@ -12,14 +12,17 @@ export const PhieuKhamBenh = (Props: Personal) => {
   const [show, setishow] = useState(false)
 
   const onShow = (index: any) => {
-    console.log('index ', index)
     setishow(show !== index ? index : '')
   }
   return (
-    <motion.div className={styles.Container} initial='initial' animate="animate">
+    <motion.div
+      className={styles.Container}
+      initial='initial'
+      animate='animate'
+    >
       <h1>Danh sách phiếu khám bệnh</h1>
       <motion.ul className={styles.listUser} variants={stagger}>
-        {Filter.map((listUser: any, index: any) => {
+        {Filter?.map((listUser: any, index: any) => {
           return (
             <motion.li key={uniqueId()} variants={fadeInUp}>
               <div

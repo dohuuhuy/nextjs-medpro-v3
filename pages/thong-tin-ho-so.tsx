@@ -1,10 +1,9 @@
-import { ThongTinHoSoCustom } from '@componentsTest/ThongTinHoSoCustom'
 import * as ac from '@actionStore'
+import { ThongTinHoSoCustom } from '@componentsTest/ThongTinHoSoCustom'
 import { AppState } from '@store/interface'
-import { check } from '@utils/checkValue'
 import dynamic from 'next/dynamic'
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ThongTinHoSo = () => {
@@ -21,7 +20,6 @@ const ThongTinHoSo = () => {
     listBooking: user?.bookingByUser,
     listNotice: user?.noti
   }
-  console.log('method :>> ', medthod)
   return <ThongTinHoSoCustom {...medthod} />
 }
 

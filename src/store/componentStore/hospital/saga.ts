@@ -10,8 +10,8 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
-import { ReserveBooking } from 'medpro-sdk/lib/types'
 import moment from 'moment'
+import router from 'next/router'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* getHospitalDetails() {
@@ -124,7 +124,6 @@ function* getFooter({}: any) {
 
     yield put(ac.getFooterSuccess(response))
   } catch (error) {
-    console.log(error)
     huyi({ name: 'getFooter', child: error, type: 'error' })
   }
 }
@@ -139,7 +138,6 @@ function* getBanners({}: any) {
 
     yield put(ac.getBannersSuccess(response))
   } catch (error) {
-    console.log(error)
     huyi({ name: 'getBanners', child: error, type: 'error' })
   }
 }
@@ -215,31 +213,88 @@ function* watcher_getAllPayment() {
 
 function* reserveBooking() {
   try {
-    yield put(ac.setLoading())
+    // yield put(ac.s/etLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
-    /*     const total: TotalDataState = yield select((state: AppState) => state.total)
-     */
-    const response: AxiosResponse = yield client.reserveBooking(
-      {
-        patientId: user.selectedPatient.id,
-        groupId: 1,
-        treeId: hos.treeId,
-        serviceId: hos.schedule?.service?.selected.id,
-        subjectId: hos.schedule?.subject?.selected.id,
-        doctorId: hos.schedule?.doctor?.selected.id,
-        platform: 'pc'
-      } as ReserveBooking,
-      {
-        partnerid: hos.partnerId,
-        token: user.userInfo.token
-      }
-    )
+
+    const date = hos.schedule.time.selected?.chonNgay.date
+    const chonGio = hos.schedule.time.selected?.chonGio
+    const formatDate = moment(date).format('YYYY-MM-DD')
+    const startTime = chonGio.startTime
+    const endTime = chonGio.endTime
+    const timeSlotId = chonGio.timeId
+    const maxSlot = chonGio.maxSlot
+
+    const dateString = moment(formatDate + ' ' + startTime).toISOString() || ''
+    const startTimeString =
+      moment(formatDate + ' ' + startTime).toISOString() || ''
+    const endTimeString = moment(formatDate + ' ' + endTime).toISOString() || ''
+
+    const postData = {
+      gatewayId: hos.selectedPaymentFee.gatewayId,
+      subTotal: hos.paymentFee?.subTotal,
+      totalFee: hos.paymentFee?.totalFee,
+      amount: hos.paymentFee?.grandTotal,
+      methodId: hos.selectedPaymentFee?.gatewayId || 'NO_PAYMENT',
+      paymentTypeDetail: hos.selectedPaymentFee?.code || 'NO_PAYMENT',
+      patientId: user.selectedPatient.id,
+      serviceId: hos.schedule?.service?.selected.id,
+      subjectId: hos.schedule?.subject?.selected.id,
+      doctorId: hos.schedule?.doctor?.selected.id,
+      roomId: '',
+      startTimeString: dateString,
+      startTime: startTimeString,
+      endTime: endTimeString,
+      bookingSlotId: timeSlotId + '_' + hos.partnerId,
+      redirectUrl: `${window.location.origin}/chi-tiet-phieu-kham`,
+      platform: 'pc',
+      maxSlot: maxSlot,
+      hasInsuranceCode: false,
+      insuranceCode: user.selectedPatient?.insuranceCode,
+
+      // insuranceChoice: 'string',
+      insuranceTransferCode: '', // không có
+      cbWebView: 1,
+      groupId: 1,
+      idReExam: '', // chưa biết
+      patientProfileId: '', // không có
+      referralCode: '', // không có
+      // phone: '', // không hiểu
+      treeId: hos.treeId,
+      insuranceFileUrl: '', // chưa làm tới
+      filterCheckData: [], // chưa làm tới
+      addonServices: [] // chưa làm tới
+    } as any
+
+    const response: AxiosResponse = yield client.reserveBooking(postData, {
+      partnerid: hos.partnerId,
+      token: user.userInfo.token
+    })
 
     console.log('response reserveBooking :>> ', response)
 
-    // yield put(ac.reserveBookingSuccess(response.data))
-    yield put(ac.setLoading(false))
+    const { data } = response
+
+    if (data.isGateway === 1) {
+      // đi tiếp qua thanh toán
+      yield put(ac.getReserveBookingSuccess(response.data))
+
+      data.qrCodeUrl && (window.location.href = data.qrCodeUrl)
+    } else if (data.isGateway === 0) {
+      // trả về phiếu khám
+      if (postData.methodId === 'SHARE_PAYMENT') {
+        router.push(`/chi-tiet-phieu-kham/${data.transactionId}`)
+      } else {
+        router.push(`/chi-tiet-phieu-kham?mpTransaction=${data.transactionId}`)
+        // yield put({
+        //   type: types.GET_PAYMENT_INFO_SUCCESS,
+        //   payload: response.data
+        // })
+        yield put(ac.getReserveBookingSuccess(response.data))
+      }
+    }
+
+    // yield put(ac.setLoading(false))
   } catch (error) {
     yield put(ac.setLoading(false))
     huyi({ name: 'reserveBooking', child: error, type: 'error' })
@@ -247,7 +302,10 @@ function* reserveBooking() {
 }
 
 function* watcher_reserveBooking() {
-  yield takeLatest(HosptailTypes.Payment.PAYMENT_REQUEST, reserveBooking)
+  yield takeLatest(
+    HosptailTypes.ReserveBooking.ReserveBooking_REQUEST,
+    reserveBooking
+  )
 }
 
 const hospitalSagas = function* root() {

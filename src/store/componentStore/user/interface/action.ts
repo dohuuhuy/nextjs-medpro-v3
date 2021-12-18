@@ -8,7 +8,11 @@ export type UserActions =
   | BookingByUser
   | NotiAction
 
-export type BillAction = BILL_INFO_REQUEST | BILL_INFO_REQUEST_SUCCESS
+export type BillAction =
+  | BILL_INFO_REQUEST
+  | BILL_INFO_REQUEST_SUCCESS
+  | PAYMENT_INFO_REQUEST
+  | PAYMENT_INFO_REQUEST_SUCCESS
 
 export interface BILL_INFO_REQUEST {
   type: UserTypes.Bill.BILL_INFO_REQUEST
@@ -17,6 +21,16 @@ export interface BILL_INFO_REQUEST {
 
 export interface BILL_INFO_REQUEST_SUCCESS {
   type: UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS
+  billInfo: any
+}
+
+export interface PAYMENT_INFO_REQUEST {
+  type: UserTypes.Bill.PAYMENT_INFO_REQUEST
+  mpTransaction: string
+}
+
+export interface PAYMENT_INFO_REQUEST_SUCCESS {
+  type: UserTypes.Bill.PAYMENT_INFO_REQUEST_SUCCESS
   billInfo: any
 }
 
@@ -46,7 +60,10 @@ export interface UserClear {
 
 // -------------------------hồ sơ bệnh nhân-------------------------------------
 
-export type PatientAction = listPatientRequest | listPatientRequestSuccess | SelectedPatient
+export type PatientAction =
+  | listPatientRequest
+  | listPatientRequestSuccess
+  | SelectedPatient
 
 export interface listPatientRequest {
   type: UserTypes.Patient.LIST_PATIENT_REQUEST
@@ -86,4 +103,3 @@ export interface NoticeRequestSuccess {
   type: UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS
   noti: any[]
 }
-

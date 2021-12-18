@@ -7,7 +7,9 @@ import {
   UserState,
   UserTypes
 } from '@src/store/interface'
+import { openToast } from '@src/utils/Notification'
 import { AxiosResponse } from 'axios'
+import { get } from 'lodash'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 function* listPatientRequest() {
@@ -26,7 +28,7 @@ function* listPatientRequest() {
     }
     yield put(ac.setLoading(false))
   } catch (error) {
-    console.log(error)
+    console.log('error listPatientRequest :>> ', error)
     yield put(ac.setLoading(false))
   }
 }
@@ -66,14 +68,12 @@ function* getNoti() {
 
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
-    if (user?.userInfo?.token) {
-      const response: AxiosResponse = yield client.getAllNotifByUser({
-        token: user?.userInfo?.token,
-        partnerid: total?.partnerId,
-        appid: total?.appId
-      })
-      yield put(ac.getNotiSuccess(response.data))
-    }
+    const response: AxiosResponse = yield client.getAllNotifByUser({
+      token: user?.userInfo?.token,
+      partnerid: total?.partnerId,
+      appid: total?.appId
+    })
+    yield put(ac.getNotiSuccess(response.data))
   } catch (error) {
     console.log('error getNoti:>> ', error)
   }
@@ -133,13 +133,57 @@ function* watcher_getBillInfo() {
   yield takeLatest(UserTypes.Bill.BILL_INFO_REQUEST, getBillInfo)
 }
 
+function* getPaymentInfo({ mpTransaction }: any) {
+  try {
+    yield put(ac.setLoading())
+
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+
+    const response: AxiosResponse = yield client.getPaymentInfo(
+      { transactionId: mpTransaction },
+      {
+        partnerid: total.partnerId,
+        appid: total.appId
+      }
+    )
+    const status = get(response, 'data.bookingInfo.status', 0)
+    const paymentMessage = get(response, 'data.bookingInfo.paymentMessage', 0)
+
+    if (status === 1) {
+      paymentMessage &&
+        openToast({
+          type: 'success',
+          message: 'Thông báo !',
+          description: paymentMessage
+        })
+    } else {
+      paymentMessage &&
+        openToast({
+          type: 'error',
+          message: 'Thông báo !',
+          description: paymentMessage
+        })
+    }
+    yield put(ac.getBillInfoSuccess(response.data))
+
+    yield put(ac.setLoading(false))
+  } catch (error) {
+    console.log(' error getPaymentInfo :>> ', error)
+  }
+}
+
+function* watcher_getPaymentInfo() {
+  yield takeLatest(UserTypes.Bill.PAYMENT_INFO_REQUEST, getPaymentInfo)
+}
+
 const userSagas = function* root() {
   yield all([
     fork(watcher_listPatientRequest),
     fork(watcher_getBookingByUser),
     fork(watcher_getNoti),
     fork(watcher_loginMedproId),
-    fork(watcher_getBillInfo)
+    fork(watcher_getBillInfo),
+    fork(watcher_getPaymentInfo)
   ])
 }
 export default userSagas

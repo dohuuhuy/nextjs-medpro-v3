@@ -1,15 +1,9 @@
-import { Personal } from '../../index'
 import moment from 'moment'
 
-export const HandleFilter = (Props: Personal) => {
-  Props.listBooking.map((e) => {
-    e.bookings.map((item) => {
-      console.log("props ", item.partner.name)
-    })
-  })
-  return Props?.listBooking.map((e) => [
+export const HandleFilter = (Props: any) => {
+  return Props?.listBooking.map((e: any) => [
     `${e?.surname} ${e?.name}`,
-    e?.bookings.map((item) => [
+    e?.bookings.map((item: any) => [
       {
         key: '',
         value: item?.partner?.name
@@ -24,11 +18,11 @@ export const HandleFilter = (Props: Personal) => {
       },
       {
         key: 'Ngày khám',
-        value: `: ${moment(item?.date).format("DD/MM/YYYY")}`
+        value: `: ${moment(item?.date).format('DD/MM/YYYY')}`
       },
       {
         key: 'Giờ khám dự kiến',
-        value: `: ${moment(item?.date).format("hh:mm")}`
+        value: `: ${moment(item?.date).format('hh:mm')}`
       },
       {
         key: '',

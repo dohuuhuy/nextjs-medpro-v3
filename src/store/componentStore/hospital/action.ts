@@ -185,3 +185,17 @@ export const selectedFeature = (item: any): HospitalActions => {
     selectedFeature: item
   }
 }
+
+// reserve Booking
+export const getReserveBooking = (): HospitalActions => {
+  return {
+    type: HosptailTypes.ReserveBooking.ReserveBooking_REQUEST
+  }
+}
+
+export const getReserveBookingSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.ReserveBooking.ReserveBooking_REQUEST_SUCCESS,
+    ReserveBooking: data
+  }
+}

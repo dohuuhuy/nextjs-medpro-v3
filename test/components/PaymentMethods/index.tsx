@@ -15,8 +15,6 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
   const { listPayment } = props.hospital
   const dispatch = useDispatch()
 
-  console.log('listPayment :>> ', listPayment)
-
   const [state, setstate] = useState({
     currentCollapse: {
       key: 0
@@ -86,7 +84,11 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
         </Col>
 
         <Col xl={8} lg={8} md={24} xs={24}>
-          <CardFee hospital={props.hospital} />
+          <CardFee
+            hospital={props.hospital}
+            onReserveBooking={props.onReserveBooking}
+            willPayment
+          />
         </Col>
       </Row>
     </Container>
