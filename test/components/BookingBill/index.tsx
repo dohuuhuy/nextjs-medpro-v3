@@ -34,6 +34,9 @@ export const BookingBill = (props: BookingBillIF) => {
   if (!bill) return null
 
   const { bookingInfo: info } = bill
+
+  if (!info) return null
+
   const {
     id,
     partnerId,
@@ -58,6 +61,8 @@ export const BookingBill = (props: BookingBillIF) => {
     handleToggleModal()
   }
 
+  const logo = `https://resource-testing.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`
+
   return (
     <Container className={styles.containerBill}>
       <Row className={styles.rowDetailBooking}>
@@ -73,7 +78,7 @@ export const BookingBill = (props: BookingBillIF) => {
               {/* thông tin của bệnh viện */}
               <div className={styles.hospital}>
                 <figure>
-                  <img src={hos.image} alt='' />
+                  <img src={logo} alt='' />
                 </figure>
                 <p className={styles.nameHos}>{hos?.name}</p>
                 <p className={styles.addressHos}>{hos?.address}</p>

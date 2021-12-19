@@ -64,7 +64,7 @@ export default function HeaderCustom(props: HeaderCustomIF) {
 
   const noRep = filter(noti, { isRead: false })
 
-  const logo = `https://resource-testing.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`
+  const logo = `https://resource.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`
 
   return (
     <Container tag='header' fluid={true} fixed={true} className={styles.header}>

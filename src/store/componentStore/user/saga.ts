@@ -70,7 +70,7 @@ function* getNoti() {
     const response: AxiosResponse = yield client.getAllNotifByUser({
       token: user?.userInfo?.token,
       partnerid: total?.partnerId,
-      appid: total?.appId
+      appid: total?.partnerId || 'medpro'
     })
     yield put(ac.getNotiSuccess(response.data))
   } catch (error) {

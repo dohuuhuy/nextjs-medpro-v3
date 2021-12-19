@@ -9,7 +9,7 @@ export interface HospitalState {
   selectedFeature: InfoPartner | any
   flow: string
   treeId: string
-  schedule?: Schedule | any
+  schedule: any
   listPayment: any[]
   selectedPaymentFee: any
   paymentFee: {

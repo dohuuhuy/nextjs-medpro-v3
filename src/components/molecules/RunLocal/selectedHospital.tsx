@@ -1,41 +1,36 @@
-import { SettingFilled } from '@ant-design/icons'
+import { DeleteFilled, ReloadOutlined, SettingFilled } from '@ant-design/icons'
 import { _DEVELOPMENT, _TESTING } from '@src/config/envs'
-import { setPartnerIdLocal } from '@src/store/actionStore'
+import { SetParnerId } from '@src/store/actionStore'
 import { AppState } from '@src/store/interface'
-import { check } from '@utils/checkValue'
 import { Button, Dropdown, message, Modal, Select, Space } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { FaChevronCircleDown } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
 const { Option } = Select
 
 const SelectedHospital = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const { listPartners, partnerId } = useSelector(
-    (state: AppState) => state.total
-  )
-
-  useEffect(() => {
-    if (check(partnerId)) {
-      dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
-    }
-  })
+  const { listPartners } = useSelector((state: AppState) => state.total)
 
   const toggle = () => {
     setIsModalVisible(!isModalVisible)
   }
 
   function onChange(value: any) {
-    dispatch(setPartnerIdLocal({ partnerId: value }))
+    dispatch(SetParnerId(value))
     setIsModalVisible(false)
+    // reload()
   }
 
   const filterOption = (input: string, option: any) => {
     if (option?.children) {
-      return option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+      return option?.children.includes(input)
     }
     return option?.children
   }
@@ -47,7 +42,7 @@ const SelectedHospital = () => {
   }
 
   const reload = () => {
-    window.location.reload()
+    router.reload()
   }
 
   function clearData() {
@@ -57,9 +52,7 @@ const SelectedHospital = () => {
       window.localStorage.removeItem(v)
     })
 
-    window.location.reload()
-
-    // window.localStorage.clear('loginAt')
+    reload()
   }
 
   return (
@@ -70,20 +63,28 @@ const SelectedHospital = () => {
           overlay={
             <div className={styles.dropdownSetting}>
               <Space direction='vertical'>
+                <Button type='primary' onClick={reload}>
+                  <Space>
+                    <ReloadOutlined />
+                  </Space>
+                </Button>
+
                 <Button type='primary' onClick={clearData}>
                   clears data
                 </Button>
 
-                <Button type='primary' onClick={reload}>
-                  Refresh page
-                </Button>
-
                 <Button type='primary' onClick={onDeletePersist}>
-                  Del persist
+                  <Space>
+                    <Space>
+                      <DeleteFilled /> Del persist
+                    </Space>
+                  </Space>
                 </Button>
 
                 <Button type='primary' onClick={toggle}>
-                  Choice parner hospital
+                  <Space>
+                    <FaChevronCircleDown /> Choice parner hospital
+                  </Space>
                 </Button>
               </Space>
             </div>
@@ -95,6 +96,7 @@ const SelectedHospital = () => {
           </Button>
         </Dropdown>
       ) : null}
+
       <Modal
         footer={false}
         onOk={toggle}
@@ -112,15 +114,13 @@ const SelectedHospital = () => {
           onChange={onChange}
           filterOption={filterOption}
         >
-          {listPartners?.map(
-            ({ partnerId: partnerIdItem, nameHospital }, index: number) => {
-              return (
-                <Option key={index} value={partnerIdItem}>
-                  {nameHospital}
-                </Option>
-              )
-            }
-          )}
+          {listPartners?.map(({ partnerId, description }, index: number) => {
+            return (
+              <Option key={index} value={partnerId}>
+                {description}
+              </Option>
+            )
+          })}
         </Select>
       </Modal>
     </div>

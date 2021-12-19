@@ -13,7 +13,7 @@ export interface TotalDataState {
 export interface ItemlistPartners {
   domain: string[]
   partnerId: string
-  nameHospital: string
+  description: string
 }
 
 type AppId = 'medpro' | 'danang' | ''

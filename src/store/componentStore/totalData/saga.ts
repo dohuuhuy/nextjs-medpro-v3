@@ -3,10 +3,10 @@ import { client } from '@config/medproSDK'
 import { getData } from '@src/store/api'
 import {
   AppState,
-  TotalDataState,
+  // TotalDataState,
   TotalDataTypes,
   UserState
-} from '@src/store/interface'
+} from '@store/interface'
 import { urlJson } from '@utils/contants'
 import { fetcher, urlAddressType } from '@utils/func'
 import { findPartnerId } from '@utils/partner'
@@ -24,11 +24,10 @@ import {
 function* getListPartners() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
-    const total: TotalDataState = yield select((state: AppState) => state.total)
 
     yield put(ac.setWindow(window.location))
 
-    if (user.userInfo.token) yield client.setToken(user.userInfo.token)
+    yield user.userInfo.token && client.setToken(user.userInfo.token)
 
     const response: AxiosResponse = yield fetcher(urlJson.urlListPartners)
 
@@ -39,11 +38,9 @@ function* getListPartners() {
 
     yield client.setPartner(partnerId)
 
-    if (!total.partnerId) {
-      yield put(ac.getNoti())
-      yield put(ac.listPartnersRequestSuccess(response))
-      yield put(ac.SetParnerId(partnerId))
-    }
+    yield put(ac.getNoti())
+    yield put(ac.listPartnersRequestSuccess(response))
+    yield put(ac.SetParnerId(partnerId))
 
     yield put(
       ac.FeatureRequest({
@@ -55,6 +52,7 @@ function* getListPartners() {
     yield put(ac.getHeader(partnerId))
     yield put(ac.getBanners(partnerId))
     yield put(ac.getFooter(partnerId))
+    yield put(ac.getNoti())
 
     // yield put(ac.setLoading(false))
   } catch (error) {
