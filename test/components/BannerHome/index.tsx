@@ -22,7 +22,7 @@ export const BannerHome = (props: BannerHomeIF) => {
       const widthMobile = width < 768
 
       let missItem = 0
-      const limitShow = widthMobile ? 5 : 7
+      const limitShow = 5
       const numListFeature = listFeature?.length
       const showFeature = state?.toggleShow ? limitShow : numListFeature
 
@@ -30,19 +30,21 @@ export const BannerHome = (props: BannerHomeIF) => {
       const endArr = widthMobile ? showFeature : numListFeature
       const listSlice = listFeature?.slice(0, endArr)
 
+      const btnXemThem: any = [
+        {
+          btn: true,
+          name: state.toggleShow ? 'Xem thêm' : 'Thu gọn',
+          image: require('./common/images/xemthem.svg'),
+          toggle: state.toggleShow
+        }
+      ]
+
       let list: any = []
       if (widthMobile) {
         if (compareNum) {
-          list = listSlice.concat([
-            {
-              btn: true,
-              name: state.toggleShow ? 'Xem thêm' : 'Thu gọn',
-              image: require('./common/images/xemthem.svg'),
-              toggle: state.toggleShow
-            }
-          ] as any)
+          list = listSlice.concat(btnXemThem)
         } else {
-          list = listSlice
+          list = listSlice.concat(btnXemThem)
         }
       } else {
         list = listSlice
