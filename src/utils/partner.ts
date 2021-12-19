@@ -4,16 +4,16 @@ export interface Props {
 }
 
 const localhost = {
-  domain: ['localhost', 'huyi.ddns.net'],
+  domain: ['localhost', 'huyi.ddns.net', '192.168.1.10'],
   partnerId: 'medpro'
 }
 
 export const findPartnerId = ({ listPartners = [], host }: Props) => {
   listPartners.push(localhost)
-  const res: any = listPartners?.find((i: any) =>
-    i.domain.includes(domain(host))
-  )
-  if (!res) return 'error partnerid không có trong list'
+  const _domain = domain(host)
+  const res: any = listPartners?.find((i: any) => i.domain.includes(_domain))
+  if (Object.keys(res).length < 1) return null
+  if (!res) return null
   return res?.partnerId
 }
 

@@ -5,59 +5,63 @@ import Container from '../Container'
 import { BannerHomeIF } from './common/interface'
 import styles from './styles.module.less'
 
-export const BannerHome = ({
-  getBanner,
-  listFeature,
-  partnerId
-}: BannerHomeIF) => {
+export const BannerHome = (props: BannerHomeIF) => {
+  const { getBanner, listFeature, partnerId } = props
   const router = useRouter()
 
   const [state, setstate] = React.useState({
     list: listFeature,
     activeTab: 1,
     isMobile: false,
-    limitfeature: true
+    toggleShow: true
   })
 
   React.useEffect(() => {
     const handleResize = () => {
-      let missItem = 0
-      const limitfeature = state?.limitfeature ? 5 : -1
-
       const width = window.innerWidth
       const widthMobile = width < 768
-      const numColumn = Number(width < 768 ? 3 : 4)
-      const compareNum = listFeature?.length > limitfeature
 
-      const listSlice = compareNum
-        ? listFeature?.slice(0, widthMobile ? limitfeature : -1)
-        : listFeature
-      const lengthItem = Number(listSlice?.length)
+      let missItem = 0
+      const limitShow = widthMobile ? 5 : 7
+      const numListFeature = listFeature?.length
+      const showFeature = state?.toggleShow ? limitShow : numListFeature
 
-      const numXemthem = compareNum && widthMobile ? 1 : 0
+      const compareNum = numListFeature > showFeature
+      const endArr = widthMobile ? showFeature : numListFeature
+      const listSlice = listFeature?.slice(0, endArr)
 
-      compareNum &&
-        widthMobile &&
-        listSlice.push({
-          btn: true,
-          name: state.limitfeature ? 'Xem thêm' : 'Thu gọn',
-          image: require('./common/images/xemthem.svg'),
-          toggle: state.limitfeature
-        } as any)
+      let list: any = []
+      if (widthMobile) {
+        if (compareNum) {
+          list = listSlice.concat([
+            {
+              btn: true,
+              name: state.toggleShow ? 'Xem thêm' : 'Thu gọn',
+              image: require('./common/images/xemthem.svg'),
+              toggle: state.toggleShow
+            }
+          ] as any)
+        } else {
+          list = listSlice
+        }
+      } else {
+        list = listSlice
+      }
 
-      for (let i = 1; i <= 3; i++) {
-        if ((lengthItem + i) % numColumn === 0) {
-          missItem = i - numXemthem
+      const numColumn = widthMobile ? 3 : 4
+
+      for (let i = 0; i <= 3; i++) {
+        if ((list?.length + i) % numColumn === 0) {
+          missItem = i
+          break
         }
       }
 
-      const missItemArr: any = [...Array(missItem).keys()]
-
-      const y = listSlice?.concat(missItemArr)
+      const arrMiss: any = [...Array(missItem).keys()]
 
       setstate((prev: any) => ({
         ...prev,
-        list: y,
+        list: list.concat(arrMiss),
         isMobile: compareNum && widthMobile
       }))
     }
@@ -67,7 +71,7 @@ export const BannerHome = ({
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [state.limitfeature])
+  }, [state.toggleShow, props.listFeature])
 
   if (!getBanner) {
     return null
@@ -77,7 +81,7 @@ export const BannerHome = ({
     if (item.btn) {
       setstate((prev) => ({
         ...prev,
-        limitfeature: !prev.limitfeature
+        toggleShow: !prev.toggleShow
       }))
     }
 

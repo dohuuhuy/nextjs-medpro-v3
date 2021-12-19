@@ -1,4 +1,5 @@
 import * as a from '@actionStore'
+import { check } from '@componentsTest/BookingBill/utils/func'
 import HeaderCustom from '@componentsTest/HeaderCustom'
 import { AppState } from '@store/interface'
 import React, { useEffect } from 'react'
@@ -10,7 +11,7 @@ const HeaderPublic = () => {
   const user = useSelector((state: AppState) => state.user)
 
   useEffect(() => {
-    dispatch(a.getNoti())
+    check(user.userInfo.token) && dispatch(a.getNoti())
   }, [])
 
   if (!hos.information.header) return null
