@@ -1,11 +1,11 @@
 import { client } from '@config/medproSDK'
 import { huyi } from '@src/utils/clog'
+import { openToast } from '@src/utils/Notification'
 import * as ac from '@store/actionStore'
 import {
   AppState,
   HospitalState,
   HosptailTypes,
-  TotalDataState,
   UserState
 } from '@store/interface'
 import { urlJson } from '@utils/contants'
@@ -178,11 +178,10 @@ function* getAllPayment() {
     yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
-    /*     const total: TotalDataState = yield select((state: AppState) => state.total)
-     */
+
     const response: AxiosResponse = yield client.getAllPaymentMethod(
       {
-        bookingId: 'undefined',
+        bookingId: user.billInfo?.bookingInfo?.id,
         patientId: user.selectedPatient.id,
         price: Number(hos.schedule?.service?.selected.price),
         groupId: 1,
@@ -233,47 +232,54 @@ function* reserveBooking() {
     const endTimeString = moment(formatDate + ' ' + endTime).toISOString() || ''
 
     const postData = {
+      // thông tin payment
       gatewayId: hos.selectedPaymentFee.gatewayId,
       subTotal: hos.paymentFee?.subTotal,
       totalFee: hos.paymentFee?.totalFee,
       amount: hos.paymentFee?.grandTotal,
       methodId: hos.selectedPaymentFee?.gatewayId || 'NO_PAYMENT',
       paymentTypeDetail: hos.selectedPaymentFee?.code || 'NO_PAYMENT',
+
+      // thông tin cá nhân
       patientId: user.selectedPatient.id,
+      patientProfileId: '', // không có
+      hasInsuranceCode: hos.schedule?.service?.other?.selectedBHYT,
+      insuranceCode: user.selectedPatient?.insuranceCode || 'DN4798622441759',
+      insuranceChoice: '',
+      insuranceTransferCode: '', // không có
+      referralCode: '', // không có
+      phone: user.selectedPatient?.mobile,
+
+      // thông tin đặt khám
       serviceId: hos.schedule?.service?.selected.id,
       subjectId: hos.schedule?.subject?.selected.id,
       doctorId: hos.schedule?.doctor?.selected.id,
       roomId: '',
+      insuranceFileUrl: '', // chưa làm tới
+      filterCheckData: [], // chưa làm tới
+      addonServices: [], // chưa làm tới
+
+      // thông tin thời gian
+      bookingSlotId: timeSlotId + '_' + hos.partnerId,
       startTimeString: dateString,
       startTime: startTimeString,
       endTime: endTimeString,
-      bookingSlotId: timeSlotId + '_' + hos.partnerId,
-      redirectUrl: `${window.location.origin}/chi-tiet-phieu-kham`,
-      platform: 'pc',
       maxSlot: maxSlot,
-      hasInsuranceCode: false,
-      insuranceCode: user.selectedPatient?.insuranceCode,
 
-      // insuranceChoice: 'string',
-      insuranceTransferCode: '', // không có
+      // thông tin máy móc
+      treeId: hos.treeId, // luồng đi
+      platform: 'pc',
       cbWebView: 1,
       groupId: 1,
       idReExam: '', // chưa biết
-      patientProfileId: '', // không có
-      referralCode: '', // không có
-      // phone: '', // không hiểu
-      treeId: hos.treeId,
-      insuranceFileUrl: '', // chưa làm tới
-      filterCheckData: [], // chưa làm tới
-      addonServices: [] // chưa làm tới
-    } as any
+
+      redirectUrl: `${window.location.origin}/chi-tiet-phieu-kham`
+    }
 
     const response: AxiosResponse = yield client.reserveBooking(postData, {
       partnerid: hos.partnerId,
       token: user.userInfo.token
     })
-
-    console.log('response reserveBooking :>> ', response)
 
     const { data } = response
 
@@ -307,20 +313,32 @@ function* watcher_reserveBooking() {
   )
 }
 
-function* cancelBooking({ id }: any) {
+function* cancelBooking({ id, partnerId }: any) {
   try {
-    const total: TotalDataState = yield select((state: AppState) => state.total)
+    // const total: TotalDataState = yield select((state: AppState) => state.total)
     const user: UserState = yield select((state: AppState) => state.user)
 
     const response: AxiosResponse = yield client.cancelBooking(
       { id },
       {
-        partnerid: total.partnerId,
+        partnerid: partnerId,
         token: user.userInfo.token
       }
     )
 
-    yield put(ac.cancelBookingSuccess(response))
+    response.data &&
+      openToast({
+        type: 'success',
+        message: 'Thông báo !',
+        description: 'Bạn đã hủy phiếu khám thành công!',
+        duration: 60
+      })
+
+    yield put(ac.cancelBookingSuccess(response.data))
+    yield put(ac.getNoti())
+
+    yield response.data.transactionId &&
+      put(ac.getBillInfo(response.data.transactionId))
   } catch (error) {
     huyi({ name: 'cancelBooking', child: error, type: 'error' })
   }

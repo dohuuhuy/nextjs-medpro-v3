@@ -7,6 +7,7 @@ import {
   UserState,
   UserTypes
 } from '@src/store/interface'
+import { huyi } from '@src/utils/clog'
 import { openToast } from '@src/utils/Notification'
 import { AxiosResponse } from 'axios'
 import { get } from 'lodash'
@@ -40,7 +41,6 @@ function* watcher_listPatientRequest() {
 function* getBookingByUser() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
-
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
     const response: AxiosResponse = yield client.getAllBookingByUserId({
@@ -65,7 +65,6 @@ function* watcher_getBookingByUser() {
 function* getNoti() {
   try {
     const user: UserState = yield select((state: AppState) => state.user)
-
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
     const response: AxiosResponse = yield client.getAllNotifByUser({
@@ -154,14 +153,16 @@ function* getPaymentInfo({ mpTransaction }: any) {
         openToast({
           type: 'success',
           message: 'Thông báo !',
-          description: paymentMessage
+          description: paymentMessage,
+          duration: 60
         })
     } else {
       paymentMessage &&
         openToast({
           type: 'error',
           message: 'Thông báo !',
-          description: paymentMessage
+          description: paymentMessage,
+          duration: 60
         })
     }
     yield put(ac.getBillInfoSuccess(response.data))
@@ -176,6 +177,25 @@ function* watcher_getPaymentInfo() {
   yield takeLatest(UserTypes.Bill.PAYMENT_INFO_REQUEST, getPaymentInfo)
 }
 
+function* readNoti({ id }: any) {
+  try {
+    const user: UserState = yield select((state: AppState) => state.user)
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+
+    yield client.markViewedNotif(
+      { id },
+      { token: user.userInfo.token, partnerid: total.partnerId }
+    )
+    yield put(ac.getNoti())
+  } catch (error) {
+    huyi({ name: 'error-checkReadNoti', child: error, type: 0 })
+  }
+}
+
+function* watcher_readNoti() {
+  yield takeLatest(UserTypes.Noti.READ_NOTI_REQUEST, readNoti)
+}
+
 const userSagas = function* root() {
   yield all([
     fork(watcher_listPatientRequest),
@@ -183,7 +203,8 @@ const userSagas = function* root() {
     fork(watcher_getNoti),
     fork(watcher_loginMedproId),
     fork(watcher_getBillInfo),
-    fork(watcher_getPaymentInfo)
+    fork(watcher_getPaymentInfo),
+    fork(watcher_readNoti)
   ])
 }
 export default userSagas

@@ -18,7 +18,8 @@ export default function HeaderCustom({
   loginMedproId,
   loginAt,
   author,
-  noti
+  noti,
+  readNoti
 }: any) {
   const router = useRouter()
   const dispatch = useDispatch()
@@ -80,7 +81,9 @@ export default function HeaderCustom({
               </li>
               {author.token && (
                 <li>
-                  <Dropdown overlay={<ListNoti list={noti} />}>
+                  <Dropdown
+                    overlay={<ListNoti list={noti} readNoti={readNoti} />}
+                  >
                     <Badge count={noRep.length}>
                       <button
                         className={cx(

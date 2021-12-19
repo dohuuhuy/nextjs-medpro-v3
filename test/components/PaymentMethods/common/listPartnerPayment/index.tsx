@@ -31,17 +31,13 @@ export const CardPaymentFee = ({
           const urlImg =
             item.paymentIcon.path || require('./../images/payment.gif')
           return (
-            <li key={uniqueId()}>
+            <li key={uniqueId()} className={active}>
               <div className={styles.card}>
                 <figure
                   className={styles.icons}
                   onClick={onSelectpayment(item)}
                 >
-                  <img
-                    className={cx(styles.imageIcon, active)}
-                    src={urlImg}
-                    alt=''
-                  />
+                  <img className={cx(styles.imageIcon)} src={urlImg} alt='' />
                 </figure>
               </div>
             </li>

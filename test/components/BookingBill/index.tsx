@@ -36,6 +36,7 @@ export const BookingBill = (props: BookingBillIF) => {
   const { bookingInfo: info } = bill
   const {
     id,
+    partnerId,
     partner: hos,
     status,
     canRepayment,
@@ -53,7 +54,7 @@ export const BookingBill = (props: BookingBillIF) => {
   }
 
   const onOkeCancelBill = () => {
-    dispatch(props.cancelBooking({ id: id }))
+    dispatch(props.cancelBooking({ id, partnerId }))
     handleToggleModal()
   }
 

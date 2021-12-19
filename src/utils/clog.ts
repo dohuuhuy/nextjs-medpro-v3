@@ -35,7 +35,7 @@ export const huyi = ({ name, child, type }: Log) => {
 
       openToast({
         type: 'error',
-        message: 'Thông báo lỗi ' + e.statusCode,
+        message: 'Thông báo lỗi !' + e.statusCode,
         description: e.message,
         duration: 20
       })

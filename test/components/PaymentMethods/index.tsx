@@ -88,6 +88,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
             hospital={props.hospital}
             onReserveBooking={props.onReserveBooking}
             willPayment
+            selectedPatient={props.selectedPatient}
           />
         </Col>
       </Row>

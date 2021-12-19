@@ -48,6 +48,11 @@ export const DichVu = (props: Props) => {
       checkBHYT: true,
       selectedBHYT: Number(value)
     }))
+
+    stateDichVu.selectedItem.other = {}
+    stateDichVu.selectedItem.other.selectedBHYT = true
+    console.log('stateDichVu.selectedItem :>> ', stateDichVu.selectedItem)
+
     clickItem({ item: stateDichVu.selectedItem, props })
   }
 
@@ -61,10 +66,14 @@ export const DichVu = (props: Props) => {
       >
         {stateDichVu.list?.map((item: any) => {
           const active = checkActive(item, props) ? styles.active : ''
+          const activeBHYT =
+            stateDichVu.checkBHYT && stateDichVu.selectedItem.id === item.id
+              ? styles.active
+              : active
           return (
             <li key={item.id}>
               <button
-                className={cx(styles.btn, active)}
+                className={cx(styles.btn, activeBHYT)}
                 onClick={checkBHYT(item)}
               >
                 <span>{item.detail.name}</span>

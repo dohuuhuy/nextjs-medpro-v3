@@ -14,7 +14,8 @@ const init: UserState = {
   bookingByUser: [],
   noti: [],
   loginAt: '/',
-  billInfo: ''
+  billInfo: '',
+  cancelBooking: {}
 }
 
 export default function user(
@@ -22,6 +23,12 @@ export default function user(
   action: UserActions | { type: typeof HYDRATE; payload: UserState }
 ): UserState {
   switch (action.type) {
+    case UserTypes.Bill.CancelBooking_REQUEST_SUCCESS:
+      return {
+        ...state,
+        cancelBooking: action.CancelBooking
+      }
+
     case UserTypes.Bill.BILL_INFO_REQUEST_SUCCESS: {
       return { ...state, billInfo: action.billInfo }
     }

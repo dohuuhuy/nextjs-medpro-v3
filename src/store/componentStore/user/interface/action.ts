@@ -13,6 +13,12 @@ export type BillAction =
   | BILL_INFO_REQUEST_SUCCESS
   | PAYMENT_INFO_REQUEST
   | PAYMENT_INFO_REQUEST_SUCCESS
+  | CancelBooking_REQUEST_SUCCESS
+
+export interface CancelBooking_REQUEST_SUCCESS {
+  type: UserTypes.Bill.CancelBooking_REQUEST_SUCCESS
+  CancelBooking: string
+}
 
 export interface BILL_INFO_REQUEST {
   type: UserTypes.Bill.BILL_INFO_REQUEST
@@ -93,7 +99,10 @@ export interface RequestSuccess {
 
 // -------------------------Danh sách Notice theo user--------------------------------------
 
-export type NotiAction = NoticeRequest | NoticeRequestSuccess
+export type NotiAction =
+  | NoticeRequest
+  | NoticeRequestSuccess
+  | READ_NOTI_REQUEST
 
 export interface NoticeRequest {
   type: UserTypes.Noti.LIST_NOTI_REQUEST
@@ -102,4 +111,9 @@ export interface NoticeRequest {
 export interface NoticeRequestSuccess {
   type: UserTypes.Noti.LIST_NOTI_REQUEST_SUCCESS
   noti: any[]
+}
+
+export interface READ_NOTI_REQUEST {
+  type: UserTypes.Noti.READ_NOTI_REQUEST
+  id: string
 }

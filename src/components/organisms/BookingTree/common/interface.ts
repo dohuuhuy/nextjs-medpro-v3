@@ -15,6 +15,7 @@ export interface Steps {
   open: any
   sort: number
   data: any
+  other: any
 }
 
 export interface StateBooking {
@@ -81,6 +82,8 @@ export interface Item {
     combineNodes: any[]
     maxDay: null
   }
+  // custom thêm
+  other: any
 }
 
 export interface ClickItem {

@@ -1,14 +1,14 @@
 import { Icon } from '@componentsTest/Icon'
+import cx from 'classnames'
 import { find, findIndex, indexOf } from 'lodash'
+import moment from 'moment'
 import React from 'react'
+import styles from './../less/styles.module.less'
 import { BacSi } from './bacsi'
 import { ChuyenKhoa } from './chuyenkhoa'
 import { DichVu } from './dichvu'
 import { ClickItem, Props, StateBooking, Steps } from './interface'
 import { ThoiGian } from './thoigian'
-import styles from './../less/styles.module.less'
-import moment from 'moment'
-import cx from 'classnames'
 
 export const steps = [
   {
@@ -129,44 +129,51 @@ export const handlerStep = ({ bookingTree }: any) => {
 export const clickItem = ({ item, props }: ClickItem) => {
   const { state, setstate, keys, dispatch, saveSchedule } = props
 
-  // 1. lấy được index trong mảng arr stepper từ keys gửi xuống
+  // ---------------------------------> 1. Lấy vị trí và thông tin của step và step tiếp theo
   const index = findIndex(state.stepper, { key: keys })
   const findStep: Steps | any = find(state.stepper, { key: keys })
   const indexSub = findIndex(state.stepper, { key: item?.subType })
 
-  // 2. tại vị trí index gán seleted = detail của item đang chọn
+  // ---------------------------------> 2. Gán giá trị đã chọn vào step hiện tại
   state.stepper[index].selected = item?.detail || []
+  state.stepper[index].other = item?.other || {}
 
+  // ---------------------------------> 3. Reset hết step từ indexSub trở về sau khi chọn lại Step
   if (Object.keys(findStep?.selected).length) {
     if (indexSub > 0) {
       for (let i = indexSub; i <= state.stepper.length; i++) {
         if (state.stepper[i]) {
           state.stepper[i].data = []
           state.stepper[i].selected = {}
+          state.stepper[i].other = {}
         }
       }
       state.stepper[indexSub].data = item?.child || []
     }
-  } else {
-    // 3. tìm vị trí của step kế tiếp mảng
+  }
+
+  // ---------------------------------> 4. Gán data cho step tiếp theo
+  else {
     if (indexSub > 0) {
       state.stepper[indexSub].data = item?.child || []
     }
   }
 
-  // -----------------------cuối cùng là cập nhật lại state--------------------------------------
-
-  // save lại cái step đã chọn lưu vào localStorage window -> để loading lấy lại data
+  // ---------------------------------> 5. Chuyển đổi array thành object những thông tin cần thiết
   const schedules = state.stepper.reduce(
     (obj: any, item) => ({
       ...obj,
-      [item.key as string]: { selected: item.selected, data: item.data }
+      [item.key as string]: {
+        selected: item.selected,
+        data: item.data,
+        other: item.other
+      }
     }),
     {}
   )
 
+  // ---------------------------------> 6. Hiển thị thông tin step tiếp theo
   const willStep = state.stepper[index + 1]
-
   setstate((v: StateBooking) => ({
     ...v,
     schedules,
@@ -177,8 +184,8 @@ export const clickItem = ({ item, props }: ClickItem) => {
     }
   }))
 
-  dispatch(saveSchedule())
-
+  // ---------------------------------> 7. Lưu object schedules vào Redux và LocalStorage
+  dispatch(saveSchedule(schedules))
   window.localStorage.setItem('selected', JSON.stringify(schedules))
 }
 

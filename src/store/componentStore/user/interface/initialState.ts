@@ -6,6 +6,7 @@ export interface UserState {
   loginAt: string
   billInfo: any
   selectedPatient: any
+  cancelBooking: any
 }
 
 interface userInfo {

@@ -200,17 +200,11 @@ export const getReserveBookingSuccess = (data: any): HospitalActions => {
   }
 }
 
-// reserve Booking
-export const cancelBooking = ({ id }: any): HospitalActions => {
+// Hủy phiếu khám
+export const cancelBooking = ({ id, partnerId }: any): HospitalActions => {
   return {
     type: HosptailTypes.CancelBooking.CancelBooking_REQUEST,
-    id: id
-  }
-}
-
-export const cancelBookingSuccess = (data: any): HospitalActions => {
-  return {
-    type: HosptailTypes.CancelBooking.CancelBooking_REQUEST_SUCCESS,
-    CancelBooking: data
+    id,
+    partnerId
   }
 }

@@ -1,11 +1,31 @@
 import styles from './../styles.module.less'
 import { Item } from './interface'
 
-export const handleList = (data: any) => {
+export const handleList = (data: any, selectedPatient: any) => {
   const { paymentFee, selectedPaymentFee, schedule } = data
 
   return [
     {
+      visable: !!selectedPatient?.fullname,
+      title: 'Họ và tên: ',
+      value: selectedPatient?.fullname,
+      setting: {
+        title: {
+          bold: 1,
+          underline: 0,
+          color: 'red',
+          fontSize: ''
+        },
+        value: {
+          bold: 1,
+          underline: 0,
+          color: '',
+          fontSize: ''
+        }
+      }
+    },
+    {
+      visable: 1,
       title: 'Phương thức thanh toán: ',
       value: selectedPaymentFee?.name || 'Chưa xác định',
       setting: {
@@ -24,6 +44,7 @@ export const handleList = (data: any) => {
       }
     },
     {
+      visable: 1,
       title: 'Phí khám bệnh: ',
       value:
         paymentFee?.subTotal === -1
@@ -45,6 +66,7 @@ export const handleList = (data: any) => {
       }
     },
     {
+      visable: 1,
       title: 'Phí tiện ích: ',
       value: money(paymentFee?.totalFee),
       setting: {
@@ -63,6 +85,7 @@ export const handleList = (data: any) => {
       }
     },
     {
+      visable: 1,
       title: 'Tổng tiền: ',
       value: money(paymentFee?.grandTotal),
       setting: {

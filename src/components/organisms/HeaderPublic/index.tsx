@@ -20,6 +20,7 @@ const HeaderPublic = () => {
       <HeaderCustom
         loginAt={a.loginAt}
         loginMedproId={a.loginMedproId}
+        readNoti={a.readNoti}
         dataHeader={hos.information.header}
         author={user.userInfo}
         noti={user.noti}

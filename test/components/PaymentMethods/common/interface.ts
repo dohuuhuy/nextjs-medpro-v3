@@ -12,4 +12,5 @@ export interface PaymentMedthodIF {
     listPayment: any[]
   }
   onReserveBooking: any
+  selectedPatient: any
 }

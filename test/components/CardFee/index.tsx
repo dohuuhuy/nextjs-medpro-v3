@@ -15,6 +15,7 @@ export interface CardFeeIF {
   }
   onReserveBooking?: any
   willPayment?: boolean
+  selectedPatient: any
 }
 
 export const CardFee = (props: CardFeeIF) => {
@@ -77,24 +78,26 @@ export const CardFee = (props: CardFeeIF) => {
         <Icon name='luuy' /> Vui lòng kiểm tra lại thông tin trước khi đặt lịch
       </p>
       <ul className={styles.listFee}>
-        {handleList(props.hospital).map((item, i) => {
+        {handleList(props.hospital, props.selectedPatient).map((item, i) => {
           const t = getSetting(item, TITLE)
           const v = getSetting(item, VALUE)
           return (
-            <li key={i}>
-              <span
-                className={cx(styles.title, t.bold, t.under)}
-                style={{ color: t.color, fontSize: t.fontSize }}
-              >
-                {item.title}{' '}
-              </span>
-              <span
-                className={cx(styles.value, t.bold, t.under)}
-                style={{ color: v.color, fontSize: v.fontSize }}
-              >
-                {item?.value}
-              </span>
-            </li>
+            item.visable && (
+              <li key={i}>
+                <span
+                  className={cx(styles.title, t.bold, t.under)}
+                  style={{ color: t.color, fontSize: t.fontSize }}
+                >
+                  {item.title}{' '}
+                </span>
+                <span
+                  className={cx(styles.value, t.bold, t.under)}
+                  style={{ color: v.color, fontSize: v.fontSize }}
+                >
+                  {item?.value}
+                </span>
+              </li>
+            )
           )
         })}
       </ul>

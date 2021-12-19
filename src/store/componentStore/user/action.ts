@@ -93,3 +93,19 @@ export const getNotiSuccess = (noti: any): UserActions => {
     noti
   }
 }
+
+export const readNoti = ({ id }: any): UserActions => {
+  return {
+    type: UserTypes.Noti.READ_NOTI_REQUEST,
+    id
+  }
+}
+
+// Hủy phiếu khám thành công
+
+export const cancelBookingSuccess = (data: any): UserActions => {
+  return {
+    type: UserTypes.Bill.CancelBooking_REQUEST_SUCCESS,
+    CancelBooking: data
+  }
+}

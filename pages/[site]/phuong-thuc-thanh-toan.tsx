@@ -32,6 +32,7 @@ const PaymentMethodsPage = () => {
       ) : (
         <PaymentMethods
           hospital={hospital}
+          selectedPatient={user.selectedPatient}
           onSelectedPaymentFee={ac.selectedPaymentFee}
           onReserveBooking={ac.getReserveBooking}
         />

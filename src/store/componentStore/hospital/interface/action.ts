@@ -201,6 +201,7 @@ export type CancelBookingAction =
 export interface CancelBookingRequest {
   type: HosptailTypes.CancelBooking.CancelBooking_REQUEST
   id: string
+  partnerId: string
 }
 
 export interface CancelBookingRequestSuccess {
