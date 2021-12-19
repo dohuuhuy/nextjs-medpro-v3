@@ -90,6 +90,8 @@ export const BannerHome = (props: BannerHomeIF) => {
     if (partnerId === 'medpro' && item.type === 'booking.date') {
       router.push('/benh-vien')
     }
+
+    router.push(item.webRoute)
   }
 
   return (

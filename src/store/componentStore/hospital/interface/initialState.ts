@@ -9,7 +9,7 @@ export interface HospitalState {
   selectedFeature: InfoPartner | any
   flow: string
   treeId: string
-  schedule: any
+  schedule?: Schedule | any
   listPayment: any[]
   selectedPaymentFee: any
   paymentFee: {
@@ -17,6 +17,7 @@ export interface HospitalState {
     subTotal: number
     grandTotal: number
   }
+  listHistoryPayment: any[]
   passSchedules: boolean
   reserveBooking: any[]
 }
@@ -69,4 +70,87 @@ export interface ItemFeature {
   updatedAt: string
   webStatus: false
   webRoute: string
+}
+
+export interface Schedule {
+  subject: Subject
+  doctor: Doctor
+  service: Service
+  time: Time
+}
+
+export interface Subject {
+  selected: Selected
+  data: any[]
+  other: any
+}
+export interface Doctor {
+  selected: Selected
+  data: any[]
+  other: any
+}
+
+export interface Service {
+  selected: Selected
+  data: any[]
+  other: any
+}
+
+export interface Time {
+  selected: {
+    chonNgay: ChonNgay
+    chonGio: ChonGio
+  }
+  data: any[]
+  other: any
+}
+
+export interface ChonNgay {
+  shifts: Shift[]
+  date: number
+  timeSlots: any[]
+  timemiliseconds: number
+}
+
+export interface ChonGio {
+  timeId: string
+  availableSlot: number
+  maxSlot: number
+  startTime: string
+  endTime: string
+}
+
+export interface Selected {
+  name: string
+  id: string
+  type: string
+  roomType?: any
+  description?: any
+  room?: any
+  bookingNote: string
+  nextCombine: boolean
+  combineNodes: any[]
+  maxDay?: any
+  price?: number
+}
+
+export interface TimeSlotInDay {
+  timeId: string
+  availableSlot: number
+  maxSlot: number
+  startTime: string
+  endTime: string
+}
+
+export interface Shift {
+  id: string
+  shiftName: string
+  shiftCode: string
+  startTime: string
+  endTime: string
+  duration: number
+  days: string
+  services: any[]
+  maxSlot: number
+  timeSlotInDay: TimeSlotInDay[]
 }

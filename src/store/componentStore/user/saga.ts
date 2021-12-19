@@ -174,7 +174,7 @@ function* getPaymentInfo({ mpTransaction }: any) {
 }
 
 function* watcher_getPaymentInfo() {
-  yield takeLatest(UserTypes.Bill.PAYMENT_INFO_REQUEST, getPaymentInfo)
+  yield takeLatest(UserTypes.Bill.Payment_INFO_REQUEST, getPaymentInfo)
 }
 
 function* readNoti({ id }: any) {

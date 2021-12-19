@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const DetailBookingPage = () => {
+const ChiTietPhieuKham = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const user = useSelector((state: AppState) => state.user)
@@ -40,6 +40,6 @@ const DetailBookingPage = () => {
   )
 }
 
-DetailBookingPage.layout = DefaultLayout
+ChiTietPhieuKham.layout = DefaultLayout
 
-export default DetailBookingPage
+export default ChiTietPhieuKham

@@ -25,17 +25,17 @@ export interface SetParnerIdHospital {
 }
 
 export interface InformationRequest {
-  type: HosptailTypes.Information.INFORMATION_REQUEST
+  type: HosptailTypes.Information.Information_REQUEST
   host: string
 }
 
 export interface InformationRequestSuccess {
-  type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS
+  type: HosptailTypes.Information.Information_REQUEST_SUCCESS
   information: Record<string, any>
 }
 
 export interface HospitalClearDetails {
-  type: HosptailTypes.Information.INFORMATION_CLEAR
+  type: HosptailTypes.Information.Information_CLEAR
 }
 
 // -----------------------------danh sách dịch vụ---------------------------------------------
@@ -52,18 +52,18 @@ export interface selectedFeature {
 }
 
 export interface FeatureRequest {
-  type: HosptailTypes.Feature.FEATURE_REQUEST
+  type: HosptailTypes.Feature.Feature_REQUEST
   partnerId: string
   typeReser: 'app' | 'partner'
 }
 
 export interface FeatureByPartnertSuccess {
-  type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS
+  type: HosptailTypes.Feature.Feature_BY_PARTNER_REQUEST_SUCCESS
   listFeatureByPartner: any[]
 }
 
 export interface FeatureByAppSuccess {
-  type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS
+  type: HosptailTypes.Feature.Feature_BY_APP_REQUEST_SUCCESS
   listFeatureByApp: any[]
 }
 
@@ -74,11 +74,11 @@ export type ListHospitalAction =
   | ListHospitalRequestSuccess
 
 export interface ListHospitalRequest {
-  type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
+  type: HosptailTypes.ListHospital.ListHospital_REQUEST
 }
 
 export interface ListHospitalRequestSuccess {
-  type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS
+  type: HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS
   listHospital: any[]
 }
 
@@ -160,20 +160,20 @@ export type PaymentAction =
   | SelectedPaymentFee
 
 export interface PaymentRequest {
-  type: HosptailTypes.Payment.PAYMENT_REQUEST
+  type: HosptailTypes.Payment.Payment_REQUEST
 }
 
 export interface PaymentRequestSuccess {
-  type: HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS
+  type: HosptailTypes.Payment.Payment_REQUEST_SUCCESS
   listPayment: any[]
 }
 
 export interface PaymentReset {
-  type: HosptailTypes.Payment.PAYMENT_RESET
+  type: HosptailTypes.Payment.Payment_RESET
 }
 
 export interface SelectedPaymentFee {
-  type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE
+  type: HosptailTypes.Payment.SELECTED_Payment_FEE
   paymentFee: {}
 }
 
@@ -209,6 +209,19 @@ export interface CancelBookingRequestSuccess {
   CancelBooking: any
 }
 
+export type HistoryPaymentAction =
+  | HistoryPaymentRequest
+  | HistoryPaymentRequestSuccess
+
+export interface HistoryPaymentRequest {
+  type: HosptailTypes.HistoryPayment.HistoryPayment_REQUEST
+}
+
+export interface HistoryPaymentRequestSuccess {
+  type: HosptailTypes.HistoryPayment.HistoryPayment_REQUEST_SUCCESS
+  listHistoryPayment: any
+}
+
 // Kiểm soát hàm thực hiện hành động ---------------------------------------------------------------------------
 
 export type HospitalActions =
@@ -223,3 +236,4 @@ export type HospitalActions =
   | PaymentAction
   | ReserveBookingAction
   | CancelBookingAction
+  | HistoryPaymentAction

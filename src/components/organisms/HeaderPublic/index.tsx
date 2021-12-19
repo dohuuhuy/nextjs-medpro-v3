@@ -9,6 +9,7 @@ const HeaderPublic = () => {
   const dispatch = useDispatch()
   const hos = useSelector((state: AppState) => state.hospital)
   const user = useSelector((state: AppState) => state.user)
+  const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
     check(user.userInfo.token) && dispatch(a.getNoti())
@@ -18,6 +19,7 @@ const HeaderPublic = () => {
   return (
     <>
       <HeaderCustom
+        partnerId={total.partnerId}
         loginAt={a.loginAt}
         loginMedproId={a.loginMedproId}
         readNoti={a.readNoti}

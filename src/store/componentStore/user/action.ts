@@ -9,7 +9,7 @@ export const getBillInfo = (transactionId: any): UserActions => {
 
 export const getPaymentInfo = (mpTransaction: any): UserActions => {
   return {
-    type: UserTypes.Bill.PAYMENT_INFO_REQUEST,
+    type: UserTypes.Bill.Payment_INFO_REQUEST,
     mpTransaction
   }
 }

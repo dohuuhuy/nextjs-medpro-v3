@@ -6,6 +6,7 @@ import {
   AppState,
   HospitalState,
   HosptailTypes,
+  TotalDataState,
   UserState
 } from '@store/interface'
 import { urlJson } from '@utils/contants'
@@ -26,7 +27,7 @@ function* getHospitalDetails() {
 
 function* watcher_getHospitalDetails() {
   yield takeLatest(
-    HosptailTypes.Information.INFORMATION_REQUEST,
+    HosptailTypes.Information.Information_REQUEST,
     getHospitalDetails
   )
 }
@@ -54,7 +55,7 @@ function* getFeatureByPartner({ partnerId, typeReser }: any) {
 }
 
 function* watcher_getFeatureByPartner() {
-  yield takeLatest(HosptailTypes.Feature.FEATURE_REQUEST, getFeatureByPartner)
+  yield takeLatest(HosptailTypes.Feature.Feature_REQUEST, getFeatureByPartner)
 }
 
 function* getListHospital() {
@@ -73,7 +74,7 @@ function* getListHospital() {
 
 function* watcher_getListHospital() {
   yield takeLatest(
-    HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST,
+    HosptailTypes.ListHospital.ListHospital_REQUEST,
     getListHospital
   )
 }
@@ -209,7 +210,7 @@ function* getAllPayment() {
 }
 
 function* watcher_getAllPayment() {
-  yield takeLatest(HosptailTypes.Payment.PAYMENT_REQUEST, getAllPayment)
+  yield takeLatest(HosptailTypes.Payment.Payment_REQUEST, getAllPayment)
 }
 
 function* reserveBooking() {
@@ -218,8 +219,8 @@ function* reserveBooking() {
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
 
-    const date = hos.schedule.time.selected?.chonNgay.date
-    const chonGio = hos.schedule.time.selected?.chonGio
+    const date = hos.schedule?.time.selected?.chonNgay.date
+    const chonGio = hos.schedule?.time.selected?.chonGio
     const formatDate = moment(date).format('YYYY-MM-DD')
     const startTime = chonGio.startTime
     const endTime = chonGio.endTime
@@ -351,6 +352,29 @@ function* watcher_cancelBooking() {
   )
 }
 
+function* getHistoryPayment() {
+  try {
+    const total: TotalDataState = yield select((state: AppState) => state.total)
+    const user: UserState = yield select((state: AppState) => state.user)
+
+    const response: AxiosResponse = yield client.paymentFeeTracking({
+      partnerid: total.partnerId,
+      token: user.userInfo.token
+    })
+
+    yield put(ac.getHistoryPaymentSuccess(response.data))
+  } catch (error) {
+    huyi({ name: 'HistoryPayment', child: error, type: 'error' })
+  }
+}
+
+function* watcher_getHistoryPayment() {
+  yield takeLatest(
+    HosptailTypes.HistoryPayment.HistoryPayment_REQUEST,
+    getHistoryPayment
+  )
+}
+
 const hospitalSagas = function* root() {
   yield all([
     fork(watcher_getHospitalDetails),
@@ -365,7 +389,8 @@ const hospitalSagas = function* root() {
     fork(watcher_getbookingCurNode),
     fork(watcher_getAllPayment),
     fork(watcher_reserveBooking),
-    fork(watcher_cancelBooking)
+    fork(watcher_cancelBooking),
+    fork(watcher_getHistoryPayment)
   ])
 }
 export default hospitalSagas

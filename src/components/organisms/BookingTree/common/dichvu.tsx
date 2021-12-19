@@ -51,7 +51,6 @@ export const DichVu = (props: Props) => {
 
     stateDichVu.selectedItem.other = {}
     stateDichVu.selectedItem.other.selectedBHYT = true
-    console.log('stateDichVu.selectedItem :>> ', stateDichVu.selectedItem)
 
     clickItem({ item: stateDichVu.selectedItem, props })
   }

@@ -15,7 +15,7 @@ export interface CardFeeIF {
   }
   onReserveBooking?: any
   willPayment?: boolean
-  selectedPatient: any
+  selectedPatient?: any
 }
 
 export const CardFee = (props: CardFeeIF) => {

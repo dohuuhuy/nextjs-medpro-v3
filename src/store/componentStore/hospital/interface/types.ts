@@ -5,9 +5,9 @@ export namespace HosptailTypes {
   }
 
   export enum Information {
-    INFORMATION_REQUEST = 'INFORMATION_REQUEST',
-    INFORMATION_REQUEST_SUCCESS = 'INFORMATION_REQUEST_SUCCESS',
-    INFORMATION_CLEAR = 'INFORMATION_CLEAR',
+    Information_REQUEST = 'Information_REQUEST',
+    Information_REQUEST_SUCCESS = 'Information_REQUEST_SUCCESS',
+    Information_CLEAR = 'Information_CLEAR',
     SET_PARTNERID_HOSPITAL = 'SET_PARTNERID_HOSPITAL'
   }
 
@@ -27,15 +27,15 @@ export namespace HosptailTypes {
   }
 
   export enum Feature {
-    FEATURE_REQUEST = 'FEATURE_REQUEST',
-    FEATURE_BY_APP_REQUEST_SUCCESS = 'FEATURE_BY_APP_REQUEST_SUCCESS',
-    FEATURE_BY_PARTNER_REQUEST_SUCCESS = 'FEATURE_BY_PARTNER_REQUEST_SUCCESS',
+    Feature_REQUEST = 'Feature_REQUEST',
+    Feature_BY_APP_REQUEST_SUCCESS = 'Feature_BY_APP_REQUEST_SUCCESS',
+    Feature_BY_PARTNER_REQUEST_SUCCESS = 'Feature_BY_PARTNER_REQUEST_SUCCESS',
     SELECTED_FEATURE = 'SELECTED_FEATURE'
   }
 
   export enum ListHospital {
-    LIST_HOSPITAL_REQUEST = 'LIST_HOSPITAL_REQUEST',
-    LIST_HOSPITAL_REQUEST_SUCCESS = 'LIST_HOSPITAL_REQUEST_SUCCESS'
+    ListHospital_REQUEST = 'ListHospital_REQUEST',
+    ListHospital_REQUEST_SUCCESS = 'ListHospital_REQUEST_SUCCESS'
   }
   export enum BookingTree {
     BOOKING_TREE_REQUEST = 'BOOKING_TREE_REQUEST',
@@ -44,11 +44,11 @@ export namespace HosptailTypes {
     CurrentBooking_Success = 'CurrentBooking_Success'
   }
   export enum Payment {
-    PAYMENT_REQUEST = 'PAYMENT_REQUEST',
-    PAYMENT_REQUEST_SUCCESS = 'PAYMENT_REQUEST_SUCCESS',
-    PAYMENT_RESET = 'PAYMENT_RESET',
-    SELECTED_PAYMENT_FEE = 'SELECTED_PAYMENT_FEE',
-    RESET_SELECTED_PAYMENT_FEE = 'RESET_SELECTED_PAYMENT_FEE'
+    Payment_REQUEST = 'Payment_REQUEST',
+    Payment_REQUEST_SUCCESS = 'Payment_REQUEST_SUCCESS',
+    Payment_RESET = 'Payment_RESET',
+    SELECTED_Payment_FEE = 'SELECTED_Payment_FEE',
+    RESET_SELECTED_Payment_FEE = 'RESET_SELECTED_Payment_FEE'
   }
 
   export enum ReserveBooking {
@@ -58,5 +58,10 @@ export namespace HosptailTypes {
   export enum CancelBooking {
     CancelBooking_REQUEST = 'CancelBooking_REQUEST',
     CancelBooking_REQUEST_SUCCESS = 'CancelBooking_REQUEST_SUCCESS'
+  }
+
+  export enum HistoryPayment {
+    HistoryPayment_REQUEST = 'HistoryPayment_REQUEST',
+    HistoryPayment_REQUEST_SUCCESS = 'HistoryPayment_REQUEST_SUCCESS'
   }
 }

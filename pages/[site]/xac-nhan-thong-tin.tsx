@@ -13,6 +13,7 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 
 const ConfirmInfoPage = () => {
   const router = useRouter()
+
   const dispatch = useDispatch()
   const user = useSelector((state: AppState) => state.user)
   const hospital = useSelector((state: AppState) => state.hospital)

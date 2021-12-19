@@ -43,14 +43,14 @@ function* getListPartners() {
       yield put(ac.getNoti())
       yield put(ac.listPartnersRequestSuccess(response))
       yield put(ac.SetParnerId(partnerId))
-
-      yield put(
-        ac.FeatureRequest({
-          partnerId,
-          typeReser: 'app'
-        })
-      )
     }
+
+    yield put(
+      ac.FeatureRequest({
+        partnerId,
+        typeReser: 'app'
+      })
+    )
 
     yield put(ac.getHeader(partnerId))
     yield put(ac.getBanners(partnerId))

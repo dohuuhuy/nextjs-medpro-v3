@@ -23,7 +23,63 @@ const init: HospitalState = {
   treeId: '',
 
   // --> schedule -->
-  schedule: {},
+  schedule: {
+    subject: {
+      selected: {
+        id: '',
+        name: '',
+        type: '',
+        bookingNote: '',
+        nextCombine: false,
+        combineNodes: []
+      },
+      data: [],
+      other: {}
+    },
+    doctor: {
+      selected: {
+        id: '',
+        name: '',
+        type: '',
+        bookingNote: '',
+        nextCombine: false,
+        combineNodes: []
+      },
+      data: [],
+      other: {}
+    },
+    service: {
+      selected: {
+        id: '',
+        name: '',
+        type: '',
+        bookingNote: '',
+        nextCombine: false,
+        combineNodes: []
+      },
+      data: [],
+      other: {}
+    },
+    time: {
+      selected: {
+        chonGio: {
+          timeId: '',
+          availableSlot: 0,
+          maxSlot: 0,
+          startTime: '',
+          endTime: ''
+        },
+        chonNgay: {
+          shifts: [],
+          date: 0,
+          timeSlots: [],
+          timemiliseconds: 0
+        }
+      },
+      data: [],
+      other: {}
+    }
+  },
   passSchedules: false,
 
   // --> payment -->
@@ -36,7 +92,8 @@ const init: HospitalState = {
   },
 
   // --> sau khi thanh toán xong
-  reserveBooking: []
+  reserveBooking: [],
+  listHistoryPayment: []
 }
 
 export default function hospital(
@@ -44,6 +101,12 @@ export default function hospital(
   action: HospitalActions | { type: typeof HYDRATE; payload: HospitalState }
 ): HospitalState {
   switch (action.type) {
+    case HosptailTypes.HistoryPayment.HistoryPayment_REQUEST_SUCCESS:
+      return {
+        ...state,
+        listHistoryPayment: action.listHistoryPayment
+      }
+
     case HosptailTypes.ReserveBooking.ReserveBooking_REQUEST_SUCCESS:
       return {
         ...state,
@@ -89,13 +152,13 @@ export default function hospital(
         bookingCurrent: action.bookingCurrent
       }
 
-    case HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS:
+    case HosptailTypes.Feature.Feature_BY_PARTNER_REQUEST_SUCCESS:
       return {
         ...state,
         listFeatureByPartner: action.listFeatureByPartner
       }
 
-    case HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS:
+    case HosptailTypes.Feature.Feature_BY_APP_REQUEST_SUCCESS:
       return {
         ...state,
         listFeatureByApp: action.listFeatureByApp
@@ -131,7 +194,7 @@ export default function hospital(
         ...reset //--> reset lai data khi chọn feature khác
       }
 
-    case HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS:
+    case HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS:
       return {
         ...state,
         listHospital: action.listHospital
@@ -155,13 +218,13 @@ export default function hospital(
         information: { ...state.information, footer: action.footer }
       }
 
-    case HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS:
+    case HosptailTypes.Payment.Payment_REQUEST_SUCCESS:
       return {
         ...state,
         listPayment: action.listPayment
       }
 
-    case HosptailTypes.Payment.SELECTED_PAYMENT_FEE:
+    case HosptailTypes.Payment.SELECTED_Payment_FEE:
       const { totalFee, subTotal, grandTotal }: any = action.paymentFee
       return {
         ...state,
@@ -173,7 +236,7 @@ export default function hospital(
         }
       }
 
-    case HosptailTypes.Payment.PAYMENT_RESET:
+    case HosptailTypes.Payment.Payment_RESET:
       return {
         ...state,
         selectedPaymentFee: {},

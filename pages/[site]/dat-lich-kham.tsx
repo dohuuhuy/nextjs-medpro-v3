@@ -17,13 +17,14 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const ThongTinDatKhamPage = ({ data }: any) => {
   const dispatch = useDispatch()
   const router = useRouter()
-  const partnerId = router.query?.site
+  const partnerId: any = router.query?.site
 
   const hospital = useSelector((state: AppState) => state.hospital)
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
     dispatch(ac.paymentReset())
+    dispatch(ac.resetSchedule())
     dispatch(ac.setParnerIdHospital(partnerId))
     dispatch(ac.getBookingTree(partnerId))
     dispatch(ac.listPatientRequest())

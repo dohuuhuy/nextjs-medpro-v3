@@ -11,8 +11,8 @@ export type UserActions =
 export type BillAction =
   | BILL_INFO_REQUEST
   | BILL_INFO_REQUEST_SUCCESS
-  | PAYMENT_INFO_REQUEST
-  | PAYMENT_INFO_REQUEST_SUCCESS
+  | Payment_INFO_REQUEST
+  | Payment_INFO_REQUEST_SUCCESS
   | CancelBooking_REQUEST_SUCCESS
 
 export interface CancelBooking_REQUEST_SUCCESS {
@@ -30,13 +30,13 @@ export interface BILL_INFO_REQUEST_SUCCESS {
   billInfo: any
 }
 
-export interface PAYMENT_INFO_REQUEST {
-  type: UserTypes.Bill.PAYMENT_INFO_REQUEST
+export interface Payment_INFO_REQUEST {
+  type: UserTypes.Bill.Payment_INFO_REQUEST
   mpTransaction: string
 }
 
-export interface PAYMENT_INFO_REQUEST_SUCCESS {
-  type: UserTypes.Bill.PAYMENT_INFO_REQUEST_SUCCESS
+export interface Payment_INFO_REQUEST_SUCCESS {
+  type: UserTypes.Bill.Payment_INFO_REQUEST_SUCCESS
   billInfo: any
 }
 

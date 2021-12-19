@@ -13,14 +13,27 @@ import { Infomation } from './common/infomation'
 import { ListNoti } from './common/listNoti'
 import styles from './styles.module.less'
 
-export default function HeaderCustom({
-  dataHeader,
-  loginMedproId,
-  loginAt,
-  author,
-  noti,
-  readNoti
-}: any) {
+export interface HeaderCustomIF {
+  dataHeader: any
+  loginMedproId: any
+  loginAt: any
+  author: any
+  noti: any
+  readNoti: any
+  partnerId: string
+}
+
+export default function HeaderCustom(props: HeaderCustomIF) {
+  const {
+    dataHeader,
+    loginMedproId,
+    loginAt,
+    author,
+    noti,
+    readNoti,
+    partnerId
+  } = props
+
   const router = useRouter()
   const dispatch = useDispatch()
   const [toggleSearch, settoggleSearch] = React.useState(false)
@@ -29,8 +42,8 @@ export default function HeaderCustom({
     return null
   }
 
-  const { logo, menu } = dataHeader
-  const glogo = logo?.desktop
+  const { menu } = dataHeader
+  // const glogo = logo?.desktop
 
   const onSearch = () => {
     settoggleSearch(!toggleSearch)
@@ -51,6 +64,8 @@ export default function HeaderCustom({
 
   const noRep = filter(noti, { isRead: false })
 
+  const logo = `https://resource-testing.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`
+
   return (
     <Container tag='header' fluid={true} fixed={true} className={styles.header}>
       <Container className={styles.containerHeader}>
@@ -60,7 +75,7 @@ export default function HeaderCustom({
               <Link href={'/'}>
                 <a>
                   <Image
-                    src={glogo}
+                    src={logo}
                     width='275'
                     height='75'
                     layout='responsive'

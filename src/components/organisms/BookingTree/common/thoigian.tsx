@@ -11,10 +11,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './../less/thoigian.module.less'
 import { Props, Steps } from './interface'
-import { F_DATE } from './utils'
+import { funcSchedules, F_DATE } from './utils'
 
 export const ThoiGian = (props: Props) => {
-
   const dispatch = useDispatch()
 
   const hospital = useSelector((state: AppState) => state.hospital)
@@ -46,7 +45,6 @@ export const ThoiGian = (props: Props) => {
 
   const dayObjOfLast = moment(`${thisYear}-${thisMonth + 1}-${daysInMonth}`) // thời gian tháng mới
   const weekDayOfLast = dayObjOfLast.day() // lấy sô ngày mới
-
 
   //  ----------------------------ACTION --------------------------------------------------------
 
@@ -92,13 +90,8 @@ export const ThoiGian = (props: Props) => {
   const onselectTime = (item: any, name: 'chonNgay' | 'chonGio') => {
     ;(last(state.stepper) as any).selected[name] = item
 
-    const schedules = state.stepper.reduce(
-      (obj: any, item) => ({
-        ...obj,
-        [item.key as string]: { selected: item.selected, data: item.data }
-      }),
-      {}
-    )
+    const schedules = funcSchedules(state)
+
     setstate((v) => ({ ...v }))
 
     if (name === 'chonGio') {

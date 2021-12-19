@@ -32,7 +32,8 @@ export const steps = [
     },
     open: true,
     data: [],
-    selected: {}
+    selected: {},
+    other: {}
   },
   {
     key: 'service',
@@ -55,7 +56,8 @@ export const steps = [
     },
     open: true,
     data: [],
-    selected: {}
+    selected: {},
+    other: {}
   },
   {
     key: 'subject',
@@ -80,7 +82,8 @@ export const steps = [
     },
     open: true,
     data: [],
-    selected: {}
+    selected: {},
+    other: {}
   },
 
   {
@@ -104,7 +107,8 @@ export const steps = [
     },
     open: true,
     data: [],
-    selected: {}
+    selected: {},
+    other: {}
   }
 ]
 
@@ -160,18 +164,7 @@ export const clickItem = ({ item, props }: ClickItem) => {
   }
 
   // ---------------------------------> 5. Chuyển đổi array thành object những thông tin cần thiết
-  const schedules = state.stepper.reduce(
-    (obj: any, item) => ({
-      ...obj,
-      [item.key as string]: {
-        selected: item.selected,
-        data: item.data,
-        other: item.other
-      }
-    }),
-    {}
-  )
-
+  const schedules = funcSchedules(state)
   // ---------------------------------> 6. Hiển thị thông tin step tiếp theo
   const willStep = state.stepper[index + 1]
   setstate((v: StateBooking) => ({
@@ -188,6 +181,19 @@ export const clickItem = ({ item, props }: ClickItem) => {
   dispatch(saveSchedule(schedules))
   window.localStorage.setItem('selected', JSON.stringify(schedules))
 }
+
+export const funcSchedules = (state: StateBooking) =>
+  state.stepper.reduce(
+    (obj: any, item) => ({
+      ...obj,
+      [item.key as string]: {
+        selected: item.selected,
+        data: item.data,
+        other: item.other
+      }
+    }),
+    {}
+  )
 
 export const checkActive = (item: any, props: any) => {
   if (!item || !props) return false
@@ -272,7 +278,8 @@ export const handleHeader = ({ item, state }: any) => {
     return 'Chọn ' + item?.title.toLowerCase()
   }
 
-  const activeName = Object.keys(item.selected).length ? styles.active : ''
+  const activeName =
+    item?.selected && Object.keys(item?.selected).length ? styles.active : ''
   return (
     <div className={styles.header}>
       <h3>{item.title}</h3>

@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const CreateFormPage = () => {
+const TaoHoSoBenhNhan = () => {
   return <CreateForm />
 }
 
-CreateFormPage.Layout = DefaultLayout
-export default CreateFormPage
+TaoHoSoBenhNhan.Layout = DefaultLayout
+export default TaoHoSoBenhNhan

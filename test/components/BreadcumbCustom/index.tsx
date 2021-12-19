@@ -14,6 +14,7 @@ export interface Breadcumb {
   header?: any
   listHos?: any[]
   post?: any
+  text?: string
   type: 'news' | 'booking' | 'normal' | 'bills' | 'user'
 }
 
@@ -23,7 +24,8 @@ export const BreadcumbCustom = ({
   type,
   header,
   partner,
-  appId
+  appId,
+  text = 'Vui lòng cung cấp text breadcumb !'
 }: Breadcumb) => {
   const router = useRouter()
   const listBreadcumb = []
@@ -106,8 +108,15 @@ export const BreadcumbCustom = ({
         label: 'thông tin tài khoản'
       })
       break
+    case 'normal':
 
     default:
+      listBreadcumb.push(home)
+
+      listBreadcumb.push({
+        link: '',
+        label: text
+      })
       break
   }
 

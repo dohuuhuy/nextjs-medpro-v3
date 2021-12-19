@@ -38,8 +38,9 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       const stepper = state.stepper.map((v: any) => {
         return {
           ...v,
-          selected: selecteds[v.key].selected,
-          data: selecteds[v.key].data
+          selected: selecteds[v.key]?.selected,
+          data: selecteds[v.key]?.data,
+          other: selecteds[v.key]?.other
         }
       })
 

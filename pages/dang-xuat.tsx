@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as ac from '@src/store/actionStore'
 
-const Logout = () => {
+const DangXuat = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const user = useSelector((state: AppState) => state.user)
@@ -23,4 +23,4 @@ const Logout = () => {
   )
 }
 
-export default Logout
+export default DangXuat

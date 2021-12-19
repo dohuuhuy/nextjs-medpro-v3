@@ -15,7 +15,7 @@ export interface Steps {
   open: any
   sort: number
   data: any
-  other: any
+  other?: any
 }
 
 export interface StateBooking {

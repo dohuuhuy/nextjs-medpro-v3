@@ -24,7 +24,7 @@ export const saveSchedule = (schedule: any): HospitalActions => {
 // lấy json thông tin bệnh viện
 export const getHospitalDetails = (host: any): HospitalActions => {
   return {
-    type: HosptailTypes.Information.INFORMATION_REQUEST,
+    type: HosptailTypes.Information.Information_REQUEST,
     host
   }
 }
@@ -33,7 +33,7 @@ export const InformationRequestSuccess = (
   information: Record<string, any>
 ): HospitalActions => {
   return {
-    type: HosptailTypes.Information.INFORMATION_REQUEST_SUCCESS,
+    type: HosptailTypes.Information.Information_REQUEST_SUCCESS,
     information
   }
 }
@@ -41,13 +41,13 @@ export const InformationRequestSuccess = (
 // lấy danh sách bệnh viện
 export const getListHospital = (): HospitalActions => {
   return {
-    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST
+    type: HosptailTypes.ListHospital.ListHospital_REQUEST
   }
 }
 
 export const ListHospitalRequestSuccess = (listHospital: any) => {
   return {
-    type: HosptailTypes.ListHospital.LIST_HOSPITAL_REQUEST_SUCCESS,
+    type: HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS,
     listHospital
   }
 }
@@ -58,7 +58,7 @@ export const FeatureRequest = ({
   typeReser
 }: any): HospitalActions => {
   return {
-    type: HosptailTypes.Feature.FEATURE_REQUEST,
+    type: HosptailTypes.Feature.Feature_REQUEST,
     partnerId,
     typeReser
   }
@@ -66,7 +66,7 @@ export const FeatureRequest = ({
 
 export const FeatureByAppSuccess = (listFeatureByApp: any): HospitalActions => {
   return {
-    type: HosptailTypes.Feature.FEATURE_BY_APP_REQUEST_SUCCESS,
+    type: HosptailTypes.Feature.Feature_BY_APP_REQUEST_SUCCESS,
     listFeatureByApp
   }
 }
@@ -75,7 +75,7 @@ export const FeatureByPartnerSuccess = (
   listFeatureByPartner: any
 ): HospitalActions => {
   return {
-    type: HosptailTypes.Feature.FEATURE_BY_PARTNER_REQUEST_SUCCESS,
+    type: HosptailTypes.Feature.Feature_BY_PARTNER_REQUEST_SUCCESS,
     listFeatureByPartner
   }
 }
@@ -157,24 +157,24 @@ export const getBannersSuccess = (data: any): HospitalActions => {
 // payment
 export const getAllPayment = (): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.PAYMENT_REQUEST
+    type: HosptailTypes.Payment.Payment_REQUEST
   }
 }
 export const getAllPaymentSuccess = (listPayment: any): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.PAYMENT_REQUEST_SUCCESS,
+    type: HosptailTypes.Payment.Payment_REQUEST_SUCCESS,
     listPayment
   }
 }
 export const paymentReset = (): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.PAYMENT_RESET
+    type: HosptailTypes.Payment.Payment_RESET
   }
 }
 
 export const selectedPaymentFee = (paymentFee: any): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE,
+    type: HosptailTypes.Payment.SELECTED_Payment_FEE,
     paymentFee
   }
 }
@@ -206,5 +206,19 @@ export const cancelBooking = ({ id, partnerId }: any): HospitalActions => {
     type: HosptailTypes.CancelBooking.CancelBooking_REQUEST,
     id,
     partnerId
+  }
+}
+
+// Lịch sử thanh toán viện phí
+export const getHistoryPayment = (): HospitalActions => {
+  return {
+    type: HosptailTypes.HistoryPayment.HistoryPayment_REQUEST
+  }
+}
+
+export const getHistoryPaymentSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.HistoryPayment.HistoryPayment_REQUEST_SUCCESS,
+    listHistoryPayment: data
   }
 }

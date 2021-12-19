@@ -14,7 +14,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const ChonBenhVienPage = ({ data, meta }: any) => {
+const BenhVien = ({ data, meta }: any) => {
   const router = useRouter()
   const findMeta = find(meta, { key: router.asPath.replace('/', '') })
 
@@ -40,9 +40,9 @@ const ChonBenhVienPage = ({ data, meta }: any) => {
   )
 }
 
-ChonBenhVienPage.layout = DefaultLayout
+BenhVien.layout = DefaultLayout
 
-export default ChonBenhVienPage
+export default BenhVien
 
 export const getServerSideProps = async () => {
   const data = await SelectHospitalCtl()
