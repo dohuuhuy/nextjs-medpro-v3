@@ -6,8 +6,8 @@ import {
   TeamOutlined,
   UserOutlined
 } from '@ant-design/icons'
+import { Personal } from '@componentsTest/ThongTinHoSoCustom/utils/interface'
 import React from 'react'
-import { Personal } from '../../index'
 
 export const HandleFilter = (props: Personal) => {
   return props?.listUser.map((item) => [

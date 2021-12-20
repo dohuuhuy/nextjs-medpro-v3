@@ -265,7 +265,7 @@ function* reserveBooking() {
       startTimeString: dateString,
       startTime: startTimeString,
       endTime: endTimeString,
-      maxSlot: maxSlot,
+      maxSlot,
 
       // thông tin máy móc
       treeId: hos.treeId, // luồng đi

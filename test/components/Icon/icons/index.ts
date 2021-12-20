@@ -36,4 +36,3 @@ export { default as ThanhToanHo } from './payment/ThanhToanHo.svg'
 export { default as TheATM } from './payment/TheATM.svg'
 export { default as TheKhamBenh } from './payment/TheKhamBenh.svg'
 export { default as ViDienTu } from './payment/ViDienTu.svg'
-

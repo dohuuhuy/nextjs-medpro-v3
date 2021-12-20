@@ -15,13 +15,11 @@ export const BannerHomeMobile = () => {
               <b>Medpro </b>
               xin chào,
             </span>
-            <span className={styles.name}>
-              PHAN HAI SON
-            </span>
+            <span className={styles.name}>PHAN HAI SON</span>
           </p>
         </Col>
         <Col className={styles.colLogo}>
-          <Image src="/images/LogoMedpro.svg" alt='' width={150} height={150} />
+          <Image src='/images/LogoMedpro.svg' alt='' width={150} height={150} />
         </Col>
       </Row>
       <Row className={styles.rowSearch}>
@@ -39,4 +37,3 @@ export const BannerHomeMobile = () => {
     </Container>
   )
 }
-

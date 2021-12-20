@@ -1,4 +1,4 @@
-export const validateFullname = ( {value, callback} : any ) => {
+export const validateFullname = () => {
   // console.log(value)
   // callback("abc")
 }

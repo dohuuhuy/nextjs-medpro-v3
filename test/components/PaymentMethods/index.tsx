@@ -25,7 +25,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
     setstate((prev) => ({
       ...prev,
       currentCollapse: {
-        key: key
+        key
       }
     }))
     if (listPayment[key]?.paymentTypes.length < 2) {
@@ -62,7 +62,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
           >
             {listPayment.length < 1 ? (
               <Loading
-                component
+                component={true}
                 typing={false}
                 minHeight='600px'
                 text='Đang tải phướng thúc thanh toán ! ...'
@@ -87,7 +87,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
           <CardFee
             hospital={props.hospital}
             onReserveBooking={props.onReserveBooking}
-            willPayment
+            willPayment={true}
             selectedPatient={props.selectedPatient}
           />
         </Col>

@@ -3,12 +3,10 @@ import React from 'react'
 import { MdOutlineLogout } from 'react-icons/md'
 import styles from './../styles.module.less'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { BiUserPin, BiNotepad, BiBell, BiUserCircle } from 'react-icons/bi'
 import { uniqueId } from 'lodash'
 
 export const Infomation = ({ handleLogOut, data }: any) => {
-  const router = useRouter()
   return (
     <Card
       title={

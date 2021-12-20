@@ -1,61 +1,61 @@
-import { validateFullname } from "./validate";
-import {z} from 'zod'
+import { validateFullname } from './validate'
+import { z } from 'zod'
 
-export const dayList = [{ id: 0, name: "Ngày" }];
+export const dayList = [{ id: 0, name: 'Ngày' }]
 for (let i = 1; i <= 31; i++) {
-  dayList.push({ id: i, name: i.toString() });
+  dayList.push({ id: i, name: i.toString() })
 }
 
-export const monthList = [{ id: 0, name: "Tháng" }];
+export const monthList = [{ id: 0, name: 'Tháng' }]
 for (let i = 1; i <= 12; i++) {
-  monthList.push({ id: i, name: i.toString() });
+  monthList.push({ id: i, name: i.toString() })
 }
 
-export const yearList = [{ id: 0, name: "Năm" }];
+export const yearList = [{ id: 0, name: 'Năm' }]
 for (let i = new Date().getFullYear(); i >= 1900; i--) {
-  yearList.push({ id: i, name: i.toString() });
+  yearList.push({ id: i, name: i.toString() })
 }
 
-const day = dayList.map(({ id, name }) => {
-  return (
-    <option key={id} value={id}>
-      {name}
-    </option>
-  )
-})
+// const day = dayList.map(({ id, name }) => {
+//   return (
+//     <option key={id} value={id}>
+//       {name}
+//     </option>
+//   )
+// })
 
-const month = monthList.map(({ id, name }) => {
-  return (
-    <option key={id} value={id}>
-      {name}
-    </option>
-  )
-})
+// const month = monthList.map(({ id, name }) => {
+//   return (
+//     <option key={id} value={id}>
+//       {name}
+//     </option>
+//   )
+// })
 
-const year = yearList.map(({ id, name }) => {
-  return (
-    <option key={id} value={id}>
-      {name}
-    </option>
-  )
-})
+// const year = yearList.map(({ id, name }) => {
+//   return (
+//     <option key={id} value={id}>
+//       {name}
+//     </option>
+//   )
+// })
 
 const genderList = [
   {
-    id: "sex0",
-    value: "Chọn giới tính"
+    id: 'sex0',
+    value: 'Chọn giới tính'
   },
   {
-    id: "sex1",
-    value: "Nam"
+    id: 'sex1',
+    value: 'Nam'
   },
   {
-    id: "sex2",
-    value: "Nữ"
+    id: 'sex2',
+    value: 'Nữ'
   }
 ]
 
-const gender = genderList.map(({ id, value}) => {
+const gender = genderList.map(({ id, value }) => {
   return (
     <option key={id} value={value}>
       {value}
@@ -63,18 +63,19 @@ const gender = genderList.map(({ id, value}) => {
   )
 })
 
-const RegMobile = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
-const RegEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const RegMobile = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g
+const RegEmail =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 export const schemaContact = z.object({
-  fullname : z.string(),
+  fullname: z.string(),
   birthday: z.string(),
-  mobile: z.string().regex(RegMobile, "Không đúng định dạng"),
+  mobile: z.string().regex(RegMobile, 'Không đúng định dạng'),
   sex: z.string(),
-  email: z.string().regex(RegEmail,"Email không đúng định dạng !")
+  email: z.string().regex(RegEmail, 'Email không đúng định dạng !')
 })
 
-export const handleFormPatient = ( register : any) => {
+export const handleFormPatient = (register: any) => {
   return [
     {
       name: 'fullname',
@@ -83,16 +84,21 @@ export const handleFormPatient = ( register : any) => {
       place: 'Vui lòng nhập họ và tên',
       require: true,
       enter: ({ name, place, type }: any) => {
-        return <input {...register(name, {
-          validate : validateFullname,
-
-        })} placeholder={place} type={type} />
+        return (
+          <input
+            {...register(name, {
+              validate: validateFullname
+            })}
+            placeholder={place}
+            type={type}
+          />
+        )
       }
     },
     {
       name: 'birthday',
       label: 'Ngày tháng năm sinh',
-      type: "date",
+      type: 'date',
       require: true,
       enter: ({ name, type }: any) => {
         return (
@@ -120,7 +126,11 @@ export const handleFormPatient = ( register : any) => {
       label: 'Giới tính',
       require: true,
       enter: ({ name }: any) => {
-        return <select {...register(name)} defaultChecked={"sex0"}>{gender}</select>
+        return (
+          <select {...register(name)} defaultChecked={'sex0'}>
+            {gender}
+          </select>
+        )
       }
     },
     {
@@ -128,26 +138,30 @@ export const handleFormPatient = ( register : any) => {
       label: 'Nghề nghiệp',
       require: true,
       enter: ({ name }: any) => {
-        return <select {...register(name)} defaultChecked={"sex0"}>{gender}</select>
+        return (
+          <select {...register(name)} defaultChecked={'sex0'}>
+            {gender}
+          </select>
+        )
       }
     },
     {
       name: 'CMND',
-      type: "number",
+      type: 'number',
       label: 'Số CMND/Passport',
       place: 'Nhập số CMND',
       require: false,
-      enter: ({ name, place , type }: any) => {
+      enter: ({ name, place, type }: any) => {
         return <input {...register(name)} placeholder={place} type={type} />
       }
     },
     {
       name: 'email',
-      type: "text",
+      type: 'text',
       label: 'Địa chỉ Email',
       place: 'Nhập địa chỉ email để nhận phiếu khám',
       require: true,
-      enter: ({ name, place , type }: any) => {
+      enter: ({ name, place, type }: any) => {
         return <input {...register(name)} placeholder={place} type={type} />
       }
     },
@@ -185,14 +199,14 @@ export const handleFormPatient = ( register : any) => {
     },
     {
       name: 'address',
-      type: "text",
+      type: 'text',
       label: 'Địa chỉ',
-      place: "Nhập địa chỉ",
+      place: 'Nhập địa chỉ',
       require: true,
       enter: ({ name, place, type }: any) => {
         return <input {...register(name)} placeholder={place} type={type} />
       }
-    },
+    }
   ]
 }
 

@@ -191,7 +191,7 @@ export default function hospital(
         selectedFeature: infoPartner,
         flow: flow || '',
         treeId: treeId || '',
-        ...reset //--> reset lai data khi chọn feature khác
+        ...reset // --> reset lai data khi chọn feature khác
       }
 
     case HosptailTypes.ListHospital.ListHospital_REQUEST_SUCCESS:
