@@ -24,11 +24,6 @@ const LichSuThanhToanVienPhi = ({ meta }: any) => {
     dispatch(ac.getHistoryPayment())
   }, [])
 
-  console.log(
-    'hospital.listHistoryPayment :>> ',
-    hospital.listHistoryPayment.statusCode
-  )
-
   return (
     <>
       <SEOHead meta={findMeta} />

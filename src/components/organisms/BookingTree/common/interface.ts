@@ -33,6 +33,8 @@ export interface StateDichVu {
   checkBHYT?: boolean
   selectedItem?: any
   selectedBHYT?: any
+  addonServices: any[]
+  selectedAddOnSv: any[]
 }
 
 export type Keys =
@@ -81,6 +83,7 @@ export interface Item {
     nextCombine: boolean
     combineNodes: any[]
     maxDay: null
+    addonServices: any[]
   }
   // custom thêm
   other: any

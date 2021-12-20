@@ -13,17 +13,19 @@ export const DichVu = (props: Props) => {
     list: props.data,
     checkBHYT: false,
     selectedItem: null,
-    selectedBHYT: 0
+    selectedBHYT: 0,
+    addonServices: [],
+    selectedAddOnSv: []
   })
 
+  console.log('stateDichVu :>> ', stateDichVu)
+
   useEffect(() => {
-    setstateDichVu({
-      list: props.data,
-      checkBHYT: false
-    })
+    setstateDichVu((prev) => ({ ...prev, list: props.data, checkBHYT: false }))
   }, [props.data])
 
   const checkBHYT = (item: Item) => () => {
+    const addonServices = item.detail.addonServices
     const findItem = find(state.stepper, { key: keys })
 
     if (Object.keys(findItem?.selected).length > 1) {
@@ -32,12 +34,19 @@ export const DichVu = (props: Props) => {
       setstate((prev: any) => ({ ...prev }))
     }
 
+    // trường hợp có bhyt hoặc dịch vụ cộng thêm thì thực hiện tiếp tác vụ
     setstateDichVu((v) => ({
       ...v,
       checkBHYT: item.detail.serviceType === 'INSURANCE_ONLY',
-      selectedItem: item
+      selectedItem: item,
+      addonServices: addonServices.length > 0 ? addonServices : [],
+      selectedAddOnSv: []
     }))
-    item.detail.serviceType !== 'INSURANCE_ONLY' && clickItem({ item, props })
+
+    // nếu không check bhyt và không có dịch vụ cộng thêm thì đi tiếp
+    item.detail.serviceType !== 'INSURANCE_ONLY' &&
+      addonServices.length < 1 &&
+      clickItem({ item, props })
   }
 
   const onSelectBHYT = (e: any) => {
@@ -52,7 +61,47 @@ export const DichVu = (props: Props) => {
     stateDichVu.selectedItem.other = {}
     stateDichVu.selectedItem.other.selectedBHYT = true
 
-    clickItem({ item: stateDichVu.selectedItem, props })
+    // nếu không có dịch vụ cộng thêm thì đi step tiếp theo, ngược lại thì thực hiện tiếp tác vụ
+    stateDichVu.addonServices.length < 1 &&
+      clickItem({ item: stateDichVu.selectedItem, props })
+  }
+
+  const onChangeAddOnSv = (e: any) => {
+    const { value } = e.target
+
+    console.log('value :>> ', value)
+
+    // if (value.includes('_true')) {
+    //   value.replace('_true', '')
+    //   value.replace('_false', '')
+    // }
+
+    const key = Number(value.split('__')[2])
+
+    const findIndexKey = findIndex(stateDichVu.selectedAddOnSv, { key })
+
+    if (findIndexKey !== -1) {
+      stateDichVu.selectedAddOnSv[findIndexKey].value = value
+    } else {
+      stateDichVu.selectedAddOnSv.push({
+        key: Number(key),
+        value
+      })
+    }
+
+    setstateDichVu((prev) => ({
+      ...prev
+      // selectedAddOnSv: []
+    }))
+
+    stateDichVu.selectedItem.other = {}
+    stateDichVu.selectedItem.other.addonServices = stateDichVu.selectedAddOnSv
+
+    const addOnFromBooking = stateDichVu.selectedItem.detail.addonServices
+    const addOnFromSelected = stateDichVu.selectedAddOnSv
+
+    addOnFromBooking.length === addOnFromSelected.length &&
+      clickItem({ item: stateDichVu.selectedItem, props })
   }
 
   return (
@@ -83,20 +132,54 @@ export const DichVu = (props: Props) => {
         })}
       </ul>
 
-      {stateDichVu.checkBHYT && (
-        <div className={styles.questionBHYT}>
-          <span>Bạn có bảo hiểm y tế không?</span>
-
-          <Radio.Group
-            onChange={onSelectBHYT}
-            value={stateDichVu.selectedBHYT}
-            className={styles.groupRadio}
-          >
-            <Radio value={1}>Có</Radio>
-            <Radio value={0}>Không</Radio>
-          </Radio.Group>
+      <div className={styles.addonServices}>
+        <div className={styles.titleDiv}>
+          <span className={styles.title}>Dịch vụ khác</span>{' '}
         </div>
-      )}
+
+        {stateDichVu.checkBHYT && (
+          <div className={styles.questionBHYT}>
+            <span className={styles.question}>Bạn có bảo hiểm y tế không?</span>
+
+            <div className={styles.answer}>
+              <Radio.Group
+                onChange={onSelectBHYT}
+                value={stateDichVu.selectedBHYT}
+                className={styles.groupRadio}
+              >
+                <Radio value={1}>Có</Radio>
+                <Radio value={0}>Không</Radio>
+              </Radio.Group>
+            </div>
+          </div>
+        )}
+
+        {stateDichVu?.addonServices?.length > 0 &&
+          stateDichVu?.addonServices.map((item, i) => {
+            const findItem = find(stateDichVu.selectedAddOnSv, { key: i }) || ''
+
+            return (
+              <div className={styles.questionBHYT} key={i}>
+                <span className={styles.question}>{item.name}</span>
+
+                <div className={styles.answer}>
+                  <Radio.Group
+                    onChange={onChangeAddOnSv}
+                    value={findItem.value}
+                    className={styles.groupRadio}
+                  >
+                    <Radio value={`${item.id}__true__${i}`}>Có</Radio>
+                    <Radio value={`${item.id}__false__${i}`}>Không</Radio>
+                  </Radio.Group>
+
+                  <span className={styles.price}>
+                    <i>({money(item.price)})</i>
+                  </span>
+                </div>
+              </div>
+            )
+          })}
+      </div>
     </section>
   )
 }
