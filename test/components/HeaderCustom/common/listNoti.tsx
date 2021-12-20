@@ -48,6 +48,9 @@ export const ListNoti = ({ list, readNoti }: any) => {
               </Menu.Item>
             )
           })}
+        {/* <Menu.Item>
+          <span>Xem tất cả</span>
+        </Menu.Item> */}
       </Menu>
     </Card>
   )
