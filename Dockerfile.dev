@@ -2,7 +2,7 @@ FROM node:12 as builder1
 WORKDIR /app
 COPY . /app
 RUN yarn install --save --network-timeout 100000
-RUN yarn run build
+RUN yarn build
 
 FROM node:12.16.2-alpine3.11
 
