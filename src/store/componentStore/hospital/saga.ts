@@ -12,6 +12,7 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
+import { get } from 'lodash'
 import moment from 'moment'
 import router from 'next/router'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
@@ -364,6 +365,8 @@ function* getHistoryPayment() {
 
     yield put(ac.getHistoryPaymentSuccess(response.data))
   } catch (error) {
+    const e = get(error, 'response.data', '')
+    yield put(ac.getHistoryPaymentSuccess(e))
     huyi({ name: 'HistoryPayment', child: error, type: 'error' })
   }
 }
