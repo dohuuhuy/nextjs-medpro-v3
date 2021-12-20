@@ -16,18 +16,11 @@ export interface Props {
 export const API_CMS = 'https://cms.medpro.com.vn'
 
 export const NewsPageCustom = (props: Props) => {
-  const { listNewsBanner, listNewsContent, totalPages } = props
-
   const router = useRouter()
 
-  const [curPage, setcurPage] = React.useState(1)
+  const { listNewsBanner, listNewsContent, totalPages } = props
 
-  const onChange = (pageNumber: any) => {
-    setcurPage(pageNumber)
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+  const onChange = (pageNumber: number) => {
     router.push(`?page=${pageNumber}`, undefined, { scroll: false })
   }
 
@@ -36,6 +29,7 @@ export const NewsPageCustom = (props: Props) => {
       <Row className={styles.rowHeader}>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colLeft}>
           <motion.ul
+            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -47,6 +41,7 @@ export const NewsPageCustom = (props: Props) => {
         </Col>
         <Col xs={24} sm={24} md={12} xl={12} className={styles.colRight}>
           <motion.ul
+            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -60,6 +55,7 @@ export const NewsPageCustom = (props: Props) => {
       <Row className={styles.rowContent}>
         <Col xs={24} sm={24} xl={15} className={styles.colContent}>
           <motion.ul
+            variants={mUl}
             initial='hidden'
             animate='visible'
             className={styles.listNews}
@@ -77,7 +73,7 @@ export const NewsPageCustom = (props: Props) => {
             responsive={true}
             showSizeChanger={false}
             showQuickJumper={false}
-            current={curPage}
+            current={Number(router.query?.page || 1)}
           />
         </Col>
         <Col xs={24} sm={24} xl={9} />
@@ -100,8 +96,14 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
     author
   }: any = item
   const imgUrl = API_CMS + image?.[0].url
+
+  const myLoader = ({ src, width, quality }: any): string => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  }
+
   return (
     <motion.li
+      variants={mLi}
       transition={{ stiffness: 900 }}
       className={styles.cardNews}
       key={title}
@@ -110,12 +112,15 @@ const CardCustom = ({ item, obsImg = false }: PropsCard) => {
         <Link href={`/tin-tuc/${slug}`}>
           <a>
             <Image
+              loader={myLoader}
               src={imgUrl}
               width='600'
               height='300'
               layout='responsive'
               loading='eager'
+              objectFit='cover'
               alt=''
+              priority={true}
             />
           </a>
         </Link>

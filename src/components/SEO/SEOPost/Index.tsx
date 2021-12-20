@@ -1,4 +1,4 @@
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 import { NewsArticleJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 
@@ -8,6 +8,8 @@ interface Props {
 
 const SEOPost = ({ posts }: Props) => {
   const router = useRouter()
+
+  if (!posts) return null
 
   const {
     name,

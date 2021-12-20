@@ -6,7 +6,7 @@ pipeline {
 }
 environment {
         URL_NAME = "repo:8083"
-        IMAGE_NAME = "web-ui-v2"
+        IMAGE_NAME = "medpro-web-nextjs-testing"
     }
   stages {
   // stage("Import secretg file to config"){
@@ -61,7 +61,7 @@ environment {
           docker pull ${URL_NAME}/${IMAGE_NAME}:test.date-${BUILD_TIMESTAMP}.ver-${BUILD_NUMBER}
           docker stop ${IMAGE_NAME}
           docker rm ${IMAGE_NAME}
-          docker run -d --name ${IMAGE_NAME} -p 9115:3000 -t ${URL_NAME}/${IMAGE_NAME}:test.date-${BUILD_TIMESTAMP}.ver-${BUILD_NUMBER}
+          docker run -d --name ${IMAGE_NAME} -p 3009:3000 -t ${URL_NAME}/${IMAGE_NAME}:test.date-${BUILD_TIMESTAMP}.ver-${BUILD_NUMBER}
            """
         }
       }

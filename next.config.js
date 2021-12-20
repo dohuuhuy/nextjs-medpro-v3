@@ -11,7 +11,7 @@ const withLess = require('next-with-less')
 
 const themeVariables = lessToJS(
   fs.readFileSync(
-    path.resolve(__dirname, 'assets/styles/variable.less'),
+    path.resolve(__dirname, './src/common/assets/styles/variable.less'),
     'utf8'
   )
 )
@@ -39,19 +39,22 @@ const nextConfig = {
       'medpro-api-v2-testing.medpro.com.vn',
       'bo-api-testing.medpro.com.vn',
       'medpro-inside-testing.medpro.com.vn',
-      'inside-static.medpro.com.vn'
+      'inside-static.medpro.com.vn',
+      'api-v2.medpro.com.vn'
     ],
-    formats: ['image/avif', 'image/webp']
+    formats: ['image/avif', 'image/webp'],
+    disableStaticImages: true
   },
 
   ...lessConfig,
 
   exclude: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
+
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.(svg|png|jpg)$/,
       include: path.join(process.cwd(), 'test', 'components', 'Icon', 'icons'),
       use: [
         'svg-sprite-loader',

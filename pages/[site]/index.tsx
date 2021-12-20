@@ -1,40 +1,46 @@
 import { SEOHead } from '@components/SEO/SEOHead/Index'
-import { NextSeoProps } from 'next-seo'
+import Loading from '@componentsTest/Loading'
+import BannersPublic from '@src/components/organisms/BannersPublic'
+import { ContentPageCustom } from '@src/components/organisms/ContentPageCustom'
+import { check } from '@src/utils/checkValue'
+import { urlJson } from '@utils/contants'
+import { fetcher } from '@utils/func'
+import { find } from 'lodash'
 import dynamic from 'next/dynamic'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const Site = () => {
-  const meta: NextSeoProps = {
-    noindex: true,
-    nofollow: true,
-    robotsProps: {},
-    title: 'Giới thiệu',
-    description: 'Giới thiệu medpro',
-    canonical: 'https://nextjs-testing.medpro.com.vn',
-    openGraph: {
-      type: 'website',
-      url: 'https://nextjs-testing.medpro.com.vn',
-      title: 'Giới thiệu',
-      description: 'Giới thiệu medpro',
-      images: [
-        {
-          url: `https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg`,
-          width: 800,
-          height: 600,
-          alt: 'giới thiệu'
-        }
-      ],
-      site_name: 'Trang Giới thiệu'
+const Site = ({ data, meta }: any) => {
+  const router = useRouter()
+  const findMeta = find(meta, { key: router.asPath.replace('/', '') })
+
+  useEffect(() => {
+    if (router.asPath.includes('phong-mach')) {
+      window.open('https://medpro.vn/clinic', '_blank')
     }
-  }
+  }, [router.asPath])
 
   return (
     <>
-      <SEOHead meta={meta} />
+      <SEOHead meta={findMeta} />
+      <BannersPublic />
+      {check(data) ? (
+        <Loading component={true} text='Đang cập nhật dữ liệu ........' />
+      ) : (
+        <ContentPageCustom listContent={data} />
+      )}
     </>
   )
 }
 
-Site.Layout = DefaultLayout
+Site.layout = DefaultLayout
+
 export default Site
+
+export const getServerSideProps = async () => {
+  const data = await fetcher(urlJson.urlContent)
+  const meta = await fetcher(urlJson.urlSEOPage)
+
+  return { props: { data, meta } }
+}

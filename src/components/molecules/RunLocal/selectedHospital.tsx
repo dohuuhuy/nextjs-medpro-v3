@@ -1,78 +1,107 @@
-import { setPartnerIdLocal } from 'store/actionStore/rootAction'
-import { ArrowUpOutlined } from '@ant-design/icons'
-import { _DEVELOPMENT, _TESTING } from '@config/envs/env'
-import { AppState } from 'store/interface'
-import { check } from '@utils/checkValue'
-import { BackTop, Button, Modal, Select } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { DeleteFilled, ReloadOutlined, SettingFilled } from '@ant-design/icons'
+import { _DEVELOPMENT, _TESTING } from '@src/config/envs'
+import { SetParnerId } from '@src/store/actionStore'
+import { AppState } from '@src/store/interface'
+import { Button, Dropdown, message, Modal, Select, Space } from 'antd'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { FaChevronCircleDown } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.less'
 const { Option } = Select
 
 const SelectedHospital = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const { listPartners, partnerId } = useSelector(
-    (state: AppState) => state.total
-  )
-
-  useEffect(() => {
-    if (check(partnerId)) {
-      dispatch(setPartnerIdLocal({ partnerId: 'medpro' }))
-    }
-  })
+  const { listPartners } = useSelector((state: AppState) => state.total)
 
   const toggle = () => {
     setIsModalVisible(!isModalVisible)
   }
 
   function onChange(value: any) {
-    dispatch(setPartnerIdLocal({ partnerId: value }))
+    dispatch(SetParnerId(value))
     setIsModalVisible(false)
+    // reload()
   }
 
   const filterOption = (input: string, option: any) => {
     if (option?.children) {
-      return option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+      return option?.children.includes(input)
     }
     return option?.children
   }
 
+  const onDeletePersist = () => {
+    window.localStorage.clear()
+    reload()
+    message.success('Del all localStorage success !', 10)
+  }
+
+  const reload = () => {
+    router.reload()
+  }
+
+  function clearData() {
+    const list = ['loginAt', 'huyi', 'hello']
+
+    list.map((v) => {
+      window.localStorage.removeItem(v)
+    })
+
+    reload()
+  }
+
   return (
     <div>
-      <BackTop>
-        <div
-          style={{
-            height: 40,
-            width: 40,
-            lineHeight: '40px',
-            borderRadius: 4,
-            backgroundColor: '#1088e9',
-            color: '#fff',
-            textAlign: 'center',
-            fontSize: 14
-          }}
-        >
-          <ArrowUpOutlined />
-        </div>
-      </BackTop>
-
       {_DEVELOPMENT || _TESTING ? (
-        <Button
-          type='primary'
-          onClick={toggle}
-          className={styles.Btn_local_hospital}
+        <Dropdown
+          className={styles.Setting}
+          overlay={
+            <div className={styles.dropdownSetting}>
+              <Space direction='vertical'>
+                <Button type='primary' onClick={reload}>
+                  <Space>
+                    <ReloadOutlined />
+                  </Space>
+                </Button>
+
+                <Button type='primary' onClick={clearData}>
+                  clears data
+                </Button>
+
+                <Button type='primary' onClick={onDeletePersist}>
+                  <Space>
+                    <Space>
+                      <DeleteFilled /> Del persist
+                    </Space>
+                  </Space>
+                </Button>
+
+                <Button type='primary' onClick={toggle}>
+                  <Space>
+                    <FaChevronCircleDown /> Choice parner hospital
+                  </Space>
+                </Button>
+              </Space>
+            </div>
+          }
+          placement='topLeft'
         >
-          Chọn bệnh viện trên localhost
-        </Button>
+          <Button shape='round' size='large'>
+            <SettingFilled />
+          </Button>
+        </Dropdown>
       ) : null}
+
       <Modal
         footer={false}
         onOk={toggle}
         onCancel={toggle}
-        title=' Nhập partnerId bệnh viện để hiển thị trên localhost'
+        title=' Nhập partnerId bệnh viện để test nhanh'
         visible={isModalVisible}
         closable={isModalVisible}
       >
@@ -85,15 +114,13 @@ const SelectedHospital = () => {
           onChange={onChange}
           filterOption={filterOption}
         >
-          {listPartners?.map(
-            ({ partnerId: partnerIdItem, nameHospital }, index: number) => {
-              return (
-                <Option key={index} value={partnerIdItem}>
-                  {nameHospital}
-                </Option>
-              )
-            }
-          )}
+          {listPartners?.map(({ partnerId, description }, index: number) => {
+            return (
+              <Option key={index} value={partnerId}>
+                {description}
+              </Option>
+            )
+          })}
         </Select>
       </Modal>
     </div>

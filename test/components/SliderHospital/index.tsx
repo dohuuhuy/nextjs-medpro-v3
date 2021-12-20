@@ -6,7 +6,7 @@ import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
 import Image from 'next/image'
 interface Props {
-  dataDeloyHospital: DeloyHospitalItem[]
+  data?: DeloyHospitalItem[]
 }
 
 export interface DeloyHospitalItem {
@@ -16,8 +16,8 @@ export interface DeloyHospitalItem {
   imgLink: string
 }
 
-export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
-  if (checkData(dataDeloyHospital)) {
+export const DeloyHospitalCustom = ({ data }: Props) => {
+  if (checkData(data)) {
     return <DataFailure desc={'Lỗi không có data dataDeloyHospital'} />
   }
 
@@ -27,14 +27,17 @@ export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
         <h2 className={styles.title}>Hệ thống bệnh viện triển khai</h2>
       </Row>
       <Row className={styles.rowSlider}>
-        <style>{cssstyle}</style>
+        {/* <style>{cssstyle}</style> */}
         <Col>
           <Slider {...settings} className={styles.Slider}>
-            {dataDeloyHospital?.map(({ nameHospital, image, imgLink }: any) => {
+            {data?.map(({ nameHospital, image, imgLink }: any) => {
               return (
                 <div key={nameHospital} className={styles.card}>
                   <figure className={styles.view}>
                     <Image
+                      loading='eager'
+                      property='true'
+                      loader={myLoader}
                       src={image}
                       alt={image}
                       width={355}
@@ -58,18 +61,23 @@ export const DeloyHospitalCustom = ({ dataDeloyHospital }: Props) => {
   )
 }
 
-const cssstyle = `
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
+export const cssstyle = `
 .slick-next:before, .slick-prev:before {
     color: #000;
 }
 `
 
 export const settings: Settings = {
-  speed: 500,
+  speed: 5000,
   slidesToShow: 3,
   slidesToScroll: 3,
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 3000,
+  dots: false,
   responsive: [
     {
       breakpoint: 1024,
@@ -77,7 +85,7 @@ export const settings: Settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         initialSlide: 3,
-        dots: true,
+        dots: false,
         infinite: false,
         arrows: false
       }
@@ -88,7 +96,7 @@ export const settings: Settings = {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
-        dots: true,
+        dots: false,
         infinite: false,
         arrows: false
       }
@@ -99,7 +107,7 @@ export const settings: Settings = {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
-        dots: true,
+        dots: false,
         infinite: false,
         arrows: false
       }

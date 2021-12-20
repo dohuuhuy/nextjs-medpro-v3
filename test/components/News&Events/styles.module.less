@@ -21,7 +21,7 @@
 .CustomCardBody (@descNone) {
   .title {
     color: #002e64;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     text-align: justify;
     margin-bottom: 5px;
@@ -37,17 +37,17 @@
 
   .author {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: gray;
     margin-bottom: 5px;
   }
   .time {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: gray;
     margin-bottom: 5px;
   }
   .description {
-    font-size: 13px;
+    font-size: 0.813rem;
     text-align: justify;
     display: @descNone;
     margin-bottom: 0;
@@ -64,12 +64,15 @@
   .rowTitle {
     h2 {
       text-align: center;
+      padding: 0 15px;
       text-transform: uppercase;
-      margin-bottom: 2.5rem;
+      font-weight: 600;
     }
+    margin-bottom: 2rem;
   }
   .rowListNews {
     justify-content: center;
+    align-items: flex-start;
     .colListNewsPin {
       .ListNewsAndEvent {
         .ListCustom();
@@ -80,7 +83,7 @@
           &:hover {
             border-radius: 10px;
             box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.2rem);
           }
           .cardNews {
             .cardBody {
@@ -100,7 +103,7 @@
           &:hover {
             border-radius: 10px;
             box-shadow: 0 5px 35px rgb(0 0 0 / 10%);
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.2rem);
           }
           padding: 10px;
           width: 50%;
@@ -198,7 +201,7 @@
 
                 margin-left: 10px;
                 .title {
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
                 .time,
                 .author {
@@ -233,7 +236,7 @@
                 width: 55%;
                 margin-left: 10px;
                 .title {
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
                 .description,
                 .author {

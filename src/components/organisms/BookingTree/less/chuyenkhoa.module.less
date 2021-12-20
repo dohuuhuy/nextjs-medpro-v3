@@ -1,0 +1,75 @@
+@import url('./styles.module.less');
+
+.chuyenkhoa {
+  .input {
+    .inputCustom();
+    width: unset;
+    margin-right: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .listChuyenKhoa {
+    .ListCustom();
+    max-height: 700px;
+    overflow: scroll;
+    padding: 15px 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: 425px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    li {
+      display: flex;
+      align-items: stretch;
+
+      .active {
+        color: #00b5f1;
+        // box-shadow: 0px 0px 9px 1px #40a9ff;
+        border-color: #00b5f1 !important;
+        box-shadow: 0px 2px 10px 8px #f7f7f7;
+        transform: translateY(-0.2rem);
+      }
+
+      .card {
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0px 2px 10px 8px #f7f7f7;
+          transform: translateY(-0.2rem);
+          color: #00b5f1;
+        }
+
+        margin: 5px;
+        width: 100%;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+
+        background: #ffffff;
+        border: 0.5px solid #cbd2d9;
+        box-sizing: border-box;
+        border-radius: 8px;
+
+        padding: 15px;
+        font-size: 0.813rem;
+
+        figure {
+          span {
+            width: 40px !important;
+            height: 40px !important;
+          }
+        }
+      }
+    }
+  }
+}

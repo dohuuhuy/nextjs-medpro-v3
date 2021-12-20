@@ -1,0 +1,50 @@
+.rowProduce {
+  .step {
+    padding: 0;
+    margin: 0;
+    .rowStep {
+      flex: 1;
+      display: flex;
+      &:hover {
+        .dot {
+          background-color: #e9ecf2;
+          border: 3px solid #317ce7;
+        }
+      }
+      .dot {
+        display: flex;
+        flex: 1;
+        max-width: 15px;
+        max-height: 15px;
+        background-color: #317ce7;
+        border-radius: 100%;
+        margin-right: -8px;
+        z-index: 1;
+      }
+      .colContent {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        border-width: 0;
+        border-left: 3px solid #e9ecf2;
+        padding: 0 25px 22px 25px;
+        .titleStep {
+          font-size: 0.625rem;
+          text-align: left;
+          text-transform: uppercase;
+          color: #627792;
+          margin-bottom: 1.2rem;
+        }
+        .view_content {
+          cursor: pointer;
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+        .detail {
+          text-align: right;
+          font-style: oblique;
+        }
+      }
+    }
+  }
+}

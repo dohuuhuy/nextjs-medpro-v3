@@ -1,136 +1,158 @@
-.container{
-  .rowInfo{
+.container {
+  .rowInfo {
     margin: 30px 0;
-    h3{
-      font-weight: 600;
+    .colTitleInfo {
+      .titleConfirm {
+        font-weight: 600;
+      }
+      margin-bottom: 1.5rem;
     }
-    h4{
-      font-weight: 500;
-    }
-    .colInfo{
-      padding-right: 24px;
-      .ProfileBooking{
+    .colInfo {
+      padding-right: 15px;
+
+      @media (max-width: 768px) {
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      .ProfileBooking {
         .cardView();
-        margin-bottom: 12px;
-        .listViewProfile{
-          list-style: none;
-          display: flex;
-          padding: 0;
-          li{
-            padding-right: 32px;
-            button{
+        margin-bottom: 2rem;
+        box-shadow: 1px 1px 5px 3px #f5f5f5;
+
+        .titlePatient {
+          font-weight: 600;
+          margin-bottom: 1rem;
+        }
+        .sliderPatient {
+          margin-bottom: 1rem;
+          .viewProfile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .btnProfile {
+              min-width: 66px;
+              max-width: 66px;
+              min-height: 66px;
+              max-height: 66px;
+
               display: flex;
               align-items: center;
               justify-content: center;
+
+              border-radius: 12px;
               padding: 0;
-              margin: 0;
-              &:focus{
-                border: 2px solid #FFB340;
+              margin: auto;
+
+              &:hover {
+                border: 1px solid #00b5f1;
               }
             }
-            .viewProfile{
-              .btnProfile{
-                min-width: 66px;
-                max-width: 66px;
-                min-height: 66px;
-                max-height: 66px;
-                border-radius: 12px;
-              }
-              p{
-                .text(11px, 600);
-                text-align: center;
-                padding-top: 12px
-              }
+            .btnProfileActive {
+              border: 1px solid #00b5f1;
+              .btnProfile();
+            }
+            p {
+              .text(10px, 500);
+              text-align: center;
+              padding-top: 12px;
             }
           }
         }
-        .cardComplete{
-          .listCarditem(#F2FCFF,#00B5F1);
+
+        .cardComplete {
+          .listCarditem(#F2FCFF,#00b5f1);
           display: flex;
-          .firstItem();
         }
       }
-      .InfoBooking{
+      .InfoBooking {
         .cardView();
-        .cardInfo{
-          .listCarditem(#F2FCFF,#00B5F1);
+        box-shadow: 1px 1px 5px 3px #f5f5f5;
+        .titleInfoBooking {
+          font-weight: 600;
+          margin-bottom: 1rem;
+        }
+
+        .cardInfo {
           display: flex;
-          .listItem{
-            width: 100%;
-            margin-bottom: 0;
-            border-radius: 0;
+          position: relative;
+          .listCarditem(#f2fcff, #00b5f1);
+        }
+        .btnClose {
+          position: absolute;
+          right: 0;
+          padding: 5px 10px 0 0;
+          &:hover {
+            cursor: pointer;
           }
         }
       }
     }
   }
 }
-/// component chung
-.listCarditem(@color, @colorBackground){
+
+/// xử lý mixin  chung
+.listCarditem(@color, @colorBackground) {
   background-color: @colorBackground;
   border-radius: 8px;
-  .listItem{
+  .listItem {
     list-style: none;
-    padding: 16px 0 16px 16px;
+    padding: 15px;
     margin-left: 8px;
     width: 100%;
     margin-bottom: 0;
-    border-radius: 0;
     background-color: @color;
-    .cardItem{
-      p{
-        .title{
-          .text(13px, 400);
-        }
-        .value{
-          .text(13px, 500);
-          padding-left: 8px;
-        }
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid @colorBackground;
+    .cardItem {
+      .title {
+        .text(0.825rem, 400);
+        color: #7b8794;
+      }
+      .value {
+        .text(0.825rem, 500);
+        margin-left: 8px;
       }
     }
   }
-  .button{
+  .button {
     background-color: @color;
     padding: 8px 8px 0 0;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 }
 
-.cardIncomplete{
-  .listCarditem(#FFFAF2, #FFB340);
-  .listItem{
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  .button{
-    display: none;
-  }
-  .firstItem();
-}
-
-.cardView{
+.cardView {
   padding: 16px 24px;
   background-color: white;
   border-radius: 8px;
 }
 
-.firstItem{
-  li{
-    &:first-child{
-      .cardItem{
-        .value{
-          padding-left: 0;
-        }
-      }
-    }
-  }
-}
-
-.text(@size, @weight){
+.text(@size, @weight) {
   font-size: @size;
   font-weight: @weight;
+}
+
+.bold {
+  font-weight: 600 !important;
+}
+.underline {
+  text-decoration: underline !important;
+}
+
+.actionLoading {
+  .txtLoading {
+    margin: 1rem 0;
+    color: orangered;
+  }
+  .btnRedirect {
+    a {
+      color: white !important;
+    }
+  }
 }

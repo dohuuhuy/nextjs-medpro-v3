@@ -4,24 +4,62 @@ import { uniqueId } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import Slider from 'react-slick'
-import Container from '../Container'
 import { Icon } from '../Icon'
-import { BookingTypeIF } from './interface'
+import Container from './../Container'
+import { BookingTypeIF } from './common/interface'
+import { carousel, listTabs, settings } from './common/utils'
 import styles from './styles.module.less'
-import { carousel, listTabs, settings } from './utils'
 
 export const BookingType = (props: BookingTypeIF) => {
-  const iconError = '/images/iconDatKham.svg'
-  const info = props?.getInfo || null
-  const [act, setact] = React.useState(1)
+  const dispatch = useDispatch()
+  const info = props?.getInfo
+
+  const [state, setstate] = React.useState({
+    list: info.features,
+    activeTab: 1
+  })
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      let missItem = 0
+      const width = window.innerWidth
+      const numColumn = width < 760 ? 3 : 4
+      const lengthItem = info.features.length
+      const list = info.features
+
+      for (let i = 1; i <= 3; i++) {
+        if ((lengthItem + i) % numColumn === 0) {
+          missItem = i
+        }
+      }
+
+      const missItemArr: any = [...Array(missItem).keys()]
+      const y = list.concat(missItemArr)
+      const x = width > 760 && y.length < 8 ? 8 - y.length : 0
+      const z: any = [...Array(x).keys()]
+      setstate((prev) => ({ ...prev, list: y.concat(z) }))
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const checkTab = (e: any) => {
-    return Number(e) === Number(act) ? '' : styles.dnone
+    return Number(e) === Number(state.activeTab) ? '' : styles.dnone
+  }
+
+  const onclickFeature = (item: any) => () => {
+    dispatch(props.selectedFeature(item))
+  }
+  const onSelectTab = (id: any) => () => {
+    setstate((prev) => ({ ...prev, activeTab: Number(id) }))
   }
 
   return (
-    <Container className={styles.bookingType}>
+    <Container tag='section' className={styles.bookingType}>
       {/* banner và tabs header */}
       <Row className={styles.rowType}>
         <Col
@@ -37,7 +75,7 @@ export const BookingType = (props: BookingTypeIF) => {
               <div className={styles.cardBody}>
                 <h3 className={styles.nameHospital}>{info?.name}</h3>
                 <p className={styles.address}>Địa chỉ: {info?.address}</p>
-                <p>
+                <p className={styles.website}>
                   Website: <a>{info.domain}</a>
                 </p>
                 <Rate />
@@ -58,15 +96,12 @@ export const BookingType = (props: BookingTypeIF) => {
         </Col>
         <Col className={styles.colTab} span='24'>
           <ul className={styles.listTab}>
-            {listTabs.map((v, i: number) => {
-              const onTab = (id: any) => () => {
-                setact(Number(id))
-              }
-              const active = act === i ? styles.active : ''
+            {listTabs.map((item, i) => {
+              const active = state.activeTab === i ? styles.active : ''
 
               return (
-                <li key={i} className={active} onClick={onTab(i)}>
-                  {v.title}
+                <li key={i} className={active} onClick={onSelectTab(i)}>
+                  {item?.title}
                 </li>
               )
             })}
@@ -82,22 +117,39 @@ export const BookingType = (props: BookingTypeIF) => {
 
           <div className={cx(styles.tab_Type, checkTab(1))}>
             <ul className={styles.listType}>
-              {info.features.map((v) => {
-                const icon = v?.image || iconError
-
-                const direct = v?.webRoute
-                  ? `/${info.partnerId}${v?.webRoute}`
+              {state.list.map((item) => {
+                const direct = item?.webRoute
+                  ? `/${info.partnerId}${item?.webRoute}`
                   : '#'
 
+                const iconError = require('./common/images/iconDatKham.svg')
+
+                const size = 80
+                const propsImg = {
+                  src: item?.image || iconError,
+                  width: size,
+                  height: size,
+                  onError: (e: any) => (e.target.src = iconError)
+                }
+
+                const checkItem =
+                  Object.keys(item).length < 1 ? styles.nonHover : ''
+
                 return (
-                  <li key={uniqueId()}>
+                  <li
+                    key={uniqueId()}
+                    onClick={onclickFeature(item)}
+                    className={cx(styles.child, checkItem)}
+                  >
                     <Link href={direct}>
                       <a>
                         <div className={styles.card}>
-                          <figure>
-                            <Image src={icon} width='80' height='80' alt='' />
-                          </figure>
-                          <span>{v?.name}</span>
+                          {item?.image && (
+                            <figure>
+                              <img {...propsImg} alt='' />
+                            </figure>
+                          )}{' '}
+                          <span>{item?.name}</span>
                         </div>
                       </a>
                     </Link>
@@ -116,15 +168,18 @@ export const BookingType = (props: BookingTypeIF) => {
       <Row className={styles.rowSlider}>
         <Col>
           <Slider {...settings}>
-            {carousel?.map((e) => {
-              console.log('carousel :>> ', carousel);
+            {carousel?.map((v) => {
               return (
                 <div key={uniqueId()} className={styles.listImage}>
                   <Image
-                    src={e?.image}
+                    loader={myLoader}
+                    src={v.image}
                     width={1110}
                     height={335}
                     alt=''
+                    loading='eager'
+                    objectFit='cover'
+                    priority={true}
                   />
                 </div>
               )
@@ -139,4 +194,8 @@ export const BookingType = (props: BookingTypeIF) => {
 // tạm thời dùng link này , sao này sử bannerimage trong info
 const banner = (e: string) => {
   return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
+}
+
+const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }

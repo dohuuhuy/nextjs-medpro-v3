@@ -7,7 +7,7 @@
 }
 
 .customLine( @line) {
-  text-align: justify;
+  // text-align: justify;
   text-transform: none;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19,8 +19,8 @@
 .CustomCardBody (@descNone) {
   .title {
     color: #002e64;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 0.875rem;
+    font-weight: 400;
     .customLine(2);
     margin-bottom: 5px;
     text-transform: lowercase;
@@ -35,17 +35,17 @@
   }
   .author {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #777;
     margin-bottom: 5px;
   }
   .time {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #777;
     margin-bottom: 5px;
   }
   .description {
-    font-size: 13px;
+    font-size: 0.813rem;
     margin: 0;
     .customLine(4);
     display: @descNone;
@@ -61,10 +61,10 @@
   padding: 7.5px;
   .cardBody {
     .title {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
     .time {
-      font-size: 11px;
+      font-size: 0.688rem;
     }
   }
 }
@@ -84,7 +84,7 @@
   }
   .cardBody {
     width: 60%;
-    padding-left: 5px;
+    padding-left: 10px;
   }
 }
 // css ContainerNews -------------------------------------------
@@ -163,7 +163,7 @@
           }
           .cardBody {
             width: 60%;
-            padding-left: 5px;
+            padding-left: 10px;
             .CustomCardBody(none);
           }
         }

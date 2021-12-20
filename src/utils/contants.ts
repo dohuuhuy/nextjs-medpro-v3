@@ -1,25 +1,22 @@
-import { currentEnv } from '@config/envs/env'
+import { currentEnv } from '@src/config/envs'
 
-export const LIMIT_PAGE_NEWS = 8
+export const news = {
+  LIMIT_PAGE: 8
+}
 
-export const URL_ADDRESS = currentEnv.API_BE + '/city-mongo/get-all-by-partner'
+const api = 'https://api.npoint.io/'
 
-export const urlAddress = (type: any, id: any) => {
-  let url
+export const urlJson = {
+  urlHeader: `${api}b87961f233a5c5dd146d`,
+  urlFooter: `${api}77d2f064ddeb78de6961`,
+  urlContent: `${api}5faf3ddf0d50e90896f8`,
+  urlBanners: `${api}f437f4eb6cceccf1c59a`,
+  urlListPartners: `${api}e4a272b45693136cded7`,
+  urlSEOPage: `${api}245979853aae833092e1`,
+  urldeployHospital: `${api}f0fab4421642544f37bd`
+}
 
-  switch (type) {
-    case 'city':
-      url = URL_ADDRESS + '?country_code=' + id
-      break
-
-    case 'district':
-      url = URL_ADDRESS + '?city_id=' + id
-      break
-
-    case 'ward':
-      url = URL_ADDRESS + '?district_id=' + id
-      break
-  }
-
-  return url
+export const urlApi = {
+  urlGuide: `${currentEnv.BO_API}/quy-trinh/get-by-partner`,
+  urlAddress: `${currentEnv.API_BE}/city-mongo/get-all-by-partner`
 }

@@ -1,13 +1,12 @@
-FROM node:12 as builder
+FROM node:12 as builder1
 WORKDIR /app
 COPY . /app
 RUN yarn install --save --network-timeout 100000
-RUN yarn run build:testing
+RUN yarn build
 
 FROM node:12.16.2-alpine3.11
 
 WORKDIR /app
-RUN yarn global add serve
-COPY --from=builder /app .
+COPY --from=builder1 /app .
 EXPOSE 3000
-CMD ["serve","-p","3000","-c","1","-s","build"]
+CMD ["yarn" ,"start"]

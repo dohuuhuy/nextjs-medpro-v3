@@ -1,0 +1,290 @@
+[
+  {
+    "key": "gioi-thieu",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Giới thiệu",
+    "description": "Giới thiệu medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Giới thiệu",
+      "description": "Giới thiệu medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "giới thiệu"
+        }
+      ],
+      "site_name": "Trang Giới thiệu"
+    }
+  },
+  {
+    "key": "doi-tac",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Đối tác",
+    "description": "Đối tác medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Đối tác",
+      "description": "Đối tác medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Đối tác"
+        }
+      ],
+      "site_name": "Trang Đối tác"
+    }
+  },
+  {
+    "key": "tiem-chung",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Tiêm chủng",
+    "description": "Tiêm chủng medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Tiêm chủng",
+      "description": "Tiêm chủng medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Tiêm chủng"
+        }
+      ],
+      "site_name": "Trang Tiêm chủng"
+    }
+  },
+  {
+    "key": "goi-dich-vu",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Gói dịch vụ",
+    "description": "Gói dịch vụ medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Gói dịch vụ",
+      "description": "Gói dịch vụ medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Gói dịch vụ"
+        }
+      ],
+      "site_name": "Trang Gói dịch vụ"
+    }
+  },
+  {
+    "key": "bac-si",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Bác sĩ",
+    "description": "Bác sĩ medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Bác sĩ",
+      "description": "Bác sĩ medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Bác sĩ"
+        }
+      ],
+      "site_name": "Trang Bác sĩ"
+    }
+  },
+  {
+    "key": "huong-dan",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Hướng dẫn",
+    "description": "Hướng dẫn medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Hướng dẫn",
+      "description": "Hướng dẫn medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Hướng dẫn"
+        }
+      ],
+      "site_name": "Trang Hướng dẫn"
+    }
+  },
+  {
+    "key": "lien-he",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Liên hệ",
+    "description": "Liên hệ medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Liên hệ",
+      "description": "Liên hệ medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Liên hệ"
+        }
+      ],
+      "site_name": "Trang Hướng dẫn"
+    }
+  },
+  {
+    "key": "chinh-sach-bao-mat",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Chính sách bảo mật",
+    "description": "Chính sách bảo mật medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Chính sách bảo mật",
+      "description": "Chính sách bảo mật medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Chính sách bảo mật"
+        }
+      ],
+      "site_name": "Trang Chính sách bảo mật"
+    }
+  },
+  {
+    "key": "quy-dinh-su-dung",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Quy định sử dụng",
+    "description": "Quy định sử dụng medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Quy định sử dụng",
+      "description": "Quy định sử dụng medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Quy định sử dụng"
+        }
+      ],
+      "site_name": "Trang Quy định sử dụng"
+    }
+  },
+  {
+    "key": "tin-tuc",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Tin tức",
+    "description": "Tin tức medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Tin tức",
+      "description": "Tin tức medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Tin tức"
+        }
+      ],
+      "site_name": "Trang Tin tức"
+    }
+  },
+  {
+    "key": "phong-kham-phong-mach",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Phòng khám phòng mạch",
+    "description": "Phòng khám phòng mạch medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Phòng khám phòng mạch",
+      "description": "Phòng khám phòng mạch medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Phòng khám phòng mạch"
+        }
+      ],
+      "site_name": "Trang Phòng khám phòng mạch"
+    }
+  },
+  {
+    "key": "benh-vien",
+    "noindex": false,
+    "nofollow": false,
+    "robotsProps": {},
+    "title": "Bệnh viện",
+    "description": "Bệnh viện medpro",
+    "canonical": "https://nextjs-testing.medpro.com.vn",
+    "openGraph": {
+      "type": "website",
+      "url": "https://nextjs-testing.medpro.com.vn",
+      "title": "Bệnh viện",
+      "description": "Bệnh viện medpro",
+      "images": [
+        {
+          "url": "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          "width": 800,
+          "height": 600,
+          "alt": "Bệnh viện"
+        }
+      ],
+      "site_name": "Trang Bệnh viện"
+    }
+  }
+]

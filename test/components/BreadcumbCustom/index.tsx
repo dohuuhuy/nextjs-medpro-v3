@@ -1,14 +1,32 @@
-import { check } from '@utils/checkValue'
+import { Icon } from './../Icon'
 import { Col, Row } from 'antd'
 import { find } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../Container'
-import { Icon } from '../Icon'
 import styles from './styles.module.less'
 
-export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
+export interface Breadcumb {
+  window?: any
+  appId?: string
+  partner?: any
+  header?: any
+  listHos?: any[]
+  post?: any
+  text?: string
+  type: 'news' | 'booking' | 'normal' | 'bills' | 'user'
+}
+
+export const BreadcumbCustom = ({
+  post,
+  listHos = [],
+  type,
+  header,
+  partner,
+  appId,
+  text = 'Vui lòng cung cấp text breadcumb !'
+}: Breadcumb) => {
   const router = useRouter()
   const listBreadcumb = []
 
@@ -16,34 +34,32 @@ export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
     link: '/',
     label: 'Trang chủ'
   }
+  switch (type) {
+    case 'news':
+      listBreadcumb.push(home)
 
-  if (post) {
-    listBreadcumb.push(home)
+      listBreadcumb.push({
+        link: `/tin-tuc`,
+        label: 'Tin tức'
+      })
 
-    listBreadcumb.push({
-      link: `/tin-tuc`,
-      label: 'Tin tức'
-    })
+      post &&
+        listBreadcumb.push({
+          link: post?.slug,
+          label: post?.title
+        })
+      break
 
-    listBreadcumb.push({
-      link: post?.slug,
-      label: post?.title
-    })
-  } else {
-    if (!listMenu) {
-      return null
-    }
+    case 'booking':
+      const { site } = router.query
 
-    const {
-      pathname,
-      query: { site }
-    } = router
+      const findHospital = find(listHos, { partnerId: site })
 
-    const path = pathname.replace('/[site]', '')
-    const item = find(listMenu, { link: path })
+      const path = router.pathname.replace('/[site]', '')
 
-    if (site) {
-      const hos = find(listHos, { partnerId: site })
+      const listMenu = header?.menu.concat(header?.insideLink) || []
+
+      const item = find(listMenu, { link: path })
       listBreadcumb.push(home)
 
       listBreadcumb.push({
@@ -51,25 +67,62 @@ export const BreadcumbCustom = ({ listMenu, listHos, post }: any) => {
         label: 'Bệnh viện'
       })
 
+      findHospital &&
+        listBreadcumb.push({
+          link: `/${site}/hinh-thuc-dat-kham`,
+          label: findHospital?.name
+        })
+
+      if (item) {
+        listBreadcumb.push(item)
+      }
+      break
+
+    case 'bills':
+      listBreadcumb.push(home)
+
+      appId &&
+        listBreadcumb.push({
+          link: `/benh-vien`,
+          label: 'Bệnh viện'
+        })
+
+      partner &&
+        listBreadcumb.push({
+          link: `/${partner.partnerId}/hinh-thuc-dat-kham`,
+          label: partner?.name
+        })
+
       listBreadcumb.push({
-        link: `/${site}/hinh-thuc-dat-kham`,
-        label: hos?.name
+        link: `#`,
+        label: 'Chi tiết phiếu khám'
       })
-      if (item) {
-        listBreadcumb.push(item)
-      }
-    } else {
-      if (item) {
-        listBreadcumb.push(home)
-        listBreadcumb.push(item)
-      }
-    }
+
+      break
+
+    case 'user':
+      listBreadcumb.push(home)
+
+      listBreadcumb.push({
+        link: '/thong-tin-ho-so',
+        label: 'thông tin tài khoản'
+      })
+      break
+    case 'normal':
+
+    default:
+      listBreadcumb.push(home)
+
+      listBreadcumb.push({
+        link: '',
+        label: text
+      })
+      break
   }
 
-  if (check(listBreadcumb)) return null
   return (
     listBreadcumb && (
-      <Container fluid={true} className={styles.wrapper}>
+      <Container tag='section' fluid={true} className={styles.wrapper}>
         <Container className={styles.container}>
           <Row className={styles.row}>
             <Col className={styles.col}>

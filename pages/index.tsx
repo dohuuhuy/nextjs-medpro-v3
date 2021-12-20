@@ -1,36 +1,42 @@
-import * as ac from '@actionStore/rootAction'
-import { check } from '@utils/checkValue'
-import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { BannerHome } from '@componentsTest/BannerHome'
+import { NewsEventCustom } from '@componentsTest/News&Events'
+import { DeloyHospitalCustom } from '@componentsTest/SliderHospital'
+import { AppState } from '@store/interface'
+import HomeLayout from '@templates/Home'
+import { banner } from '@utils/func'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { HomeCtl } from 'src/containers/home'
-import { AppState } from 'store/interface'
-const HomeLayout = dynamic(() => import('@templates/Home'))
-const NewsAndEvent = dynamic(() => import('@components/organisms/New&Event'))
 
 const HomePage = ({ data }: any) => {
-  const dispatch = useDispatch()
   const hos = useSelector((state: AppState) => state.hospital)
-  const user = useSelector((state: AppState) => state.user)
   const total = useSelector((state: AppState) => state.total)
 
-  useEffect(() => {
-    check(hos?.listFeatureByApp) &&
-      dispatch(
-        ac.FeatureRequest({ partnerId: total?.partnerId, typeReser: 'normal' })
-      )
+  return (
+    <>
+      {/* banner lấy từ client */}
+      <BannerHome
+        getBanner={banner(total?.partnerId)}
+        listFeature={hos?.listFeatureByApp}
+        partnerId={total?.partnerId}
+      />
+      {total.partnerId === 'medpro' && (
+        <DeloyHospitalCustom data={data.deployHospital} />
+      )}
 
-    check(user?.listPatient) && dispatch(ac.ListPatientRequest())
-  }, [])
-
-  // return null
-  return <NewsAndEvent {...data} />
+      {/* tin tức lấy từ server */}
+      {data?.newsAndEvent && (
+        <NewsEventCustom dataNewsAndEvent={data?.newsAndEvent} />
+      )}
+    </>
+  )
 }
 
-HomePage.Layout = HomeLayout
+HomePage.layout = HomeLayout
+
 export default HomePage
 
-HomePage.getInitialProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: any) => {
   const data = await HomeCtl(ctx)
-  return { data }
+  return { props: { data } }
 }

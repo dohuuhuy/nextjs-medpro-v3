@@ -1,8 +1,7 @@
 import { client } from '@config/medproSDK'
 
-export const SelectHospitalCtl = async (_ctx: any) => {
+export const SelectHospitalCtl = async () => {
   const listHospital = await getListHospital()
-
   return {
     listHospital
   }
@@ -10,9 +9,7 @@ export const SelectHospitalCtl = async (_ctx: any) => {
 
 const getListHospital = async () => {
   try {
-    const res: any = await client.getHospitalListByAppId({
-      appid: 'medpro'
-    })
+    const res: any = await client.getHospitalListByAppId()
     return res.data
   } catch (error) {
     console.error(error)

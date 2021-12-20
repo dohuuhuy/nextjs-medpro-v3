@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import { uniqueId } from 'lodash'
 import React, { ReactNode } from 'react'
 import styles from './styles.module.less'
 type Props = {
@@ -13,6 +12,7 @@ type Props = {
   md?: boolean
   sm?: boolean
   id?: string
+  tag?: any
 }
 
 const Container = ({
@@ -24,12 +24,14 @@ const Container = ({
   xl,
   md,
   sm,
-  id
+  id,
+  tag = 'div'
 }: Props) => {
+  const Tag = `${tag}` as keyof JSX.IntrinsicElements
   return (
-    <div
-      key={uniqueId()}
-      id={id}
+    <Tag
+      key={classStyles}
+      id={id || classStyles}
       style={style}
       className={cx(styles.container, classStyles, {
         [styles.container_fluid]: fluid,
@@ -40,7 +42,7 @@ const Container = ({
       })}
     >
       {children}
-    </div>
+    </Tag>
   )
 }
 

@@ -1,42 +1,51 @@
-import * as ac from '@actionStore/rootAction'
-import {
-  SelectHospital,
-  SelectHospitalCustom
-} from '@componentsTest/SelectHospitalCustom'
+import * as ac from '@actionStore'
+import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
+import Loading from '@componentsTest/Loading'
+import { SEOHead } from '@src/components/SEO/SEOHead/Index'
+import { SelectHospitalCtl } from '@src/containers/SelectHosital'
+import { AppState } from '@src/store/interface'
+import { urlJson } from '@src/utils/contants'
+import { fetcher } from '@src/utils/func'
 import { check } from '@utils/checkValue'
+import { find } from 'lodash'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { SelectHospitalCtl } from 'src/containers/SelectHosital'
-import { AppState } from 'store/interface'
-
 const DefaultLayout = dynamic(() => import('@templates/Default'))
 
-const ChonBenhVienPage = ({ data }: any) => {
+const BenhVien = ({ data, meta }: any) => {
+  const router = useRouter()
+  const findMeta = find(meta, { key: router.asPath.replace('/', '') })
+
   const dispatch = useDispatch()
-  const listHospital = useSelector(
-    (state: AppState) => state.hospital.listHospital
-  )
   const listCity = useSelector((state: AppState) => state.total.listCity)
 
   useEffect(() => {
     check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
-    check(listHospital) && dispatch(ac.getListHospital())
-  }, [dispatch, listCity, listHospital])
+  }, [])
 
-  const methods: SelectHospital = {
-    listHospital: data?.listHospital,
-    listCity
-  }
-
-  return <SelectHospitalCustom {...methods}  />
+  return (
+    <>
+      <SEOHead meta={findMeta} />
+      {check(data?.listHospital) ? (
+        <Loading component={true} text='Đang cập nhật danh sách bệnh viện' />
+      ) : (
+        <SelectHospitalCustom
+          listHospital={data?.listHospital}
+          listCity={listCity}
+        />
+      )}
+    </>
+  )
 }
 
-ChonBenhVienPage.getInitialProps = async (ctx: any) => {
-  const data = await SelectHospitalCtl(ctx)
+BenhVien.layout = DefaultLayout
 
-  return { data }
+export default BenhVien
+
+export const getServerSideProps = async () => {
+  const data = await SelectHospitalCtl()
+  const meta = await fetcher(urlJson.urlSEOPage)
+  return { props: { data, meta } }
 }
-
-ChonBenhVienPage.Layout = DefaultLayout
-export default ChonBenhVienPage
