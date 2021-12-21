@@ -148,7 +148,7 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // ---------------------------------> 3. Reset hết step từ indexSub trở về sau khi chọn lại Step
   if (Object.keys(findStep?.selected).length) {
     if (indexSub > 0) {
-      for (let i = indexSub; i <= state.stepper.length; i++) {
+      for (let i = index + 1; i <= state.stepper.length; i++) {
         if (state.stepper[i]) {
           state.stepper[i].data = []
           state.stepper[i].selected = {}
@@ -161,10 +161,9 @@ export const clickItem = ({ item, props }: ClickItem) => {
   }
 
   // ---------------------------------> 4. Gán data cho step tiếp theo
-  else {
-    if (indexSub > 0) {
-      state.stepper[indexSub].data = item?.child || []
-    }
+
+  if (indexSub > 0) {
+    state.stepper[indexSub].data = item?.child || []
   }
 
   // ---------------------------------> 5. Chuyển đổi array thành object những thông tin cần thiết

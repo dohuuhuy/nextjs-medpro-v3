@@ -3,7 +3,7 @@ import cx from 'classnames'
 import { filter, find, findIndex } from 'lodash'
 import React, { useEffect } from 'react'
 import styles from './../less/dichvu.module.less'
-import { Item, Props, StateDichVu } from './interface'
+import { Item, Props, StateDichVu, Steps } from './interface'
 import { checkActive, clickItem, money } from './utils'
 
 export const DichVu = (props: Props) => {
@@ -18,8 +18,18 @@ export const DichVu = (props: Props) => {
     selectedAddOnSv: []
   })
 
+  const findStep: Steps | any = find(state.stepper, { key: keys })
+
   useEffect(() => {
-    setstateDichVu((prev) => ({ ...prev, list: props.data, checkBHYT: false }))
+    // 1. load lại data khi refresh page
+    setstateDichVu((prev) => ({
+      ...prev,
+      selectedItem: findStep.selected || null,
+      list: props.data,
+      checkBHYT: false,
+      selectedAddOnSv: findStep.other?.addonServices || [],
+      addonServices: findStep.selected.addonServices || []
+    }))
   }, [props.data])
 
   const checkBHYT = (item: Item) => () => {
