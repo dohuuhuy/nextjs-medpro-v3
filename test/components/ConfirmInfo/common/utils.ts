@@ -183,6 +183,24 @@ export const Info = (item: any) => {
       }
     },
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.ROOM),
+      visible: !!item?.room?.selected?.name,
+      title: 'Khu vực/phòng khám: ',
+      value: item?.room?.selected?.name,
+      setting: {
+        title: {
+          bold: 0,
+          color: 'black',
+          underline: 0
+        },
+        value: {
+          bold: 1,
+          color: 'black',
+          underline: 0
+        }
+      }
+    },
+    {
       sort: getIndexKey(item, KEY_SCHEDULE.TIME),
       visible: !!item?.time?.selected?.chonNgay,
       title: 'Ngày khám: ',
@@ -204,7 +222,11 @@ export const Info = (item: any) => {
       sort: getIndexKey(item, KEY_SCHEDULE.TIME) + 1,
       visible: !!item?.time?.selected?.chonGio,
       title: 'Giờ khám: ',
-      value: `${item?.time?.selected?.chonGio?.startTime} - ${item?.time?.selected?.chonGio?.endTime}`,
+      value: `${item?.time?.selected?.chonGio?.startTime} ${
+        item?.time?.selected?.chonGio?.endTime
+          ? '- ' + item?.time?.selected?.chonGio?.endTime
+          : ''
+      }`,
       setting: {
         title: {
           bold: 0,

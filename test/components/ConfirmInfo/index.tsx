@@ -31,7 +31,7 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   })
 
   useEffect(() => {
-    const indexSelected = props.selectedPatient?.id
+    const indexSelected = props.selectedPatient?.patientId
 
     const findItem = find(props.listPatient, { id: indexSelected })
 

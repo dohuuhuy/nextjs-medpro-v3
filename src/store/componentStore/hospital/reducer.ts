@@ -3,6 +3,7 @@ import {
   HospitalState,
   HosptailTypes
 } from '@src/store/interface'
+import moment from 'moment'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
@@ -94,7 +95,8 @@ const init: HospitalState = {
   // --> sau khi thanh toán xong
   reserveBooking: [],
   listHistoryPayment: [],
-  infoBillFromRepayment: {}
+  infoBillFromRepayment: {},
+  isRepayment: false
 }
 
 export default function hospital(
@@ -122,7 +124,46 @@ export default function hospital(
 
     case HosptailTypes.Stepper.AddSchedule_FromBill:
       // infoBillFromRepayment
-      return { ...state }
+      console.log('action.infoBill :>> ', action.infoBill)
+      const { service, subject, doctor, date, room, addonServices } =
+        action.infoBill
+
+      const schedule = {
+        service: {
+          selected: {
+            addonServices: addonServices,
+            ...service
+          },
+          other: {
+            addonServicesWithIdTrue: service.addonServiceIds
+          }
+        },
+        subject: {
+          selected: subject
+        },
+        doctor: {
+          selected: doctor
+        },
+        room: {
+          selected: room
+        },
+        time: {
+          selected: {
+            chonNgay: { date },
+            chonGio: {
+              startTime: moment(date).format('HH:mm')
+            }
+          }
+        }
+      }
+
+      return {
+        ...state,
+        infoBillFromRepayment: action.infoBill,
+        schedule,
+        treeId: action.infoBill.treeId,
+        isRepayment: true
+      }
 
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
       const lastTime: any = action.schedule?.time

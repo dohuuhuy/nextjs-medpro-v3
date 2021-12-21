@@ -13,4 +13,5 @@ export interface PaymentMedthodIF {
   }
   onReserveBooking: any
   selectedPatient: any
+  onRePayment: any
 }

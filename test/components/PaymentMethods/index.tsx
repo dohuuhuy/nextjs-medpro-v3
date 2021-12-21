@@ -105,6 +105,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
             onReserveBooking={props.onReserveBooking}
             willPayment={true}
             selectedPatient={props.selectedPatient}
+            onRePayment={props.onRePayment}
           />
         </Col>
       </Row>

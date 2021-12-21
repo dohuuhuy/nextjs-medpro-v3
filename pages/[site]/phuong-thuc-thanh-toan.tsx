@@ -35,6 +35,7 @@ const PaymentMethodsPage = () => {
           selectedPatient={user.selectedPatient}
           onSelectedPaymentFee={ac.selectedPaymentFee}
           onReserveBooking={ac.getReserveBooking}
+          onRePayment={ac.rePayment}
         />
       )}
     </>

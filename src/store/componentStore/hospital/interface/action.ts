@@ -182,6 +182,20 @@ export interface SelectedPaymentFee {
   selectedPaymentFee: {}
 }
 
+// ------------------------------- Thanh toán Lại ------------------------------
+
+export type RePaymentAction = RePaymentRequest | RePaymentRequestSuccess
+
+export interface RePaymentRequest {
+  type: HosptailTypes.RePayment.RePayment_REQUEST
+  typeRepay: string
+}
+
+export interface RePaymentRequestSuccess {
+  type: HosptailTypes.RePayment.RePayment_REQUEST_SUCCESS
+  rePayment: any
+}
+
 // ------------------------------- Thực hiện đặt khám ------------------------------
 
 export type ReserveBookingAction =
@@ -239,6 +253,7 @@ export type HospitalActions =
   | BookingTreeAction
   | StepAction
   | PaymentAction
+  | RePaymentAction
   | ReserveBookingAction
   | CancelBookingAction
   | HistoryPaymentAction

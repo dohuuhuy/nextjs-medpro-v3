@@ -51,6 +51,13 @@ export namespace HosptailTypes {
     SELECTED_PAYMENT_FEE = 'SELECTED_PAYMENT_FEE',
     RESET_SELECTED_PAYMENT_FEE = 'RESET_SELECTED_PAYMENT_FEE'
   }
+  export enum RePayment {
+    RePayment_REQUEST = 'RePayment_REQUEST',
+    RePayment_REQUEST_SUCCESS = 'RePayment_REQUEST_SUCCESS',
+    RePayment_RESET = 'RePayment_RESET',
+    SELECTED_RePayment_FEE = 'SELECTED_RePayment_FEE',
+    RESET_SELECTED_RePayment_FEE = 'RESET_SELECTED_RePayment_FEE'
+  }
 
   export enum ReserveBooking {
     ReserveBooking_REQUEST = 'ReserveBooking_REQUEST',

@@ -231,3 +231,18 @@ export const addScheduleFromBill = (infoBill: any): HospitalActions => {
     infoBill
   }
 }
+
+// Thanh toán lại
+export const rePayment = (typeRepay: string): HospitalActions => {
+  return {
+    type: HosptailTypes.RePayment.RePayment_REQUEST,
+    typeRepay
+  }
+}
+
+export const rePaymentSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.RePayment.RePayment_REQUEST_SUCCESS,
+    rePayment: data
+  }
+}

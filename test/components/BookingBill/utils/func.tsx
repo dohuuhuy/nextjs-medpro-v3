@@ -17,6 +17,26 @@ export const listItemBooking = (info: any) => {
     bookingTime = waitingConfirmDate
   }
 
+  const addonServices = info.addonServices.map((item: any) => {
+    return {
+      disable: 1,
+      title: item.name + ' :',
+      value: item.priceText,
+      setting: {
+        title: {
+          color: '',
+          bold: 0,
+          underline: 1
+        },
+        value: {
+          color: '',
+          bold: true,
+          underline: false
+        }
+      }
+    }
+  })
+
   return [
     {
       disable: check(info?.insuranceCode),
@@ -127,8 +147,8 @@ export const listItemBooking = (info: any) => {
       disable: check(bookingTime),
       title:
         info?.partnerId === 'trungvuong'
-          ? 'Giờ tiếp nhận dự kiến'
-          : 'Giờ khám dự kiến',
+          ? 'Giờ tiếp nhận dự kiến :'
+          : 'Giờ khám dự kiến :',
       value: bookingTime,
       setting: {
         title: {
@@ -160,6 +180,7 @@ export const listItemBooking = (info: any) => {
         }
       }
     },
+    ...addonServices,
     {
       disable: true,
       dash: <CustomLine />,

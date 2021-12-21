@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import { client } from '@config/medproSDK'
 import { huyi } from '@src/utils/clog'
 import { openToast } from '@src/utils/Notification'
@@ -202,16 +203,16 @@ function* getAllPayment() {
 
     const response: AxiosResponse = yield client.getAllPaymentMethod(
       {
-        // bookingId: user.billInfo?.bookingInfo?.id,
-        patientId: user.selectedPatient.id,
+        bookingId: hos.isRepayment ? hos.infoBillFromRepayment?.id : '',
+        patientId: user.selectedPatient?.patientId,
         price:
           Number(hos.schedule?.service?.selected.price) +
           handlePriceAddOnSV(hos.schedule),
         groupId: 1,
         treeId: hos.treeId,
-        serviceId: hos.schedule?.service?.selected.id,
-        subjectId: hos.schedule?.subject?.selected.id,
-        doctorId: hos.schedule?.doctor?.selected.id,
+        serviceId: hos.schedule?.service?.selected?.id,
+        subjectId: hos.schedule?.subject?.selected?.id,
+        doctorId: hos.schedule?.doctor?.selected?.id,
         bookingDate: moment(
           hos.schedule.time?.selected?.chonNgay.date
         ).toISOString(),
@@ -226,6 +227,7 @@ function* getAllPayment() {
     yield put(ac.getAllPaymentSuccess(response.data))
     yield put(ac.setLoading(false))
   } catch (error) {
+    console.log('error :>> ', error)
     yield put(ac.setLoading(false))
 
     huyi({ name: 'getAllPayment', child: error, type: 'error' })
@@ -236,11 +238,83 @@ function* watcher_getAllPayment() {
   yield takeLatest(HosptailTypes.Payment.Payment_REQUEST, getAllPayment)
 }
 
+function* rePayment({ typeRepay }: any) {
+  try {
+    yield put(ac.setLoading())
+    const hos: HospitalState = yield select((state: AppState) => state.hospital)
+    const user: UserState = yield select((state: AppState) => state.user)
+
+    const status = hos.infoBillFromRepayment.status
+
+    const postData = {
+      methodId: hos.selectedPaymentFee?.gatewayId || 'NO_PAYMENT',
+      paymentTypeDetail: hos.selectedPaymentFee?.code || 'NO_PAYMENT',
+      redirectUrl: `${window.location.origin}/chi-tiet-phieu-kham`,
+      id: hos.infoBillFromRepayment?.id
+    }
+
+    const header = {
+      partnerid: hos.partnerId,
+      token: user?.userInfo?.token
+    }
+
+    let response: AxiosResponse
+    if (typeRepay === 'shareToPay') {
+      response = yield client.rePaymentShareToPay(postData, header)
+    } else {
+      response = yield client.rePayment(postData, header)
+    }
+
+    const { data } = response
+
+    if (data.isGateway === 1) {
+      yield put(ac.getReserveBookingSuccess(data))
+
+      window.location.href = data.qrCodeUrl
+        ? data.qrCodeUrl
+        : window.location.pathname
+    } else if (data.isGateway === 0) {
+      if (typeRepay === 'shareToPay') {
+        openToast({
+          type: 'success',
+          message: 'Thông báo !',
+          description: 'Đặt khám thành công'
+        })
+        router.push(`/`)
+      } else {
+        if (Number(status) === 6) {
+          router.push(
+            `/chi-tiet-phieu-kham-benh?transactionId=${data.transactionId}`
+          )
+        } else {
+          router.push(
+            `/chi-tiet-phieu-kham-benh?mpTransaction=${data.transactionId}`
+          )
+          yield put(ac.getBillInfoSuccess(data))
+        }
+      }
+    }
+
+    yield put(ac.setLoading(false))
+  } catch (error) {
+    console.log('error :>> ', error)
+    yield put(ac.setLoading(false))
+
+    huyi({ name: 'rePayment', child: error, type: 'error' })
+  }
+}
+
+function* watcher_rePayment() {
+  yield takeLatest(HosptailTypes.RePayment.RePayment_REQUEST, rePayment)
+}
+
 function* reserveBooking() {
   try {
     yield put(ac.setLoading())
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
+
+    const bookingSlotId = user.billInfo.bookingInfo.bookingSlotId
 
     const date = hos.schedule?.time.selected?.chonNgay.date
     const chonGio = hos.schedule?.time.selected?.chonGio
@@ -248,12 +322,21 @@ function* reserveBooking() {
     const startTime = chonGio.startTime
     const endTime = chonGio.endTime
     const timeSlotId = chonGio.timeId
-    const maxSlot = chonGio.maxSlot
+    const maxSlot = chonGio.maxSlot || ''
 
-    const dateString = moment(formatDate + ' ' + startTime).toISOString() || ''
-    const startTimeString =
-      moment(formatDate + ' ' + startTime).toISOString() || ''
-    const endTimeString = moment(formatDate + ' ' + endTime).toISOString() || ''
+    console.log('startTime :>> ', startTime)
+
+    const dateString =
+      formatDate && startTime
+        ? moment(formatDate + ' ' + startTime).toISOString()
+        : ''
+
+    const startTimeString = startTime
+      ? moment(formatDate + ' ' + startTime).toISOString()
+      : ''
+    const endTimeString = endTime
+      ? moment(formatDate + ' ' + endTime).toISOString()
+      : ''
 
     const postData = {
       // thông tin payment
@@ -265,7 +348,7 @@ function* reserveBooking() {
       paymentTypeDetail: hos.selectedPaymentFee?.code || 'NO_PAYMENT',
 
       // thông tin cá nhân
-      patientId: user.selectedPatient.id,
+      patientId: user.selectedPatient?.patientId,
       patientProfileId: '', // không có
       hasInsuranceCode: hos.schedule?.service?.other?.selectedBHYT,
       insuranceCode: user.selectedPatient?.insuranceCode || 'DN4798622441759',
@@ -275,19 +358,21 @@ function* reserveBooking() {
       phone: user.selectedPatient?.mobile,
 
       // thông tin đặt khám
-      serviceId: hos.schedule?.service?.selected.id,
-      subjectId: hos.schedule?.subject?.selected.id,
-      doctorId: hos.schedule?.doctor?.selected.id,
+      serviceId: hos.schedule?.service?.selected?.id,
+      subjectId: hos.schedule?.subject?.selected?.id,
+      doctorId: hos.schedule?.doctor?.selected?.id,
       roomId: '',
       insuranceFileUrl: '', // chưa làm tới
       filterCheckData: [], // chưa làm tới
       addonServices: hos?.schedule?.service?.other?.addonServicesWithIdTrue, // chưa làm tới
 
       // thông tin thời gian
-      bookingSlotId: timeSlotId + '_' + hos.partnerId,
+      bookingSlotId: timeSlotId
+        ? timeSlotId + '_' + hos.partnerId
+        : bookingSlotId,
       startTimeString: dateString,
       startTime: startTimeString,
-      endTime: endTimeString,
+      endTime: endTime ? endTimeString : '',
       maxSlot,
 
       // thông tin máy móc
@@ -413,6 +498,7 @@ const hospitalSagas = function* root() {
     fork(watcher_getBookingTree),
     fork(watcher_getbookingCurNode),
     fork(watcher_getAllPayment),
+    fork(watcher_rePayment),
     fork(watcher_reserveBooking),
     fork(watcher_cancelBooking),
     fork(watcher_getHistoryPayment)

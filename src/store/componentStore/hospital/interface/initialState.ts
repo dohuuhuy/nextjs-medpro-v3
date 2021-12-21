@@ -21,6 +21,7 @@ export interface HospitalState {
   passSchedules: boolean
   reserveBooking: any[]
   infoBillFromRepayment: any
+  isRepayment: boolean
 }
 
 export interface Information {

@@ -81,7 +81,7 @@ export interface listPatientRequestSuccess {
 }
 export interface SelectedPatient {
   type: UserTypes.Patient.SELECTED_PATIENT
-  selectedPatient: {}
+  selectedPatient: any
 }
 
 // -------------------------Danh sách booking theo user-------------------------------------
