@@ -22,19 +22,16 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
   })
 
   React.useEffect(() => {
+    const key = selectedPaymentFee.keyCollapse || 0
     setstate((prev) => ({
       ...prev,
       currentCollapse: {
-        key: selectedPaymentFee.keyCollapse || 0
+        key
       }
     }))
 
-    if (listPayment[state.currentCollapse.key]?.paymentTypes.length < 2) {
-      dispatch(
-        props.onSelectedPaymentFee(
-          listPayment[state.currentCollapse.key]?.paymentTypes[0]
-        )
-      )
+    if (listPayment[key]?.paymentTypes.length < 2) {
+      dispatch(props.onSelectedPaymentFee(listPayment[key]?.paymentTypes[0]))
     }
   }, [])
 

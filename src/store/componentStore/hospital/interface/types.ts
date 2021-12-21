@@ -1,7 +1,8 @@
 export namespace HosptailTypes {
   export enum Stepper {
     RESET_SCHEDULE = 'RESET_SCHEDULE',
-    SAVE_SCHEDULE = 'SAVE_SCHEDULE'
+    SAVE_SCHEDULE = 'SAVE_SCHEDULE',
+    AddSchedule_FromBill = 'AddSchedule_FromBill'
   }
 
   export enum Information {

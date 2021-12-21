@@ -93,7 +93,8 @@ const init: HospitalState = {
 
   // --> sau khi thanh toán xong
   reserveBooking: [],
-  listHistoryPayment: []
+  listHistoryPayment: [],
+  infoBillFromRepayment: {}
 }
 
 export default function hospital(
@@ -118,6 +119,11 @@ export default function hospital(
         ...state,
         partnerId: action.partnerId
       }
+
+    case HosptailTypes.Stepper.AddSchedule_FromBill:
+      // infoBillFromRepayment
+      return { ...state }
+
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
       const lastTime: any = action.schedule?.time
       if (lastTime) {

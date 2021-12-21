@@ -3,13 +3,15 @@ export interface ConfirmInfoIF {
   schedule?: any
   loading?: boolean
   selectedPatient?: any
+  onSelectedPatient?: any
   hospital: any
 }
 
 export interface StateConfirm {
   listPatient?: any[]
   patient?: any[]
-  indexSelect?: number
+  indexSelected?: number
+
   itemSelected: any
 }
 

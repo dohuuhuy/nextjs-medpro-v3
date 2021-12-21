@@ -18,6 +18,7 @@ import { check, getSetting, listItemBooking } from './utils/func'
 export interface BookingBillIF {
   bill: any
   cancelBooking: any
+  onAddScheduleFromBill: any
 }
 
 export const BookingBill = (props: BookingBillIF) => {
@@ -65,6 +66,7 @@ export const BookingBill = (props: BookingBillIF) => {
 
   const onThanhToanLai = () => {
     router.push(`/${partnerId}/xac-nhan-thong-tin`)
+    dispatch(props.onAddScheduleFromBill(info))
   }
 
   const logo = `https://resource-testing.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`

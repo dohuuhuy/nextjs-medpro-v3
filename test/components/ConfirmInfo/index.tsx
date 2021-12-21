@@ -3,7 +3,7 @@ import { CloseCircleOutlined } from '@ant-design/icons'
 import Loading from '@componentsTest/Loading'
 import { Button, Col, message, Popconfirm, Row } from 'antd'
 import cx from 'classnames'
-import { get } from 'lodash'
+import { find, get } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -27,19 +27,29 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   const [state, setstate] = useState<StateConfirm>({
     listPatient: props.listPatient,
     patient: [],
-    indexSelect: 0,
     itemSelected: props.listPatient[0]
   })
 
   useEffect(() => {
-    dispatch(props.selectedPatient(state.itemSelected))
-  }, [state.itemSelected])
+    const indexSelected = props.selectedPatient?.id
+
+    const findItem = find(props.listPatient, { id: indexSelected })
+
+    setstate((v) => ({
+      ...v,
+      itemSelected: findItem ? findItem : props.listPatient[0]
+    }))
+
+    findItem && dispatch(props.onSelectedPatient(findItem))
+  }, [])
 
   const selectItem = (item: any) => () => {
     setstate((v) => ({
       ...v,
       itemSelected: item
     }))
+
+    dispatch(props.onSelectedPatient(item))
   }
 
   function confirm() {
@@ -51,6 +61,10 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
   }
 
   const { listPatient, itemSelected } = state
+
+  const onHandleRedirect = () => {
+    router.push('/huong-dan')
+  }
 
   return (
     <Container className={styles.container}>
@@ -75,21 +89,25 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     <Button
                       className={styles.btnProfile}
                       icon={<Icon name='plus' size='20' />}
+                      onClick={onHandleRedirect}
                     />
                     <p>Tạo hồ sơ</p>
                   </div>
-                  {listPatient?.map((item, index) => {
+                  {listPatient?.map((item) => {
                     const activeSlect =
-                      item.id === itemSelected.id
+                      item.id === itemSelected?.id
                         ? styles.btnProfileActive
                         : styles.btnProfile
                     return (
-                      <div className={styles.viewProfile} key={index}>
+                      <div className={styles.viewProfile} key={item.id}>
                         <Button
                           className={activeSlect}
                           onClick={selectItem(item)}
                         >
-                          <Icon name='bacsinam' size='55' />
+                          <Icon
+                            name={item.sex ? 'bacsinam' : 'bacsinu'}
+                            size='55'
+                          />
                         </Button>
 
                         <p>{get(item, 'fullname')}</p>

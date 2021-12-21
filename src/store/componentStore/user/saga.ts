@@ -146,7 +146,8 @@ function* getPaymentInfo({ mpTransaction }: any) {
       }
     )
     const status = get(response, 'data.bookingInfo.status', 0)
-    const paymentMessage = get(response, 'data.bookingInfo.paymentMessage', 0)
+    const paymentMessage = get(response, 'data.bookingInfo.paymentMessage', '')
+    const description = get(response, 'data.bookingInfo.description', '')
 
     if (status === 1) {
       paymentMessage &&
@@ -157,6 +158,14 @@ function* getPaymentInfo({ mpTransaction }: any) {
           duration: 60
         })
     } else {
+      description &&
+        openToast({
+          type: 'error',
+          message: 'Thông báo !',
+          description: description,
+          duration: 60
+        })
+
       paymentMessage &&
         openToast({
           type: 'error',
@@ -166,6 +175,8 @@ function* getPaymentInfo({ mpTransaction }: any) {
         })
     }
     yield put(ac.getBillInfoSuccess(response.data))
+
+    yield put(ac.selectedPatient(response.data.bookingInfo.patient))
 
     yield put(ac.setLoading(false))
   } catch (error) {

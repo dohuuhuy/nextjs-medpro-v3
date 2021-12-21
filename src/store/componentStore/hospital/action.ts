@@ -224,3 +224,10 @@ export const getHistoryPaymentSuccess = (data: any): HospitalActions => {
     listHistoryPayment: data
   }
 }
+
+export const addScheduleFromBill = (infoBill: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Stepper.AddSchedule_FromBill,
+    infoBill
+  }
+}

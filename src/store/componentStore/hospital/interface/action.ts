@@ -1,6 +1,6 @@
 import { HosptailTypes, ItemFeature } from '@src/store/interface'
 
-export type StepAction = ResetSchedule | Schedule
+export type StepAction = ResetSchedule | Schedule | AddSchedule
 
 export interface ResetSchedule {
   type: HosptailTypes.Stepper.RESET_SCHEDULE
@@ -9,6 +9,11 @@ export interface ResetSchedule {
 export interface Schedule {
   type: HosptailTypes.Stepper.SAVE_SCHEDULE
   schedule: any
+}
+
+export interface AddSchedule {
+  type: HosptailTypes.Stepper.AddSchedule_FromBill
+  infoBill: any
 }
 
 // -----------------------------thông tin bệnh viện---------------------------------------------
