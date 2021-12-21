@@ -29,7 +29,7 @@ export const Stepper = ({ data, setstate }: StepsIF) => {
         <Row className={styles.rowStep}>
           <Col span='24' className={styles.colStep}>
             <h2 className={styles.titleStep}>
-              {`Bước ${data.stepCurrent.index}: Chọn ${data.stepCurrent.name}`}
+              {`Bước ${data?.stepCurrent?.index}: Chọn ${data?.stepCurrent?.name}`}
             </h2>
 
             <ul className={styles.listStep}>

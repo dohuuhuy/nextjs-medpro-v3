@@ -1,6 +1,6 @@
 import { Radio } from 'antd'
 import cx from 'classnames'
-import { find, findIndex } from 'lodash'
+import { filter, find, findIndex } from 'lodash'
 import React, { useEffect } from 'react'
 import styles from './../less/dichvu.module.less'
 import { Item, Props, StateDichVu } from './interface'
@@ -13,12 +13,10 @@ export const DichVu = (props: Props) => {
     list: props.data,
     checkBHYT: false,
     selectedItem: null,
-    selectedBHYT: 0,
+    selectedBHYT: -1,
     addonServices: [],
     selectedAddOnSv: []
   })
-
-  console.log('stateDichVu :>> ', stateDichVu)
 
   useEffect(() => {
     setstateDichVu((prev) => ({ ...prev, list: props.data, checkBHYT: false }))
@@ -37,14 +35,14 @@ export const DichVu = (props: Props) => {
     // trường hợp có bhyt hoặc dịch vụ cộng thêm thì thực hiện tiếp tác vụ
     setstateDichVu((v) => ({
       ...v,
-      checkBHYT: item.detail.serviceType === 'INSURANCE_ONLY',
+      checkBHYT: item.detail.serviceType === 'BOTH',
       selectedItem: item,
       addonServices: addonServices.length > 0 ? addonServices : [],
       selectedAddOnSv: []
     }))
 
     // nếu không check bhyt và không có dịch vụ cộng thêm thì đi tiếp
-    item.detail.serviceType !== 'INSURANCE_ONLY' &&
+    item.detail.serviceType !== 'BOTH' &&
       addonServices.length < 1 &&
       clickItem({ item, props })
   }
@@ -69,13 +67,6 @@ export const DichVu = (props: Props) => {
   const onChangeAddOnSv = (e: any) => {
     const { value } = e.target
 
-    console.log('value :>> ', value)
-
-    // if (value.includes('_true')) {
-    //   value.replace('_true', '')
-    //   value.replace('_false', '')
-    // }
-
     const key = Number(value.split('__')[2])
 
     const findIndexKey = findIndex(stateDichVu.selectedAddOnSv, { key })
@@ -91,11 +82,21 @@ export const DichVu = (props: Props) => {
 
     setstateDichVu((prev) => ({
       ...prev
-      // selectedAddOnSv: []
     }))
+
+    const findAddOnSV_True =
+      filter(stateDichVu.selectedAddOnSv, (item) => {
+        return item?.value?.includes('true')
+      }) || []
+
+    const getIdSV_True = findAddOnSV_True.map((item) => {
+      const value = item.value.split('__')[0]
+      return value
+    })
 
     stateDichVu.selectedItem.other = {}
     stateDichVu.selectedItem.other.addonServices = stateDichVu.selectedAddOnSv
+    stateDichVu.selectedItem.other.addonServicesWithIdTrue = getIdSV_True
 
     const addOnFromBooking = stateDichVu.selectedItem.detail.addonServices
     const addOnFromSelected = stateDichVu.selectedAddOnSv
@@ -115,9 +116,7 @@ export const DichVu = (props: Props) => {
         {stateDichVu.list?.map((item: any) => {
           const active = checkActive(item, props) ? styles.active : ''
           const activeBHYT =
-            stateDichVu.checkBHYT && stateDichVu.selectedItem.id === item.id
-              ? styles.active
-              : active
+            stateDichVu.selectedItem?.id === item.id ? styles.active : active
           return (
             <li key={item.id}>
               <button

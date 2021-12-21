@@ -12,7 +12,7 @@ import {
 import { urlJson } from '@utils/contants'
 import { fetcher } from '@utils/func'
 import { AxiosResponse } from 'axios'
-import { get } from 'lodash'
+import { filter, get } from 'lodash'
 import moment from 'moment'
 import router from 'next/router'
 import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
@@ -175,6 +175,25 @@ function* watcher_getbookingCurNode() {
   )
 }
 
+const handlePriceAddOnSV = (schedule: any) => {
+  const addonServicesWithIdTrue =
+    schedule?.service?.other?.addonServicesWithIdTrue
+  const addonServicesFromSelected = schedule?.service?.selected.addonServices
+
+  if (addonServicesWithIdTrue?.length > 0) {
+    const fillterId_True = filter(addonServicesFromSelected, (item) => {
+      return addonServicesWithIdTrue.includes(item.id)
+    })
+
+    const priceOfAddOn = fillterId_True.reduce((init, { price }) => {
+      return init + price
+    }, 0)
+
+    return priceOfAddOn
+  }
+  return 0
+}
+
 function* getAllPayment() {
   try {
     yield put(ac.setLoading())
@@ -183,9 +202,11 @@ function* getAllPayment() {
 
     const response: AxiosResponse = yield client.getAllPaymentMethod(
       {
-        bookingId: user.billInfo?.bookingInfo?.id,
+        // bookingId: user.billInfo?.bookingInfo?.id,
         patientId: user.selectedPatient.id,
-        price: Number(hos.schedule?.service?.selected.price),
+        price:
+          Number(hos.schedule?.service?.selected.price) +
+          handlePriceAddOnSV(hos.schedule),
         groupId: 1,
         treeId: hos.treeId,
         serviceId: hos.schedule?.service?.selected.id,
@@ -193,7 +214,8 @@ function* getAllPayment() {
         doctorId: hos.schedule?.doctor?.selected.id,
         bookingDate: moment(
           hos.schedule.time?.selected?.chonNgay.date
-        ).toISOString()
+        ).toISOString(),
+        addonServices: hos?.schedule?.service?.other?.addonServicesWithIdTrue // chưa làm tới
       },
       {
         partnerid: hos.partnerId,
@@ -259,7 +281,7 @@ function* reserveBooking() {
       roomId: '',
       insuranceFileUrl: '', // chưa làm tới
       filterCheckData: [], // chưa làm tới
-      addonServices: [], // chưa làm tới
+      addonServices: hos?.schedule?.service?.other?.addonServicesWithIdTrue, // chưa làm tới
 
       // thông tin thời gian
       bookingSlotId: timeSlotId + '_' + hos.partnerId,

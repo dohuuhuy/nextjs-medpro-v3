@@ -33,6 +33,16 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
     }
   }
 
+  React.useEffect(() => {
+    if (listPayment[state.currentCollapse.key]?.paymentTypes.length < 2) {
+      dispatch(
+        props.onSelectedPaymentFee(
+          listPayment[state.currentCollapse.key]?.paymentTypes[0]
+        )
+      )
+    }
+  }, [])
+
   return (
     <Container tag={'section'} className={styles.PaymentMethods}>
       <Row className={styles.rowMethods}>

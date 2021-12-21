@@ -136,6 +136,9 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // ---------------------------------> 1. Lấy vị trí và thông tin của step và step tiếp theo
   const index = findIndex(state.stepper, { key: keys })
   const findStep: Steps | any = find(state.stepper, { key: keys })
+
+  console.log('findStep :>> ', findStep)
+
   const indexSub = findIndex(state.stepper, { key: item?.subType })
 
   // ---------------------------------> 2. Gán giá trị đã chọn vào step hiện tại
@@ -154,6 +157,7 @@ export const clickItem = ({ item, props }: ClickItem) => {
       }
       state.stepper[indexSub].data = item?.child || []
     }
+    console.log('indexSub :>> ', indexSub)
   }
 
   // ---------------------------------> 4. Gán data cho step tiếp theo
@@ -297,7 +301,7 @@ export const onChangeCollapse = (
   setstate: React.Dispatch<React.SetStateAction<StateBooking>>
 ) => {
   const curStep = state.stepper[key]
-  const willStep = state.stepper[state.stepCurrent.index - 1]
+  const willStep = state.stepper[state.stepCurrent?.index - 1]
   if (!key) {
     setstate((v) => ({
       ...v,

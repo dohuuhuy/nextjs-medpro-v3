@@ -66,6 +66,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
       console.info('This page is not reloaded')
       handleGetDataLocal()
     }
+
+    return () => {
+      ;(setstate as any)(null)
+    }
   }, [bookingTree])
 
   if (!bookingTree) return null
@@ -83,7 +87,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 expandIconPosition='right'
                 bordered={false}
                 accordion={true}
-                activeKey={state.stepCurrent.key}
+                activeKey={state.stepCurrent?.key || 0}
               >
                 {state?.stepper?.map((item, index) => {
                   const content = item?.content({

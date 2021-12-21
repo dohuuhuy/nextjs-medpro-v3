@@ -34,8 +34,6 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   if (!data) return null
   const listHospital = data.listHospital
 
-  if (total.loading) return <Loading component={true} />
-
   return (
     <>
       <SEOHead meta={handleMeta(total?.partnerId)} />
@@ -44,11 +42,8 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listHos={listHospital}
         header={hospital.information.header}
       />
-      {check(hospital?.bookingTree) ? (
-        <Loading
-          component={true}
-          text='Lỗi kết nối tới server, vui lòng chờ trong giây lát ...'
-        />
+      {total.loading ? (
+        <Loading component />
       ) : (
         <BookingTree bookingTree={hospital?.bookingTree} />
       )}
