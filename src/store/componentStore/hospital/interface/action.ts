@@ -1,6 +1,6 @@
 import { HosptailTypes, ItemFeature } from '@src/store/interface'
 
-export type StepAction = ResetSchedule | Schedule
+export type StepAction = ResetSchedule | Schedule | AddSchedule
 
 export interface ResetSchedule {
   type: HosptailTypes.Stepper.RESET_SCHEDULE
@@ -9,6 +9,11 @@ export interface ResetSchedule {
 export interface Schedule {
   type: HosptailTypes.Stepper.SAVE_SCHEDULE
   schedule: any
+}
+
+export interface AddSchedule {
+  type: HosptailTypes.Stepper.AddSchedule_FromBill
+  infoBill: any
 }
 
 // -----------------------------thông tin bệnh viện---------------------------------------------
@@ -173,8 +178,22 @@ export interface PaymentReset {
 }
 
 export interface SelectedPaymentFee {
-  type: HosptailTypes.Payment.SELECTED_Payment_FEE
-  paymentFee: {}
+  type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE
+  selectedPaymentFee: {}
+}
+
+// ------------------------------- Thanh toán Lại ------------------------------
+
+export type RePaymentAction = RePaymentRequest | RePaymentRequestSuccess
+
+export interface RePaymentRequest {
+  type: HosptailTypes.RePayment.RePayment_REQUEST
+  typeRepay: string
+}
+
+export interface RePaymentRequestSuccess {
+  type: HosptailTypes.RePayment.RePayment_REQUEST_SUCCESS
+  rePayment: any
 }
 
 // ------------------------------- Thực hiện đặt khám ------------------------------
@@ -234,6 +253,7 @@ export type HospitalActions =
   | BookingTreeAction
   | StepAction
   | PaymentAction
+  | RePaymentAction
   | ReserveBookingAction
   | CancelBookingAction
   | HistoryPaymentAction

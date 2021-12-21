@@ -23,10 +23,12 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     schedules: {},
     stepCurrent: {
       key: 0,
-      name: handlerStep({ bookingTree })[0].title,
-      index: handlerStep({ bookingTree })[0].sort + 1
+      name: '',
+      index: 0
     }
   })
+
+  // console.log('state :>> ', state)
 
   const handleGetDataLocal = () => {
     const data = window.localStorage.getItem('selected')
@@ -55,7 +57,15 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
     if (window.performance) {
       console.info('window.performance works fine on this browser')
-      setstate((v) => ({ ...v, stepper: handlerStep({ bookingTree }) }))
+      setstate((v) => ({
+        ...v,
+        stepper: handlerStep({ bookingTree }),
+        stepCurrent: {
+          key: 0,
+          name: handlerStep({ bookingTree })[0].title,
+          index: handlerStep({ bookingTree })[0].sort + 1
+        }
+      }))
     }
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')
@@ -63,6 +73,10 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     } else {
       console.info('This page is not reloaded')
       handleGetDataLocal()
+    }
+
+    return () => {
+      ;(setstate as any)(null)
     }
   }, [bookingTree])
 
@@ -81,7 +95,7 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
                 expandIconPosition='right'
                 bordered={false}
                 accordion={true}
-                activeKey={state.stepCurrent.key}
+                activeKey={state.stepCurrent?.key || 0}
               >
                 {state?.stepper?.map((item, index) => {
                   const content = item?.content({

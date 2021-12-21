@@ -35,7 +35,11 @@ const ChiTietPhieuKham = () => {
         appId={total.appId}
         partner={user.billInfo?.bookingInfo?.partner}
       />
-      <BookingBill bill={user.billInfo} cancelBooking={ac.cancelBooking} />
+      <BookingBill
+        bill={user.billInfo}
+        cancelBooking={ac.cancelBooking}
+        onAddScheduleFromBill={ac.addScheduleFromBill}
+      />
     </>
   )
 }

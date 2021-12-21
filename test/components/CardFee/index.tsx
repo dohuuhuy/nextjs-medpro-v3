@@ -12,10 +12,12 @@ export interface CardFeeIF {
     paymentFee: any
     selectedPaymentFee: any
     passSchedules?: any
+    isRepayment?: boolean
   }
   onReserveBooking?: any
   willPayment?: boolean
   selectedPatient?: any
+  onRePayment?: any
 }
 
 export const CardFee = (props: CardFeeIF) => {
@@ -45,7 +47,11 @@ export const CardFee = (props: CardFeeIF) => {
     } = router
 
     if (props.willPayment) {
-      dispatch(props.onReserveBooking())
+      if (props.hospital.isRepayment) {
+        dispatch(props.onRePayment())
+      } else {
+        dispatch(props.onReserveBooking())
+      }
     } else {
       if (site) {
         const name = pathname.replace('/[site]/', '')

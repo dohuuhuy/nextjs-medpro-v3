@@ -12,14 +12,28 @@ import { handleHeader } from './common/utils'
 import styles from './styles.module.less'
 
 export const PaymentMethods = (props: PaymentMedthodIF) => {
-  const { listPayment } = props.hospital
+  const { listPayment, selectedPaymentFee } = props.hospital
   const dispatch = useDispatch()
 
   const [state, setstate] = useState({
     currentCollapse: {
-      key: 0
+      key: -1
     }
   })
+
+  React.useEffect(() => {
+    const key = selectedPaymentFee.keyCollapse || 0
+    setstate((prev) => ({
+      ...prev,
+      currentCollapse: {
+        key
+      }
+    }))
+
+    if (listPayment[key]?.paymentTypes.length < 2) {
+      dispatch(props.onSelectedPaymentFee(listPayment[key]?.paymentTypes[0]))
+    }
+  }, [])
 
   const onChange = (key: any) => {
     setstate((prev) => ({
@@ -29,6 +43,8 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
       }
     }))
     if (listPayment[key]?.paymentTypes.length < 2) {
+      ;(listPayment[key]?.paymentTypes[0]).keyCollapse = key
+
       dispatch(props.onSelectedPaymentFee(listPayment[key]?.paymentTypes[0]))
     }
   }
@@ -89,6 +105,7 @@ export const PaymentMethods = (props: PaymentMedthodIF) => {
             onReserveBooking={props.onReserveBooking}
             willPayment={true}
             selectedPatient={props.selectedPatient}
+            onRePayment={props.onRePayment}
           />
         </Col>
       </Row>

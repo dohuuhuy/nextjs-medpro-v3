@@ -9,7 +9,7 @@ import { AppState } from '@store/interface'
 import 'antd/dist/antd.css'
 import { DefaultSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import NextNProgress from 'nextjs-progressbar'
+// import NextNProgress from 'nextjs-progressbar'
 import React, { Fragment, useEffect } from 'react'
 import { Provider, useDispatch, useSelector, useStore } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -49,7 +49,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   const components = (
     <Layout>
       <DefaultSeo {...SEO} />
-      <NextNProgress color='#00b5f1' height={1} />
+      {/* <NextNProgress color='#00b5f1' height={1} /> */}
       {loading ? <Loading component={true} /> : <Component {...pageProps} />}
       <RunLocal />
       <OnTop />

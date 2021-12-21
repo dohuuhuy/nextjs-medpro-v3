@@ -1,7 +1,8 @@
 export namespace HosptailTypes {
   export enum Stepper {
     RESET_SCHEDULE = 'RESET_SCHEDULE',
-    SAVE_SCHEDULE = 'SAVE_SCHEDULE'
+    SAVE_SCHEDULE = 'SAVE_SCHEDULE',
+    AddSchedule_FromBill = 'AddSchedule_FromBill'
   }
 
   export enum Information {
@@ -47,8 +48,15 @@ export namespace HosptailTypes {
     Payment_REQUEST = 'Payment_REQUEST',
     Payment_REQUEST_SUCCESS = 'Payment_REQUEST_SUCCESS',
     Payment_RESET = 'Payment_RESET',
-    SELECTED_Payment_FEE = 'SELECTED_Payment_FEE',
-    RESET_SELECTED_Payment_FEE = 'RESET_SELECTED_Payment_FEE'
+    SELECTED_PAYMENT_FEE = 'SELECTED_PAYMENT_FEE',
+    RESET_SELECTED_PAYMENT_FEE = 'RESET_SELECTED_PAYMENT_FEE'
+  }
+  export enum RePayment {
+    RePayment_REQUEST = 'RePayment_REQUEST',
+    RePayment_REQUEST_SUCCESS = 'RePayment_REQUEST_SUCCESS',
+    RePayment_RESET = 'RePayment_RESET',
+    SELECTED_RePayment_FEE = 'SELECTED_RePayment_FEE',
+    RESET_SELECTED_RePayment_FEE = 'RESET_SELECTED_RePayment_FEE'
   }
 
   export enum ReserveBooking {

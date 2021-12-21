@@ -172,10 +172,12 @@ export const paymentReset = (): HospitalActions => {
   }
 }
 
-export const selectedPaymentFee = (paymentFee: any): HospitalActions => {
+export const selectedPaymentFee = (
+  selectedPaymentFee: any
+): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.SELECTED_Payment_FEE,
-    paymentFee
+    type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE,
+    selectedPaymentFee
   }
 }
 
@@ -220,5 +222,27 @@ export const getHistoryPaymentSuccess = (data: any): HospitalActions => {
   return {
     type: HosptailTypes.HistoryPayment.HistoryPayment_REQUEST_SUCCESS,
     listHistoryPayment: data
+  }
+}
+
+export const addScheduleFromBill = (infoBill: any): HospitalActions => {
+  return {
+    type: HosptailTypes.Stepper.AddSchedule_FromBill,
+    infoBill
+  }
+}
+
+// Thanh toán lại
+export const rePayment = (typeRepay: string): HospitalActions => {
+  return {
+    type: HosptailTypes.RePayment.RePayment_REQUEST,
+    typeRepay
+  }
+}
+
+export const rePaymentSuccess = (data: any): HospitalActions => {
+  return {
+    type: HosptailTypes.RePayment.RePayment_REQUEST_SUCCESS,
+    rePayment: data
   }
 }

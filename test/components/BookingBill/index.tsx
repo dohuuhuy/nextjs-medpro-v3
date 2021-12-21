@@ -3,6 +3,7 @@ import { Button, Col, Row, Spin } from 'antd'
 import cx from 'classnames'
 import { uniqueId } from 'lodash'
 import moment from 'moment'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Container from './../Container'
@@ -17,10 +18,12 @@ import { check, getSetting, listItemBooking } from './utils/func'
 export interface BookingBillIF {
   bill: any
   cancelBooking: any
+  onAddScheduleFromBill: any
 }
 
 export const BookingBill = (props: BookingBillIF) => {
   const dispatch = useDispatch()
+  const router = useRouter()
   const { bill } = props
 
   let bookingTimeBig
@@ -61,6 +64,11 @@ export const BookingBill = (props: BookingBillIF) => {
     handleToggleModal()
   }
 
+  const onThanhToanLai = () => {
+    router.push(`/${partnerId}/xac-nhan-thong-tin`)
+    dispatch(props.onAddScheduleFromBill(info))
+  }
+
   const logo = `https://resource-testing.medpro.com.vn/static/images/${partnerId}/web/header_logo.svg?t=37461.93270345496`
 
   return (
@@ -95,7 +103,12 @@ export const BookingBill = (props: BookingBillIF) => {
                     Vui lòng THANH TOÁN để hoàn tất <br /> đăng ký phiếu khám
                     bệnh
                   </p>
-                  <button className={cx(styles.button)}>Thanh toán lại</button>
+                  <button
+                    className={cx(styles.button)}
+                    onClick={onThanhToanLai}
+                  >
+                    Thanh toán lại
+                  </button>
                 </div>
               )}
 

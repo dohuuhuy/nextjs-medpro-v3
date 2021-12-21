@@ -153,14 +153,16 @@ export const clickItem = ({ item, props }: ClickItem) => {
         }
       }
       state.stepper[indexSub].data = item?.child || []
+    } else {
+      state.stepper[index + 1].data = []
+      state.stepper[index + 1].selected = {}
     }
   }
 
   // ---------------------------------> 4. Gán data cho step tiếp theo
-  else {
-    if (indexSub > 0) {
-      state.stepper[indexSub].data = item?.child || []
-    }
+
+  if (indexSub > 0) {
+    state.stepper[indexSub].data = item?.child || []
   }
 
   // ---------------------------------> 5. Chuyển đổi array thành object những thông tin cần thiết
@@ -297,7 +299,7 @@ export const onChangeCollapse = (
   setstate: React.Dispatch<React.SetStateAction<StateBooking>>
 ) => {
   const curStep = state.stepper[key]
-  const willStep = state.stepper[state.stepCurrent.index - 1]
+  const willStep = state.stepper[state.stepCurrent?.index - 1]
   if (!key) {
     setstate((v) => ({
       ...v,

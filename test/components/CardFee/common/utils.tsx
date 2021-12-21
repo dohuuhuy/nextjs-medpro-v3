@@ -1,6 +1,8 @@
 import styles from './../styles.module.less'
 import { Item } from './interface'
 
+import _ from 'lodash'
+
 export const handleList = (data: any, selectedPatient: any) => {
   const { paymentFee, selectedPaymentFee, schedule } = data
 
@@ -48,7 +50,10 @@ export const handleList = (data: any, selectedPatient: any) => {
       title: 'Phí khám bệnh: ',
       value:
         paymentFee?.subTotal === -1
-          ? money(schedule?.service?.selected?.price)
+          ? money(
+              (schedule?.service?.selected?.price || 0) +
+                handlePriceAddOnSV(schedule)
+            )
           : money(paymentFee?.subTotal),
       setting: {
         title: {
@@ -122,4 +127,23 @@ export const getSetting = (item: any, key: 'title' | 'value') => {
     under,
     fontSize
   }
+}
+
+const handlePriceAddOnSV = (schedule: any) => {
+  const addonServicesWithIdTrue =
+    schedule?.service?.other?.addonServicesWithIdTrue
+  const addonServicesFromSelected = schedule?.service?.selected.addonServices
+
+  if (addonServicesWithIdTrue?.length > 0) {
+    const fillterId_True = _.filter(addonServicesFromSelected, (item) => {
+      return addonServicesWithIdTrue.includes(item.id)
+    })
+
+    const priceOfAddOn = fillterId_True.reduce((init, { price }) => {
+      return init + price
+    }, 0)
+
+    return priceOfAddOn
+  }
+  return 0
 }

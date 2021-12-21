@@ -131,7 +131,7 @@ export const ThoiGian = (props: Props) => {
         </div>
         <div className={styles.guide}>
           <span className={cx(styles.btn, styles.full)} />
-          <span>Hết chỗ</span>
+          <span>Kín lịch</span>
         </div>
       </div>
 

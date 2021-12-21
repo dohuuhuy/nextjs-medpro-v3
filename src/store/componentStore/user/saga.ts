@@ -146,26 +146,26 @@ function* getPaymentInfo({ mpTransaction }: any) {
       }
     )
     const status = get(response, 'data.bookingInfo.status', 0)
-    const paymentMessage = get(response, 'data.bookingInfo.paymentMessage', 0)
+    const description = get(response, 'data.bookingInfo.description', '')
 
     if (status === 1) {
-      paymentMessage &&
+      description &&
         openToast({
           type: 'success',
           message: 'Thông báo !',
-          description: paymentMessage,
-          duration: 60
+          description: description
         })
     } else {
-      paymentMessage &&
+      description &&
         openToast({
           type: 'error',
           message: 'Thông báo !',
-          description: paymentMessage,
-          duration: 60
+          description: description
         })
     }
     yield put(ac.getBillInfoSuccess(response.data))
+
+    yield put(ac.selectedPatient(response.data.bookingInfo.patient))
 
     yield put(ac.setLoading(false))
   } catch (error) {

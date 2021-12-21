@@ -51,7 +51,13 @@ export default function user(
       return { ...state, userInfo: {} }
 
     case UserTypes.Patient.SELECTED_PATIENT:
-      return { ...state, selectedPatient: action.selectedPatient }
+      return {
+        ...state,
+        selectedPatient: {
+          patientId: action.selectedPatient?.id,
+          ...action.selectedPatient
+        }
+      }
 
     default:
       return state

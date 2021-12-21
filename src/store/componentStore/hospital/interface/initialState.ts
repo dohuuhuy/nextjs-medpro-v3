@@ -17,9 +17,11 @@ export interface HospitalState {
     subTotal: number
     grandTotal: number
   }
-  listHistoryPayment: any[]
+  listHistoryPayment: any
   passSchedules: boolean
   reserveBooking: any[]
+  infoBillFromRepayment: any
+  isRepayment: boolean
 }
 
 export interface Information {

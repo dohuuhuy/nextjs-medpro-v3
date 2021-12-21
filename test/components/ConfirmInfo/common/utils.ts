@@ -1,7 +1,7 @@
 import * as func from '@utils/func'
 import moment from 'moment'
-import { ItemInfo, User } from './interface'
 import styles from './../styles.module.less'
+import { ItemInfo, User } from './interface'
 
 export const Profile = (item: User) => {
   return [
@@ -122,9 +122,14 @@ export const Profile = (item: User) => {
   ] as ItemInfo[]
 }
 
+const getIndexKey = (item: any, key: any) => {
+  return Object.keys(item).indexOf(key)
+}
+
 export const Info = (item: any) => {
   return [
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.SERVICE),
       visible: true,
       title: 'Hình thức khám: ',
       value: item?.service?.selected?.name,
@@ -142,6 +147,7 @@ export const Info = (item: any) => {
       }
     },
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.DOCTOR),
       visible: !!item?.doctor?.selected?.name,
       title: 'Bác sĩ: ',
       value: item?.doctor?.selected?.name,
@@ -159,6 +165,7 @@ export const Info = (item: any) => {
       }
     },
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.SUBJECT),
       visible: !!item?.subject?.selected?.name,
       title: 'Chuyên khoa: ',
       value: item?.subject?.selected?.name,
@@ -176,6 +183,25 @@ export const Info = (item: any) => {
       }
     },
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.ROOM),
+      visible: !!item?.room?.selected?.name,
+      title: 'Khu vực/phòng khám: ',
+      value: item?.room?.selected?.name,
+      setting: {
+        title: {
+          bold: 0,
+          color: 'black',
+          underline: 0
+        },
+        value: {
+          bold: 1,
+          color: 'black',
+          underline: 0
+        }
+      }
+    },
+    {
+      sort: getIndexKey(item, KEY_SCHEDULE.TIME),
       visible: !!item?.time?.selected?.chonNgay,
       title: 'Ngày khám: ',
       value: moment(item?.time?.selected?.chonNgay?.date).format('DD/MM/YYYY'),
@@ -193,9 +219,14 @@ export const Info = (item: any) => {
       }
     },
     {
+      sort: getIndexKey(item, KEY_SCHEDULE.TIME) + 1,
       visible: !!item?.time?.selected?.chonGio,
       title: 'Giờ khám: ',
-      value: `${item?.time?.selected?.chonGio?.startTime} - ${item?.time?.selected?.chonGio?.endTime}`,
+      value: `${item?.time?.selected?.chonGio?.startTime} ${
+        item?.time?.selected?.chonGio?.endTime
+          ? '- ' + item?.time?.selected?.chonGio?.endTime
+          : ''
+      }`,
       setting: {
         title: {
           bold: 0,
@@ -225,3 +256,23 @@ export const getSetting = (item: ItemInfo, key: 'title' | 'value') => {
 
 export const TITLE = 'title'
 export const VALUE = 'value'
+
+export const KEY_SCHEDULE: KEY_SCHEDULE = {
+  SUBJECT: 'subject',
+  SERVICE: 'service',
+  DOCTOR: 'doctor',
+  ROOM: 'room',
+  TIME: 'time'
+}
+
+export type KEY_SCHEDULE_IF = {
+  [key in keyof typeof KEY_SCHEDULE]: string
+}
+
+export interface KEY_SCHEDULE {
+  SUBJECT: string
+  SERVICE: string
+  DOCTOR: string
+  ROOM: string
+  TIME: string
+}

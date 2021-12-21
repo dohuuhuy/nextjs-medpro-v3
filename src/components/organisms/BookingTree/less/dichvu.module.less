@@ -56,21 +56,77 @@
       }
     }
   }
-  .questionBHYT {
-    display: flex;
-    margin-top: 20px;
 
-    .groupRadio {
-      margin-left: 15px;
+  .addonServices {
+    border: 1px solid #00b5f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 2rem;
+
+    .titleDiv {
+      margin-top: -2rem;
+      // border: 1px solid;
+      padding: 5px 15px;
+      border-radius: 8px;
+      width: fit-content;
+      z-index: 2;
+      background-color: white;
+      .title {
+        display: block;
+        width: fit-content;
+        font-weight: 600;
+      }
+    }
+
+    .questionBHYT {
       display: flex;
-      .radio {
-        padding-right: 15px;
+      margin-top: 20px;
+      width: 100%;
+
+      .question {
+        min-width: 40%;
+      }
+
+      .answer {
+        width: 100%;
+        .price {
+          font-size: 0.75rem;
+        }
+
+        .groupRadio {
+          margin-left: 15px;
+          min-width: 60%;
+
+          .radio {
+            padding-right: 15px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            flex-direction: row;
+            input {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .dichVu {
+    .addonServices {
+      .questionBHYT {
         display: flex;
-        align-items: center;
-        align-content: center;
-        flex-direction: row;
-        input {
-          margin-right: 5px;
+        flex-direction: column;
+
+        .answer {
+          display: flex;
+          flex-direction: row;
+          margin-top: 8px;
+          .price {
+            margin-left: 1rem;
+          }
         }
       }
     }

@@ -3,6 +3,7 @@ import {
   HospitalState,
   HosptailTypes
 } from '@src/store/interface'
+import moment from 'moment'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const init: HospitalState = {
@@ -93,7 +94,9 @@ const init: HospitalState = {
 
   // --> sau khi thanh toán xong
   reserveBooking: [],
-  listHistoryPayment: []
+  listHistoryPayment: [],
+  infoBillFromRepayment: {},
+  isRepayment: false
 }
 
 export default function hospital(
@@ -118,6 +121,50 @@ export default function hospital(
         ...state,
         partnerId: action.partnerId
       }
+
+    case HosptailTypes.Stepper.AddSchedule_FromBill:
+      // infoBillFromRepayment
+      console.log('action.infoBill :>> ', action.infoBill)
+      const { service, subject, doctor, date, room, addonServices } =
+        action.infoBill
+
+      const schedule = {
+        service: {
+          selected: {
+            addonServices: addonServices,
+            ...service
+          },
+          other: {
+            addonServicesWithIdTrue: service.addonServiceIds
+          }
+        },
+        subject: {
+          selected: subject
+        },
+        doctor: {
+          selected: doctor
+        },
+        room: {
+          selected: room
+        },
+        time: {
+          selected: {
+            chonNgay: { date },
+            chonGio: {
+              startTime: moment(date).format('HH:mm')
+            }
+          }
+        }
+      }
+
+      return {
+        ...state,
+        infoBillFromRepayment: action.infoBill,
+        schedule,
+        treeId: action.infoBill.treeId,
+        isRepayment: true
+      }
+
     case HosptailTypes.Stepper.SAVE_SCHEDULE:
       const lastTime: any = action.schedule?.time
       if (lastTime) {
@@ -125,14 +172,16 @@ export default function hospital(
           return {
             ...state,
             schedule: { ...action.schedule },
-            passSchedules: true
+            passSchedules: true,
+            isRepayment: false
           }
         }
       }
       return {
         ...state,
         passSchedules: false,
-        schedule: { ...action.schedule }
+        schedule: { ...action.schedule },
+        isRepayment: false
       }
     case HosptailTypes.Stepper.RESET_SCHEDULE:
       return {
@@ -224,11 +273,11 @@ export default function hospital(
         listPayment: action.listPayment
       }
 
-    case HosptailTypes.Payment.SELECTED_Payment_FEE:
-      const { totalFee, subTotal, grandTotal }: any = action.paymentFee
+    case HosptailTypes.Payment.SELECTED_PAYMENT_FEE:
+      const { totalFee, subTotal, grandTotal }: any = action.selectedPaymentFee
       return {
         ...state,
-        selectedPaymentFee: action.paymentFee,
+        selectedPaymentFee: action.selectedPaymentFee,
         paymentFee: {
           subTotal,
           totalFee,
