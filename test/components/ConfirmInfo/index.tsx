@@ -158,30 +158,32 @@ export const ConfirmInfo = (props: ConfirmInfoIF) => {
                     }
                   />
                 ) : (
-                  Info(props.schedule)?.map((el, i) => {
-                    const t = getSetting(el, TITLE)
-                    const v = getSetting(el, VALUE)
-                    return (
-                      el.visible && (
-                        <li key={i}>
-                          <p className={styles.cardItem}>
-                            <span
-                              style={{ color: t.color }}
-                              className={cx(styles.title, t.bold, t.under)}
-                            >
-                              {el.title}
-                            </span>
-                            <span
-                              style={{ color: v.color }}
-                              className={cx(styles.value, v.bold, v.under)}
-                            >
-                              {el.value}
-                            </span>
-                          </p>
-                        </li>
+                  Info(props.schedule)
+                    .sort((a, b) => a.sort - b.sort)
+                    ?.map((el, i) => {
+                      const t = getSetting(el, TITLE)
+                      const v = getSetting(el, VALUE)
+                      return (
+                        el.visible && (
+                          <li key={i}>
+                            <p className={styles.cardItem}>
+                              <span
+                                style={{ color: t.color }}
+                                className={cx(styles.title, t.bold, t.under)}
+                              >
+                                {el.title}
+                              </span>
+                              <span
+                                style={{ color: v.color }}
+                                className={cx(styles.value, v.bold, v.under)}
+                              >
+                                {el.value}
+                              </span>
+                            </p>
+                          </li>
+                        )
                       )
-                    )
-                  })
+                    })
                 )}
               </ul>
               <div className={styles.btnClose}>

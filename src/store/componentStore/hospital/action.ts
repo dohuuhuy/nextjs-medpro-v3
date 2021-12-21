@@ -172,10 +172,12 @@ export const paymentReset = (): HospitalActions => {
   }
 }
 
-export const selectedPaymentFee = (paymentFee: any): HospitalActions => {
+export const selectedPaymentFee = (
+  selectedPaymentFee: any
+): HospitalActions => {
   return {
-    type: HosptailTypes.Payment.SELECTED_Payment_FEE,
-    paymentFee
+    type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE,
+    selectedPaymentFee
   }
 }
 

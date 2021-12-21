@@ -51,7 +51,8 @@ export const handleList = (data: any, selectedPatient: any) => {
       value:
         paymentFee?.subTotal === -1
           ? money(
-              schedule?.service?.selected?.price + handlePriceAddOnSV(schedule)
+              (schedule?.service?.selected?.price || 0) +
+                handlePriceAddOnSV(schedule)
             )
           : money(paymentFee?.subTotal),
       setting: {

@@ -224,11 +224,11 @@ export default function hospital(
         listPayment: action.listPayment
       }
 
-    case HosptailTypes.Payment.SELECTED_Payment_FEE:
-      const { totalFee, subTotal, grandTotal }: any = action.paymentFee
+    case HosptailTypes.Payment.SELECTED_PAYMENT_FEE:
+      const { totalFee, subTotal, grandTotal }: any = action.selectedPaymentFee
       return {
         ...state,
-        selectedPaymentFee: action.paymentFee,
+        selectedPaymentFee: action.selectedPaymentFee,
         paymentFee: {
           subTotal,
           totalFee,

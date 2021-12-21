@@ -173,8 +173,8 @@ export interface PaymentReset {
 }
 
 export interface SelectedPaymentFee {
-  type: HosptailTypes.Payment.SELECTED_Payment_FEE
-  paymentFee: {}
+  type: HosptailTypes.Payment.SELECTED_PAYMENT_FEE
+  selectedPaymentFee: {}
 }
 
 // ------------------------------- Thực hiện đặt khám ------------------------------
