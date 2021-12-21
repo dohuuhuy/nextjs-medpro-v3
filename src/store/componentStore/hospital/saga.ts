@@ -343,7 +343,7 @@ function* reserveBooking() {
       paymentTypeDetail: hos.selectedPaymentFee?.code || 'NO_PAYMENT',
 
       // thông tin cá nhân
-      patientId: user.selectedPatient?.patientId,
+      patientId: user.selectedPatient?.patientId || '',
       patientProfileId: '', // không có
       hasInsuranceCode: hos.schedule?.service?.other?.selectedBHYT,
       insuranceCode: user.selectedPatient?.insuranceCode || 'DN4798622441759',

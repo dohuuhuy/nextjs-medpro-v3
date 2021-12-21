@@ -136,9 +136,6 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // ---------------------------------> 1. Lấy vị trí và thông tin của step và step tiếp theo
   const index = findIndex(state.stepper, { key: keys })
   const findStep: Steps | any = find(state.stepper, { key: keys })
-
-  console.log('findStep :>> ', findStep)
-
   const indexSub = findIndex(state.stepper, { key: item?.subType })
 
   // ---------------------------------> 2. Gán giá trị đã chọn vào step hiện tại
@@ -148,7 +145,7 @@ export const clickItem = ({ item, props }: ClickItem) => {
   // ---------------------------------> 3. Reset hết step từ indexSub trở về sau khi chọn lại Step
   if (Object.keys(findStep?.selected).length) {
     if (indexSub > 0) {
-      for (let i = index + 1; i <= state.stepper.length; i++) {
+      for (let i = indexSub; i <= state.stepper.length; i++) {
         if (state.stepper[i]) {
           state.stepper[i].data = []
           state.stepper[i].selected = {}
@@ -156,8 +153,10 @@ export const clickItem = ({ item, props }: ClickItem) => {
         }
       }
       state.stepper[indexSub].data = item?.child || []
+    } else {
+      state.stepper[index + 1].data = []
+      state.stepper[index + 1].selected = {}
     }
-    console.log('indexSub :>> ', indexSub)
   }
 
   // ---------------------------------> 4. Gán data cho step tiếp theo
