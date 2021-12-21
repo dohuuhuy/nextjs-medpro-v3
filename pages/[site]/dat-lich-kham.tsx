@@ -23,11 +23,19 @@ const ThongTinDatKhamPage = ({ data }: any) => {
   const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
+    // 1. xóa tiền bạc đi
     dispatch(ac.paymentReset())
+    // 2. làm mới step lại
     dispatch(ac.resetSchedule())
+    // 3. set lại partnerid
     dispatch(ac.setParnerIdHospital(partnerId))
+    // 4. get booking về
     dispatch(ac.getBookingTree(partnerId))
-    dispatch(ac.listPatientRequest())
+    // 5. xóa chọn hồ sơ trước đó
+    dispatch(ac.selectedPatient(null))
+    // 6. xóa thông tin phiếu đã xem trước đó
+    dispatch(ac.getBillInfoSuccess(null))
+
     check(hospital.listHospital) && dispatch(ac.getListHospital())
   }, [router.query?.site])
 
@@ -42,7 +50,7 @@ const ThongTinDatKhamPage = ({ data }: any) => {
         listHos={listHospital}
         header={hospital.information.header}
       />
-      {total.loading ? (
+      {check(hospital?.bookingTree) ? (
         <Loading component />
       ) : (
         <BookingTree bookingTree={hospital?.bookingTree} />

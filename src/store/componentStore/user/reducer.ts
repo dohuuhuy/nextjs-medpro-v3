@@ -54,7 +54,7 @@ export default function user(
       return {
         ...state,
         selectedPatient: {
-          patientId: action.selectedPatient.id,
+          patientId: action.selectedPatient?.id,
           ...action.selectedPatient
         }
       }

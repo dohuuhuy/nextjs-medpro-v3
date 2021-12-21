@@ -1,4 +1,3 @@
-import { message } from 'antd'
 import { client } from '@config/medproSDK'
 import { huyi } from '@src/utils/clog'
 import { openToast } from '@src/utils/Notification'
@@ -314,8 +313,6 @@ function* reserveBooking() {
     const hos: HospitalState = yield select((state: AppState) => state.hospital)
     const user: UserState = yield select((state: AppState) => state.user)
 
-    const bookingSlotId = user.billInfo.bookingInfo.bookingSlotId
-
     const date = hos.schedule?.time.selected?.chonNgay.date
     const chonGio = hos.schedule?.time.selected?.chonGio
     const formatDate = moment(date).format('YYYY-MM-DD')
@@ -323,8 +320,6 @@ function* reserveBooking() {
     const endTime = chonGio.endTime
     const timeSlotId = chonGio.timeId
     const maxSlot = chonGio.maxSlot || ''
-
-    console.log('startTime :>> ', startTime)
 
     const dateString =
       formatDate && startTime
@@ -367,9 +362,7 @@ function* reserveBooking() {
       addonServices: hos?.schedule?.service?.other?.addonServicesWithIdTrue, // chưa làm tới
 
       // thông tin thời gian
-      bookingSlotId: timeSlotId
-        ? timeSlotId + '_' + hos.partnerId
-        : bookingSlotId,
+      bookingSlotId: timeSlotId + '_' + hos.partnerId,
       startTimeString: dateString,
       startTime: startTimeString,
       endTime: endTime ? endTimeString : '',

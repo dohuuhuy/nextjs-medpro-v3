@@ -23,8 +23,8 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
     schedules: {},
     stepCurrent: {
       key: 0,
-      name: handlerStep({ bookingTree })[0].title,
-      index: handlerStep({ bookingTree })[0].sort + 1
+      name: '',
+      index: 0
     }
   })
 
@@ -57,7 +57,15 @@ export default function BookingTree({ bookingTree }: BookingTreeIF) {
 
     if (window.performance) {
       console.info('window.performance works fine on this browser')
-      setstate((v) => ({ ...v, stepper: handlerStep({ bookingTree }) }))
+      setstate((v) => ({
+        ...v,
+        stepper: handlerStep({ bookingTree }),
+        stepCurrent: {
+          key: 0,
+          name: handlerStep({ bookingTree })[0].title,
+          index: handlerStep({ bookingTree })[0].sort + 1
+        }
+      }))
     }
     if (type === TYPE_RELOAD) {
       console.info('This page is reloaded')

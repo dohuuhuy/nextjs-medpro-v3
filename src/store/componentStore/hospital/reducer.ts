@@ -172,14 +172,16 @@ export default function hospital(
           return {
             ...state,
             schedule: { ...action.schedule },
-            passSchedules: true
+            passSchedules: true,
+            isRepayment: false
           }
         }
       }
       return {
         ...state,
         passSchedules: false,
-        schedule: { ...action.schedule }
+        schedule: { ...action.schedule },
+        isRepayment: false
       }
     case HosptailTypes.Stepper.RESET_SCHEDULE:
       return {
