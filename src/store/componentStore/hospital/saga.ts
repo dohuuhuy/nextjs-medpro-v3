@@ -455,16 +455,22 @@ function* watcher_cancelBooking() {
 
 function* getHistoryPayment() {
   try {
+    yield put(ac.setLoading())
     const total: TotalDataState = yield select((state: AppState) => state.total)
+    const hospital: HospitalState = yield select(
+      (state: AppState) => state.hospital
+    )
     const user: UserState = yield select((state: AppState) => state.user)
 
     const response: AxiosResponse = yield client.paymentFeeTracking({
-      partnerid: total.partnerId,
+      partnerid: hospital.partnerId || total.partnerId,
       token: user.userInfo.token
     })
+    yield put(ac.setLoading(false))
 
     yield put(ac.getHistoryPaymentSuccess(response.data))
   } catch (error) {
+    yield put(ac.setLoading(false))
     const e = get(error, 'response.data', '')
     yield put(ac.getHistoryPaymentSuccess(e))
     huyi({ name: 'HistoryPayment', child: error, type: 'error' })

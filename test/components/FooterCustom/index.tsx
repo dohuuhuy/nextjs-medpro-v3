@@ -117,12 +117,12 @@ export default function FooterCustom({ dataFooter }: any) {
             </ul>
           </Col>
         </Row>
-        <Row className={styles.rowCopy}>
-          <Col xl={24} sm={24} className={styles.colCopy}>
-            <p>@2021 Medpro Copyright. All Rights Reserved.</p>
-          </Col>
-        </Row>
       </Container>
+      <Row className={styles.rowCopy}>
+        <Col xl={24} sm={24} className={styles.colCopy}>
+          <p>@2021 Medpro Copyright. All Rights Reserved.</p>
+        </Col>
+      </Row>
     </Container>
   )
 }

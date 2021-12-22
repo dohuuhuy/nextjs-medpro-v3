@@ -12,8 +12,9 @@ export const findPartnerId = ({ listPartners = [], host }: Props) => {
   listPartners.push(localhost)
   const _domain = domain(host)
   const res: any = listPartners?.find((i: any) => i.domain.includes(_domain))
-  if (Object.keys(res).length < 1) return null
-  if (!res) return null
+
+  if (Object.keys(res).length < 1) return 'medpro'
+  if (!res) return 'medpro'
   return res?.partnerId
 }
 
