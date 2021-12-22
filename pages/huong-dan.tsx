@@ -14,7 +14,6 @@ const HuongDan = ({ data, meta }: any) => {
   const router = useRouter()
   const findMeta = find(meta, { key: router.asPath.replace('/', '') })
 
-  console.log('data :>> ', data)
   return (
     <>
       <SEOHead meta={findMeta} />

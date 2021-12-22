@@ -19,7 +19,7 @@ export default function FooterCustom({ dataFooter }: any) {
         <Row className={styles.rowMenu}>
           <Col xl={24} sm={24} className={styles.colMenu}>
             <ul className={styles.menu}>
-              {menu.map((v: any) => {
+              {menu?.map((v: any) => {
                 return (
                   <li key={uniqueId()}>
                     <Link href={v.link}>

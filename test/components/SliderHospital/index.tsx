@@ -6,7 +6,7 @@ import { checkData, DataFailure } from '../DataFailure'
 import styles from './styles.module.less'
 import Image from 'next/image'
 interface Props {
-  data?: DeloyHospitalItem[]
+  data: DeloyHospitalItem[]
 }
 
 export interface DeloyHospitalItem {
@@ -30,30 +30,31 @@ export const DeloyHospitalCustom = ({ data }: Props) => {
         {/* <style>{cssstyle}</style> */}
         <Col>
           <Slider {...settings} className={styles.Slider}>
-            {data?.map(({ nameHospital, image, imgLink }: any) => {
-              return (
-                <div key={nameHospital} className={styles.card}>
-                  <figure className={styles.view}>
-                    <Image
-                      loading='eager'
-                      property='true'
-                      loader={myLoader}
-                      src={image}
-                      alt={image}
-                      width={355}
-                      height={212}
-                      objectFit='cover'
-                      layout='intrinsic'
-                    />
-                  </figure>
-                  <div className={styles.cardBody}>
-                    <a href={imgLink} target='_blank' rel='noreferrer'>
-                      {nameHospital}
-                    </a>
+            {data?.length > 0 &&
+              data?.map(({ nameHospital, image, imgLink }: any) => {
+                return (
+                  <div key={nameHospital} className={styles.card}>
+                    <figure className={styles.view}>
+                      <Image
+                        loading='eager'
+                        property='true'
+                        loader={myLoader}
+                        src={image}
+                        alt={image}
+                        width={355}
+                        height={212}
+                        objectFit='cover'
+                        layout='intrinsic'
+                      />
+                    </figure>
+                    <div className={styles.cardBody}>
+                      <a href={imgLink} target='_blank' rel='noreferrer'>
+                        {nameHospital}
+                      </a>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
           </Slider>
         </Col>
       </Row>

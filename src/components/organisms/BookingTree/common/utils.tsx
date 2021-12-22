@@ -230,7 +230,6 @@ export const validateCharUTF8 = (value: any) => {
   value = value.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u')
   value = value.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y')
   value = value.replace(/đ|d/g, 'd')
-  // Some system encode vietnamese combining accent as individual utf-8 characters
   value = value.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, '') // Huyền sắc hỏi ngã nặng
   value = value.replace(/\u02C6|\u0306|\u031B/g, '') // Â, Ê, Ă, Ơ, Ư
   return value

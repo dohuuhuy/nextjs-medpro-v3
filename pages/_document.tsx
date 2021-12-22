@@ -9,7 +9,6 @@ import Document, {
 } from 'next/document'
 import React from 'react'
 import sprite from 'svg-sprite-loader/runtime/sprite.build'
-
 interface CustomDocumentProps {
   spriteContent: string
 }
@@ -56,6 +55,23 @@ class CustomDocument extends Document<CustomDocumentProps> {
             type='text/css'
             href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
           />
+          <script
+            src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'
+            defer
+          ></script>
+          <script
+            src='https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js'
+            defer
+          ></script>
+          <script
+            src='https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js'
+            defer
+          ></script>
+          <script
+            async
+            src='https://images.dmca.com/Badges/DMCABadgeHelper.min.js'
+            defer
+          ></script>
         </Head>
 
         <body>
