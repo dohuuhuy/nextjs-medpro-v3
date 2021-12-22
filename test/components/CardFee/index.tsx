@@ -14,7 +14,7 @@ export interface CardFeeIF {
     selectedPaymentFee: any
     passSchedules?: any
     isRepayment?: boolean
-    schedule: any
+    schedule?: any
   }
   onReserveBooking?: any
   willPayment?: boolean
