@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import Slider from 'react-slick'
+import Slider, { Settings } from 'react-slick'
 import { Icon } from '../Icon'
 import Container from './../Container'
 import { BookingTypeIF } from './common/interface'
-import { carousel, listTabs, settings } from './common/utils'
+import { banner, listTabs } from './common/utils'
 import styles from './styles.module.less'
 
 export const BookingType = (props: BookingTypeIF) => {
@@ -164,23 +164,27 @@ export const BookingType = (props: BookingTypeIF) => {
           </div>
         </Col>
       </Row>
+
       {/* carousel banner  */}
       <Row className={styles.rowSlider}>
         <Col>
-          <Slider {...settings}>
-            {carousel?.map((v) => {
+          <Slider {...settings} className={styles.Slider}>
+            {props.deployHospital?.map(({ nameHospital, image }: any) => {
               return (
-                <div key={uniqueId()} className={styles.listImage}>
-                  <Image
-                    loader={myLoader}
-                    src={v.image}
-                    width={1110}
-                    height={335}
-                    alt=''
-                    loading='eager'
-                    objectFit='cover'
-                    priority={true}
-                  />
+                <div key={nameHospital} className={styles.card}>
+                  <figure className={styles.view}>
+                    <Image
+                      loading='eager'
+                      property='true'
+                      loader={myLoader}
+                      src={image}
+                      alt={image}
+                      width={1110}
+                      height={335}
+                      objectFit='cover'
+                      layout='intrinsic'
+                    />
+                  </figure>
                 </div>
               )
             })}
@@ -191,11 +195,15 @@ export const BookingType = (props: BookingTypeIF) => {
   )
 }
 
-// tạm thời dùng link này , sao này sử bannerimage trong info
-const banner = (e: string) => {
-  return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
+export const settings: Settings = {
+  speed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  dots: false
 }
 
-const myLoader = ({ src, width, quality }: any): string => {
+export const myLoader = ({ src, width, quality }: any): string => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
