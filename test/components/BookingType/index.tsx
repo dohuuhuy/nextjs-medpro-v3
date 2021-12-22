@@ -9,7 +9,7 @@ import Slider from 'react-slick'
 import { Icon } from '../Icon'
 import Container from './../Container'
 import { BookingTypeIF } from './common/interface'
-import { carousel, listTabs, settings } from './common/utils'
+import { banner, listTabs, myLoader, settings } from './common/utils'
 import styles from './styles.module.less'
 
 export const BookingType = (props: BookingTypeIF) => {
@@ -164,23 +164,27 @@ export const BookingType = (props: BookingTypeIF) => {
           </div>
         </Col>
       </Row>
+
       {/* carousel banner  */}
       <Row className={styles.rowSlider}>
         <Col>
-          <Slider {...settings}>
-            {carousel?.map((v) => {
+          <Slider {...settings} className={styles.Slider}>
+            {props.deployHospital?.map(({ nameHospital, image }: any) => {
               return (
-                <div key={uniqueId()} className={styles.listImage}>
-                  <Image
-                    loader={myLoader}
-                    src={v.image}
-                    width={1110}
-                    height={335}
-                    alt=''
-                    loading='eager'
-                    objectFit='cover'
-                    priority={true}
-                  />
+                <div key={nameHospital} className={styles.card}>
+                  <figure className={styles.view}>
+                    <Image
+                      loading='eager'
+                      property='true'
+                      loader={myLoader}
+                      src={image}
+                      alt={image}
+                      width={1110}
+                      height={335}
+                      objectFit='cover'
+                      layout='intrinsic'
+                    />
+                  </figure>
                 </div>
               )
             })}
@@ -189,13 +193,4 @@ export const BookingType = (props: BookingTypeIF) => {
       </Row>
     </Container>
   )
-}
-
-// tạm thời dùng link này , sao này sử bannerimage trong info
-const banner = (e: string) => {
-  return `https://resource-testing.medpro.com.vn/static/images/${e}/web/banner_desktop.png`
-}
-
-const myLoader = ({ src, width, quality }: any): string => {
-  return `${src}?w=${width}&q=${quality || 75}`
 }

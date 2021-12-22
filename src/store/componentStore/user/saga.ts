@@ -148,6 +148,7 @@ function* getPaymentInfo({ mpTransaction }: any) {
     const status = get(response, 'data.bookingInfo.status', 0)
     const description = get(response, 'data.bookingInfo.description', '')
 
+    // kiểm tra status thành công
     if (status === 1) {
       description &&
         openToast({
@@ -163,11 +164,17 @@ function* getPaymentInfo({ mpTransaction }: any) {
           description: description
         })
     }
-    yield put(ac.getBillInfoSuccess(response.data))
-
-    yield put(ac.selectedPatient(response.data.bookingInfo.patient))
 
     yield put(ac.setLoading(false))
+
+    // 1. Lưu lại thông tin phiếu khám
+    yield put(ac.getBillInfoSuccess(response.data))
+
+    // 2. Chọn hồ sơ bệnh nhân từ phiếu khám
+    yield put(ac.selectedPatient(response.data.bookingInfo.patient))
+
+    // 3. Gọi lại danh sách thông báo
+    yield put(ac.getNoti())
   } catch (error) {
     console.log(' error getPaymentInfo :>> ', error)
   }

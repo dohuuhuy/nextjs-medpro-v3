@@ -2,7 +2,6 @@ import * as ac from '@actionStore'
 import { SEOHead } from '@components/SEO/SEOHead/Index'
 import { BookingType } from '@componentsTest/BookingType'
 import { BreadcumbCustom } from '@componentsTest/BreadcumbCustom'
-import Loading from '@componentsTest/Loading'
 import { check } from '@src/utils/checkValue'
 import { AppState } from '@store/interface'
 import { banner } from '@utils/func'
@@ -18,26 +17,16 @@ const DefaultLayout = dynamic(() => import('@templates/Default'))
 const HinhThucDatKham = ({ data }: any) => {
   const dispatch = useDispatch()
   const hospital = useSelector((state: AppState) => state.hospital)
-  const total = useSelector((state: AppState) => state.total)
 
   const router = useRouter()
   const { site } = router.query
 
   useEffect(() => {
-    dispatch(ac.setLoading())
     dispatch(ac.setParnerIdHospital(site))
     check(hospital.listHospital) && dispatch(ac.getListHospital())
     dispatch(ac.resetSchedule())
     window.localStorage.removeItem('selected')
-
-    setTimeout(() => {
-      dispatch(ac.setLoading(false))
-    }, 1000)
-  }, [router])
-
-  if (!hospital) return null
-
-  if (total.loading) return <Loading component={true} />
+  }, [site])
 
   const listHospital = data.listHospital
   const getInfo = find(listHospital, { partnerId: site })
@@ -52,10 +41,12 @@ const HinhThucDatKham = ({ data }: any) => {
         header={hospital.information?.header}
       />
 
-      {check(data.listHospital) ? (
-        <Loading component={true} />
-      ) : (
-        <BookingType getInfo={getInfo} selectedFeature={ac.selectedFeature} />
+      {check(getInfo) ? null : (
+        <BookingType
+          getInfo={getInfo}
+          selectedFeature={ac.selectedFeature}
+          deployHospital={data.deployHospital}
+        />
       )}
     </>
   )

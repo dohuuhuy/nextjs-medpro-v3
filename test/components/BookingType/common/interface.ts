@@ -1,6 +1,7 @@
 export interface BookingTypeIF {
   selectedFeature: any
   getInfo: InfoPartner
+  deployHospital: any
 }
 
 export interface InfoPartner {
