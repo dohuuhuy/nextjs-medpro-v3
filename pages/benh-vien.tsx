@@ -1,6 +1,5 @@
 import * as ac from '@actionStore'
 import { SelectHospitalCustom } from '@componentsTest/HospitalCustom'
-import Loading from '@componentsTest/Loading'
 import { SEOHead } from '@src/components/SEO/SEOHead/Index'
 import { SelectHospitalCtl } from '@src/containers/SelectHosital'
 import { AppState } from '@src/store/interface'

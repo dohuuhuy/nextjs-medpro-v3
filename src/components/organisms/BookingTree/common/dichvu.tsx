@@ -107,11 +107,18 @@ export const DichVu = (props: Props) => {
     stateDichVu.selectedItem.other = {}
     stateDichVu.selectedItem.other.addonServices = stateDichVu.selectedAddOnSv
     stateDichVu.selectedItem.other.addonServicesWithIdTrue = getIdSV_True
+    // stateDichVu.selectedItem.other.checkBHYT = stateDichVu.selectedBHYT
+    // stateDichVu.selectedItem.other.popup = {
+    //   type: stateDichVu.selectedItem.detail?.popupType,
+    //   content: stateDichVu.selectedItem.detail?.popupContent
+    // }
 
-    const addOnFromBooking = stateDichVu.selectedItem.detail.addonServices
+    const addOnFromBooking = stateDichVu.selectedItem.detail?.addonServices
     const addOnFromSelected = stateDichVu.selectedAddOnSv
 
-    addOnFromBooking.length === addOnFromSelected.length &&
+    console.log('stateDichVu.selectedItem :>> ', stateDichVu.selectedItem)
+
+    addOnFromBooking?.length === addOnFromSelected?.length &&
       clickItem({ item: stateDichVu.selectedItem, props })
   }
 
