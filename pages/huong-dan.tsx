@@ -1,4 +1,5 @@
 import { HuongDanCustom } from '@componentsTest/HuongDanCustom'
+import { ResultCustom } from '@componentsTest/ResultCustom'
 import BannersPublic from '@src/components/organisms/BannersPublic'
 import { SEOHead } from '@src/components/SEO/SEOHead/Index'
 import { urlApi, urlJson } from '@src/utils/contants'
@@ -13,11 +14,12 @@ const HuongDan = ({ data, meta }: any) => {
   const router = useRouter()
   const findMeta = find(meta, { key: router.asPath.replace('/', '') })
 
+  console.log('data :>> ', data)
   return (
     <>
       <SEOHead meta={findMeta} />
       <BannersPublic />
-      {data && <HuongDanCustom data={data} />}
+      {data.error ? <ResultCustom /> : <HuongDanCustom data={data} />}
     </>
   )
 }

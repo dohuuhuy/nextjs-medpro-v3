@@ -1,5 +1,5 @@
 export interface SelectHospital {
-  listHospital: ListHospital[]
+  listHospital: any
   listCity: ListCity[]
 }
 

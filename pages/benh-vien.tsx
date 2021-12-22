@@ -6,10 +6,8 @@ import { AppState } from '@src/store/interface'
 import { urlJson } from '@src/utils/contants'
 import { fetcher } from '@src/utils/func'
 import { check } from '@utils/checkValue'
-import { Button, Result } from 'antd'
 import { find } from 'lodash'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,25 +30,11 @@ const BenhVien = ({ data, meta }: any) => {
   return (
     <>
       <SEOHead meta={findMeta} />
-      {data?.listHospital?.error ? (
-        <Result
-          status='404'
-          title='404'
-          subTitle={data.listHospital.statusText}
-          extra={
-            <Button type='primary'>
-              <Link href='/'>
-                <a style={{ color: 'white' }}> Trang chủ</a>
-              </Link>
-            </Button>
-          }
-        />
-      ) : (
-        <SelectHospitalCustom
-          listHospital={data?.listHospital}
-          listCity={total.listCity}
-        />
-      )}
+
+      <SelectHospitalCustom
+        listHospital={data?.listHospital}
+        listCity={total.listCity}
+      />
     </>
   )
 }

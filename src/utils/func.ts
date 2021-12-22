@@ -15,10 +15,22 @@ export const HandleModile = (text = '') => {
 export const changeSex = (sex: any) => {
   return sex ? 'Nam' : 'Nữ'
 }
-export const fetcherGuide = (url: string) =>
-  fetch(url, {
-    headers: { type: 'guide-booking', partnerid: 'medpro' }
-  }).then((res) => res.json())
+
+export const fetcherGuide = async (url: string) => {
+  try {
+    const res = await timeout(
+      3000,
+      fetch(url, {
+        headers: { type: 'guide-booking', partnerid: 'medpro' }
+      })
+    )
+    return await res.json()
+  } catch (error) {
+    return {
+      error: true
+    }
+  }
+}
 
 export const fetcher = (url: string) => {
   try {
@@ -54,4 +66,13 @@ export const urlAddressType = (type: any, id: any) => {
   }
 
   return url
+}
+
+export async function timeout<T>(ms: any, promise: any): Promise<T> {
+  return new Promise<T>(async (resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('timeout'))
+    }, ms)
+    resolve(await promise)
+  })
 }

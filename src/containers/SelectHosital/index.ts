@@ -1,24 +1,14 @@
 import { client } from '@config/medproSDK'
 import { urlJson } from '@src/utils/contants'
-import { fetcher } from '@src/utils/func'
+import { fetcher, timeout } from '@src/utils/func'
 
 export const SelectHospitalCtl = async () => {
   const listHospital = await getListHospital()
   const deployHospital = await fetcher(urlJson.urldeployHospital)
-  console.log('listHospital :>> ', listHospital)
   return {
     listHospital,
     deployHospital
   }
-}
-
-export async function timeout<T>(ms: any, promise: any): Promise<T> {
-  return new Promise<T>(async (resolve, reject) => {
-    setTimeout(() => {
-      reject(new Error('timeout'))
-    }, ms)
-    resolve(await promise)
-  })
 }
 
 const getListHospital = async () => {

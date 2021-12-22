@@ -1,9 +1,10 @@
-import { Icon } from '../Icon'
+import { ResultCustom } from '@componentsTest/ResultCustom'
 import { Col, Input, Row, Select } from 'antd'
 import { filter, uniqueId } from 'lodash'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Container from '../Container'
+import { Icon } from '../Icon'
 import { cardHospital } from './common/cardHospital'
 import { validateCharUTF8 } from './common/func'
 import { ListHospital, SelectHospital } from './common/interface'
@@ -14,9 +15,7 @@ const { Option } = Select
 export const SelectHospitalCustom = (props: SelectHospital) => {
   const router = useRouter()
 
-  const [listHospitals, setlistHospitals] = useState<ListHospital[]>(
-    props?.listHospital
-  )
+  const [listHospitals, setlistHospitals] = useState(props?.listHospital)
 
   const [nameCiti, setnameCiti] = useState('Chọn Tỉnh/thành')
   const [activeList, setactiveList] = useState(false)
@@ -37,11 +36,13 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
     setactiveList(true)
     const { value } = e.target
     setkeySearch(value)
-    const findHospital = props?.listHospital.filter(({ name }) => {
-      const _name = validateCharUTF8(name).toLowerCase()
-      const _value = validateCharUTF8(value).toLowerCase()
-      return _name.includes(_value)
-    })
+    const findHospital = props?.listHospital.filter(
+      ({ name }: ListHospital) => {
+        const _name = validateCharUTF8(name).toLowerCase()
+        const _value = validateCharUTF8(value).toLowerCase()
+        return _name.includes(_value)
+      }
+    )
     setlistHospitals(findHospital)
   }
 
@@ -93,9 +94,13 @@ export const SelectHospitalCustom = (props: SelectHospital) => {
         <Col span='24' className={styles.colListCard}>
           <Container className={styles.conList}>
             <ul className={styles.listCard}>
-              {cardHospital(
-                activeList ? listHospitals : props?.listHospital,
-                router
+              {listHospitals.error ? (
+                <ResultCustom />
+              ) : (
+                cardHospital(
+                  activeList ? listHospitals : props?.listHospital,
+                  router
+                )
               )}
             </ul>
           </Container>
