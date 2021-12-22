@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { TITLE, urlGo, VALUE } from './common/contants'
 import { getSetting, handleList } from './common/utils'
 import { useDispatch } from 'react-redux'
+import { Button, Modal } from 'antd'
 
 export interface CardFeeIF {
   hospital: {
@@ -13,6 +14,7 @@ export interface CardFeeIF {
     selectedPaymentFee: any
     passSchedules?: any
     isRepayment?: boolean
+    schedule: any
   }
   onReserveBooking?: any
   willPayment?: boolean
@@ -22,10 +24,21 @@ export interface CardFeeIF {
 
 export const CardFee = (props: CardFeeIF) => {
   const dispatch = useDispatch()
-  const { passSchedules } = props.hospital
 
   const router = useRouter()
+
+  const {
+    query: { site }
+  } = router
+
+  const { passSchedules } = props.hospital
+
   const [isVisible, setIsVisible] = React.useState(false)
+
+  const [visible, setVisible] = React.useState(false)
+  const [confirmLoading, setConfirmLoading] = React.useState(false)
+  // const [modalText, setModalText] = React.useState('Content of the modal')
+
   React.useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 150) {
@@ -40,12 +53,40 @@ export const CardFee = (props: CardFeeIF) => {
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
-  const routePush = () => {
-    const {
-      query: { site },
-      pathname
-    } = router
+  const willGo = () => {
+    const name = router.pathname.replace('/[site]/', '')
 
+    let willGo = ''
+    switch (name) {
+      case urlGo.DAT_LICH_KHAM:
+        willGo = urlGo.XAC_NHAN_THONG_TIN
+        break
+
+      case urlGo.XAC_NHAN_THONG_TIN:
+        willGo = urlGo.PHUONG_THUC_THANH_TOAN
+        break
+
+      default:
+        break
+    }
+
+    return willGo
+  }
+
+  const showModal = () => {
+    setVisible(true)
+  }
+
+  const handleOk = () => {
+    setConfirmLoading(true)
+    setTimeout(() => {
+      setVisible(false)
+      setConfirmLoading(false)
+      router.push(`/${site}/${willGo()}`)
+    }, 2000)
+  }
+
+  const routePush = () => {
     if (props.willPayment) {
       if (props.hospital.isRepayment) {
         dispatch(props.onRePayment())
@@ -54,23 +95,23 @@ export const CardFee = (props: CardFeeIF) => {
       }
     } else {
       if (site) {
-        const name = pathname.replace('/[site]/', '')
+        const {
+          schedule: {
+            service: {
+              selected: { requiredCheckInsurance, serviceType }
+            }
+          }
+        } = props.hospital
 
-        let willGo = ''
-        switch (name) {
-          case urlGo.DAT_LICH_KHAM:
-            willGo = urlGo.XAC_NHAN_THONG_TIN
-            break
-
-          case urlGo.XAC_NHAN_THONG_TIN:
-            willGo = urlGo.PHUONG_THUC_THANH_TOAN
-            break
-
-          default:
-            break
+        if (
+          requiredCheckInsurance &&
+          serviceType === 'INSURANCE_ONLY' &&
+          router.asPath.includes(urlGo.DAT_LICH_KHAM)
+        ) {
+          showModal()
+        } else {
+          router.push(`/${site}/${willGo()}`)
         }
-
-        router.push(`/${site}/${willGo}`)
       }
     }
   }
@@ -78,8 +119,29 @@ export const CardFee = (props: CardFeeIF) => {
     router.back()
   }
 
+  const modalConfirmBHYT = () => {
+    const popupContent =
+      props?.hospital?.schedule?.service?.selected?.popupContent
+
+    return (
+      <Modal
+        closable={false}
+        visible={visible}
+        confirmLoading={confirmLoading}
+        footer={[
+          <Button key={1} loading={confirmLoading} onClick={handleOk}>
+            Tôi đồng ý
+          </Button>
+        ]}
+      >
+        <p>{popupContent}</p>
+      </Modal>
+    )
+  }
+
   return (
     <div className={cx(styles.cardFee, isVisible ? styles.scroll : null)}>
+      {modalConfirmBHYT()}
       <p className={styles.luuy}>
         <Icon name='luuy' /> Vui lòng kiểm tra lại thông tin trước khi đặt lịch
       </p>
