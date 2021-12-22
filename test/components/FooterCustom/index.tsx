@@ -34,7 +34,7 @@ export default function FooterCustom({ dataFooter }: any) {
         <Row className={styles.rowLogo}>
           <Col xl={24} sm={24} className={styles.colLogo}>
             <div className={styles.glogo}>
-              <span>{logo.name}</span>
+              <span>{logo?.name}</span>
               <span>|</span>
               <span>
                 <Image src={logo.image} width='80' height='40' alt='' />
@@ -46,7 +46,7 @@ export default function FooterCustom({ dataFooter }: any) {
           <Col xl={10} sm={24} className={styles.colContact}>
             <ul className={styles.listContact}>
               {contact?.map((v: any) => {
-                const under = v.setting.underline ? styles.underline : ''
+                const under = v.setting?.underline ? styles.underline : ''
                 const label = v.setting?.boolLabel ? styles.bold : ''
                 const value = v.setting?.boolValue ? styles.bold : ''
                 return (
@@ -66,7 +66,7 @@ export default function FooterCustom({ dataFooter }: any) {
             <Space size={15}>
               <QRCode value={downApp.QRcode} size={90} />
               <ul className={styles.listApp}>
-                {downApp.imageDownApp.map((v: any) => {
+                {downApp?.imageDownApp?.map((v: any) => {
                   return (
                     <li key={uniqueId()}>
                       <Link href={v.link}>
@@ -88,7 +88,7 @@ export default function FooterCustom({ dataFooter }: any) {
           <Col xl={7} lg={12} md={12} sm={24} className={styles.colCertifi}>
             <ul className={styles.listCer}>
               {certificate.list?.map((v: any) => {
-                const under = v.setting.underline ? styles.underline : ''
+                const under = v.setting?.underline ? styles.underline : ''
                 const label = v.setting?.boolLabel ? styles.bold : ''
                 const value = v.setting?.boolValue ? styles.bold : ''
                 return (
@@ -103,7 +103,7 @@ export default function FooterCustom({ dataFooter }: any) {
             </ul>
 
             <ul className={styles.listImg}>
-              {certificate.images.map((v: any) => {
+              {certificate?.images?.map((v: any) => {
                 return (
                   <li key={uniqueId()}>
                     <Link href={v.link}>
