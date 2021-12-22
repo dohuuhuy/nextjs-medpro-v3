@@ -1,62 +1,6 @@
-.customText(@size, @line, @fw) {
-  font-size: @size !important;
-  font-weight: @fw;
-  text-align: justify;
-  text-transform: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: @line;
-  -webkit-box-orient: vertical;
-}
-
-.ListCustom {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.CustomCardBody (@descNone) {
-  .title {
-    color: #002e64;
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-align: justify;
-    margin-bottom: 5px;
-    line-height: 1.5;
-    text-transform: lowercase;
-    &::first-letter {
-      text-transform: uppercase;
-    }
-    &:hover {
-      color: #3699ff;
-    }
-  }
-
-  .author {
-    font-weight: 500;
-    font-size: 0.75rem;
-    color: gray;
-    margin-bottom: 5px;
-  }
-  .time {
-    font-size: 0.75rem;
-    color: gray;
-    margin-bottom: 5px;
-  }
-  .description {
-    font-size: 0.813rem;
-    text-align: justify;
-    display: @descNone;
-    margin-bottom: 0;
-  }
-}
-
 .dataNewsAndEvent {
-  margin-bottom: 60px !important;
-
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
   figure {
     margin-bottom: 5px;
   }
@@ -248,5 +192,61 @@
         }
       }
     }
+  }
+}
+
+.customText(@size, @line, @fw) {
+  font-size: @size !important;
+  font-weight: @fw;
+  text-align: justify;
+  text-transform: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.ListCustom {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.CustomCardBody (@descNone) {
+  .title {
+    color: #002e64;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: justify;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-transform: lowercase;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    &:hover {
+      color: #3699ff;
+    }
+  }
+
+  .author {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: gray;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-size: 0.75rem;
+    color: gray;
+    margin-bottom: 5px;
+  }
+  .description {
+    font-size: 0.813rem;
+    text-align: justify;
+    display: @descNone;
+    margin-bottom: 0;
   }
 }

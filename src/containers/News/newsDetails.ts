@@ -21,7 +21,7 @@ export const getDetail = async () => {
     const rs = await api(url)
     return rs.data
   } catch (error) {
-    console.error(error)
+    console.log('error getDetail :>> ', error)
     return null
   }
 }
@@ -32,7 +32,7 @@ const getDetailNews = async (slug: any) => {
     const rs = await api(url)
     return rs.data
   } catch (error) {
-    console.error(error)
+    console.log('error getDetailNews :>> ', error)
     return null
   }
 }
@@ -43,7 +43,7 @@ const getSameNews = async () => {
     const rs = await api(url)
     return rs.data
   } catch (error) {
-    console.error(error)
+    console.log('error getSameNews :>> ', error)
     return null
   }
 }
@@ -54,7 +54,7 @@ const getListNewsBanner = async () => {
     const rs = await api(url)
     return rs.data
   } catch (error) {
-    console.error(error)
+    console.log('error getListNewsBanner :>> ', error)
     return null
   }
 }

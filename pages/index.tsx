@@ -15,11 +15,14 @@ const HomePage = ({ data }: any) => {
   return (
     <>
       {/* banner lấy từ client */}
-      <BannerHome
-        getBanner={banner(total?.partnerId)}
-        listFeature={hos?.listFeatureByApp}
-        partnerId={total?.partnerId}
-      />
+      {hos?.listFeatureByApp.length > 0 && (
+        <BannerHome
+          getBanner={banner(total?.partnerId)}
+          listFeature={hos?.listFeatureByApp}
+          partnerId={total?.partnerId}
+        />
+      )}
+
       {total.partnerId === 'medpro' && (
         <DeloyHospitalCustom data={data.deployHospital} />
       )}

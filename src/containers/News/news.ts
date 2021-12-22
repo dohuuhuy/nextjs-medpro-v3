@@ -23,7 +23,7 @@ const getListNewsBanner = async () => {
     const rs = await api(url)
     return rs
   } catch (error) {
-    console.error(error)
+    console.log('error getListNewsBanner :>> ', error)
     return null
   }
 }
@@ -34,7 +34,7 @@ const getCountNewsContent = async () => {
     const rs = await api(url)
     return rs.length
   } catch (error) {
-    console.error(error)
+    console.log('error getCountNewsContent :>> ', error)
     return null
   }
 }
@@ -46,7 +46,7 @@ const getListNewsContent = async ({ page = 1 }) => {
     const rs = await api(url)
     return rs
   } catch (error) {
-    console.error(error)
+    console.log('error getListNewsContent :>> ', error)
     return null
   }
 }

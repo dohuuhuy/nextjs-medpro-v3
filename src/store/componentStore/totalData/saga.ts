@@ -56,7 +56,7 @@ function* getListPartners() {
 
     // yield put(ac.setLoading(false))
   } catch (error) {
-    console.error(error)
+    console.log('error getListPartners :>> ', error)
   }
 }
 
@@ -73,6 +73,8 @@ function* handlerAddress({ payload }: any) {
 
     const respone: AxiosResponse = yield call(getData, urlAddressType(type, id))
 
+    console.log('respone :>> ', respone)
+
     switch (type) {
       case 'city':
         yield put(ac.CityRequestSuccess(respone))
@@ -85,7 +87,7 @@ function* handlerAddress({ payload }: any) {
         break
     }
   } catch (error) {
-    console.error(error)
+    console.log('error handlerAddress :>> ', error)
   }
 }
 

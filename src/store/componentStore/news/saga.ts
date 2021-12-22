@@ -15,7 +15,7 @@ function* getNewsAndEvent() {
 
     yield put(ac.NewsAndEventRequestSuccess({ newsPin, news }))
   } catch (error) {
-    console.error(error)
+    console.log('error getNewsAndEvent sg :>> ', error)
   }
 }
 
@@ -33,7 +33,7 @@ function* getListNewsBanner() {
 
     yield put(ac.ListNewsBannerRequestSuccess(response))
   } catch (error) {
-    console.error(error)
+    console.log('error getListNewsBanner sg :>> ', error)
   }
 }
 
@@ -52,7 +52,7 @@ function* getListNewsContent({ page = 1 }) {
 
     yield put(ac.ListNewsContentRequestSuccess(response))
   } catch (error) {
-    console.error(error)
+    console.log('error getListNewsContent sg :>> ', error)
   }
 }
 
@@ -69,7 +69,7 @@ function* getCountNewsContent() {
     const response: AxiosResponse = yield call(countData, url)
     yield put(ac.CountNewsContentRequestSuccess(response))
   } catch (error) {
-    console.error(error)
+    console.log('error getCountNewsContent sg :>> ', error)
   }
 }
 
@@ -86,7 +86,7 @@ function* getDetailNews({ slug }: any) {
     const reponse: AxiosResponse = yield call(getData, url)
     yield put(ac.DetailNewsRequestSuccess(reponse))
   } catch (error) {
-    console.error(error)
+    console.log('error getDetailNews sg :>> ', error)
   }
 }
 
@@ -103,7 +103,7 @@ function* getSameNews() {
     const reponse: AxiosResponse = yield call(getData, url)
     yield put(ac.SameNewsRequestSuccess(reponse))
   } catch (error) {
-    console.error(error)
+    console.log('error  getSameNews :>> ', error)
   }
 }
 

@@ -6,8 +6,10 @@ import { AppState } from '@src/store/interface'
 import { urlJson } from '@src/utils/contants'
 import { fetcher } from '@src/utils/func'
 import { check } from '@utils/checkValue'
+import { Button, Result } from 'antd'
 import { find } from 'lodash'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,19 +20,35 @@ const BenhVien = ({ data, meta }: any) => {
   const findMeta = find(meta, { key: router.asPath.replace('/', '') })
 
   const dispatch = useDispatch()
-  const listCity = useSelector((state: AppState) => state.total.listCity)
+  const total = useSelector((state: AppState) => state.total)
 
   useEffect(() => {
-    check(listCity) && dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
+    check(total.listCity) &&
+      dispatch(ac.handlerAddress({ type: 'city', id: 'VIE' }))
   }, [])
+
+  console.log('data?.listHospital :>> ', data?.listHospital)
 
   return (
     <>
       <SEOHead meta={findMeta} />
-      {check(data?.listHospital) ? null : (
+      {data?.listHospital?.error ? (
+        <Result
+          status='404'
+          title='404'
+          subTitle={data.listHospital.statusText}
+          extra={
+            <Button type='primary'>
+              <Link href='/'>
+                <a style={{ color: 'white' }}> Trang chủ</a>
+              </Link>
+            </Button>
+          }
+        />
+      ) : (
         <SelectHospitalCustom
           listHospital={data?.listHospital}
-          listCity={listCity}
+          listCity={total.listCity}
         />
       )}
     </>

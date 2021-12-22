@@ -22,7 +22,7 @@ function* getHospitalDetails() {
     yield put(ac.getListPartners())
     client.getAllPaymentMethod
   } catch (error) {
-    console.error(error)
+    console.log('error getHospitalDetails :>> ', error)
   }
 }
 
@@ -51,7 +51,7 @@ function* getFeatureByPartner({ partnerId, typeReser }: any) {
         break
     }
   } catch (error) {
-    console.error(error)
+    console.log('error getFeatureByPartner :>> ', error)
   }
 }
 
@@ -69,7 +69,7 @@ function* getListHospital() {
     const { data } = response
     yield put(ac.ListHospitalRequestSuccess(data))
   } catch (error) {
-    console.error(error)
+    console.log('error getListHospital :>> ', error)
   }
 }
 
@@ -226,7 +226,7 @@ function* getAllPayment() {
     yield put(ac.getAllPaymentSuccess(response.data))
     yield put(ac.setLoading(false))
   } catch (error) {
-    console.log('error :>> ', error)
+    console.log('error getAllPayment :>> ', error)
     yield put(ac.setLoading(false))
 
     huyi({ name: 'getAllPayment', child: error, type: 'error' })
@@ -296,7 +296,7 @@ function* rePayment({ typeRepay }: any) {
 
     yield put(ac.setLoading(false))
   } catch (error) {
-    console.log('error :>> ', error)
+    console.log('error rePayment :>> ', error)
     yield put(ac.setLoading(false))
 
     huyi({ name: 'rePayment', child: error, type: 'error' })

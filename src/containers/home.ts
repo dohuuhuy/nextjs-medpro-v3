@@ -18,7 +18,7 @@ const getNewsAndEvent = async () => {
     const news: any = await fetcher(url)
     return newsPin.concat(news)
   } catch (error) {
-    console.error(error)
+    console.log('error getNewsAndEvent :>> ', error)
     return null
   }
 }

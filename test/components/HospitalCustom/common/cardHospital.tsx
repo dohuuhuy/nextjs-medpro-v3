@@ -7,7 +7,7 @@ import { redirect } from './func'
 import { ListHospital } from './interface'
 
 export const cardHospital = (arr: ListHospital[], router: any) => {
-  if (arr.length < 1) {
+  if (!arr || arr.length < 1) {
     return (
       <Result
         status='404'

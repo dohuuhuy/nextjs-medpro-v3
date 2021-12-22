@@ -14,7 +14,7 @@ export const NewsEventCustom = ({ dataNewsAndEvent }: any) => {
   }
 
   return (
-    <Container className={styles.dataNewsAndEvent}>
+    <Container tag={'section'} className={styles.dataNewsAndEvent}>
       <Row className={styles.rowTitle}>
         <h2>Tin tức & sự kiện</h2>
       </Row>

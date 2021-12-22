@@ -22,7 +22,7 @@ export const DeloyHospitalCustom = ({ data }: Props) => {
   }
 
   return (
-    <Container className={styles.DeloyHospitalCustom}>
+    <Container tag={'section'} className={styles.DeloyHospitalCustom}>
       <Row className={styles.rowTitle}>
         <h2 className={styles.title}>Hệ thống bệnh viện triển khai</h2>
       </Row>
