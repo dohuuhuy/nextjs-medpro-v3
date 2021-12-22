@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import Slider from 'react-slick'
+import Slider, { Settings } from 'react-slick'
 import { Icon } from '../Icon'
 import Container from './../Container'
 import { BookingTypeIF } from './common/interface'
-import { banner, listTabs, myLoader, settings } from './common/utils'
+import { banner, listTabs } from './common/utils'
 import styles from './styles.module.less'
 
 export const BookingType = (props: BookingTypeIF) => {
@@ -193,4 +193,17 @@ export const BookingType = (props: BookingTypeIF) => {
       </Row>
     </Container>
   )
+}
+
+export const settings: Settings = {
+  speed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  dots: false
+}
+
+export const myLoader = ({ src, width, quality }: any): string => {
+  return `${src}?w=${width}&q=${quality || 75}`
 }
