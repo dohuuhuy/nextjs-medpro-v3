@@ -18,13 +18,13 @@ export const changeSex = (sex: any) => {
 
 export const fetcherGuide = async (url: string) => {
   try {
-    const res = await timeout(
+    const res: any = await timeout(
       3000,
       fetch(url, {
         headers: { type: 'guide-booking', partnerid: 'medpro' }
       })
     )
-    return await res.json()
+    return await res?.json()
   } catch (error) {
     return {
       error: true
@@ -32,13 +32,14 @@ export const fetcherGuide = async (url: string) => {
   }
 }
 
-export const fetcher = (url: string) => {
+export const fetcher = async (url: string) => {
   try {
-    return fetch(url)
-      .then((res) => res.json())
-      .catch(() => null)
+    const res: any = await timeout(3000, fetch(url))
+    return await res?.json()
   } catch (error) {
-    return null
+    return {
+      error: true
+    }
   }
 }
 
