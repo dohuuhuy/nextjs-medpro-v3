@@ -67,12 +67,14 @@ function* getNoti() {
     const user: UserState = yield select((state: AppState) => state.user)
     const total: TotalDataState = yield select((state: AppState) => state.total)
 
-    const response: AxiosResponse = yield client.getAllNotifByUser({
-      token: user?.userInfo?.token,
-      partnerid: total?.partnerId,
-      appid: total?.partnerId || 'medpro'
-    })
-    yield put(ac.getNotiSuccess(response.data))
+    if (user?.userInfo?.token) {
+      const response: AxiosResponse = yield client.getAllNotifByUser({
+        token: user?.userInfo?.token,
+        partnerid: total?.partnerId,
+        appid: total?.partnerId || 'medpro'
+      })
+      yield put(ac.getNotiSuccess(response.data))
+    }
   } catch (error) {
     console.log('error getNoti:>> ', error)
   }
